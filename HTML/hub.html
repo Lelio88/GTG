@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hub - Choix du mode</title>
+    <link rel="stylesheet" href="../CSS/hub.css" />
+</head>
+
+<body>
+    <h1>Choisissez un mode de jeu :</h1>
+    <div id="modes-container" tabindex="0" aria-label="Sélection des modes de jeu">
+        <div class="game-mode" data-mode="full" data-color="yellow" tabindex="-1">Full Package</div>
+        <div class="game-mode" data-mode="sound" data-color="orange" tabindex="-1">Sound Only</div>
+        <div class="game-mode" data-mode="image" data-color="pink" tabindex="-1">Image Only</div>
+        <div class="game-mode" data-mode="text" data-color="blue" tabindex="-1">Text Only</div>
+    </div>
+    <button id="start-game">Lancer le jeu</button>
+    <button id="room-button">Aller dans la chambre</button>
+    <button id="back-button">Retour à la sélection de profil</button>
+
+    <footer id="game-footer">
+        <span id="completed-modes">Modes terminés : 0</span>
+        <span id="keys-counter" style="display: none;"> Clés : <span id="keys-count">0</span></span>
+        <span id="current-time"> Heure : --:--</span>
+    </footer>
+    <script type="module" src="../JS/hub.js"></script>
+    <script type="module" src="../JS/dialogue.js"></script>
+</body>
+
+</html>

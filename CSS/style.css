@@ -1,0 +1,253 @@
+/* ===============================
+   Global Styles 
+=============================== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #1a1a1a;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+h2,
+h3 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* ===============================
+   Header Bar (Flottante & Néon)
+=============================== */
+#header-bar {
+    position: fixed;
+    top: 10px;
+    /* Réduit pour plus de place */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 50px;
+    background: rgba(44, 44, 44, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #ff7f50;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+#header-logo {
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+#header-logo:hover {
+    transform: scale(1.1);
+}
+
+#header-bar nav ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+#header-bar nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s, box-shadow 0.3s;
+    padding-bottom: 2px;
+}
+
+#header-bar nav ul li a:hover {
+    color: #ff7f50;
+    box-shadow: 0 2px #ff7f50;
+}
+
+/* ===============================
+   App Container 
+=============================== */
+#app {
+    text-align: center;
+    width: 80%;
+    padding-top: 20px;
+    /* Encore un peu réduit */
+}
+
+/* ===============================
+   Game Area 
+=============================== */
+#game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#game-title,
+#message {
+    font-size: 1.8em;
+    color: #ff7f50;
+    text-shadow: 0 0 8px #ff7f50;
+}
+
+/* ===============================
+   Content Area (Image) 
+=============================== */
+#content {
+    position: relative;
+    width: 800px;
+    height: 400px;
+}
+
+#content img {
+    width: auto;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 15px;
+    box-shadow: 0 0 15px #ff7f50, 0 0 30px #ff7f50;
+}
+
+/* ===============================
+   Navigation Arrows 
+=============================== */
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 2.5em;
+    cursor: pointer;
+    z-index: 5;
+    user-select: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.nav-arrow.left {
+    left: -50px;
+    /* Mieux positionnée */
+}
+
+.nav-arrow.right {
+    right: -50px;
+    /* Mieux positionnée */
+}
+
+.nav-arrow:hover {
+    opacity: 1;
+}
+
+/* ===============================
+   Input and Buttons 
+=============================== */
+#user-input {
+    padding: 10px;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 2px solid #ff7f50;
+    background-color: #2c2c2c;
+    color: white;
+    text-align: center;
+    width: 500px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#user-input:focus {
+    outline: none;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #ff7f50;
+}
+
+button {
+    background-color: #ff7f50;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1.2em;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #ff7f50;
+}
+
+#button-container {
+    display: flex;
+    gap: 20px;
+}
+
+/* ===============================
+   Scoreboard 
+=============================== */
+#scoreboard {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #2c2c2c;
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+    /* Réduit en hauteur */
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 -2px 10px #ff7f50;
+    display: flex;
+    justify-content: space-around;
+}
+
+#scoreboard p {
+    margin: 0;
+    font-size: 1em;
+    /* Un peu plus petit pour alléger l'ensemble */
+}
+
+/* ===============================
+   Neon Glow Animation 
+=============================== */
+@keyframes neon-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px #ff7f50, 0 0 10px #ff7f50;
+    }
+
+    50% {
+        box-shadow: 0 0 8px #ff7f50, 0 0 12px #ff7f50;
+    }
+}
+
+button.selected,
+#user-input:focus {
+    animation: neon-glow 1.5s infinite alternate;
+}
+
+/* ===============================
+   Fade In Animation 
+=============================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+#content {
+    animation: fadeIn 0.5s ease-in-out;
+}
