@@ -164,7 +164,7 @@ document.addEventListener('keydown', (e) => {
             alert("Veuillez sélectionner un profil !");
             return;
         }
-        window.location.href = '/HTML/hub.html';  // Ou la page de ton choix
+        window.location.href = 'HTML/hub.html';  // Ou la page de ton choix
     }
 });
 
@@ -175,7 +175,7 @@ loadProfileButton.onclick = () => {
         alert("Veuillez sélectionner un profil !");
         return;
     }
-    window.location.href = '/HTML/hub.html';  // Ou la page de ton choix
+    window.location.href = 'HTML/hub.html';  // Ou la page de ton choix
 };
 
 // Initialisation
