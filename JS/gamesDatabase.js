@@ -2,14 +2,14 @@ export const games = [
     {
         title: 'BioShock',
         image: [
-            './Medias/Image/Bioshock 1.jpg',
-            './Medias/Image/Bioshock 2.jpg',
-            './Medias/Image/Bioshock 3.jpg',
+            '../Medias/Image/Bioshock 1.jpg',
+            '../Medias/Image/Bioshock 2.jpg',
+            '../Medias/Image/Bioshock 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Bioshock 1.mp3',
-            './Medias/Sound/Bioshock 2.mp3',
-            './Medias/Sound/Bioshock 3.mp3',
+            '../Medias/Sound/Bioshock 1.mp3',
+            '../Medias/Sound/Bioshock 2.mp3',
+            '../Medias/Sound/Bioshock 3.mp3',
         ],
         text: [
             "Développé par Irrational Games, ce jeu un FPS immersif combinant exploration et narration, avec des choix moraux influençant le déroulement de l'histoire. Le jeu se distingue par son ambiance rétro-futuriste et son level design unique.",
@@ -20,14 +20,14 @@ export const games = [
     {
         title: 'Plants vs Zombies',
         image: [
-            './Medias/Image/Plants vs Zombies 1.jpg',
-            './Medias/Image/Plants vs Zombies 2.jpg',
-            './Medias/Image/Plants vs Zombies 3.jpg',
+            '../Medias/Image/Plants vs Zombies 1.jpg',
+            '../Medias/Image/Plants vs Zombies 2.jpg',
+            '../Medias/Image/Plants vs Zombies 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Plants vs Zombies 1.mp3',
-            './Medias/Sound/Plants vs Zombies 2.mp3',
-            './Medias/Sound/Plants vs Zombies 3.mp3',
+            '../Medias/Sound/Plants vs Zombies 1.mp3',
+            '../Medias/Sound/Plants vs Zombies 2.mp3',
+            '../Medias/Sound/Plants vs Zombies 3.mp3',
         ],
         text: [
             "Développé par PopCap Games, ce jeu de stratégie en temps réel mêle tower defense et gestion de ressources. Les joueurs doivent protéger un territoire en plaçant des unités de défense sur un champ divisé en cases.",
@@ -38,14 +38,14 @@ export const games = [
     {
         title: 'Call of Duty',
         image: [
-            './Medias/Image/Call of Duty 1.jpg',
-            './Medias/Image/Call of Duty 2.jpg',
-            './Medias/Image/Call of Duty 3.jpg',
+            '../Medias/Image/Call of Duty 1.jpg',
+            '../Medias/Image/Call of Duty 2.jpg',
+            '../Medias/Image/Call of Duty 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Call of Duty 1.mp3',
-            './Medias/Sound/Call of Duty 2.mp3',
-            './Medias/Sound/Call of Duty 3.mp3',
+            '../Medias/Sound/Call of Duty 1.mp3',
+            '../Medias/Sound/Call of Duty 2.mp3',
+            '../Medias/Sound/Call of Duty 3.mp3',
         ],
         text: [
             "Développé par Infinity Ward et édité par Activision, ce jeu de tir à la première personne a redéfini les standards du genre grâce à un gameplay intense et une immersion réaliste dans des conflits armés.",
@@ -56,14 +56,14 @@ export const games = [
     {
         title: 'The Last of Us',
         image: [
-            './Medias/Image/The Last of Us 1.jpg',
-            './Medias/Image/The Last of Us 2.jpg',
-            './Medias/Image/The Last of Us 3.jpg',
+            '../Medias/Image/The Last of Us 1.jpg',
+            '../Medias/Image/The Last of Us 2.jpg',
+            '../Medias/Image/The Last of Us 3.jpg',
         ],
         sound: [
-            './Medias/Sound/The Last of Us 1.mp3',
-            './Medias/Sound/The Last of Us 2.mp3',
-            './Medias/Sound/The Last of Us 3.mp3',
+            '../Medias/Sound/The Last of Us 1.mp3',
+            '../Medias/Sound/The Last of Us 2.mp3',
+            '../Medias/Sound/The Last of Us 3.mp3',
         ],
         text: [
             "Développé par Naughty Dog, ce jeu d'action-aventure plonge les joueurs dans un univers post-apocalyptique. Mélangeant survie, exploration et narration cinématographique, il se distingue par une ambiance oppressante et une qualité de réalisation exceptionnelle.",
@@ -74,14 +74,14 @@ export const games = [
     {
         title: 'Satisfactory',
         image: [
-            './Medias/Image/Satisfactory 1.jpg',
-            './Medias/Image/Satisfactory 2.jpg',
-            './Medias/Image/Satisfactory 3.jpg',
+            '../Medias/Image/Satisfactory 1.jpg',
+            '../Medias/Image/Satisfactory 2.jpg',
+            '../Medias/Image/Satisfactory 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Satisfactory 1.mp3',
-            './Medias/Sound/Satisfactory 2.mp3',
-            './Medias/Sound/Satisfactory 3.mp3',
+            '../Medias/Sound/Satisfactory 1.mp3',
+            '../Medias/Sound/Satisfactory 2.mp3',
+            '../Medias/Sound/Satisfactory 3.mp3',
         ],
         text: [
             "Développé par Coffee Stain Studios, ce jeu de construction et de gestion propose aux joueurs de bâtir et d'optimiser des chaînes de production massives. L'exploration et la logistique y jouent un rôle central.",
@@ -92,14 +92,14 @@ export const games = [
     {
         title: 'Outlast',
         image: [
-            './Medias/Image/Outlast 1.jpg',
-            './Medias/Image/Outlast 2.jpg',
-            './Medias/Image/Outlast 3.jpg',
+            '../Medias/Image/Outlast 1.jpg',
+            '../Medias/Image/Outlast 2.jpg',
+            '../Medias/Image/Outlast 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Outlast 1.mp3',
-            './Medias/Sound/Outlast 2.mp3',
-            './Medias/Sound/Outlast 3.mp3',
+            '../Medias/Sound/Outlast 1.mp3',
+            '../Medias/Sound/Outlast 2.mp3',
+            '../Medias/Sound/Outlast 3.mp3',
         ],
         text: [
             "Développé par Red Barrels, ce jeu d'horreur à la première personne plonge le joueur dans une expérience immersive où la fuite et la discrétion sont les seules options pour survivre. L'ambiance oppressante et le level design renforcent l'aspect claustrophobique.",
@@ -110,14 +110,14 @@ export const games = [
     {
         title: 'Hades',
         image: [
-            './Medias/Image/Hades 1.jpg',
-            './Medias/Image/Hades 2.jpg',
-            './Medias/Image/Hades 3.jpg',
+            '../Medias/Image/Hades 1.jpg',
+            '../Medias/Image/Hades 2.jpg',
+            '../Medias/Image/Hades 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Hades 1.mp3',
-            './Medias/Sound/Hades 2.mp3',
-            './Medias/Sound/Hades 3.mp3',
+            '../Medias/Sound/Hades 1.mp3',
+            '../Medias/Sound/Hades 2.mp3',
+            '../Medias/Sound/Hades 3.mp3',
         ],
         text: [
             "Développé par Supergiant Games, ce rogue-like dynamique mélange action frénétique et narration immersive. Le jeu se distingue par ses graphismes dessinés à la main, sa bande-son percutante et son gameplay axé sur l'amélioration progressive du personnage.",
@@ -128,14 +128,14 @@ export const games = [
     {
         title: 'BioShock Infinite',
         image: [
-            './Medias/Image/Bioshock Infinite 1.jpg',
-            './Medias/Image/Bioshock Infinite 2.jpg',
-            './Medias/Image/Bioshock Infinite 3.jpg',
+            '../Medias/Image/Bioshock Infinite 1.jpg',
+            '../Medias/Image/Bioshock Infinite 2.jpg',
+            '../Medias/Image/Bioshock Infinite 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Bioshock Infinite 1.mp3',
-            './Medias/Sound/Bioshock Infinite 2.mp3',
-            './Medias/Sound/Bioshock Infinite 3.mp3',
+            '../Medias/Sound/Bioshock Infinite 1.mp3',
+            '../Medias/Sound/Bioshock Infinite 2.mp3',
+            '../Medias/Sound/Bioshock Infinite 3.mp3',
         ],
         text: [
             "Développé par Irrational Games, ce jeu de tir à la première personne propose une exploration immersive dans un univers steampunk. Il se démarque par une direction artistique saisissante et un gameplay orienté autour des pouvoirs et du combat aérien.",
@@ -146,14 +146,14 @@ export const games = [
     {
         title: 'Hollow Knight',
         image: [
-            './Medias/Image/Hollow Knight 1.jpg',
-            './Medias/Image/Hollow Knight 2.jpg',
-            './Medias/Image/Hollow Knight 3.jpg',
+            '../Medias/Image/Hollow Knight 1.jpg',
+            '../Medias/Image/Hollow Knight 2.jpg',
+            '../Medias/Image/Hollow Knight 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Hollow Knight 1.mp3',
-            './Medias/Sound/Hollow Knight 2.mp3',
-            './Medias/Sound/Hollow Knight 3.mp3',
+            '../Medias/Sound/Hollow Knight 1.mp3',
+            '../Medias/Sound/Hollow Knight 2.mp3',
+            '../Medias/Sound/Hollow Knight 3.mp3',
         ],
         text: [
             "Développé par Team Cherry, le jeu est un metroidvania. Il se distingue par son esthétique sombre et dessinée à la main, ainsi que par sa bande-son atmosphérique et immersive.",
@@ -164,14 +164,14 @@ export const games = [
     {
         title: 'Horizon Zero Dawn',
         image: [
-            './Medias/Image/Horizon Zero Dawn 1.jpg',
-            './Medias/Image/Horizon Zero Dawn 2.jpg',
-            './Medias/Image/Horizon Zero Dawn 3.jpg',
+            '../Medias/Image/Horizon Zero Dawn 1.jpg',
+            '../Medias/Image/Horizon Zero Dawn 2.jpg',
+            '../Medias/Image/Horizon Zero Dawn 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Horizon Zero Dawn 1.mp3',
-            './Medias/Sound/Horizon Zero Dawn 2.mp3',
-            './Medias/Sound/Horizon Zero Dawn 3.mp3',
+            '../Medias/Sound/Horizon Zero Dawn 1.mp3',
+            '../Medias/Sound/Horizon Zero Dawn 2.mp3',
+            '../Medias/Sound/Horizon Zero Dawn 3.mp3',
         ],
         text: [
             "Développé par Guerrilla Games, le premier opus est un jeu d'action-RPG en monde ouvert qui mêle exploration, combat et chasse dans un univers post-apocalyptique où la nature a repris ses droits.",
@@ -182,14 +182,14 @@ export const games = [
     {
         title: 'Spyro',
         image: [
-            './Medias/Image/Spyro 1.jpg',
-            './Medias/Image/Spyro 2.jpg',
-            './Medias/Image/Spyro 3.jpg',
+            '../Medias/Image/Spyro 1.jpg',
+            '../Medias/Image/Spyro 2.jpg',
+            '../Medias/Image/Spyro 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Spyro 1.mp3',
-            './Medias/Sound/Spyro 2.mp3',
-            './Medias/Sound/Spyro 3.mp3',
+            '../Medias/Sound/Spyro 1.mp3',
+            '../Medias/Sound/Spyro 2.mp3',
+            '../Medias/Sound/Spyro 3.mp3',
         ],
         text: [
             "Créé par Insomniac Games, le premier opus est un jeu de plateforme en 3D qui se distingue par son univers coloré et son personnage principal, une petite créature courageux et espiègle.",
@@ -200,14 +200,14 @@ export const games = [
     {
         title: 'God of War',
         image: [
-            './Medias/Image/God of War 1.jpg',
-            './Medias/Image/God of War 2.jpg',
-            './Medias/Image/God of War 3.jpg',
+            '../Medias/Image/God of War 1.jpg',
+            '../Medias/Image/God of War 2.jpg',
+            '../Medias/Image/God of War 3.jpg',
         ],
         sound: [
-            './Medias/Sound/God of War 1.mp3',
-            './Medias/Sound/God of War 2.mp3',
-            './Medias/Sound/God of War 3.mp3',
+            '../Medias/Sound/God of War 1.mp3',
+            '../Medias/Sound/God of War 2.mp3',
+            '../Medias/Sound/God of War 3.mp3',
         ],
         text: [
             "Développé par Santa Monica Studio, le premier opus est un jeu d'action-aventure mêlant mythologie et combat intense.",
@@ -218,14 +218,14 @@ export const games = [
     {
         title: 'Portal',
         image: [
-            './Medias/Image/Portal 1.jpg',
-            './Medias/Image/Portal 2.jpg',
-            './Medias/Image/Portal 3.jpg',
+            '../Medias/Image/Portal 1.jpg',
+            '../Medias/Image/Portal 2.jpg',
+            '../Medias/Image/Portal 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Portal 1.mp3',
-            './Medias/Sound/Portal 2.mp3',
-            './Medias/Sound/Portal 3.mp3',
+            '../Medias/Sound/Portal 1.mp3',
+            '../Medias/Sound/Portal 2.mp3',
+            '../Medias/Sound/Portal 3.mp3',
         ],
         text: [
             "Développé par Valve, il s'agit d'un jeu de réflexion en vue à la première personne.",
@@ -236,14 +236,14 @@ export const games = [
     {
         title: 'Counter Strike',
         image: [
-            './Medias/Image/Counter Strike 1.jpg',
-            './Medias/Image/Counter Strike 2.jpg',
-            './Medias/Image/Counter Strike 3.jpg',
+            '../Medias/Image/Counter Strike 1.jpg',
+            '../Medias/Image/Counter Strike 2.jpg',
+            '../Medias/Image/Counter Strike 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Counter Strike 1.mp3',
-            './Medias/Sound/Counter Strike 2.mp3',
-            './Medias/Sound/Counter Strike 3.mp3',
+            '../Medias/Sound/Counter Strike 1.mp3',
+            '../Medias/Sound/Counter Strike 2.mp3',
+            '../Medias/Sound/Counter Strike 3.mp3',
         ],
         text: [
             "Développé par Valve, le jeu est un FPS qui a redéfini le genre du jeu en ligne compétitif.",
@@ -254,14 +254,14 @@ export const games = [
     {
         title: 'Minecraft',
         image: [
-            './Medias/Image/Minecraft 1.jpg',
-            './Medias/Image/Minecraft 2.jpg',
-            './Medias/Image/Minecraft 3.jpg',
+            '../Medias/Image/Minecraft 1.jpg',
+            '../Medias/Image/Minecraft 2.jpg',
+            '../Medias/Image/Minecraft 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Minecraft 1.mp3',
-            './Medias/Sound/Minecraft 2.mp3',
-            './Medias/Sound/Minecraft 3.mp3',
+            '../Medias/Sound/Minecraft 1.mp3',
+            '../Medias/Sound/Minecraft 2.mp3',
+            '../Medias/Sound/Minecraft 3.mp3',
         ],
         text: [
             "Développé par Mojang Studios, il s'agit d'un jeu de construction et d'aventure en monde ouvert.",
@@ -272,14 +272,14 @@ export const games = [
     {
         title: 'Assassin\'s Creed',
         image: [
-            './Medias/Image/Assassin\'s Creed 1.jpg',
-            './Medias/Image/Assassin\'s Creed 2.jpg',
-            './Medias/Image/Assassin\'s Creed 3.jpg',
+            '../Medias/Image/Assassin\'s Creed 1.jpg',
+            '../Medias/Image/Assassin\'s Creed 2.jpg',
+            '../Medias/Image/Assassin\'s Creed 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Assassin\'s Creed 1.mp3',
-            './Medias/Sound/Assassin\'s Creed 2.mp3',
-            './Medias/Sound/Assassin\'s Creed 3.mp3',
+            '../Medias/Sound/Assassin\'s Creed 1.mp3',
+            '../Medias/Sound/Assassin\'s Creed 2.mp3',
+            '../Medias/Sound/Assassin\'s Creed 3.mp3',
         ],
         text: [
             "Développée par Ubisoft, cette saga d’action-aventure mêle infiltration, exploration historique et parkour dans des mondes ouverts fidèlement reconstitués.",
@@ -290,14 +290,14 @@ export const games = [
     {
         title: 'The binding of Isaac',
         image: [
-            './Medias/Image/The binding of Isaac 1.jpg',
-            './Medias/Image/The binding of Isaac 2.jpg',
-            './Medias/Image/The binding of Isaac 3.jpg',
+            '../Medias/Image/The binding of Isaac 1.jpg',
+            '../Medias/Image/The binding of Isaac 2.jpg',
+            '../Medias/Image/The binding of Isaac 3.jpg',
         ],
         sound: [
-            './Medias/Sound/The binding of Isaac 1.mp3',
-            './Medias/Sound/The binding of Isaac 2.mp3',
-            './Medias/Sound/The binding of Isaac 3.mp3',
+            '../Medias/Sound/The binding of Isaac 1.mp3',
+            '../Medias/Sound/The binding of Isaac 2.mp3',
+            '../Medias/Sound/The binding of Isaac 3.mp3',
         ],
         text: [
             "Développé par Edmund McMillen et Florian Himsl, ce rogue-like indépendant est connu pour sa direction artistique dérangeante, son gameplay punitif et ses influences tirées à la fois des jeux rétro et de thématiques très sombres.",
@@ -308,14 +308,14 @@ export const games = [
     {
         title: 'Chants of Sennaar',
         image: [
-            './Medias/Image/Chants of Sennaar 1.jpg',
-            './Medias/Image/Chants of Sennaar 2.jpg',
-            './Medias/Image/Chants of Sennaar 3.jpg',
+            '../Medias/Image/Chants of Sennaar 1.jpg',
+            '../Medias/Image/Chants of Sennaar 2.jpg',
+            '../Medias/Image/Chants of Sennaar 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Chants of Sennaar 1.mp3',
-            './Medias/Sound/Chants of Sennaar 2.mp3',
-            './Medias/Sound/Chants of Sennaar 3.mp3',
+            '../Medias/Sound/Chants of Sennaar 1.mp3',
+            '../Medias/Sound/Chants of Sennaar 2.mp3',
+            '../Medias/Sound/Chants of Sennaar 3.mp3',
         ],
         text: [
             "Développé par le studio français Rundisc, ce jeu d’aventure et de réflexion se distingue par sa direction artistique inspirée de l’art mésopotamien et son gameplay centré sur la déduction linguistique.",
@@ -326,14 +326,14 @@ export const games = [
     {
         title: 'Crash Bandicoot',
         image: [
-            './Medias/Image/Crash Bandicoot 1.jpg',
-            './Medias/Image/Crash Bandicoot 2.jpg',
-            './Medias/Image/Crash Bandicoot 3.jpg',
+            '../Medias/Image/Crash Bandicoot 1.jpg',
+            '../Medias/Image/Crash Bandicoot 2.jpg',
+            '../Medias/Image/Crash Bandicoot 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Crash Bandicoot 1.mp3',
-            './Medias/Sound/Crash Bandicoot 2.mp3',
-            './Medias/Sound/Crash Bandicoot 3.mp3',
+            '../Medias/Sound/Crash Bandicoot 1.mp3',
+            '../Medias/Sound/Crash Bandicoot 2.mp3',
+            '../Medias/Sound/Crash Bandicoot 3.mp3',
         ],
         text: [
             "Créé par le studio Naughty Dog à ses débuts, ce jeu de plateforme en 3D s’est imposé comme une référence sur consoles grâce à ses graphismes colorés, son gameplay nerveux et ses niveaux à défilement fixe ou dynamique.",
@@ -344,14 +344,14 @@ export const games = [
     {
         title: 'Days Gone',
         image: [
-            './Medias/Image/Days Gone 1.jpg',
-            './Medias/Image/Days Gone 2.jpg',
-            './Medias/Image/Days Gone 3.jpg',
+            '../Medias/Image/Days Gone 1.jpg',
+            '../Medias/Image/Days Gone 2.jpg',
+            '../Medias/Image/Days Gone 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Days Gone 1.mp3',
-            './Medias/Sound/Days Gone 2.mp3',
-            './Medias/Sound/Days Gone 3.mp3',
+            '../Medias/Sound/Days Gone 1.mp3',
+            '../Medias/Sound/Days Gone 2.mp3',
+            '../Medias/Sound/Days Gone 3.mp3',
         ],
         text: [
             "Développé par Bend Studio, ce jeu d’action-aventure en monde ouvert combine survie, exploration et narration dans un univers post-apocalyptique, avec un accent particulier sur la moto et les déplacements dynamiques.",
@@ -362,14 +362,14 @@ export const games = [
     {
         title: 'Raft',
         image: [
-            './Medias/Image/Raft 1.jpg',
-            './Medias/Image/Raft 2.jpg',
-            './Medias/Image/Raft 3.jpg',
+            '../Medias/Image/Raft 1.jpg',
+            '../Medias/Image/Raft 2.jpg',
+            '../Medias/Image/Raft 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Raft 1.mp3',
-            './Medias/Sound/Raft 2.mp3',
-            './Medias/Sound/Raft 3.mp3',
+            '../Medias/Sound/Raft 1.mp3',
+            '../Medias/Sound/Raft 2.mp3',
+            '../Medias/Sound/Raft 3.mp3',
         ],
         text: [
             "Développé par Redbeet Interactive, ce jeu de survie en vue à la première personne place le joueur sur un radeau perdu en mer, avec pour mission de collecter des ressources, construire et survivre aux dangers de l’océan.",
@@ -380,14 +380,14 @@ export const games = [
     {
         title: 'Dishonored',
         image: [
-            './Medias/Image/Dishonored 1.jpg',
-            './Medias/Image/Dishonored 2.jpg',
-            './Medias/Image/Dishonored 3.jpg',
+            '../Medias/Image/Dishonored 1.jpg',
+            '../Medias/Image/Dishonored 2.jpg',
+            '../Medias/Image/Dishonored 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Dishonored 1.mp3',
-            './Medias/Sound/Dishonored 2.mp3',
-            './Medias/Sound/Dishonored 3.mp3',
+            '../Medias/Sound/Dishonored 1.mp3',
+            '../Medias/Sound/Dishonored 2.mp3',
+            '../Medias/Sound/Dishonored 3.mp3',
         ],
         text: [
             "Développé par Arkane Studios, ce jeu mêle infiltration, action et pouvoirs surnaturels dans un univers steampunk sombre, inspiré à la fois de l’Angleterre victorienne et de l’esthétique industrielle.",
@@ -398,14 +398,14 @@ export const games = [
     {
         title: 'Little Big Planet',
         image: [
-            './Medias/Image/Little Big Planet 1.jpg',
-            './Medias/Image/Little Big Planet 2.jpg',
-            './Medias/Image/Little Big Planet 3.jpg',
+            '../Medias/Image/Little Big Planet 1.jpg',
+            '../Medias/Image/Little Big Planet 2.jpg',
+            '../Medias/Image/Little Big Planet 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Little Big Planet 1.mp3',
-            './Medias/Sound/Little Big Planet 2.mp3',
-            './Medias/Sound/Little Big Planet 3.mp3',
+            '../Medias/Sound/Little Big Planet 1.mp3',
+            '../Medias/Sound/Little Big Planet 2.mp3',
+            '../Medias/Sound/Little Big Planet 3.mp3',
         ],
         text: [
             "Créé par Media Molecule, ce jeu de plateforme a marqué les esprits par son esthétique en tissu, carton et matières recyclées, ainsi que par son moteur de création accessible et profond, favorisant l’imagination des joueurs.",
@@ -416,14 +416,14 @@ export const games = [
     {
         title: 'Dredge',
         image: [
-            './Medias/Image/Dredge 1.jpg',
-            './Medias/Image/Dredge 2.jpg',
-            './Medias/Image/Dredge 3.jpg',
+            '../Medias/Image/Dredge 1.jpg',
+            '../Medias/Image/Dredge 2.jpg',
+            '../Medias/Image/Dredge 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Dredge 1.mp3',
-            './Medias/Sound/Dredge 2.mp3',
-            './Medias/Sound/Dredge 3.mp3',
+            '../Medias/Sound/Dredge 1.mp3',
+            '../Medias/Sound/Dredge 2.mp3',
+            '../Medias/Sound/Dredge 3.mp3',
         ],
         text: [
             "Développé par Black Salt Games, ce jeu mêle pêche, exploration et mystère dans un monde maritime stylisé, teinté d’une atmosphère inquiétante et d’une esthétique minimaliste soignée.",
@@ -434,14 +434,14 @@ export const games = [
     {
         title: 'Subnautica',
         image: [
-            './Medias/Image/Subnautica 1.jpg',
-            './Medias/Image/Subnautica 2.jpg',
-            './Medias/Image/Subnautica 3.jpg',
+            '../Medias/Image/Subnautica 1.jpg',
+            '../Medias/Image/Subnautica 2.jpg',
+            '../Medias/Image/Subnautica 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Subnautica 1.mp3',
-            './Medias/Sound/Subnautica 2.mp3',
-            './Medias/Sound/Subnautica 3.mp3',
+            '../Medias/Sound/Subnautica 1.mp3',
+            '../Medias/Sound/Subnautica 2.mp3',
+            '../Medias/Sound/Subnautica 3.mp3',
         ],
         text: [
             "Créé par Unknown Worlds Entertainment, le premier opus de ces jeux de survie en monde ouvert sous-marin immerge le joueur dans un océan extraterrestre riche en faune et flore inconnues, avec un fort accent sur l’exploration et la découverte.",
@@ -452,14 +452,14 @@ export const games = [
     {
         title: 'Dying Light',
         image: [
-            './Medias/Image/Dying Light 1.jpg',
-            './Medias/Image/Dying Light 2.jpg',
-            './Medias/Image/Dying Light 3.jpg',
+            '../Medias/Image/Dying Light 1.jpg',
+            '../Medias/Image/Dying Light 2.jpg',
+            '../Medias/Image/Dying Light 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Dying Light 1.mp3',
-            './Medias/Sound/Dying Light 2.mp3',
-            './Medias/Sound/Dying Light 3.mp3',
+            '../Medias/Sound/Dying Light 1.mp3',
+            '../Medias/Sound/Dying Light 2.mp3',
+            '../Medias/Sound/Dying Light 3.mp3',
         ],
         text: [
             "Développé par Techland, le premier opus de ce jeu d’action-aventure en monde ouvert mêle parkour et survie dans un environnement urbain infesté de créatures infectées, avec une gestion dynamique du cycle jour-nuit.",
@@ -470,14 +470,14 @@ export const games = [
     {
         title: 'Far Cry',
         image: [
-            './Medias/Image/Far Cry 1.jpg',
-            './Medias/Image/Far Cry 2.jpg',
-            './Medias/Image/Far Cry 3.jpg',
+            '../Medias/Image/Far Cry 1.jpg',
+            '../Medias/Image/Far Cry 2.jpg',
+            '../Medias/Image/Far Cry 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Far Cry 1.mp3',
-            './Medias/Sound/Far Cry 2.mp3',
-            './Medias/Sound/Far Cry 3.mp3',
+            '../Medias/Sound/Far Cry 1.mp3',
+            '../Medias/Sound/Far Cry 2.mp3',
+            '../Medias/Sound/Far Cry 3.mp3',
         ],
         text: [
             "Développé par Ubisoft Montréal, cette série de jeux d'action-aventure en monde ouvert est réputée pour ses vastes environnements exotiques et ses mécaniques de tir et d'exploration.",
@@ -488,14 +488,14 @@ export const games = [
     {
         title: 'Frostpunk',
         image: [
-            './Medias/Image/Frostpunk 1.jpg',
-            './Medias/Image/Frostpunk 2.jpg',
-            './Medias/Image/Frostpunk 3.jpg',
+            '../Medias/Image/Frostpunk 1.jpg',
+            '../Medias/Image/Frostpunk 2.jpg',
+            '../Medias/Image/Frostpunk 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Frostpunk 1.mp3',
-            './Medias/Sound/Frostpunk 2.mp3',
-            './Medias/Sound/Frostpunk 3.mp3',
+            '../Medias/Sound/Frostpunk 1.mp3',
+            '../Medias/Sound/Frostpunk 2.mp3',
+            '../Medias/Sound/Frostpunk 3.mp3',
         ],
         text: [
             "Développé par 11 bit studios, ce jeu de stratégie et de survie met le joueur aux commandes d'une dernière ville humaine dans un monde glacé et apocalyptique, où la gestion des ressources est cruciale.",
@@ -506,14 +506,14 @@ export const games = [
     {
         title: 'FPS Chess',
         image: [
-            './Medias/Image/FPS Chess 1.jpg',
-            './Medias/Image/FPS Chess 2.jpg',
-            './Medias/Image/FPS Chess 3.jpg',
+            '../Medias/Image/FPS Chess 1.jpg',
+            '../Medias/Image/FPS Chess 2.jpg',
+            '../Medias/Image/FPS Chess 3.jpg',
         ],
         sound: [
-            './Medias/Sound/FPS Chess 1.mp3',
-            './Medias/Sound/FPS Chess 2.mp3',
-            './Medias/Sound/FPS Chess 3.mp3',
+            '../Medias/Sound/FPS Chess 1.mp3',
+            '../Medias/Sound/FPS Chess 2.mp3',
+            '../Medias/Sound/FPS Chess 3.mp3',
         ],
         text: [
             "Développé par un studio indépendant, ce jeu combine des éléments classiques d'échecs avec une perspective à la première personne, offrant une expérience unique mêlant stratégie et action en temps réel.",
@@ -524,14 +524,14 @@ export const games = [
     {
         title: 'Ghost of a Tale',
         image: [
-            './Medias/Image/Ghost of a Tale 1.jpg',
-            './Medias/Image/Ghost of a Tale 2.jpg',
-            './Medias/Image/Ghost of a Tale 3.jpg',
+            '../Medias/Image/Ghost of a Tale 1.jpg',
+            '../Medias/Image/Ghost of a Tale 2.jpg',
+            '../Medias/Image/Ghost of a Tale 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Ghost of a Tale 1.mp3',
-            './Medias/Sound/Ghost of a Tale 2.mp3',
-            './Medias/Sound/Ghost of a Tale 3.mp3',
+            '../Medias/Sound/Ghost of a Tale 1.mp3',
+            '../Medias/Sound/Ghost of a Tale 2.mp3',
+            '../Medias/Sound/Ghost of a Tale 3.mp3',
         ],
         text: [
             "Créé par SeithCG, ce jeu d'aventure et d'infiltration met en scène un univers médiéval-fantastique peuplé de créatures anthropomorphes, avec un style artistique riche et une ambiance immersive.",
@@ -542,14 +542,14 @@ export const games = [
     {
         title: 'Ghostrunner',
         image: [
-            './Medias/Image/Ghostrunner 1.jpg',
-            './Medias/Image/Ghostrunner 2.jpg',
-            './Medias/Image/Ghostrunner 3.jpg',
+            '../Medias/Image/Ghostrunner 1.jpg',
+            '../Medias/Image/Ghostrunner 2.jpg',
+            '../Medias/Image/Ghostrunner 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Ghostrunner 1.mp3',
-            './Medias/Sound/Ghostrunner 2.mp3',
-            './Medias/Sound/Ghostrunner 3.mp3',
+            '../Medias/Sound/Ghostrunner 1.mp3',
+            '../Medias/Sound/Ghostrunner 2.mp3',
+            '../Medias/Sound/Ghostrunner 3.mp3',
         ],
         text: [
             "Développé par One More Level, ce jeu d’action-plateforme à la première personne combine parkour ultra-rapide et combats au katana dans un univers cyberpunk dystopique.",
@@ -560,14 +560,14 @@ export const games = [
     {
         title: 'Valorant',
         image: [
-            './Medias/Image/Valorant 1.jpg',
-            './Medias/Image/Valorant 2.jpg',
-            './Medias/Image/Valorant 3.jpg',
+            '../Medias/Image/Valorant 1.jpg',
+            '../Medias/Image/Valorant 2.jpg',
+            '../Medias/Image/Valorant 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Valorant 1.mp3',
-            './Medias/Sound/Valorant 2.mp3',
-            './Medias/Sound/Valorant 3.mp3',
+            '../Medias/Sound/Valorant 1.mp3',
+            '../Medias/Sound/Valorant 2.mp3',
+            '../Medias/Sound/Valorant 3.mp3',
         ],
         text: [
             "Développé par Riot Games, ce jeu compétitif de tir tactique en équipe combine des mécaniques précises avec des capacités uniques par personnage, créant un mélange stratégique et dynamique.",
@@ -578,14 +578,14 @@ export const games = [
     {
         title: 'Apex Legends',
         image: [
-            './Medias/Image/Apex Legends 1.jpg',
-            './Medias/Image/Apex Legends 2.jpg',
-            './Medias/Image/Apex Legends 3.jpg',
+            '../Medias/Image/Apex Legends 1.jpg',
+            '../Medias/Image/Apex Legends 2.jpg',
+            '../Medias/Image/Apex Legends 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Apex Legends 1.mp3',
-            './Medias/Sound/Apex Legends 2.mp3',
-            './Medias/Sound/Apex Legends 3.mp3',
+            '../Medias/Sound/Apex Legends 1.mp3',
+            '../Medias/Sound/Apex Legends 2.mp3',
+            '../Medias/Sound/Apex Legends 3.mp3',
         ],
         text: [
             "Développé par Respawn Entertainment, ce jeu de tir battle royale propose des combats rapides et tactiques avec des équipes de trois joueurs, intégrant des capacités spécifiques à chaque personnage.",
@@ -596,14 +596,14 @@ export const games = [
     {
         title: 'Beyond two souls',
         image: [
-            './Medias/Image/Beyond two souls 1.jpg',
-            './Medias/Image/Beyond two souls 2.jpg',
-            './Medias/Image/Beyond two souls 3.jpg',
+            '../Medias/Image/Beyond two souls 1.jpg',
+            '../Medias/Image/Beyond two souls 2.jpg',
+            '../Medias/Image/Beyond two souls 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Beyond two souls 1.mp3',
-            './Medias/Sound/Beyond two souls 2.mp3',
-            './Medias/Sound/Beyond two souls 3.mp3',
+            '../Medias/Sound/Beyond two souls 1.mp3',
+            '../Medias/Sound/Beyond two souls 2.mp3',
+            '../Medias/Sound/Beyond two souls 3.mp3',
         ],
         text: [
             "Développé par Quantic Dream, ce jeu narratif mêle thriller psychologique et surnaturel, offrant une expérience interactive centrée sur le choix et les relations entre les personnages.",
@@ -614,14 +614,14 @@ export const games = [
     {
         title: 'Palworld',
         image: [
-            './Medias/Image/Palworld 1.jpg',
-            './Medias/Image/Palworld 2.jpg',
-            './Medias/Image/Palworld 3.jpg',
+            '../Medias/Image/Palworld 1.jpg',
+            '../Medias/Image/Palworld 2.jpg',
+            '../Medias/Image/Palworld 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Palworld 1.mp3',
-            './Medias/Sound/Palworld 2.mp3',
-            './Medias/Sound/Palworld 3.mp3',
+            '../Medias/Sound/Palworld 1.mp3',
+            '../Medias/Sound/Palworld 2.mp3',
+            '../Medias/Sound/Palworld 3.mp3',
         ],
         text: [
             "Développé par Pocketpair, ce jeu mêle exploration en monde ouvert et capture de créatures dans un univers coloré mais aux mécaniques parfois surprenantes.",
@@ -632,14 +632,14 @@ export const games = [
     {
         title: 'Hunt Showdown',
         image: [
-            './Medias/Image/Hunt Showdown 1.jpg',
-            './Medias/Image/Hunt Showdown 2.jpg',
-            './Medias/Image/Hunt Showdown 3.jpg',
+            '../Medias/Image/Hunt Showdown 1.jpg',
+            '../Medias/Image/Hunt Showdown 2.jpg',
+            '../Medias/Image/Hunt Showdown 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Hunt Showdown 1.mp3',
-            './Medias/Sound/Hunt Showdown 2.mp3',
-            './Medias/Sound/Hunt Showdown 3.mp3',
+            '../Medias/Sound/Hunt Showdown 1.mp3',
+            '../Medias/Sound/Hunt Showdown 2.mp3',
+            '../Medias/Sound/Hunt Showdown 3.mp3',
         ],
         text: [
             "Développé par Crytek, ce jeu mélange survie, chasse et PvP dans une ambiance sombre et oppressante, avec une mécanique de tir tactique et immersive.",
@@ -650,14 +650,14 @@ export const games = [
     {
         title: 'Inscryption',
         image: [
-            './Medias/Image/Inscryption 1.jpg',
-            './Medias/Image/Inscryption 2.jpg',
-            './Medias/Image/Inscryption 3.jpg',
+            '../Medias/Image/Inscryption 1.jpg',
+            '../Medias/Image/Inscryption 2.jpg',
+            '../Medias/Image/Inscryption 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Inscryption 1.mp3',
-            './Medias/Sound/Inscryption 2.mp3',
-            './Medias/Sound/Inscryption 3.mp3',
+            '../Medias/Sound/Inscryption 1.mp3',
+            '../Medias/Sound/Inscryption 2.mp3',
+            '../Medias/Sound/Inscryption 3.mp3',
         ],
         text: [
             "Créé par Daniel Mullins Games, ce jeu mélange habilement cartes à collectionner, horreur psychologique et énigmes, dans une ambiance mystérieuse et immersive.",
@@ -668,14 +668,14 @@ export const games = [
     {
         title: 'Life is Strange',
         image: [
-            './Medias/Image/Life is Strange 1.jpg',
-            './Medias/Image/Life is Strange 2.jpg',
-            './Medias/Image/Life is Strange 3.jpg',
+            '../Medias/Image/Life is Strange 1.jpg',
+            '../Medias/Image/Life is Strange 2.jpg',
+            '../Medias/Image/Life is Strange 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Life is Strange 1.mp3',
-            './Medias/Sound/Life is Strange 2.mp3',
-            './Medias/Sound/Life is Strange 3.mp3',
+            '../Medias/Sound/Life is Strange 1.mp3',
+            '../Medias/Sound/Life is Strange 2.mp3',
+            '../Medias/Sound/Life is Strange 3.mp3',
         ],
         text: [
             "Développé par Dontnod Entertainment, le premier opus de ce jeu narratif met l'accent sur les choix moraux et l'exploration d'une histoire émotionnelle à travers un univers réaliste et contemporain.",
@@ -686,14 +686,14 @@ export const games = [
     {
         title: 'Magic: The Gathering Arena',
         image: [
-            './Medias/Image/Magic 1.jpg',
-            './Medias/Image/Magic 2.jpg',
-            './Medias/Image/Magic 3.jpg',
+            '../Medias/Image/Magic 1.jpg',
+            '../Medias/Image/Magic 2.jpg',
+            '../Medias/Image/Magic 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Magic 1.mp3',
-            './Medias/Sound/Magic 2.mp3',
-            './Medias/Sound/Magic 3.mp3',
+            '../Medias/Sound/Magic 1.mp3',
+            '../Medias/Sound/Magic 2.mp3',
+            '../Medias/Sound/Magic 3.mp3',
         ],
         text: [
             "Développé par Wizards of the Coast, ce jeu de cartes stratégique en ligne reproduit fidèlement l’expérience du célèbre jeu de plateau avec des mécaniques complexes et un univers riche.",
@@ -704,14 +704,14 @@ export const games = [
     {
         title: 'Spider-Man',
         image: [
-            './Medias/Image/Spider-Man 1.jpg',
-            './Medias/Image/Spider-Man 2.jpg',
-            './Medias/Image/Spider-Man 3.jpg',
+            '../Medias/Image/Spider-Man 1.jpg',
+            '../Medias/Image/Spider-Man 2.jpg',
+            '../Medias/Image/Spider-Man 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Spider-Man 1.mp3',
-            './Medias/Sound/Spider-Man 2.mp3',
-            './Medias/Sound/Spider-Man 3.mp3',
+            '../Medias/Sound/Spider-Man 1.mp3',
+            '../Medias/Sound/Spider-Man 2.mp3',
+            '../Medias/Sound/Spider-Man 3.mp3',
         ],
         text: [
             "Développé par Insomniac Games, ce jeu d'action-aventure propose un monde ouvert dynamique où le joueur explore une grande ville tout en combattant le crime grâce à des compétences acrobatiques.",
@@ -722,14 +722,14 @@ export const games = [
     {
         title: 'Metro',
         image: [
-            './Medias/Image/Metro 1.jpg',
-            './Medias/Image/Metro 2.jpg',
-            './Medias/Image/Metro 3.jpg',
+            '../Medias/Image/Metro 1.jpg',
+            '../Medias/Image/Metro 2.jpg',
+            '../Medias/Image/Metro 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Metro 1.mp3',
-            './Medias/Sound/Metro 2.mp3',
-            './Medias/Sound/Metro 3.mp3',
+            '../Medias/Sound/Metro 1.mp3',
+            '../Medias/Sound/Metro 2.mp3',
+            '../Medias/Sound/Metro 3.mp3',
         ],
         text: [
             "Développé par 4A Games, ce jeu propose une expérience immersive de tir à la première personne dans un univers post-apocalyptique sombre et oppressant.",
@@ -740,14 +740,14 @@ export const games = [
     {
         title: 'Outer Wilds',
         image: [
-            './Medias/Image/Outer Wilds 1.jpg',
-            './Medias/Image/Outer Wilds 2.jpg',
-            './Medias/Image/Outer Wilds 3.jpg',
+            '../Medias/Image/Outer Wilds 1.jpg',
+            '../Medias/Image/Outer Wilds 2.jpg',
+            '../Medias/Image/Outer Wilds 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Outer Wilds 1.mp3',
-            './Medias/Sound/Outer Wilds 2.mp3',
-            './Medias/Sound/Outer Wilds 3.mp3',
+            '../Medias/Sound/Outer Wilds 1.mp3',
+            '../Medias/Sound/Outer Wilds 2.mp3',
+            '../Medias/Sound/Outer Wilds 3.mp3',
         ],
         text: [
             "Développé par Mobius Digital, ce jeu d’exploration spatiale propose une boucle temporelle unique au cœur d’un système solaire mystérieux et dynamique.",
@@ -758,14 +758,14 @@ export const games = [
     {
         title: 'Ori and the Blind Forest',
         image: [
-            './Medias/Image/Ori and the Blind Forest 1.jpg',
-            './Medias/Image/Ori and the Blind Forest 2.jpg',
-            './Medias/Image/Ori and the Blind Forest 3.jpg',
+            '../Medias/Image/Ori and the Blind Forest 1.jpg',
+            '../Medias/Image/Ori and the Blind Forest 2.jpg',
+            '../Medias/Image/Ori and the Blind Forest 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Ori and the Blind Forest 1.mp3',
-            './Medias/Sound/Ori and the Blind Forest 2.mp3',
-            './Medias/Sound/Ori and the Blind Forest 3.mp3',
+            '../Medias/Sound/Ori and the Blind Forest 1.mp3',
+            '../Medias/Sound/Ori and the Blind Forest 2.mp3',
+            '../Medias/Sound/Ori and the Blind Forest 3.mp3',
         ],
         text: [
             "Développé par Moon Studios, ce premier opus est un jeu de plateforme mettant en avant un univers enchanteur et une narration émotionnelle portée par une direction artistique soignée.",
@@ -776,14 +776,14 @@ export const games = [
     {
         title: 'The Planet Crafter',
         image: [
-            './Medias/Image/The Planet Crafter 1.jpg',
-            './Medias/Image/The Planet Crafter 2.jpg',
-            './Medias/Image/The Planet Crafter 3.jpg',
+            '../Medias/Image/The Planet Crafter 1.jpg',
+            '../Medias/Image/The Planet Crafter 2.jpg',
+            '../Medias/Image/The Planet Crafter 3.jpg',
         ],
         sound: [
-            './Medias/Sound/The Planet Crafter 1.mp3',
-            './Medias/Sound/The Planet Crafter 2.mp3',
-            './Medias/Sound/The Planet Crafter 3.mp3',
+            '../Medias/Sound/The Planet Crafter 1.mp3',
+            '../Medias/Sound/The Planet Crafter 2.mp3',
+            '../Medias/Sound/The Planet Crafter 3.mp3',
         ],
         text: [
             "Développé par Miju Games, ce jeu de survie et d’exploration spatiale propose une expérience centrée sur la terraformation et la gestion des ressources sur une planète hostile.",
@@ -794,14 +794,14 @@ export const games = [
     {
         title: 'PUBG: Battlegrounds',
         image: [
-            './Medias/Image/PUBG 1.jpg',
-            './Medias/Image/PUBG 2.jpg',
-            './Medias/Image/PUBG 3.jpg',
+            '../Medias/Image/PUBG 1.jpg',
+            '../Medias/Image/PUBG 2.jpg',
+            '../Medias/Image/PUBG 3.jpg',
         ],
         sound: [
-            './Medias/Sound/PUBG 1.mp3',
-            './Medias/Sound/PUBG 2.mp3',
-            './Medias/Sound/PUBG 3.mp3',
+            '../Medias/Sound/PUBG 1.mp3',
+            '../Medias/Sound/PUBG 2.mp3',
+            '../Medias/Sound/PUBG 3.mp3',
         ],
         text: [
             "Développé par l'entreprise actuelle Krafton, ce jeu de tir multijoueur en ligne a popularisé le genre battle royale avec une expérience intense et stratégique.",
@@ -812,14 +812,14 @@ export const games = [
     {
         title: 'Paladins',
         image: [
-            './Medias/Image/Paladins 1.jpg',
-            './Medias/Image/Paladins 2.jpg',
-            './Medias/Image/Paladins 3.jpg',
+            '../Medias/Image/Paladins 1.jpg',
+            '../Medias/Image/Paladins 2.jpg',
+            '../Medias/Image/Paladins 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Paladins 1.mp3',
-            './Medias/Sound/Paladins 2.mp3',
-            './Medias/Sound/Paladins 3.mp3',
+            '../Medias/Sound/Paladins 1.mp3',
+            '../Medias/Sound/Paladins 2.mp3',
+            '../Medias/Sound/Paladins 3.mp3',
         ],
         text: [
             "Développé par Hi-Rez Studios, ce jeu de tir en équipe gratuit s'inscrit dans un univers de fantasy où les joueurs incarnent des champions aux compétences uniques.",
@@ -830,14 +830,14 @@ export const games = [
     {
         title: 'The Room',
         image: [
-            './Medias/Image/The Room 1.jpg',
-            './Medias/Image/The Room 2.jpg',
-            './Medias/Image/The Room 3.jpg',
+            '../Medias/Image/The Room 1.jpg',
+            '../Medias/Image/The Room 2.jpg',
+            '../Medias/Image/The Room 3.jpg',
         ],
         sound: [
-            './Medias/Sound/The Room 1.mp3',
-            './Medias/Sound/The Room 2.mp3',
-            './Medias/Sound/The Room 3.mp3',
+            '../Medias/Sound/The Room 1.mp3',
+            '../Medias/Sound/The Room 2.mp3',
+            '../Medias/Sound/The Room 3.mp3',
         ],
         text: [
             "Développé par Fireproof Games, ce jeu d’énigmes met en scène des puzzles complexes dans un univers mystérieux et tactile, centré sur l’exploration d’objets intrigants.",
@@ -848,14 +848,14 @@ export const games = [
     {
         title: 'Rocket League',
         image: [
-            './Medias/Image/Rocket League 1.jpg',
-            './Medias/Image/Rocket League 2.jpg',
-            './Medias/Image/Rocket League 3.jpg',
+            '../Medias/Image/Rocket League 1.jpg',
+            '../Medias/Image/Rocket League 2.jpg',
+            '../Medias/Image/Rocket League 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Rocket League 1.mp3',
-            './Medias/Sound/Rocket League 2.mp3',
-            './Medias/Sound/Rocket League 3.mp3',
+            '../Medias/Sound/Rocket League 1.mp3',
+            '../Medias/Sound/Rocket League 2.mp3',
+            '../Medias/Sound/Rocket League 3.mp3',
         ],
         text: [
             "Développé par Psyonix, ce jeu mélange habilement course et football dans un univers futuriste dynamique et compétitif.",
@@ -866,14 +866,14 @@ export const games = [
     {
         title: 'Rusty Lake',
         image: [
-            './Medias/Image/Rusty Lake 1.jpg',
-            './Medias/Image/Rusty Lake 2.jpg',
-            './Medias/Image/Rusty Lake 3.jpg',
+            '../Medias/Image/Rusty Lake 1.jpg',
+            '../Medias/Image/Rusty Lake 2.jpg',
+            '../Medias/Image/Rusty Lake 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Rusty Lake 1.mp3',
-            './Medias/Sound/Rusty Lake 2.mp3',
-            './Medias/Sound/Rusty Lake 3.mp3',
+            '../Medias/Sound/Rusty Lake 1.mp3',
+            '../Medias/Sound/Rusty Lake 2.mp3',
+            '../Medias/Sound/Rusty Lake 3.mp3',
         ],
         text: [
             "Créé par un studio indépendant, ce jeu d’aventure et d’énigmes se déroule dans un univers étrange où animaux mystérieux et objets énigmatiques, comme des cubes, jouent un rôle clé.",
@@ -884,14 +884,14 @@ export const games = [
     {
         title: 'Slime Rancher',
         image: [
-            './Medias/Image/Slime Rancher 1.jpg',
-            './Medias/Image/Slime Rancher 2.jpg',
-            './Medias/Image/Slime Rancher 3.jpg',
+            '../Medias/Image/Slime Rancher 1.jpg',
+            '../Medias/Image/Slime Rancher 2.jpg',
+            '../Medias/Image/Slime Rancher 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Slime Rancher 1.mp3',
-            './Medias/Sound/Slime Rancher 2.mp3',
-            './Medias/Sound/Slime Rancher 3.mp3',
+            '../Medias/Sound/Slime Rancher 1.mp3',
+            '../Medias/Sound/Slime Rancher 2.mp3',
+            '../Medias/Sound/Slime Rancher 3.mp3',
         ],
         text: [
             "Développé par Monomi Park, ce jeu d’aventure coloré propose d’élever et collecter diverses créatures gélatineuses sur une planète lointaine.",
@@ -902,14 +902,14 @@ export const games = [
     {
         title: 'Starfield',
         image: [
-            './Medias/Image/Starfield 1.jpg',
-            './Medias/Image/Starfield 2.jpg',
-            './Medias/Image/Starfield 3.jpg',
+            '../Medias/Image/Starfield 1.jpg',
+            '../Medias/Image/Starfield 2.jpg',
+            '../Medias/Image/Starfield 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Starfield 1.mp3',
-            './Medias/Sound/Starfield 2.mp3',
-            './Medias/Sound/Starfield 3.mp3',
+            '../Medias/Sound/Starfield 1.mp3',
+            '../Medias/Sound/Starfield 2.mp3',
+            '../Medias/Sound/Starfield 3.mp3',
         ],
         text: [
             "Développé par Bethesda Game Studios, ce jeu de rôle spatial propose une exploration vaste et immersive d’un univers futuriste riche en détails.",
@@ -920,14 +920,14 @@ export const games = [
     {
         title: 'The Talos Principle',
         image: [
-            './Medias/Image/The Talos Principle 1.jpg',
-            './Medias/Image/The Talos Principle 2.jpg',
-            './Medias/Image/The Talos Principle 3.jpg',
+            '../Medias/Image/The Talos Principle 1.jpg',
+            '../Medias/Image/The Talos Principle 2.jpg',
+            '../Medias/Image/The Talos Principle 3.jpg',
         ],
         sound: [
-            './Medias/Sound/The Talos Principle 1.mp3',
-            './Medias/Sound/The Talos Principle 2.mp3',
-            './Medias/Sound/The Talos Principle 3.mp3',
+            '../Medias/Sound/The Talos Principle 1.mp3',
+            '../Medias/Sound/The Talos Principle 2.mp3',
+            '../Medias/Sound/The Talos Principle 3.mp3',
         ],
         text: [
             "Développé par Croteam, le premier opus de ce jeu de réflexion mêle philosophie et énigmes dans un univers virtuel contemplatif et mystérieux.",
@@ -938,14 +938,14 @@ export const games = [
     {
         title: 'The Witness',
         image: [
-            './Medias/Image/The Witness 1.jpg',
-            './Medias/Image/The Witness 2.jpg',
-            './Medias/Image/The Witness 3.jpg',
+            '../Medias/Image/The Witness 1.jpg',
+            '../Medias/Image/The Witness 2.jpg',
+            '../Medias/Image/The Witness 3.jpg',
         ],
         sound: [
-            './Medias/Sound/The Witness 1.mp3',
-            './Medias/Sound/The Witness 2.mp3',
-            './Medias/Sound/The Witness 3.mp3',
+            '../Medias/Sound/The Witness 1.mp3',
+            '../Medias/Sound/The Witness 2.mp3',
+            '../Medias/Sound/The Witness 3.mp3',
         ],
         text: [
             "Développé par Jonathan Blow, ce jeu d'exploration et d'énigmes place le joueur sur une île mystérieuse remplie de puzzles complexes.",
@@ -957,14 +957,14 @@ export const games = [
     {
         title: 'Trackmania',
         image: [
-            './Medias/Image/Trackmania 1.jpg',
-            './Medias/Image/Trackmania 2.jpg',
-            './Medias/Image/Trackmania 3.jpg',
+            '../Medias/Image/Trackmania 1.jpg',
+            '../Medias/Image/Trackmania 2.jpg',
+            '../Medias/Image/Trackmania 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Trackmania 1.mp3',
-            './Medias/Sound/Trackmania 2.mp3',
-            './Medias/Sound/Trackmania 3.mp3',
+            '../Medias/Sound/Trackmania 1.mp3',
+            '../Medias/Sound/Trackmania 2.mp3',
+            '../Medias/Sound/Trackmania 3.mp3',
         ],
         text: [
             "Ce jeu de course propose des circuits rapides et techniques, où la précision et la créativité sont essentielles pour battre les records.",
@@ -975,14 +975,14 @@ export const games = [
     {
         title: 'We Happy Few',
         image: [
-            './Medias/Image/We Happy Few 1.jpg',
-            './Medias/Image/We Happy Few 2.jpg',
-            './Medias/Image/We Happy Few 3.jpg',
+            '../Medias/Image/We Happy Few 1.jpg',
+            '../Medias/Image/We Happy Few 2.jpg',
+            '../Medias/Image/We Happy Few 3.jpg',
         ],
         sound: [
-            './Medias/Sound/We Happy Few 1.mp3',
-            './Medias/Sound/We Happy Few 2.mp3',
-            './Medias/Sound/We Happy Few 3.mp3',
+            '../Medias/Sound/We Happy Few 1.mp3',
+            '../Medias/Sound/We Happy Few 2.mp3',
+            '../Medias/Sound/We Happy Few 3.mp3',
         ],
         text: [
             "Ce jeu d’aventure dystopique place le joueur dans une ville alternative où les habitants utilisent des pilules pour oublier leur passé.",
@@ -993,14 +993,14 @@ export const games = [
     {
         title: 'Worms',
         image: [
-            './Medias/Image/Worms 1.jpg',
-            './Medias/Image/Worms 2.jpg',
-            './Medias/Image/Worms 3.jpg',
+            '../Medias/Image/Worms 1.jpg',
+            '../Medias/Image/Worms 2.jpg',
+            '../Medias/Image/Worms 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Worms 1.mp3',
-            './Medias/Sound/Worms 2.mp3',
-            './Medias/Sound/Worms 3.mp3',
+            '../Medias/Sound/Worms 1.mp3',
+            '../Medias/Sound/Worms 2.mp3',
+            '../Medias/Sound/Worms 3.mp3',
         ],
         text: [
             "Ce jeu tactique propose des combats au tour par tour avec des équipes de vers de terre armés de façon loufoque et variée.",
@@ -1011,14 +1011,14 @@ export const games = [
     {
         title: 'Watch Dogs',
         image: [
-            './Medias/Image/Watch Dogs 1.jpg',
-            './Medias/Image/Watch Dogs 2.jpg',
-            './Medias/Image/Watch Dogs 3.jpg',
+            '../Medias/Image/Watch Dogs 1.jpg',
+            '../Medias/Image/Watch Dogs 2.jpg',
+            '../Medias/Image/Watch Dogs 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Watch Dogs 1.mp3',
-            './Medias/Sound/Watch Dogs 2.mp3',
-            './Medias/Sound/Watch Dogs 3.mp3',
+            '../Medias/Sound/Watch Dogs 1.mp3',
+            '../Medias/Sound/Watch Dogs 2.mp3',
+            '../Medias/Sound/Watch Dogs 3.mp3',
         ],
         text: [
             "Ce jeu d'action-aventure, développé par Ubisoft, se déroule dans un univers urbain où la technologie est omniprésente.",
@@ -1029,14 +1029,14 @@ export const games = [
     {
         title: 'Journey to the Savage Planet',
         image: [
-            './Medias/Image/Journey to the Savage Planet 1.jpg',
-            './Medias/Image/Journey to the Savage Planet 2.jpg',
-            './Medias/Image/Journey to the Savage Planet 3.jpg',
+            '../Medias/Image/Journey to the Savage Planet 1.jpg',
+            '../Medias/Image/Journey to the Savage Planet 2.jpg',
+            '../Medias/Image/Journey to the Savage Planet 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Journey to the Savage Planet 1.mp3',
-            './Medias/Sound/Journey to the Savage Planet 2.mp3',
-            './Medias/Sound/Journey to the Savage Planet 3.mp3',
+            '../Medias/Sound/Journey to the Savage Planet 1.mp3',
+            '../Medias/Sound/Journey to the Savage Planet 2.mp3',
+            '../Medias/Sound/Journey to the Savage Planet 3.mp3',
         ],
         text: [
             "Développé par Typhoon Studios, ce jeu d’exploration propose une aventure colorée et humoristique sur une planète étrangère pleine de surprises.",
@@ -1047,14 +1047,14 @@ export const games = [
     {
         title: 'This War of Mine',
         image: [
-            './Medias/Image/This War of Mine 1.jpg',
-            './Medias/Image/This War of Mine 2.jpg',
-            './Medias/Image/This War of Mine 3.jpg',
+            '../Medias/Image/This War of Mine 1.jpg',
+            '../Medias/Image/This War of Mine 2.jpg',
+            '../Medias/Image/This War of Mine 3.jpg',
         ],
         sound: [
-            './Medias/Sound/This War of Mine 1.mp3',
-            './Medias/Sound/This War of Mine 2.mp3',
-            './Medias/Sound/This War of Mine 3.mp3',
+            '../Medias/Sound/This War of Mine 1.mp3',
+            '../Medias/Sound/This War of Mine 2.mp3',
+            '../Medias/Sound/This War of Mine 3.mp3',
         ],
         text: [
             "Ce jeu de survie propose de gérer un groupe de civils essayant de survivre dans une ville assiégée, avec une atmosphère sombre et réaliste.",
@@ -1065,14 +1065,14 @@ export const games = [
     {
         title: 'Dragon Age',
         image: [
-            './Medias/Image/Dragon Age 1.jpg',
-            './Medias/Image/Dragon Age 2.jpg',
-            './Medias/Image/Dragon Age 3.jpg',
+            '../Medias/Image/Dragon Age 1.jpg',
+            '../Medias/Image/Dragon Age 2.jpg',
+            '../Medias/Image/Dragon Age 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Dragon Age 1.mp3',
-            './Medias/Sound/Dragon Age 2.mp3',
-            './Medias/Sound/Dragon Age 3.mp3',
+            '../Medias/Sound/Dragon Age 1.mp3',
+            '../Medias/Sound/Dragon Age 2.mp3',
+            '../Medias/Sound/Dragon Age 3.mp3',
         ],
         text: [
             "Cette série de jeux de rôle, développée par BioWare, est connue pour son univers médiéval-fantastique riche et immersif.",
@@ -1083,14 +1083,14 @@ export const games = [
     {
         title: 'Soma',
         image: [
-            './Medias/Image/Soma 1.jpg',
-            './Medias/Image/Soma 2.jpg',
-            './Medias/Image/Soma 3.jpg',
+            '../Medias/Image/Soma 1.jpg',
+            '../Medias/Image/Soma 2.jpg',
+            '../Medias/Image/Soma 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Soma 1.mp3',
-            './Medias/Sound/Soma 2.mp3',
-            './Medias/Sound/Soma 3.mp3',
+            '../Medias/Sound/Soma 1.mp3',
+            '../Medias/Sound/Soma 2.mp3',
+            '../Medias/Sound/Soma 3.mp3',
         ],
         text: [
             "Développé par Frictional Games, ce jeu mêle horreur psychologique et science-fiction dans une station sous-marine isolée.",
@@ -1101,14 +1101,14 @@ export const games = [
     {
         title: 'A Plague Tale',
         image: [
-            './Medias/Image/A Plague Tale 1.jpg',
-            './Medias/Image/A Plague Tale 2.jpg',
-            './Medias/Image/A Plague Tale 3.jpg',
+            '../Medias/Image/A Plague Tale 1.jpg',
+            '../Medias/Image/A Plague Tale 2.jpg',
+            '../Medias/Image/A Plague Tale 3.jpg',
         ],
         sound: [
-            './Medias/Sound/A Plague Tale 1.mp3',
-            './Medias/Sound/A Plague Tale 2.mp3',
-            './Medias/Sound/A Plague Tale 3.mp3',
+            '../Medias/Sound/A Plague Tale 1.mp3',
+            '../Medias/Sound/A Plague Tale 2.mp3',
+            '../Medias/Sound/A Plague Tale 3.mp3',
         ],
         text: [
             "Ce jeu d’action-aventure raconte une histoire poignante dans une France médiévale ravagée par la peste noire et la guerre.",
@@ -1119,14 +1119,14 @@ export const games = [
     {
         title: 'Beholder',
         image: [
-            './Medias/Image/Beholder 1.jpg',
-            './Medias/Image/Beholder 2.jpg',
-            './Medias/Image/Beholder 3.jpg',
+            '../Medias/Image/Beholder 1.jpg',
+            '../Medias/Image/Beholder 2.jpg',
+            '../Medias/Image/Beholder 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Beholder 1.mp3',
-            './Medias/Sound/Beholder 2.mp3',
-            './Medias/Sound/Beholder 3.mp3',
+            '../Medias/Sound/Beholder 1.mp3',
+            '../Medias/Sound/Beholder 2.mp3',
+            '../Medias/Sound/Beholder 3.mp3',
         ],
         text: [
             "Ce jeu d'infiltration vous place en tant que gestionnaire d'un immeuble dans un état totalitaire, chargé d'espionner les locataires.",
@@ -1137,14 +1137,14 @@ export const games = [
     {
         title: 'Clash of Clans',
         image: [
-            './Medias/Image/Clash of Clans 1.jpg',
-            './Medias/Image/Clash of Clans 2.jpg',
-            './Medias/Image/Clash of Clans 3.jpg',
+            '../Medias/Image/Clash of Clans 1.jpg',
+            '../Medias/Image/Clash of Clans 2.jpg',
+            '../Medias/Image/Clash of Clans 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Clash of Clans 1.mp3',
-            './Medias/Sound/Clash of Clans 2.mp3',
-            './Medias/Sound/Clash of Clans 3.mp3',
+            '../Medias/Sound/Clash of Clans 1.mp3',
+            '../Medias/Sound/Clash of Clans 2.mp3',
+            '../Medias/Sound/Clash of Clans 3.mp3',
         ],
         text: [
             "Développé par Supercell, ce jeu de stratégie en temps réel propose la construction de bases et la gestion de troupes dans un univers médiéval fantastique.",
@@ -1155,14 +1155,14 @@ export const games = [
     {
         title: 'Plague Inc',
         image: [
-            './Medias/Image/Plague Inc 1.jpg',
-            './Medias/Image/Plague Inc 2.jpg',
-            './Medias/Image/Plague Inc 3.jpg',
+            '../Medias/Image/Plague Inc 1.jpg',
+            '../Medias/Image/Plague Inc 2.jpg',
+            '../Medias/Image/Plague Inc 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Plague Inc 1.mp3',
-            './Medias/Sound/Plague Inc 2.mp3',
-            './Medias/Sound/Plague Inc 3.mp3',
+            '../Medias/Sound/Plague Inc 1.mp3',
+            '../Medias/Sound/Plague Inc 2.mp3',
+            '../Medias/Sound/Plague Inc 3.mp3',
         ],
         text: [
             "Ce jeu de stratégie et de simulation, développé par Ndemic Creations, affiche une carte du monde en proie à des maladies.",
@@ -1173,14 +1173,14 @@ export const games = [
     {
         title: 'Nintendogs',
         image: [
-            './Medias/Image/Nintendogs 1.jpg',
-            './Medias/Image/Nintendogs 2.jpg',
-            './Medias/Image/Nintendogs 3.jpg',
+            '../Medias/Image/Nintendogs 1.jpg',
+            '../Medias/Image/Nintendogs 2.jpg',
+            '../Medias/Image/Nintendogs 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Nintendogs 1.mp3',
-            './Medias/Sound/Nintendogs 2.mp3',
-            './Medias/Sound/Nintendogs 3.mp3',
+            '../Medias/Sound/Nintendogs 1.mp3',
+            '../Medias/Sound/Nintendogs 2.mp3',
+            '../Medias/Sound/Nintendogs 3.mp3',
         ],
         text: [
             "Ce jeu de simulation développé par Nintendo propose une expérience de compagnie virtuelle.",
@@ -1191,14 +1191,14 @@ export const games = [
     {
         title: 'Dragon Quest',
         image: [
-            './Medias/Image/Dragon Quest 1.jpg',
-            './Medias/Image/Dragon Quest 2.jpg',
-            './Medias/Image/Dragon Quest 3.jpg',
+            '../Medias/Image/Dragon Quest 1.jpg',
+            '../Medias/Image/Dragon Quest 2.jpg',
+            '../Medias/Image/Dragon Quest 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Dragon Quest 1.mp3',
-            './Medias/Sound/Dragon Quest 2.mp3',
-            './Medias/Sound/Dragon Quest 3.mp3',
+            '../Medias/Sound/Dragon Quest 1.mp3',
+            '../Medias/Sound/Dragon Quest 2.mp3',
+            '../Medias/Sound/Dragon Quest 3.mp3',
         ],
         text: [
             "Cette série de jeux de rôle japonais, développée par Square Enix, a posé les bases du J-RPG traditionnel avec ses combats au tour par tour et ses visuels emblématiques.",
@@ -1209,14 +1209,14 @@ export const games = [
     {
         title: 'Zelda',
         image: [
-            './Medias/Image/Zelda 1.jpg',
-            './Medias/Image/Zelda 2.jpg',
-            './Medias/Image/Zelda 3.jpg',
+            '../Medias/Image/Zelda 1.jpg',
+            '../Medias/Image/Zelda 2.jpg',
+            '../Medias/Image/Zelda 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Zelda 1.mp3',
-            './Medias/Sound/Zelda 2.mp3',
-            './Medias/Sound/Zelda 3.mp3',
+            '../Medias/Sound/Zelda 1.mp3',
+            '../Medias/Sound/Zelda 2.mp3',
+            '../Medias/Sound/Zelda 3.mp3',
         ],
         text: [
             "Cette saga d’action-aventure développée par Nintendo est reconnue pour ses donjons, ses énigmes, et son univers fantasy emblématique.",
@@ -1227,14 +1227,14 @@ export const games = [
     {
         title: 'Mario',
         image: [
-            './Medias/Image/Mario 1.jpg',
-            './Medias/Image/Mario 2.jpg',
-            './Medias/Image/Mario 3.jpg',
+            '../Medias/Image/Mario 1.jpg',
+            '../Medias/Image/Mario 2.jpg',
+            '../Medias/Image/Mario 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Mario 1.mp3',
-            './Medias/Sound/Mario 2.mp3',
-            './Medias/Sound/Mario 3.mp3',
+            '../Medias/Sound/Mario 1.mp3',
+            '../Medias/Sound/Mario 2.mp3',
+            '../Medias/Sound/Mario 3.mp3',
         ],
         text: [
             "Cette série de plateformes développée par Nintendo est célèbre pour son gameplay accessible, ses niveaux colorés et son influence majeure sur l’histoire du jeu vidéo.",
@@ -1245,14 +1245,14 @@ export const games = [
     {
         title: 'The Witcher',
         image: [
-            './Medias/Image/The Witcher 1.jpg',
-            './Medias/Image/The Witcher 2.jpg',
-            './Medias/Image/The Witcher 3.jpg',
+            '../Medias/Image/The Witcher 1.jpg',
+            '../Medias/Image/The Witcher 2.jpg',
+            '../Medias/Image/The Witcher 3.jpg',
         ],
         sound: [
-            './Medias/Sound/The Witcher 1.mp3',
-            './Medias/Sound/The Witcher 2.mp3',
-            './Medias/Sound/The Witcher 3.mp3',
+            '../Medias/Sound/The Witcher 1.mp3',
+            '../Medias/Sound/The Witcher 2.mp3',
+            '../Medias/Sound/The Witcher 3.mp3',
         ],
         text: [
             "Ce jeu de rôle occidental développé par le studio polonais CD Projekt Red se distingue par son univers sombre, mature et ses choix narratifs marquants.",
@@ -1263,14 +1263,14 @@ export const games = [
     {
         title: 'Cyberpunk 2077',
         image: [
-            './Medias/Image/Cyberpunk 2077 1.jpg',
-            './Medias/Image/Cyberpunk 2077 2.jpg',
-            './Medias/Image/Cyberpunk 2077 3.jpg',
+            '../Medias/Image/Cyberpunk 2077 1.jpg',
+            '../Medias/Image/Cyberpunk 2077 2.jpg',
+            '../Medias/Image/Cyberpunk 2077 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Cyberpunk 2077 1.mp3',
-            './Medias/Sound/Cyberpunk 2077 2.mp3',
-            './Medias/Sound/Cyberpunk 2077 3.mp3',
+            '../Medias/Sound/Cyberpunk 2077 1.mp3',
+            '../Medias/Sound/Cyberpunk 2077 2.mp3',
+            '../Medias/Sound/Cyberpunk 2077 3.mp3',
         ],
         text: [
             "Développé par CD Projekt Red, ce RPG en monde ouvert plonge le joueur dans un univers dystopique futuriste inspiré du jeu de rôle papier des années 1980.",
@@ -1281,14 +1281,14 @@ export const games = [
     {
         title: 'League of Legends',
         image: [
-            './Medias/Image/League of Legends 1.jpg',
-            './Medias/Image/League of Legends 2.jpg',
-            './Medias/Image/League of Legends 3.jpg',
+            '../Medias/Image/League of Legends 1.jpg',
+            '../Medias/Image/League of Legends 2.jpg',
+            '../Medias/Image/League of Legends 3.jpg',
         ],
         sound: [
-            './Medias/Sound/League of Legends 1.mp3',
-            './Medias/Sound/League of Legends 2.mp3',
-            './Medias/Sound/League of Legends 3.mp3',
+            '../Medias/Sound/League of Legends 1.mp3',
+            '../Medias/Sound/League of Legends 2.mp3',
+            '../Medias/Sound/League of Legends 3.mp3',
         ],
         text: [
             "Ce jeu compétitif en ligne développé par Riot Games a défini un genre à lui seul en démocratisant le format MOBA dans l’univers de l’esport.",
@@ -1299,14 +1299,14 @@ export const games = [
     {
         title: 'Sea of Thieves',
         image: [
-            './Medias/Image/Sea of Thieves 1.jpg',
-            './Medias/Image/Sea of Thieves 2.jpg',
-            './Medias/Image/Sea of Thieves 3.jpg',
+            '../Medias/Image/Sea of Thieves 1.jpg',
+            '../Medias/Image/Sea of Thieves 2.jpg',
+            '../Medias/Image/Sea of Thieves 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Sea of Thieves 1.mp3',
-            './Medias/Sound/Sea of Thieves 2.mp3',
-            './Medias/Sound/Sea of Thieves 3.mp3',
+            '../Medias/Sound/Sea of Thieves 1.mp3',
+            '../Medias/Sound/Sea of Thieves 2.mp3',
+            '../Medias/Sound/Sea of Thieves 3.mp3',
         ],
         text: [
             "Ce jeu multijoueur en ligne développé par Rare propose une expérience en monde ouvert, centrée sur l’exploration navale et la coopération.",
@@ -1317,14 +1317,14 @@ export const games = [
     {
         title: 'Detroit: Become Human',
         image: [
-            './Medias/Image/Detroit Become Human 1.jpg',
-            './Medias/Image/Detroit Become Human 2.jpg',
-            './Medias/Image/Detroit Become Human 3.jpg',
+            '../Medias/Image/Detroit Become Human 1.jpg',
+            '../Medias/Image/Detroit Become Human 2.jpg',
+            '../Medias/Image/Detroit Become Human 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Detroit Become Human 1.mp3',
-            './Medias/Sound/Detroit Become Human 2.mp3',
-            './Medias/Sound/Detroit Become Human 3.mp3',
+            '../Medias/Sound/Detroit Become Human 1.mp3',
+            '../Medias/Sound/Detroit Become Human 2.mp3',
+            '../Medias/Sound/Detroit Become Human 3.mp3',
         ],
         text: [
             "Ce jeu narratif développé par Quantic Dream propose une aventure interactive où plusieurs personnes sont confrontées à des choix moraux complexes.",
@@ -1335,14 +1335,14 @@ export const games = [
     {
         title: 'Osu',
         image: [
-            './Medias/Image/Osu 1.jpg',
-            './Medias/Image/Osu 2.jpg',
-            './Medias/Image/Osu 3.jpg',
+            '../Medias/Image/Osu 1.jpg',
+            '../Medias/Image/Osu 2.jpg',
+            '../Medias/Image/Osu 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Osu 1.mp3',
-            './Medias/Sound/Osu 2.mp3',
-            './Medias/Sound/Osu 3.mp3',
+            '../Medias/Sound/Osu 1.mp3',
+            '../Medias/Sound/Osu 2.mp3',
+            '../Medias/Sound/Osu 3.mp3',
         ],
         text: [
             "Ce jeu rythmique développé par un studio indépendant offre une expérience basée sur la précision, la vitesse et la coordination avec la musique.",
@@ -1353,14 +1353,14 @@ export const games = [
     {
         title: 'The Elder Scrolls',
         image: [
-            './Medias/Image/The Elder Scrolls 1.jpg',
-            './Medias/Image/The Elder Scrolls 2.jpg',
-            './Medias/Image/The Elder Scrolls 3.jpg',
+            '../Medias/Image/The Elder Scrolls 1.jpg',
+            '../Medias/Image/The Elder Scrolls 2.jpg',
+            '../Medias/Image/The Elder Scrolls 3.jpg',
         ],
         sound: [
-            './Medias/Sound/The Elder Scrolls 1.mp3',
-            './Medias/Sound/The Elder Scrolls 2.mp3',
-            './Medias/Sound/The Elder Scrolls 3.mp3',
+            '../Medias/Sound/The Elder Scrolls 1.mp3',
+            '../Medias/Sound/The Elder Scrolls 2.mp3',
+            '../Medias/Sound/The Elder Scrolls 3.mp3',
         ],
         text: [
             "Cette série de jeux de rôle développée par Bethesda Softworks est célèbre pour ses vastes mondes ouverts et sa liberté d’exploration.",
@@ -1371,14 +1371,14 @@ export const games = [
     {
         title: 'Just Dance',
         image: [
-            './Medias/Image/Just Dance 1.jpg',
-            './Medias/Image/Just Dance 2.jpg',
-            './Medias/Image/Just Dance 3.jpg',
+            '../Medias/Image/Just Dance 1.jpg',
+            '../Medias/Image/Just Dance 2.jpg',
+            '../Medias/Image/Just Dance 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Just Dance 1.mp3',
-            './Medias/Sound/Just Dance 2.mp3',
-            './Medias/Sound/Just Dance 3.mp3',
+            '../Medias/Sound/Just Dance 1.mp3',
+            '../Medias/Sound/Just Dance 2.mp3',
+            '../Medias/Sound/Just Dance 3.mp3',
         ],
         text: [
             "Cette franchise de jeux développée par Ubisoft propose une expérience de danse interactive basée sur le suivi des mouvements du joueur.",
@@ -1389,14 +1389,14 @@ export const games = [
     {
         title: 'Tekken',
         image: [
-            './Medias/Image/Tekken 1.jpg',
-            './Medias/Image/Tekken 2.jpg',
-            './Medias/Image/Tekken 3.jpg',
+            '../Medias/Image/Tekken 1.jpg',
+            '../Medias/Image/Tekken 2.jpg',
+            '../Medias/Image/Tekken 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Tekken 1.mp3',
-            './Medias/Sound/Tekken 2.mp3',
-            './Medias/Sound/Tekken 3.mp3',
+            '../Medias/Sound/Tekken 1.mp3',
+            '../Medias/Sound/Tekken 2.mp3',
+            '../Medias/Sound/Tekken 3.mp3',
         ],
         text: [
             "Cette série de jeux de combat développée par Bandai Namco est reconnue pour son gameplay technique et ses personnages variés.",
@@ -1407,14 +1407,14 @@ export const games = [
     {
         title: 'Street Fighter',
         image: [
-            './Medias/Image/Street Fighter 1.jpg',
-            './Medias/Image/Street Fighter 2.jpg',
-            './Medias/Image/Street Fighter 3.jpg',
+            '../Medias/Image/Street Fighter 1.jpg',
+            '../Medias/Image/Street Fighter 2.jpg',
+            '../Medias/Image/Street Fighter 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Street Fighter 1.mp3',
-            './Medias/Sound/Street Fighter 2.mp3',
-            './Medias/Sound/Street Fighter 3.mp3',
+            '../Medias/Sound/Street Fighter 1.mp3',
+            '../Medias/Sound/Street Fighter 2.mp3',
+            '../Medias/Sound/Street Fighter 3.mp3',
         ],
         text: [
             "Cette franchise emblématique de jeux de combat, développée par Capcom, a largement contribué à populariser le genre arcade à travers le monde.",
@@ -1425,14 +1425,14 @@ export const games = [
     {
         title: 'Fall Guys',
         image: [
-            './Medias/Image/Fall Guys 1.jpg',
-            './Medias/Image/Fall Guys 2.jpg',
-            './Medias/Image/Fall Guys 3.jpg',
+            '../Medias/Image/Fall Guys 1.jpg',
+            '../Medias/Image/Fall Guys 2.jpg',
+            '../Medias/Image/Fall Guys 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Fall Guys 1.mp3',
-            './Medias/Sound/Fall Guys 2.mp3',
-            './Medias/Sound/Fall Guys 3.mp3',
+            '../Medias/Sound/Fall Guys 1.mp3',
+            '../Medias/Sound/Fall Guys 2.mp3',
+            '../Medias/Sound/Fall Guys 3.mp3',
         ],
         text: [
             "Ce jeu multijoueur développé par Mediatonic propose des courses d’obstacles colorées et chaotiques où jusqu’à 60 joueurs s’affrontent en simultané.",
@@ -1443,14 +1443,14 @@ export const games = [
     {
         title: 'Mortal Kombat',
         image: [
-            './Medias/Image/Mortal Kombat 1.jpg',
-            './Medias/Image/Mortal Kombat 2.jpg',
-            './Medias/Image/Mortal Kombat 3.jpg',
+            '../Medias/Image/Mortal Kombat 1.jpg',
+            '../Medias/Image/Mortal Kombat 2.jpg',
+            '../Medias/Image/Mortal Kombat 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Mortal Kombat 1.mp3',
-            './Medias/Sound/Mortal Kombat 2.mp3',
-            './Medias/Sound/Mortal Kombat 3.mp3',
+            '../Medias/Sound/Mortal Kombat 1.mp3',
+            '../Medias/Sound/Mortal Kombat 2.mp3',
+            '../Medias/Sound/Mortal Kombat 3.mp3',
         ],
         text: [
             "Cette célèbre série de jeux de combat développée par Midway Games est connue pour son gameplay brutal et ses célèbres 'Fatalities'.",
@@ -1461,14 +1461,14 @@ export const games = [
     {
         title: 'Overwatch',
         image: [
-            './Medias/Image/Overwatch 1.jpg',
-            './Medias/Image/Overwatch 2.jpg',
-            './Medias/Image/Overwatch 3.jpg',
+            '../Medias/Image/Overwatch 1.jpg',
+            '../Medias/Image/Overwatch 2.jpg',
+            '../Medias/Image/Overwatch 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Overwatch 1.mp3',
-            './Medias/Sound/Overwatch 2.mp3',
-            './Medias/Sound/Overwatch 3.mp3',
+            '../Medias/Sound/Overwatch 1.mp3',
+            '../Medias/Sound/Overwatch 2.mp3',
+            '../Medias/Sound/Overwatch 3.mp3',
         ],
         text: [
             "Ce jeu de tir en équipe développé par Blizzard Entertainment propose des combats dynamiques où chaque héros possède des capacités uniques.",
@@ -1479,14 +1479,14 @@ export const games = [
     {
         title: 'Fortnite',
         image: [
-            './Medias/Image/Fortnite 1.jpg',
-            './Medias/Image/Fortnite 2.jpg',
-            './Medias/Image/Fortnite 3.jpg',
+            '../Medias/Image/Fortnite 1.jpg',
+            '../Medias/Image/Fortnite 2.jpg',
+            '../Medias/Image/Fortnite 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Fortnite 1.mp3',
-            './Medias/Sound/Fortnite 2.mp3',
-            './Medias/Sound/Fortnite 3.mp3',
+            '../Medias/Sound/Fortnite 1.mp3',
+            '../Medias/Sound/Fortnite 2.mp3',
+            '../Medias/Sound/Fortnite 3.mp3',
         ],
         text: [
             "Ce jeu de type battle royale développé par Epic Games est devenu célèbre pour son gameplay rapide.",
@@ -1497,14 +1497,14 @@ export const games = [
     {
         title: 'Grand Theft Auto',
         image: [
-            './Medias/Image/Grand Theft Auto 1.jpg',
-            './Medias/Image/Grand Theft Auto 2.jpg',
-            './Medias/Image/Grand Theft Auto 3.jpg',
+            '../Medias/Image/Grand Theft Auto 1.jpg',
+            '../Medias/Image/Grand Theft Auto 2.jpg',
+            '../Medias/Image/Grand Theft Auto 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Grand Theft Auto 1.mp3',
-            './Medias/Sound/Grand Theft Auto 2.mp3',
-            './Medias/Sound/Grand Theft Auto 3.mp3',
+            '../Medias/Sound/Grand Theft Auto 1.mp3',
+            '../Medias/Sound/Grand Theft Auto 2.mp3',
+            '../Medias/Sound/Grand Theft Auto 3.mp3',
         ],
         text: [
             "Cette série de jeux d'action-aventure développée par Rockstar Games est célèbre pour son monde ouvert et sa liberté d’action.",
@@ -1515,14 +1515,14 @@ export const games = [
     {
         title: 'Titanfall',
         image: [
-            './Medias/Image/Titanfall 1.jpg',
-            './Medias/Image/Titanfall 2.jpg',
-            './Medias/Image/Titanfall 3.jpg',
+            '../Medias/Image/Titanfall 1.jpg',
+            '../Medias/Image/Titanfall 2.jpg',
+            '../Medias/Image/Titanfall 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Titanfall 1.mp3',
-            './Medias/Sound/Titanfall 2.mp3',
-            './Medias/Sound/Titanfall 3.mp3',
+            '../Medias/Sound/Titanfall 1.mp3',
+            '../Medias/Sound/Titanfall 2.mp3',
+            '../Medias/Sound/Titanfall 3.mp3',
         ],
         text: [
             "Cette série de jeux de tir à la première personne, développée par Respawn Entertainment.",
@@ -1533,14 +1533,14 @@ export const games = [
     {
         title: 'Age of Empires',
         image: [
-            './Medias/Image/Age of Empires 1.jpg',
-            './Medias/Image/Age of Empires 2.jpg',
-            './Medias/Image/Age of Empires 3.jpg',
+            '../Medias/Image/Age of Empires 1.jpg',
+            '../Medias/Image/Age of Empires 2.jpg',
+            '../Medias/Image/Age of Empires 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Age of Empires 1.mp3',
-            './Medias/Sound/Age of Empires 2.mp3',
-            './Medias/Sound/Age of Empires 3.mp3',
+            '../Medias/Sound/Age of Empires 1.mp3',
+            '../Medias/Sound/Age of Empires 2.mp3',
+            '../Medias/Sound/Age of Empires 3.mp3',
         ],
         text: [
             "Cette série de jeux de stratégie en temps réel développée par Ensemble Studios est centrée sur la construction et la gestion de royaumes à travers différentes époques.",
@@ -1551,14 +1551,14 @@ export const games = [
     {
         title: 'War thunder',
         image: [
-            './Medias/Image/War thunder 1.jpg',
-            './Medias/Image/War thunder 2.jpg',
-            './Medias/Image/War thunder 3.jpg',
+            '../Medias/Image/War thunder 1.jpg',
+            '../Medias/Image/War thunder 2.jpg',
+            '../Medias/Image/War thunder 3.jpg',
         ],
         sound: [
-            './Medias/Sound/War thunder 1.mp3',
-            './Medias/Sound/War thunder 2.mp3',
-            './Medias/Sound/War thunder 3.mp3',
+            '../Medias/Sound/War thunder 1.mp3',
+            '../Medias/Sound/War thunder 2.mp3',
+            '../Medias/Sound/War thunder 3.mp3',
         ],
         text: [
             "Ce jeu de combat militaire en ligne développé par Gaijin Entertainment met en scène des affrontements réalistes entre différentes nations, avec un accent sur la stratégie et la maîtrise des machines.",
@@ -1569,14 +1569,14 @@ export const games = [
     {
         title: 'World of Warcraft',
         image: [
-            './Medias/Image/World of Warcraft 1.jpg',
-            './Medias/Image/World of Warcraft 2.jpg',
-            './Medias/Image/World of Warcraft 3.jpg',
+            '../Medias/Image/World of Warcraft 1.jpg',
+            '../Medias/Image/World of Warcraft 2.jpg',
+            '../Medias/Image/World of Warcraft 3.jpg',
         ],
         sound: [
-            './Medias/Sound/World of Warcraft 1.mp3',
-            './Medias/Sound/World of Warcraft 2.mp3',
-            './Medias/Sound/World of Warcraft 3.mp3',
+            '../Medias/Sound/World of Warcraft 1.mp3',
+            '../Medias/Sound/World of Warcraft 2.mp3',
+            '../Medias/Sound/World of Warcraft 3.mp3',
         ],
         text: [
             "Ce MMORPG développé par Blizzard Entertainment offre un vaste monde ouvert fantastique où des joueurs du monde entier s’aventurent ensemble.",
@@ -1587,14 +1587,14 @@ export const games = [
     {
         title: 'Final Fantasy',
         image: [
-            './Medias/Image/Final Fantasy 1.jpg',
-            './Medias/Image/Final Fantasy 2.jpg',
-            './Medias/Image/Final Fantasy 3.jpg',
+            '../Medias/Image/Final Fantasy 1.jpg',
+            '../Medias/Image/Final Fantasy 2.jpg',
+            '../Medias/Image/Final Fantasy 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Final Fantasy 1.mp3',
-            './Medias/Sound/Final Fantasy 2.mp3',
-            './Medias/Sound/Final Fantasy 3.mp3',
+            '../Medias/Sound/Final Fantasy 1.mp3',
+            '../Medias/Sound/Final Fantasy 2.mp3',
+            '../Medias/Sound/Final Fantasy 3.mp3',
         ],
         text: [
             "Cette célèbre franchise de jeux de rôle développée par Square Enix est connue pour ses univers fantastiques et ses mécaniques de combat au tour par tour.",
@@ -1605,14 +1605,14 @@ export const games = [
     {
         title: 'Rainbow Six Siege',
         image: [
-            './Medias/Image/Rainbow Six Siege 1.jpg',
-            './Medias/Image/Rainbow Six Siege 2.jpg',
-            './Medias/Image/Rainbow Six Siege 3.jpg',
+            '../Medias/Image/Rainbow Six Siege 1.jpg',
+            '../Medias/Image/Rainbow Six Siege 2.jpg',
+            '../Medias/Image/Rainbow Six Siege 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Rainbow Six Siege 1.mp3',
-            './Medias/Sound/Rainbow Six Siege 2.mp3',
-            './Medias/Sound/Rainbow Six Siege 3.mp3',
+            '../Medias/Sound/Rainbow Six Siege 1.mp3',
+            '../Medias/Sound/Rainbow Six Siege 2.mp3',
+            '../Medias/Sound/Rainbow Six Siege 3.mp3',
         ],
         text: [
             "Ce jeu tactique de tir à la première personne développé par Ubisoft met l’accent sur le travail d’équipe et les stratégies défensives et offensives.",
@@ -1623,14 +1623,14 @@ export const games = [
     {
         title: 'Star Wars Battlefront',
         image: [
-            './Medias/Image/Star Wars Battlefront 1.jpg',
-            './Medias/Image/Star Wars Battlefront 2.jpg',
-            './Medias/Image/Star Wars Battlefront 3.jpg',
+            '../Medias/Image/Star Wars Battlefront 1.jpg',
+            '../Medias/Image/Star Wars Battlefront 2.jpg',
+            '../Medias/Image/Star Wars Battlefront 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Star Wars Battlefront 1.jpg',
-            './Medias/Sound/Star Wars Battlefront 2.jpg',
-            './Medias/Sound/Star Wars Battlefront 3.jpg',
+            '../Medias/Sound/Star Wars Battlefront 1.jpg',
+            '../Medias/Sound/Star Wars Battlefront 2.jpg',
+            '../Medias/Sound/Star Wars Battlefront 3.jpg',
         ],
         text: [
             "Cette série de jeux de tir développée par EA DICE propose des batailles massives dans l’univers emblématique de la saga galactique.",
@@ -1641,14 +1641,14 @@ export const games = [
     {
         title: 'Stardew Valley',
         image: [
-            './Medias/Image/Stardew Valley 1.jpg',
-            './Medias/Image/Stardew Valley 2.jpg',
-            './Medias/Image/Stardew Valley 3.jpg',
+            '../Medias/Image/Stardew Valley 1.jpg',
+            '../Medias/Image/Stardew Valley 2.jpg',
+            '../Medias/Image/Stardew Valley 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Stardew Valley 1.jpg',
-            './Medias/Sound/Stardew Valley 2.jpg',
-            './Medias/Sound/Stardew Valley 3.jpg',
+            '../Medias/Sound/Stardew Valley 1.jpg',
+            '../Medias/Sound/Stardew Valley 2.jpg',
+            '../Medias/Sound/Stardew Valley 3.jpg',
         ],
         text: [
             "Ce jeu indépendant de simulation développé par ConcernedApe mélange gestion, exploration et interaction sociale dans un univers pixel art charmant.",
@@ -1659,14 +1659,14 @@ export const games = [
     {
         title: 'Mario Party',
         image: [
-            './Medias/Image/Mario Party 1.jpg',
-            './Medias/Image/Mario Party 2.jpg',
-            './Medias/Image/Mario Party 3.jpg',
+            '../Medias/Image/Mario Party 1.jpg',
+            '../Medias/Image/Mario Party 2.jpg',
+            '../Medias/Image/Mario Party 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Mario Party 1.mp3',
-            './Medias/Sound/Mario Party 2.mp3',
-            './Medias/Sound/Mario Party 3.mp3',
+            '../Medias/Sound/Mario Party 1.mp3',
+            '../Medias/Sound/Mario Party 2.mp3',
+            '../Medias/Sound/Mario Party 3.mp3',
         ],
         text: [
             "Cette série de jeux de société développée par Nintendo met en scène des personnages emblématiques de leurs univers dans des mini-jeux compétitifs.",
@@ -1677,14 +1677,14 @@ export const games = [
     {
         title: 'Habbo Hotel',
         image: [
-            './Medias/Image/Habbo Hotel 1.jpg',
-            './Medias/Image/Habbo Hotel 2.jpg',
-            './Medias/Image/Habbo Hotel 3.jpg',
+            '../Medias/Image/Habbo Hotel 1.jpg',
+            '../Medias/Image/Habbo Hotel 2.jpg',
+            '../Medias/Image/Habbo Hotel 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Habbo Hotel 1.mp3',
-            './Medias/Sound/Habbo Hotel 2.mp3',
-            './Medias/Sound/Habbo Hotel 3.mp3',
+            '../Medias/Sound/Habbo Hotel 1.mp3',
+            '../Medias/Sound/Habbo Hotel 2.mp3',
+            '../Medias/Sound/Habbo Hotel 3.mp3',
         ],
         text: [
             "Ce jeu social en ligne, développé par Sulake, propose un univers virtuel où les joueurs peuvent créer et personnaliser des avatars et des espaces.",
@@ -1695,14 +1695,14 @@ export const games = [
     {
         title: 'Roblox',
         image: [
-            './Medias/Image/Roblox 1.jpg',
-            './Medias/Image/Roblox 2.jpg',
-            './Medias/Image/Roblox 3.jpg',
+            '../Medias/Image/Roblox 1.jpg',
+            '../Medias/Image/Roblox 2.jpg',
+            '../Medias/Image/Roblox 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Roblox 1.mp3',
-            './Medias/Sound/Roblox 2.mp3',
-            './Medias/Sound/Roblox 3.mp3',
+            '../Medias/Sound/Roblox 1.mp3',
+            '../Medias/Sound/Roblox 2.mp3',
+            '../Medias/Sound/Roblox 3.mp3',
         ],
         text: [
             "Cette plateforme de création et de jeu en ligne permet aux utilisateurs de concevoir leurs propres mondes et expériences via un langage de script intégré.",
@@ -1713,14 +1713,14 @@ export const games = [
     {
         title: 'Overcooked',
         image: [
-            './Medias/Image/Overcooked 1.jpg',
-            './Medias/Image/Overcooked 2.jpg',
-            './Medias/Image/Overcooked 3.jpg',
+            '../Medias/Image/Overcooked 1.jpg',
+            '../Medias/Image/Overcooked 2.jpg',
+            '../Medias/Image/Overcooked 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Overcooked 1.mp3',
-            './Medias/Sound/Overcooked 2.mp3',
-            './Medias/Sound/Overcooked 3.mp3',
+            '../Medias/Sound/Overcooked 1.mp3',
+            '../Medias/Sound/Overcooked 2.mp3',
+            '../Medias/Sound/Overcooked 3.mp3',
         ],
         text: [
             "Ce jeu coopératif développé par Ghost Town Games propose une expérience frénétique où la coordination entre joueurs est essentielle.",
@@ -1731,14 +1731,14 @@ export const games = [
     {
         title: 'Cult of the Lamb',
         image: [
-            './Medias/Image/Cult of the Lamb 1.jpg',
-            './Medias/Image/Cult of the Lamb 2.jpg',
-            './Medias/Image/Cult of the Lamb 3.jpg',
+            '../Medias/Image/Cult of the Lamb 1.jpg',
+            '../Medias/Image/Cult of the Lamb 2.jpg',
+            '../Medias/Image/Cult of the Lamb 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Cult of the Lamb 1.mp3',
-            './Medias/Sound/Cult of the Lamb 2.mp3',
-            './Medias/Sound/Cult of the Lamb 3.mp3',
+            '../Medias/Sound/Cult of the Lamb 1.mp3',
+            '../Medias/Sound/Cult of the Lamb 2.mp3',
+            '../Medias/Sound/Cult of the Lamb 3.mp3',
         ],
         text: [
             "Ce jeu indépendant combine construction de base et action roguelike, développé par Massive Monster et édité par Devolver Digital.",
@@ -1749,14 +1749,14 @@ export const games = [
     {
         title: 'Snake',
         image: [
-            './Medias/Image/Snake 1.jpg',
-            './Medias/Image/Snake 2.jpg',
-            './Medias/Image/Snake 3.jpg',
+            '../Medias/Image/Snake 1.jpg',
+            '../Medias/Image/Snake 2.jpg',
+            '../Medias/Image/Snake 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Snake 1.mp3',
-            './Medias/Sound/Snake 2.mp3',
-            './Medias/Sound/Snake 3.mp3',
+            '../Medias/Sound/Snake 1.mp3',
+            '../Medias/Sound/Snake 2.mp3',
+            '../Medias/Sound/Snake 3.mp3',
         ],
         text: [
             "Ce jeu classique était souvent préinstallé sur les premiers téléphones mobiles.",
@@ -1767,14 +1767,14 @@ export const games = [
     {
         title: 'T. Rex Game',
         image: [
-            './Medias/Image/T. Rex Game 1.jpg',
-            './Medias/Image/T. Rex Game 2.jpg',
-            './Medias/Image/T. Rex Game 3.jpg',
+            '../Medias/Image/T. Rex Game 1.jpg',
+            '../Medias/Image/T. Rex Game 2.jpg',
+            '../Medias/Image/T. Rex Game 3.jpg',
         ],
         sound: [
-            './Medias/Sound/T. Rex Game 1.mp3',
-            './Medias/Sound/T. Rex Game 2.mp3',
-            './Medias/Sound/T. Rex Game 3.mp3',
+            '../Medias/Sound/T. Rex Game 1.mp3',
+            '../Medias/Sound/T. Rex Game 2.mp3',
+            '../Medias/Sound/T. Rex Game 3.mp3',
         ],
         text: [
             "Ce jeu caché dans certains navigateurs propose un mini-jeu de course infinie où le joueur doit éviter des obstacles.",
@@ -1785,14 +1785,14 @@ export const games = [
     {
         title: 'Pokemon',
         image: [
-            './Medias/Image/Pokemon 1.jpg',
-            './Medias/Image/Pokemon 2.jpg',
-            './Medias/Image/Pokemon 3.jpg',
+            '../Medias/Image/Pokemon 1.jpg',
+            '../Medias/Image/Pokemon 2.jpg',
+            '../Medias/Image/Pokemon 3.jpg',
         ],
         sound: [
-            './Medias/Image/Pokemon 1.jpg',
-            './Medias/Image/Pokemon 2.jpg',
-            './Medias/Image/Pokemon 3.jpg',
+            '../Medias/Image/Pokemon 1.jpg',
+            '../Medias/Image/Pokemon 2.jpg',
+            '../Medias/Image/Pokemon 3.jpg',
         ],
         text: [
             "Cette franchise emblématique, développée par Game Freak, mélange exploration et combat dans un univers vaste et coloré.",
@@ -1803,14 +1803,14 @@ export const games = [
     {
         title: 'Road 96',
         image: [
-            './Medias/Image/Road 96 1.jpg',
-            './Medias/Image/Road 96 2.jpg',
-            './Medias/Image/Road 96 3.jpg',
+            '../Medias/Image/Road 96 1.jpg',
+            '../Medias/Image/Road 96 2.jpg',
+            '../Medias/Image/Road 96 3.jpg',
         ],
         sound: [
-            './Medias/Image/Road 96 1.jpg',
-            './Medias/Image/Road 96 2.jpg',
-            './Medias/Image/Road 96 3.jpg',
+            '../Medias/Image/Road 96 1.jpg',
+            '../Medias/Image/Road 96 2.jpg',
+            '../Medias/Image/Road 96 3.jpg',
         ],
         text: [
             "Ce jeu narratif développé par DigixArt propose une aventure procédurale où chaque partie est unique, mêlant road trip et choix impactant.",
@@ -1821,14 +1821,14 @@ export const games = [
     {
         title: 'Firewatch',
         image: [
-            './Medias/Image/Firewatch 1.jpg',
-            './Medias/Image/Firewatch 2.jpg',
-            './Medias/Image/Firewatch 3.jpg',
+            '../Medias/Image/Firewatch 1.jpg',
+            '../Medias/Image/Firewatch 2.jpg',
+            '../Medias/Image/Firewatch 3.jpg',
         ],
         sound: [
-            './Medias/Image/Firewatch 1.jpg',
-            './Medias/Image/Firewatch 2.jpg',
-            './Medias/Image/Firewatch 3.jpg',
+            '../Medias/Image/Firewatch 1.jpg',
+            '../Medias/Image/Firewatch 2.jpg',
+            '../Medias/Image/Firewatch 3.jpg',
         ],
         text: [
             "Ce jeu narratif à la première personne, développé par Campo Santo, se déroule dans une réserve naturelle.",
@@ -1839,14 +1839,14 @@ export const games = [
     {
         title: 'Five Night at Freddy\'s',
         image: [
-            './Medias/Image/Five Night at Freddy\'s 1.jpg',
-            './Medias/Image/Five Night at Freddy\'s 2.jpg',
-            './Medias/Image/Five Night at Freddy\'s 3.jpg',
+            '../Medias/Image/Five Night at Freddy\'s 1.jpg',
+            '../Medias/Image/Five Night at Freddy\'s 2.jpg',
+            '../Medias/Image/Five Night at Freddy\'s 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Five Night at Freddy\'s 1.mp3',
-            './Medias/Sound/Five Night at Freddy\'s 2.mp3',
-            './Medias/Sound/Five Night at Freddy\'s 3.mp3',
+            '../Medias/Sound/Five Night at Freddy\'s 1.mp3',
+            '../Medias/Sound/Five Night at Freddy\'s 2.mp3',
+            '../Medias/Sound/Five Night at Freddy\'s 3.mp3',
         ],
         text: [
             "Ce jeu d’horreur indépendant met le joueur dans la peau d’un garde de sécurité surveillant un restaurant le soir.",
@@ -1857,14 +1857,14 @@ export const games = [
     {
         title: 'Borderlands',
         image: [
-            './Medias/Image/Borderlands 1.jpg',
-            './Medias/Image/Borderlands 2.jpg',
-            './Medias/Image/Borderlands 3.jpg',
+            '../Medias/Image/Borderlands 1.jpg',
+            '../Medias/Image/Borderlands 2.jpg',
+            '../Medias/Image/Borderlands 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Borderlands 1.mp3',
-            './Medias/Sound/Borderlands 2.mp3',
-            './Medias/Sound/Borderlands 3.mp3',
+            '../Medias/Sound/Borderlands 1.mp3',
+            '../Medias/Sound/Borderlands 2.mp3',
+            '../Medias/Sound/Borderlands 3.mp3',
         ],
         text: [
             "Ce jeu hybride, développé par Gearbox Software, mélange tir à la première personne et mécaniques de RPG dans un univers stylisé et déjanté.",
@@ -1875,14 +1875,14 @@ export const games = [
     {
         title: 'What Remains of Edith Finch',
         image: [
-            './Medias/Image/What Remains of Edith Finch 1.jpg',
-            './Medias/Image/What Remains of Edith Finch 2.jpg',
-            './Medias/Image/What Remains of Edith Finch 3.jpg',
+            '../Medias/Image/What Remains of Edith Finch 1.jpg',
+            '../Medias/Image/What Remains of Edith Finch 2.jpg',
+            '../Medias/Image/What Remains of Edith Finch 3.jpg',
         ],
         sound: [
-            './Medias/Sound/What Remains of Edith Finch 1.mp3',
-            './Medias/Sound/What Remains of Edith Finch 2.mp3',
-            './Medias/Sound/What Remains of Edith Finch 3.mp3',
+            '../Medias/Sound/What Remains of Edith Finch 1.mp3',
+            '../Medias/Sound/What Remains of Edith Finch 2.mp3',
+            '../Medias/Sound/What Remains of Edith Finch 3.mp3',
         ],
         text: [
             "Ce jeu narratif en vue subjective, développé par Giant Sparrow, propose une exploration intimiste d'une maison familiale.",
@@ -1893,14 +1893,14 @@ export const games = [
     {
         title: 'Astro Bot',
         image: [
-            './Medias/Image/Astro Bot 1.jpg',
-            './Medias/Image/Astro Bot 2.jpg',
-            './Medias/Image/Astro Bot 3.jpg',
+            '../Medias/Image/Astro Bot 1.jpg',
+            '../Medias/Image/Astro Bot 2.jpg',
+            '../Medias/Image/Astro Bot 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Astro Bot 1.mp3',
-            './Medias/Sound/Astro Bot 2.mp3',
-            './Medias/Sound/Astro Bot 3.mp3',
+            '../Medias/Sound/Astro Bot 1.mp3',
+            '../Medias/Sound/Astro Bot 2.mp3',
+            '../Medias/Sound/Astro Bot 3.mp3',
         ],
         text: [
             "Ce jeu de plateforme met en avant un univers coloré et interactif, conçu pour tirer parti des fonctionnalités d'une console spécifique.",
@@ -1911,14 +1911,14 @@ export const games = [
     {
         title: 'Baldur\'s Gate',
         image: [
-            './Medias/Image/Baldur\'s Gate 1.jpg',
-            './Medias/Image/Baldur\'s Gate 2.jpg',
-            './Medias/Image/Baldur\'s Gate 3.jpg',
+            '../Medias/Image/Baldur\'s Gate 1.jpg',
+            '../Medias/Image/Baldur\'s Gate 2.jpg',
+            '../Medias/Image/Baldur\'s Gate 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Baldur\'s Gate 1.mp3',
-            './Medias/Sound/Baldur\'s Gate 2.mp3',
-            './Medias/Sound/Baldur\'s Gate 3.mp3',
+            '../Medias/Sound/Baldur\'s Gate 1.mp3',
+            '../Medias/Sound/Baldur\'s Gate 2.mp3',
+            '../Medias/Sound/Baldur\'s Gate 3.mp3',
         ],
         text: [
             "Ce RPG culte s’appuie sur l’univers de Donjons & Dragons et a marqué un tournant dans le jeu de rôle sur PC à la fin des années 90.",
@@ -1929,14 +1929,14 @@ export const games = [
     {
         title: 'Undertale',
         image: [
-            './Medias/Image/Undertale 1.jpg',
-            './Medias/Image/Undertale 2.jpg',
-            './Medias/Image/Undertale 3.jpg',
+            '../Medias/Image/Undertale 1.jpg',
+            '../Medias/Image/Undertale 2.jpg',
+            '../Medias/Image/Undertale 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Undertale 1.mp3',
-            './Medias/Sound/Undertale 2.mp3',
-            './Medias/Sound/Undertale 3.mp3',
+            '../Medias/Sound/Undertale 1.mp3',
+            '../Medias/Sound/Undertale 2.mp3',
+            '../Medias/Sound/Undertale 3.mp3',
         ],
         text: [
             "Ce jeu indépendant mêle RPG rétro et mécanique de pacifisme, en laissant le choix d’épargner ou de combattre ses ennemis.",
@@ -1947,14 +1947,14 @@ export const games = [
     {
         title: 'Resident Evil',
         image: [
-            './Medias/Image/Resident Evil 1.jpg',
-            './Medias/Image/Resident Evil 2.jpg',
-            './Medias/Image/Resident Evil 3.jpg',
+            '../Medias/Image/Resident Evil 1.jpg',
+            '../Medias/Image/Resident Evil 2.jpg',
+            '../Medias/Image/Resident Evil 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Resident Evil 1.mp3',
-            './Medias/Sound/Resident Evil 2.mp3',
-            './Medias/Sound/Resident Evil 3.mp3',
+            '../Medias/Sound/Resident Evil 1.mp3',
+            '../Medias/Sound/Resident Evil 2.mp3',
+            '../Medias/Sound/Resident Evil 3.mp3',
         ],
         text: [
             "Ce jeu de type survival horror a posé les bases d’un genre mêlant tension, exploration et gestion limitée des ressources dans un environnement oppressant.",
@@ -1965,14 +1965,14 @@ export const games = [
     {
         title: 'Left 4 Dead',
         image: [
-            './Medias/Image/Left 4 Dead 1.jpg',
-            './Medias/Image/Left 4 Dead 2.jpg',
-            './Medias/Image/Left 4 Dead 3.jpg',
+            '../Medias/Image/Left 4 Dead 1.jpg',
+            '../Medias/Image/Left 4 Dead 2.jpg',
+            '../Medias/Image/Left 4 Dead 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Left 4 Dead 1.mp3',
-            './Medias/Sound/Left 4 Dead 2.mp3',
-            './Medias/Sound/Left 4 Dead 3.mp3',
+            '../Medias/Sound/Left 4 Dead 1.mp3',
+            '../Medias/Sound/Left 4 Dead 2.mp3',
+            '../Medias/Sound/Left 4 Dead 3.mp3',
         ],
         text: [
             "Développé par Valve. Ce jeu coopératif à la première personne mise sur l'entraide et la survie face à des vagues d’ennemis rapides et imprévisibles.",
@@ -1983,14 +1983,14 @@ export const games = [
     {
         title: 'Until Dawn',
         image: [
-            './Medias/Image/Until Dawn 1.jpg',
-            './Medias/Image/Until Dawn 2.jpg',
-            './Medias/Image/Until Dawn 3.jpg',
+            '../Medias/Image/Until Dawn 1.jpg',
+            '../Medias/Image/Until Dawn 2.jpg',
+            '../Medias/Image/Until Dawn 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Until Dawn 1.mp3',
-            './Medias/Sound/Until Dawn 2.mp3',
-            './Medias/Sound/Until Dawn 3.mp3',
+            '../Medias/Sound/Until Dawn 1.mp3',
+            '../Medias/Sound/Until Dawn 2.mp3',
+            '../Medias/Sound/Until Dawn 3.mp3',
         ],
         text: [
             "Ce thriller interactif mise sur les choix du joueur pour façonner le récit, avec une forte inspiration des films d’horreur des années 2000 et une narration ramifiée. Il est développé par Supermassive Games.",
@@ -2001,14 +2001,14 @@ export const games = [
     {
         title: 'Slender',
         image: [
-            './Medias/Image/Slender 1.jpg',
-            './Medias/Image/Slender 2.jpg',
-            './Medias/Image/Slender 3.jpg',
+            '../Medias/Image/Slender 1.jpg',
+            '../Medias/Image/Slender 2.jpg',
+            '../Medias/Image/Slender 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Slender 1.mp3',
-            './Medias/Sound/Slender 2.mp3',
-            './Medias/Sound/Slender 3.mp3',
+            '../Medias/Sound/Slender 1.mp3',
+            '../Medias/Sound/Slender 2.mp3',
+            '../Medias/Sound/Slender 3.mp3',
         ],
         text: [
             "Ce titre indépendant minimaliste mise sur l’ambiance sonore, l’obscurité et la peur de l’inconnu pour créer une tension constante.",
@@ -2019,14 +2019,14 @@ export const games = [
     {
         title: 'Goat Simulator',
         image: [
-            './Medias/Image/Goat Simulator 1.jpg',
-            './Medias/Image/Goat Simulator 2.jpg',
-            './Medias/Image/Goat Simulator 3.jpg',
+            '../Medias/Image/Goat Simulator 1.jpg',
+            '../Medias/Image/Goat Simulator 2.jpg',
+            '../Medias/Image/Goat Simulator 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Goat Simulator 1.mp3',
-            './Medias/Sound/Goat Simulator 2.mp3',
-            './Medias/Sound/Goat Simulator 3.mp3',
+            '../Medias/Sound/Goat Simulator 1.mp3',
+            '../Medias/Sound/Goat Simulator 2.mp3',
+            '../Medias/Sound/Goat Simulator 3.mp3',
         ],
         text: [
             "Développé par Coffee Stain Studios, ce jeu délirant propose une expérience sandbox où le joueur a pour but de provoquer le chaos dans un environnement ouvert.",
@@ -2037,14 +2037,14 @@ export const games = [
     {
         title: 'Gang Beasts',
         image: [
-            './Medias/Image/Gang Beasts 1.jpg',
-            './Medias/Image/Gang Beasts 2.jpg',
-            './Medias/Image/Gang Beasts 3.jpg',
+            '../Medias/Image/Gang Beasts 1.jpg',
+            '../Medias/Image/Gang Beasts 2.jpg',
+            '../Medias/Image/Gang Beasts 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Gang Beasts 1.mp3',
-            './Medias/Sound/Gang Beasts 2.mp3',
-            './Medias/Sound/Gang Beasts 3.mp3',
+            '../Medias/Sound/Gang Beasts 1.mp3',
+            '../Medias/Sound/Gang Beasts 2.mp3',
+            '../Medias/Sound/Gang Beasts 3.mp3',
         ],
         text: [
             "Ce jeu multijoueur propose des combats physiques loufoques avec des personnages en gelée dans des arènes variées et colorées. Il est développé par Boneloaf.",
@@ -2055,14 +2055,14 @@ export const games = [
     {
         title: 'R.E.P.O.',
         image: [
-            './Medias/Image/R.E.P.O. 1.jpg',
-            './Medias/Image/R.E.P.O. 2.jpg',
-            './Medias/Image/R.E.P.O. 3.jpg',
+            '../Medias/Image/R.E.P.O. 1.jpg',
+            '../Medias/Image/R.E.P.O. 2.jpg',
+            '../Medias/Image/R.E.P.O. 3.jpg',
         ],
         sound: [
-            './Medias/Sound/R.E.P.O. 1.mp3',
-            './Medias/Sound/R.E.P.O. 2.mp3',
-            './Medias/Sound/R.E.P.O. 3.mp3',
+            '../Medias/Sound/R.E.P.O. 1.mp3',
+            '../Medias/Sound/R.E.P.O. 2.mp3',
+            '../Medias/Sound/R.E.P.O. 3.mp3',
         ],
         text: [
             "Ce jeu d'horreur coopératif en ligne vous plonge dans des missions où vous devez localiser et extraire des objets précieux tout en évitant des menaces imprévisibles.",
@@ -2073,14 +2073,14 @@ export const games = [
     {
         title: 'Lethal company',
         image: [
-            './Medias/Image/Lethal company 1.jpg',
-            './Medias/Image/Lethal company 2.jpg',
-            './Medias/Image/Lethal company 3.jpg',
+            '../Medias/Image/Lethal company 1.jpg',
+            '../Medias/Image/Lethal company 2.jpg',
+            '../Medias/Image/Lethal company 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Lethal company 1.mp3',
-            './Medias/Sound/Lethal company 2.mp3',
-            './Medias/Sound/Lethal company 3.mp3',
+            '../Medias/Sound/Lethal company 1.mp3',
+            '../Medias/Sound/Lethal company 2.mp3',
+            '../Medias/Sound/Lethal company 3.mp3',
         ],
         text: [
             "Ce jeu d'horreur coopératif plonge les joueurs dans des environnements sombres où ils doivent accomplir des missions sous pression.",
@@ -2091,14 +2091,14 @@ export const games = [
     {
         title: 'Hogwarts Legacy',
         image: [
-            './Medias/Image/Hogwarts Legacy 1.jpg',
-            './Medias/Image/Hogwarts Legacy 2.jpg',
-            './Medias/Image/Hogwarts Legacy 3.jpg',
+            '../Medias/Image/Hogwarts Legacy 1.jpg',
+            '../Medias/Image/Hogwarts Legacy 2.jpg',
+            '../Medias/Image/Hogwarts Legacy 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Hogwarts Legacy 1.mp3',
-            './Medias/Sound/Hogwarts Legacy 2.mp3',
-            './Medias/Sound/Hogwarts Legacy 3.mp3',
+            '../Medias/Sound/Hogwarts Legacy 1.mp3',
+            '../Medias/Sound/Hogwarts Legacy 2.mp3',
+            '../Medias/Sound/Hogwarts Legacy 3.mp3',
         ],
         text: [
             "Ce jeu d'action-RPG se déroule dans un univers magique, permettant aux joueurs d'apprendre des sorts et de maîtriser la magie. Il est développé par Portkey Games.",
@@ -2109,14 +2109,14 @@ export const games = [
     {
         title: 'H1Z1',
         image: [
-            './Medias/Image/H1Z1 1.jpg',
-            './Medias/Image/H1Z1 2.jpg',
-            './Medias/Image/H1Z1 3.jpg',
+            '../Medias/Image/H1Z1 1.jpg',
+            '../Medias/Image/H1Z1 2.jpg',
+            '../Medias/Image/H1Z1 3.jpg',
         ],
         sound: [
-            './Medias/Sound/H1Z1 1.mp3',
-            './Medias/Sound/H1Z1 2.mp3',
-            './Medias/Sound/H1Z1 3.mp3',
+            '../Medias/Sound/H1Z1 1.mp3',
+            '../Medias/Sound/H1Z1 2.mp3',
+            '../Medias/Sound/H1Z1 3.mp3',
         ],
         text: [
             "Développé par Daybreak Game Company, ce jeu de tir en ligne propose un mode Battle Royale où les joueurs s'affrontent pour être les derniers survivants sur une carte en constante réduction.",
@@ -2127,14 +2127,14 @@ export const games = [
     {
         title: 'Red Dead Redemption',
         image: [
-            './Medias/Image/Red Dead Redemption 1.jpg',
-            './Medias/Image/Red Dead Redemption 2.jpg',
-            './Medias/Image/Red Dead Redemption 3.jpg',
+            '../Medias/Image/Red Dead Redemption 1.jpg',
+            '../Medias/Image/Red Dead Redemption 2.jpg',
+            '../Medias/Image/Red Dead Redemption 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Red Dead Redemption 1.mp3',
-            './Medias/Sound/Red Dead Redemption 2.mp3',
-            './Medias/Sound/Red Dead Redemption 3.mp3',
+            '../Medias/Sound/Red Dead Redemption 1.mp3',
+            '../Medias/Sound/Red Dead Redemption 2.mp3',
+            '../Medias/Sound/Red Dead Redemption 3.mp3',
         ],
         text: [
             "Ce jeu d'action-aventure en monde ouvert, développé par Rockstar Games, plonge les joueurs dans l'univers du Far West.",
@@ -2145,14 +2145,14 @@ export const games = [
     {
         title: 'Dark Souls',
         image: [
-            './Medias/Image/Dark Souls 1.jpg',
-            './Medias/Image/Dark Souls 2.jpg',
-            './Medias/Image/Dark Souls 3.jpg',
+            '../Medias/Image/Dark Souls 1.jpg',
+            '../Medias/Image/Dark Souls 2.jpg',
+            '../Medias/Image/Dark Souls 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Dark Souls 1.mp3',
-            './Medias/Sound/Dark Souls 2.mp3',
-            './Medias/Sound/Dark Souls 3.mp3',
+            '../Medias/Sound/Dark Souls 1.mp3',
+            '../Medias/Sound/Dark Souls 2.mp3',
+            '../Medias/Sound/Dark Souls 3.mp3',
         ],
         text: [
             "Ce jeu d'action-RPG, développé par FromSoftware, est connu pour sa difficulté élevée et son univers sombre et interconnecté.",
@@ -2163,14 +2163,14 @@ export const games = [
     {
         title: 'Sekiro: Shadows Die Twice',
         image: [
-            './Medias/Image/Sekiro Shadows Die Twice 1.jpg',
-            './Medias/Image/Sekiro Shadows Die Twice 2.jpg',
-            './Medias/Image/Sekiro Shadows Die Twice 3.jpg',
+            '../Medias/Image/Sekiro Shadows Die Twice 1.jpg',
+            '../Medias/Image/Sekiro Shadows Die Twice 2.jpg',
+            '../Medias/Image/Sekiro Shadows Die Twice 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Sekiro Shadows Die Twice 1.mp3',
-            './Medias/Sound/Sekiro Shadows Die Twice 2.mp3',
-            './Medias/Sound/Sekiro Shadows Die Twice 3.mp3',
+            '../Medias/Sound/Sekiro Shadows Die Twice 1.mp3',
+            '../Medias/Sound/Sekiro Shadows Die Twice 2.mp3',
+            '../Medias/Sound/Sekiro Shadows Die Twice 3.mp3',
         ],
         text: [
             "Ce jeu d'action-aventure, développé par FromSoftware, se déroule dans un Japon féodal alternatif et met l'accent sur le combat au corps à corps.",
@@ -2181,14 +2181,14 @@ export const games = [
     {
         title: 'Elden Ring',
         image: [
-            './Medias/Image/Elden Ring 1.jpg',
-            './Medias/Image/Elden Ring 2.jpg',
-            './Medias/Image/Elden Ring 3.jpg',
+            '../Medias/Image/Elden Ring 1.jpg',
+            '../Medias/Image/Elden Ring 2.jpg',
+            '../Medias/Image/Elden Ring 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Elden Ring 1.mp3',
-            './Medias/Sound/Elden Ring 2.mp3',
-            './Medias/Sound/Elden Ring 3.mp3',
+            '../Medias/Sound/Elden Ring 1.mp3',
+            '../Medias/Sound/Elden Ring 2.mp3',
+            '../Medias/Sound/Elden Ring 3.mp3',
         ],
         text: [
             "Ce jeu d'action-RPG en monde ouvert, développé par FromSoftware, propose une expérience immersive dans un univers fantastique riche et détaillé. Il a par ailleurs été désigné comme étant un GOTY.",
@@ -2199,14 +2199,14 @@ export const games = [
     {
         title: 'Bloodborne',
         image: [
-            './Medias/Image/Bloodborne 1.jpg',
-            './Medias/Image/Bloodborne 2.jpg',
-            './Medias/Image/Bloodborne 3.jpg',
+            '../Medias/Image/Bloodborne 1.jpg',
+            '../Medias/Image/Bloodborne 2.jpg',
+            '../Medias/Image/Bloodborne 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Bloodborne 1.mp3',
-            './Medias/Sound/Bloodborne 2.mp3',
-            './Medias/Sound/Bloodborne 3.mp3',
+            '../Medias/Sound/Bloodborne 1.mp3',
+            '../Medias/Sound/Bloodborne 2.mp3',
+            '../Medias/Sound/Bloodborne 3.mp3',
         ],
         text: [
             "Ce jeu d'action-RPG, développé par FromSoftware, se déroule dans un univers gothique et horrifique, inspiré de l'architecture victorienne et de la mythologie.",
@@ -2217,14 +2217,14 @@ export const games = [
     {
         title: 'Ghost of Tsushima',
         image: [
-            './Medias/Image/Ghost of Tsushima 1.jpg',
-            './Medias/Image/Ghost of Tsushima 2.jpg',
-            './Medias/Image/Ghost of Tsushima 3.jpg',
+            '../Medias/Image/Ghost of Tsushima 1.jpg',
+            '../Medias/Image/Ghost of Tsushima 2.jpg',
+            '../Medias/Image/Ghost of Tsushima 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Ghost of Tsushima 1.mp3',
-            './Medias/Sound/Ghost of Tsushima 2.mp3',
-            './Medias/Sound/Ghost of Tsushima 3.mp3',
+            '../Medias/Sound/Ghost of Tsushima 1.mp3',
+            '../Medias/Sound/Ghost of Tsushima 2.mp3',
+            '../Medias/Sound/Ghost of Tsushima 3.mp3',
         ],
         text: [
             "Ce jeu d'action-aventure en monde ouvert, développé par Sucker Punch Productions, se déroule dans le Japon féodal pendant l'invasion mongole.",
@@ -2235,14 +2235,14 @@ export const games = [
     {
         title: 'Doom',
         image: [
-            './Medias/Image/Doom 1.jpg',
-            './Medias/Image/Doom 2.jpg',
-            './Medias/Image/Doom 3.jpg',
+            '../Medias/Image/Doom 1.jpg',
+            '../Medias/Image/Doom 2.jpg',
+            '../Medias/Image/Doom 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Doom 1.mp3',
-            './Medias/Sound/Doom 2.mp3',
-            './Medias/Sound/Doom 3.mp3',
+            '../Medias/Sound/Doom 1.mp3',
+            '../Medias/Sound/Doom 2.mp3',
+            '../Medias/Sound/Doom 3.mp3',
         ],
         text: [
             "Ce jeu de tir à la première personne, développé par id Software, est considéré comme l'un des pionniers du genre.",
@@ -2253,14 +2253,14 @@ export const games = [
     {
         title: 'Wii Sports',
         image: [
-            './Medias/Image/Wii Sports 1.jpg',
-            './Medias/Image/Wii Sports 2.jpg',
-            './Medias/Image/Wii Sports 3.jpg',
+            '../Medias/Image/Wii Sports 1.jpg',
+            '../Medias/Image/Wii Sports 2.jpg',
+            '../Medias/Image/Wii Sports 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Wii Sports 1.mp3',
-            './Medias/Sound/Wii Sports 2.mp3',
-            './Medias/Sound/Wii Sports 3.mp3',
+            '../Medias/Sound/Wii Sports 1.mp3',
+            '../Medias/Sound/Wii Sports 2.mp3',
+            '../Medias/Sound/Wii Sports 3.mp3',
         ],
         text: [
             "Ce jeu de développé par Nintendo, utilise la détection de mouvement pour simuler des activités sportives.",
@@ -2271,14 +2271,14 @@ export const games = [
     {
         title: 'Kirby',
         image: [
-            './Medias/Image/Kirby 1.jpg',
-            './Medias/Image/Kirby 2.jpg',
-            './Medias/Image/Kirby 3.jpg',
+            '../Medias/Image/Kirby 1.jpg',
+            '../Medias/Image/Kirby 2.jpg',
+            '../Medias/Image/Kirby 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Kirby 1.mp3',
-            './Medias/Sound/Kirby 2.mp3',
-            './Medias/Sound/Kirby 3.mp3',
+            '../Medias/Sound/Kirby 1.mp3',
+            '../Medias/Sound/Kirby 2.mp3',
+            '../Medias/Sound/Kirby 3.mp3',
         ],
         text: [
             "Ce jeu de plateforme développé par HAL Laboratory met en avant un personnage rond et rose.",
@@ -2289,14 +2289,14 @@ export const games = [
     {
         title: 'Mass Effect',
         image: [
-            './Medias/Image/Mass Effect 1.jpg',
-            './Medias/Image/Mass Effect 2.jpg',
-            './Medias/Image/Mass Effect 3.jpg',
+            '../Medias/Image/Mass Effect 1.jpg',
+            '../Medias/Image/Mass Effect 2.jpg',
+            '../Medias/Image/Mass Effect 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Mass Effect 1.mp3',
-            './Medias/Sound/Mass Effect 2.mp3',
-            './Medias/Sound/Mass Effect 3.mp3',
+            '../Medias/Sound/Mass Effect 1.mp3',
+            '../Medias/Sound/Mass Effect 2.mp3',
+            '../Medias/Sound/Mass Effect 3.mp3',
         ],
         text: [
             "Ce jeu de rôle et d'action, développé par BioWare, se déroule dans un univers de science-fiction riche et détaillé.",
@@ -2307,14 +2307,14 @@ export const games = [
     {
         title: 'Animal Crossing',
         image: [
-            './Medias/Image/Animal Crossing 1.jpg',
-            './Medias/Image/Animal Crossing 2.jpg',
-            './Medias/Image/Animal Crossing 3.jpg',
+            '../Medias/Image/Animal Crossing 1.jpg',
+            '../Medias/Image/Animal Crossing 2.jpg',
+            '../Medias/Image/Animal Crossing 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Animal Crossing 1.mp3',
-            './Medias/Sound/Animal Crossing 2.mp3',
-            './Medias/Sound/Animal Crossing 3.mp3',
+            '../Medias/Sound/Animal Crossing 1.mp3',
+            '../Medias/Sound/Animal Crossing 2.mp3',
+            '../Medias/Sound/Animal Crossing 3.mp3',
         ],
         text: [
             "Ce jeu de simulation de vie, développé par Nintendo, permet aux joueurs de vivre sur une île déserte peuplée d'animaux anthropomorphes.",
@@ -2325,14 +2325,14 @@ export const games = [
     {
         title: 'Halo',
         image: [
-            './Medias/Image/Halo 1.jpg',
-            './Medias/Image/Halo 2.jpg',
-            './Medias/Image/Halo 3.jpg',
+            '../Medias/Image/Halo 1.jpg',
+            '../Medias/Image/Halo 2.jpg',
+            '../Medias/Image/Halo 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Halo 1.mp3',
-            './Medias/Sound/Halo 2.mp3',
-            './Medias/Sound/Halo 3.mp3',
+            '../Medias/Sound/Halo 1.mp3',
+            '../Medias/Sound/Halo 2.mp3',
+            '../Medias/Sound/Halo 3.mp3',
         ],
         text: [
             "Ce jeu de tir à la première personne, développé par Bungie, se déroule dans un univers de science-fiction futuriste.",
@@ -2343,14 +2343,14 @@ export const games = [
     {
         title: 'Silent Hill',
         image: [
-            './Medias/Image/Silent Hill 1.jpg',
-            './Medias/Image/Silent Hill 2.jpg',
-            './Medias/Image/Silent Hill 3.jpg',
+            '../Medias/Image/Silent Hill 1.jpg',
+            '../Medias/Image/Silent Hill 2.jpg',
+            '../Medias/Image/Silent Hill 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Silent Hill 1.mp3',
-            './Medias/Sound/Silent Hill 2.mp3',
-            './Medias/Sound/Silent Hill 3.mp3',
+            '../Medias/Sound/Silent Hill 1.mp3',
+            '../Medias/Sound/Silent Hill 2.mp3',
+            '../Medias/Sound/Silent Hill 3.mp3',
         ],
         text: [
             "Ce jeu d'horreur psychologique, développé par Konami, plonge les joueurs dans une ville mystérieuse et cauchemardesque.",
@@ -2361,14 +2361,14 @@ export const games = [
     {
         title: 'Uncharted',
         image: [
-            './Medias/Image/Uncharted 1.jpg',
-            './Medias/Image/Uncharted 2.jpg',
-            './Medias/Image/Uncharted 3.jpg',
+            '../Medias/Image/Uncharted 1.jpg',
+            '../Medias/Image/Uncharted 2.jpg',
+            '../Medias/Image/Uncharted 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Uncharted 1.mp3',
-            './Medias/Sound/Uncharted 2.mp3',
-            './Medias/Sound/Uncharted 3.mp3',
+            '../Medias/Sound/Uncharted 1.mp3',
+            '../Medias/Sound/Uncharted 2.mp3',
+            '../Medias/Sound/Uncharted 3.mp3',
         ],
         text: [
             "Ce jeu d'action-aventure, développé par Naughty Dog, suit les aventures d'un chasseur de trésors.",
@@ -2379,14 +2379,14 @@ export const games = [
     {
         title: 'The Forest',
         image: [
-            './Medias/Image/The Forest 1.jpg',
-            './Medias/Image/The Forest 2.jpg',
-            './Medias/Image/The Forest 3.jpg',
+            '../Medias/Image/The Forest 1.jpg',
+            '../Medias/Image/The Forest 2.jpg',
+            '../Medias/Image/The Forest 3.jpg',
         ],
         sound: [
-            './Medias/Sound/The Forest 1.mp3',
-            './Medias/Sound/The Forest 2.mp3',
-            './Medias/Sound/The Forest 3.mp3',
+            '../Medias/Sound/The Forest 1.mp3',
+            '../Medias/Sound/The Forest 2.mp3',
+            '../Medias/Sound/The Forest 3.mp3',
         ],
         text: [
             "Ce jeu de survie en monde ouvert, développé par Endnight Games, plonge les joueurs dans une forêt mystérieuse après un crash d'avion.",
@@ -2397,14 +2397,14 @@ export const games = [
     {
         title: 'Diablo',
         image: [
-            './Medias/Image/Diablo 1.jpg',
-            './Medias/Image/Diablo 2.jpg',
-            './Medias/Image/Diablo 3.jpg',
+            '../Medias/Image/Diablo 1.jpg',
+            '../Medias/Image/Diablo 2.jpg',
+            '../Medias/Image/Diablo 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Diablo 1.mp3',
-            './Medias/Sound/Diablo 2.mp3',
-            './Medias/Sound/Diablo 3.mp3',
+            '../Medias/Sound/Diablo 1.mp3',
+            '../Medias/Sound/Diablo 2.mp3',
+            '../Medias/Sound/Diablo 3.mp3',
         ],
         text: [
             "Ce jeu d'action-RPG, développé par Blizzard Entertainment, se déroule dans un univers sombre et fantastique.",
@@ -2415,14 +2415,14 @@ export const games = [
     {
         title: 'Age of War',
         image: [
-            './Medias/Image/Age of War 1.jpg',
-            './Medias/Image/Age of War 2.jpg',
-            './Medias/Image/Age of War 3.jpg',
+            '../Medias/Image/Age of War 1.jpg',
+            '../Medias/Image/Age of War 2.jpg',
+            '../Medias/Image/Age of War 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Age of War 1.mp3',
-            './Medias/Sound/Age of War 2.mp3',
-            './Medias/Sound/Age of War 3.mp3',
+            '../Medias/Sound/Age of War 1.mp3',
+            '../Medias/Sound/Age of War 2.mp3',
+            '../Medias/Sound/Age of War 3.mp3',
         ],
         text: [
             "Ce jeu de stratégie en 2D, développé par Max Games, met le joueur aux commandes d'une civilisation qu’il doit faire évoluer à travers les âges tout en affrontant un adversaire.",
@@ -2433,14 +2433,14 @@ export const games = [
     {
         title: 'Terraria',
         image: [
-            './Medias/Image/Terraria 1.jpg',
-            './Medias/Image/Terraria 2.jpg',
-            './Medias/Image/Terraria 3.jpg',
+            '../Medias/Image/Terraria 1.jpg',
+            '../Medias/Image/Terraria 2.jpg',
+            '../Medias/Image/Terraria 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Terraria 1.mp3',
-            './Medias/Sound/Terraria 2.mp3',
-            './Medias/Sound/Terraria 3.mp3',
+            '../Medias/Sound/Terraria 1.mp3',
+            '../Medias/Sound/Terraria 2.mp3',
+            '../Medias/Sound/Terraria 3.mp3',
         ],
         text: [
             "Ce jeu de survie et d'exploration en 2D, développé par Re-Logic, permet aux joueurs de construire, explorer et combattre dans un monde généré aléatoirement.",
@@ -2451,14 +2451,14 @@ export const games = [
     {
         title: 'The Sims',
         image: [
-            './Medias/Image/The Sims 1.jpg',
-            './Medias/Image/The Sims 2.jpg',
-            './Medias/Image/The Sims 3.jpg',
+            '../Medias/Image/The Sims 1.jpg',
+            '../Medias/Image/The Sims 2.jpg',
+            '../Medias/Image/The Sims 3.jpg',
         ],
         sound: [
-            './Medias/Sound/The Sims 1.mp3',
-            './Medias/Sound/The Sims 2.mp3',
-            './Medias/Sound/The Sims 3.mp3',
+            '../Medias/Sound/The Sims 1.mp3',
+            '../Medias/Sound/The Sims 2.mp3',
+            '../Medias/Sound/The Sims 3.mp3',
         ],
         text: [
             "Ce jeu de simulation de vie, développé par Maxis, permet aux joueurs de créer et de contrôler des personnages dans un monde virtuel.",
@@ -2469,14 +2469,14 @@ export const games = [
     {
         title: 'Ark: Survival Evolved',
         image: [
-            './Medias/Image/Ark 1.jpg',
-            './Medias/Image/Ark 2.jpg',
-            './Medias/Image/Ark 3.jpg',
+            '../Medias/Image/Ark 1.jpg',
+            '../Medias/Image/Ark 2.jpg',
+            '../Medias/Image/Ark 3.jpg',
         ],
         sound: [
-            './Medias/Sound/Ark 1.mp3',
-            './Medias/Sound/Ark 2.mp3',
-            './Medias/Sound/Ark 3.mp3',
+            '../Medias/Sound/Ark 1.mp3',
+            '../Medias/Sound/Ark 2.mp3',
+            '../Medias/Sound/Ark 3.mp3',
         ],
         text: [
             "Ce jeu de survie en monde ouvert, développé par Studio Wildcard, plonge les joueurs dans un monde préhistorique peuplé de dinosaures.",
@@ -2487,14 +2487,14 @@ export const games = [
     {
         title: 'It Takes Two',
         image: [
-            './Medias/Image/It Takes Two 1.jpg',
-            './Medias/Image/It Takes Two 2.jpg',
-            './Medias/Image/It Takes Two 3.jpg',
+            '../Medias/Image/It Takes Two 1.jpg',
+            '../Medias/Image/It Takes Two 2.jpg',
+            '../Medias/Image/It Takes Two 3.jpg',
         ],
         sound: [
-            './Medias/Sound/It Takes Two 1.mp3',
-            './Medias/Sound/It Takes Two 2.mp3',
-            './Medias/Sound/It Takes Two 3.mp3',
+            '../Medias/Sound/It Takes Two 1.mp3',
+            '../Medias/Sound/It Takes Two 2.mp3',
+            '../Medias/Sound/It Takes Two 3.mp3',
         ],
         text: [
             "Ce jeu de plateforme coopératif, développé par Hazelight Studios, suit l'histoire de Cody et May, un couple en instance de divorce qui doit travailler ensemble pour surmonter des obstacles dans un monde fantastique.",
@@ -2505,14 +2505,14 @@ export const games = [
     {
         title: 'The Walking Dead',
         image: [
-            './Medias/Image/The Walking Dead 1.jpg',
-            './Medias/Image/The Walking Dead 2.jpg',
-            './Medias/Image/The Walking Dead 3.jpg',
+            '../Medias/Image/The Walking Dead 1.jpg',
+            '../Medias/Image/The Walking Dead 2.jpg',
+            '../Medias/Image/The Walking Dead 3.jpg',
         ],
         sound: [
-            './Medias/Sound/The Walking Dead 1.mp3',
-            './Medias/Sound/The Walking Dead 2.mp3',
-            './Medias/Sound/The Walking Dead 3.mp3',
+            '../Medias/Sound/The Walking Dead 1.mp3',
+            '../Medias/Sound/The Walking Dead 2.mp3',
+            '../Medias/Sound/The Walking Dead 3.mp3',
         ],
         text: [
             "Ce jeu d'aventure narratif, développé par Telltale Games, est basé sur la série de comics du même nom. Il suit l'histoire de Lee Everett, un criminel en fuite qui se retrouve à protéger une jeune fille nommée Clementine dans un monde post-apocalyptique envahi par des zombies.",
