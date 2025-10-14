@@ -139,7 +139,7 @@ startBtn.onclick = () => {
         alert("Veuillez sélectionner un mode de jeu !");
         return;
     }
-    window.location.href = `/HTML/${selectedMode}.html`;
+    window.location.href = `HTML/${selectedMode}.html`;
 };
 
 // === Bouton retour (clic) ===
