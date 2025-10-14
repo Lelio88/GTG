@@ -130,7 +130,7 @@ document.addEventListener('keydown', (e) => {
             alert("Veuillez sélectionner un mode de jeu !");
             return;
         }
-        window.location.href = `HTML/${selectedMode}.html`;
+        window.location.href = `/${selectedMode}.html`;
     }
 });
 // === Lancer le jeu avec le bouton ===
@@ -139,7 +139,7 @@ startBtn.onclick = () => {
         alert("Veuillez sélectionner un mode de jeu !");
         return;
     }
-    window.location.href = `HTML/${selectedMode}.html`;
+    window.location.href = `/${selectedMode}.html`;
 };
 
 // === Bouton retour (clic) ===
