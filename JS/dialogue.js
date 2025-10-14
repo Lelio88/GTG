@@ -36,26 +36,26 @@ function initializeVisitCounter() {
 const dialogues = {
     1: {
         text: "Oh salut ! Je t'ai jamais vu ici ! T'es perdu ? Si tu veux je peux te guider un peu ? Juste ici tu peux choisir différents modes de jeu. Quand tu es prêt, clique sur \"Lancer le jeu\" ou tu peux retourner aux profils et revenir plus tard !",
-        image: "../assets/perso 1.jpg"
+        image: "../Assets/perso 1.jpg"
     },
     5: {
         text: "On dirait que tu commences à maîtriser !",
-        image: "../assets/perso 2.jpg"
+        image: "../Assets/perso 2.jpg"
     },
     10: {
         text: "Wow, tu es persévérant !",
-        image: "../assets/perso 3.jpg"
+        image: "../Assets/perso 3.jpg"
     }
 };
 
 const keyDialogues = {
     1: {
         text: "Félicitations pour ta première clé ! Ça ne fait que commencer...",
-        image: "../assets/characters/key_1.png"
+        image: "../Assets/characters/key_1.png"
     },
     2: {
         text: "Deux clés déjà ? Impressionnant !",
-        image: "../assets/characters/key_2.png"
+        image: "../Assets/characters/key_2.png"
     }
 };
 
