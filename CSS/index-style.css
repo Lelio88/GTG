@@ -1,0 +1,175 @@
+/* ===============================
+   Global Styles 
+=============================== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #1a1a1a;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 2.2em;
+    text-align: center;
+    color: #ff7f50;
+    text-shadow: 0 0 8px #ff7f50;
+}
+
+/* ===============================
+   Container Styles 
+=============================== */
+#main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 800px;
+}
+
+/* ===============================
+   Profile Selection 
+=============================== */
+#profiles-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* Utilise des colonnes égales */
+    gap: 30px;
+    /* Augmente l'espacement entre les cases */
+}
+
+.profile {
+    background-color: #2c2c2c;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: transform 0.3s, border-color 0.3s;
+    width: 180px;
+    /* Largeur fixe pour les cases de profil */
+    min-height: 80px;
+    /* Hauteur minimale pour les cases */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile:hover,
+.profile.keyboard-focus {
+    transform: scale(1.05);
+    border-color: #ff7f50;
+}
+
+.profile.selected {
+    animation: neon-glow 1.5s infinite alternate;
+    box-shadow: 0 0 15px var(--glow-color), 0 0 30px var(--glow-color);
+}
+
+.empty {
+    opacity: 0.4;
+}
+
+/* ===============================
+   Game Mode Selection 
+=============================== */
+#game-modes {
+    display: flex;
+    justify-content: space-around;
+}
+
+.game-mode {
+    background-color: #2c2c2c;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: transform 0.3s, border-color 0.3s;
+    margin: 10px;
+}
+
+/* Effet de néon au survol */
+.game-mode:hover {
+    transform: scale(1.05);
+    border-color: #ff7f50;
+    /* Orange lors du survol */
+    box-shadow: 0 0 6px #ff7f50, 0 0 12px #ff7f50;
+    /* Légère ombre autour du bouton */
+}
+
+/* Effet de sélection avec néon */
+.game-mode.selected {
+    animation: neon-glow-mode 2s infinite alternate;
+}
+
+.game-mode.keyboard-focus {
+    transform: scale(1.05);
+    border-color: #ff7f50;
+}
+
+/* Animation plus douce pour le néon */
+@keyframes neon-glow-mode {
+    0%,
+    100% {
+        box-shadow: 0 0 5px var(--glow-color-mode), 0 0 10px var(--glow-color-mode), 0 0 15px var(--glow-color-mode);
+    }
+
+    50% {
+        box-shadow: 0 0 8px var(--glow-color-mode), 0 0 16px var(--glow-color-mode), 0 0 20px var(--glow-color-mode);
+    }
+}
+
+/* ===============================
+   Buttons 
+=============================== */
+button {
+    background-color: #ff7f50;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1.2em;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-top: 20px;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #ff7f50;
+}
+
+/* ===============================
+   Neon Glow Animation 
+=============================== */
+@keyframes neon-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px var(--glow-color), 0 0 10px var(--glow-color), 0 0 15px var(--glow-color);
+    }
+
+    50% {
+        box-shadow: 0 0 8px var(--glow-color), 0 0 12px var(--glow-color), 0 0 15px var(--glow-color);
+    }
+}
+
+.profile.selected,
+.game-mode.selected {
+    animation: neon-glow 1.5s infinite alternate;
+}
+
+/* ===============================
+   Keyboard Focus (UI)
+=============================== */
+.game-mode.keyboard-focus:hover {
+    transform: none; /* Désactive l'agrandissement au clavier si survolé */
+}

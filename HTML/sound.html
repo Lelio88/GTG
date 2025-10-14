@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound Only Mode</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <script type="module" defer src="../JS/sound.js"></script>
+</head>
+<header id="header-bar">
+    <a href="../index.html">
+        <img src="../Assets/Logo.png" alt="Logo" id="header-logo">
+    </a>
+    <nav>
+        <ul>
+            <li><a href="./full.html">Full Package</a></li>
+            <li><a href="./image.html">Image Only</a></li>
+            <li><a href="./text.html">Text Only</a></li>
+        </ul>
+    </nav>
+</header>
+
+<body>
+    <div id="app">
+        <div id="game">
+            <h2 id="game-title"></h2>
+            <h2 id="message"></h2> <!-- Message de réussite ou d'échec -->
+            <div id="content"></div>
+            <input type="text" id="user-input" placeholder="Votre réponse..." autocomplete="off" required>
+
+            <!-- Conteneur pour les boutons -->
+            <div id="button-container">
+                <button id="hint-button" onclick="showHint()">Indice</button>
+                <button onclick="checkAnswer()">Valider</button>
+                <button id="next-button" onclick="nextQuestion()" style="display: none;">Prochaine question</button>
+            </div>
+            <div id="scoreboard">
+                <p>Bonnes réponses : <span id="good-answers">0</span></p>
+                <p>Mauvaises réponses : <span id="bad-answers">0</span></p>
+                <p>Timer : <span id="timer">00:00</span></p>
+                <p id="keys-counter" style="display: none;">🔑 Clés : <span id="keys-count">0</span></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
