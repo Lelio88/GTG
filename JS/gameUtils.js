@@ -292,3 +292,118 @@ export function initializeGameTitle(title) {
     gameTitleElement.innerText = title;
     gameTitleElement.style.opacity = '0';
 }
+
+/**
+ * Reveal the game title in a modal or inline before performing an action
+ * @param {string} title - The game title to reveal
+ * @param {Object} options - Configuration options
+ * @param {string} options.mode - Display mode: 'modal' or 'inline' (default: 'modal')
+ * @param {boolean} options.autoAdvance - Auto-advance after delay (default: true)
+ * @param {number} options.delay - Delay in ms before auto-advance (default: 2000)
+ * @returns {Promise} Resolves when the reveal finishes (user clicks OK or after delay)
+ */
+export function revealTitle(title, options = {}) {
+    const { mode = 'modal', autoAdvance = true, delay = 2000 } = options;
+
+    return new Promise((resolve) => {
+        if (mode === 'modal') {
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+            overlay.style.display = 'flex';
+            overlay.style.justifyContent = 'center';
+            overlay.style.alignItems = 'center';
+            overlay.style.zIndex = '9999';
+
+            // Create modal box
+            const modalBox = document.createElement('div');
+            modalBox.style.backgroundColor = '#222';
+            modalBox.style.padding = '30px 50px';
+            modalBox.style.borderRadius = '10px';
+            modalBox.style.textAlign = 'center';
+            modalBox.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.5)';
+
+            // Title element
+            const titleElement = document.createElement('h2');
+            titleElement.innerText = title;
+            titleElement.style.color = '#fff';
+            titleElement.style.margin = '0 0 10px 0';
+            titleElement.style.fontSize = '1.8rem';
+
+            // Info line
+            const infoLine = document.createElement('p');
+            infoLine.innerText = 'La réponse était :';
+            infoLine.style.color = '#aaa';
+            infoLine.style.margin = '0 0 20px 0';
+            infoLine.style.fontSize = '1rem';
+
+            // OK button
+            const okButton = document.createElement('button');
+            okButton.innerText = 'OK';
+            okButton.style.padding = '10px 30px';
+            okButton.style.fontSize = '1rem';
+            okButton.style.cursor = 'pointer';
+            okButton.style.backgroundColor = '#ff6600';
+            okButton.style.color = '#fff';
+            okButton.style.border = 'none';
+            okButton.style.borderRadius = '5px';
+
+            const cleanup = () => {
+                if (overlay.parentNode) {
+                    overlay.parentNode.removeChild(overlay);
+                }
+                resolve();
+            };
+
+            okButton.onclick = cleanup;
+
+            // Assemble modal
+            modalBox.appendChild(infoLine);
+            modalBox.appendChild(titleElement);
+            modalBox.appendChild(okButton);
+            overlay.appendChild(modalBox);
+            document.body.appendChild(overlay);
+
+            // Auto-advance after delay if enabled
+            if (autoAdvance) {
+                setTimeout(cleanup, delay);
+            }
+        } else {
+            // Inline mode
+            const gameTitleElement = document.getElementById('game-title');
+            gameTitleElement.innerText = title;
+            gameTitleElement.style.opacity = '1';
+
+            if (autoAdvance) {
+                setTimeout(resolve, delay);
+            } else {
+                // Create Continue button under title
+                const continueButton = document.createElement('button');
+                continueButton.innerText = 'Continuer';
+                continueButton.style.padding = '10px 30px';
+                continueButton.style.fontSize = '1rem';
+                continueButton.style.cursor = 'pointer';
+                continueButton.style.backgroundColor = '#ff6600';
+                continueButton.style.color = '#fff';
+                continueButton.style.border = 'none';
+                continueButton.style.borderRadius = '5px';
+                continueButton.style.marginTop = '10px';
+                continueButton.style.display = 'block';
+
+                continueButton.onclick = () => {
+                    if (continueButton.parentNode) {
+                        continueButton.parentNode.removeChild(continueButton);
+                    }
+                    resolve();
+                };
+
+                gameTitleElement.parentNode.insertBefore(continueButton, gameTitleElement.nextSibling);
+            }
+        }
+    });
+}
