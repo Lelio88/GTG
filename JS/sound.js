@@ -19,16 +19,16 @@ import {
     setupEnterKeyHandler,
     showCorrectAnswerFeedback,
     showIncorrectAnswerFeedback,
-    initializeGameTitle
+    initializeGameTitle,
+    createHintNavigationSystem
 } from './gameUtils.js';
 
 let timerInterval;
 let cachedTitle = '';
-let currentHintIndex = 0;
-let correctAnswerGiven = false;
 let cachedGame = null;
+let correctAnswerGiven = false;
 let arrowsCreated = false;
-let maxHintIndex = 1; // Start at 1 because we have the first sound
+let hintNav = null;
 
 // === Get current profile ===
 let currentProfile = getCurrentProfile();
@@ -54,10 +54,11 @@ function launchGameMusic() {
     const contentDiv = document.getElementById('content');
     contentDiv.innerHTML = '';
 
-    currentHintIndex = 1;
+    // Initialize hint navigation system with 0-based indexing
+    hintNav = createHintNavigationSystem(cachedGame.sound.length);
 
     const audio = document.createElement('audio');
-    audio.src = cachedGame.sound[0]; // First sound by default
+    audio.src = cachedGame.sound[0]; // First sound (index 0)
     audio.id = 'game-audio';
     audio.autoplay = false;
     audio.loop = false;
@@ -70,49 +71,35 @@ function launchGameMusic() {
     timerInterval = startTimerUtil();
 }
 
-function updateArrowsVisibilitySound() {
-    const leftArrow = document.querySelector('.nav-arrow.left');
-    const rightArrow = document.querySelector('.nav-arrow.right');
-
-    if (leftArrow && rightArrow) {
-        // Manage visibility based on current index
-        leftArrow.style.display = currentHintIndex > 1 ? 'block' : 'none';
-        rightArrow.style.display = currentHintIndex < maxHintIndex ? 'block' : 'none';
-    }
-}
-
 function navigateAudio(direction) {
-    const newIndex = currentHintIndex + direction;
+    const newIndex = hintNav.currentIndex + direction;
 
-    // Navigate only between 1 and max unlocked hints
-    if (newIndex >= 1 && newIndex <= maxHintIndex) {
-        currentHintIndex = newIndex;
+    // Navigate only between 0 and max unlocked hints
+    if (hintNav.navigateTo(newIndex)) {
         const audio = document.querySelector('audio');
-        audio.src = cachedGame.sound[currentHintIndex - 1];
+        audio.src = cachedGame.sound[hintNav.currentIndex];
         audio.play();
-        updateArrowsVisibilitySound();
+        updateArrowsVisibility(hintNav.currentIndex, hintNav.maxUnlockedIndex);
     }
 }
 
 function showHint() {
     const hintButton = document.getElementById('hint-button');
 
-    if (maxHintIndex < cachedGame.sound.length) {
-        maxHintIndex++;
-        currentHintIndex = maxHintIndex;
-
+    if (hintNav.unlockNext()) {
         const audio = document.querySelector('audio');
-        audio.src = cachedGame.sound[currentHintIndex - 1];
+        audio.src = cachedGame.sound[hintNav.currentIndex];
         audio.play();
 
-        if (maxHintIndex > 1 && !arrowsCreated) {
+        // Create navigation arrows when unlocking the 2nd hint (maxUnlockedIndex becomes 1)
+        if (hintNav.maxUnlockedIndex === 1 && !arrowsCreated) {
             createNavigationArrows(navigateAudio);
             arrowsCreated = true;
         }
-        updateArrowsVisibilitySound();
+        updateArrowsVisibility(hintNav.currentIndex, hintNav.maxUnlockedIndex);
     }
 
-    if (maxHintIndex === cachedGame.sound.length) {
+    if (hintNav.isLastUnlocked()) {
         hintButton.innerText = "Abandonner";
         hintButton.onclick = abandonGame;
     }
