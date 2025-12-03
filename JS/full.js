@@ -129,13 +129,7 @@ function displayHint(index) {
 
     contentDiv.appendChild(hintContainer);
 
-    // Create navigation arrows if we have more than one hint and arrows not yet created
-    if (maxHintIndex > 0 && !arrowsCreated) {
-        createNavigationArrows(navigateHint);
-        arrowsCreated = true;
-    }
-
-    // Update arrows visibility
+    // Update arrows visibility (only if arrows have been created)
     if (arrowsCreated) {
         updateArrowsVisibility(currentHintIndex, maxHintIndex);
     }
@@ -155,6 +149,17 @@ function showHint() {
     if (currentHintIndex < maxHintIndex) {
         currentHintIndex++;
         displayHint(currentHintIndex);
+
+        // Create navigation arrows when unlocking the 2nd hint
+        if (currentHintIndex === 1 && !arrowsCreated) {
+            createNavigationArrows(navigateHint);
+            arrowsCreated = true;
+        }
+
+        // Update arrows visibility after navigation
+        if (arrowsCreated) {
+            updateArrowsVisibility(currentHintIndex, maxHintIndex);
+        }
 
         // If we've reached the last hint, change button to "Abandon"
         if (currentHintIndex === maxHintIndex) {
