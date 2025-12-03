@@ -19,18 +19,19 @@ import {
     setupEnterKeyHandler,
     showCorrectAnswerFeedback,
     showIncorrectAnswerFeedback,
-    initializeGameTitle
+    initializeGameTitle,
+    createHintNavigationSystem
 } from './gameUtils.js';
 
 let timerInterval;
 let cachedTitle = '';
-let correctAnswerGiven = false;
-let currentHintIndex = 0;
-let maxHintIndex = 0;
-let gameImages = [];
 let cachedGame = null;
+let correctAnswerGiven = false;
+let hintNav = null;
+let gameImages = [];
 let isInputFocused = false;
 let arrowsCreated = false;
+let keyboardNavigationSetup = false;
 
 // === Get current profile ===
 let currentProfile = getCurrentProfile();
@@ -57,11 +58,12 @@ function launchGameImage() {
     contentDiv.innerHTML = '';
 
     gameImages = cachedGame.image;
-    currentHintIndex = 0;
-    maxHintIndex = 0;
+    
+    // Initialize hint navigation system
+    hintNav = createHintNavigationSystem(gameImages.length);
 
     const img = document.createElement('img');
-    img.src = gameImages[currentHintIndex];
+    img.src = gameImages[hintNav.currentIndex];
     img.id = 'game-image';
     img.style.width = '100%';
     img.style.position = 'relative';
@@ -83,11 +85,11 @@ function launchGameImage() {
     }
 }
 
-function createNavigationArrowsForImage() {
-    if (arrowsCreated) return;
-
-    createNavigationArrows(navigateImage);
-
+function setupKeyboardNavigation() {
+    // Prevent adding duplicate event listeners
+    if (keyboardNavigationSetup) return;
+    keyboardNavigationSetup = true;
+    
     // Keyboard listener for arrow keys
     document.addEventListener('keydown', (e) => {
         if (!isInputFocused) {
@@ -105,25 +107,23 @@ function createNavigationArrowsForImage() {
     userInput.addEventListener('blur', () => {
         isInputFocused = false;
     });
-
-    arrowsCreated = true;
 }
 
 function navigateImage(direction) {
-    const imgElement = document.getElementById('game-image');
+    const newIndex = hintNav.currentIndex + direction;
 
-    if (direction === -1 && currentHintIndex > 0) {
-        currentHintIndex--;
-    } else if (direction === 1 && currentHintIndex < maxHintIndex) {
-        currentHintIndex++;
+    if (hintNav.navigateTo(newIndex)) {
+        const imgElement = document.getElementById('game-image');
+        
+        // Slider effect
+        imgElement.style.opacity = '0';
+        setTimeout(() => {
+            imgElement.src = gameImages[hintNav.currentIndex];
+            imgElement.style.opacity = '1';
+        }, 300);
+
+        updateArrowsVisibility(hintNav.currentIndex, hintNav.maxUnlockedIndex);
     }
-
-    // Slider effect
-    imgElement.style.opacity = '0';
-    setTimeout(() => {
-        imgElement.src = gameImages[currentHintIndex];
-        imgElement.style.opacity = '1';
-    }, 300);
 }
 
 function checkAnswer() {
@@ -151,28 +151,34 @@ function nextQuestion() {
 }
 
 function showHint() {
-    if (maxHintIndex < gameImages.length - 1) {
-        maxHintIndex++;
-        currentHintIndex = maxHintIndex;
-
+    if (hintNav.unlockNext()) {
         const imgElement = document.getElementById('game-image');
 
         // Slider effect
         imgElement.style.opacity = '0';
         setTimeout(() => {
-            imgElement.src = gameImages[currentHintIndex];
+            imgElement.src = gameImages[hintNav.currentIndex];
             imgElement.style.opacity = '1';
         }, 300);
 
         // If we've reached the last image, change button to "Abandon"
-        if (maxHintIndex === gameImages.length - 1) {
+        if (hintNav.isLastUnlocked()) {
             const hintButton = document.getElementById('hint-button');
             hintButton.innerText = "Abandonner";
             hintButton.onclick = abandonGame;
         }
     }
-    if (maxHintIndex === 1 && !arrowsCreated) {
-        createNavigationArrowsForImage();
+    
+    // Create navigation arrows when unlocking the 2nd hint (maxUnlockedIndex becomes 1)
+    if (hintNav.maxUnlockedIndex === 1 && !arrowsCreated) {
+        createNavigationArrows(navigateImage);
+        setupKeyboardNavigation();
+        arrowsCreated = true;
+    }
+
+    // Update arrows visibility
+    if (arrowsCreated) {
+        updateArrowsVisibility(hintNav.currentIndex, hintNav.maxUnlockedIndex);
     }
 }
 
