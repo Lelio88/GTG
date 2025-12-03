@@ -1628,9 +1628,9 @@ export const games = [
             '../Medias/Image/Star Wars Battlefront 3.jpg',
         ],
         sound: [
-            '../Medias/Sound/Star Wars Battlefront 1.jpg',
-            '../Medias/Sound/Star Wars Battlefront 2.jpg',
-            '../Medias/Sound/Star Wars Battlefront 3.jpg',
+            '../Medias/Sound/Star Wars Battlefront 1.mp3',
+            '../Medias/Sound/Star Wars Battlefront 2.mp3',
+            '../Medias/Sound/Star Wars Battlefront 3.mp3',
         ],
         text: [
             "Cette série de jeux de tir développée par EA DICE propose des batailles massives dans l’univers emblématique de la saga galactique.",
@@ -1646,9 +1646,9 @@ export const games = [
             '../Medias/Image/Stardew Valley 3.jpg',
         ],
         sound: [
-            '../Medias/Sound/Stardew Valley 1.jpg',
-            '../Medias/Sound/Stardew Valley 2.jpg',
-            '../Medias/Sound/Stardew Valley 3.jpg',
+            '../Medias/Sound/Stardew Valley 1.mp3',
+            '../Medias/Sound/Stardew Valley 2.mp3',
+            '../Medias/Sound/Stardew Valley 3.mp3',
         ],
         text: [
             "Ce jeu indépendant de simulation développé par ConcernedApe mélange gestion, exploration et interaction sociale dans un univers pixel art charmant.",
@@ -1790,9 +1790,9 @@ export const games = [
             '../Medias/Image/Pokemon 3.jpg',
         ],
         sound: [
-            '../Medias/Image/Pokemon 1.jpg',
-            '../Medias/Image/Pokemon 2.jpg',
-            '../Medias/Image/Pokemon 3.jpg',
+            '../Medias/Image/Pokemon 1.mp3',
+            '../Medias/Image/Pokemon 2.mp3',
+            '../Medias/Image/Pokemon 3.mp3',
         ],
         text: [
             "Cette franchise emblématique, développée par Game Freak, mélange exploration et combat dans un univers vaste et coloré.",
@@ -1808,9 +1808,9 @@ export const games = [
             '../Medias/Image/Road 96 3.jpg',
         ],
         sound: [
-            '../Medias/Image/Road 96 1.jpg',
-            '../Medias/Image/Road 96 2.jpg',
-            '../Medias/Image/Road 96 3.jpg',
+            '../Medias/Image/Road 96 1.mp3',
+            '../Medias/Image/Road 96 2.mp3',
+            '../Medias/Image/Road 96 3.mp3',
         ],
         text: [
             "Ce jeu narratif développé par DigixArt propose une aventure procédurale où chaque partie est unique, mêlant road trip et choix impactant.",
@@ -1826,9 +1826,9 @@ export const games = [
             '../Medias/Image/Firewatch 3.jpg',
         ],
         sound: [
-            '../Medias/Image/Firewatch 1.jpg',
-            '../Medias/Image/Firewatch 2.jpg',
-            '../Medias/Image/Firewatch 3.jpg',
+            '../Medias/Image/Firewatch 1.mp3',
+            '../Medias/Image/Firewatch 2.mp3',
+            '../Medias/Image/Firewatch 3.mp3',
         ],
         text: [
             "Ce jeu narratif à la première personne, développé par Campo Santo, se déroule dans une réserve naturelle.",
@@ -2562,4 +2562,5 @@ export const abbreviations = {
     'ark: survival evolved': ['ark'],
     'the sims': ['sims'],
     'cyberpunk 2077': ['cyberpunk'],
+    'assassin\'s creed': ['ac'],
 };
