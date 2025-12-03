@@ -15,6 +15,8 @@ import {
     updateScoreboard,
     createNavigationArrows,
     updateArrowsVisibility,
+    removeNavigationArrows,
+    createHintNavigationSystem,
     nextQuestion as nextQuestionUtil,
     setupEnterKeyHandler,
     showCorrectAnswerFeedback,
@@ -25,10 +27,9 @@ import {
 let timerInterval;
 let cachedTitle = '';
 let correctAnswerGiven = false;
-let currentHintIndex = 0;
-let maxHintIndex = 0;
 let cachedGame = null;
 let arrowsCreated = false;
+let hintNav = null;  // The navigation system
 
 // === Get current profile ===
 let currentProfile = getCurrentProfile();
@@ -51,20 +52,18 @@ function launchGameFull() {
 
     initializeGameTitle(cachedTitle);
 
-    const contentDiv = document.getElementById('content');
-    contentDiv.innerHTML = '';
-
-    currentHintIndex = 0;
-
-    // Calculate max hint index
-    maxHintIndex = Math.max(
+    // Calculate total hints
+    const totalHints = Math.max(
         cachedGame.image.length,
         cachedGame.sound.length,
         cachedGame.text.length
-    ) - 1;
+    );
 
-    // Display first hint triplet
-    displayHint(currentHintIndex);
+    // Initialize hint navigation system
+    hintNav = createHintNavigationSystem(totalHints);
+
+    // Display first hint
+    displayHint(hintNav.currentIndex);
 
     timerInterval = startTimerUtil();
 }
@@ -72,7 +71,10 @@ function launchGameFull() {
 function displayHint(index) {
     const contentDiv = document.getElementById('content');
 
+    // Remove only non-arrow content (preserve arrows if they exist)
+    const arrows = contentDiv.querySelectorAll('.nav-arrow');
     contentDiv.innerHTML = '';
+    arrows.forEach(arrow => contentDiv.appendChild(arrow));
 
     // Main container (column)
     const hintContainer = document.createElement('div');
@@ -127,42 +129,42 @@ function displayHint(index) {
         hintContainer.appendChild(audio);
     }
 
-    contentDiv.appendChild(hintContainer);
+    // Insert content before arrows
+    contentDiv.insertBefore(hintContainer, contentDiv.firstChild);
 
     // Update arrows visibility (only if arrows have been created)
     if (arrowsCreated) {
-        updateArrowsVisibility(currentHintIndex, maxHintIndex);
+        updateArrowsVisibility(hintNav.currentIndex, hintNav.maxUnlockedIndex);
     }
 }
 
 function navigateHint(direction) {
-    const newIndex = currentHintIndex + direction;
-    if (newIndex >= 0 && newIndex <= maxHintIndex) {
-        currentHintIndex = newIndex;
-        displayHint(currentHintIndex);
+    const newIndex = hintNav.currentIndex + direction;
+    if (hintNav.navigateTo(newIndex)) {
+        displayHint(hintNav.currentIndex);
     }
 }
 
 function showHint() {
     const hintButton = document.getElementById('hint-button');
     
-    if (currentHintIndex < maxHintIndex) {
-        currentHintIndex++;
-        displayHint(currentHintIndex);
+    if (hintNav.unlockNext()) {
+        displayHint(hintNav.currentIndex);
 
-        // Create navigation arrows when unlocking the 2nd hint
-        if (currentHintIndex === 1 && !arrowsCreated) {
+        // Create navigation arrows when unlocking the 2nd hint (index 1)
+        if (hintNav.maxUnlockedIndex === 1 && !arrowsCreated) {
             createNavigationArrows(navigateHint);
             arrowsCreated = true;
+            updateArrowsVisibility(hintNav.currentIndex, hintNav.maxUnlockedIndex);
         }
 
         // Update arrows visibility after navigation
         if (arrowsCreated) {
-            updateArrowsVisibility(currentHintIndex, maxHintIndex);
+            updateArrowsVisibility(hintNav.currentIndex, hintNav.maxUnlockedIndex);
         }
 
         // If we've reached the last hint, change button to "Abandon"
-        if (currentHintIndex === maxHintIndex) {
+        if (hintNav.isLastUnlocked()) {
             hintButton.innerText = "Abandonner";
             hintButton.onclick = abandonGame;
         }

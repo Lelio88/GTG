@@ -147,13 +147,72 @@ export function updateScoreboard(currentProfile) {
 }
 
 /**
- * Create navigation arrows
+ * Create a hint navigation system to manage progressive hint unlocking
+ * @param {number} totalHints - Total number of hints available
+ * @returns {Object} Navigation system object
+ */
+export function createHintNavigationSystem(totalHints) {
+    return {
+        currentIndex: 0,
+        maxUnlockedIndex: 0,  // At start, only index 0 is accessible
+        maxTotalIndex: totalHints - 1,
+        
+        /**
+         * Unlock the next hint
+         * @returns {boolean} True if a hint was unlocked, false if all unlocked
+         */
+        unlockNext() {
+            if (this.maxUnlockedIndex < this.maxTotalIndex) {
+                this.maxUnlockedIndex++;
+                this.currentIndex = this.maxUnlockedIndex;
+                return true;
+            }
+            return false;
+        },
+        
+        /**
+         * Navigate to a specific index (only if unlocked)
+         * @param {number} index - The index to navigate to
+         * @returns {boolean} True if navigation was successful
+         */
+        navigateTo(index) {
+            if (index >= 0 && index <= this.maxUnlockedIndex) {
+                this.currentIndex = index;
+                return true;
+            }
+            return false;
+        },
+        
+        /**
+         * Check if all hints are unlocked
+         * @returns {boolean} True if at the last hint
+         */
+        isLastUnlocked() {
+            return this.maxUnlockedIndex === this.maxTotalIndex;
+        },
+        
+        /**
+         * Check if arrows should be displayed (need at least 2 unlocked hints)
+         * @returns {boolean} True if arrows should be shown
+         */
+        shouldShowArrows() {
+            return this.maxUnlockedIndex >= 1;
+        }
+    };
+}
+
+/**
+ * Create navigation arrows OUTSIDE content div to persist across content changes
  * @param {Function} onNavigate - Callback function for navigation (receives direction: -1 or 1)
  * @returns {boolean} Whether arrows were created
  */
 export function createNavigationArrows(onNavigate) {
+    // Remove existing arrows if they exist
+    removeNavigationArrows();
+    
+    const gameDiv = document.getElementById('game');
     const contentDiv = document.getElementById('content');
-
+    
     const leftArrow = document.createElement('div');
     leftArrow.className = 'nav-arrow left';
     leftArrow.innerHTML = '&#9664;';
@@ -164,10 +223,19 @@ export function createNavigationArrows(onNavigate) {
     rightArrow.innerHTML = '&#9654;';
     rightArrow.onclick = () => onNavigate(1);
 
+    // Insert arrows into content div (they will be positioned absolutely)
     contentDiv.appendChild(leftArrow);
     contentDiv.appendChild(rightArrow);
 
     return true;
+}
+
+/**
+ * Remove navigation arrows
+ */
+export function removeNavigationArrows() {
+    const arrows = document.querySelectorAll('.nav-arrow');
+    arrows.forEach(arrow => arrow.remove());
 }
 
 /**

@@ -15,6 +15,8 @@ import {
     updateScoreboard,
     createNavigationArrows,
     updateArrowsVisibility,
+    removeNavigationArrows,
+    createHintNavigationSystem,
     nextQuestion as nextQuestionUtil,
     setupEnterKeyHandler,
     showCorrectAnswerFeedback,
@@ -25,12 +27,10 @@ import {
 let timerInterval;
 let cachedTitle = '';
 let correctAnswerGiven = false;
-let currentHintIndex = 0;
-let maxHintIndex = 0;
-let gameImages = [];
 let cachedGame = null;
 let isInputFocused = false;
 let arrowsCreated = false;
+let hintNav = null;  // The navigation system
 
 // === Get current profile ===
 let currentProfile = getCurrentProfile();
@@ -53,41 +53,43 @@ function launchGameImage() {
 
     initializeGameTitle(cachedTitle);
 
-    const contentDiv = document.getElementById('content');
-    contentDiv.innerHTML = '';
+    // Initialize hint navigation system
+    hintNav = createHintNavigationSystem(cachedGame.image.length);
 
-    gameImages = cachedGame.image;
-    currentHintIndex = 0;
-    maxHintIndex = 0;
+    // Display first image
+    displayImage(hintNav.currentIndex);
+
+    timerInterval = startTimerUtil();
+
+    // Setup keyboard navigation
+    setupKeyboardNavigation();
+}
+
+function displayImage(index) {
+    const contentDiv = document.getElementById('content');
+
+    // Remove only non-arrow content (preserve arrows if they exist)
+    const arrows = contentDiv.querySelectorAll('.nav-arrow');
+    contentDiv.innerHTML = '';
+    arrows.forEach(arrow => contentDiv.appendChild(arrow));
 
     const img = document.createElement('img');
-    img.src = gameImages[currentHintIndex];
+    img.src = cachedGame.image[index];
     img.id = 'game-image';
     img.style.width = '100%';
     img.style.position = 'relative';
     img.style.transition = 'opacity 0.5s ease';
-    contentDiv.appendChild(img);
+    
+    // Insert image before arrows
+    contentDiv.insertBefore(img, contentDiv.firstChild);
 
-    timerInterval = startTimerUtil();
-
-    let hintButton = document.getElementById('hint-button');
-    if (!hintButton) {
-        hintButton = document.createElement('button');
-        hintButton.id = 'hint-button';
-        hintButton.innerText = "Indice";
-        hintButton.onclick = showHint;
-        document.getElementById('content').appendChild(hintButton);
-    } else {
-        hintButton.innerText = "Indice";
-        hintButton.onclick = showHint;
+    // Update arrows visibility (only if arrows have been created)
+    if (arrowsCreated) {
+        updateArrowsVisibility(hintNav.currentIndex, hintNav.maxUnlockedIndex);
     }
 }
 
-function createNavigationArrowsForImage() {
-    if (arrowsCreated) return;
-
-    createNavigationArrows(navigateImage);
-
+function setupKeyboardNavigation() {
     // Keyboard listener for arrow keys
     document.addEventListener('keydown', (e) => {
         if (!isInputFocused) {
@@ -105,25 +107,25 @@ function createNavigationArrowsForImage() {
     userInput.addEventListener('blur', () => {
         isInputFocused = false;
     });
-
-    arrowsCreated = true;
 }
 
 function navigateImage(direction) {
-    const imgElement = document.getElementById('game-image');
+    const newIndex = hintNav.currentIndex + direction;
+    if (hintNav.navigateTo(newIndex)) {
+        const imgElement = document.getElementById('game-image');
+        
+        // Slider effect
+        imgElement.style.opacity = '0';
+        setTimeout(() => {
+            imgElement.src = cachedGame.image[hintNav.currentIndex];
+            imgElement.style.opacity = '1';
+        }, 300);
 
-    if (direction === -1 && currentHintIndex > 0) {
-        currentHintIndex--;
-    } else if (direction === 1 && currentHintIndex < maxHintIndex) {
-        currentHintIndex++;
+        // Update arrows visibility
+        if (arrowsCreated) {
+            updateArrowsVisibility(hintNav.currentIndex, hintNav.maxUnlockedIndex);
+        }
     }
-
-    // Slider effect
-    imgElement.style.opacity = '0';
-    setTimeout(() => {
-        imgElement.src = gameImages[currentHintIndex];
-        imgElement.style.opacity = '1';
-    }, 300);
 }
 
 function checkAnswer() {
@@ -151,28 +153,35 @@ function nextQuestion() {
 }
 
 function showHint() {
-    if (maxHintIndex < gameImages.length - 1) {
-        maxHintIndex++;
-        currentHintIndex = maxHintIndex;
+    const hintButton = document.getElementById('hint-button');
 
+    if (hintNav.unlockNext()) {
         const imgElement = document.getElementById('game-image');
 
         // Slider effect
         imgElement.style.opacity = '0';
         setTimeout(() => {
-            imgElement.src = gameImages[currentHintIndex];
+            imgElement.src = cachedGame.image[hintNav.currentIndex];
             imgElement.style.opacity = '1';
         }, 300);
 
-        // If we've reached the last image, change button to "Abandon"
-        if (maxHintIndex === gameImages.length - 1) {
-            const hintButton = document.getElementById('hint-button');
+        // Create navigation arrows when unlocking the 2nd hint (index 1)
+        if (hintNav.maxUnlockedIndex === 1 && !arrowsCreated) {
+            createNavigationArrows(navigateImage);
+            arrowsCreated = true;
+            updateArrowsVisibility(hintNav.currentIndex, hintNav.maxUnlockedIndex);
+        }
+
+        // Update arrows visibility after navigation
+        if (arrowsCreated) {
+            updateArrowsVisibility(hintNav.currentIndex, hintNav.maxUnlockedIndex);
+        }
+
+        // If we've reached the last hint, change button to "Abandon"
+        if (hintNav.isLastUnlocked()) {
             hintButton.innerText = "Abandonner";
             hintButton.onclick = abandonGame;
         }
-    }
-    if (maxHintIndex === 1 && !arrowsCreated) {
-        createNavigationArrowsForImage();
     }
 }
 

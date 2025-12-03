@@ -15,6 +15,8 @@ import {
     updateScoreboard,
     createNavigationArrows,
     updateArrowsVisibility,
+    removeNavigationArrows,
+    createHintNavigationSystem,
     nextQuestion as nextQuestionUtil,
     setupEnterKeyHandler,
     showCorrectAnswerFeedback,
@@ -24,11 +26,10 @@ import {
 
 let timerInterval;
 let cachedTitle = '';
-let currentHintIndex = 0;
 let correctAnswerGiven = false;
 let cachedGame = null;
 let arrowsCreated = false;
-let maxHintIndex = 1; // Start at 1 because we have the first sound
+let hintNav = null;  // The navigation system
 
 // === Get current profile ===
 let currentProfile = getCurrentProfile();
@@ -51,13 +52,25 @@ function launchGameMusic() {
 
     initializeGameTitle(cachedTitle);
 
-    const contentDiv = document.getElementById('content');
-    contentDiv.innerHTML = '';
+    // Initialize hint navigation system
+    hintNav = createHintNavigationSystem(cachedGame.sound.length);
 
-    currentHintIndex = 1;
+    // Display first sound
+    displaySound(hintNav.currentIndex);
+
+    timerInterval = startTimerUtil();
+}
+
+function displaySound(index) {
+    const contentDiv = document.getElementById('content');
+
+    // Remove only non-arrow content (preserve arrows if they exist)
+    const arrows = contentDiv.querySelectorAll('.nav-arrow');
+    contentDiv.innerHTML = '';
+    arrows.forEach(arrow => contentDiv.appendChild(arrow));
 
     const audio = document.createElement('audio');
-    audio.src = cachedGame.sound[0]; // First sound by default
+    audio.src = cachedGame.sound[index];
     audio.id = 'game-audio';
     audio.autoplay = false;
     audio.loop = false;
@@ -65,56 +78,50 @@ function launchGameMusic() {
     audio.style.width = '100%';
     audio.style.position = 'relative';
     audio.style.transition = 'opacity 0.5s ease';
-    contentDiv.appendChild(audio);
+    
+    // Insert audio before arrows
+    contentDiv.insertBefore(audio, contentDiv.firstChild);
 
-    timerInterval = startTimerUtil();
-}
-
-function updateArrowsVisibilitySound() {
-    const leftArrow = document.querySelector('.nav-arrow.left');
-    const rightArrow = document.querySelector('.nav-arrow.right');
-
-    if (leftArrow && rightArrow) {
-        // Manage visibility based on current index
-        leftArrow.style.display = currentHintIndex > 1 ? 'block' : 'none';
-        rightArrow.style.display = currentHintIndex < maxHintIndex ? 'block' : 'none';
+    // Update arrows visibility (only if arrows have been created)
+    if (arrowsCreated) {
+        updateArrowsVisibility(hintNav.currentIndex, hintNav.maxUnlockedIndex);
     }
 }
 
 function navigateAudio(direction) {
-    const newIndex = currentHintIndex + direction;
-
-    // Navigate only between 1 and max unlocked hints
-    if (newIndex >= 1 && newIndex <= maxHintIndex) {
-        currentHintIndex = newIndex;
+    const newIndex = hintNav.currentIndex + direction;
+    if (hintNav.navigateTo(newIndex)) {
+        displaySound(hintNav.currentIndex);
         const audio = document.querySelector('audio');
-        audio.src = cachedGame.sound[currentHintIndex - 1];
         audio.play();
-        updateArrowsVisibilitySound();
     }
 }
 
 function showHint() {
     const hintButton = document.getElementById('hint-button');
 
-    if (maxHintIndex < cachedGame.sound.length) {
-        maxHintIndex++;
-        currentHintIndex = maxHintIndex;
-
+    if (hintNav.unlockNext()) {
+        displaySound(hintNav.currentIndex);
         const audio = document.querySelector('audio');
-        audio.src = cachedGame.sound[currentHintIndex - 1];
         audio.play();
 
-        if (maxHintIndex > 1 && !arrowsCreated) {
+        // Create navigation arrows when unlocking the 2nd hint (index 1)
+        if (hintNav.maxUnlockedIndex === 1 && !arrowsCreated) {
             createNavigationArrows(navigateAudio);
             arrowsCreated = true;
+            updateArrowsVisibility(hintNav.currentIndex, hintNav.maxUnlockedIndex);
         }
-        updateArrowsVisibilitySound();
-    }
 
-    if (maxHintIndex === cachedGame.sound.length) {
-        hintButton.innerText = "Abandonner";
-        hintButton.onclick = abandonGame;
+        // Update arrows visibility after navigation
+        if (arrowsCreated) {
+            updateArrowsVisibility(hintNav.currentIndex, hintNav.maxUnlockedIndex);
+        }
+
+        // If we've reached the last hint, change button to "Abandon"
+        if (hintNav.isLastUnlocked()) {
+            hintButton.innerText = "Abandonner";
+            hintButton.onclick = abandonGame;
+        }
     }
 }
 
