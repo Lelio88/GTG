@@ -25,9 +25,9 @@ import {
 
 let timerInterval;
 let cachedTitle = '';
+let cachedGame = null;
 let correctAnswerGiven = false;
 let hintNav = null;
-let cachedGame = null;
 let arrowsCreated = false;
 
 // === Get current profile ===

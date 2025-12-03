@@ -25,8 +25,8 @@ import {
 
 let timerInterval;
 let cachedTitle = '';
-let correctAnswerGiven = false;
 let cachedGame = null;
+let correctAnswerGiven = false;
 let arrowsCreated = false;
 let hintNav = null;
 

@@ -25,12 +25,13 @@ import {
 
 let timerInterval;
 let cachedTitle = '';
+let cachedGame = null;
 let correctAnswerGiven = false;
 let hintNav = null;
 let gameImages = [];
-let cachedGame = null;
 let isInputFocused = false;
 let arrowsCreated = false;
+let keyboardNavigationSetup = false;
 
 // === Get current profile ===
 let currentProfile = getCurrentProfile();
@@ -85,6 +86,10 @@ function launchGameImage() {
 }
 
 function setupKeyboardNavigation() {
+    // Prevent adding duplicate event listeners
+    if (keyboardNavigationSetup) return;
+    keyboardNavigationSetup = true;
+    
     // Keyboard listener for arrow keys
     document.addEventListener('keydown', (e) => {
         if (!isInputFocused) {

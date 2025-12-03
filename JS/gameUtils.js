@@ -148,14 +148,15 @@ export function updateScoreboard(currentProfile) {
 
 /**
  * Create a hint navigation system to manage progressive hint unlocking
- * @param {number} totalHints - Total number of hints available
+ * @param {number} totalHints - Total number of hints available (must be >= 1)
  * @returns {Object} Navigation system object with methods to manage hints
  */
 export function createHintNavigationSystem(totalHints) {
+    const validatedTotal = Math.max(1, totalHints || 1);
     return {
         currentIndex: 0,
         maxUnlockedIndex: 0,  // Initially, only hint 0 is accessible
-        maxTotalIndex: totalHints - 1,
+        maxTotalIndex: validatedTotal - 1,
         
         unlockNext() {
             if (this.maxUnlockedIndex < this.maxTotalIndex) {
