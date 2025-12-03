@@ -67,7 +67,6 @@ function launchGameMusic() {
     audio.style.transition = 'opacity 0.5s ease';
     contentDiv.appendChild(audio);
 
-    updateArrowsVisibilitySound();
     timerInterval = startTimerUtil();
 }
 
