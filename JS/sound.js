@@ -32,6 +32,9 @@ let maxHintIndex = 1; // Start at 1 because we have the first sound
 
 // === Get current profile ===
 let currentProfile = getCurrentProfile();
+if (!currentProfile) {
+    window.location.href = '../index.html';
+}
 currentProfile = initializeProfile(currentProfile);
 
 // === Filter already found games in "sound" mode ===
