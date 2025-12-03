@@ -17,12 +17,13 @@ import {
     setupEnterKeyHandler,
     showCorrectAnswerFeedback,
     showIncorrectAnswerFeedback,
-    initializeGameTitle
+    initializeGameTitle,
+    createHintNavigationSystem
 } from './gameUtils.js';
 
 let cachedGame = null;
 let cachedTitle = '';
-let currentHintIndex = 0;
+let hintNav = null;
 let correctAnswerGiven = false;
 let timerInterval;
 
@@ -49,25 +50,26 @@ function launchGameText() {
 
     const contentDiv = document.getElementById('content');
     contentDiv.innerHTML = ''; // reset
-    currentHintIndex = 0;
+    
+    // Initialize hint navigation system
+    hintNav = createHintNavigationSystem(cachedGame.text.length);
 
     // Display first paragraph
     const p = document.createElement('p');
-    p.textContent = cachedGame.text[currentHintIndex];
+    p.textContent = cachedGame.text[hintNav.currentIndex];
     contentDiv.appendChild(p);
 }
 
 function showHint() {
     const contentDiv = document.getElementById('content');
 
-    if (currentHintIndex < cachedGame.text.length - 1) {
-        currentHintIndex++;
+    if (hintNav.unlockNext()) {
         const p = document.createElement('p');
-        p.textContent = cachedGame.text[currentHintIndex];
+        p.textContent = cachedGame.text[hintNav.currentIndex];
         contentDiv.appendChild(p);
 
         // Last hint? Change the button
-        if (currentHintIndex === cachedGame.text.length - 1) {
+        if (hintNav.isLastUnlocked()) {
             const hintButton = document.getElementById('hint-button');
             hintButton.innerText = "Abandonner";
             hintButton.onclick = abandonGame;

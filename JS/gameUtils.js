@@ -147,12 +147,61 @@ export function updateScoreboard(currentProfile) {
 }
 
 /**
+ * Create a hint navigation system to manage progressive hint unlocking
+ * @param {number} totalHints - Total number of hints available
+ * @returns {Object} Navigation system object with methods to manage hints
+ */
+export function createHintNavigationSystem(totalHints) {
+    return {
+        currentIndex: 0,
+        maxUnlockedIndex: 0,  // Initially, only hint 0 is accessible
+        maxTotalIndex: totalHints - 1,
+        
+        unlockNext() {
+            if (this.maxUnlockedIndex < this.maxTotalIndex) {
+                this.maxUnlockedIndex++;
+                this.currentIndex = this.maxUnlockedIndex;
+                return true;
+            }
+            return false;
+        },
+        
+        navigateTo(index) {
+            if (index >= 0 && index <= this.maxUnlockedIndex) {
+                this.currentIndex = index;
+                return true;
+            }
+            return false;
+        },
+        
+        isLastUnlocked() {
+            return this.maxUnlockedIndex === this.maxTotalIndex;
+        },
+        
+        shouldShowArrows() {
+            return this.maxUnlockedIndex >= 1;
+        }
+    };
+}
+
+/**
+ * Remove navigation arrows from the DOM
+ */
+export function removeNavigationArrows() {
+    const arrows = document.querySelectorAll('.nav-arrow');
+    arrows.forEach(arrow => arrow.remove());
+}
+
+/**
  * Create navigation arrows
  * @param {Function} onNavigate - Callback function for navigation (receives direction: -1 or 1)
  * @returns {boolean} Whether arrows were created
  */
 export function createNavigationArrows(onNavigate) {
-    const contentDiv = document.getElementById('content');
+    // Remove old arrows if they exist
+    removeNavigationArrows();
+    
+    const gameDiv = document.getElementById('game');
 
     const leftArrow = document.createElement('div');
     leftArrow.className = 'nav-arrow left';
@@ -164,8 +213,8 @@ export function createNavigationArrows(onNavigate) {
     rightArrow.innerHTML = '&#9654;';
     rightArrow.onclick = () => onNavigate(1);
 
-    contentDiv.appendChild(leftArrow);
-    contentDiv.appendChild(rightArrow);
+    gameDiv.appendChild(leftArrow);
+    gameDiv.appendChild(rightArrow);
 
     return true;
 }
