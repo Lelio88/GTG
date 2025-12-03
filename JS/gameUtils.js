@@ -292,3 +292,84 @@ export function initializeGameTitle(title) {
     gameTitleElement.innerText = title;
     gameTitleElement.style.opacity = '0';
 }
+
+/**
+ * Reveal the game title before abandoning
+ * @param {string} title - The game title to reveal
+ * @param {Object} options - Configuration options
+ * @param {string} options.mode - Display mode: 'modal' or 'inline' (default: 'modal')
+ * @param {boolean} options.autoAdvance - Auto-advance after delay (default: true)
+ * @param {number} options.delay - Delay in ms before auto-advance (default: 2000)
+ * @returns {Promise} Resolves when user clicks OK or after delay if autoAdvance is true
+ */
+export function revealTitle(title, options = {}) {
+    const { mode = 'modal', autoAdvance = true, delay = 2000 } = options;
+
+    return new Promise((resolve) => {
+        if (mode === 'modal') {
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;';
+
+            // Create title element
+            const titleElement = document.createElement('h2');
+            titleElement.innerText = title;
+            titleElement.style.cssText = 'color:#fff;font-size:2rem;margin-bottom:20px;text-align:center;';
+            overlay.appendChild(titleElement);
+
+            // Create OK button
+            const okButton = document.createElement('button');
+            okButton.innerText = 'OK';
+            okButton.style.cssText = 'padding:10px 30px;font-size:1rem;cursor:pointer;background:#ff8c00;color:#fff;border:none;border-radius:5px;';
+            overlay.appendChild(okButton);
+
+            document.body.appendChild(overlay);
+
+            let timeoutId = null;
+
+            const cleanup = () => {
+                if (timeoutId) {
+                    clearTimeout(timeoutId);
+                }
+                overlay.remove();
+                resolve();
+            };
+
+            okButton.addEventListener('click', cleanup);
+
+            if (autoAdvance) {
+                timeoutId = setTimeout(cleanup, delay);
+            }
+        } else {
+            // Inline mode: reveal #game-title
+            const gameTitleElement = document.getElementById('game-title');
+            if (gameTitleElement) {
+                gameTitleElement.innerText = title;
+                gameTitleElement.style.opacity = '1';
+            }
+
+            if (autoAdvance) {
+                setTimeout(resolve, delay);
+            } else {
+                // If no gameTitleElement, resolve immediately in non-autoAdvance mode
+                if (!gameTitleElement || !gameTitleElement.parentNode) {
+                    resolve();
+                    return;
+                }
+                
+                // Add a 'Continuer' button after the title
+                const continueButton = document.createElement('button');
+                continueButton.innerText = 'Continuer';
+                continueButton.style.cssText = 'padding:10px 30px;font-size:1rem;cursor:pointer;background:#ff8c00;color:#fff;border:none;border-radius:5px;margin-top:10px;';
+                
+                const cleanup = () => {
+                    continueButton.remove();
+                    resolve();
+                };
+                
+                continueButton.addEventListener('click', cleanup);
+                gameTitleElement.parentNode.insertBefore(continueButton, gameTitleElement.nextSibling);
+            }
+        }
+    });
+}
