@@ -376,6 +376,10 @@ export function revealTitle(title, options = {}) {
         } else {
             // Inline mode
             const gameTitleElement = document.getElementById('game-title');
+            if (!gameTitleElement) {
+                resolve();
+                return;
+            }
             gameTitleElement.innerText = title;
             gameTitleElement.style.opacity = '1';
 
@@ -402,7 +406,11 @@ export function revealTitle(title, options = {}) {
                     resolve();
                 };
 
-                gameTitleElement.parentNode.insertBefore(continueButton, gameTitleElement.nextSibling);
+                if (gameTitleElement.parentNode) {
+                    gameTitleElement.parentNode.insertBefore(continueButton, gameTitleElement.nextSibling);
+                } else {
+                    resolve();
+                }
             }
         }
     });
