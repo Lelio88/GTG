@@ -19,14 +19,14 @@ import {
     setupEnterKeyHandler,
     showCorrectAnswerFeedback,
     showIncorrectAnswerFeedback,
-    initializeGameTitle
+    initializeGameTitle,
+    createHintNavigationSystem
 } from './gameUtils.js';
 
 let timerInterval;
 let cachedTitle = '';
 let correctAnswerGiven = false;
-let currentHintIndex = 0;
-let maxHintIndex = 0;
+let hintNav = null;
 let cachedGame = null;
 let arrowsCreated = false;
 
@@ -54,17 +54,18 @@ function launchGameFull() {
     const contentDiv = document.getElementById('content');
     contentDiv.innerHTML = '';
 
-    currentHintIndex = 0;
-
-    // Calculate max hint index
-    maxHintIndex = Math.max(
+    // Calculate total hints
+    const totalHints = Math.max(
         cachedGame.image.length,
         cachedGame.sound.length,
         cachedGame.text.length
-    ) - 1;
+    );
+
+    // Initialize hint navigation system
+    hintNav = createHintNavigationSystem(totalHints);
 
     // Display first hint triplet
-    displayHint(currentHintIndex);
+    displayHint(hintNav.currentIndex);
 
     timerInterval = startTimerUtil();
 }
@@ -131,38 +132,36 @@ function displayHint(index) {
 
     // Update arrows visibility (only if arrows have been created)
     if (arrowsCreated) {
-        updateArrowsVisibility(currentHintIndex, maxHintIndex);
+        updateArrowsVisibility(hintNav.currentIndex, hintNav.maxUnlockedIndex);
     }
 }
 
 function navigateHint(direction) {
-    const newIndex = currentHintIndex + direction;
-    if (newIndex >= 0 && newIndex <= maxHintIndex) {
-        currentHintIndex = newIndex;
-        displayHint(currentHintIndex);
+    const newIndex = hintNav.currentIndex + direction;
+    if (hintNav.navigateTo(newIndex)) {
+        displayHint(hintNav.currentIndex);
     }
 }
 
 function showHint() {
     const hintButton = document.getElementById('hint-button');
     
-    if (currentHintIndex < maxHintIndex) {
-        currentHintIndex++;
-        displayHint(currentHintIndex);
+    if (hintNav.unlockNext()) {
+        displayHint(hintNav.currentIndex);
 
-        // Create navigation arrows when unlocking the 2nd hint
-        if (currentHintIndex === 1 && !arrowsCreated) {
+        // Create navigation arrows when unlocking the 2nd hint (maxUnlockedIndex becomes 1)
+        if (hintNav.maxUnlockedIndex === 1 && !arrowsCreated) {
             createNavigationArrows(navigateHint);
             arrowsCreated = true;
         }
 
         // Update arrows visibility after navigation
         if (arrowsCreated) {
-            updateArrowsVisibility(currentHintIndex, maxHintIndex);
+            updateArrowsVisibility(hintNav.currentIndex, hintNav.maxUnlockedIndex);
         }
 
         // If we've reached the last hint, change button to "Abandon"
-        if (currentHintIndex === maxHintIndex) {
+        if (hintNav.isLastUnlocked()) {
             hintButton.innerText = "Abandonner";
             hintButton.onclick = abandonGame;
         }
