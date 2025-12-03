@@ -32,6 +32,9 @@ let arrowsCreated = false;
 
 // === Get current profile ===
 let currentProfile = getCurrentProfile();
+if (!currentProfile) {
+    window.location.href = '../index.html';
+}
 currentProfile = initializeProfile(currentProfile);
 
 // === Filter already found games ===

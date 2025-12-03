@@ -14,12 +14,15 @@ export function getProfiles() {
 
 /**
  * Get the current profile from localStorage
- * @returns {Object} Current profile object
+ * @returns {Object|null} Current profile object or null if not found
  */
 export function getCurrentProfile() {
     const currentProfilePseudo = localStorage.getItem('currentProfile');
+    if (!currentProfilePseudo) {
+        return null;
+    }
     const profiles = getProfiles();
-    return profiles.find(p => p.pseudo === currentProfilePseudo);
+    return profiles.find(p => p.pseudo === currentProfilePseudo) || null;
 }
 
 /**
@@ -238,15 +241,4 @@ export function initializeGameTitle(title) {
     const gameTitleElement = document.getElementById('game-title');
     gameTitleElement.innerText = title;
     gameTitleElement.style.opacity = '0';
-}
-
-/**
- * Initialize window.onload with common setup
- * @param {Function} launchGameFn - Function to launch the game
- * @param {Object} currentProfile - The current profile
- */
-export function initializeGameOnLoad(launchGameFn, currentProfile) {
-    launchGameFn();
-    document.getElementById('user-input').focus();
-    updateScoreboard(currentProfile);
 }
