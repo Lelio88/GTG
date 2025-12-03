@@ -202,7 +202,7 @@ export function createHintNavigationSystem(totalHints) {
 }
 
 /**
- * Create navigation arrows OUTSIDE content div to persist across content changes
+ * Create navigation arrows inside content div (preserved by display functions)
  * @param {Function} onNavigate - Callback function for navigation (receives direction: -1 or 1)
  * @returns {boolean} Whether arrows were created
  */
