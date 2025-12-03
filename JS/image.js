@@ -1,53 +1,43 @@
 /* ============================
 IMAGE ONLY MODE
 ============================ */
-import { games, abbreviations } from '../JS/gamesDatabase.js';
-import { handleGameCompletion } from '../JS/gameCompletion.js';
+import { games } from './gamesDatabase.js';
+import { handleGameCompletion } from './gameCompletion.js';
+import {
+    getCurrentProfile,
+    initializeProfile,
+    updateProfile as updateProfileUtil,
+    getAvailableGames,
+    startTimer as startTimerUtil,
+    stopTimer,
+    abandonGame as abandonGameUtil,
+    checkAnswerValue,
+    updateScoreboard,
+    createNavigationArrows,
+    updateArrowsVisibility,
+    nextQuestion as nextQuestionUtil,
+    setupEnterKeyHandler,
+    showCorrectAnswerFeedback,
+    showIncorrectAnswerFeedback,
+    initializeGameTitle
+} from './gameUtils.js';
 
 let timerInterval;
 let cachedTitle = '';
-let correctAnswerGiven
+let correctAnswerGiven = false;
 let currentHintIndex = 0;
-let maxHintIndex = 0
+let maxHintIndex = 0;
 let gameImages = [];
 let cachedGame = null;
 let isInputFocused = false;
-let arrowsCreated = false; // Indicateur pour savoir si les flèches sont créées
+let arrowsCreated = false;
 
-// === Récupération du profil courant ===
-const currentProfilePseudo = localStorage.getItem('currentProfile');
-let profiles = JSON.parse(localStorage.getItem('profiles'));
-let currentProfile = profiles.find(p => p.pseudo === currentProfilePseudo);
+// === Get current profile ===
+let currentProfile = getCurrentProfile();
+currentProfile = initializeProfile(currentProfile);
 
-// Initialisation des jeux devinés par mode de jeu
-if (!currentProfile.guessedGamesByMode) {
-    currentProfile.guessedGamesByMode = {
-        image: [],
-        sound: [],
-        text: [],
-        full: []
-    };
-}
-
-// === Filtrage des jeux déjà trouvés ===
-const availableGames = games.filter(game => !currentProfile.guessedGamesByMode.image.includes(game.title));
-
-function updateProfile(gameTitle, isGoodAnswer) {
-    if (isGoodAnswer && !currentProfile.guessedGamesByMode.image.includes(gameTitle)) {
-        currentProfile.guessedGamesByMode.image.push(gameTitle);
-    }
-
-    if (isGoodAnswer) {
-        currentProfile.goodAnswers++;
-    } else {
-        currentProfile.badAnswers++;
-    }
-
-    const profileIndex = profiles.findIndex(p => p.pseudo === currentProfilePseudo);
-    profiles[profileIndex] = currentProfile;
-
-    localStorage.setItem('profiles', JSON.stringify(profiles));
-}
+// === Filter already found games ===
+const availableGames = getAvailableGames(games, currentProfile, 'image');
 
 function launchGameImage() {
     if (availableGames.length === 0) {
@@ -58,9 +48,7 @@ function launchGameImage() {
     cachedGame = availableGames[Math.floor(Math.random() * availableGames.length)];
     cachedTitle = cachedGame.title;
 
-    const gameTitleElement = document.getElementById('game-title');
-    gameTitleElement.innerText = cachedTitle;
-    gameTitleElement.style.opacity = '0';
+    initializeGameTitle(cachedTitle);
 
     const contentDiv = document.getElementById('content');
     contentDiv.innerHTML = '';
@@ -77,7 +65,7 @@ function launchGameImage() {
     img.style.transition = 'opacity 0.5s ease';
     contentDiv.appendChild(img);
 
-    startTimer();
+    timerInterval = startTimerUtil();
 
     let hintButton = document.getElementById('hint-button');
     if (!hintButton) {
@@ -92,25 +80,12 @@ function launchGameImage() {
     }
 }
 
-function createNavigationArrows(imageElement) {
+function createNavigationArrowsForImage() {
     if (arrowsCreated) return;
 
-    const contentDiv = document.getElementById('content');
+    createNavigationArrows(navigateImage);
 
-    const leftArrow = document.createElement('div');
-    leftArrow.className = 'nav-arrow left';
-    leftArrow.innerHTML = '&#9664;';
-    leftArrow.onclick = () => navigateImage(-1);
-
-    const rightArrow = document.createElement('div');
-    rightArrow.className = 'nav-arrow right';
-    rightArrow.innerHTML = '&#9654;';
-    rightArrow.onclick = () => navigateImage(1);
-
-    contentDiv.appendChild(leftArrow);
-    contentDiv.appendChild(rightArrow);
-
-    // Écouteur de touches pour les flèches du clavier
+    // Keyboard listener for arrow keys
     document.addEventListener('keydown', (e) => {
         if (!isInputFocused) {
             if (e.key === 'ArrowLeft') navigateImage(-1);
@@ -118,7 +93,7 @@ function createNavigationArrows(imageElement) {
         }
     });
 
-    // Gestion du focus de l'input
+    // Input focus management
     const userInput = document.getElementById('user-input');
     userInput.addEventListener('focus', () => {
         isInputFocused = true;
@@ -128,9 +103,8 @@ function createNavigationArrows(imageElement) {
         isInputFocused = false;
     });
 
-    arrowsCreated = true; // On indique que les flèches sont créées
+    arrowsCreated = true;
 }
-
 
 function navigateImage(direction) {
     const imgElement = document.getElementById('game-image');
@@ -141,68 +115,37 @@ function navigateImage(direction) {
         currentHintIndex++;
     }
 
-    // Effet de slider
+    // Slider effect
     imgElement.style.opacity = '0';
     setTimeout(() => {
         imgElement.src = gameImages[currentHintIndex];
         imgElement.style.opacity = '1';
     }, 300);
 }
+
 function checkAnswer() {
-    const input = document.getElementById('user-input').value.trim().toLowerCase();
-    const gameTitle = cachedTitle.trim().toLowerCase();
-    // Vérification si la réponse correcte a déjà été donnée
+    const input = document.getElementById('user-input').value;
+    
+    // Check if correct answer was already given
     if (correctAnswerGiven) {
-        return; // Si c'est déjà validé, on ne fait rien
+        return;
     }
-    if (
-        input === gameTitle ||
-        (abbreviations[gameTitle] && abbreviations[gameTitle].includes(input))
-    ) {
-        updateProfile(cachedTitle, true);
-        document.getElementById('message').innerText = 'Bonne réponse !';
-        document.getElementById('message').style.color = 'orange';
-        document.getElementById('next-button').style.display = 'block';
-        clearInterval(timerInterval);
-        document.getElementById('game-title').style.opacity = '1';
+    
+    if (checkAnswerValue(input, cachedTitle)) {
+        updateProfileUtil(currentProfile, cachedTitle, true, 'image');
+        showCorrectAnswerFeedback(cachedTitle, timerInterval);
         correctAnswerGiven = true;
     } else {
-        updateProfile(cachedTitle, false);
-        document.getElementById('message').innerText = 'Mauvaise réponse !';
-        document.getElementById('message').style.color = 'violet';
+        updateProfileUtil(currentProfile, cachedTitle, false, 'image');
+        showIncorrectAnswerFeedback();
     }
 
-    document.getElementById('good-answers').innerText = currentProfile.goodAnswers;
-    document.getElementById('bad-answers').innerText = currentProfile.badAnswers;
+    updateScoreboard(currentProfile);
 }
 
-function startTimer() {
-    let seconds = 0;
-    timerInterval = setInterval(() => {
-        seconds++;
-        document.getElementById('timer').innerText = new Date(seconds * 1000).toISOString().substring(14, 19);
-    }, 1000);
-}
-// Fonction pour passer à la prochaine question
 function nextQuestion() {
-    window.location.reload(); // Rafraîchit la page pour commencer un nouveau jeu
+    nextQuestionUtil();
 }
-
-// Expose ces fonctions au contexte global
-window.checkAnswer = checkAnswer;
-window.showHint = showHint;
-window.nextQuestion = nextQuestion;
-
-document.getElementById('user-input').addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-        e.preventDefault();
-        if (correctAnswerGiven) {
-            nextQuestion();
-        } else {
-            checkAnswer();
-        }
-    }
-});
 
 function showHint() {
     if (maxHintIndex < gameImages.length - 1) {
@@ -211,14 +154,14 @@ function showHint() {
 
         const imgElement = document.getElementById('game-image');
 
-        // Effet de slider
+        // Slider effect
         imgElement.style.opacity = '0';
         setTimeout(() => {
             imgElement.src = gameImages[currentHintIndex];
             imgElement.style.opacity = '1';
         }, 300);
 
-        // Si on atteint la dernière image, le bouton devient "Abandonner"
+        // If we've reached the last image, change button to "Abandon"
         if (maxHintIndex === gameImages.length - 1) {
             const hintButton = document.getElementById('hint-button');
             hintButton.innerText = "Abandonner";
@@ -226,28 +169,25 @@ function showHint() {
         }
     }
     if (maxHintIndex === 1 && !arrowsCreated) {
-        createNavigationArrows(); // Les flèches sont ajoutées au DOM après le premier indice
+        createNavigationArrowsForImage();
     }
 }
 
 function abandonGame() {
-    currentProfile.badAnswers += 10;
-    const profileIndex = profiles.findIndex(p => p.pseudo === currentProfilePseudo);
-    profiles[profileIndex] = currentProfile;
-    localStorage.setItem('profiles', JSON.stringify(profiles));
-    document.getElementById('bad-answers').innerText = currentProfile.badAnswers;
-    window.location.reload();
+    abandonGameUtil(currentProfile);
 }
 
-// Au démarrage, on initialise tout
+// Expose functions to global context
+window.checkAnswer = checkAnswer;
+window.showHint = showHint;
+window.nextQuestion = nextQuestion;
+
+// Setup Enter key handler
+setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
+
+// On load
 window.onload = () => {
-    // Lancement du bon mode
     if (window.location.pathname.includes('image')) launchGameImage();
-
-    // Mettre le focus sur l'input pour permettre à l'utilisateur de commencer à taper
     document.getElementById('user-input').focus();
-
-    // === Initialisation de l'affichage des scores ===
-    document.getElementById('good-answers').innerText = currentProfile.goodAnswers;
-    document.getElementById('bad-answers').innerText = currentProfile.badAnswers;
+    updateScoreboard(currentProfile);
 };
