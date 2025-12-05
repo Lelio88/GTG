@@ -1839,14 +1839,14 @@ export const games = [
     {
         title: 'Five Night at Freddy\'s',
         image: [
-            '../Medias/Image/Five Night at Freddy\'s 1.jpg',
-            '../Medias/Image/Five Night at Freddy\'s 2.jpg',
-            '../Medias/Image/Five Night at Freddy\'s 3.jpg',
+            '../Medias/Image/Five night at freddy\'s 1.jpg',
+            '../Medias/Image/Five night at freddy\'s 2.jpg',
+            '../Medias/Image/Five night at freddy\'s 3.jpg',
         ],
         sound: [
-            '../Medias/Sound/Five Night at Freddy\'s 1.mp3',
-            '../Medias/Sound/Five Night at Freddy\'s 2.mp3',
-            '../Medias/Sound/Five Night at Freddy\'s 3.mp3',
+            '../Medias/Sound/Five night at freddy\'s 1.mp3',
+            '../Medias/Sound/Five night at freddy\'s 2.mp3',
+            '../Medias/Sound/Five night at freddy\'s 3.mp3',
         ],
         text: [
             "Ce jeu d’horreur indépendant met le joueur dans la peau d’un garde de sécurité surveillant un restaurant le soir.",
