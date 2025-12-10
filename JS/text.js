@@ -18,7 +18,8 @@ import {
     showCorrectAnswerFeedback,
     showIncorrectAnswerFeedback,
     initializeGameTitle,
-    createHintNavigationSystem
+    createHintNavigationSystem,
+    revealTitle
 } from './gameUtils.js';
 
 let cachedGame = null;
@@ -78,7 +79,10 @@ function showHint() {
 }
 
 function abandonGame() {
-    abandonGameUtil(currentProfile);
+    revealTitle(cachedTitle, { mode: 'modal', autoAdvance: true, delay: 2000 })
+        .then(() => {
+            abandonGameUtil(currentProfile);
+        });
 }
 
 function checkAnswer() {
