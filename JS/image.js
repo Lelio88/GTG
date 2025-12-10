@@ -20,7 +20,8 @@ import {
     showCorrectAnswerFeedback,
     showIncorrectAnswerFeedback,
     initializeGameTitle,
-    createHintNavigationSystem
+    createHintNavigationSystem,
+    revealTitle
 } from './gameUtils.js';
 
 let timerInterval;
@@ -183,7 +184,10 @@ function showHint() {
 }
 
 function abandonGame() {
-    abandonGameUtil(currentProfile);
+    revealTitle(cachedTitle, { mode: 'modal', autoAdvance: true, delay: 2000 })
+        .then(() => {
+            abandonGameUtil(currentProfile);
+        });
 }
 
 // Expose functions to global context
