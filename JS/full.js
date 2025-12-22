@@ -73,67 +73,50 @@ function launchGameFull() {
 
 function displayHint(index) {
     const contentDiv = document.getElementById('content');
-
     contentDiv.innerHTML = '';
 
-    // Main container (column)
+    // Main container (row)
     const hintContainer = document.createElement('div');
     hintContainer.className = 'hint-container';
-    hintContainer.style.display = 'flex';
-    hintContainer.style.flexDirection = 'column';
-    hintContainer.style.alignItems = 'center';
-    hintContainer.style.marginBottom = '30px';
 
-    // Row container for image + text
-    const topRow = document.createElement('div');
-    topRow.style.display = 'flex';
-    topRow.style.flexDirection = 'row';
-    topRow.style.alignItems = 'center';
-    topRow.style.gap = '20px';
-
-    // Image
+    // Image (left)
     if (cachedGame.image[index]) {
         const img = document.createElement('img');
-        img.src = cachedGame.image[index];
-        img.alt = 'Indice image';
-        img.style.width = '600px';
-        img.style.height = 'auto';
-        topRow.appendChild(img);
+        img.src = cachedGame. image[index];
+        img. alt = 'Indice image';
+        hintContainer.appendChild(img);
     }
 
-    // Text to the right of the image
+    // Right content container (text + audio)
+    const rightContent = document.createElement('div');
+    rightContent.className = 'hint-right-content';
+
+    // Text
     if (cachedGame.text[index]) {
         const text = document.createElement('p');
         text.innerText = cachedGame.text[index];
-        text.style.margin = '0';
-        text.style.width = '400px';
-        text.style.lineHeight = '1.4';
-        text.style.fontSize = '1rem';
-        topRow.appendChild(text);
+        rightContent.appendChild(text);
     }
 
-    hintContainer.appendChild(topRow);
-
-    // Audio below image + text, centered
+    // Audio
     if (cachedGame.sound[index]) {
         const audio = document.createElement('audio');
         audio.controls = true;
-        audio.style.marginTop = '30px';
-        audio.style.width = '300px';
 
         const source = document.createElement('source');
         source.src = cachedGame.sound[index];
         source.type = 'audio/mpeg';
         audio.appendChild(source);
 
-        hintContainer.appendChild(audio);
+        rightContent.appendChild(audio);
     }
 
+    hintContainer.appendChild(rightContent);
     contentDiv.appendChild(hintContainer);
 
-    // Update arrows visibility (only if arrows have been created)
+    // Update arrows visibility if they exist
     if (arrowsCreated) {
-        updateArrowsVisibility(hintNav.currentIndex, hintNav.maxUnlockedIndex);
+        updateArrowsVisibility(hintNav. currentIndex, hintNav.maxUnlockedIndex);
     }
 }
 

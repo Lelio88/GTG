@@ -77,7 +77,8 @@ h3 {
 #app {
     text-align: center;
     width: 80%;
-    padding-top: 20px;
+    padding-top: 80px;
+    padding-bottom: 70px;
 }
 
 /* ===============================
@@ -103,8 +104,8 @@ h3 {
 =============================== */
 #content {
     position: relative;
-    width: 800px;
-    height: 400px;
+    width: 900px;
+    height: 300px;
 }
 
 #content img {
@@ -114,6 +115,46 @@ h3 {
     object-position: center;
     border-radius: 15px;
     box-shadow:  0 0 15px #ff7f50, 0 0 30px #ff7f50;
+}
+
+/* ===============================
+    Full Mode Layout (Image + Text + Audio à droite)
+=============================== */
+.hint-container {
+    display: flex ! important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 20px !important;
+    width: 100%;
+    max-width: 100%;
+}
+
+.hint-container img {
+    flex-shrink: 0;
+    width: 500px !important;
+    height:  auto !important;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+.hint-right-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex:  1;
+    min-width: 0;
+}
+
+.hint-right-content p {
+    margin: 0;
+    text-align: left;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.hint-right-content audio {
+    width: 100%;
+    max-width: 400px;
 }
 
 /* ===============================
@@ -187,13 +228,57 @@ button:hover {
     Scoreboard 
 =============================== */
 #scoreboard {
-    margin-top: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(44, 44, 44, 0.9);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid #ff7f50;
+    box-shadow: 0 -2px 10px rgba(255, 127, 80, 0.3);
     font-size: 1em;
-    text-align: center;
+    z-index: 100;
 }
 
 #scoreboard p {
-    margin: 10px 0;
+    margin: 0;
+    color: #fff;
+    flex:  1;
+}
+
+#scoreboard p:first-child {
+    text-align: left;
+}
+
+#scoreboard p:nth-child(2) {
+    text-align: center;
+}
+
+#scoreboard p:last-child {
+    text-align: right;
+}
+
+#good-answers {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+#bad-answers {
+    color: #f44336;
+    font-weight:  bold;
+}
+
+#timer {
+    color: #2196F3;
+    font-weight:  bold;
+}
+
+#keys-count {
+    color: #FFD700;
+    font-weight: bold;
 }
 
 /* ===============================
