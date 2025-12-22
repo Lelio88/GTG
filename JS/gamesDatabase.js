@@ -15,7 +15,10 @@ export const games = [
             "Développé par Irrational Games, ce jeu un FPS immersif combinant exploration et narration, avec des choix moraux influençant le déroulement de l'histoire. Le jeu se distingue par son ambiance rétro-futuriste et son level design unique.",
             "Sorti en 2007, le jeu plonge le joueur dans la cité sous-marine de Rapture, un monde utopique devenu un cauchemar dystopique. Entre affrontements violents et découvertes choquantes, le joueur explore les ruines de cette ville abandonnée.",
             "Dans le rôle de Jack, le protagoniste, le joueur rencontre des personnages marquants comme Andrew Ryan, le fondateur de Rapture, et Frank Fontaine, un manipulateur puissant. Les Petites Sœurs et les Protecteurs ajoutent une touche unique au gameplay."
-        ]
+        ],
+        midi: ['../Medias/Midi/Bioshock.mid'],
+        shadow: ['../Medias/Shadow/Bioshock.jpg'],
+        pixels: ['../Medias/Pixels/Bioshock.jpg']
     },
     {
         title: 'Plants vs Zombies',
@@ -33,7 +36,10 @@ export const games = [
             "Développé par PopCap Games, ce jeu de stratégie en temps réel mêle tower defense et gestion de ressources. Les joueurs doivent protéger un territoire en plaçant des unités de défense sur un champ divisé en cases.",
             "Sorti en 2009, le jeu propose de défendre sa maison face à une invasion de zombies. Le joueur doit gérer le placement stratégique des défenses pour repousser les vagues ennemies.",
             "Dans le jeu, le joueur rencontre Crazy Dave, un personnage excentrique qui aide à débloquer des niveaux et à acheter des objets. Les zombies eux-mêmes sont variés : certains portent des cônes de signalisation, d'autres des seaux, rendant chaque vague unique."
-        ]
+        ],
+        midi: ['../Medias/Midi/Plants vs Zombies.mid'],
+        shadow: ['../Medias/Shadow/Plants vs Zombies.jpg'],
+        pixels: ['../Medias/Pixels/Plants vs Zombies.jpg']
     },
     {
         title: 'Call of Duty',
@@ -51,7 +57,10 @@ export const games = [
             "Développé par Infinity Ward et édité par Activision, ce jeu de tir à la première personne a redéfini les standards du genre grâce à un gameplay intense et une immersion réaliste dans des conflits armés.",
             "Sorti en 2003, le premier opus plonge les joueurs au cœur de la Seconde Guerre mondiale, avec des campagnes solo marquantes et un mode multijoueur qui a posé les bases d'un phénomène mondial.",
             "Aujourd'hui, c'est l'une des franchises les plus populaires de l'industrie du jeu vidéo, avec des opus annuels explorant aussi bien les guerres modernes que futuristes. La série a également fait un bond dans l'univers du Battle Royale, rassemblant des millions de joueurs à travers le monde."
-        ]
+        ],
+        midi: ['../Medias/Midi/Call of Duty.mid'],
+        shadow: ['../Medias/Shadow/Call of Duty.jpg'],
+        pixels: ['../Medias/Pixels/Call of Duty.jpg']
     },
     {
         title: 'The Last of Us',
@@ -69,7 +78,10 @@ export const games = [
             "Développé par Naughty Dog, ce jeu d'action-aventure plonge les joueurs dans un univers post-apocalyptique. Mélangeant survie, exploration et narration cinématographique, il se distingue par une ambiance oppressante et une qualité de réalisation exceptionnelle.",
             "Sorti en 2013, le jeu raconte l'histoire de deux survivants qui doivent traverser les États-Unis ravagés par une pandémie fongique. Le jeu est salué pour son écriture poignante et ses personnages profonds.",
             "Le succès a donné naissance à une suite en 2020 ainsi qu'à une adaptation en série télévisée. Il est aujourd'hui considéré comme l'un des jeux les plus marquants de l'industrie, notamment pour sa narration émotive et son réalisme."
-        ]
+        ],
+        midi: ['../Medias/Midi/The Last of Us.mid'],
+        shadow: ['../Medias/Shadow/The Last of Us.jpg'],
+        pixels: ['../Medias/Pixels/The Last of Us.jpg']
     },
     {
         title: 'Satisfactory',
@@ -87,7 +99,10 @@ export const games = [
             "Développé par Coffee Stain Studios, ce jeu de construction et de gestion propose aux joueurs de bâtir et d'optimiser des chaînes de production massives. L'exploration et la logistique y jouent un rôle central.",
             "Sorti en accès anticipé en 2019, le jeu permet aux joueurs d'exploiter des ressources naturelles, de construire des usines automatisées et de connecter leurs installations avec des réseaux de transport. Le monde ouvert encourage la créativité et l'optimisation.",
             "Le jeu a gagné en popularité grâce à ses mises à jour régulières, l'ajout de nouveaux biomes, de technologies et d'outils de construction. Il est aujourd'hui un incontournable pour les amateurs de gestion industrielle et d'automatisation à grande échelle."
-        ]
+        ],
+        midi: ['../Medias/Midi/Satisfactory.mid'],
+        shadow: ['../Medias/Shadow/Satisfactory.jpg'],
+        pixels: ['../Medias/Pixels/Satisfactory.jpg']
     },
     {
         title: 'Outlast',
@@ -105,7 +120,10 @@ export const games = [
             "Développé par Red Barrels, ce jeu d'horreur à la première personne plonge le joueur dans une expérience immersive où la fuite et la discrétion sont les seules options pour survivre. L'ambiance oppressante et le level design renforcent l'aspect claustrophobique.",
             "Sorti en 2013, le premier opus se déroule dans l'asile de Mount Massive, un lieu abandonné où des expériences inhumaines ont été menées.",
             "Depuis sa sortie, le jeu est devenu une référence dans le genre horrifique, avec plusieurs extensions et une suite. Dans les deux jeux, le joueur incarne un journaliste, armé uniquement d'une caméra à vision nocturne pour documenter l'horreur qu'il découvre."
-        ]
+        ],
+        midi: ['../Medias/Midi/Outlast.mid'],
+        shadow: ['../Medias/Shadow/Outlast.jpg'],
+        pixels: ['../Medias/Pixels/Outlast.jpg']
     },
     {
         title: 'Hades',
@@ -123,7 +141,10 @@ export const games = [
             "Développé par Supergiant Games, ce rogue-like dynamique mélange action frénétique et narration immersive. Le jeu se distingue par ses graphismes dessinés à la main, sa bande-son percutante et son gameplay axé sur l'amélioration progressive du personnage.",
             "Sorti en accès anticipé en 2018 puis officiellement en 2020, le premier opus raconte l'histoire de Zagreus, qui tente de s'échapper des Enfers. Chaque tentative permet de débloquer de nouvelles compétences et de découvrir des bribes d'histoire.",
             "Le jeu a été salué pour sa narration intégrée au gameplay et ses interactions avec les dieux de l'Olympe. Il est aujourd'hui considéré comme l'un des meilleurs rogue-likes jamais créés, récompensé par de nombreux prix.",
-        ]
+        ],
+        midi: ['../Medias/Midi/Hades.mid'],
+        shadow: ['../Medias/Shadow/Hades.jpg'],
+        pixels: ['../Medias/Pixels/Hades.jpg']
     },
     {
         title: 'BioShock Infinite',
@@ -141,7 +162,10 @@ export const games = [
             "Développé par Irrational Games, ce jeu de tir à la première personne propose une exploration immersive dans un univers steampunk. Il se démarque par une direction artistique saisissante et un gameplay orienté autour des pouvoirs et du combat aérien.",
             "Sorti en 2013, le jeu transporte le joueur dans la ville flottante de Columbia, un lieu utopique en apparence mais rongé par les inégalités et le fanatisme. Le joueur incarne Booker DeWitt, un détective chargé de retrouver une mystérieuse femme.",
             "L'intrigue plonge profondément dans le concept de dimensions parallèles, avec Elizabeth capable d'ouvrir des failles vers des réalités alternatives. Ces 'déchirures' permettent d'influencer le cours des événements et révèlent les secrets cachés de Columbia.",
-        ]
+        ],
+        midi: ['../Medias/Midi/Bioshock Infinite.mid'],
+        shadow: ['../Medias/Shadow/Bioshock Infinite.jpg'],
+        pixels: ['../Medias/Pixels/Bioshock Infinite.jpg']
     },
     {
         title: 'Hollow Knight',
@@ -159,7 +183,10 @@ export const games = [
             "Développé par Team Cherry, le jeu est un metroidvania. Il se distingue par son esthétique sombre et dessinée à la main, ainsi que par sa bande-son atmosphérique et immersive.",
             "Sorti en 2017, le jeu se déroule dans le royaume souterrain de Hallownest, où le joueur incarne un petit chevalier mystérieux explorant un monde vaste et dangereux rempli d’insectes et de créatures étranges.",
             "Le lore du jeu est riche et cryptique, dévoilé principalement par l'exploration et les rencontres avec les habitants de Hallownest. Il raconte l'histoire d'une ancienne infection, la chute d'un royaume prospère, et les conflits entre les différents seigneurs et entités mystérieuses qui peuplent ce monde."
-        ]
+        ],
+        midi: ['../Medias/Midi/Hollow Knight.mid'],
+        shadow: ['../Medias/Shadow/Hollow Knight.jpg'],
+        pixels: ['../Medias/Pixels/Hollow Knight.jpg']
     },
     {
         title: 'Horizon Zero Dawn',
@@ -177,7 +204,10 @@ export const games = [
             "Développé par Guerrilla Games, le premier opus est un jeu d'action-RPG en monde ouvert qui mêle exploration, combat et chasse dans un univers post-apocalyptique où la nature a repris ses droits.",
             "Sorti en 2017, il suit Aloy, une jeune chasseuse et archère, qui cherche à découvrir ses origines et comprendre les mystères d’un monde envahi par des machines animales gigantesques.",
             "Le lore du jeu est complexe et captivant, explorant les causes de l'effondrement de la civilisation humaine, la montée des intelligences artificielles et la coexistence fragile entre les humains et les machines. L’histoire se dévoile au fil des artefacts, des hologrammes et des rencontres avec différentes tribus."
-        ]
+        ],
+        midi: ['../Medias/Midi/Horizon Zero Dawn.mid'],
+        shadow: ['../Medias/Shadow/Horizon Zero Dawn.jpg'],
+        pixels: ['../Medias/Pixels/Horizon Zero Dawn.jpg']
     },
     {
         title: 'Spyro',
@@ -195,7 +225,10 @@ export const games = [
             "Créé par Insomniac Games, le premier opus est un jeu de plateforme en 3D qui se distingue par son univers coloré et son personnage principal, une petite créature courageux et espiègle.",
             "Sorti initialement en 1998, le protagoniste doit sauver ses amis dragons et restaurer la paix dans les différentes terres enchantées, en affrontant des ennemis et en résolvant des énigmes.",
             "Le jeu est devenu une licence emblématique des jeux de plateforme, avec plusieurs suites, remakes et spin-offs. Sa popularité a traversé les générations, restant un classique apprécié des joueurs de tous âges."
-        ]
+        ],
+        midi: ['../Medias/Midi/Spyro.mid'],
+        shadow: ['../Medias/Shadow/Spyro.jpg'],
+        pixels: ['../Medias/Pixels/Spyro.jpg']
     },
     {
         title: 'God of War',
@@ -213,7 +246,10 @@ export const games = [
             "Développé par Santa Monica Studio, le premier opus est un jeu d'action-aventure mêlant mythologie et combat intense.",
             "Le premier jeu est sorti en 2005 et raconte la quête de Kratos pour se venger des dieux de l'Olympe, avec une narration riche et des combats spectaculaires.",
             "La série a évolué pour intégrer la mythologie nordique, approfondissant les relations entre Kratos et son fils Atreus, avec un focus sur la rédemption et la paternité, faisant de la licence un pilier du jeu vidéo moderne."
-        ]
+        ],
+        midi: ['../Medias/Midi/God of War.mid'],
+        shadow: ['../Medias/Shadow/God of War.jpg'],
+        pixels: ['../Medias/Pixels/God of War.jpg']
     },
     {
         title: 'Portal',
@@ -231,7 +267,10 @@ export const games = [
             "Développé par Valve, il s'agit d'un jeu de réflexion en vue à la première personne.",
             "Sorti en 2007, le joueur incarne Chell, piégée dans un centre de test scientifique dirigé par une intelligence artificielle sarcastique nommée GLaDOS, qui propose des énigmes complexes à résoudre.",
             "Il se démarque par son gameplay basé sur un pistolet à portails permettant de créer des passages instantanés. La licence a donné naissance à une suite très attendue, qui a approfondi l’histoire et les mécaniques de jeu."
-        ]
+        ],
+        midi: ['../Medias/Midi/Portal.mid'],
+        shadow: ['../Medias/Shadow/Portal.jpg'],
+        pixels: ['../Medias/Pixels/Portal.jpg']
     },
     {
         title: 'Counter Strike',
@@ -249,7 +288,10 @@ export const games = [
             "Développé par Valve, le jeu est un FPS qui a redéfini le genre du jeu en ligne compétitif.",
             "Sorti en 1999, il oppose deux équipes, les terroristes et les anti-terroristes, dans des scénarios de combat tactiques.",
             "Le jeu est devenu un phénomène culturel, donnant naissance à plusieurs suites et à une scène e-sport dynamique."
-        ]
+        ],
+        midi: ['../Medias/Midi/Counter Strike.mid'],
+        shadow: ['../Medias/Shadow/Counter Strike.jpg'],
+        pixels: ['../Medias/Pixels/Counter Strike.jpg']
     },
     {
         title: 'Minecraft',
@@ -267,7 +309,10 @@ export const games = [
             "Développé par Mojang Studios, il s'agit d'un jeu de construction et d'aventure en monde ouvert.",
             "Sorti en 2011, il permet aux joueurs d'explorer un monde généré aléatoirement, de collecter des ressources et de construire des structures variées.",
             "Le jeu a connu un immense succès, devenant l'un des jeux les plus vendus de tous les temps, avec une communauté active et de nombreuses mises à jour."
-        ]
+        ],
+        midi: ['../Medias/Midi/Minecraft.mid'],
+        shadow: ['../Medias/Shadow/Minecraft.jpg'],
+        pixels: ['../Medias/Pixels/Minecraft.jpg']
     },
     {
         title: 'Assassin\'s Creed',
@@ -285,7 +330,10 @@ export const games = [
             "Développée par Ubisoft, cette saga d’action-aventure mêle infiltration, exploration historique et parkour dans des mondes ouverts fidèlement reconstitués.",
             "Apparu pour la première fois en 2007, cet univers transporte les joueurs dans différentes époques historiques, de la Renaissance à la Révolution française, en passant par l’Égypte ancienne et l’ère des Vikings.",
             "L’histoire repose sur une guerre millénaire entre deux factions secrètes aux idéologies opposées : l’une défendant le libre arbitre, l’autre cherchant le contrôle. Le tout est lié par une technologie permettant d’explorer les souvenirs génétiques des ancêtres, révélant une ancienne civilisation et des artefacts aux pouvoirs immenses."
-        ]
+        ],
+        midi: ['../Medias/Midi/Assassin\'s Creed.mid'],
+        shadow: ['../Medias/Shadow/Assassin\'s Creed.jpg'],
+        pixels: ['../Medias/Pixels/Assassin\'s Creed.jpg']
     },
     {
         title: 'The binding of Isaac',
@@ -303,7 +351,10 @@ export const games = [
             "Développé par Edmund McMillen et Florian Himsl, ce rogue-like indépendant est connu pour sa direction artistique dérangeante, son gameplay punitif et ses influences tirées à la fois des jeux rétro et de thématiques très sombres.",
             "Sorti en 2011, ce jeu propose des parties uniques à chaque session, avec des salles générées aléatoirement, des objets aux effets variés et une difficulté progressive. L’ambiance glauque et le bestiaire grotesque marquent profondément l’expérience.",
             "Sous ses mécaniques hardcore, le jeu cache une histoire symbolique mêlant fanatisme religieux, culpabilité, rejet familial et souffrance psychologique. Il utilise un imaginaire biblique détourné pour construire un univers à la fois intime et cauchemardesque."
-        ]
+        ],
+        midi: ['../Medias/Midi/The binding of Isaac.mid'],
+        shadow: ['../Medias/Shadow/The binding of Isaac.jpg'],
+        pixels: ['../Medias/Pixels/The binding of Isaac.jpg']
     },
     {
         title: 'Chants of Sennaar',
@@ -321,7 +372,10 @@ export const games = [
             "Développé par le studio français Rundisc, ce jeu d’aventure et de réflexion se distingue par sa direction artistique inspirée de l’art mésopotamien et son gameplay centré sur la déduction linguistique.",
             "Sorti en 2023, il propose une progression à travers une tour divisée en civilisations aux langages distincts. Le joueur doit décoder ces langues pour avancer, résoudre des énigmes et rétablir le dialogue entre les peuples.",
             "L’univers s’inspire librement du mythe de Babel, évoquant la fragmentation des cultures et la quête de compréhension mutuelle. Chaque étage symbolise un peuple isolé, et le voyage devient une métaphore de la reconstruction du lien entre les peuples."
-        ]
+        ],
+        midi: ['../Medias/Midi/Chants of Sennaar.mid'],
+        shadow: ['../Medias/Shadow/Chants of Sennaar.jpg'],
+        pixels: ['../Medias/Pixels/Chants of Sennaar.jpg']
     },
     {
         title: 'Crash Bandicoot',
@@ -339,7 +393,10 @@ export const games = [
             "Créé par le studio Naughty Dog à ses débuts, ce jeu de plateforme en 3D s’est imposé comme une référence sur consoles grâce à ses graphismes colorés, son gameplay nerveux et ses niveaux à défilement fixe ou dynamique.",
             "Lancé en 1996 sur une célèbre console grise, il est devenu l’un des visages emblématiques de l’ère 32 bits, enchaînant sauts millimétrés, caisses à détruire et poursuites effrénées sur des chemins semés d’obstacles.",
             "L’univers met en scène un monde insulaire où la science et la nature s’opposent. Un savant fou y mène des expériences pour créer une armée de créatures mutantes, mais l'une d'elles lui échappe, bouleversant ses plans et donnant lieu à une série de confrontations aux enjeux grandissants à travers plusieurs épisodes."
-        ]
+        ],
+        midi: ['../Medias/Midi/Crash Bandicoot.mid'],
+        shadow: ['../Medias/Shadow/Crash Bandicoot.jpg'],
+        pixels: ['../Medias/Pixels/Crash Bandicoot.jpg']
     },
     {
         title: 'Days Gone',
@@ -357,7 +414,10 @@ export const games = [
             "Développé par Bend Studio, ce jeu d’action-aventure en monde ouvert combine survie, exploration et narration dans un univers post-apocalyptique, avec un accent particulier sur la moto et les déplacements dynamiques.",
             "Sorti en 2019, il plonge le joueur dans un monde ravagé par une pandémie. Les routes sont infestées de créatures agressives et les ressources sont rares, ce qui pousse à la prudence, à l’artisanat et à la stratégie dans les affrontements.",
             "L’univers repose sur une société effondrée, où la menace ne vient pas seulement des infectés, mais aussi des survivants eux-mêmes. Le récit explore la perte, la mémoire, la solitude et la résilience, sur fond d’expériences militaires secrètes et de révélations liées à l’origine de la catastrophe."
-        ]
+        ],
+        midi: ['../Medias/Midi/Days Gone.mid'],
+        shadow: ['../Medias/Shadow/Days Gone.jpg'],
+        pixels: ['../Medias/Pixels/Days Gone.jpg']
     },
     {
         title: 'Raft',
@@ -375,7 +435,10 @@ export const games = [
             "Développé par Redbeet Interactive, ce jeu de survie en vue à la première personne place le joueur sur un radeau perdu en mer, avec pour mission de collecter des ressources, construire et survivre aux dangers de l’océan.",
             "Après une sortie en accès anticipé en 2018, il s'est enrichi d’exploration d’îles, de plongées sous-marines, de crafting avancé et de gestion des besoins vitaux. Seul ou en coopération, l’expérience est à la fois relaxante et exigeante.",
             "Derrière son gameplay océanique se cache un monde submergé par une montée des eaux globale. Les rares terres émergées abritent des traces d’une humanité disparue, des expériences environnementales échouées, et des indices sur ce qui a mené à l’effondrement écologique de la planète."
-        ]
+        ],
+        midi: ['../Medias/Midi/Raft.mid'],
+        shadow: ['../Medias/Shadow/Raft.jpg'],
+        pixels: ['../Medias/Pixels/Raft.jpg']
     },
     {
         title: 'Dishonored',
@@ -393,7 +456,10 @@ export const games = [
             "Développé par Arkane Studios, ce jeu mêle infiltration, action et pouvoirs surnaturels dans un univers steampunk sombre, inspiré à la fois de l’Angleterre victorienne et de l’esthétique industrielle.",
             "Le premier opus sorti en 2012 offre une grande liberté dans la manière d’aborder les missions : discrétion totale, éliminations brutales ou détournement créatif des ennemis grâce à des compétences uniques. Les choix du joueur influencent l’état du monde et la fin du récit.",
             "L’histoire prend place dans une cité rongée par la peste, la corruption et le contrôle des élites. Les forces occultes, les cultes interdits et les tensions sociales profondes dessinent un monde où la frontière entre justice et vengeance devient floue."
-        ]
+        ],
+        midi: ['../Medias/Midi/Dishonored.mid'],
+        shadow: ['../Medias/Shadow/Dishonored.jpg'],
+        pixels: ['../Medias/Pixels/Dishonored.jpg']
     },
     {
         title: 'Little Big Planet',
@@ -411,7 +477,10 @@ export const games = [
             "Créé par Media Molecule, ce jeu de plateforme a marqué les esprits par son esthétique en tissu, carton et matières recyclées, ainsi que par son moteur de création accessible et profond, favorisant l’imagination des joueurs.",
             "Sorti en 2008 sur console, il proposait une campagne jouable en coopération, mais aussi un puissant éditeur de niveaux. L’expérience s’appuyait sur une forte dimension communautaire : créer, partager et jouer aux créations du monde entier.",
             "L’univers repose sur le concept du monde imaginaire façonné par les rêves et les idées des gens. Les environnements visités sont issus d’un multivers créatif, où chaque niveau est une interprétation ludique de la pensée humaine et de la narration interactive."
-        ]
+        ],
+        midi: ['../Medias/Midi/Little Big Planet.mid'],
+        shadow: ['../Medias/Shadow/Little Big Planet.jpg'],
+        pixels: ['../Medias/Pixels/Little Big Planet.jpg']
     },
     {
         title: 'Dredge',
@@ -429,7 +498,10 @@ export const games = [
             "Développé par Black Salt Games, ce jeu mêle pêche, exploration et mystère dans un monde maritime stylisé, teinté d’une atmosphère inquiétante et d’une esthétique minimaliste soignée.",
             "Sorti en 2023, il invite à explorer un archipel en bateau, pêcher des créatures de plus en plus étranges et interagir avec les habitants de diverses îles. Mais plus le jour décline, plus les eaux deviennent hostiles, et la tension monte.",
             "Derrière la boucle de gameplay simple se cache un récit de folie croissante, de secrets anciens enfouis dans les abysses et d’une réalité altérée par des forces cosmiques. L’univers s’inspire du mythe de l’horreur lovecraftienne, où chaque découverte menace la santé mentale du protagoniste."
-        ]
+        ],
+        midi: ['../Medias/Midi/Dredge.mid'],
+        shadow: ['../Medias/Shadow/Dredge.jpg'],
+        pixels: ['../Medias/Pixels/Dredge.jpg']
     },
     {
         title: 'Subnautica',
@@ -447,7 +519,10 @@ export const games = [
             "Créé par Unknown Worlds Entertainment, le premier opus de ces jeux de survie en monde ouvert sous-marin immerge le joueur dans un océan extraterrestre riche en faune et flore inconnues, avec un fort accent sur l’exploration et la découverte.",
             "Depuis sa sortie en accès anticipé en 2014, il a conquis les joueurs par sa mécanique de construction de bases, de gestion des ressources et de narration environnementale, invitant à comprendre les mystères d’une planète océanique hostile.",
             "L’histoire révèle une ancienne civilisation disparue, des technologies avancées et des phénomènes biologiques étranges. Le joueur doit déchiffrer les causes du crash de son vaisseau spatial tout en évitant les dangers d’une faune marine parfois agressive, pour espérer survivre et s’échapper."
-        ]
+        ],
+        midi: ['../Medias/Midi/Subnautica.mid'],
+        shadow: ['../Medias/Shadow/Subnautica.jpg'],
+        pixels: ['../Medias/Pixels/Subnautica.jpg']
     },
     {
         title: 'Dying Light',
@@ -465,7 +540,10 @@ export const games = [
             "Développé par Techland, le premier opus de ce jeu d’action-aventure en monde ouvert mêle parkour et survie dans un environnement urbain infesté de créatures infectées, avec une gestion dynamique du cycle jour-nuit.",
             "Sorti en 2015, il propose un gameplay intense où la nuit accroît la menace des infectés, poussant le joueur à la prudence et à l’exploration de quartiers dévastés pour trouver des ressources et améliorer ses compétences.",
             "L’univers dépeint une ville en quarantaine, ravagée par une infection mystérieuse. Les factions rivales, la désolation ambiante et la lutte constante pour la survie tracent un contexte où l’espoir et la trahison cohabitent, tandis que le mystère sur l’origine de l’épidémie demeure entier."
-        ]
+        ],
+        midi: ['../Medias/Midi/Dying Light.mid'],
+        shadow: ['../Medias/Shadow/Dying Light.jpg'],
+        pixels: ['../Medias/Pixels/Dying Light.jpg']
     },
     {
         title: 'Far Cry',
@@ -483,7 +561,10 @@ export const games = [
             "Développé par Ubisoft Montréal, cette série de jeux d'action-aventure en monde ouvert est réputée pour ses vastes environnements exotiques et ses mécaniques de tir et d'exploration.",
             "Depuis la sortie du premier volet en 2004, la franchise a évolué en proposant des intrigues centrées sur des conflits locaux et des antagonistes charismatiques dans des îles, jungles ou régions isolées.",
             "L'univers explore des thèmes tels que le chaos politique, la survie face à des factions armées et les conséquences de la colonisation moderne, où les choix du joueur influencent souvent le déroulement des événements et la fin de l'histoire."
-        ]
+        ],
+        midi: ['../Medias/Midi/Far Cry.mid'],
+        shadow: ['../Medias/Shadow/Far Cry.jpg'],
+        pixels: ['../Medias/Pixels/Far Cry.jpg']
     },
     {
         title: 'Frostpunk',
@@ -501,7 +582,10 @@ export const games = [
             "Développé par 11 bit studios, ce jeu de stratégie et de survie met le joueur aux commandes d'une dernière ville humaine dans un monde glacé et apocalyptique, où la gestion des ressources est cruciale.",
             "Sorti en 2018, il combine construction de ville, prise de décisions morales difficiles et gestion des conditions climatiques extrêmes pour tenter de maintenir la survie de la population.",
             "L'univers dépeint un futur alternatif où une ère glaciaire soudaine a transformé la planète en désert de glace, poussant l'humanité à s'organiser autour de sources de chaleur précieuses, tout en affrontant les tensions sociales et les dilemmes éthiques inhérents à la survie collective."
-        ]
+        ],
+        midi: ['../Medias/Midi/Frostpunk.mid'],
+        shadow: ['../Medias/Shadow/Frostpunk.jpg'],
+        pixels: ['../Medias/Pixels/Frostpunk.jpg']
     },
     {
         title: 'FPS Chess',
@@ -519,7 +603,10 @@ export const games = [
             "Développé par un studio indépendant, ce jeu combine des éléments classiques d'échecs avec une perspective à la première personne, offrant une expérience unique mêlant stratégie et action en temps réel.",
             "Le gameplay propose une relecture innovante du jeu d'échecs traditionnel, où chaque pièce est incarnée par un personnage avec des capacités spéciales, et les affrontements se déroulent dans des arènes immersives.",
             "L'univers fusionne les codes du jeu d'échecs avec un décor futuriste et des mécaniques dynamiques, créant une ambiance où la tactique rencontre l'agilité et où la maîtrise du champ de bataille est aussi mentale que physique."
-        ]
+        ],
+        midi: ['../Medias/Midi/FPS Chess.mid'],
+        shadow: ['../Medias/Shadow/FPS Chess.jpg'],
+        pixels: ['../Medias/Pixels/FPS Chess.jpg']
     },
     {
         title: 'Ghost of a Tale',
@@ -537,7 +624,10 @@ export const games = [
             "Créé par SeithCG, ce jeu d'aventure et d'infiltration met en scène un univers médiéval-fantastique peuplé de créatures anthropomorphes, avec un style artistique riche et une ambiance immersive.",
             "Sorti en 2018, il propose une exploration à la troisième personne où la discrétion et l'ingéniosité sont essentielles pour progresser dans un château rempli de dangers et de secrets. Le joueur incarne Tilo, une petite souris en quête de sa bien-aimée.",
             "L'histoire plonge dans un monde où les tensions entre différentes races et factions se mêlent à des légendes anciennes, et où chaque recoin révèle des fragments d'une trame politique et mystique complexe."
-        ]
+        ],
+        midi: ['../Medias/Midi/Ghost of a Tale.mid'],
+        shadow: ['../Medias/Shadow/Ghost of a Tale.jpg'],
+        pixels: ['../Medias/Pixels/Ghost of a Tale.jpg']
     },
     {
         title: 'Ghostrunner',
@@ -555,7 +645,10 @@ export const games = [
             "Développé par One More Level, ce jeu d’action-plateforme à la première personne combine parkour ultra-rapide et combats au katana dans un univers cyberpunk dystopique.",
             "Depuis sa sortie en 2020, il met le joueur au défi de naviguer dans une mégastructure verticale, affrontant des ennemis redoutables tout en maîtrisant des déplacements précis et rapides.",
             "Le lore explore un monde futuriste où la technologie a profondément modifié l’humanité, mêlant luttes de pouvoir, intelligence artificielle et la quête de liberté au sein d’une société oppressante et hiérarchisée."
-        ]
+        ],
+        midi: ['../Medias/Midi/Ghostrunner.mid'],
+        shadow: ['../Medias/Shadow/Ghostrunner.jpg'],
+        pixels: ['../Medias/Pixels/Ghostrunner.jpg']
     },
     {
         title: 'Valorant',
@@ -573,7 +666,10 @@ export const games = [
             "Développé par Riot Games, ce jeu compétitif de tir tactique en équipe combine des mécaniques précises avec des capacités uniques par personnage, créant un mélange stratégique et dynamique.",
             "Lancé en 2020, il propose des affrontements en 5 contre 5 sur des cartes variées, où communication et coordination sont clés pour dominer l’équipe adverse et accomplir les objectifs.",
             "L’univers du jeu s’inscrit dans un futur proche où des agents aux origines diverses possèdent des pouvoirs liés à une mystérieuse énergie, reflétant des tensions globales et un conflit en toile de fond qui nourrit la rivalité entre factions."
-        ]
+        ],
+        midi: ['../Medias/Midi/Valorant.mid'],
+        shadow: ['../Medias/Shadow/Valorant.jpg'],
+        pixels: ['../Medias/Pixels/Valorant.jpg']
     },
     {
         title: 'Apex Legends',
@@ -591,7 +687,10 @@ export const games = [
             "Développé par Respawn Entertainment, ce jeu de tir battle royale propose des combats rapides et tactiques avec des équipes de trois joueurs, intégrant des capacités spécifiques à chaque personnage.",
             "Sorti en 2019, il offre une expérience immersive dans un univers de science-fiction où des légendes combattent pour la gloire dans une arène dynamique et variée.",
             "Le lore se déploie dans un futur où la Frontière est un terrain de jeu pour les compétiteurs, avec des tensions politiques, des expériences scientifiques et des alliances complexes façonnant les enjeux derrière les batailles."
-        ]
+        ],
+        midi: ['../Medias/Midi/Apex Legends.mid'],
+        shadow: ['../Medias/Shadow/Apex Legends.jpg'],
+        pixels: ['../Medias/Pixels/Apex Legends.jpg']
     },
     {
         title: 'Beyond two souls',
@@ -609,7 +708,10 @@ export const games = [
             "Développé par Quantic Dream, ce jeu narratif mêle thriller psychologique et surnaturel, offrant une expérience interactive centrée sur le choix et les relations entre les personnages.",
             "Sorti en 2013, il propose une histoire non linéaire où les décisions du joueur influencent le déroulement des événements et les liens entre les entités impliquées.",
             "L'univers explore la connexion entre le monde des vivants et une dimension spirituelle mystérieuse, abordant des thèmes profonds comme la vie après la mort, l'identité et le sacrifice."
-        ]
+        ],
+        midi: ['../Medias/Midi/Beyond two souls.mid'],
+        shadow: ['../Medias/Shadow/Beyond two souls.jpg'],
+        pixels: ['../Medias/Pixels/Beyond two souls.jpg']
     },
     {
         title: 'Palworld',
@@ -627,7 +729,10 @@ export const games = [
             "Développé par Pocketpair, ce jeu mêle exploration en monde ouvert et capture de créatures dans un univers coloré mais aux mécaniques parfois surprenantes.",
             "Sorti en accès anticipé, il combine survie, crafting et combats contre des créatures variées, proposant une expérience unique où coopération et stratégie sont indispensables.",
             "L'univers juxtapose des paysages idylliques à des thèmes plus sombres, explorant la relation complexe entre humains et créatures, avec des enjeux éthiques et économiques qui influencent le gameplay."
-        ]
+        ],
+        midi: ['../Medias/Midi/Palworld.mid'],
+        shadow: ['../Medias/Shadow/Palworld.jpg'],
+        pixels: ['../Medias/Pixels/Palworld.jpg']
     },
     {
         title: 'Hunt Showdown',
@@ -645,7 +750,10 @@ export const games = [
             "Développé par Crytek, ce jeu mélange survie, chasse et PvP dans une ambiance sombre et oppressante, avec une mécanique de tir tactique et immersive.",
             "Lancé en accès anticipé, il place les joueurs dans des marais infestés de créatures terrifiantes, où ils doivent traquer des cibles surnaturelles tout en affrontant d'autres chasseurs.",
             "L’univers est riche en folklore horrifique et mystique, où des forces obscures influencent le terrain de chasse, et où chaque traque révèle des secrets sinistres sur l’origine des monstres et la corruption qui ronge la région."
-        ]
+        ],
+        midi: ['../Medias/Midi/Hunt Showdown.mid'],
+        shadow: ['../Medias/Shadow/Hunt Showdown.jpg'],
+        pixels: ['../Medias/Pixels/Hunt Showdown.jpg']
     },
     {
         title: 'Inscryption',
@@ -663,7 +771,10 @@ export const games = [
             "Créé par Daniel Mullins Games, ce jeu mélange habilement cartes à collectionner, horreur psychologique et énigmes, dans une ambiance mystérieuse et immersive.",
             "Sorti en 2021, il combine plusieurs mécaniques de gameplay dans une expérience narrative où chaque décision impacte le déroulement, avec une progression pleine de surprises.",
             "L'histoire explore des thèmes occultes et métaphysiques, mêlant réalité et fiction, où la narration brise le quatrième mur et plonge le joueur dans une intrigue complexe autour d’un univers caché et de forces obscures."
-        ]
+        ],
+        midi: ['../Medias/Midi/Inscryption.mid'],
+        shadow: ['../Medias/Shadow/Inscryption.jpg'],
+        pixels: ['../Medias/Pixels/Inscryption.jpg']
     },
     {
         title: 'Life is Strange',
@@ -681,7 +792,10 @@ export const games = [
             "Développé par Dontnod Entertainment, le premier opus de ce jeu narratif met l'accent sur les choix moraux et l'exploration d'une histoire émotionnelle à travers un univers réaliste et contemporain.",
             "Sorti en 2015, il suit un récit où les décisions du joueur influencent profondément les événements et les relations entre les personnages dans une petite ville américaine nommée Arcadia Bay.",
             "Le lore aborde des thèmes liés au temps, à la mémoire et aux conséquences des actes, explorant les liens complexes entre les habitants et les mystères cachés derrière la surface tranquille de leur communauté."
-        ]
+        ],
+        midi: ['../Medias/Midi/Life is Strange.mid'],
+        shadow: ['../Medias/Shadow/Life is Strange.jpg'],
+        pixels: ['../Medias/Pixels/Life is Strange.jpg']
     },
     {
         title: 'Magic: The Gathering Arena',
@@ -699,7 +813,10 @@ export const games = [
             "Développé par Wizards of the Coast, ce jeu de cartes stratégique en ligne reproduit fidèlement l’expérience du célèbre jeu de plateau avec des mécaniques complexes et un univers riche.",
             "Lancé en 2018, il permet aux joueurs de construire des decks puissants et d’affronter des adversaires du monde entier dans des parties tactiques et compétitives.",
             "L’univers s’étend à travers des plans variés peuplés de créatures fantastiques, de mages puissants et de conflits épiques, avec un lore dense qui évolue constamment au fil des extensions et des histoires racontées."
-        ]
+        ],
+        midi: ['../Medias/Midi/Magic.mid'],
+        shadow: ['../Medias/Shadow/Magic.jpg'],
+        pixels: ['../Medias/Pixels/Magic.jpg']
     },
     {
         title: 'Spider-Man',
@@ -717,7 +834,10 @@ export const games = [
             "Développé par Insomniac Games, ce jeu d'action-aventure propose un monde ouvert dynamique où le joueur explore une grande ville tout en combattant le crime grâce à des compétences acrobatiques.",
             "Sorti en 2018, il met en scène une lutte intense contre diverses factions criminelles dans un univers urbain vivant et détaillé.",
             "Le lore s’appuie sur un riche univers de super-héros, avec des alliances, des trahisons et une exploration profonde des motivations des différents antagonistes, ainsi que des thèmes de responsabilité et de sacrifice."
-        ]
+        ],
+        midi: ['../Medias/Midi/Spider-Man.mid'],
+        shadow: ['../Medias/Shadow/Spider-Man.jpg'],
+        pixels: ['../Medias/Pixels/Spider-Man.jpg']
     },
     {
         title: 'Metro',
@@ -735,7 +855,10 @@ export const games = [
             "Développé par 4A Games, ce jeu propose une expérience immersive de tir à la première personne dans un univers post-apocalyptique sombre et oppressant.",
             "Situé dans un futur proche, le joueur évolue dans les tunnels souterrains d'une grande ville en Russie, tentant de survivre face à des menaces humaines et mutantes.",
             "L’univers est riche en détails, explorant les conséquences d'une catastrophe nucléaire, les tensions entre factions humaines, et les mystères qui planent sur la survie et la reconstruction dans ce monde dévasté."
-        ]
+        ],
+        midi: ['../Medias/Midi/Metro.mid'],
+        shadow: ['../Medias/Shadow/Metro.jpg'],
+        pixels: ['../Medias/Pixels/Metro.jpg']
     },
     {
         title: 'Outer Wilds',
@@ -753,7 +876,10 @@ export const games = [
             "Développé par Mobius Digital, ce jeu d’exploration spatiale propose une boucle temporelle unique au cœur d’un système solaire mystérieux et dynamique.",
             "Le joueur découvre des planètes variées et des énigmes complexes, tout en apprenant progressivement l’histoire cachée de cet univers étrange et fascinant à travers des boucles d'une vingtaine de minute.",
             "Le lore s’appuie sur une ancienne civilisation disparue, avec des récits cryptiques sur la création et la destruction, invitant à une réflexion profonde sur le temps, l’existence et la curiosité humaine."
-        ]
+        ],
+        midi: ['../Medias/Midi/Outer Wilds.mid'],
+        shadow: ['../Medias/Shadow/Outer Wilds.jpg'],
+        pixels: ['../Medias/Pixels/Outer Wilds.jpg']
     },
     {
         title: 'Ori and the Blind Forest',
@@ -771,7 +897,10 @@ export const games = [
             "Développé par Moon Studios, ce premier opus est un jeu de plateforme mettant en avant un univers enchanteur et une narration émotionnelle portée par une direction artistique soignée.",
             "Sorti en 2015, il raconte un voyage initiatique dans une forêt mystérieuse, mêlant défis techniques et exploration au service de l’histoire.",
             "Le lore explore les thèmes de la nature, du sacrifice et de la rédemption, dévoilant peu à peu une histoire profonde sur l’équilibre fragile entre les forces de vie et de destruction."
-        ]
+        ],
+        midi: ['../Medias/Midi/Ori and the Blind Forest.mid'],
+        shadow: ['../Medias/Shadow/Ori and the Blind Forest.jpg'],
+        pixels: ['../Medias/Pixels/Ori and the Blind Forest.jpg']
     },
     {
         title: 'The Planet Crafter',
@@ -789,7 +918,10 @@ export const games = [
             "Développé par Miju Games, ce jeu de survie et d’exploration spatiale propose une expérience centrée sur la terraformation et la gestion des ressources sur une planète hostile.",
             "Le joueur doit transformer un environnement inhospitalier en un écosystème viable en collectant, construisant et améliorant divers équipements essentiels à la survie.",
             "Le lore dévoile les mystères de la planète et les raisons de la présence humaine, explorant les conséquences écologiques et éthiques liées à la transformation radicale d’un monde naturel."
-        ]
+        ],
+        midi: ['../Medias/Midi/The Planet Crafter.mid'],
+        shadow: ['../Medias/Shadow/The Planet Crafter.jpg'],
+        pixels: ['../Medias/Pixels/The Planet Crafter.jpg']
     },
     {
         title: 'PUBG: Battlegrounds',
@@ -807,7 +939,10 @@ export const games = [
             "Développé par l'entreprise actuelle Krafton, ce jeu de tir multijoueur en ligne a popularisé le genre battle royale avec une expérience intense et stratégique.",
             "Les joueurs sont parachutés sur une île où ils doivent chercher des armes et équipements pour être le dernier survivant face à des dizaines d’adversaires.",
             "L’univers, bien que minimaliste en narration directe, s’appuie sur la tension de la survie en terrain hostile et sur les dynamiques sociales de coopération et de trahison dans un environnement impitoyable."
-        ]
+        ],
+        midi: ['../Medias/Midi/PUBG.mid'],
+        shadow: ['../Medias/Shadow/PUBG.jpg'],
+        pixels: ['../Medias/Pixels/PUBG.jpg']
     },
     {
         title: 'Paladins',
@@ -825,7 +960,10 @@ export const games = [
             "Développé par Hi-Rez Studios, ce jeu de tir en équipe gratuit s'inscrit dans un univers de fantasy où les joueurs incarnent des champions aux compétences uniques.",
             "Sorti en 2018, il propose des affrontements en 5 contre 5, avec des modes de jeu variés et un système de personnalisation des compétences via des cartes.",
             "L'univers riche et coloré est peuplé de personnages aux histoires diverses, allant de guerriers mystiques à des créatures mythologiques, chacun apportant sa propre dynamique au combat."
-        ]
+        ],
+        midi: ['../Medias/Midi/Paladins.mid'],
+        shadow: ['../Medias/Shadow/Paladins.jpg'],
+        pixels: ['../Medias/Pixels/Paladins.jpg']
     },
     {
         title: 'The Room',
@@ -843,7 +981,10 @@ export const games = [
             "Développé par Fireproof Games, ce jeu d’énigmes met en scène des puzzles complexes dans un univers mystérieux et tactile, centré sur l’exploration d’objets intrigants.",
             "Sorti initialement en 2012, il invite le joueur à résoudre une série de coffres et mécanismes anciens, dévoilant progressivement une histoire énigmatique.",
             "Le lore est riche en symbolisme ésotérique, mêlant secrets occultes et mystères autour d’une machine étrange, offrant une expérience immersive et captivante."
-        ]
+        ],
+        midi: ['../Medias/Midi/The Room.mid'],
+        shadow: ['../Medias/Shadow/The Room.jpg'],
+        pixels: ['../Medias/Pixels/The Room.jpg']
     },
     {
         title: 'Rocket League',
@@ -861,7 +1002,10 @@ export const games = [
             "Développé par Psyonix, ce jeu mélange habilement course et football dans un univers futuriste dynamique et compétitif.",
             "Lancé en 2015, il propose des matchs rapides où des véhicules propulsés par des boosters s’affrontent pour marquer des buts spectaculaires.",
             "Le lore est léger mais l’univers s’est enrichi grâce à des événements, des équipes et des collaborations, créant une communauté engagée et passionnée."
-        ]
+        ],
+        midi: ['../Medias/Midi/Rocket League.mid'],
+        shadow: ['../Medias/Shadow/Rocket League.jpg'],
+        pixels: ['../Medias/Pixels/Rocket League.jpg']
     },
     {
         title: 'Rusty Lake',
@@ -879,7 +1023,10 @@ export const games = [
             "Créé par un studio indépendant, ce jeu d’aventure et d’énigmes se déroule dans un univers étrange où animaux mystérieux et objets énigmatiques, comme des cubes, jouent un rôle clé.",
             "Depuis sa première sortie en 2015, il invite le joueur à explorer des lieux énigmatiques tout en découvrant progressivement une histoire étrange et captivante.",
             "Le lore complexe et cryptique explore des thèmes comme la mort, la réincarnation et les liens entre les personnages, avec une narration non linéaire pleine de symboles et de mystères."
-        ]
+        ],
+        midi: ['../Medias/Midi/Rusty Lake.mid'],
+        shadow: ['../Medias/Shadow/Rusty Lake.jpg'],
+        pixels: ['../Medias/Pixels/Rusty Lake.jpg']
     },
     {
         title: 'Slime Rancher',
@@ -897,7 +1044,10 @@ export const games = [
             "Développé par Monomi Park, ce jeu d’aventure coloré propose d’élever et collecter diverses créatures gélatineuses sur une planète lointaine.",
             "Sorti en 2017, il combine exploration, gestion de ressources et découverte dans un univers joyeux et dynamique.",
             "Le lore s’appuie sur la vie extraterrestre et les mystères de la planète, avec des secrets cachés derrière les créatures et leur origine."
-        ]
+        ],
+        midi: ['../Medias/Midi/Slime Rancher.mid'],
+        shadow: ['../Medias/Shadow/Slime Rancher.jpg'],
+        pixels: ['../Medias/Pixels/Slime Rancher.jpg']
     },
     {
         title: 'Starfield',
@@ -915,7 +1065,10 @@ export const games = [
             "Développé par Bethesda Game Studios, ce jeu de rôle spatial propose une exploration vaste et immersive d’un univers futuriste riche en détails.",
             "Sorti en 2023, il place le joueur dans la peau d’un explorateur spatial confronté à des factions et des mystères à travers la galaxie.",
             "Le lore approfondit la politique interstellaire, les technologies avancées et les différentes civilisations rencontrées, créant un univers complexe et vivant."
-        ]
+        ],
+        midi: ['../Medias/Midi/Starfield.mid'],
+        shadow: ['../Medias/Shadow/Starfield.jpg'],
+        pixels: ['../Medias/Pixels/Starfield.jpg']
     },
     {
         title: 'The Talos Principle',
@@ -933,7 +1086,10 @@ export const games = [
             "Développé par Croteam, le premier opus de ce jeu de réflexion mêle philosophie et énigmes dans un univers virtuel contemplatif et mystérieux.",
             "Sorti en 2014, il invite le joueur à résoudre des casse-têtes complexes tout en explorant des thématiques profondes sur la conscience et l’existence.",
             "Le lore aborde des questions existentielles, la nature de l’intelligence artificielle et la quête de sens à travers des fragments de récits et de dialogues."
-        ]
+        ],
+        midi: ['../Medias/Midi/The Talos Principle.mid'],
+        shadow: ['../Medias/Shadow/The Talos Principle.jpg'],
+        pixels: ['../Medias/Pixels/The Talos Principle.jpg']
     },
     {
         title: 'The Witness',
@@ -951,8 +1107,10 @@ export const games = [
             "Développé par Jonathan Blow, ce jeu d'exploration et d'énigmes place le joueur sur une île mystérieuse remplie de puzzles complexes.",
             "Sorti en 2016, il invite à résoudre des casse-têtes variés tout en découvrant progressivement l'histoire cachée derrière l'île.",
             "Le lore subtil et fragmenté évoque des thèmes philosophiques sur la connaissance, la perception et la nature de la réalité."
-        ]
-
+        ],
+        midi: ['../Medias/Midi/The Witness.mid'],
+        shadow: ['../Medias/Shadow/The Witness.jpg'],
+        pixels: ['../Medias/Pixels/The Witness.jpg']
     },
     {
         title: 'Trackmania',
@@ -970,7 +1128,10 @@ export const games = [
             "Ce jeu de course propose des circuits rapides et techniques, où la précision et la créativité sont essentielles pour battre les records.",
             "Depuis sa première sortie en 2003, il offre une expérience multijoueur intense avec des éditeurs de pistes puissants.",
             "Le lore est léger, mais la communauté passionnée et les compétitions régulières ont forgé une culture unique autour du jeu. La licence appartient aujourd'hui à Ubisoft.",
-        ]
+        ],
+        midi: ['../Medias/Midi/Trackmania.mid'],
+        shadow: ['../Medias/Shadow/Trackmania.jpg'],
+        pixels: ['../Medias/Pixels/Trackmania.jpg']
     },
     {
         title: 'We Happy Few',
@@ -988,7 +1149,10 @@ export const games = [
             "Ce jeu d’aventure dystopique place le joueur dans une ville alternative où les habitants utilisent des pilules pour oublier leur passé.",
             "Sorti en 2018, il mêle exploration, survie et infiltration dans un univers rétro-futuriste sombre et oppressant.",
             "Le lore développe une société divisée, où la mémoire et la vérité sont manipulées, révélant les conséquences d’un bonheur forcé."
-        ]
+        ],
+        midi: ['../Medias/Midi/We Happy Few.mid'],
+        shadow: ['../Medias/Shadow/We Happy Few.jpg'],
+        pixels: ['../Medias/Pixels/We Happy Few.jpg']
     },
     {
         title: 'Worms',
@@ -1006,7 +1170,10 @@ export const games = [
             "Ce jeu tactique propose des combats au tour par tour avec des équipes de vers de terre armés de façon loufoque et variée.",
             "Depuis sa première sortie en 1995, il met en scène des affrontements stratégiques dans des environnements destructibles et colorés.",
             "Le lore est léger, centré sur l’humour absurde et les situations décalées, avec une série qui a su évoluer tout en gardant son charme unique."
-        ]
+        ],
+        midi: ['../Medias/Midi/Worms.mid'],
+        shadow: ['../Medias/Shadow/Worms.jpg'],
+        pixels: ['../Medias/Pixels/Worms.jpg']
     },
     {
         title: 'Watch Dogs',
@@ -1024,7 +1191,10 @@ export const games = [
             "Ce jeu d'action-aventure, développé par Ubisoft, se déroule dans un univers urbain où la technologie est omniprésente.",
             "Sorti en 2014, il met en scène un hacker qui utilise ses compétences pour manipuler la ville et ses systèmes connectés.",
             "Le lore explore les enjeux de la surveillance, de la vie privée et des conséquences du contrôle numérique dans une société moderne."
-        ]
+        ],
+        midi: ['../Medias/Midi/Watch Dogs.mid'],
+        shadow: ['../Medias/Shadow/Watch Dogs.jpg'],
+        pixels: ['../Medias/Pixels/Watch Dogs.jpg']
     },
     {
         title: 'Journey to the Savage Planet',
@@ -1042,7 +1212,10 @@ export const games = [
             "Développé par Typhoon Studios, ce jeu d’exploration propose une aventure colorée et humoristique sur une planète étrangère pleine de surprises.",
             "Sorti en 2020, il invite le joueur à découvrir la faune, la flore et les mystères d’un monde alien avec légèreté et curiosité.",
             "Le lore dévoile une planète riche en biodiversité et en secrets, mêlant humour et science-fiction dans une expérience décalée."
-        ]
+        ],
+        midi: ['../Medias/Midi/Journey to the Savage Planet.mid'],
+        shadow: ['../Medias/Shadow/Journey to the Savage Planet.jpg'],
+        pixels: ['../Medias/Pixels/Journey to the Savage Planet.jpg']
     },
     {
         title: 'This War of Mine',
@@ -1060,7 +1233,10 @@ export const games = [
             "Ce jeu de survie propose de gérer un groupe de civils essayant de survivre dans une ville assiégée, avec une atmosphère sombre et réaliste.",
             "Sorti en 2014, il met l’accent sur les choix moraux difficiles et les conséquences humaines de la guerre, loin des combats héroïques habituels.",
             "Le lore explore les drames personnels des survivants, les tensions entre les personnages, et la lutte pour préserver leur humanité dans un contexte brutal."
-        ]
+        ],
+        midi: ['../Medias/Midi/This War of Mine.mid'],
+        shadow: ['../Medias/Shadow/This War of Mine.jpg'],
+        pixels: ['../Medias/Pixels/This War of Mine.jpg']
     },
     {
         title: 'Dragon Age',
@@ -1078,7 +1254,10 @@ export const games = [
             "Cette série de jeux de rôle, développée par BioWare, est connue pour son univers médiéval-fantastique riche et immersif.",
             "Depuis 2009, elle propose des histoires épiques mêlant combats tactiques, choix moraux et interactions profondes avec les personnages.",
             "Le lore est vaste et complexe, comprenant des races, des religions, des conflits politiques et des forces magiques qui façonnent le monde."
-        ]
+        ],
+        midi: ['../Medias/Midi/Dragon Age.mid'],
+        shadow: ['../Medias/Shadow/Dragon Age.jpg'],
+        pixels: ['../Medias/Pixels/Dragon Age.jpg']
     },
     {
         title: 'Soma',
@@ -1096,7 +1275,10 @@ export const games = [
             "Développé par Frictional Games, ce jeu mêle horreur psychologique et science-fiction dans une station sous-marine isolée.",
             "Sorti en 2015, il propose une ambiance oppressante où le joueur explore des questions sur l’identité et la conscience à travers l’histoire.",
             "Le lore interroge la nature de l’esprit humain, les conséquences de la technologie sur l’âme, et la survie dans un environnement hostile et mystérieux."
-        ]
+        ],
+        midi: ['../Medias/Midi/Soma.mid'],
+        shadow: ['../Medias/Shadow/Soma.jpg'],
+        pixels: ['../Medias/Pixels/Soma.jpg']
     },
     {
         title: 'A Plague Tale',
@@ -1114,7 +1296,10 @@ export const games = [
             "Ce jeu d’action-aventure raconte une histoire poignante dans une France médiévale ravagée par la peste noire et la guerre.",
             "Sorti en 2019, il suit deux jeunes frères et soeurs qui tentent de survivre face aux dangers humains et surnaturels qui les entourent.",
             "Le lore développe un univers sombre où la maladie et la peur se mêlent à des pouvoirs mystérieux liés aux rongeurs, influençant le destin des personnages."
-        ]
+        ],
+        midi: ['../Medias/Midi/A Plague Tale.mid'],
+        shadow: ['../Medias/Shadow/A Plague Tale.jpg'],
+        pixels: ['../Medias/Pixels/A Plague Tale.jpg']
     },
     {
         title: 'Beholder',
@@ -1132,7 +1317,10 @@ export const games = [
             "Ce jeu d'infiltration vous place en tant que gestionnaire d'un immeuble dans un état totalitaire, chargé d'espionner les locataires.",
             "Sorti en 2016, il propose de faire des choix moraux difficiles tout en collectant des informations et en décidant du sort des habitants.",
             "Le lore explore la vie sous un régime autoritaire, les conflits internes des personnages et les conséquences de la surveillance de masse."
-        ]
+        ],
+        midi: ['../Medias/Midi/Beholder.mid'],
+        shadow: ['../Medias/Shadow/Beholder.jpg'],
+        pixels: ['../Medias/Pixels/Beholder.jpg']
     },
     {
         title: 'Clash of Clans',
@@ -1150,7 +1338,10 @@ export const games = [
             "Développé par Supercell, ce jeu de stratégie en temps réel propose la construction de bases et la gestion de troupes dans un univers médiéval fantastique.",
             "Depuis sa sortie en 2012, il met en avant des combats multijoueurs compétitifs et la coopération entre joueurs au sein de clans.",
             "Le lore, bien que léger, évoque un monde peuplé de guerriers, magiciens et créatures mythiques, avec des événements et mises à jour régulières qui enrichissent l’univers."
-        ]
+        ],
+        midi: ['../Medias/Midi/Clash of Clans.mid'],
+        shadow: ['../Medias/Shadow/Clash of Clans.jpg'],
+        pixels: ['../Medias/Pixels/Clash of Clans.jpg']
     },
     {
         title: 'Plague Inc',
@@ -1168,7 +1359,10 @@ export const games = [
             "Ce jeu de stratégie et de simulation, développé par Ndemic Creations, affiche une carte du monde en proie à des maladies.",
             "Sorti en 2012, il invite le joueur à infecter le monde entier tout en contournant les efforts médicaux et gouvernementaux pour enrayer la maladie.",
             "Le jeu a ensuite eu des mise à jour permettant par exemple de créer des scénarios personnalisés, de contrôler des épidémies de zombies ou de virus extraterrestres.",
-        ]
+        ],
+        midi: ['../Medias/Midi/Plague Inc.mid'],
+        shadow: ['../Medias/Shadow/Plague Inc.jpg'],
+        pixels: ['../Medias/Pixels/Plague Inc.jpg']
     },
     {
         title: 'Nintendogs',
@@ -1186,7 +1380,10 @@ export const games = [
             "Ce jeu de simulation développé par Nintendo propose une expérience de compagnie virtuelle.",
             "Sorti en 2005 sur console portable, il permet de nourrir, promener, dresser et jouer avec son animal grâce à l’écran tactile et au micro.",
             "Le jeu a connu plusieurs éditions et une suite majeure, sortie sur Nintendo 3DS, qui ajoutait de nouvelles races et introduisait les félins dans l’expérience."
-        ]
+        ],
+        midi: ['../Medias/Midi/Nintendogs.mid'],
+        shadow: ['../Medias/Shadow/Nintendogs.jpg'],
+        pixels: ['../Medias/Pixels/Nintendogs.jpg']
     },
     {
         title: 'Dragon Quest',
@@ -1204,7 +1401,10 @@ export const games = [
             "Cette série de jeux de rôle japonais, développée par Square Enix, a posé les bases du J-RPG traditionnel avec ses combats au tour par tour et ses visuels emblématiques.",
             "Le premier opus est sorti en 1986 et a initié une saga d’univers indépendants mais thématiquement liés, où le joueur incarne souvent un héros en quête de justice et d’aventure.",
             "Le lore s’articule autour de cycles mythologiques, de lignées héroïques et de luttes contre des forces maléfiques, avec une forte empreinte artistique signée Akira Toriyama."
-        ]
+        ],
+        midi: ['../Medias/Midi/Dragon Quest.mid'],
+        shadow: ['../Medias/Shadow/Dragon Quest.jpg'],
+        pixels: ['../Medias/Pixels/Dragon Quest.jpg']
     },
     {
         title: 'Zelda',
@@ -1222,7 +1422,10 @@ export const games = [
             "Cette saga d’action-aventure développée par Nintendo est reconnue pour ses donjons, ses énigmes, et son univers fantasy emblématique.",
             "Le premier opus est sorti en 1986 et a marqué l’histoire du jeu vidéo en proposant un monde ouvert non linéaire sur console.",
             "Le lore repose sur une chronologie complexe faite de mondes parallèles, de cycles de réincarnation et d’une lutte ancestrale entre le bien et le mal autour de puissants artefacts."
-        ]
+        ],
+        midi: ['../Medias/Midi/Zelda.mid'],
+        shadow: ['../Medias/Shadow/Zelda.jpg'],
+        pixels: ['../Medias/Pixels/Zelda.jpg']
     },
     {
         title: 'Mario',
@@ -1240,7 +1443,10 @@ export const games = [
             "Cette série de plateformes développée par Nintendo est célèbre pour son gameplay accessible, ses niveaux colorés et son influence majeure sur l’histoire du jeu vidéo.",
             "Apparu en 1985 sur NES, ce titre emblématique a posé les bases du jeu de plateforme en 2D et a connu de nombreuses déclinaisons en 3D au fil des générations.",
             "La série, bien que légère en narration, développe un univers récurrent peuplé de royaumes champignons, de créatures fantasques et de multiples variations autour d’un conflit récurrent entre bien et mal."
-        ]
+        ],
+        midi: ['../Medias/Midi/Mario.mid'],
+        shadow: ['../Medias/Shadow/Mario.jpg'],
+        pixels: ['../Medias/Pixels/Mario.jpg']
     },
     {
         title: 'The Witcher',
@@ -1258,7 +1464,10 @@ export const games = [
             "Ce jeu de rôle occidental développé par le studio polonais CD Projekt Red se distingue par son univers sombre, mature et ses choix narratifs marquants.",
             "Le premier opus est sorti en 2007, adapté des romans d’un auteur européen, et propose d’incarner un chasseur de monstres dans un monde fantastique ravagé par la guerre.",
             "Le lore est riche en intrigues politiques, en créatures mythologiques, en tensions raciales et en destins tragiques, avec une chronologie qui se tisse autour de prophéties et de conflits ancestraux."
-        ]
+        ],
+        midi: ['../Medias/Midi/The Witcher.mid'],
+        shadow: ['../Medias/Shadow/The Witcher.jpg'],
+        pixels: ['../Medias/Pixels/The Witcher.jpg']
     },
     {
         title: 'Cyberpunk 2077',
@@ -1276,7 +1485,10 @@ export const games = [
             "Développé par CD Projekt Red, ce RPG en monde ouvert plonge le joueur dans un univers dystopique futuriste inspiré du jeu de rôle papier des années 1980.",
             "Sorti en 2020, il propose d’explorer une mégalopole tentaculaire où implants cybernétiques, factions armées et mégacorporations dictent les règles.",
             "Le lore met en scène une société corrompue dominée par la technologie, où les questions d'identité, de mémoire et de contrôle sont centrales, sur fond de rébellion, de transhumanisme et de conscience digitale."
-        ]
+        ],
+        midi: ['../Medias/Midi/Cyberpunk 2077.mid'],
+        shadow: ['../Medias/Shadow/Cyberpunk 2077.jpg'],
+        pixels: ['../Medias/Pixels/Cyberpunk 2077.jpg']
     },
     {
         title: 'League of Legends',
@@ -1294,7 +1506,10 @@ export const games = [
             "Ce jeu compétitif en ligne développé par Riot Games a défini un genre à lui seul en démocratisant le format MOBA dans l’univers de l’esport.",
             "Sorti en 2009, il oppose deux équipes dans des arènes stratégiques où chaque joueur incarne un champion doté de compétences uniques.",
             "Derrière l’affrontement se cache un univers étendu : Runeterra, un monde aux régions variées, habitées par des civilisations, des conflits anciens, des créatures mystiques et des entités cosmiques."
-        ]
+        ],
+        midi: ['../Medias/Midi/League of Legends.mid'],
+        shadow: ['../Medias/Shadow/League of Legends.jpg'],
+        pixels: ['../Medias/Pixels/League of Legends.jpg']
     },
     {
         title: 'Sea of Thieves',
@@ -1312,7 +1527,10 @@ export const games = [
             "Ce jeu multijoueur en ligne développé par Rare propose une expérience en monde ouvert, centrée sur l’exploration navale et la coopération.",
             "Sorti en 2018, il permet d’incarner un équipage de pirates dans un monde coloré et évolutif où trésors, squelettes et krakens rythment les aventures.",
             "L’univers s’étend au-delà de la simple chasse au butin : les mers sont hantées par des légendes anciennes, des factions opposées et des mystères surnaturels liés à la frontière entre le monde des vivants et celui des morts."
-        ]
+        ],
+        midi: ['../Medias/Midi/Sea of Thieves.mid'],
+        shadow: ['../Medias/Shadow/Sea of Thieves.jpg'],
+        pixels: ['../Medias/Pixels/Sea of Thieves.jpg']
     },
     {
         title: 'Detroit: Become Human',
@@ -1330,7 +1548,10 @@ export const games = [
             "Ce jeu narratif développé par Quantic Dream propose une aventure interactive où plusieurs personnes sont confrontées à des choix moraux complexes.",
             "Sorti en 2018, il se déroule dans un futur proche où les relations entre humains et machines évoluent au fil d’une intrigue riche en suspense.",
             "Le lore explore les thèmes de la conscience artificielle, de la liberté, des inégalités sociales et de la quête d’identité, avec plusieurs fins possibles selon les décisions du joueur."
-        ]
+        ],
+        midi: ['../Medias/Midi/Detroit Become Human.mid'],
+        shadow: ['../Medias/Shadow/Detroit Become Human.jpg'],
+        pixels: ['../Medias/Pixels/Detroit Become Human.jpg']
     },
     {
         title: 'Osu',
@@ -1348,7 +1569,10 @@ export const games = [
             "Ce jeu rythmique développé par un studio indépendant offre une expérience basée sur la précision, la vitesse et la coordination avec la musique.",
             "Lancé en 2007, il propose différents modes de jeu centrés sur cliquer, glisser et suivre le rythme à travers une vaste bibliothèque de chansons créées par la communauté.",
             "La communauté est au cœur du jeu, avec un système de beatmaps personnalisées, des tournois réguliers et une scène compétitive active qui fait vivre l’expérience au-delà du simple gameplay."
-        ]
+        ],
+        midi: ['../Medias/Midi/Osu.mid'],
+        shadow: ['../Medias/Shadow/Osu.jpg'],
+        pixels: ['../Medias/Pixels/Osu.jpg']
     },
     {
         title: 'The Elder Scrolls',
@@ -1366,7 +1590,10 @@ export const games = [
             "Cette série de jeux de rôle développée par Bethesda Softworks est célèbre pour ses vastes mondes ouverts et sa liberté d’exploration.",
             "Le premier jeu est sorti en 1994, posant les bases d’un univers fantasy riche en quêtes, guildes et magie, où le joueur crée son propre héros.",
             "Le lore est dense, mêlant mythologies, dynasties impériales, conflits entre races et puissances divines, avec une chronologie complexe et un bestiaire varié."
-        ]
+        ],
+        midi: ['../Medias/Midi/The Elder Scrolls.mid'],
+        shadow: ['../Medias/Shadow/The Elder Scrolls.jpg'],
+        pixels: ['../Medias/Pixels/The Elder Scrolls.jpg']
     },
     {
         title: 'Just Dance',
@@ -1384,7 +1611,10 @@ export const games = [
             "Cette franchise de jeux développée par Ubisoft propose une expérience de danse interactive basée sur le suivi des mouvements du joueur.",
             "Lancé en 2009, le jeu offre une large sélection de musiques populaires et invite à reproduire des chorégraphies sur divers niveaux de difficulté.",
             "Au fil des années, la série s’est enrichie de modes multijoueurs, de défis communautaires et d’une plateforme en ligne dynamique qui rassemble une grande communauté."
-        ]
+        ],
+        midi: ['../Medias/Midi/Just Dance.mid'],
+        shadow: ['../Medias/Shadow/Just Dance.jpg'],
+        pixels: ['../Medias/Pixels/Just Dance.jpg']
     },
     {
         title: 'Tekken',
@@ -1402,7 +1632,10 @@ export const games = [
             "Cette série de jeux de combat développée par Bandai Namco est reconnue pour son gameplay technique et ses personnages variés.",
             "Le premier opus est sorti en 1994 et a popularisé le style de combat en 3D avec des combos et des mouvements spéciaux distinctifs.",
             "L’histoire tourne autour d’un tournoi familial où s’affrontent plusieurs clans, avec des intrigues complexes mêlant vengeance, pouvoirs surnaturels et héritages conflictuels."
-        ]
+        ],
+        midi: ['../Medias/Midi/Tekken.mid'],
+        shadow: ['../Medias/Shadow/Tekken.jpg'],
+        pixels: ['../Medias/Pixels/Tekken.jpg']
     },
     {
         title: 'Street Fighter',
@@ -1420,7 +1653,10 @@ export const games = [
             "Cette franchise emblématique de jeux de combat, développée par Capcom, a largement contribué à populariser le genre arcade à travers le monde.",
             "Le premier opus est sorti en 1987, introduisant un système de combat basé sur des coups spéciaux et des combos, avec des personnages aux styles variés.",
             "Le lore met en scène un tournoi international où des combattants venus des quatre coins du globe s’affrontent, avec des histoires personnelles riches en rivalités et alliances."
-        ]
+        ],
+        midi: ['../Medias/Midi/Street Fighter.mid'],
+        shadow: ['../Medias/Shadow/Street Fighter.jpg'],
+        pixels: ['../Medias/Pixels/Street Fighter.jpg']
     },
     {
         title: 'Fall Guys',
@@ -1438,7 +1674,10 @@ export const games = [
             "Ce jeu multijoueur développé par Mediatonic propose des courses d’obstacles colorées et chaotiques où jusqu’à 60 joueurs s’affrontent en simultané.",
             "Sorti en 2020, il combine humour, physiques loufoques et défis variés dans des rounds successifs pour déterminer le dernier survivant.",
             "L’univers est léger et décalé, avec des costumes personnalisables et un gameplay basé sur l’adresse et la chance, renouvelé régulièrement par des événements saisonniers."
-        ]
+        ],
+        midi: ['../Medias/Midi/Fall Guys.mid'],
+        shadow: ['../Medias/Shadow/Fall Guys.jpg'],
+        pixels: ['../Medias/Pixels/Fall Guys.jpg']
     },
     {
         title: 'Mortal Kombat',
@@ -1456,7 +1695,10 @@ export const games = [
             "Cette célèbre série de jeux de combat développée par Midway Games est connue pour son gameplay brutal et ses célèbres 'Fatalities'.",
             "Le premier jeu est sorti en 1992, introduisant des personnages uniques, un univers sombre et un tournoi mystique où combattants s'affrontent pour le contrôle des royaumes.",
             "Le lore est riche et complexe, mêlant royaumes comme Earthrealm et Outworld, avec des intrigues de trahison, alliances et batailles épiques entre dieux et guerriers."
-        ]
+        ],
+        midi: ['../Medias/Midi/Mortal Kombat.mid'],
+        shadow: ['../Medias/Shadow/Mortal Kombat.jpg'],
+        pixels: ['../Medias/Pixels/Mortal Kombat.jpg']
     },
     {
         title: 'Overwatch',
@@ -1474,7 +1716,10 @@ export const games = [
             "Ce jeu de tir en équipe développé par Blizzard Entertainment propose des combats dynamiques où chaque héros possède des capacités uniques.",
             "Sorti en 2016, il oppose deux équipes dans des objectifs variés à travers des cartes aux environnements colorés et futuristes.",
             "L’univers de ce jeu est riche en histoires individuelles, conflits entre factions et un monde en quête de paix après une guerre mondiale robotique."
-        ]
+        ],
+        midi: ['../Medias/Midi/Overwatch.mid'],
+        shadow: ['../Medias/Shadow/Overwatch.jpg'],
+        pixels: ['../Medias/Pixels/Overwatch.jpg']
     },
     {
         title: 'Fortnite',
@@ -1492,7 +1737,10 @@ export const games = [
             "Ce jeu de type battle royale développé par Epic Games est devenu célèbre pour son gameplay rapide.",
             "Lancé en 2017, il propose des combats à 100 joueurs sur une île où le terrain se réduit progressivement, avec de fréquentes mises à jour et événements spéciaux.",
             "Le lore, bien que discret, s’articule autour de phénomènes étranges affectant l’île, avec des événements croisés, des dimensions alternatives et une histoire en constante évolution."
-        ]
+        ],
+        midi: ['../Medias/Midi/Fortnite.mid'],
+        shadow: ['../Medias/Shadow/Fortnite.jpg'],
+        pixels: ['../Medias/Pixels/Fortnite.jpg']
     },
     {
         title: 'Grand Theft Auto',
@@ -1510,7 +1758,10 @@ export const games = [
             "Cette série de jeux d'action-aventure développée par Rockstar Games est célèbre pour son monde ouvert et sa liberté d’action.",
             "Le premier opus est sorti en 1997, proposant des missions variées dans des villes fictives inspirées de métropoles américaines.",
             "Le lore explore souvent les histoires de criminels, de gangs et de corruption, avec des personnages complexes évoluant dans un univers souvent satirique et violent."
-        ]
+        ],
+        midi: ['../Medias/Midi/Grand Theft Auto.mid'],
+        shadow: ['../Medias/Shadow/Grand Theft Auto.jpg'],
+        pixels: ['../Medias/Pixels/Grand Theft Auto.jpg']
     },
     {
         title: 'Titanfall',
@@ -1528,7 +1779,10 @@ export const games = [
             "Cette série de jeux de tir à la première personne, développée par Respawn Entertainment.",
             "Le premier jeu est sorti en 2014, offrant un gameplay rapide avec des combats fluides entre humains et machines géantes dans un univers futuriste.",
             "L’histoire se déroule dans un futur où des factions rivales s’affrontent pour le contrôle des colonies, mêlant technologie avancée et conflits humains intenses."
-        ]
+        ],
+        midi: ['../Medias/Midi/Titanfall.mid'],
+        shadow: ['../Medias/Shadow/Titanfall.jpg'],
+        pixels: ['../Medias/Pixels/Titanfall.jpg']
     },
     {
         title: 'Age of Empires',
@@ -1546,7 +1800,10 @@ export const games = [
             "Cette série de jeux de stratégie en temps réel développée par Ensemble Studios est centrée sur la construction et la gestion de royaumes à travers différentes époques.",
             "Le premier opus est sorti en 1997, proposant aux joueurs de guider des civilisations historiques dans la collecte de ressources, la construction et la guerre.",
             "Le lore retrace l’évolution de nombreuses civilisations, chacune avec ses caractéristiques, héros légendaires, et batailles emblématiques influençant le cours de l’histoire."
-        ]
+        ],
+        midi: ['../Medias/Midi/Age of Empires.mid'],
+        shadow: ['../Medias/Shadow/Age of Empires.jpg'],
+        pixels: ['../Medias/Pixels/Age of Empires.jpg']
     },
     {
         title: 'War thunder',
@@ -1564,7 +1821,10 @@ export const games = [
             "Ce jeu de combat militaire en ligne développé par Gaijin Entertainment met en scène des affrontements réalistes entre différentes nations, avec un accent sur la stratégie et la maîtrise des machines.",
             "Lancé en 2013, il propose une vaste sélection de véhicules historiques issus de la Seconde Guerre mondiale et d’autres conflits majeurs.",
             "Le jeu combine des batailles aériennes, terrestres et navales dans un seul univers."
-        ]
+        ],
+        midi: ['../Medias/Midi/War thunder.mid'],
+        shadow: ['../Medias/Shadow/War thunder.jpg'],
+        pixels: ['../Medias/Pixels/War thunder.jpg']
     },
     {
         title: 'World of Warcraft',
@@ -1582,7 +1842,10 @@ export const games = [
             "Ce MMORPG développé par Blizzard Entertainment offre un vaste monde ouvert fantastique où des joueurs du monde entier s’aventurent ensemble.",
             "Sorti en 2004, il propose des quêtes, des donjons, et des combats entre factions dans un univers riche en races et en cultures variées.",
             "L’histoire est dense, mêlant conflits épiques entre la Horde et l’Alliance, des menaces anciennes réveillées, et des héros légendaires façonnant le destin d’Azeroth."
-        ]
+        ],
+        midi: ['../Medias/Midi/World of Warcraft.mid'],
+        shadow: ['../Medias/Shadow/World of Warcraft.jpg'],
+        pixels: ['../Medias/Pixels/World of Warcraft.jpg']
     },
     {
         title: 'Final Fantasy',
@@ -1600,7 +1863,10 @@ export const games = [
             "Cette célèbre franchise de jeux de rôle développée par Square Enix est connue pour ses univers fantastiques et ses mécaniques de combat au tour par tour.",
             "Le premier opus est sorti en 1987, posant les bases d’une saga qui mélange magie, technologie et quêtes épiques à travers différents mondes.",
             "Le lore varie selon chaque opus, explorant des thèmes comme la lutte entre le bien et le mal, les conflits de royaumes, et des personnages marquants aux destins entrelacés."
-        ]
+        ],
+        midi: ['../Medias/Midi/Final Fantasy.mid'],
+        shadow: ['../Medias/Shadow/Final Fantasy.jpg'],
+        pixels: ['../Medias/Pixels/Final Fantasy.jpg']
     },
     {
         title: 'Rainbow Six Siege',
@@ -1618,7 +1884,10 @@ export const games = [
             "Ce jeu tactique de tir à la première personne développé par Ubisoft met l’accent sur le travail d’équipe et les stratégies défensives et offensives.",
             "Sorti en 2015, il oppose deux équipes — attaquants et défenseurs — dans des parties rapides où chaque opérateur possède des gadgets uniques.",
             "Le lore explore les origines des unités antiterroristes et la diversité des agents, avec des scénarios basés sur des interventions dans des zones de crise à travers le monde."
-        ]
+        ],
+        midi: ['../Medias/Midi/Rainbow Six Siege.mid'],
+        shadow: ['../Medias/Shadow/Rainbow Six Siege.jpg'],
+        pixels: ['../Medias/Pixels/Rainbow Six Siege.jpg']
     },
     {
         title: 'Star Wars Battlefront',
@@ -1636,7 +1905,10 @@ export const games = [
             "Cette série de jeux de tir développée par EA DICE propose des batailles massives dans l’univers emblématique de la saga galactique.",
             "Le premier opus moderne est sorti en 2015, mettant en scène des affrontements entre les forces rebelles et l’Empire sur plusieurs planètes célèbres.",
             "Le lore s’appuie sur les différentes époques d'une saga importante du cinéma, permettant d’incarner des héros, des soldats, et des véhicules emblématiques dans des combats épiques."
-        ]
+        ],
+        midi: ['../Medias/Midi/Star Wars Battlefront.mid'],
+        shadow: ['../Medias/Shadow/Star Wars Battlefront.jpg'],
+        pixels: ['../Medias/Pixels/Star Wars Battlefront.jpg']
     },
     {
         title: 'Stardew Valley',
@@ -1654,7 +1926,10 @@ export const games = [
             "Ce jeu indépendant de simulation développé par ConcernedApe mélange gestion, exploration et interaction sociale dans un univers pixel art charmant.",
             "Sorti en 2016, il invite les joueurs à reprendre une ferme abandonnée, cultiver des récoltes, élever des animaux et découvrir les saisons qui passent.",
             "Le lore est léger mais profond, dévoilant au fil du temps les mystères de la vallée, les histoires des villageois, et la richesse de la vie rurale à travers plusieurs saisons."
-        ]
+        ],
+        midi: ['../Medias/Midi/Stardew Valley.mid'],
+        shadow: ['../Medias/Shadow/Stardew Valley.jpg'],
+        pixels: ['../Medias/Pixels/Stardew Valley.jpg']
     },
     {
         title: 'Mario Party',
@@ -1672,7 +1947,10 @@ export const games = [
             "Cette série de jeux de société développée par Nintendo met en scène des personnages emblématiques de leurs univers dans des mini-jeux compétitifs.",
             "Le premier opus est sorti en 1998 sur Nintendo 64, posant les bases d'une franchise qui privilégie le jeu en groupe et l'interaction sociale.",
             "Le but du jeu est de collecter des étoiles à travers des plateaux colorés, en lançant des dés et en participant à divers mini-jeux, le tout dans une ambiance festive et ludique."
-        ]
+        ],
+        midi: ['../Medias/Midi/Mario Party.mid'],
+        shadow: ['../Medias/Shadow/Mario Party.jpg'],
+        pixels: ['../Medias/Pixels/Mario Party.jpg']
     },
     {
         title: 'Habbo Hotel',
@@ -1690,7 +1968,10 @@ export const games = [
             "Ce jeu social en ligne, développé par Sulake, propose un univers virtuel où les joueurs peuvent créer et personnaliser des avatars et des espaces.",
             "Lancé en 2000, il a rapidement gagné en popularité grâce à son système d’interaction communautaire et ses événements thématiques variés.",
             "Le lore est léger, centré sur la vie sociale virtuelle, mais il a évolué avec le temps en intégrant des histoires autour des hôtels, des clans et des aventures dans ce monde pixelisé."
-        ]
+        ],
+        midi: ['../Medias/Midi/Habbo Hotel.mid'],
+        shadow: ['../Medias/Shadow/Habbo Hotel.jpg'],
+        pixels: ['../Medias/Pixels/Habbo Hotel.jpg']
     },
     {
         title: 'Roblox',
@@ -1708,7 +1989,10 @@ export const games = [
             "Cette plateforme de création et de jeu en ligne permet aux utilisateurs de concevoir leurs propres mondes et expériences via un langage de script intégré.",
             "Lancée en 2006, elle a rapidement évolué pour devenir un espace où millions de joueurs se retrouvent pour jouer à des jeux variés, créés par la communauté.",
             "Le lore est très vaste et variable selon les jeux individuels, offrant une multitude d’univers et d’histoires créés par des développeurs amateurs et professionnels."
-        ]
+        ],
+        midi: ['../Medias/Midi/Roblox.mid'],
+        shadow: ['../Medias/Shadow/Roblox.jpg'],
+        pixels: ['../Medias/Pixels/Roblox.jpg']
     },
     {
         title: 'Overcooked',
@@ -1726,7 +2010,10 @@ export const games = [
             "Ce jeu coopératif développé par Ghost Town Games propose une expérience frénétique où la coordination entre joueurs est essentielle.",
             "Sorti en 2016, il met les joueurs dans des cuisines variées et souvent absurdes, où ils doivent préparer des plats sous pression et en temps limité.",
             "L’histoire suit une aventure légère et humoristique autour d’un royaume menacé par une soupe maléfique, avec des personnages hauts en couleur et des niveaux de plus en plus complexes."
-        ]
+        ],
+        midi: ['../Medias/Midi/Overcooked.mid'],
+        shadow: ['../Medias/Shadow/Overcooked.jpg'],
+        pixels: ['../Medias/Pixels/Overcooked.jpg']
     },
     {
         title: 'Cult of the Lamb',
@@ -1744,7 +2031,10 @@ export const games = [
             "Ce jeu indépendant combine construction de base et action roguelike, développé par Massive Monster et édité par Devolver Digital.",
             "Sorti en 2022, il met en scène un petit animal sauvé par une entité mystérieuse qui doit fonder un culte et affronter des ennemis puissants.",
             "Le lore explore des thèmes occultes et satiriques, avec des rituels, des sacrifices, et une ambiance qui mêle mignonnerie et horreur dans un monde sombre."
-        ]
+        ],
+        midi: ['../Medias/Midi/Cult of the Lamb.mid'],
+        shadow: ['../Medias/Shadow/Cult of the Lamb.jpg'],
+        pixels: ['../Medias/Pixels/Cult of the Lamb.jpg']
     },
     {
         title: 'Snake',
@@ -1762,7 +2052,10 @@ export const games = [
             "Ce jeu classique était souvent préinstallé sur les premiers téléphones mobiles.",
             "Apparu dans les années 1990, il consiste à éviter de se mordre la queue tout en capturant des objets pour augmenter sa taille.",
             "Ce jeu a profondément influencé l’industrie du jeu vidéo en popularisant le gameplay addictif et accessible. Il propose une mécanique simple où le joueur contrôle un serpent qui grandit en mangeant."
-        ]
+        ],
+        midi: ['../Medias/Midi/Snake.mid'],
+        shadow: ['../Medias/Shadow/Snake.jpg'],
+        pixels: ['../Medias/Pixels/Snake.jpg']
     },
     {
         title: 'T. Rex Game',
@@ -1780,7 +2073,10 @@ export const games = [
             "Ce jeu caché dans certains navigateurs propose un mini-jeu de course infinie où le joueur doit éviter des obstacles.",
             "Introduit en 2014 par Google Chrome, il apparaît lorsque l’utilisateur est hors connexion internet, offrant un divertissement simple et addictif.",
             "Ce jeu est devenu un symbole culturel du web, illustrant la frustration liée à la perte de connexion avec une touche d’humour et de challenge."
-        ]
+        ],
+        midi: ['../Medias/Midi/T. Rex Game.mid'],
+        shadow: ['../Medias/Shadow/T. Rex Game.jpg'],
+        pixels: ['../Medias/Pixels/T. Rex Game.jpg']
     },
     {
         title: 'Pokemon',
@@ -1798,7 +2094,10 @@ export const games = [
             "Cette franchise emblématique, développée par Game Freak, mélange exploration et combat dans un univers vaste et coloré.",
             "Lancée en 1996, elle invite les joueurs à devenir des dresseurs et à parcourir différentes régions pour entraîner et faire combattre leurs compagnons.",
             "Le lore s’appuie sur un monde riche, peuplé de centaines de créatures aux pouvoirs variés, avec des histoires autour de légendes, de mythes, et d’organisations mystérieuses."
-        ]
+        ],
+        midi: ['../Medias/Midi/Pokemon.mid'],
+        shadow: ['../Medias/Shadow/Pokemon.jpg'],
+        pixels: ['../Medias/Pixels/Pokemon.jpg']
     },
     {
         title: 'Road 96',
@@ -1816,7 +2115,10 @@ export const games = [
             "Ce jeu narratif développé par DigixArt propose une aventure procédurale où chaque partie est unique, mêlant road trip et choix impactant.",
             "Sorti en 2021, il plonge le joueur dans un pays fictif en pleine dictature, où il doit fuir vers la frontière tout en rencontrant divers personnages.",
             "Le lore explore des thèmes politiques et humains, avec une histoire qui change selon les décisions du joueur et révèle peu à peu les secrets du pays."
-        ]
+        ],
+        midi: ['../Medias/Midi/Road 96.mid'],
+        shadow: ['../Medias/Shadow/Road 96.jpg'],
+        pixels: ['../Medias/Pixels/Road 96.jpg']
     },
     {
         title: 'Firewatch',
@@ -1834,7 +2136,10 @@ export const games = [
             "Ce jeu narratif à la première personne, développé par Campo Santo, se déroule dans une réserve naturelle.",
             "Sorti en 2016, il raconte l'histoire d'un homme isolé dans la nature, qui communique par radio avec sa superviseure tout en découvrant des mystères.",
             "Le lore explore les relations humaines, la solitude et les secrets cachés dans la forêt, avec une narration immersive qui dévoile peu à peu les drames personnels du protagoniste."
-        ]
+        ],
+        midi: ['../Medias/Midi/Firewatch.mid'],
+        shadow: ['../Medias/Shadow/Firewatch.jpg'],
+        pixels: ['../Medias/Pixels/Firewatch.jpg']
     },
     {
         title: 'Five Night at Freddy\'s',
@@ -1852,7 +2157,10 @@ export const games = [
             "Ce jeu d’horreur indépendant met le joueur dans la peau d’un garde de sécurité surveillant un restaurant le soir.",
             "Sorti en 2014, il consiste à survivre cinq nuits en gérant les caméras et les ressources pour éviter les attaques des machines hostiles.",
             "Le lore est complexe et mystérieux, dévoilant peu à peu une histoire sombre impliquant disparitions, esprits vengeurs, et secrets enfouis dans les coulisses du lieu."
-        ]
+        ],
+        midi: ['../Medias/Midi/Five night at freddy\'s.mid'],
+        shadow: ['../Medias/Shadow/Five night at freddy\'s.jpg'],
+        pixels: ['../Medias/Pixels/Five night at freddy\'s.jpg']
     },
     {
         title: 'Borderlands',
@@ -1870,7 +2178,10 @@ export const games = [
             "Ce jeu hybride, développé par Gearbox Software, mélange tir à la première personne et mécaniques de RPG dans un univers stylisé et déjanté.",
             "Sorti en 2009, il transporte les joueurs sur une planète désertique remplie de créatures hostiles et de bandits, à la recherche d'une mystérieuse Arche.",
             "Le lore s’étend sur plusieurs jeux, explorant les expériences d’une mégacorporation, les pouvoirs des sirènes, et les secrets de civilisations anciennes liées à des technologies extraterrestres."
-        ]
+        ],
+        midi: ['../Medias/Midi/Borderlands.mid'],
+        shadow: ['../Medias/Shadow/Borderlands.jpg'],
+        pixels: ['../Medias/Pixels/Borderlands.jpg']
     },
     {
         title: 'What Remains of Edith Finch',
@@ -1888,7 +2199,10 @@ export const games = [
             "Ce jeu narratif en vue subjective, développé par Giant Sparrow, propose une exploration intimiste d'une maison familiale.",
             "Sorti en 2017, il suit une jeune femme qui revient dans la demeure de son enfance pour découvrir l’histoire de sa famille frappée par une mystérieuse malédiction.",
             "Le lore repose sur la narration fragmentée de chaque membre disparu, offrant une réflexion poétique sur la mort, la mémoire, et la transmission familiale à travers des séquences interactives uniques."
-        ]
+        ],
+        midi: ['../Medias/Midi/What Remains of Edith Finch.mid'],
+        shadow: ['../Medias/Shadow/What Remains of Edith Finch.jpg'],
+        pixels: ['../Medias/Pixels/What Remains of Edith Finch.jpg']
     },
     {
         title: 'Astro Bot',
@@ -1906,7 +2220,10 @@ export const games = [
             "Ce jeu de plateforme met en avant un univers coloré et interactif, conçu pour tirer parti des fonctionnalités d'une console spécifique.",
             "Sorti initialement en 2018 en VR, il propose une aventure ludique et immersive où chaque niveau exploite pleinement les possibilités techniques du support.",
             "Le succès critique du titre (GOTY 2024) a permis à la licence d’évoluer, avec un opus plus ambitieux annoncé, marquant une volonté d'en faire une véritable mascotte moderne du constructeur."
-        ]
+        ],
+        midi: ['../Medias/Midi/Astro Bot.mid'],
+        shadow: ['../Medias/Shadow/Astro Bot.jpg'],
+        pixels: ['../Medias/Pixels/Astro Bot.jpg']
     },
     {
         title: 'Baldur\'s Gate',
@@ -1924,7 +2241,10 @@ export const games = [
             "Ce RPG culte s’appuie sur l’univers de Donjons & Dragons et a marqué un tournant dans le jeu de rôle sur PC à la fin des années 90.",
             "La licence, relancée récemment avec un troisième opus acclamé (GOTY 2023), permet aux joueurs de créer leur propre personnage et d’explorer un monde riche en quêtes et interactions.",
             "Son lore s’ancre dans les Royaumes Oubliés, où divinités, intrigues politiques et héritage sanglant s’entrelacent, notamment autour du culte de Bhaal et des progénitures divines qui bouleversent l’équilibre du continent."
-        ]
+        ],
+        midi: ['../Medias/Midi/Baldur\'s Gate.mid'],
+        shadow: ['../Medias/Shadow/Baldur\'s Gate.jpg'],
+        pixels: ['../Medias/Pixels/Baldur\'s Gate.jpg']
     },
     {
         title: 'Undertale',
@@ -1942,7 +2262,10 @@ export const games = [
             "Ce jeu indépendant mêle RPG rétro et mécanique de pacifisme, en laissant le choix d’épargner ou de combattre ses ennemis.",
             "Sorti en 2015, il a été entièrement conçu par un développeur principal et s’est imposé comme un phénomène culte pour son humour, sa musique et ses personnages uniques.",
             "Son univers souterrain est peuplé de monstres autrefois chassés par les humains, et chaque action du joueur façonne profondément l’histoire, révélant des thématiques de culpabilité, de boucle temporelle et de rédemption."
-        ]
+        ],
+        midi: ['../Medias/Midi/Undertale.mid'],
+        shadow: ['../Medias/Shadow/Undertale.jpg'],
+        pixels: ['../Medias/Pixels/Undertale.jpg']
     },
     {
         title: 'Resident Evil',
@@ -1960,7 +2283,10 @@ export const games = [
             "Ce jeu de type survival horror a posé les bases d’un genre mêlant tension, exploration et gestion limitée des ressources dans un environnement oppressant.",
             "Lancé en 1996, il plonge les joueurs dans des lieux infestés de créatures, où une simple mission de reconnaissance peut virer au cauchemar viral. Il est sous la franchise de Capcom.",
             "Son univers s'articule autour d'expérimentations biologiques menées par une multinationale, Umbrella Corporation, dont les armes biologiques ont déclenché des pandémies, poussant une poignée de survivants à lutter contre un chaos grandissant à travers le globe."
-        ]
+        ],
+        midi: ['../Medias/Midi/Resident Evil.mid'],
+        shadow: ['../Medias/Shadow/Resident Evil.jpg'],
+        pixels: ['../Medias/Pixels/Resident Evil.jpg']
     },
     {
         title: 'Left 4 Dead',
@@ -1978,7 +2304,10 @@ export const games = [
             "Développé par Valve. Ce jeu coopératif à la première personne mise sur l'entraide et la survie face à des vagues d’ennemis rapides et imprévisibles.",
             "Sorti à la fin des années 2000, il propose de traverser des campagnes infestées de créatures infectées, avec une IA adaptative qui module la difficulté en temps réel.",
             "L’univers post-apocalyptique dépeint une infection foudroyante qui a plongé le monde dans le chaos. Quelques survivants immunisés, tous marqués par le virus, doivent coopérer pour traverser des zones hostiles, tandis que des mutants spéciaux ajoutent un danger stratégique au sein de l’épidémie."
-        ]
+        ],
+        midi: ['../Medias/Midi/Left 4 Dead.mid'],
+        shadow: ['../Medias/Shadow/Left 4 Dead.jpg'],
+        pixels: ['../Medias/Pixels/Left 4 Dead.jpg']
     },
     {
         title: 'Until Dawn',
@@ -1996,7 +2325,10 @@ export const games = [
             "Ce thriller interactif mise sur les choix du joueur pour façonner le récit, avec une forte inspiration des films d’horreur des années 2000 et une narration ramifiée. Il est développé par Supermassive Games.",
             "Sorti en 2015, il propose de suivre un groupe de jeunes réunis dans un chalet isolé en montagne, où d’étranges événements se produisent après une tragédie passée.",
             "Derrière son ambiance de slasher, le jeu révèle un univers complexe mêlant folklore amérindien, expériences psychologiques et présence surnaturelle, le tout influencé par chaque action ou inaction du joueur via l'effet papillon."
-        ]
+        ],
+        midi: ['../Medias/Midi/Until Dawn.mid'],
+        shadow: ['../Medias/Shadow/Until Dawn.jpg'],
+        pixels: ['../Medias/Pixels/Until Dawn.jpg']
     },
     {
         title: 'Slender',
@@ -2014,7 +2346,10 @@ export const games = [
             "Ce titre indépendant minimaliste mise sur l’ambiance sonore, l’obscurité et la peur de l’inconnu pour créer une tension constante.",
             "Sorti au début des années 2010, il demande au joueur de collecter des pages dans une forêt sombre tout en échappant à une entité silencieuse et implacable.",
             "Inspiré d’une légende urbaine née sur internet, ce jeu a popularisé le genre du survival horror à la première personne chez les petits studios, influençant une vague de titres similaires basés sur la suggestion et l’anxiété."
-        ]
+        ],
+        midi: ['../Medias/Midi/Slender.mid'],
+        shadow: ['../Medias/Shadow/Slender.jpg'],
+        pixels: ['../Medias/Pixels/Slender.jpg']
     },
     {
         title: 'Goat Simulator',
@@ -2032,7 +2367,10 @@ export const games = [
             "Développé par Coffee Stain Studios, ce jeu délirant propose une expérience sandbox où le joueur a pour but de provoquer le chaos dans un environnement ouvert.",
             "Sorti en 2014, il est devenu célèbre pour son gameplay volontairement buggué, son humour absurde et ses interactions imprévisibles.",
             "Sa popularité inattendue a montré qu’un jeu fun et décalé, même sans ambition technique, pouvait rencontrer un énorme succès, influençant la création de nombreux autres jeux indépendants humoristiques."
-        ]
+        ],
+        midi: ['../Medias/Midi/Goat Simulator.mid'],
+        shadow: ['../Medias/Shadow/Goat Simulator.jpg'],
+        pixels: ['../Medias/Pixels/Goat Simulator.jpg']
     },
     {
         title: 'Gang Beasts',
@@ -2050,7 +2388,10 @@ export const games = [
             "Ce jeu multijoueur propose des combats physiques loufoques avec des personnages en gelée dans des arènes variées et colorées. Il est développé par Boneloaf.",
             "Lancé en accès anticipé en 2014, il s’est fait connaître pour son gameplay chaotique et son humour absurde, parfait pour jouer entre amis.",
             "Malgré un lore minimaliste, le jeu a su se démarquer par son style unique et a inspiré la popularisation des jeux de combat déjantés basés sur la physique dans le domaine indépendant."
-        ]
+        ],
+        midi: ['../Medias/Midi/Gang Beasts.mid'],
+        shadow: ['../Medias/Shadow/Gang Beasts.jpg'],
+        pixels: ['../Medias/Pixels/Gang Beasts.jpg']
     },
     {
         title: 'R.E.P.O.',
@@ -2068,7 +2409,10 @@ export const games = [
             "Ce jeu d'horreur coopératif en ligne vous plonge dans des missions où vous devez localiser et extraire des objets précieux tout en évitant des menaces imprévisibles.",
             "Développé par Semiwork, R.E.P.O. propose une expérience immersive avec une physique réaliste et un gameplay roguelike, où chaque partie est unique.",
             "Dans un futur dystopique, vous incarnez un agent chargé de satisfaire les désirs de votre créateur, explorant des installations abandonnées et affrontant des entités mystérieuses."
-        ]
+        ],
+        midi: ['../Medias/Midi/R.E.P.O..mid'],
+        shadow: ['../Medias/Shadow/R.E.P.O..jpg'],
+        pixels: ['../Medias/Pixels/R.E.P.O..jpg']
     },
     {
         title: 'Lethal company',
@@ -2086,7 +2430,10 @@ export const games = [
             "Ce jeu d'horreur coopératif plonge les joueurs dans des environnements sombres où ils doivent accomplir des missions sous pression.",
             "Sorti en accès anticipé en octobre 2023, il propose une expérience immersive avec des mécaniques de survie et une ambiance oppressante.",
             "Le lore se dévoile à travers les missions, où les joueurs incarnent des travailleurs sous contrat, explorant des lieux abandonnés et affrontant des entités hostiles dans une dystopie rétrofuturiste."
-        ]
+        ],
+        midi: ['../Medias/Midi/Lethal company.mid'],
+        shadow: ['../Medias/Shadow/Lethal company.jpg'],
+        pixels: ['../Medias/Pixels/Lethal company.jpg']
     },
     {
         title: 'Hogwarts Legacy',
@@ -2104,7 +2451,10 @@ export const games = [
             "Ce jeu d'action-RPG se déroule dans un univers magique, permettant aux joueurs d'apprendre des sorts et de maîtriser la magie. Il est développé par Portkey Games.",
             "Sorti en 2023, il propose une aventure immersive où les joueurs incarnent un étudiant capable de découvrir des secrets cachés dans Poudlard et ses alentours.",
             "Le lore s'étend sur plusieurs siècles avant les événements des livres, offrant une nouvelle perspective sur le monde sorcier et ses mystères."
-        ]
+        ],
+        midi: ['../Medias/Midi/Hogwarts Legacy.mid'],
+        shadow: ['../Medias/Shadow/Hogwarts Legacy.jpg'],
+        pixels: ['../Medias/Pixels/Hogwarts Legacy.jpg']
     },
     {
         title: 'H1Z1',
@@ -2122,7 +2472,10 @@ export const games = [
             "Développé par Daybreak Game Company, ce jeu de tir en ligne propose un mode Battle Royale où les joueurs s'affrontent pour être les derniers survivants sur une carte en constante réduction.",
             "Lancé en 2015, il a été l'un des premiers jeux à populariser le genre Battle Royale, offrant des combats intenses et une variété d'armes et de véhicules.",
             "Le jeu a connu plusieurs évolutions, dont une scission en deux jeux distincts : un axé sur le Battle Royale et un jeu de survie."
-        ]
+        ],
+        midi: ['../Medias/Midi/H1Z1.mid'],
+        shadow: ['../Medias/Shadow/H1Z1.jpg'],
+        pixels: ['../Medias/Pixels/H1Z1.jpg']
     },
     {
         title: 'Red Dead Redemption',
@@ -2140,7 +2493,10 @@ export const games = [
             "Ce jeu d'action-aventure en monde ouvert, développé par Rockstar Games, plonge les joueurs dans l'univers du Far West.",
             "Sorti en 2010, il suit l'histoire de John Marston, un ancien hors-la-loi cherchant à retrouver sa famille tout en affrontant son passé.",
             "Le lore s'étend sur plusieurs années, explorant les thèmes de la loyauté et des conflits entre la civilisation et la vie sauvage, le tout dans un monde riche en détails et en personnages mémorables."
-        ]
+        ],
+        midi: ['../Medias/Midi/Red Dead Redemption.mid'],
+        shadow: ['../Medias/Shadow/Red Dead Redemption.jpg'],
+        pixels: ['../Medias/Pixels/Red Dead Redemption.jpg']
     },
     {
         title: 'Dark Souls',
@@ -2158,7 +2514,10 @@ export const games = [
             "Ce jeu d'action-RPG, développé par FromSoftware, est connu pour sa difficulté élevée et son univers sombre et interconnecté.",
             "Avec un premier opus sorti en 2011, il propose un gameplay exigeant où chaque mort est une leçon, et où les joueurs doivent apprendre des ennemis pour progresser.",
             "Le lore est riche et complexe, explorant des thèmes de sacrifice, de déclin et de cycles éternels à travers des histoires entrelacées de dieux, de dragons et de héros oubliés."
-        ]
+        ],
+        midi: ['../Medias/Midi/Dark Souls.mid'],
+        shadow: ['../Medias/Shadow/Dark Souls.jpg'],
+        pixels: ['../Medias/Pixels/Dark Souls.jpg']
     },
     {
         title: 'Sekiro: Shadows Die Twice',
@@ -2176,7 +2535,10 @@ export const games = [
             "Ce jeu d'action-aventure, développé par FromSoftware, se déroule dans un Japon féodal alternatif et met l'accent sur le combat au corps à corps.",
             "Sorti en 2019, il suit l'histoire d'un shinobi cherchant à sauver son maître tout en affrontant des ennemis redoutables.",
             "Le lore s'inspire de la mythologie japonaise et explore des thèmes de loyauté, de vengeance et de rédemption à travers une narration immersive et des combats intenses."
-        ]
+        ],
+        midi: ['../Medias/Midi/Sekiro Shadows Die Twice.mid'],
+        shadow: ['../Medias/Shadow/Sekiro Shadows Die Twice.jpg'],
+        pixels: ['../Medias/Pixels/Sekiro Shadows Die Twice.jpg']
     },
     {
         title: 'Elden Ring',
@@ -2194,7 +2556,10 @@ export const games = [
             "Ce jeu d'action-RPG en monde ouvert, développé par FromSoftware, propose une expérience immersive dans un univers fantastique riche et détaillé. Il a par ailleurs été désigné comme étant un GOTY.",
             "Sorti en 2022, il combine des éléments de gameplay des précédents titres du studio avec une exploration libre et des combats intenses.",
             "Le lore, coécrit par George R. R. Martin, explore des thèmes de pouvoir, de trahison et de destin à travers un monde vaste peuplé de créatures mythiques et de personnages mémorables."
-        ]
+        ],
+        midi: ['../Medias/Midi/Elden Ring.mid'],
+        shadow: ['../Medias/Shadow/Elden Ring.jpg'],
+        pixels: ['../Medias/Pixels/Elden Ring.jpg']
     },
     {
         title: 'Bloodborne',
@@ -2212,7 +2577,10 @@ export const games = [
             "Ce jeu d'action-RPG, développé par FromSoftware, se déroule dans un univers gothique et horrifique, inspiré de l'architecture victorienne et de la mythologie.",
             "Sorti en 2015, il propose un gameplay rapide et agressif, où les joueurs doivent parer et riposter avec précision pour vaincre des ennemis redoutables.",
             "Le lore est riche et énigmatique, explorant des thèmes de la folie, de la maladie et de la quête de connaissance à travers des histoires entrelacées de chasseurs, de bêtes et de dieux anciens."
-        ]
+        ],
+        midi: ['../Medias/Midi/Bloodborne.mid'],
+        shadow: ['../Medias/Shadow/Bloodborne.jpg'],
+        pixels: ['../Medias/Pixels/Bloodborne.jpg']
     },
     {
         title: 'Ghost of Tsushima',
@@ -2230,7 +2598,10 @@ export const games = [
             "Ce jeu d'action-aventure en monde ouvert, développé par Sucker Punch Productions, se déroule dans le Japon féodal pendant l'invasion mongole.",
             "Sorti en 2020, il suit l'histoire de Jin Sakai, un samouraï cherchant à protéger son île natale tout en adoptant des méthodes non conventionnelles pour combattre les envahisseurs.",
             "Le lore s'inspire de la culture japonaise et explore des thèmes de loyauté, d'honneur et de sacrifice à travers une narration immersive et des combats intenses."
-        ]
+        ],
+        midi: ['../Medias/Midi/Ghost of Tsushima.mid'],
+        shadow: ['../Medias/Shadow/Ghost of Tsushima.jpg'],
+        pixels: ['../Medias/Pixels/Ghost of Tsushima.jpg']
     },
     {
         title: 'Doom',
@@ -2248,7 +2619,10 @@ export const games = [
             "Ce jeu de tir à la première personne, développé par id Software, est considéré comme l'un des pionniers du genre.",
             "Sorti en 1993, il a révolutionné le gameplay avec ses graphismes en 3D et son action frénétique, plongeant les joueurs dans un enfer rempli de démons.",
             "Le lore s'articule autour d'une invasion démoniaque sur Mars, où le joueur incarne un marine combattant des hordes de créatures infernales tout en découvrant les sombres secrets des laboratoires de l'UAC."
-        ]
+        ],
+        midi: ['../Medias/Midi/Doom.mid'],
+        shadow: ['../Medias/Shadow/Doom.jpg'],
+        pixels: ['../Medias/Pixels/Doom.jpg']
     },
     {
         title: 'Wii Sports',
@@ -2266,7 +2640,10 @@ export const games = [
             "Ce jeu de développé par Nintendo, utilise la détection de mouvement pour simuler des activités sportives.",
             "Sorti en 2006, il propose des mini-jeux basés sur des sports tels que le tennis, le bowling et la boxe.",
             "Le jeu a été un succès commercial et a contribué à populariser la Wii en tant que console familiale.",
-        ]
+        ],
+        midi: ['../Medias/Midi/Wii Sports.mid'],
+        shadow: ['../Medias/Shadow/Wii Sports.jpg'],
+        pixels: ['../Medias/Pixels/Wii Sports.jpg']
     },
     {
         title: 'Kirby',
@@ -2284,7 +2661,10 @@ export const games = [
             "Ce jeu de plateforme développé par HAL Laboratory met en avant un personnage rond et rose.",
             "Sorti en 1992, il propose des niveaux colorés et variés où le personnage peut aspirer ses ennemis pour copier leurs capacités.",
             "Le lore s'étend sur plusieurs jeux, explorant le royaume de Dream Land, où il doit combattre des ennemis variés pour sauver ses habitants."
-        ]
+        ],
+        midi: ['../Medias/Midi/Kirby.mid'],
+        shadow: ['../Medias/Shadow/Kirby.jpg'],
+        pixels: ['../Medias/Pixels/Kirby.jpg']
     },
     {
         title: 'Mass Effect',
@@ -2302,7 +2682,10 @@ export const games = [
             "Ce jeu de rôle et d'action, développé par BioWare, se déroule dans un univers de science-fiction riche et détaillé.",
             "Sorti en 2007, il suit l'histoire du commandant Shepard, un soldat chargé de sauver la galaxie d'une menace extraterrestre.",
             "Le lore s'étend sur plusieurs jeux, explorant des thèmes de choix moral, de sacrifice et d'interaction entre différentes espèces dans un univers complexe."
-        ]
+        ],
+        midi: ['../Medias/Midi/Mass Effect.mid'],
+        shadow: ['../Medias/Shadow/Mass Effect.jpg'],
+        pixels: ['../Medias/Pixels/Mass Effect.jpg']
     },
     {
         title: 'Animal Crossing',
@@ -2320,7 +2703,10 @@ export const games = [
             "Ce jeu de simulation de vie, développé par Nintendo, permet aux joueurs de vivre sur une île déserte peuplée d'animaux anthropomorphes.",
             "Sorti en 2001, il propose une expérience relaxante où les joueurs peuvent pêcher, chasser des insectes et décorer leur maison.",
             "Le dernier opus a connu un immense succès, notamment en raison de sa sortie pendant la pandémie de COVID-19."
-        ]
+        ],
+        midi: ['../Medias/Midi/Animal Crossing.mid'],
+        shadow: ['../Medias/Shadow/Animal Crossing.jpg'],
+        pixels: ['../Medias/Pixels/Animal Crossing.jpg']
     },
     {
         title: 'Halo',
@@ -2338,7 +2724,10 @@ export const games = [
             "Ce jeu de tir à la première personne, développé par Bungie, se déroule dans un univers de science-fiction futuriste.",
             "Sorti en 2001, il suit l'histoire du Master Chief, un super-soldat combattant une alliance extraterrestre connue sous le nom de Covenant.",
             "Le lore s'étend sur plusieurs jeux, explorant des thèmes de guerre, de sacrifice et de l'héritage de l'humanité dans un univers en constante évolution."
-        ]
+        ],
+        midi: ['../Medias/Midi/Halo.mid'],
+        shadow: ['../Medias/Shadow/Halo.jpg'],
+        pixels: ['../Medias/Pixels/Halo.jpg']
     },
     {
         title: 'Silent Hill',
@@ -2356,7 +2745,10 @@ export const games = [
             "Ce jeu d'horreur psychologique, développé par Konami, plonge les joueurs dans une ville mystérieuse et cauchemardesque.",
             "Sorti en 1999, il suit l'histoire de Harry Mason à la recherche de sa fille adoptive dans une ville enveloppée de brouillard et peuplée de créatures terrifiantes.",
             "Le lore est riche et complexe, explorant des thèmes de culpabilité, de rédemption et de la nature du mal à travers des histoires entrelacées de personnages tourmentés."
-        ]
+        ],
+        midi: ['../Medias/Midi/Silent Hill.mid'],
+        shadow: ['../Medias/Shadow/Silent Hill.jpg'],
+        pixels: ['../Medias/Pixels/Silent Hill.jpg']
     },
     {
         title: 'Uncharted',
@@ -2374,7 +2766,10 @@ export const games = [
             "Ce jeu d'action-aventure, développé par Naughty Dog, suit les aventures d'un chasseur de trésors.",
             "Sorti en 2007, il propose une expérience cinématographique avec des séquences d'action spectaculaires et une narration immersive où nous contrôlons Nathan Drake.",
             "Le lore s'étend sur plusieurs jeux, explorant des thèmes de découverte, de trahison et de l'héritage des civilisations anciennes à travers des paysages exotiques et des énigmes complexes."
-        ]
+        ],
+        midi: ['../Medias/Midi/Uncharted.mid'],
+        shadow: ['../Medias/Shadow/Uncharted.jpg'],
+        pixels: ['../Medias/Pixels/Uncharted.jpg']
     },
     {
         title: 'The Forest',
@@ -2392,7 +2787,10 @@ export const games = [
             "Ce jeu de survie en monde ouvert, développé par Endnight Games, plonge les joueurs dans une forêt mystérieuse après un crash d'avion.",
             "Les joueurs doivent construire des abris, chasser des animaux et éviter des créatures cannibales tout en cherchant leur fils disparu.",
             "Le lore est riche et complexe, explorant des thèmes de survie, de famille et de l'horreur psychologique à travers des indices disséminés dans l'environnement."
-        ]
+        ],
+        midi: ['../Medias/Midi/The Forest.mid'],
+        shadow: ['../Medias/Shadow/The Forest.jpg'],
+        pixels: ['../Medias/Pixels/The Forest.jpg']
     },
     {
         title: 'Diablo',
@@ -2410,7 +2808,10 @@ export const games = [
             "Ce jeu d'action-RPG, développé par Blizzard Entertainment, se déroule dans un univers sombre et fantastique.",
             "Avec un premier opus sorti en 1996, il a redéfini le genre avec son gameplay addictif et son atmosphère immersive.",
             "Le lore est riche et complexe, explorant des thèmes de lutte entre le bien et le mal à travers des histoires entrelacées de héros et de démons."
-        ]
+        ],
+        midi: ['../Medias/Midi/Diablo.mid'],
+        shadow: ['../Medias/Shadow/Diablo.jpg'],
+        pixels: ['../Medias/Pixels/Diablo.jpg']
     },
     {
         title: 'Age of War',
@@ -2428,7 +2829,10 @@ export const games = [
             "Ce jeu de stratégie en 2D, développé par Max Games, met le joueur aux commandes d'une civilisation qu’il doit faire évoluer à travers les âges tout en affrontant un adversaire.",
             "Sorti initialement en 2007 en version Flash, puis adapté sur mobile, il se distingue par son gameplay accessible mêlant défense de base, progression technologique et combat en temps réel.",
             "Le lore repose sur une progression chronologique à travers cinq ères, de la préhistoire au futur, illustrant l’évolution militaire de l’humanité face à des ennemis toujours plus avancés technologiquement."
-        ]
+        ],
+        midi: ['../Medias/Midi/Age of War.mid'],
+        shadow: ['../Medias/Shadow/Age of War.jpg'],
+        pixels: ['../Medias/Pixels/Age of War.jpg']
     },
     {
         title: 'Terraria',
@@ -2446,7 +2850,10 @@ export const games = [
             "Ce jeu de survie et d'exploration en 2D, développé par Re-Logic, permet aux joueurs de construire, explorer et combattre dans un monde généré aléatoirement.",
             "Sorti en 2011, il a été salué pour sa profondeur de gameplay, ses graphismes pixel art et sa bande-son immersive.",
             "Le lore est riche et complexe, explorant des thèmes de découverte, de créativité et de survie à travers des biomes variés et des ennemis uniques."
-        ]
+        ],
+        midi: ['../Medias/Midi/Terraria.mid'],
+        shadow: ['../Medias/Shadow/Terraria.jpg'],
+        pixels: ['../Medias/Pixels/Terraria.jpg']
     },
     {
         title: 'The Sims',
@@ -2464,7 +2871,10 @@ export const games = [
             "Ce jeu de simulation de vie, développé par Maxis, permet aux joueurs de créer et de contrôler des personnages dans un monde virtuel.",
             "Sorti en 2000, il a révolutionné le genre avec sa mécanique de simulation sociale et ses possibilités de personnalisation.",
             "Le lore est centré sur la vie quotidienne des personnages, explorant des thèmes de relations, de carrière et de créativité à travers des interactions sociales variées."
-        ]
+        ],
+        midi: ['../Medias/Midi/The Sims.mid'],
+        shadow: ['../Medias/Shadow/The Sims.jpg'],
+        pixels: ['../Medias/Pixels/The Sims.jpg']
     },
     {
         title: 'Ark: Survival Evolved',
@@ -2482,7 +2892,10 @@ export const games = [
             "Ce jeu de survie en monde ouvert, développé par Studio Wildcard, plonge les joueurs dans un monde préhistorique peuplé de dinosaures.",
             "Les joueurs doivent collecter des ressources, construire des abris et domestiquer des créatures tout en luttant pour leur survie.",
             "Le lore est riche et complexe, explorant des thèmes de survie, d'exploration et de coexistence avec des créatures anciennes à travers des artefacts et des histoires cachées."
-        ]
+        ],
+        midi: ['../Medias/Midi/Ark.mid'],
+        shadow: ['../Medias/Shadow/Ark.jpg'],
+        pixels: ['../Medias/Pixels/Ark.jpg']
     },
     {
         title: 'It Takes Two',
@@ -2500,7 +2913,10 @@ export const games = [
             "Ce jeu de plateforme coopératif, développé par Hazelight Studios, suit l'histoire de Cody et May, un couple en instance de divorce qui doit travailler ensemble pour surmonter des obstacles dans un monde fantastique.",
             "Sorti en 2021, il a été salué pour son gameplay innovant, ses mécaniques de coopération et son approche narrative unique. Il a d'ailleurs remporté le prix du meilleur jeu de l'année.",
             "Le lore explore des thèmes de relations, de communication et de réconciliation à travers des niveaux variés et des défis créatifs."
-        ]
+        ],
+        midi: ['../Medias/Midi/It Takes Two.mid'],
+        shadow: ['../Medias/Shadow/It Takes Two.jpg'],
+        pixels: ['../Medias/Pixels/It Takes Two.jpg']
     },
     {
         title: 'The Walking Dead',
@@ -2518,7 +2934,31 @@ export const games = [
             "Ce jeu d'aventure narratif, développé par Telltale Games, est basé sur la série de comics du même nom. Il suit l'histoire de Lee Everett, un criminel en fuite qui se retrouve à protéger une jeune fille nommée Clementine dans un monde post-apocalyptique envahi par des zombies.",
             "Sorti en 2012, il a été acclamé pour son écriture, ses personnages profonds et ses choix moraux difficiles qui influencent le cours de l'histoire.",
             "Le lore explore des thèmes de survie, de sacrifice et de l'humanité face à l'adversité à travers des épisodes riches en émotions."
-        ]
+        ],
+        midi: ['../Medias/Midi/The Walking Dead.mid'],
+        shadow: ['../Medias/Shadow/The Walking Dead.jpg'],
+        pixels: ['../Medias/Pixels/The Walking Dead.jpg']
+    },
+    {
+        title: 'Clair Obscur : Expedition 33',
+        image: [
+            '../Medias/Image/Clair Obscur Expedition 33 1.jpg',
+            '../Medias/Image/Clair Obscur Expedition 33 2.jpg',
+            '../Medias/Image/Clair Obscur Expedition 33 3.jpg',
+        ],
+        sound: [
+            '../Medias/Sound/Clair Obscur Expedition 33 1.mp3',
+            '../Medias/Sound/Clair Obscur Expedition 33 2.mp3',
+            '../Medias/Sound/Clair Obscur Expedition 33 3.mp3',
+        ],
+        text: [
+            "XXX",
+            "XXX",
+            "XXX"
+        ],
+        midi: ['../Medias/Midi/Clair Obscur Expedition 33.mid'],
+        shadow: ['../Medias/Shadow/Clair Obscur Expedition 33.jpg'],
+        pixels: ['../Medias/Pixels/Clair Obscur Expedition 33.jpg']
     }
 ];
 
@@ -2533,12 +2973,12 @@ export const abbreviations = {
     'the last of us': ['tlou'],
     'the legend of zelda': ['zelda'],
     'plants vs zombies': ['pvz'],
-    'spider-man': ['spider man'],
+    'spider-man': ['spider man', 'spiderman'],
     'clash of clans': ['coc'],
     'apex legends': ['apex'],
     'rocket league': ['rl'],
     'mortal kombat': ['mk'],
-    'detroit: become human': ['detroit become human'],
+    'detroit: become human': ['detroit become human', 'dbh', 'detroit'],
     'ori and the blind forest': ['ori'],
     'grand theft auto': ['gta'],
     'age of empires': ['aoe'],
@@ -2563,4 +3003,5 @@ export const abbreviations = {
     'the sims': ['sims'],
     'cyberpunk 2077': ['cyberpunk'],
     'assassin\'s creed': ['ac'],
+    'claire obscur : expedition 33': ['clair obscur']
 };
