@@ -39,22 +39,22 @@ const dialogues = {
         image: "../Assets/perso 1.jpg"
     },
     5: {
-        text: "On dirait que tu commences à maîtriser !",
+        text: "On dirait que tu commences à maîtriser ! Moi aussi je travaille sur ma mémoire ! Je commence à me rappeler grâce à toi. Continues et je te serais très reconnaissant !",
         image: "../Assets/perso 2.jpg"
     },
     10: {
-        text: "Wow, tu es persévérant !",
+        text: "Wow, tu es persévérant ! Ma mémoire revient à toute vitesse et c'est grâce à toi ! Ne t'arrêtes pas tu es sur la bonne voie !",
         image: "../Assets/perso 3.jpg"
     }
 };
 
 const keyDialogues = {
     1: {
-        text: "Oh tu as déjà terminé un mode entier ! Félicitations ! Tu m'aides à recouvrer la mémoire. Grâce à toi j'ai retrouvé la clefs de ma chamrbe, tu peux y aller si tu veux. Peut-être trouveras-tu de nouvelles choses à faire !",
+        text: "Oh tu as déjà terminé un mode entier ! Félicitations ! Tu m'aides à recouvrer la mémoire. Grâce à toi j'ai retrouvé la clefs de ma chambre, tu peux y aller si tu veux. Peut-être trouveras-tu de nouvelles choses à faire !",
         image: "../Assets/characters/key_1.png"
     },
     2: {
-        text: "Deux clés déjà ? Impressionnant ! Continue comme ça ! Tu es sur la bonne voie pour m'aider à retrouver tous mes souvenirs.",
+        text: "Deux clés déjà ? Impressionnant ! Continue comme ça ! Tu es sur la bonne voie pour m'aider à retrouver tous mes souvenirs. Ouvres donc un tiroir de mon bureau,tu trouveras sûrement quelque chose pour continuer !",
         image: "../Assets/characters/key_2.png"
     }
 };
