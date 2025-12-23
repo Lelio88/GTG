@@ -50,11 +50,11 @@ const dialogues = {
 
 const keyDialogues = {
     1: {
-        text: "Oh tu as déjà terminé un mode entier ! Félicitations ! Tu m'aides à recouvrer la mémoire. Grâce à toi j'ai retrouvé la clefs de ma chamrbe, tu peux y aller si tu veux. Peut-être trouveras-tu de nouvelles choses à faire !",
+        text: "Oh tu as déjà terminé un mode entier ! Félicitations ! Tu m'aides à recouvrer la mémoire. Grâce à toi j'ai retrouvé la clefs de ma chambre, tu peux y aller si tu veux. Peut-être trouveras-tu de nouvelles choses à faire !",
         image: "../Assets/characters/key_1.png"
     },
     2: {
-        text: "Deux clés déjà ? Impressionnant ! Continue comme ça ! Tu es sur la bonne voie pour m'aider à retrouver tous mes souvenirs.",
+        text: "Deux clés déjà ? Impressionnant ! Continue comme ça ! Tu es sur la bonne voie pour m'aider à retrouver tous mes souvenirs. Ouvres donc un tiroir de mon bureau,tu trouveras sûrement quelque chose pour continuer !",
         image: "../Assets/characters/key_2.png"
     }
 };
