@@ -3003,5 +3003,6 @@ export const abbreviations = {
     'the sims': ['sims'],
     'cyberpunk 2077': ['cyberpunk'],
     'assassin\'s creed': ['ac'],
-    'claire obscur : expedition 33': ['clair obscur']
+    'claire obscur : expedition 33': ['clair obscur'],
+    'undertale': ['ut']
 };
