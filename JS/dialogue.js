@@ -39,11 +39,11 @@ const dialogues = {
         image: "../Assets/perso 1.jpg"
     },
     5: {
-        text: "On dirait que tu commences à maîtriser !",
+        text: "On dirait que tu commences à maîtriser ! Moi aussi je travaille sur ma mémoire ! Je commence à me rappeler grâce à toi. Continues et je te serais très reconnaissant !",
         image: "../Assets/perso 2.jpg"
     },
     10: {
-        text: "Wow, tu es persévérant !",
+        text: "Wow, tu es persévérant ! Ma mémoire revient à toute vitesse et c'est grâce à toi ! Ne t'arrêtes pas tu es sur la bonne voie !",
         image: "../Assets/perso 3.jpg"
     }
 };
