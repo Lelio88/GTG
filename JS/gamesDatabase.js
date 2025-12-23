@@ -17,7 +17,7 @@ export const games = [
             "Dans le rôle de Jack, le protagoniste, le joueur rencontre des personnages marquants comme Andrew Ryan, le fondateur de Rapture, et Frank Fontaine, un manipulateur puissant. Les Petites Sœurs et les Protecteurs ajoutent une touche unique au gameplay."
         ],
         midi: ['../Medias/Midi/Bioshock.mid'],
-        shadow: ['../Medias/Shadow/Bioshock.jpg'],
+        shadow: ['../Medias/Shadow/Bioshock.png'],
         pixels: ['../Medias/Pixels/Bioshock.jpg']
     },
     {
@@ -38,7 +38,7 @@ export const games = [
             "Dans le jeu, le joueur rencontre Crazy Dave, un personnage excentrique qui aide à débloquer des niveaux et à acheter des objets. Les zombies eux-mêmes sont variés : certains portent des cônes de signalisation, d'autres des seaux, rendant chaque vague unique."
         ],
         midi: ['../Medias/Midi/Plants vs Zombies.mid'],
-        shadow: ['../Medias/Shadow/Plants vs Zombies.jpg'],
+        shadow: ['../Medias/Shadow/Plants vs Zombies.png'],
         pixels: ['../Medias/Pixels/Plants vs Zombies.jpg']
     },
     {
@@ -59,7 +59,7 @@ export const games = [
             "Aujourd'hui, c'est l'une des franchises les plus populaires de l'industrie du jeu vidéo, avec des opus annuels explorant aussi bien les guerres modernes que futuristes. La série a également fait un bond dans l'univers du Battle Royale, rassemblant des millions de joueurs à travers le monde."
         ],
         midi: ['../Medias/Midi/Call of Duty.mid'],
-        shadow: ['../Medias/Shadow/Call of Duty.jpg'],
+        shadow: ['../Medias/Shadow/Call of Duty.png'],
         pixels: ['../Medias/Pixels/Call of Duty.jpg']
     },
     {
@@ -80,7 +80,7 @@ export const games = [
             "Le succès a donné naissance à une suite en 2020 ainsi qu'à une adaptation en série télévisée. Il est aujourd'hui considéré comme l'un des jeux les plus marquants de l'industrie, notamment pour sa narration émotive et son réalisme."
         ],
         midi: ['../Medias/Midi/The Last of Us.mid'],
-        shadow: ['../Medias/Shadow/The Last of Us.jpg'],
+        shadow: ['../Medias/Shadow/The Last of Us.png'],
         pixels: ['../Medias/Pixels/The Last of Us.jpg']
     },
     {
@@ -101,7 +101,7 @@ export const games = [
             "Le jeu a gagné en popularité grâce à ses mises à jour régulières, l'ajout de nouveaux biomes, de technologies et d'outils de construction. Il est aujourd'hui un incontournable pour les amateurs de gestion industrielle et d'automatisation à grande échelle."
         ],
         midi: ['../Medias/Midi/Satisfactory.mid'],
-        shadow: ['../Medias/Shadow/Satisfactory.jpg'],
+        shadow: ['../Medias/Shadow/Satisfactory.png'],
         pixels: ['../Medias/Pixels/Satisfactory.jpg']
     },
     {
@@ -122,7 +122,7 @@ export const games = [
             "Depuis sa sortie, le jeu est devenu une référence dans le genre horrifique, avec plusieurs extensions et une suite. Dans les deux jeux, le joueur incarne un journaliste, armé uniquement d'une caméra à vision nocturne pour documenter l'horreur qu'il découvre."
         ],
         midi: ['../Medias/Midi/Outlast.mid'],
-        shadow: ['../Medias/Shadow/Outlast.jpg'],
+        shadow: ['../Medias/Shadow/Outlast.png'],
         pixels: ['../Medias/Pixels/Outlast.jpg']
     },
     {
@@ -143,7 +143,7 @@ export const games = [
             "Le jeu a été salué pour sa narration intégrée au gameplay et ses interactions avec les dieux de l'Olympe. Il est aujourd'hui considéré comme l'un des meilleurs rogue-likes jamais créés, récompensé par de nombreux prix.",
         ],
         midi: ['../Medias/Midi/Hades.mid'],
-        shadow: ['../Medias/Shadow/Hades.jpg'],
+        shadow: ['../Medias/Shadow/Hades.png'],
         pixels: ['../Medias/Pixels/Hades.jpg']
     },
     {
@@ -164,7 +164,7 @@ export const games = [
             "L'intrigue plonge profondément dans le concept de dimensions parallèles, avec Elizabeth capable d'ouvrir des failles vers des réalités alternatives. Ces 'déchirures' permettent d'influencer le cours des événements et révèlent les secrets cachés de Columbia.",
         ],
         midi: ['../Medias/Midi/Bioshock Infinite.mid'],
-        shadow: ['../Medias/Shadow/Bioshock Infinite.jpg'],
+        shadow: ['../Medias/Shadow/Bioshock Infinite.png'],
         pixels: ['../Medias/Pixels/Bioshock Infinite.jpg']
     },
     {
@@ -185,7 +185,7 @@ export const games = [
             "Le lore du jeu est riche et cryptique, dévoilé principalement par l'exploration et les rencontres avec les habitants de Hallownest. Il raconte l'histoire d'une ancienne infection, la chute d'un royaume prospère, et les conflits entre les différents seigneurs et entités mystérieuses qui peuplent ce monde."
         ],
         midi: ['../Medias/Midi/Hollow Knight.mid'],
-        shadow: ['../Medias/Shadow/Hollow Knight.jpg'],
+        shadow: ['../Medias/Shadow/Hollow Knight.png'],
         pixels: ['../Medias/Pixels/Hollow Knight.jpg']
     },
     {
@@ -206,7 +206,7 @@ export const games = [
             "Le lore du jeu est complexe et captivant, explorant les causes de l'effondrement de la civilisation humaine, la montée des intelligences artificielles et la coexistence fragile entre les humains et les machines. L’histoire se dévoile au fil des artefacts, des hologrammes et des rencontres avec différentes tribus."
         ],
         midi: ['../Medias/Midi/Horizon Zero Dawn.mid'],
-        shadow: ['../Medias/Shadow/Horizon Zero Dawn.jpg'],
+        shadow: ['../Medias/Shadow/Horizon Zero Dawn.png'],
         pixels: ['../Medias/Pixels/Horizon Zero Dawn.jpg']
     },
     {
@@ -227,7 +227,7 @@ export const games = [
             "Le jeu est devenu une licence emblématique des jeux de plateforme, avec plusieurs suites, remakes et spin-offs. Sa popularité a traversé les générations, restant un classique apprécié des joueurs de tous âges."
         ],
         midi: ['../Medias/Midi/Spyro.mid'],
-        shadow: ['../Medias/Shadow/Spyro.jpg'],
+        shadow: ['../Medias/Shadow/Spyro.png'],
         pixels: ['../Medias/Pixels/Spyro.jpg']
     },
     {
@@ -248,7 +248,7 @@ export const games = [
             "La série a évolué pour intégrer la mythologie nordique, approfondissant les relations entre Kratos et son fils Atreus, avec un focus sur la rédemption et la paternité, faisant de la licence un pilier du jeu vidéo moderne."
         ],
         midi: ['../Medias/Midi/God of War.mid'],
-        shadow: ['../Medias/Shadow/God of War.jpg'],
+        shadow: ['../Medias/Shadow/God of War.png'],
         pixels: ['../Medias/Pixels/God of War.jpg']
     },
     {
@@ -269,7 +269,7 @@ export const games = [
             "Il se démarque par son gameplay basé sur un pistolet à portails permettant de créer des passages instantanés. La licence a donné naissance à une suite très attendue, qui a approfondi l’histoire et les mécaniques de jeu."
         ],
         midi: ['../Medias/Midi/Portal.mid'],
-        shadow: ['../Medias/Shadow/Portal.jpg'],
+        shadow: ['../Medias/Shadow/Portal.png'],
         pixels: ['../Medias/Pixels/Portal.jpg']
     },
     {
@@ -290,7 +290,7 @@ export const games = [
             "Le jeu est devenu un phénomène culturel, donnant naissance à plusieurs suites et à une scène e-sport dynamique."
         ],
         midi: ['../Medias/Midi/Counter Strike.mid'],
-        shadow: ['../Medias/Shadow/Counter Strike.jpg'],
+        shadow: ['../Medias/Shadow/Counter Strike.png'],
         pixels: ['../Medias/Pixels/Counter Strike.jpg']
     },
     {
@@ -311,7 +311,7 @@ export const games = [
             "Le jeu a connu un immense succès, devenant l'un des jeux les plus vendus de tous les temps, avec une communauté active et de nombreuses mises à jour."
         ],
         midi: ['../Medias/Midi/Minecraft.mid'],
-        shadow: ['../Medias/Shadow/Minecraft.jpg'],
+        shadow: ['../Medias/Shadow/Minecraft.png'],
         pixels: ['../Medias/Pixels/Minecraft.jpg']
     },
     {
@@ -332,7 +332,7 @@ export const games = [
             "L’histoire repose sur une guerre millénaire entre deux factions secrètes aux idéologies opposées : l’une défendant le libre arbitre, l’autre cherchant le contrôle. Le tout est lié par une technologie permettant d’explorer les souvenirs génétiques des ancêtres, révélant une ancienne civilisation et des artefacts aux pouvoirs immenses."
         ],
         midi: ['../Medias/Midi/Assassin\'s Creed.mid'],
-        shadow: ['../Medias/Shadow/Assassin\'s Creed.jpg'],
+        shadow: ['../Medias/Shadow/Assassin\'s Creed.png'],
         pixels: ['../Medias/Pixels/Assassin\'s Creed.jpg']
     },
     {
@@ -353,7 +353,7 @@ export const games = [
             "Sous ses mécaniques hardcore, le jeu cache une histoire symbolique mêlant fanatisme religieux, culpabilité, rejet familial et souffrance psychologique. Il utilise un imaginaire biblique détourné pour construire un univers à la fois intime et cauchemardesque."
         ],
         midi: ['../Medias/Midi/The binding of Isaac.mid'],
-        shadow: ['../Medias/Shadow/The binding of Isaac.jpg'],
+        shadow: ['../Medias/Shadow/The binding of Isaac.png'],
         pixels: ['../Medias/Pixels/The binding of Isaac.jpg']
     },
     {
@@ -374,7 +374,7 @@ export const games = [
             "L’univers s’inspire librement du mythe de Babel, évoquant la fragmentation des cultures et la quête de compréhension mutuelle. Chaque étage symbolise un peuple isolé, et le voyage devient une métaphore de la reconstruction du lien entre les peuples."
         ],
         midi: ['../Medias/Midi/Chants of Sennaar.mid'],
-        shadow: ['../Medias/Shadow/Chants of Sennaar.jpg'],
+        shadow: ['../Medias/Shadow/Chants of Sennaar.png'],
         pixels: ['../Medias/Pixels/Chants of Sennaar.jpg']
     },
     {
@@ -395,7 +395,7 @@ export const games = [
             "L’univers met en scène un monde insulaire où la science et la nature s’opposent. Un savant fou y mène des expériences pour créer une armée de créatures mutantes, mais l'une d'elles lui échappe, bouleversant ses plans et donnant lieu à une série de confrontations aux enjeux grandissants à travers plusieurs épisodes."
         ],
         midi: ['../Medias/Midi/Crash Bandicoot.mid'],
-        shadow: ['../Medias/Shadow/Crash Bandicoot.jpg'],
+        shadow: ['../Medias/Shadow/Crash Bandicoot.png'],
         pixels: ['../Medias/Pixels/Crash Bandicoot.jpg']
     },
     {
@@ -416,7 +416,7 @@ export const games = [
             "L’univers repose sur une société effondrée, où la menace ne vient pas seulement des infectés, mais aussi des survivants eux-mêmes. Le récit explore la perte, la mémoire, la solitude et la résilience, sur fond d’expériences militaires secrètes et de révélations liées à l’origine de la catastrophe."
         ],
         midi: ['../Medias/Midi/Days Gone.mid'],
-        shadow: ['../Medias/Shadow/Days Gone.jpg'],
+        shadow: ['../Medias/Shadow/Days Gone.png'],
         pixels: ['../Medias/Pixels/Days Gone.jpg']
     },
     {
@@ -437,7 +437,7 @@ export const games = [
             "Derrière son gameplay océanique se cache un monde submergé par une montée des eaux globale. Les rares terres émergées abritent des traces d’une humanité disparue, des expériences environnementales échouées, et des indices sur ce qui a mené à l’effondrement écologique de la planète."
         ],
         midi: ['../Medias/Midi/Raft.mid'],
-        shadow: ['../Medias/Shadow/Raft.jpg'],
+        shadow: ['../Medias/Shadow/Raft.png'],
         pixels: ['../Medias/Pixels/Raft.jpg']
     },
     {
@@ -458,7 +458,7 @@ export const games = [
             "L’histoire prend place dans une cité rongée par la peste, la corruption et le contrôle des élites. Les forces occultes, les cultes interdits et les tensions sociales profondes dessinent un monde où la frontière entre justice et vengeance devient floue."
         ],
         midi: ['../Medias/Midi/Dishonored.mid'],
-        shadow: ['../Medias/Shadow/Dishonored.jpg'],
+        shadow: ['../Medias/Shadow/Dishonored.png'],
         pixels: ['../Medias/Pixels/Dishonored.jpg']
     },
     {
@@ -479,7 +479,7 @@ export const games = [
             "L’univers repose sur le concept du monde imaginaire façonné par les rêves et les idées des gens. Les environnements visités sont issus d’un multivers créatif, où chaque niveau est une interprétation ludique de la pensée humaine et de la narration interactive."
         ],
         midi: ['../Medias/Midi/Little Big Planet.mid'],
-        shadow: ['../Medias/Shadow/Little Big Planet.jpg'],
+        shadow: ['../Medias/Shadow/Little Big Planet.png'],
         pixels: ['../Medias/Pixels/Little Big Planet.jpg']
     },
     {
@@ -500,7 +500,7 @@ export const games = [
             "Derrière la boucle de gameplay simple se cache un récit de folie croissante, de secrets anciens enfouis dans les abysses et d’une réalité altérée par des forces cosmiques. L’univers s’inspire du mythe de l’horreur lovecraftienne, où chaque découverte menace la santé mentale du protagoniste."
         ],
         midi: ['../Medias/Midi/Dredge.mid'],
-        shadow: ['../Medias/Shadow/Dredge.jpg'],
+        shadow: ['../Medias/Shadow/Dredge.png'],
         pixels: ['../Medias/Pixels/Dredge.jpg']
     },
     {
@@ -521,7 +521,7 @@ export const games = [
             "L’histoire révèle une ancienne civilisation disparue, des technologies avancées et des phénomènes biologiques étranges. Le joueur doit déchiffrer les causes du crash de son vaisseau spatial tout en évitant les dangers d’une faune marine parfois agressive, pour espérer survivre et s’échapper."
         ],
         midi: ['../Medias/Midi/Subnautica.mid'],
-        shadow: ['../Medias/Shadow/Subnautica.jpg'],
+        shadow: ['../Medias/Shadow/Subnautica.png'],
         pixels: ['../Medias/Pixels/Subnautica.jpg']
     },
     {
@@ -542,7 +542,7 @@ export const games = [
             "L’univers dépeint une ville en quarantaine, ravagée par une infection mystérieuse. Les factions rivales, la désolation ambiante et la lutte constante pour la survie tracent un contexte où l’espoir et la trahison cohabitent, tandis que le mystère sur l’origine de l’épidémie demeure entier."
         ],
         midi: ['../Medias/Midi/Dying Light.mid'],
-        shadow: ['../Medias/Shadow/Dying Light.jpg'],
+        shadow: ['../Medias/Shadow/Dying Light.png'],
         pixels: ['../Medias/Pixels/Dying Light.jpg']
     },
     {
@@ -563,7 +563,7 @@ export const games = [
             "L'univers explore des thèmes tels que le chaos politique, la survie face à des factions armées et les conséquences de la colonisation moderne, où les choix du joueur influencent souvent le déroulement des événements et la fin de l'histoire."
         ],
         midi: ['../Medias/Midi/Far Cry.mid'],
-        shadow: ['../Medias/Shadow/Far Cry.jpg'],
+        shadow: ['../Medias/Shadow/Far Cry.png'],
         pixels: ['../Medias/Pixels/Far Cry.jpg']
     },
     {
@@ -584,7 +584,7 @@ export const games = [
             "L'univers dépeint un futur alternatif où une ère glaciaire soudaine a transformé la planète en désert de glace, poussant l'humanité à s'organiser autour de sources de chaleur précieuses, tout en affrontant les tensions sociales et les dilemmes éthiques inhérents à la survie collective."
         ],
         midi: ['../Medias/Midi/Frostpunk.mid'],
-        shadow: ['../Medias/Shadow/Frostpunk.jpg'],
+        shadow: ['../Medias/Shadow/Frostpunk.png'],
         pixels: ['../Medias/Pixels/Frostpunk.jpg']
     },
     {
@@ -605,7 +605,7 @@ export const games = [
             "L'univers fusionne les codes du jeu d'échecs avec un décor futuriste et des mécaniques dynamiques, créant une ambiance où la tactique rencontre l'agilité et où la maîtrise du champ de bataille est aussi mentale que physique."
         ],
         midi: ['../Medias/Midi/FPS Chess.mid'],
-        shadow: ['../Medias/Shadow/FPS Chess.jpg'],
+        shadow: ['../Medias/Shadow/FPS Chess.png'],
         pixels: ['../Medias/Pixels/FPS Chess.jpg']
     },
     {
@@ -626,7 +626,7 @@ export const games = [
             "L'histoire plonge dans un monde où les tensions entre différentes races et factions se mêlent à des légendes anciennes, et où chaque recoin révèle des fragments d'une trame politique et mystique complexe."
         ],
         midi: ['../Medias/Midi/Ghost of a Tale.mid'],
-        shadow: ['../Medias/Shadow/Ghost of a Tale.jpg'],
+        shadow: ['../Medias/Shadow/Ghost of a Tale.png'],
         pixels: ['../Medias/Pixels/Ghost of a Tale.jpg']
     },
     {
@@ -647,7 +647,7 @@ export const games = [
             "Le lore explore un monde futuriste où la technologie a profondément modifié l’humanité, mêlant luttes de pouvoir, intelligence artificielle et la quête de liberté au sein d’une société oppressante et hiérarchisée."
         ],
         midi: ['../Medias/Midi/Ghostrunner.mid'],
-        shadow: ['../Medias/Shadow/Ghostrunner.jpg'],
+        shadow: ['../Medias/Shadow/Ghostrunner.png'],
         pixels: ['../Medias/Pixels/Ghostrunner.jpg']
     },
     {
@@ -668,7 +668,7 @@ export const games = [
             "L’univers du jeu s’inscrit dans un futur proche où des agents aux origines diverses possèdent des pouvoirs liés à une mystérieuse énergie, reflétant des tensions globales et un conflit en toile de fond qui nourrit la rivalité entre factions."
         ],
         midi: ['../Medias/Midi/Valorant.mid'],
-        shadow: ['../Medias/Shadow/Valorant.jpg'],
+        shadow: ['../Medias/Shadow/Valorant.png'],
         pixels: ['../Medias/Pixels/Valorant.jpg']
     },
     {
@@ -689,7 +689,7 @@ export const games = [
             "Le lore se déploie dans un futur où la Frontière est un terrain de jeu pour les compétiteurs, avec des tensions politiques, des expériences scientifiques et des alliances complexes façonnant les enjeux derrière les batailles."
         ],
         midi: ['../Medias/Midi/Apex Legends.mid'],
-        shadow: ['../Medias/Shadow/Apex Legends.jpg'],
+        shadow: ['../Medias/Shadow/Apex Legends.png'],
         pixels: ['../Medias/Pixels/Apex Legends.jpg']
     },
     {
@@ -710,7 +710,7 @@ export const games = [
             "L'univers explore la connexion entre le monde des vivants et une dimension spirituelle mystérieuse, abordant des thèmes profonds comme la vie après la mort, l'identité et le sacrifice."
         ],
         midi: ['../Medias/Midi/Beyond two souls.mid'],
-        shadow: ['../Medias/Shadow/Beyond two souls.jpg'],
+        shadow: ['../Medias/Shadow/Beyond two souls.png'],
         pixels: ['../Medias/Pixels/Beyond two souls.jpg']
     },
     {
@@ -731,7 +731,7 @@ export const games = [
             "L'univers juxtapose des paysages idylliques à des thèmes plus sombres, explorant la relation complexe entre humains et créatures, avec des enjeux éthiques et économiques qui influencent le gameplay."
         ],
         midi: ['../Medias/Midi/Palworld.mid'],
-        shadow: ['../Medias/Shadow/Palworld.jpg'],
+        shadow: ['../Medias/Shadow/Palworld.png'],
         pixels: ['../Medias/Pixels/Palworld.jpg']
     },
     {
@@ -752,7 +752,7 @@ export const games = [
             "L’univers est riche en folklore horrifique et mystique, où des forces obscures influencent le terrain de chasse, et où chaque traque révèle des secrets sinistres sur l’origine des monstres et la corruption qui ronge la région."
         ],
         midi: ['../Medias/Midi/Hunt Showdown.mid'],
-        shadow: ['../Medias/Shadow/Hunt Showdown.jpg'],
+        shadow: ['../Medias/Shadow/Hunt Showdown.png'],
         pixels: ['../Medias/Pixels/Hunt Showdown.jpg']
     },
     {
@@ -773,7 +773,7 @@ export const games = [
             "L'histoire explore des thèmes occultes et métaphysiques, mêlant réalité et fiction, où la narration brise le quatrième mur et plonge le joueur dans une intrigue complexe autour d’un univers caché et de forces obscures."
         ],
         midi: ['../Medias/Midi/Inscryption.mid'],
-        shadow: ['../Medias/Shadow/Inscryption.jpg'],
+        shadow: ['../Medias/Shadow/Inscryption.png'],
         pixels: ['../Medias/Pixels/Inscryption.jpg']
     },
     {
@@ -794,7 +794,7 @@ export const games = [
             "Le lore aborde des thèmes liés au temps, à la mémoire et aux conséquences des actes, explorant les liens complexes entre les habitants et les mystères cachés derrière la surface tranquille de leur communauté."
         ],
         midi: ['../Medias/Midi/Life is Strange.mid'],
-        shadow: ['../Medias/Shadow/Life is Strange.jpg'],
+        shadow: ['../Medias/Shadow/Life is Strange.png'],
         pixels: ['../Medias/Pixels/Life is Strange.jpg']
     },
     {
@@ -815,7 +815,7 @@ export const games = [
             "L’univers s’étend à travers des plans variés peuplés de créatures fantastiques, de mages puissants et de conflits épiques, avec un lore dense qui évolue constamment au fil des extensions et des histoires racontées."
         ],
         midi: ['../Medias/Midi/Magic.mid'],
-        shadow: ['../Medias/Shadow/Magic.jpg'],
+        shadow: ['../Medias/Shadow/Magic.png'],
         pixels: ['../Medias/Pixels/Magic.jpg']
     },
     {
@@ -836,7 +836,7 @@ export const games = [
             "Le lore s’appuie sur un riche univers de super-héros, avec des alliances, des trahisons et une exploration profonde des motivations des différents antagonistes, ainsi que des thèmes de responsabilité et de sacrifice."
         ],
         midi: ['../Medias/Midi/Spider-Man.mid'],
-        shadow: ['../Medias/Shadow/Spider-Man.jpg'],
+        shadow: ['../Medias/Shadow/Spider-Man.png'],
         pixels: ['../Medias/Pixels/Spider-Man.jpg']
     },
     {
@@ -857,7 +857,7 @@ export const games = [
             "L’univers est riche en détails, explorant les conséquences d'une catastrophe nucléaire, les tensions entre factions humaines, et les mystères qui planent sur la survie et la reconstruction dans ce monde dévasté."
         ],
         midi: ['../Medias/Midi/Metro.mid'],
-        shadow: ['../Medias/Shadow/Metro.jpg'],
+        shadow: ['../Medias/Shadow/Metro.png'],
         pixels: ['../Medias/Pixels/Metro.jpg']
     },
     {
@@ -878,7 +878,7 @@ export const games = [
             "Le lore s’appuie sur une ancienne civilisation disparue, avec des récits cryptiques sur la création et la destruction, invitant à une réflexion profonde sur le temps, l’existence et la curiosité humaine."
         ],
         midi: ['../Medias/Midi/Outer Wilds.mid'],
-        shadow: ['../Medias/Shadow/Outer Wilds.jpg'],
+        shadow: ['../Medias/Shadow/Outer Wilds.png'],
         pixels: ['../Medias/Pixels/Outer Wilds.jpg']
     },
     {
@@ -899,7 +899,7 @@ export const games = [
             "Le lore explore les thèmes de la nature, du sacrifice et de la rédemption, dévoilant peu à peu une histoire profonde sur l’équilibre fragile entre les forces de vie et de destruction."
         ],
         midi: ['../Medias/Midi/Ori and the Blind Forest.mid'],
-        shadow: ['../Medias/Shadow/Ori and the Blind Forest.jpg'],
+        shadow: ['../Medias/Shadow/Ori and the Blind Forest.png'],
         pixels: ['../Medias/Pixels/Ori and the Blind Forest.jpg']
     },
     {
@@ -920,7 +920,7 @@ export const games = [
             "Le lore dévoile les mystères de la planète et les raisons de la présence humaine, explorant les conséquences écologiques et éthiques liées à la transformation radicale d’un monde naturel."
         ],
         midi: ['../Medias/Midi/The Planet Crafter.mid'],
-        shadow: ['../Medias/Shadow/The Planet Crafter.jpg'],
+        shadow: ['../Medias/Shadow/The Planet Crafter.png'],
         pixels: ['../Medias/Pixels/The Planet Crafter.jpg']
     },
     {
@@ -941,7 +941,7 @@ export const games = [
             "L’univers, bien que minimaliste en narration directe, s’appuie sur la tension de la survie en terrain hostile et sur les dynamiques sociales de coopération et de trahison dans un environnement impitoyable."
         ],
         midi: ['../Medias/Midi/PUBG.mid'],
-        shadow: ['../Medias/Shadow/PUBG.jpg'],
+        shadow: ['../Medias/Shadow/PUBG.png'],
         pixels: ['../Medias/Pixels/PUBG.jpg']
     },
     {
@@ -962,7 +962,7 @@ export const games = [
             "L'univers riche et coloré est peuplé de personnages aux histoires diverses, allant de guerriers mystiques à des créatures mythologiques, chacun apportant sa propre dynamique au combat."
         ],
         midi: ['../Medias/Midi/Paladins.mid'],
-        shadow: ['../Medias/Shadow/Paladins.jpg'],
+        shadow: ['../Medias/Shadow/Paladins.png'],
         pixels: ['../Medias/Pixels/Paladins.jpg']
     },
     {
@@ -983,7 +983,7 @@ export const games = [
             "Le lore est riche en symbolisme ésotérique, mêlant secrets occultes et mystères autour d’une machine étrange, offrant une expérience immersive et captivante."
         ],
         midi: ['../Medias/Midi/The Room.mid'],
-        shadow: ['../Medias/Shadow/The Room.jpg'],
+        shadow: ['../Medias/Shadow/The Room.png'],
         pixels: ['../Medias/Pixels/The Room.jpg']
     },
     {
@@ -1004,7 +1004,7 @@ export const games = [
             "Le lore est léger mais l’univers s’est enrichi grâce à des événements, des équipes et des collaborations, créant une communauté engagée et passionnée."
         ],
         midi: ['../Medias/Midi/Rocket League.mid'],
-        shadow: ['../Medias/Shadow/Rocket League.jpg'],
+        shadow: ['../Medias/Shadow/Rocket League.png'],
         pixels: ['../Medias/Pixels/Rocket League.jpg']
     },
     {
@@ -1025,7 +1025,7 @@ export const games = [
             "Le lore complexe et cryptique explore des thèmes comme la mort, la réincarnation et les liens entre les personnages, avec une narration non linéaire pleine de symboles et de mystères."
         ],
         midi: ['../Medias/Midi/Rusty Lake.mid'],
-        shadow: ['../Medias/Shadow/Rusty Lake.jpg'],
+        shadow: ['../Medias/Shadow/Rusty Lake.png'],
         pixels: ['../Medias/Pixels/Rusty Lake.jpg']
     },
     {
@@ -1046,7 +1046,7 @@ export const games = [
             "Le lore s’appuie sur la vie extraterrestre et les mystères de la planète, avec des secrets cachés derrière les créatures et leur origine."
         ],
         midi: ['../Medias/Midi/Slime Rancher.mid'],
-        shadow: ['../Medias/Shadow/Slime Rancher.jpg'],
+        shadow: ['../Medias/Shadow/Slime Rancher.png'],
         pixels: ['../Medias/Pixels/Slime Rancher.jpg']
     },
     {
@@ -1067,7 +1067,7 @@ export const games = [
             "Le lore approfondit la politique interstellaire, les technologies avancées et les différentes civilisations rencontrées, créant un univers complexe et vivant."
         ],
         midi: ['../Medias/Midi/Starfield.mid'],
-        shadow: ['../Medias/Shadow/Starfield.jpg'],
+        shadow: ['../Medias/Shadow/Starfield.png'],
         pixels: ['../Medias/Pixels/Starfield.jpg']
     },
     {
@@ -1088,7 +1088,7 @@ export const games = [
             "Le lore aborde des questions existentielles, la nature de l’intelligence artificielle et la quête de sens à travers des fragments de récits et de dialogues."
         ],
         midi: ['../Medias/Midi/The Talos Principle.mid'],
-        shadow: ['../Medias/Shadow/The Talos Principle.jpg'],
+        shadow: ['../Medias/Shadow/The Talos Principle.png'],
         pixels: ['../Medias/Pixels/The Talos Principle.jpg']
     },
     {
@@ -1109,7 +1109,7 @@ export const games = [
             "Le lore subtil et fragmenté évoque des thèmes philosophiques sur la connaissance, la perception et la nature de la réalité."
         ],
         midi: ['../Medias/Midi/The Witness.mid'],
-        shadow: ['../Medias/Shadow/The Witness.jpg'],
+        shadow: ['../Medias/Shadow/The Witness.png'],
         pixels: ['../Medias/Pixels/The Witness.jpg']
     },
     {
@@ -1130,7 +1130,7 @@ export const games = [
             "Le lore est léger, mais la communauté passionnée et les compétitions régulières ont forgé une culture unique autour du jeu. La licence appartient aujourd'hui à Ubisoft.",
         ],
         midi: ['../Medias/Midi/Trackmania.mid'],
-        shadow: ['../Medias/Shadow/Trackmania.jpg'],
+        shadow: ['../Medias/Shadow/Trackmania.png'],
         pixels: ['../Medias/Pixels/Trackmania.jpg']
     },
     {
@@ -1151,7 +1151,7 @@ export const games = [
             "Le lore développe une société divisée, où la mémoire et la vérité sont manipulées, révélant les conséquences d’un bonheur forcé."
         ],
         midi: ['../Medias/Midi/We Happy Few.mid'],
-        shadow: ['../Medias/Shadow/We Happy Few.jpg'],
+        shadow: ['../Medias/Shadow/We Happy Few.png'],
         pixels: ['../Medias/Pixels/We Happy Few.jpg']
     },
     {
@@ -1172,7 +1172,7 @@ export const games = [
             "Le lore est léger, centré sur l’humour absurde et les situations décalées, avec une série qui a su évoluer tout en gardant son charme unique."
         ],
         midi: ['../Medias/Midi/Worms.mid'],
-        shadow: ['../Medias/Shadow/Worms.jpg'],
+        shadow: ['../Medias/Shadow/Worms.png'],
         pixels: ['../Medias/Pixels/Worms.jpg']
     },
     {
@@ -1193,7 +1193,7 @@ export const games = [
             "Le lore explore les enjeux de la surveillance, de la vie privée et des conséquences du contrôle numérique dans une société moderne."
         ],
         midi: ['../Medias/Midi/Watch Dogs.mid'],
-        shadow: ['../Medias/Shadow/Watch Dogs.jpg'],
+        shadow: ['../Medias/Shadow/Watch Dogs.png'],
         pixels: ['../Medias/Pixels/Watch Dogs.jpg']
     },
     {
@@ -1214,7 +1214,7 @@ export const games = [
             "Le lore dévoile une planète riche en biodiversité et en secrets, mêlant humour et science-fiction dans une expérience décalée."
         ],
         midi: ['../Medias/Midi/Journey to the Savage Planet.mid'],
-        shadow: ['../Medias/Shadow/Journey to the Savage Planet.jpg'],
+        shadow: ['../Medias/Shadow/Journey to the Savage Planet.png'],
         pixels: ['../Medias/Pixels/Journey to the Savage Planet.jpg']
     },
     {
@@ -1235,7 +1235,7 @@ export const games = [
             "Le lore explore les drames personnels des survivants, les tensions entre les personnages, et la lutte pour préserver leur humanité dans un contexte brutal."
         ],
         midi: ['../Medias/Midi/This War of Mine.mid'],
-        shadow: ['../Medias/Shadow/This War of Mine.jpg'],
+        shadow: ['../Medias/Shadow/This War of Mine.png'],
         pixels: ['../Medias/Pixels/This War of Mine.jpg']
     },
     {
@@ -1256,7 +1256,7 @@ export const games = [
             "Le lore est vaste et complexe, comprenant des races, des religions, des conflits politiques et des forces magiques qui façonnent le monde."
         ],
         midi: ['../Medias/Midi/Dragon Age.mid'],
-        shadow: ['../Medias/Shadow/Dragon Age.jpg'],
+        shadow: ['../Medias/Shadow/Dragon Age.png'],
         pixels: ['../Medias/Pixels/Dragon Age.jpg']
     },
     {
@@ -1277,7 +1277,7 @@ export const games = [
             "Le lore interroge la nature de l’esprit humain, les conséquences de la technologie sur l’âme, et la survie dans un environnement hostile et mystérieux."
         ],
         midi: ['../Medias/Midi/Soma.mid'],
-        shadow: ['../Medias/Shadow/Soma.jpg'],
+        shadow: ['../Medias/Shadow/Soma.png'],
         pixels: ['../Medias/Pixels/Soma.jpg']
     },
     {
@@ -1298,7 +1298,7 @@ export const games = [
             "Le lore développe un univers sombre où la maladie et la peur se mêlent à des pouvoirs mystérieux liés aux rongeurs, influençant le destin des personnages."
         ],
         midi: ['../Medias/Midi/A Plague Tale.mid'],
-        shadow: ['../Medias/Shadow/A Plague Tale.jpg'],
+        shadow: ['../Medias/Shadow/A Plague Tale.png'],
         pixels: ['../Medias/Pixels/A Plague Tale.jpg']
     },
     {
@@ -1319,7 +1319,7 @@ export const games = [
             "Le lore explore la vie sous un régime autoritaire, les conflits internes des personnages et les conséquences de la surveillance de masse."
         ],
         midi: ['../Medias/Midi/Beholder.mid'],
-        shadow: ['../Medias/Shadow/Beholder.jpg'],
+        shadow: ['../Medias/Shadow/Beholder.png'],
         pixels: ['../Medias/Pixels/Beholder.jpg']
     },
     {
@@ -1340,7 +1340,7 @@ export const games = [
             "Le lore, bien que léger, évoque un monde peuplé de guerriers, magiciens et créatures mythiques, avec des événements et mises à jour régulières qui enrichissent l’univers."
         ],
         midi: ['../Medias/Midi/Clash of Clans.mid'],
-        shadow: ['../Medias/Shadow/Clash of Clans.jpg'],
+        shadow: ['../Medias/Shadow/Clash of Clans.png'],
         pixels: ['../Medias/Pixels/Clash of Clans.jpg']
     },
     {
@@ -1361,7 +1361,7 @@ export const games = [
             "Le jeu a ensuite eu des mise à jour permettant par exemple de créer des scénarios personnalisés, de contrôler des épidémies de zombies ou de virus extraterrestres.",
         ],
         midi: ['../Medias/Midi/Plague Inc.mid'],
-        shadow: ['../Medias/Shadow/Plague Inc.jpg'],
+        shadow: ['../Medias/Shadow/Plague Inc.png'],
         pixels: ['../Medias/Pixels/Plague Inc.jpg']
     },
     {
@@ -1382,7 +1382,7 @@ export const games = [
             "Le jeu a connu plusieurs éditions et une suite majeure, sortie sur Nintendo 3DS, qui ajoutait de nouvelles races et introduisait les félins dans l’expérience."
         ],
         midi: ['../Medias/Midi/Nintendogs.mid'],
-        shadow: ['../Medias/Shadow/Nintendogs.jpg'],
+        shadow: ['../Medias/Shadow/Nintendogs.png'],
         pixels: ['../Medias/Pixels/Nintendogs.jpg']
     },
     {
@@ -1403,7 +1403,7 @@ export const games = [
             "Le lore s’articule autour de cycles mythologiques, de lignées héroïques et de luttes contre des forces maléfiques, avec une forte empreinte artistique signée Akira Toriyama."
         ],
         midi: ['../Medias/Midi/Dragon Quest.mid'],
-        shadow: ['../Medias/Shadow/Dragon Quest.jpg'],
+        shadow: ['../Medias/Shadow/Dragon Quest.png'],
         pixels: ['../Medias/Pixels/Dragon Quest.jpg']
     },
     {
@@ -1424,7 +1424,7 @@ export const games = [
             "Le lore repose sur une chronologie complexe faite de mondes parallèles, de cycles de réincarnation et d’une lutte ancestrale entre le bien et le mal autour de puissants artefacts."
         ],
         midi: ['../Medias/Midi/Zelda.mid'],
-        shadow: ['../Medias/Shadow/Zelda.jpg'],
+        shadow: ['../Medias/Shadow/Zelda.png'],
         pixels: ['../Medias/Pixels/Zelda.jpg']
     },
     {
@@ -1445,7 +1445,7 @@ export const games = [
             "La série, bien que légère en narration, développe un univers récurrent peuplé de royaumes champignons, de créatures fantasques et de multiples variations autour d’un conflit récurrent entre bien et mal."
         ],
         midi: ['../Medias/Midi/Mario.mid'],
-        shadow: ['../Medias/Shadow/Mario.jpg'],
+        shadow: ['../Medias/Shadow/Mario.png'],
         pixels: ['../Medias/Pixels/Mario.jpg']
     },
     {
@@ -1466,7 +1466,7 @@ export const games = [
             "Le lore est riche en intrigues politiques, en créatures mythologiques, en tensions raciales et en destins tragiques, avec une chronologie qui se tisse autour de prophéties et de conflits ancestraux."
         ],
         midi: ['../Medias/Midi/The Witcher.mid'],
-        shadow: ['../Medias/Shadow/The Witcher.jpg'],
+        shadow: ['../Medias/Shadow/The Witcher.png'],
         pixels: ['../Medias/Pixels/The Witcher.jpg']
     },
     {
@@ -1487,7 +1487,7 @@ export const games = [
             "Le lore met en scène une société corrompue dominée par la technologie, où les questions d'identité, de mémoire et de contrôle sont centrales, sur fond de rébellion, de transhumanisme et de conscience digitale."
         ],
         midi: ['../Medias/Midi/Cyberpunk 2077.mid'],
-        shadow: ['../Medias/Shadow/Cyberpunk 2077.jpg'],
+        shadow: ['../Medias/Shadow/Cyberpunk 2077.png'],
         pixels: ['../Medias/Pixels/Cyberpunk 2077.jpg']
     },
     {
@@ -1508,7 +1508,7 @@ export const games = [
             "Derrière l’affrontement se cache un univers étendu : Runeterra, un monde aux régions variées, habitées par des civilisations, des conflits anciens, des créatures mystiques et des entités cosmiques."
         ],
         midi: ['../Medias/Midi/League of Legends.mid'],
-        shadow: ['../Medias/Shadow/League of Legends.jpg'],
+        shadow: ['../Medias/Shadow/League of Legends.png'],
         pixels: ['../Medias/Pixels/League of Legends.jpg']
     },
     {
@@ -1529,7 +1529,7 @@ export const games = [
             "L’univers s’étend au-delà de la simple chasse au butin : les mers sont hantées par des légendes anciennes, des factions opposées et des mystères surnaturels liés à la frontière entre le monde des vivants et celui des morts."
         ],
         midi: ['../Medias/Midi/Sea of Thieves.mid'],
-        shadow: ['../Medias/Shadow/Sea of Thieves.jpg'],
+        shadow: ['../Medias/Shadow/Sea of Thieves.png'],
         pixels: ['../Medias/Pixels/Sea of Thieves.jpg']
     },
     {
@@ -1550,7 +1550,7 @@ export const games = [
             "Le lore explore les thèmes de la conscience artificielle, de la liberté, des inégalités sociales et de la quête d’identité, avec plusieurs fins possibles selon les décisions du joueur."
         ],
         midi: ['../Medias/Midi/Detroit Become Human.mid'],
-        shadow: ['../Medias/Shadow/Detroit Become Human.jpg'],
+        shadow: ['../Medias/Shadow/Detroit Become Human.png'],
         pixels: ['../Medias/Pixels/Detroit Become Human.jpg']
     },
     {
@@ -1571,7 +1571,7 @@ export const games = [
             "La communauté est au cœur du jeu, avec un système de beatmaps personnalisées, des tournois réguliers et une scène compétitive active qui fait vivre l’expérience au-delà du simple gameplay."
         ],
         midi: ['../Medias/Midi/Osu.mid'],
-        shadow: ['../Medias/Shadow/Osu.jpg'],
+        shadow: ['../Medias/Shadow/Osu.png'],
         pixels: ['../Medias/Pixels/Osu.jpg']
     },
     {
@@ -1592,7 +1592,7 @@ export const games = [
             "Le lore est dense, mêlant mythologies, dynasties impériales, conflits entre races et puissances divines, avec une chronologie complexe et un bestiaire varié."
         ],
         midi: ['../Medias/Midi/The Elder Scrolls.mid'],
-        shadow: ['../Medias/Shadow/The Elder Scrolls.jpg'],
+        shadow: ['../Medias/Shadow/The Elder Scrolls.png'],
         pixels: ['../Medias/Pixels/The Elder Scrolls.jpg']
     },
     {
@@ -1613,7 +1613,7 @@ export const games = [
             "Au fil des années, la série s’est enrichie de modes multijoueurs, de défis communautaires et d’une plateforme en ligne dynamique qui rassemble une grande communauté."
         ],
         midi: ['../Medias/Midi/Just Dance.mid'],
-        shadow: ['../Medias/Shadow/Just Dance.jpg'],
+        shadow: ['../Medias/Shadow/Just Dance.png'],
         pixels: ['../Medias/Pixels/Just Dance.jpg']
     },
     {
@@ -1634,7 +1634,7 @@ export const games = [
             "L’histoire tourne autour d’un tournoi familial où s’affrontent plusieurs clans, avec des intrigues complexes mêlant vengeance, pouvoirs surnaturels et héritages conflictuels."
         ],
         midi: ['../Medias/Midi/Tekken.mid'],
-        shadow: ['../Medias/Shadow/Tekken.jpg'],
+        shadow: ['../Medias/Shadow/Tekken.png'],
         pixels: ['../Medias/Pixels/Tekken.jpg']
     },
     {
@@ -1655,7 +1655,7 @@ export const games = [
             "Le lore met en scène un tournoi international où des combattants venus des quatre coins du globe s’affrontent, avec des histoires personnelles riches en rivalités et alliances."
         ],
         midi: ['../Medias/Midi/Street Fighter.mid'],
-        shadow: ['../Medias/Shadow/Street Fighter.jpg'],
+        shadow: ['../Medias/Shadow/Street Fighter.png'],
         pixels: ['../Medias/Pixels/Street Fighter.jpg']
     },
     {
@@ -1676,7 +1676,7 @@ export const games = [
             "L’univers est léger et décalé, avec des costumes personnalisables et un gameplay basé sur l’adresse et la chance, renouvelé régulièrement par des événements saisonniers."
         ],
         midi: ['../Medias/Midi/Fall Guys.mid'],
-        shadow: ['../Medias/Shadow/Fall Guys.jpg'],
+        shadow: ['../Medias/Shadow/Fall Guys.png'],
         pixels: ['../Medias/Pixels/Fall Guys.jpg']
     },
     {
@@ -1697,7 +1697,7 @@ export const games = [
             "Le lore est riche et complexe, mêlant royaumes comme Earthrealm et Outworld, avec des intrigues de trahison, alliances et batailles épiques entre dieux et guerriers."
         ],
         midi: ['../Medias/Midi/Mortal Kombat.mid'],
-        shadow: ['../Medias/Shadow/Mortal Kombat.jpg'],
+        shadow: ['../Medias/Shadow/Mortal Kombat.png'],
         pixels: ['../Medias/Pixels/Mortal Kombat.jpg']
     },
     {
@@ -1718,7 +1718,7 @@ export const games = [
             "L’univers de ce jeu est riche en histoires individuelles, conflits entre factions et un monde en quête de paix après une guerre mondiale robotique."
         ],
         midi: ['../Medias/Midi/Overwatch.mid'],
-        shadow: ['../Medias/Shadow/Overwatch.jpg'],
+        shadow: ['../Medias/Shadow/Overwatch.png'],
         pixels: ['../Medias/Pixels/Overwatch.jpg']
     },
     {
@@ -1739,7 +1739,7 @@ export const games = [
             "Le lore, bien que discret, s’articule autour de phénomènes étranges affectant l’île, avec des événements croisés, des dimensions alternatives et une histoire en constante évolution."
         ],
         midi: ['../Medias/Midi/Fortnite.mid'],
-        shadow: ['../Medias/Shadow/Fortnite.jpg'],
+        shadow: ['../Medias/Shadow/Fortnite.png'],
         pixels: ['../Medias/Pixels/Fortnite.jpg']
     },
     {
@@ -1760,7 +1760,7 @@ export const games = [
             "Le lore explore souvent les histoires de criminels, de gangs et de corruption, avec des personnages complexes évoluant dans un univers souvent satirique et violent."
         ],
         midi: ['../Medias/Midi/Grand Theft Auto.mid'],
-        shadow: ['../Medias/Shadow/Grand Theft Auto.jpg'],
+        shadow: ['../Medias/Shadow/Grand Theft Auto.png'],
         pixels: ['../Medias/Pixels/Grand Theft Auto.jpg']
     },
     {
@@ -1781,7 +1781,7 @@ export const games = [
             "L’histoire se déroule dans un futur où des factions rivales s’affrontent pour le contrôle des colonies, mêlant technologie avancée et conflits humains intenses."
         ],
         midi: ['../Medias/Midi/Titanfall.mid'],
-        shadow: ['../Medias/Shadow/Titanfall.jpg'],
+        shadow: ['../Medias/Shadow/Titanfall.png'],
         pixels: ['../Medias/Pixels/Titanfall.jpg']
     },
     {
@@ -1802,7 +1802,7 @@ export const games = [
             "Le lore retrace l’évolution de nombreuses civilisations, chacune avec ses caractéristiques, héros légendaires, et batailles emblématiques influençant le cours de l’histoire."
         ],
         midi: ['../Medias/Midi/Age of Empires.mid'],
-        shadow: ['../Medias/Shadow/Age of Empires.jpg'],
+        shadow: ['../Medias/Shadow/Age of Empires.png'],
         pixels: ['../Medias/Pixels/Age of Empires.jpg']
     },
     {
@@ -1823,7 +1823,7 @@ export const games = [
             "Le jeu combine des batailles aériennes, terrestres et navales dans un seul univers."
         ],
         midi: ['../Medias/Midi/War thunder.mid'],
-        shadow: ['../Medias/Shadow/War thunder.jpg'],
+        shadow: ['../Medias/Shadow/War thunder.png'],
         pixels: ['../Medias/Pixels/War thunder.jpg']
     },
     {
@@ -1844,7 +1844,7 @@ export const games = [
             "L’histoire est dense, mêlant conflits épiques entre la Horde et l’Alliance, des menaces anciennes réveillées, et des héros légendaires façonnant le destin d’Azeroth."
         ],
         midi: ['../Medias/Midi/World of Warcraft.mid'],
-        shadow: ['../Medias/Shadow/World of Warcraft.jpg'],
+        shadow: ['../Medias/Shadow/World of Warcraft.png'],
         pixels: ['../Medias/Pixels/World of Warcraft.jpg']
     },
     {
@@ -1865,7 +1865,7 @@ export const games = [
             "Le lore varie selon chaque opus, explorant des thèmes comme la lutte entre le bien et le mal, les conflits de royaumes, et des personnages marquants aux destins entrelacés."
         ],
         midi: ['../Medias/Midi/Final Fantasy.mid'],
-        shadow: ['../Medias/Shadow/Final Fantasy.jpg'],
+        shadow: ['../Medias/Shadow/Final Fantasy.png'],
         pixels: ['../Medias/Pixels/Final Fantasy.jpg']
     },
     {
@@ -1886,7 +1886,7 @@ export const games = [
             "Le lore explore les origines des unités antiterroristes et la diversité des agents, avec des scénarios basés sur des interventions dans des zones de crise à travers le monde."
         ],
         midi: ['../Medias/Midi/Rainbow Six Siege.mid'],
-        shadow: ['../Medias/Shadow/Rainbow Six Siege.jpg'],
+        shadow: ['../Medias/Shadow/Rainbow Six Siege.png'],
         pixels: ['../Medias/Pixels/Rainbow Six Siege.jpg']
     },
     {
@@ -1907,7 +1907,7 @@ export const games = [
             "Le lore s’appuie sur les différentes époques d'une saga importante du cinéma, permettant d’incarner des héros, des soldats, et des véhicules emblématiques dans des combats épiques."
         ],
         midi: ['../Medias/Midi/Star Wars Battlefront.mid'],
-        shadow: ['../Medias/Shadow/Star Wars Battlefront.jpg'],
+        shadow: ['../Medias/Shadow/Star Wars Battlefront.png'],
         pixels: ['../Medias/Pixels/Star Wars Battlefront.jpg']
     },
     {
@@ -1928,7 +1928,7 @@ export const games = [
             "Le lore est léger mais profond, dévoilant au fil du temps les mystères de la vallée, les histoires des villageois, et la richesse de la vie rurale à travers plusieurs saisons."
         ],
         midi: ['../Medias/Midi/Stardew Valley.mid'],
-        shadow: ['../Medias/Shadow/Stardew Valley.jpg'],
+        shadow: ['../Medias/Shadow/Stardew Valley.png'],
         pixels: ['../Medias/Pixels/Stardew Valley.jpg']
     },
     {
@@ -1949,7 +1949,7 @@ export const games = [
             "Le but du jeu est de collecter des étoiles à travers des plateaux colorés, en lançant des dés et en participant à divers mini-jeux, le tout dans une ambiance festive et ludique."
         ],
         midi: ['../Medias/Midi/Mario Party.mid'],
-        shadow: ['../Medias/Shadow/Mario Party.jpg'],
+        shadow: ['../Medias/Shadow/Mario Party.png'],
         pixels: ['../Medias/Pixels/Mario Party.jpg']
     },
     {
@@ -1970,7 +1970,7 @@ export const games = [
             "Le lore est léger, centré sur la vie sociale virtuelle, mais il a évolué avec le temps en intégrant des histoires autour des hôtels, des clans et des aventures dans ce monde pixelisé."
         ],
         midi: ['../Medias/Midi/Habbo Hotel.mid'],
-        shadow: ['../Medias/Shadow/Habbo Hotel.jpg'],
+        shadow: ['../Medias/Shadow/Habbo Hotel.png'],
         pixels: ['../Medias/Pixels/Habbo Hotel.jpg']
     },
     {
@@ -1991,7 +1991,7 @@ export const games = [
             "Le lore est très vaste et variable selon les jeux individuels, offrant une multitude d’univers et d’histoires créés par des développeurs amateurs et professionnels."
         ],
         midi: ['../Medias/Midi/Roblox.mid'],
-        shadow: ['../Medias/Shadow/Roblox.jpg'],
+        shadow: ['../Medias/Shadow/Roblox.png'],
         pixels: ['../Medias/Pixels/Roblox.jpg']
     },
     {
@@ -2012,7 +2012,7 @@ export const games = [
             "L’histoire suit une aventure légère et humoristique autour d’un royaume menacé par une soupe maléfique, avec des personnages hauts en couleur et des niveaux de plus en plus complexes."
         ],
         midi: ['../Medias/Midi/Overcooked.mid'],
-        shadow: ['../Medias/Shadow/Overcooked.jpg'],
+        shadow: ['../Medias/Shadow/Overcooked.png'],
         pixels: ['../Medias/Pixels/Overcooked.jpg']
     },
     {
@@ -2033,7 +2033,7 @@ export const games = [
             "Le lore explore des thèmes occultes et satiriques, avec des rituels, des sacrifices, et une ambiance qui mêle mignonnerie et horreur dans un monde sombre."
         ],
         midi: ['../Medias/Midi/Cult of the Lamb.mid'],
-        shadow: ['../Medias/Shadow/Cult of the Lamb.jpg'],
+        shadow: ['../Medias/Shadow/Cult of the Lamb.png'],
         pixels: ['../Medias/Pixels/Cult of the Lamb.jpg']
     },
     {
@@ -2054,7 +2054,7 @@ export const games = [
             "Ce jeu a profondément influencé l’industrie du jeu vidéo en popularisant le gameplay addictif et accessible. Il propose une mécanique simple où le joueur contrôle un serpent qui grandit en mangeant."
         ],
         midi: ['../Medias/Midi/Snake.mid'],
-        shadow: ['../Medias/Shadow/Snake.jpg'],
+        shadow: ['../Medias/Shadow/Snake.png'],
         pixels: ['../Medias/Pixels/Snake.jpg']
     },
     {
@@ -2075,7 +2075,7 @@ export const games = [
             "Ce jeu est devenu un symbole culturel du web, illustrant la frustration liée à la perte de connexion avec une touche d’humour et de challenge."
         ],
         midi: ['../Medias/Midi/T. Rex Game.mid'],
-        shadow: ['../Medias/Shadow/T. Rex Game.jpg'],
+        shadow: ['../Medias/Shadow/T. Rex Game.png'],
         pixels: ['../Medias/Pixels/T. Rex Game.jpg']
     },
     {
@@ -2096,7 +2096,7 @@ export const games = [
             "Le lore s’appuie sur un monde riche, peuplé de centaines de créatures aux pouvoirs variés, avec des histoires autour de légendes, de mythes, et d’organisations mystérieuses."
         ],
         midi: ['../Medias/Midi/Pokemon.mid'],
-        shadow: ['../Medias/Shadow/Pokemon.jpg'],
+        shadow: ['../Medias/Shadow/Pokemon.png'],
         pixels: ['../Medias/Pixels/Pokemon.jpg']
     },
     {
@@ -2117,7 +2117,7 @@ export const games = [
             "Le lore explore des thèmes politiques et humains, avec une histoire qui change selon les décisions du joueur et révèle peu à peu les secrets du pays."
         ],
         midi: ['../Medias/Midi/Road 96.mid'],
-        shadow: ['../Medias/Shadow/Road 96.jpg'],
+        shadow: ['../Medias/Shadow/Road 96.png'],
         pixels: ['../Medias/Pixels/Road 96.jpg']
     },
     {
@@ -2138,7 +2138,7 @@ export const games = [
             "Le lore explore les relations humaines, la solitude et les secrets cachés dans la forêt, avec une narration immersive qui dévoile peu à peu les drames personnels du protagoniste."
         ],
         midi: ['../Medias/Midi/Firewatch.mid'],
-        shadow: ['../Medias/Shadow/Firewatch.jpg'],
+        shadow: ['../Medias/Shadow/Firewatch.png'],
         pixels: ['../Medias/Pixels/Firewatch.jpg']
     },
     {
@@ -2159,7 +2159,7 @@ export const games = [
             "Le lore est complexe et mystérieux, dévoilant peu à peu une histoire sombre impliquant disparitions, esprits vengeurs, et secrets enfouis dans les coulisses du lieu."
         ],
         midi: ['../Medias/Midi/Five night at freddy\'s.mid'],
-        shadow: ['../Medias/Shadow/Five night at freddy\'s.jpg'],
+        shadow: ['../Medias/Shadow/Five night at freddy\'s.png'],
         pixels: ['../Medias/Pixels/Five night at freddy\'s.jpg']
     },
     {
@@ -2180,7 +2180,7 @@ export const games = [
             "Le lore s’étend sur plusieurs jeux, explorant les expériences d’une mégacorporation, les pouvoirs des sirènes, et les secrets de civilisations anciennes liées à des technologies extraterrestres."
         ],
         midi: ['../Medias/Midi/Borderlands.mid'],
-        shadow: ['../Medias/Shadow/Borderlands.jpg'],
+        shadow: ['../Medias/Shadow/Borderlands.png'],
         pixels: ['../Medias/Pixels/Borderlands.jpg']
     },
     {
@@ -2201,7 +2201,7 @@ export const games = [
             "Le lore repose sur la narration fragmentée de chaque membre disparu, offrant une réflexion poétique sur la mort, la mémoire, et la transmission familiale à travers des séquences interactives uniques."
         ],
         midi: ['../Medias/Midi/What Remains of Edith Finch.mid'],
-        shadow: ['../Medias/Shadow/What Remains of Edith Finch.jpg'],
+        shadow: ['../Medias/Shadow/What Remains of Edith Finch.png'],
         pixels: ['../Medias/Pixels/What Remains of Edith Finch.jpg']
     },
     {
@@ -2222,7 +2222,7 @@ export const games = [
             "Le succès critique du titre (GOTY 2024) a permis à la licence d’évoluer, avec un opus plus ambitieux annoncé, marquant une volonté d'en faire une véritable mascotte moderne du constructeur."
         ],
         midi: ['../Medias/Midi/Astro Bot.mid'],
-        shadow: ['../Medias/Shadow/Astro Bot.jpg'],
+        shadow: ['../Medias/Shadow/Astro Bot.png'],
         pixels: ['../Medias/Pixels/Astro Bot.jpg']
     },
     {
@@ -2243,7 +2243,7 @@ export const games = [
             "Son lore s’ancre dans les Royaumes Oubliés, où divinités, intrigues politiques et héritage sanglant s’entrelacent, notamment autour du culte de Bhaal et des progénitures divines qui bouleversent l’équilibre du continent."
         ],
         midi: ['../Medias/Midi/Baldur\'s Gate.mid'],
-        shadow: ['../Medias/Shadow/Baldur\'s Gate.jpg'],
+        shadow: ['../Medias/Shadow/Baldur\'s Gate.png'],
         pixels: ['../Medias/Pixels/Baldur\'s Gate.jpg']
     },
     {
@@ -2264,7 +2264,7 @@ export const games = [
             "Son univers souterrain est peuplé de monstres autrefois chassés par les humains, et chaque action du joueur façonne profondément l’histoire, révélant des thématiques de culpabilité, de boucle temporelle et de rédemption."
         ],
         midi: ['../Medias/Midi/Undertale.mid'],
-        shadow: ['../Medias/Shadow/Undertale.jpg'],
+        shadow: ['../Medias/Shadow/Undertale.png'],
         pixels: ['../Medias/Pixels/Undertale.jpg']
     },
     {
@@ -2285,7 +2285,7 @@ export const games = [
             "Son univers s'articule autour d'expérimentations biologiques menées par une multinationale, Umbrella Corporation, dont les armes biologiques ont déclenché des pandémies, poussant une poignée de survivants à lutter contre un chaos grandissant à travers le globe."
         ],
         midi: ['../Medias/Midi/Resident Evil.mid'],
-        shadow: ['../Medias/Shadow/Resident Evil.jpg'],
+        shadow: ['../Medias/Shadow/Resident Evil.png'],
         pixels: ['../Medias/Pixels/Resident Evil.jpg']
     },
     {
@@ -2306,7 +2306,7 @@ export const games = [
             "L’univers post-apocalyptique dépeint une infection foudroyante qui a plongé le monde dans le chaos. Quelques survivants immunisés, tous marqués par le virus, doivent coopérer pour traverser des zones hostiles, tandis que des mutants spéciaux ajoutent un danger stratégique au sein de l’épidémie."
         ],
         midi: ['../Medias/Midi/Left 4 Dead.mid'],
-        shadow: ['../Medias/Shadow/Left 4 Dead.jpg'],
+        shadow: ['../Medias/Shadow/Left 4 Dead.png'],
         pixels: ['../Medias/Pixels/Left 4 Dead.jpg']
     },
     {
@@ -2327,7 +2327,7 @@ export const games = [
             "Derrière son ambiance de slasher, le jeu révèle un univers complexe mêlant folklore amérindien, expériences psychologiques et présence surnaturelle, le tout influencé par chaque action ou inaction du joueur via l'effet papillon."
         ],
         midi: ['../Medias/Midi/Until Dawn.mid'],
-        shadow: ['../Medias/Shadow/Until Dawn.jpg'],
+        shadow: ['../Medias/Shadow/Until Dawn.png'],
         pixels: ['../Medias/Pixels/Until Dawn.jpg']
     },
     {
@@ -2348,7 +2348,7 @@ export const games = [
             "Inspiré d’une légende urbaine née sur internet, ce jeu a popularisé le genre du survival horror à la première personne chez les petits studios, influençant une vague de titres similaires basés sur la suggestion et l’anxiété."
         ],
         midi: ['../Medias/Midi/Slender.mid'],
-        shadow: ['../Medias/Shadow/Slender.jpg'],
+        shadow: ['../Medias/Shadow/Slender.png'],
         pixels: ['../Medias/Pixels/Slender.jpg']
     },
     {
@@ -2369,7 +2369,7 @@ export const games = [
             "Sa popularité inattendue a montré qu’un jeu fun et décalé, même sans ambition technique, pouvait rencontrer un énorme succès, influençant la création de nombreux autres jeux indépendants humoristiques."
         ],
         midi: ['../Medias/Midi/Goat Simulator.mid'],
-        shadow: ['../Medias/Shadow/Goat Simulator.jpg'],
+        shadow: ['../Medias/Shadow/Goat Simulator.png'],
         pixels: ['../Medias/Pixels/Goat Simulator.jpg']
     },
     {
@@ -2390,7 +2390,7 @@ export const games = [
             "Malgré un lore minimaliste, le jeu a su se démarquer par son style unique et a inspiré la popularisation des jeux de combat déjantés basés sur la physique dans le domaine indépendant."
         ],
         midi: ['../Medias/Midi/Gang Beasts.mid'],
-        shadow: ['../Medias/Shadow/Gang Beasts.jpg'],
+        shadow: ['../Medias/Shadow/Gang Beasts.png'],
         pixels: ['../Medias/Pixels/Gang Beasts.jpg']
     },
     {
@@ -2411,7 +2411,7 @@ export const games = [
             "Dans un futur dystopique, vous incarnez un agent chargé de satisfaire les désirs de votre créateur, explorant des installations abandonnées et affrontant des entités mystérieuses."
         ],
         midi: ['../Medias/Midi/R.E.P.O..mid'],
-        shadow: ['../Medias/Shadow/R.E.P.O..jpg'],
+        shadow: ['../Medias/Shadow/R.E.P.O..png'],
         pixels: ['../Medias/Pixels/R.E.P.O..jpg']
     },
     {
@@ -2432,7 +2432,7 @@ export const games = [
             "Le lore se dévoile à travers les missions, où les joueurs incarnent des travailleurs sous contrat, explorant des lieux abandonnés et affrontant des entités hostiles dans une dystopie rétrofuturiste."
         ],
         midi: ['../Medias/Midi/Lethal company.mid'],
-        shadow: ['../Medias/Shadow/Lethal company.jpg'],
+        shadow: ['../Medias/Shadow/Lethal company.png'],
         pixels: ['../Medias/Pixels/Lethal company.jpg']
     },
     {
@@ -2453,7 +2453,7 @@ export const games = [
             "Le lore s'étend sur plusieurs siècles avant les événements des livres, offrant une nouvelle perspective sur le monde sorcier et ses mystères."
         ],
         midi: ['../Medias/Midi/Hogwarts Legacy.mid'],
-        shadow: ['../Medias/Shadow/Hogwarts Legacy.jpg'],
+        shadow: ['../Medias/Shadow/Hogwarts Legacy.png'],
         pixels: ['../Medias/Pixels/Hogwarts Legacy.jpg']
     },
     {
@@ -2474,7 +2474,7 @@ export const games = [
             "Le jeu a connu plusieurs évolutions, dont une scission en deux jeux distincts : un axé sur le Battle Royale et un jeu de survie."
         ],
         midi: ['../Medias/Midi/H1Z1.mid'],
-        shadow: ['../Medias/Shadow/H1Z1.jpg'],
+        shadow: ['../Medias/Shadow/H1Z1.png'],
         pixels: ['../Medias/Pixels/H1Z1.jpg']
     },
     {
@@ -2495,7 +2495,7 @@ export const games = [
             "Le lore s'étend sur plusieurs années, explorant les thèmes de la loyauté et des conflits entre la civilisation et la vie sauvage, le tout dans un monde riche en détails et en personnages mémorables."
         ],
         midi: ['../Medias/Midi/Red Dead Redemption.mid'],
-        shadow: ['../Medias/Shadow/Red Dead Redemption.jpg'],
+        shadow: ['../Medias/Shadow/Red Dead Redemption.png'],
         pixels: ['../Medias/Pixels/Red Dead Redemption.jpg']
     },
     {
@@ -2516,7 +2516,7 @@ export const games = [
             "Le lore est riche et complexe, explorant des thèmes de sacrifice, de déclin et de cycles éternels à travers des histoires entrelacées de dieux, de dragons et de héros oubliés."
         ],
         midi: ['../Medias/Midi/Dark Souls.mid'],
-        shadow: ['../Medias/Shadow/Dark Souls.jpg'],
+        shadow: ['../Medias/Shadow/Dark Souls.png'],
         pixels: ['../Medias/Pixels/Dark Souls.jpg']
     },
     {
@@ -2537,7 +2537,7 @@ export const games = [
             "Le lore s'inspire de la mythologie japonaise et explore des thèmes de loyauté, de vengeance et de rédemption à travers une narration immersive et des combats intenses."
         ],
         midi: ['../Medias/Midi/Sekiro Shadows Die Twice.mid'],
-        shadow: ['../Medias/Shadow/Sekiro Shadows Die Twice.jpg'],
+        shadow: ['../Medias/Shadow/Sekiro Shadows Die Twice.png'],
         pixels: ['../Medias/Pixels/Sekiro Shadows Die Twice.jpg']
     },
     {
@@ -2558,7 +2558,7 @@ export const games = [
             "Le lore, coécrit par George R. R. Martin, explore des thèmes de pouvoir, de trahison et de destin à travers un monde vaste peuplé de créatures mythiques et de personnages mémorables."
         ],
         midi: ['../Medias/Midi/Elden Ring.mid'],
-        shadow: ['../Medias/Shadow/Elden Ring.jpg'],
+        shadow: ['../Medias/Shadow/Elden Ring.png'],
         pixels: ['../Medias/Pixels/Elden Ring.jpg']
     },
     {
@@ -2579,7 +2579,7 @@ export const games = [
             "Le lore est riche et énigmatique, explorant des thèmes de la folie, de la maladie et de la quête de connaissance à travers des histoires entrelacées de chasseurs, de bêtes et de dieux anciens."
         ],
         midi: ['../Medias/Midi/Bloodborne.mid'],
-        shadow: ['../Medias/Shadow/Bloodborne.jpg'],
+        shadow: ['../Medias/Shadow/Bloodborne.png'],
         pixels: ['../Medias/Pixels/Bloodborne.jpg']
     },
     {
@@ -2600,7 +2600,7 @@ export const games = [
             "Le lore s'inspire de la culture japonaise et explore des thèmes de loyauté, d'honneur et de sacrifice à travers une narration immersive et des combats intenses."
         ],
         midi: ['../Medias/Midi/Ghost of Tsushima.mid'],
-        shadow: ['../Medias/Shadow/Ghost of Tsushima.jpg'],
+        shadow: ['../Medias/Shadow/Ghost of Tsushima.png'],
         pixels: ['../Medias/Pixels/Ghost of Tsushima.jpg']
     },
     {
@@ -2621,7 +2621,7 @@ export const games = [
             "Le lore s'articule autour d'une invasion démoniaque sur Mars, où le joueur incarne un marine combattant des hordes de créatures infernales tout en découvrant les sombres secrets des laboratoires de l'UAC."
         ],
         midi: ['../Medias/Midi/Doom.mid'],
-        shadow: ['../Medias/Shadow/Doom.jpg'],
+        shadow: ['../Medias/Shadow/Doom.png'],
         pixels: ['../Medias/Pixels/Doom.jpg']
     },
     {
@@ -2642,7 +2642,7 @@ export const games = [
             "Le jeu a été un succès commercial et a contribué à populariser la Wii en tant que console familiale.",
         ],
         midi: ['../Medias/Midi/Wii Sports.mid'],
-        shadow: ['../Medias/Shadow/Wii Sports.jpg'],
+        shadow: ['../Medias/Shadow/Wii Sports.png'],
         pixels: ['../Medias/Pixels/Wii Sports.jpg']
     },
     {
@@ -2663,7 +2663,7 @@ export const games = [
             "Le lore s'étend sur plusieurs jeux, explorant le royaume de Dream Land, où il doit combattre des ennemis variés pour sauver ses habitants."
         ],
         midi: ['../Medias/Midi/Kirby.mid'],
-        shadow: ['../Medias/Shadow/Kirby.jpg'],
+        shadow: ['../Medias/Shadow/Kirby.png'],
         pixels: ['../Medias/Pixels/Kirby.jpg']
     },
     {
@@ -2684,7 +2684,7 @@ export const games = [
             "Le lore s'étend sur plusieurs jeux, explorant des thèmes de choix moral, de sacrifice et d'interaction entre différentes espèces dans un univers complexe."
         ],
         midi: ['../Medias/Midi/Mass Effect.mid'],
-        shadow: ['../Medias/Shadow/Mass Effect.jpg'],
+        shadow: ['../Medias/Shadow/Mass Effect.png'],
         pixels: ['../Medias/Pixels/Mass Effect.jpg']
     },
     {
@@ -2705,7 +2705,7 @@ export const games = [
             "Le dernier opus a connu un immense succès, notamment en raison de sa sortie pendant la pandémie de COVID-19."
         ],
         midi: ['../Medias/Midi/Animal Crossing.mid'],
-        shadow: ['../Medias/Shadow/Animal Crossing.jpg'],
+        shadow: ['../Medias/Shadow/Animal Crossing.png'],
         pixels: ['../Medias/Pixels/Animal Crossing.jpg']
     },
     {
@@ -2726,7 +2726,7 @@ export const games = [
             "Le lore s'étend sur plusieurs jeux, explorant des thèmes de guerre, de sacrifice et de l'héritage de l'humanité dans un univers en constante évolution."
         ],
         midi: ['../Medias/Midi/Halo.mid'],
-        shadow: ['../Medias/Shadow/Halo.jpg'],
+        shadow: ['../Medias/Shadow/Halo.png'],
         pixels: ['../Medias/Pixels/Halo.jpg']
     },
     {
@@ -2747,7 +2747,7 @@ export const games = [
             "Le lore est riche et complexe, explorant des thèmes de culpabilité, de rédemption et de la nature du mal à travers des histoires entrelacées de personnages tourmentés."
         ],
         midi: ['../Medias/Midi/Silent Hill.mid'],
-        shadow: ['../Medias/Shadow/Silent Hill.jpg'],
+        shadow: ['../Medias/Shadow/Silent Hill.png'],
         pixels: ['../Medias/Pixels/Silent Hill.jpg']
     },
     {
@@ -2768,7 +2768,7 @@ export const games = [
             "Le lore s'étend sur plusieurs jeux, explorant des thèmes de découverte, de trahison et de l'héritage des civilisations anciennes à travers des paysages exotiques et des énigmes complexes."
         ],
         midi: ['../Medias/Midi/Uncharted.mid'],
-        shadow: ['../Medias/Shadow/Uncharted.jpg'],
+        shadow: ['../Medias/Shadow/Uncharted.png'],
         pixels: ['../Medias/Pixels/Uncharted.jpg']
     },
     {
@@ -2789,7 +2789,7 @@ export const games = [
             "Le lore est riche et complexe, explorant des thèmes de survie, de famille et de l'horreur psychologique à travers des indices disséminés dans l'environnement."
         ],
         midi: ['../Medias/Midi/The Forest.mid'],
-        shadow: ['../Medias/Shadow/The Forest.jpg'],
+        shadow: ['../Medias/Shadow/The Forest.png'],
         pixels: ['../Medias/Pixels/The Forest.jpg']
     },
     {
@@ -2810,7 +2810,7 @@ export const games = [
             "Le lore est riche et complexe, explorant des thèmes de lutte entre le bien et le mal à travers des histoires entrelacées de héros et de démons."
         ],
         midi: ['../Medias/Midi/Diablo.mid'],
-        shadow: ['../Medias/Shadow/Diablo.jpg'],
+        shadow: ['../Medias/Shadow/Diablo.png'],
         pixels: ['../Medias/Pixels/Diablo.jpg']
     },
     {
@@ -2831,7 +2831,7 @@ export const games = [
             "Le lore repose sur une progression chronologique à travers cinq ères, de la préhistoire au futur, illustrant l’évolution militaire de l’humanité face à des ennemis toujours plus avancés technologiquement."
         ],
         midi: ['../Medias/Midi/Age of War.mid'],
-        shadow: ['../Medias/Shadow/Age of War.jpg'],
+        shadow: ['../Medias/Shadow/Age of War.png'],
         pixels: ['../Medias/Pixels/Age of War.jpg']
     },
     {
@@ -2852,7 +2852,7 @@ export const games = [
             "Le lore est riche et complexe, explorant des thèmes de découverte, de créativité et de survie à travers des biomes variés et des ennemis uniques."
         ],
         midi: ['../Medias/Midi/Terraria.mid'],
-        shadow: ['../Medias/Shadow/Terraria.jpg'],
+        shadow: ['../Medias/Shadow/Terraria.png'],
         pixels: ['../Medias/Pixels/Terraria.jpg']
     },
     {
@@ -2873,7 +2873,7 @@ export const games = [
             "Le lore est centré sur la vie quotidienne des personnages, explorant des thèmes de relations, de carrière et de créativité à travers des interactions sociales variées."
         ],
         midi: ['../Medias/Midi/The Sims.mid'],
-        shadow: ['../Medias/Shadow/The Sims.jpg'],
+        shadow: ['../Medias/Shadow/The Sims.png'],
         pixels: ['../Medias/Pixels/The Sims.jpg']
     },
     {
@@ -2894,7 +2894,7 @@ export const games = [
             "Le lore est riche et complexe, explorant des thèmes de survie, d'exploration et de coexistence avec des créatures anciennes à travers des artefacts et des histoires cachées."
         ],
         midi: ['../Medias/Midi/Ark.mid'],
-        shadow: ['../Medias/Shadow/Ark.jpg'],
+        shadow: ['../Medias/Shadow/Ark.png'],
         pixels: ['../Medias/Pixels/Ark.jpg']
     },
     {
@@ -2915,7 +2915,7 @@ export const games = [
             "Le lore explore des thèmes de relations, de communication et de réconciliation à travers des niveaux variés et des défis créatifs."
         ],
         midi: ['../Medias/Midi/It Takes Two.mid'],
-        shadow: ['../Medias/Shadow/It Takes Two.jpg'],
+        shadow: ['../Medias/Shadow/It Takes Two.png'],
         pixels: ['../Medias/Pixels/It Takes Two.jpg']
     },
     {
@@ -2936,7 +2936,7 @@ export const games = [
             "Le lore explore des thèmes de survie, de sacrifice et de l'humanité face à l'adversité à travers des épisodes riches en émotions."
         ],
         midi: ['../Medias/Midi/The Walking Dead.mid'],
-        shadow: ['../Medias/Shadow/The Walking Dead.jpg'],
+        shadow: ['../Medias/Shadow/The Walking Dead.png'],
         pixels: ['../Medias/Pixels/The Walking Dead.jpg']
     },
     {
@@ -2957,7 +2957,7 @@ export const games = [
             "XXX"
         ],
         midi: ['../Medias/Midi/Clair Obscur Expedition 33.mid'],
-        shadow: ['../Medias/Shadow/Clair Obscur Expedition 33.jpg'],
+        shadow: ['../Medias/Shadow/Clair Obscur Expedition 33.png'],
         pixels: ['../Medias/Pixels/Clair Obscur Expedition 33.jpg']
     }
 ];
