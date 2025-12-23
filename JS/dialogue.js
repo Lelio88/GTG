@@ -35,7 +35,7 @@ function initializeVisitCounter() {
 // Dialogue en fonction du compteur de visites et des clés
 const dialogues = {
     1: {
-        text: "Oh salut ! Je t'ai jamais vu ici ! T'es perdu ? Si tu veux je peux te guider un peu ? Juste ici tu peux choisir différents modes de jeu. Quand tu es prêt, clique sur \"Lancer le jeu\" ou tu peux retourner aux profils et revenir plus tard !",
+        text: "Ooh.. tu es nouveau ici ! Dis-moi, tu peux m'aider ? J'ai des gros problèmes de mémoire... je suis un peu perdu et j'aimerais retrouver mes souvenirs. Si tu veux bien m'aider, dans un premier temps tu pourrais m'aider à retrouver le nom de mes jeux préférés ! Ça te dirait ? Si oui, clique sur un mode de jeu et on commence !",
         image: "../Assets/perso 1.jpg"
     },
     5: {
@@ -50,11 +50,11 @@ const dialogues = {
 
 const keyDialogues = {
     1: {
-        text: "Félicitations pour ta première clé ! Ça ne fait que commencer...",
+        text: "Oh tu as déjà terminé un mode entier ! Félicitations ! Tu m'aides à recouvrer la mémoire. Grâce à toi j'ai retrouvé la clefs de ma chamrbe, tu peux y aller si tu veux. Peut-être trouveras-tu de nouvelles choses à faire !",
         image: "../Assets/characters/key_1.png"
     },
     2: {
-        text: "Deux clés déjà ? Impressionnant !",
+        text: "Deux clés déjà ? Impressionnant ! Continue comme ça ! Tu es sur la bonne voie pour m'aider à retrouver tous mes souvenirs.",
         image: "../Assets/characters/key_2.png"
     }
 };
