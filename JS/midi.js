@@ -55,39 +55,37 @@ async function launchGameMidi() {
 
     // Create player controls
     const controlsContainer = document.createElement('div');
-    controlsContainer.style.cssText = 'display: flex; gap: 10px; justify-content: center; align-items: center; margin:  20px 0;';
+    controlsContainer.style.cssText = 'display: flex; gap: 15px; justify-content: center; align-items: center; margin: 30px 0;';
     
     const playButton = document.createElement('button');
     playButton.innerText = '▶ Play';
     playButton.id = 'play-midi';
-    playButton. style.cssText = 'padding: 10px 20px; font-size: 16px; cursor: pointer;';
+    playButton.style.cssText = 'padding: 12px 24px; font-size: 16px; cursor: pointer; background: #4CAF50; color: white; border: none; border-radius: 5px; transition: opacity 0.3s;';
+    playButton.disabled = true;
+    playButton.style.opacity = '0.5';
     
     const pauseButton = document.createElement('button');
     pauseButton.innerText = '⏸ Pause';
-    pauseButton. id = 'pause-midi';
-    pauseButton.style. cssText = 'padding: 10px 20px; font-size: 16px; cursor:  pointer;';
+    pauseButton.id = 'pause-midi';
+    pauseButton.style.cssText = 'padding: 12px 24px; font-size: 16px; cursor: pointer; background: #FFC107; color: white; border: none; border-radius: 5px; transition: opacity 0.3s;';
     pauseButton.disabled = true;
+    pauseButton.style.opacity = '0.5';
     
     const stopButton = document.createElement('button');
     stopButton.innerText = '⏹ Stop';
     stopButton.id = 'stop-midi';
-    stopButton.style.cssText = 'padding: 10px 20px; font-size: 16px; cursor: pointer;';
+    stopButton.style.cssText = 'padding: 12px 24px; font-size: 16px; cursor: pointer; background: #f44336; color: white; border: none; border-radius: 5px; transition: opacity 0.3s;';
     stopButton.disabled = true;
-
-    const loadingText = document.createElement('p');
-    loadingText.innerText = 'Chargement du MIDI...';
-    loadingText.id = 'midi-status';
-    loadingText.style.cssText = 'font-style: italic; color: #666;';
+    stopButton.style.opacity = '0.5';
 
     controlsContainer.appendChild(playButton);
     controlsContainer.appendChild(pauseButton);
     controlsContainer.appendChild(stopButton);
     contentDiv.appendChild(controlsContainer);
-    contentDiv.appendChild(loadingText);
 
     // Load MIDI file
     try {
-        const midi = await Midi.fromUrl(cachedGame.midi);
+        const midi = await Midi.fromUrl(cachedGame.midi[0]);
         
         // Create synths for each track
         midi.tracks.forEach(track => {
@@ -125,54 +123,52 @@ async function launchGameMidi() {
         Tone.Transport.loop = true;
         Tone. Transport.loopEnd = midi.duration;
 
-        loadingText.innerText = `MIDI chargé avec succès ! (${Math.round(midi.duration)}s)`;
-        loadingText.style.color = '#4CAF50';
         midiLoaded = true;
 
         // Enable play button
         playButton.disabled = false;
+        playButton.style.opacity = '1';
 
         // Button handlers
         playButton.onclick = async () => {
             await Tone.start();
             Tone.Transport.start();
             playButton.disabled = true;
+            playButton.style.opacity = '0.5';
             pauseButton.disabled = false;
+            pauseButton.style.opacity = '1';
             stopButton.disabled = false;
-            loadingText.innerText = '🎵 En lecture...';
+            stopButton.style.opacity = '1';
         };
 
         pauseButton.onclick = () => {
             Tone.Transport.pause();
             playButton.disabled = false;
-            pauseButton. disabled = true;
-            loadingText.innerText = '⏸ En pause';
+            playButton.style.opacity = '1';
+            pauseButton.disabled = true;
+            pauseButton.style.opacity = '0.5';
         };
 
-        stopButton. onclick = () => {
+        stopButton.onclick = () => {
             Tone.Transport.stop();
             playButton.disabled = false;
+            playButton.style.opacity = '1';
             pauseButton.disabled = true;
+            pauseButton.style.opacity = '0.5';
             stopButton.disabled = true;
-            loadingText.innerText = '⏹ Arrêté';
+            stopButton.style.opacity = '0.5';
         };
 
     } catch (error) {
         console.error('Erreur lors du chargement du MIDI:', error);
-        loadingText.innerText = `❌ Erreur : ${error.message}`;
-        loadingText.style.color = '#f44336';
     }
 
     timerInterval = startTimerUtil();
 }
 
 function showHint() {
-    const hintButton = document.getElementById('hint-button');
-    
-    // Since there's only one MIDI file (no progressive hints), 
-    // "hint" button becomes "abandon"
-    hintButton.innerText = "Abandonner";
-    hintButton. onclick = abandonGame;
+    // Since there's only one MIDI file, directly abandon
+    abandonGame();
 }
 
 function abandonGame() {
