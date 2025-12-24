@@ -36,7 +36,11 @@ export function initializeProfile(currentProfile) {
             image: [],
             sound: [],
             text: [],
-            full: []
+            full: [],
+            midi: [],
+            shadow: [],
+            pixelated: [],
+            emoji: []
         };
     }
     return currentProfile;

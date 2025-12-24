@@ -1,8 +1,8 @@
 /* ============================
     MIDI MODE
    ============================ */
-import * as Tone from 'https://cdn.jsdelivr.net/npm/tone@latest/build/Tone.js';
-import { Midi } from 'https://cdn.jsdelivr.net/npm/@tonejs/midi@latest/dist/Midi.js';
+import * as Tone from 'https://esm.sh/tone';
+import { Midi } from 'https://esm.sh/@tonejs/midi';
 import { games } from './gamesDatabase.js';
 import { handleGameCompletion } from './gameCompletion.js';
 import {
@@ -99,7 +99,7 @@ async function launchGameMidi() {
                         attack: 0.005,
                         decay: 0.1,
                         sustain: 0.3,
-                        release: 1
+                        release: 0.2
                     }
                 }).toDestination();
                 
