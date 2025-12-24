@@ -163,6 +163,9 @@ if (roomButton) {
     } else {
         roomButton.style.display = 'none';
     }
+    roomButton.addEventListener('click', () => {
+        window.location.href = './HTML/chamber.html';
+    });
 }
 
 // Initialisation
