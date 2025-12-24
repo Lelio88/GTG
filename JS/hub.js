@@ -164,7 +164,7 @@ if (roomButton) {
         roomButton.style.display = 'none';
     }
     roomButton.addEventListener('click', () => {
-        window.location.href = './HTML/chamber.html';
+        window.location.href = '../HTML/chamber.html';
     });
 }
 
