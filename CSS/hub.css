@@ -86,6 +86,12 @@ h1 {
     border-color: #ff7f50;
 }
 
+.game-mode.hardcore-unlocked {
+    border-style: double; /* Double bordure pour les modes hardcore */
+    font-weight: 900;     /* Texte plus gras */
+    letter-spacing: 2px;  /* Lettres plus espacées */
+}
+
 /* ===============================
     Keyboard Focus (UI)
 =============================== */
@@ -200,7 +206,7 @@ button:active {
     color: white;
     font-size: 1.1em;
     max-width: 400px;
-    margin-bottom: 200px;
+    margin-bottom: 150px;
 }
 
 /* ===============================

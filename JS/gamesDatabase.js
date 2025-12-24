@@ -3008,4 +3008,5 @@ export const abbreviations = {
     'dark souls': ['ds'],
     'valorant': ['valo'],
     'hollow knight': ['hk'],
+    'slender': ['slenderman', 'slender man'],
 };

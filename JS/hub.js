@@ -27,10 +27,15 @@ const allModes = [...document.querySelectorAll('.game-mode')]; // Tous les modes
 const startBtn = document.getElementById('start-game');
 const backBtn = document.getElementById('back-button');
 const modeNeonMapping = {
-    full: "#FF4500",    // Orange
-    sound: "#FFA500",   // Jaune
-    image: "#FF1493",   // Rose
-    text: "#9400D3" // Violet
+    full: "#FF4500",    
+    sound: "#FFA500",   
+    image: "#FF1493",   
+    text: "#9400D3",
+
+    pixelated: "#FF4500",
+    midi: "#FFA500",
+    shadow: "#FF1493",   
+    emoji: "#9400D3"
 };
 
 let currentProfile = localStorage.getItem('currentProfile');
@@ -38,6 +43,47 @@ let currentFocusModes = 0;     // Indice de l'élément sélectionné dans les m
 let selectedIndex = -1;         // Index du mode sélectionné (-1 = aucun)
 let selectedMode = null;
 let focusedSection = 'modes'; // Section active (par défaut 'profiles')
+
+if (currentProfile) {
+    const profileData = JSON.parse(localStorage.getItem('profiles')).find(p => p.pseudo === currentProfile);
+    
+    if (profileData) {
+        const unlocked = profileData.unlockedModes || [];
+        const completed = profileData.completedModes || [];
+
+        // Configuration : Mode Base -> Mode Hardcore
+        const hardcoreConfig = {
+            full:  { target: 'pixelated', label: 'PIXELATED' },
+            image: { target: 'shadow',    label: 'SHADOW' },
+            sound: { target: 'midi',      label: 'MIDI' },
+            text:  { target: 'emoji',     label: 'EMOJI' }
+        };
+
+        // Parcours des modes pour mise à jour
+        for (const [baseMode, config] of Object.entries(hardcoreConfig)) {
+            // Si le mode de base est FINI et le hardcore DÉBLOQUÉ
+            if (completed.includes(baseMode) && unlocked.includes(config.target)) {
+                
+                const modeDiv = document.querySelector(`.game-mode[data-mode="${baseMode}"]`);
+                
+                if (modeDiv) {
+                    // Mise à jour des données
+                    modeDiv.dataset.mode = config.target;
+                    modeDiv.innerText = config.target; // Affiche le nouveau nom
+                    
+                    // Mise à jour visuelle immédiate
+                    const newColor = modeNeonMapping[config.target];
+                    modeDiv.dataset.color = newColor;
+                    modeDiv.style.borderColor = newColor;
+                    modeDiv.style.boxShadow = `0 0 5px ${newColor}`;
+                    
+                    // Optionnel : Ajouter une classe CSS pour un effet supplémentaire
+                    modeDiv.classList.add('hardcore-unlocked');
+                }
+            }
+        }
+    }
+}
 
 // === Initialisation des couleurs de chaque mode de jeu ===
 document.querySelectorAll('.game-mode').forEach((modeDiv) => {
