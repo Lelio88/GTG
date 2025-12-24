@@ -1,0 +1,44 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Évite les barres de défilement */
+}
+
+#scene-container {
+    position: relative; /* Référence pour les éléments absolus */
+    width: 100vw;
+    height: 100vh;
+}
+
+#room-background {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Remplit tout l'écran (attention : peut couper les bords) */
+    /* Alternative : utiliser 'contain' si vous voulez voir toute l'image sans coupure */
+}
+
+/* La zone secrète */
+.clickable-area {
+    position: absolute;
+    cursor: pointer; /* Change le curseur en main pour indiquer c'est cliquable */
+    
+    /* C'est ici que vous définissez la position et la taille */
+    top: 50%;   /* Position verticale */
+    left: 50%;  /* Position horizontale */
+    width: 10%; /* Largeur de la zone */
+    height: 10%;/* Hauteur de la zone */
+    
+    /* COULEUR DE DEBUG (À retirer plus tard) */
+    background-color: rgba(255, 0, 0, 0.5); 
+    border: 2px solid red;
+}
+
+#back-hub {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
