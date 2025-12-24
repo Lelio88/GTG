@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chambre</title>
+    <title>Chambre - Recherche d'indices</title>
     <link rel="stylesheet" href="../CSS/chamber.css">
 </head>
 <body>
 
     <div id="scene-container">
-        <img src="../Assets/Chambre.png" alt="Chambre" id="room-background">
+        <img src="../ASSETS/chambre.png" alt="Chambre" id="room-background">
         
-        <div id="secret-zone" class="clickable-area"></div>
+        <div class="clickable-area" id="zone-pixelated" data-mode="pixelated"></div>
+        <div class="clickable-area" id="zone-emoji" data-mode="emoji"></div>
+        <div class="clickable-area" id="zone-shadow" data-mode="shadow"></div>
+        <div class="clickable-area" id="zone-midi" data-mode="midi"></div>
         
-        <button id="back-hub">Retour</button>
+        <button id="back-hub">Retour au Hub</button>
     </div>
 
     <script type="module" src="../JS/chamber.js"></script>
