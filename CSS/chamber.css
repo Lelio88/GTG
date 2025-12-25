@@ -56,6 +56,48 @@ body, html {
     background-color: rgba(255, 255, 0, 0.5); /* Jaune */
 }
 
+/* Zone 5 : Trophée */
+#zone-trophy {
+    top: 63%; left: 63%;
+    width: 7.5%; height: 7.6%;
+    background-color: rgba(255, 0, 255, 0.5); /* Magenta */
+}
+
+/* Zone 6 : Calculatrice */
+#zone-calculator {
+    top: 75%; left: 46%;
+    width: 7.5%; height: 7.6%;
+    background-color: rgba(0, 255, 255, 0.5); /* Cyan */
+}
+
+/* Zone 7 : Pantone */
+#zone-pantone {
+    top: 44%; left: 18%;
+    width: 5%; height: 7.6%;
+    background-color: rgba(128, 0, 128, 0.5); /* Violet */
+}
+
+/* Zone 8 : Films */
+#zone-films {
+    top: 4.5%; left: 77%;
+    width: 17%; height: 25%;
+    background-color: rgba(255, 165, 0, 0.5); /* Orange */
+}
+
+/* Zone 9 : GTO */
+#zone-gto {
+    top: 17%; left: 61%;
+    width: 12%; height: 15%;
+    background-color: rgba(0, 128, 0, 0.5); /* Vert foncé */
+}
+
+/* Zone 10 : XXX */
+#zone-xxx {
+    top: 50%; left: 50%;
+    width: 7.5%; height: 7.6%;
+    background-color: rgba(128, 128, 128, 0.5); /* Gris */
+}
+
 #back-hub {
     position: absolute;
     top: 20px;
