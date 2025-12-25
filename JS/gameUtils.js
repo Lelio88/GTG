@@ -126,11 +126,17 @@ export function stopTimer(timerInterval) {
 /**
  * Handle game abandonment
  * @param {Object} currentProfile - The current profile object
+ * @param {string} gameMode - The current game mode (Required to apply penalty)
  */
-export function abandonGame(currentProfile) {
-    currentProfile.badAnswers += 10;
+export function abandonGame(currentProfile, gameMode) {
+    if (!gameMode || !currentProfile.scoresByMode[gameMode]) {
+        console.error("Game mode missing for abandonment penalty");
+        return;
+    }
+    currentProfile.scoresByMode[gameMode].badAnswers += 10;
     saveProfile(currentProfile);
-    document.getElementById('bad-answers').innerText = currentProfile.badAnswers;
+    // Mise à jour visuelle avant le reload (optionnel car le reload arrive vite)
+    document.getElementById('bad-answers').innerText = currentProfile.scoresByMode[gameMode].badAnswers;
     window.location.reload();
 }
 
