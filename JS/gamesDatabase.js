@@ -18,7 +18,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Bioshock.mid'],
         shadow: ['../Medias/Shadow/Bioshock.png'],
-        pixels: ['../Medias/Pixels/Bioshock.jpg']
+        pixels: ['../Medias/Pixels/Bioshock.png']
     },
     {
         title: 'Plants vs Zombies',
@@ -39,7 +39,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Plants vs Zombies.mid'],
         shadow: ['../Medias/Shadow/Plants vs Zombies.png'],
-        pixels: ['../Medias/Pixels/Plants vs Zombies.jpg']
+        pixels: ['../Medias/Pixels/Plants vs Zombies.png']
     },
     {
         title: 'Call of Duty',
@@ -60,7 +60,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Call of Duty.mid'],
         shadow: ['../Medias/Shadow/Call of Duty.png'],
-        pixels: ['../Medias/Pixels/Call of Duty.jpg']
+        pixels: ['../Medias/Pixels/Call of Duty.png']
     },
     {
         title: 'The Last of Us',
@@ -81,7 +81,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/The Last of Us.mid'],
         shadow: ['../Medias/Shadow/The Last of Us.png'],
-        pixels: ['../Medias/Pixels/The Last of Us.jpg']
+        pixels: ['../Medias/Pixels/The Last of Us.png']
     },
     {
         title: 'Satisfactory',
@@ -102,7 +102,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Satisfactory.mid'],
         shadow: ['../Medias/Shadow/Satisfactory.png'],
-        pixels: ['../Medias/Pixels/Satisfactory.jpg']
+        pixels: ['../Medias/Pixels/Satisfactory.png']
     },
     {
         title: 'Outlast',
@@ -123,7 +123,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Outlast.mid'],
         shadow: ['../Medias/Shadow/Outlast.png'],
-        pixels: ['../Medias/Pixels/Outlast.jpg']
+        pixels: ['../Medias/Pixels/Outlast.png']
     },
     {
         title: 'Hades',
@@ -144,7 +144,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Hades.mid'],
         shadow: ['../Medias/Shadow/Hades.png'],
-        pixels: ['../Medias/Pixels/Hades.jpg']
+        pixels: ['../Medias/Pixels/Hades.png']
     },
     {
         title: 'BioShock Infinite',
@@ -165,7 +165,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Bioshock Infinite.mid'],
         shadow: ['../Medias/Shadow/Bioshock Infinite.png'],
-        pixels: ['../Medias/Pixels/Bioshock Infinite.jpg']
+        pixels: ['../Medias/Pixels/Bioshock Infinite.png']
     },
     {
         title: 'Hollow Knight',
@@ -186,7 +186,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Hollow Knight.mid'],
         shadow: ['../Medias/Shadow/Hollow Knight.png'],
-        pixels: ['../Medias/Pixels/Hollow Knight.jpg']
+        pixels: ['../Medias/Pixels/Hollow Knight.png']
     },
     {
         title: 'Horizon Zero Dawn',
@@ -207,7 +207,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Horizon Zero Dawn.mid'],
         shadow: ['../Medias/Shadow/Horizon Zero Dawn.png'],
-        pixels: ['../Medias/Pixels/Horizon Zero Dawn.jpg']
+        pixels: ['../Medias/Pixels/Horizon Zero Dawn.png']
     },
     {
         title: 'Spyro',
@@ -228,7 +228,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Spyro.mid'],
         shadow: ['../Medias/Shadow/Spyro.png'],
-        pixels: ['../Medias/Pixels/Spyro.jpg']
+        pixels: ['../Medias/Pixels/Spyro.png']
     },
     {
         title: 'God of War',
@@ -249,7 +249,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/God of War.mid'],
         shadow: ['../Medias/Shadow/God of War.png'],
-        pixels: ['../Medias/Pixels/God of War.jpg']
+        pixels: ['../Medias/Pixels/God of War.png']
     },
     {
         title: 'Portal',
@@ -270,7 +270,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Portal.mid'],
         shadow: ['../Medias/Shadow/Portal.png'],
-        pixels: ['../Medias/Pixels/Portal.jpg']
+        pixels: ['../Medias/Pixels/Portal.png']
     },
     {
         title: 'Counter Strike',
@@ -291,7 +291,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Counter Strike.mid'],
         shadow: ['../Medias/Shadow/Counter Strike.png'],
-        pixels: ['../Medias/Pixels/Counter Strike.jpg']
+        pixels: ['../Medias/Pixels/Counter Strike.png']
     },
     {
         title: 'Minecraft',
@@ -312,7 +312,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Minecraft.mid'],
         shadow: ['../Medias/Shadow/Minecraft.png'],
-        pixels: ['../Medias/Pixels/Minecraft.jpg']
+        pixels: ['../Medias/Pixels/Minecraft.png']
     },
     {
         title: 'Assassin\'s Creed',
@@ -333,7 +333,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Assassin\'s Creed.mid'],
         shadow: ['../Medias/Shadow/Assassin\'s Creed.png'],
-        pixels: ['../Medias/Pixels/Assassin\'s Creed.jpg']
+        pixels: ['../Medias/Pixels/Assassin\'s Creed.png']
     },
     {
         title: 'The binding of Isaac',
@@ -354,7 +354,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/The binding of Isaac.mid'],
         shadow: ['../Medias/Shadow/The binding of Isaac.png'],
-        pixels: ['../Medias/Pixels/The binding of Isaac.jpg']
+        pixels: ['../Medias/Pixels/The binding of Isaac.png']
     },
     {
         title: 'Chants of Sennaar',
@@ -375,7 +375,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Chants of Sennaar.mid'],
         shadow: ['../Medias/Shadow/Chants of Sennaar.png'],
-        pixels: ['../Medias/Pixels/Chants of Sennaar.jpg']
+        pixels: ['../Medias/Pixels/Chants of Sennaar.png']
     },
     {
         title: 'Crash Bandicoot',
@@ -396,7 +396,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Crash Bandicoot.mid'],
         shadow: ['../Medias/Shadow/Crash Bandicoot.png'],
-        pixels: ['../Medias/Pixels/Crash Bandicoot.jpg']
+        pixels: ['../Medias/Pixels/Crash Bandicoot.png']
     },
     {
         title: 'Days Gone',
@@ -417,7 +417,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Days Gone.mid'],
         shadow: ['../Medias/Shadow/Days Gone.png'],
-        pixels: ['../Medias/Pixels/Days Gone.jpg']
+        pixels: ['../Medias/Pixels/Days Gone.png']
     },
     {
         title: 'Raft',
@@ -438,7 +438,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Raft.mid'],
         shadow: ['../Medias/Shadow/Raft.png'],
-        pixels: ['../Medias/Pixels/Raft.jpg']
+        pixels: ['../Medias/Pixels/Raft.png']
     },
     {
         title: 'Dishonored',
@@ -459,7 +459,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Dishonored.mid'],
         shadow: ['../Medias/Shadow/Dishonored.png'],
-        pixels: ['../Medias/Pixels/Dishonored.jpg']
+        pixels: ['../Medias/Pixels/Dishonored.png']
     },
     {
         title: 'Little Big Planet',
@@ -480,7 +480,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Little Big Planet.mid'],
         shadow: ['../Medias/Shadow/Little Big Planet.png'],
-        pixels: ['../Medias/Pixels/Little Big Planet.jpg']
+        pixels: ['../Medias/Pixels/Little Big Planet.png']
     },
     {
         title: 'Dredge',
@@ -501,7 +501,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Dredge.mid'],
         shadow: ['../Medias/Shadow/Dredge.png'],
-        pixels: ['../Medias/Pixels/Dredge.jpg']
+        pixels: ['../Medias/Pixels/Dredge.png']
     },
     {
         title: 'Subnautica',
@@ -522,7 +522,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Subnautica.mid'],
         shadow: ['../Medias/Shadow/Subnautica.png'],
-        pixels: ['../Medias/Pixels/Subnautica.jpg']
+        pixels: ['../Medias/Pixels/Subnautica.png']
     },
     {
         title: 'Dying Light',
@@ -543,7 +543,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Dying Light.mid'],
         shadow: ['../Medias/Shadow/Dying Light.png'],
-        pixels: ['../Medias/Pixels/Dying Light.jpg']
+        pixels: ['../Medias/Pixels/Dying Light.png']
     },
     {
         title: 'Far Cry',
@@ -564,7 +564,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Far Cry.mid'],
         shadow: ['../Medias/Shadow/Far Cry.png'],
-        pixels: ['../Medias/Pixels/Far Cry.jpg']
+        pixels: ['../Medias/Pixels/Far Cry.png']
     },
     {
         title: 'Frostpunk',
@@ -585,7 +585,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Frostpunk.mid'],
         shadow: ['../Medias/Shadow/Frostpunk.png'],
-        pixels: ['../Medias/Pixels/Frostpunk.jpg']
+        pixels: ['../Medias/Pixels/Frostpunk.png']
     },
     {
         title: 'FPS Chess',
@@ -606,7 +606,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/FPS Chess.mid'],
         shadow: ['../Medias/Shadow/FPS Chess.png'],
-        pixels: ['../Medias/Pixels/FPS Chess.jpg']
+        pixels: ['../Medias/Pixels/FPS Chess.png']
     },
     {
         title: 'Ghost of a Tale',
@@ -627,7 +627,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Ghost of a Tale.mid'],
         shadow: ['../Medias/Shadow/Ghost of a Tale.png'],
-        pixels: ['../Medias/Pixels/Ghost of a Tale.jpg']
+        pixels: ['../Medias/Pixels/Ghost of a Tale.png']
     },
     {
         title: 'Ghostrunner',
@@ -648,7 +648,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Ghostrunner.mid'],
         shadow: ['../Medias/Shadow/Ghostrunner.png'],
-        pixels: ['../Medias/Pixels/Ghostrunner.jpg']
+        pixels: ['../Medias/Pixels/Ghostrunner.png']
     },
     {
         title: 'Valorant',
@@ -669,7 +669,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Valorant.mid'],
         shadow: ['../Medias/Shadow/Valorant.png'],
-        pixels: ['../Medias/Pixels/Valorant.jpg']
+        pixels: ['../Medias/Pixels/Valorant.png']
     },
     {
         title: 'Apex Legends',
@@ -690,7 +690,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Apex Legends.mid'],
         shadow: ['../Medias/Shadow/Apex Legends.png'],
-        pixels: ['../Medias/Pixels/Apex Legends.jpg']
+        pixels: ['../Medias/Pixels/Apex Legends.png']
     },
     {
         title: 'Beyond two souls',
@@ -711,7 +711,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Beyond two souls.mid'],
         shadow: ['../Medias/Shadow/Beyond two souls.png'],
-        pixels: ['../Medias/Pixels/Beyond two souls.jpg']
+        pixels: ['../Medias/Pixels/Beyond two souls.png']
     },
     {
         title: 'Palworld',
@@ -732,7 +732,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Palworld.mid'],
         shadow: ['../Medias/Shadow/Palworld.png'],
-        pixels: ['../Medias/Pixels/Palworld.jpg']
+        pixels: ['../Medias/Pixels/Palworld.png']
     },
     {
         title: 'Hunt Showdown',
@@ -753,7 +753,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Hunt Showdown.mid'],
         shadow: ['../Medias/Shadow/Hunt Showdown.png'],
-        pixels: ['../Medias/Pixels/Hunt Showdown.jpg']
+        pixels: ['../Medias/Pixels/Hunt Showdown.png']
     },
     {
         title: 'Inscryption',
@@ -774,7 +774,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Inscryption.mid'],
         shadow: ['../Medias/Shadow/Inscryption.png'],
-        pixels: ['../Medias/Pixels/Inscryption.jpg']
+        pixels: ['../Medias/Pixels/Inscryption.png']
     },
     {
         title: 'Life is Strange',
@@ -795,7 +795,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Life is Strange.mid'],
         shadow: ['../Medias/Shadow/Life is Strange.png'],
-        pixels: ['../Medias/Pixels/Life is Strange.jpg']
+        pixels: ['../Medias/Pixels/Life is Strange.png']
     },
     {
         title: 'Magic: The Gathering Arena',
@@ -816,7 +816,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Magic.mid'],
         shadow: ['../Medias/Shadow/Magic.png'],
-        pixels: ['../Medias/Pixels/Magic.jpg']
+        pixels: ['../Medias/Pixels/Magic.png']
     },
     {
         title: 'Spider-Man',
@@ -837,7 +837,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Spider-Man.mid'],
         shadow: ['../Medias/Shadow/Spider-Man.png'],
-        pixels: ['../Medias/Pixels/Spider-Man.jpg']
+        pixels: ['../Medias/Pixels/Spider-Man.png']
     },
     {
         title: 'Metro',
@@ -858,7 +858,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Metro.mid'],
         shadow: ['../Medias/Shadow/Metro.png'],
-        pixels: ['../Medias/Pixels/Metro.jpg']
+        pixels: ['../Medias/Pixels/Metro.png']
     },
     {
         title: 'Outer Wilds',
@@ -879,7 +879,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Outer Wilds.mid'],
         shadow: ['../Medias/Shadow/Outer Wilds.png'],
-        pixels: ['../Medias/Pixels/Outer Wilds.jpg']
+        pixels: ['../Medias/Pixels/Outer Wilds.png']
     },
     {
         title: 'Ori and the Blind Forest',
@@ -900,7 +900,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Ori and the Blind Forest.mid'],
         shadow: ['../Medias/Shadow/Ori and the Blind Forest.png'],
-        pixels: ['../Medias/Pixels/Ori and the Blind Forest.jpg']
+        pixels: ['../Medias/Pixels/Ori and the Blind Forest.png']
     },
     {
         title: 'The Planet Crafter',
@@ -921,7 +921,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/The Planet Crafter.mid'],
         shadow: ['../Medias/Shadow/The Planet Crafter.png'],
-        pixels: ['../Medias/Pixels/The Planet Crafter.jpg']
+        pixels: ['../Medias/Pixels/The Planet Crafter.png']
     },
     {
         title: 'PUBG: Battlegrounds',
@@ -942,7 +942,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/PUBG.mid'],
         shadow: ['../Medias/Shadow/PUBG.png'],
-        pixels: ['../Medias/Pixels/PUBG.jpg']
+        pixels: ['../Medias/Pixels/PUBG.png']
     },
     {
         title: 'Paladins',
@@ -963,7 +963,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Paladins.mid'],
         shadow: ['../Medias/Shadow/Paladins.png'],
-        pixels: ['../Medias/Pixels/Paladins.jpg']
+        pixels: ['../Medias/Pixels/Paladins.png']
     },
     {
         title: 'The Room',
@@ -984,7 +984,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/The Room.mid'],
         shadow: ['../Medias/Shadow/The Room.png'],
-        pixels: ['../Medias/Pixels/The Room.jpg']
+        pixels: ['../Medias/Pixels/The Room.png']
     },
     {
         title: 'Rocket League',
@@ -1005,7 +1005,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Rocket League.mid'],
         shadow: ['../Medias/Shadow/Rocket League.png'],
-        pixels: ['../Medias/Pixels/Rocket League.jpg']
+        pixels: ['../Medias/Pixels/Rocket League.png']
     },
     {
         title: 'Rusty Lake',
@@ -1026,7 +1026,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Rusty Lake.mid'],
         shadow: ['../Medias/Shadow/Rusty Lake.png'],
-        pixels: ['../Medias/Pixels/Rusty Lake.jpg']
+        pixels: ['../Medias/Pixels/Rusty Lake.png']
     },
     {
         title: 'Slime Rancher',
@@ -1047,7 +1047,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Slime Rancher.mid'],
         shadow: ['../Medias/Shadow/Slime Rancher.png'],
-        pixels: ['../Medias/Pixels/Slime Rancher.jpg']
+        pixels: ['../Medias/Pixels/Slime Rancher.png']
     },
     {
         title: 'Starfield',
@@ -1068,7 +1068,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Starfield.mid'],
         shadow: ['../Medias/Shadow/Starfield.png'],
-        pixels: ['../Medias/Pixels/Starfield.jpg']
+        pixels: ['../Medias/Pixels/Starfield.png']
     },
     {
         title: 'The Talos Principle',
@@ -1089,7 +1089,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/The Talos Principle.mid'],
         shadow: ['../Medias/Shadow/The Talos Principle.png'],
-        pixels: ['../Medias/Pixels/The Talos Principle.jpg']
+        pixels: ['../Medias/Pixels/The Talos Principle.png']
     },
     {
         title: 'The Witness',
@@ -1110,7 +1110,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/The Witness.mid'],
         shadow: ['../Medias/Shadow/The Witness.png'],
-        pixels: ['../Medias/Pixels/The Witness.jpg']
+        pixels: ['../Medias/Pixels/The Witness.png']
     },
     {
         title: 'Trackmania',
@@ -1131,7 +1131,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Trackmania.mid'],
         shadow: ['../Medias/Shadow/Trackmania.png'],
-        pixels: ['../Medias/Pixels/Trackmania.jpg']
+        pixels: ['../Medias/Pixels/Trackmania.png']
     },
     {
         title: 'We Happy Few',
@@ -1152,7 +1152,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/We Happy Few.mid'],
         shadow: ['../Medias/Shadow/We Happy Few.png'],
-        pixels: ['../Medias/Pixels/We Happy Few.jpg']
+        pixels: ['../Medias/Pixels/We Happy Few.png']
     },
     {
         title: 'Worms',
@@ -1173,7 +1173,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Worms.mid'],
         shadow: ['../Medias/Shadow/Worms.png'],
-        pixels: ['../Medias/Pixels/Worms.jpg']
+        pixels: ['../Medias/Pixels/Worms.png']
     },
     {
         title: 'Watch Dogs',
@@ -1194,7 +1194,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Watch Dogs.mid'],
         shadow: ['../Medias/Shadow/Watch Dogs.png'],
-        pixels: ['../Medias/Pixels/Watch Dogs.jpg']
+        pixels: ['../Medias/Pixels/Watch Dogs.png']
     },
     {
         title: 'Journey to the Savage Planet',
@@ -1215,7 +1215,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Journey to the Savage Planet.mid'],
         shadow: ['../Medias/Shadow/Journey to the Savage Planet.png'],
-        pixels: ['../Medias/Pixels/Journey to the Savage Planet.jpg']
+        pixels: ['../Medias/Pixels/Journey to the Savage Planet.png']
     },
     {
         title: 'This War of Mine',
@@ -1236,7 +1236,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/This War of Mine.mid'],
         shadow: ['../Medias/Shadow/This War of Mine.png'],
-        pixels: ['../Medias/Pixels/This War of Mine.jpg']
+        pixels: ['../Medias/Pixels/This War of Mine.png']
     },
     {
         title: 'Dragon Age',
@@ -1257,7 +1257,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Dragon Age.mid'],
         shadow: ['../Medias/Shadow/Dragon Age.png'],
-        pixels: ['../Medias/Pixels/Dragon Age.jpg']
+        pixels: ['../Medias/Pixels/Dragon Age.png']
     },
     {
         title: 'Soma',
@@ -1278,7 +1278,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Soma.mid'],
         shadow: ['../Medias/Shadow/Soma.png'],
-        pixels: ['../Medias/Pixels/Soma.jpg']
+        pixels: ['../Medias/Pixels/Soma.png']
     },
     {
         title: 'A Plague Tale',
@@ -1299,7 +1299,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/A Plague Tale.mid'],
         shadow: ['../Medias/Shadow/A Plague Tale.png'],
-        pixels: ['../Medias/Pixels/A Plague Tale.jpg']
+        pixels: ['../Medias/Pixels/A Plague Tale.png']
     },
     {
         title: 'Beholder',
@@ -1320,7 +1320,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Beholder.mid'],
         shadow: ['../Medias/Shadow/Beholder.png'],
-        pixels: ['../Medias/Pixels/Beholder.jpg']
+        pixels: ['../Medias/Pixels/Beholder.png']
     },
     {
         title: 'Clash of Clans',
@@ -1341,7 +1341,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Clash of Clans.mid'],
         shadow: ['../Medias/Shadow/Clash of Clans.png'],
-        pixels: ['../Medias/Pixels/Clash of Clans.jpg']
+        pixels: ['../Medias/Pixels/Clash of Clans.png']
     },
     {
         title: 'Plague Inc',
@@ -1362,7 +1362,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Plague Inc.mid'],
         shadow: ['../Medias/Shadow/Plague Inc.png'],
-        pixels: ['../Medias/Pixels/Plague Inc.jpg']
+        pixels: ['../Medias/Pixels/Plague Inc.png']
     },
     {
         title: 'Nintendogs',
@@ -1383,7 +1383,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Nintendogs.mid'],
         shadow: ['../Medias/Shadow/Nintendogs.png'],
-        pixels: ['../Medias/Pixels/Nintendogs.jpg']
+        pixels: ['../Medias/Pixels/Nintendogs.png']
     },
     {
         title: 'Dragon Quest',
@@ -1404,7 +1404,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Dragon Quest.mid'],
         shadow: ['../Medias/Shadow/Dragon Quest.png'],
-        pixels: ['../Medias/Pixels/Dragon Quest.jpg']
+        pixels: ['../Medias/Pixels/Dragon Quest.png']
     },
     {
         title: 'Zelda',
@@ -1425,7 +1425,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Zelda.mid'],
         shadow: ['../Medias/Shadow/Zelda.png'],
-        pixels: ['../Medias/Pixels/Zelda.jpg']
+        pixels: ['../Medias/Pixels/Zelda.png']
     },
     {
         title: 'Mario',
@@ -1446,7 +1446,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Mario.mid'],
         shadow: ['../Medias/Shadow/Mario.png'],
-        pixels: ['../Medias/Pixels/Mario.jpg']
+        pixels: ['../Medias/Pixels/Mario.png']
     },
     {
         title: 'The Witcher',
@@ -1467,7 +1467,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/The Witcher.mid'],
         shadow: ['../Medias/Shadow/The Witcher.png'],
-        pixels: ['../Medias/Pixels/The Witcher.jpg']
+        pixels: ['../Medias/Pixels/The Witcher.png']
     },
     {
         title: 'Cyberpunk 2077',
@@ -1488,7 +1488,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Cyberpunk 2077.mid'],
         shadow: ['../Medias/Shadow/Cyberpunk 2077.png'],
-        pixels: ['../Medias/Pixels/Cyberpunk 2077.jpg']
+        pixels: ['../Medias/Pixels/Cyberpunk 2077.png']
     },
     {
         title: 'League of Legends',
@@ -1509,7 +1509,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/League of Legends.mid'],
         shadow: ['../Medias/Shadow/League of Legends.png'],
-        pixels: ['../Medias/Pixels/League of Legends.jpg']
+        pixels: ['../Medias/Pixels/League of Legends.png']
     },
     {
         title: 'Sea of Thieves',
@@ -1530,7 +1530,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Sea of Thieves.mid'],
         shadow: ['../Medias/Shadow/Sea of Thieves.png'],
-        pixels: ['../Medias/Pixels/Sea of Thieves.jpg']
+        pixels: ['../Medias/Pixels/Sea of Thieves.png']
     },
     {
         title: 'Detroit: Become Human',
@@ -1551,7 +1551,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Detroit Become Human.mid'],
         shadow: ['../Medias/Shadow/Detroit Become Human.png'],
-        pixels: ['../Medias/Pixels/Detroit Become Human.jpg']
+        pixels: ['../Medias/Pixels/Detroit Become Human.png']
     },
     {
         title: 'Osu',
@@ -1572,7 +1572,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Osu.mid'],
         shadow: ['../Medias/Shadow/Osu.png'],
-        pixels: ['../Medias/Pixels/Osu.jpg']
+        pixels: ['../Medias/Pixels/Osu.png']
     },
     {
         title: 'The Elder Scrolls',
@@ -1593,7 +1593,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/The Elder Scrolls.mid'],
         shadow: ['../Medias/Shadow/The Elder Scrolls.png'],
-        pixels: ['../Medias/Pixels/The Elder Scrolls.jpg']
+        pixels: ['../Medias/Pixels/The Elder Scrolls.png']
     },
     {
         title: 'Just Dance',
@@ -1614,7 +1614,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Just Dance.mid'],
         shadow: ['../Medias/Shadow/Just Dance.png'],
-        pixels: ['../Medias/Pixels/Just Dance.jpg']
+        pixels: ['../Medias/Pixels/Just Dance.png']
     },
     {
         title: 'Tekken',
@@ -1635,7 +1635,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Tekken.mid'],
         shadow: ['../Medias/Shadow/Tekken.png'],
-        pixels: ['../Medias/Pixels/Tekken.jpg']
+        pixels: ['../Medias/Pixels/Tekken.png']
     },
     {
         title: 'Street Fighter',
@@ -1656,7 +1656,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Street Fighter.mid'],
         shadow: ['../Medias/Shadow/Street Fighter.png'],
-        pixels: ['../Medias/Pixels/Street Fighter.jpg']
+        pixels: ['../Medias/Pixels/Street Fighter.png']
     },
     {
         title: 'Fall Guys',
@@ -1677,7 +1677,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Fall Guys.mid'],
         shadow: ['../Medias/Shadow/Fall Guys.png'],
-        pixels: ['../Medias/Pixels/Fall Guys.jpg']
+        pixels: ['../Medias/Pixels/Fall Guys.png']
     },
     {
         title: 'Mortal Kombat',
@@ -1698,7 +1698,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Mortal Kombat.mid'],
         shadow: ['../Medias/Shadow/Mortal Kombat.png'],
-        pixels: ['../Medias/Pixels/Mortal Kombat.jpg']
+        pixels: ['../Medias/Pixels/Mortal Kombat.png']
     },
     {
         title: 'Overwatch',
@@ -1719,7 +1719,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Overwatch.mid'],
         shadow: ['../Medias/Shadow/Overwatch.png'],
-        pixels: ['../Medias/Pixels/Overwatch.jpg']
+        pixels: ['../Medias/Pixels/Overwatch.png']
     },
     {
         title: 'Fortnite',
@@ -1740,7 +1740,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Fortnite.mid'],
         shadow: ['../Medias/Shadow/Fortnite.png'],
-        pixels: ['../Medias/Pixels/Fortnite.jpg']
+        pixels: ['../Medias/Pixels/Fortnite.png']
     },
     {
         title: 'Grand Theft Auto',
@@ -1761,7 +1761,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Grand Theft Auto.mid'],
         shadow: ['../Medias/Shadow/Grand Theft Auto.png'],
-        pixels: ['../Medias/Pixels/Grand Theft Auto.jpg']
+        pixels: ['../Medias/Pixels/Grand Theft Auto.png']
     },
     {
         title: 'Titanfall',
@@ -1782,7 +1782,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Titanfall.mid'],
         shadow: ['../Medias/Shadow/Titanfall.png'],
-        pixels: ['../Medias/Pixels/Titanfall.jpg']
+        pixels: ['../Medias/Pixels/Titanfall.png']
     },
     {
         title: 'Age of Empires',
@@ -1803,7 +1803,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Age of Empires.mid'],
         shadow: ['../Medias/Shadow/Age of Empires.png'],
-        pixels: ['../Medias/Pixels/Age of Empires.jpg']
+        pixels: ['../Medias/Pixels/Age of Empires.png']
     },
     {
         title: 'War thunder',
@@ -1824,7 +1824,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/War thunder.mid'],
         shadow: ['../Medias/Shadow/War thunder.png'],
-        pixels: ['../Medias/Pixels/War thunder.jpg']
+        pixels: ['../Medias/Pixels/War thunder.png']
     },
     {
         title: 'World of Warcraft',
@@ -1845,7 +1845,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/World of Warcraft.mid'],
         shadow: ['../Medias/Shadow/World of Warcraft.png'],
-        pixels: ['../Medias/Pixels/World of Warcraft.jpg']
+        pixels: ['../Medias/Pixels/World of Warcraft.png']
     },
     {
         title: 'Final Fantasy',
@@ -1866,7 +1866,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Final Fantasy.mid'],
         shadow: ['../Medias/Shadow/Final Fantasy.png'],
-        pixels: ['../Medias/Pixels/Final Fantasy.jpg']
+        pixels: ['../Medias/Pixels/Final Fantasy.png']
     },
     {
         title: 'Rainbow Six Siege',
@@ -1887,7 +1887,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Rainbow Six Siege.mid'],
         shadow: ['../Medias/Shadow/Rainbow Six Siege.png'],
-        pixels: ['../Medias/Pixels/Rainbow Six Siege.jpg']
+        pixels: ['../Medias/Pixels/Rainbow Six Siege.png']
     },
     {
         title: 'Star Wars Battlefront',
@@ -1908,7 +1908,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Star Wars Battlefront.mid'],
         shadow: ['../Medias/Shadow/Star Wars Battlefront.png'],
-        pixels: ['../Medias/Pixels/Star Wars Battlefront.jpg']
+        pixels: ['../Medias/Pixels/Star Wars Battlefront.png']
     },
     {
         title: 'Stardew Valley',
@@ -1929,7 +1929,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Stardew Valley.mid'],
         shadow: ['../Medias/Shadow/Stardew Valley.png'],
-        pixels: ['../Medias/Pixels/Stardew Valley.jpg']
+        pixels: ['../Medias/Pixels/Stardew Valley.png']
     },
     {
         title: 'Mario Party',
@@ -1950,7 +1950,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Mario Party.mid'],
         shadow: ['../Medias/Shadow/Mario Party.png'],
-        pixels: ['../Medias/Pixels/Mario Party.jpg']
+        pixels: ['../Medias/Pixels/Mario Party.png']
     },
     {
         title: 'Habbo Hotel',
@@ -1971,7 +1971,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Habbo Hotel.mid'],
         shadow: ['../Medias/Shadow/Habbo Hotel.png'],
-        pixels: ['../Medias/Pixels/Habbo Hotel.jpg']
+        pixels: ['../Medias/Pixels/Habbo Hotel.png']
     },
     {
         title: 'Roblox',
@@ -1992,7 +1992,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Roblox.mid'],
         shadow: ['../Medias/Shadow/Roblox.png'],
-        pixels: ['../Medias/Pixels/Roblox.jpg']
+        pixels: ['../Medias/Pixels/Roblox.png']
     },
     {
         title: 'Overcooked',
@@ -2013,7 +2013,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Overcooked.mid'],
         shadow: ['../Medias/Shadow/Overcooked.png'],
-        pixels: ['../Medias/Pixels/Overcooked.jpg']
+        pixels: ['../Medias/Pixels/Overcooked.png']
     },
     {
         title: 'Cult of the Lamb',
@@ -2034,7 +2034,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Cult of the Lamb.mid'],
         shadow: ['../Medias/Shadow/Cult of the Lamb.png'],
-        pixels: ['../Medias/Pixels/Cult of the Lamb.jpg']
+        pixels: ['../Medias/Pixels/Cult of the Lamb.png']
     },
     {
         title: 'Snake',
@@ -2055,7 +2055,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Snake.mid'],
         shadow: ['../Medias/Shadow/Snake.png'],
-        pixels: ['../Medias/Pixels/Snake.jpg']
+        pixels: ['../Medias/Pixels/Snake.png']
     },
     {
         title: 'T. Rex Game',
@@ -2076,7 +2076,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/T. Rex Game.mid'],
         shadow: ['../Medias/Shadow/T. Rex Game.png'],
-        pixels: ['../Medias/Pixels/T. Rex Game.jpg']
+        pixels: ['../Medias/Pixels/T. Rex Game.png']
     },
     {
         title: 'Pokemon',
@@ -2097,7 +2097,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Pokemon.mid'],
         shadow: ['../Medias/Shadow/Pokemon.png'],
-        pixels: ['../Medias/Pixels/Pokemon.jpg']
+        pixels: ['../Medias/Pixels/Pokemon.png']
     },
     {
         title: 'Road 96',
@@ -2118,7 +2118,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Road 96.mid'],
         shadow: ['../Medias/Shadow/Road 96.png'],
-        pixels: ['../Medias/Pixels/Road 96.jpg']
+        pixels: ['../Medias/Pixels/Road 96.png']
     },
     {
         title: 'Firewatch',
@@ -2139,7 +2139,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Firewatch.mid'],
         shadow: ['../Medias/Shadow/Firewatch.png'],
-        pixels: ['../Medias/Pixels/Firewatch.jpg']
+        pixels: ['../Medias/Pixels/Firewatch.png']
     },
     {
         title: 'Five Night at Freddy\'s',
@@ -2160,7 +2160,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Five night at freddy\'s.mid'],
         shadow: ['../Medias/Shadow/Five night at freddy\'s.png'],
-        pixels: ['../Medias/Pixels/Five night at freddy\'s.jpg']
+        pixels: ['../Medias/Pixels/Five night at freddy\'s.png']
     },
     {
         title: 'Borderlands',
@@ -2181,7 +2181,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Borderlands.mid'],
         shadow: ['../Medias/Shadow/Borderlands.png'],
-        pixels: ['../Medias/Pixels/Borderlands.jpg']
+        pixels: ['../Medias/Pixels/Borderlands.png']
     },
     {
         title: 'What Remains of Edith Finch',
@@ -2202,7 +2202,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/What Remains of Edith Finch.mid'],
         shadow: ['../Medias/Shadow/What Remains of Edith Finch.png'],
-        pixels: ['../Medias/Pixels/What Remains of Edith Finch.jpg']
+        pixels: ['../Medias/Pixels/What Remains of Edith Finch.png']
     },
     {
         title: 'Astro Bot',
@@ -2223,7 +2223,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Astro Bot.mid'],
         shadow: ['../Medias/Shadow/Astro Bot.png'],
-        pixels: ['../Medias/Pixels/Astro Bot.jpg']
+        pixels: ['../Medias/Pixels/Astro Bot.png']
     },
     {
         title: 'Baldur\'s Gate',
@@ -2244,7 +2244,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Baldur\'s Gate.mid'],
         shadow: ['../Medias/Shadow/Baldur\'s Gate.png'],
-        pixels: ['../Medias/Pixels/Baldur\'s Gate.jpg']
+        pixels: ['../Medias/Pixels/Baldur\'s Gate.png']
     },
     {
         title: 'Undertale',
@@ -2265,7 +2265,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Undertale.mid'],
         shadow: ['../Medias/Shadow/Undertale.png'],
-        pixels: ['../Medias/Pixels/Undertale.jpg']
+        pixels: ['../Medias/Pixels/Undertale.png']
     },
     {
         title: 'Resident Evil',
@@ -2286,7 +2286,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Resident Evil.mid'],
         shadow: ['../Medias/Shadow/Resident Evil.png'],
-        pixels: ['../Medias/Pixels/Resident Evil.jpg']
+        pixels: ['../Medias/Pixels/Resident Evil.png']
     },
     {
         title: 'Left 4 Dead',
@@ -2307,7 +2307,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Left 4 Dead.mid'],
         shadow: ['../Medias/Shadow/Left 4 Dead.png'],
-        pixels: ['../Medias/Pixels/Left 4 Dead.jpg']
+        pixels: ['../Medias/Pixels/Left 4 Dead.png']
     },
     {
         title: 'Until Dawn',
@@ -2328,7 +2328,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Until Dawn.mid'],
         shadow: ['../Medias/Shadow/Until Dawn.png'],
-        pixels: ['../Medias/Pixels/Until Dawn.jpg']
+        pixels: ['../Medias/Pixels/Until Dawn.png']
     },
     {
         title: 'Slender',
@@ -2349,7 +2349,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Slender.mid'],
         shadow: ['../Medias/Shadow/Slender.png'],
-        pixels: ['../Medias/Pixels/Slender.jpg']
+        pixels: ['../Medias/Pixels/Slender.png']
     },
     {
         title: 'Goat Simulator',
@@ -2370,7 +2370,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Goat Simulator.mid'],
         shadow: ['../Medias/Shadow/Goat Simulator.png'],
-        pixels: ['../Medias/Pixels/Goat Simulator.jpg']
+        pixels: ['../Medias/Pixels/Goat Simulator.png']
     },
     {
         title: 'Gang Beasts',
@@ -2391,7 +2391,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Gang Beasts.mid'],
         shadow: ['../Medias/Shadow/Gang Beasts.png'],
-        pixels: ['../Medias/Pixels/Gang Beasts.jpg']
+        pixels: ['../Medias/Pixels/Gang Beasts.png']
     },
     {
         title: 'R.E.P.O.',
@@ -2412,7 +2412,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/R.E.P.O..mid'],
         shadow: ['../Medias/Shadow/R.E.P.O..png'],
-        pixels: ['../Medias/Pixels/R.E.P.O..jpg']
+        pixels: ['../Medias/Pixels/R.E.P.O..png']
     },
     {
         title: 'Lethal company',
@@ -2433,7 +2433,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Lethal company.mid'],
         shadow: ['../Medias/Shadow/Lethal company.png'],
-        pixels: ['../Medias/Pixels/Lethal company.jpg']
+        pixels: ['../Medias/Pixels/Lethal company.png']
     },
     {
         title: 'Hogwarts Legacy',
@@ -2454,7 +2454,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Hogwarts Legacy.mid'],
         shadow: ['../Medias/Shadow/Hogwarts Legacy.png'],
-        pixels: ['../Medias/Pixels/Hogwarts Legacy.jpg']
+        pixels: ['../Medias/Pixels/Hogwarts Legacy.png']
     },
     {
         title: 'H1Z1',
@@ -2475,7 +2475,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/H1Z1.mid'],
         shadow: ['../Medias/Shadow/H1Z1.png'],
-        pixels: ['../Medias/Pixels/H1Z1.jpg']
+        pixels: ['../Medias/Pixels/H1Z1.png']
     },
     {
         title: 'Red Dead Redemption',
@@ -2496,7 +2496,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Red Dead Redemption.mid'],
         shadow: ['../Medias/Shadow/Red Dead Redemption.png'],
-        pixels: ['../Medias/Pixels/Red Dead Redemption.jpg']
+        pixels: ['../Medias/Pixels/Red Dead Redemption.png']
     },
     {
         title: 'Dark Souls',
@@ -2517,7 +2517,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Dark Souls.mid'],
         shadow: ['../Medias/Shadow/Dark Souls.png'],
-        pixels: ['../Medias/Pixels/Dark Souls.jpg']
+        pixels: ['../Medias/Pixels/Dark Souls.png']
     },
     {
         title: 'Sekiro: Shadows Die Twice',
@@ -2538,7 +2538,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Sekiro Shadows Die Twice.mid'],
         shadow: ['../Medias/Shadow/Sekiro Shadows Die Twice.png'],
-        pixels: ['../Medias/Pixels/Sekiro Shadows Die Twice.jpg']
+        pixels: ['../Medias/Pixels/Sekiro Shadows Die Twice.png']
     },
     {
         title: 'Elden Ring',
@@ -2559,7 +2559,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Elden Ring.mid'],
         shadow: ['../Medias/Shadow/Elden Ring.png'],
-        pixels: ['../Medias/Pixels/Elden Ring.jpg']
+        pixels: ['../Medias/Pixels/Elden Ring.png']
     },
     {
         title: 'Bloodborne',
@@ -2580,7 +2580,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Bloodborne.mid'],
         shadow: ['../Medias/Shadow/Bloodborne.png'],
-        pixels: ['../Medias/Pixels/Bloodborne.jpg']
+        pixels: ['../Medias/Pixels/Bloodborne.png']
     },
     {
         title: 'Ghost of Tsushima',
@@ -2601,7 +2601,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Ghost of Tsushima.mid'],
         shadow: ['../Medias/Shadow/Ghost of Tsushima.png'],
-        pixels: ['../Medias/Pixels/Ghost of Tsushima.jpg']
+        pixels: ['../Medias/Pixels/Ghost of Tsushima.png']
     },
     {
         title: 'Doom',
@@ -2622,7 +2622,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Doom.mid'],
         shadow: ['../Medias/Shadow/Doom.png'],
-        pixels: ['../Medias/Pixels/Doom.jpg']
+        pixels: ['../Medias/Pixels/Doom.png']
     },
     {
         title: 'Wii Sports',
@@ -2643,7 +2643,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Wii Sports.mid'],
         shadow: ['../Medias/Shadow/Wii Sports.png'],
-        pixels: ['../Medias/Pixels/Wii Sports.jpg']
+        pixels: ['../Medias/Pixels/Wii Sports.png']
     },
     {
         title: 'Kirby',
@@ -2664,7 +2664,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Kirby.mid'],
         shadow: ['../Medias/Shadow/Kirby.png'],
-        pixels: ['../Medias/Pixels/Kirby.jpg']
+        pixels: ['../Medias/Pixels/Kirby.png']
     },
     {
         title: 'Mass Effect',
@@ -2685,7 +2685,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Mass Effect.mid'],
         shadow: ['../Medias/Shadow/Mass Effect.png'],
-        pixels: ['../Medias/Pixels/Mass Effect.jpg']
+        pixels: ['../Medias/Pixels/Mass Effect.png']
     },
     {
         title: 'Animal Crossing',
@@ -2706,7 +2706,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Animal Crossing.mid'],
         shadow: ['../Medias/Shadow/Animal Crossing.png'],
-        pixels: ['../Medias/Pixels/Animal Crossing.jpg']
+        pixels: ['../Medias/Pixels/Animal Crossing.png']
     },
     {
         title: 'Halo',
@@ -2727,7 +2727,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Halo.mid'],
         shadow: ['../Medias/Shadow/Halo.png'],
-        pixels: ['../Medias/Pixels/Halo.jpg']
+        pixels: ['../Medias/Pixels/Halo.png']
     },
     {
         title: 'Silent Hill',
@@ -2748,7 +2748,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Silent Hill.mid'],
         shadow: ['../Medias/Shadow/Silent Hill.png'],
-        pixels: ['../Medias/Pixels/Silent Hill.jpg']
+        pixels: ['../Medias/Pixels/Silent Hill.png']
     },
     {
         title: 'Uncharted',
@@ -2769,7 +2769,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Uncharted.mid'],
         shadow: ['../Medias/Shadow/Uncharted.png'],
-        pixels: ['../Medias/Pixels/Uncharted.jpg']
+        pixels: ['../Medias/Pixels/Uncharted.png']
     },
     {
         title: 'The Forest',
@@ -2790,7 +2790,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/The Forest.mid'],
         shadow: ['../Medias/Shadow/The Forest.png'],
-        pixels: ['../Medias/Pixels/The Forest.jpg']
+        pixels: ['../Medias/Pixels/The Forest.png']
     },
     {
         title: 'Diablo',
@@ -2811,7 +2811,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Diablo.mid'],
         shadow: ['../Medias/Shadow/Diablo.png'],
-        pixels: ['../Medias/Pixels/Diablo.jpg']
+        pixels: ['../Medias/Pixels/Diablo.png']
     },
     {
         title: 'Age of War',
@@ -2832,7 +2832,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Age of War.mid'],
         shadow: ['../Medias/Shadow/Age of War.png'],
-        pixels: ['../Medias/Pixels/Age of War.jpg']
+        pixels: ['../Medias/Pixels/Age of War.png']
     },
     {
         title: 'Terraria',
@@ -2853,7 +2853,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Terraria.mid'],
         shadow: ['../Medias/Shadow/Terraria.png'],
-        pixels: ['../Medias/Pixels/Terraria.jpg']
+        pixels: ['../Medias/Pixels/Terraria.png']
     },
     {
         title: 'The Sims',
@@ -2874,7 +2874,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/The Sims.mid'],
         shadow: ['../Medias/Shadow/The Sims.png'],
-        pixels: ['../Medias/Pixels/The Sims.jpg']
+        pixels: ['../Medias/Pixels/The Sims.png']
     },
     {
         title: 'Ark: Survival Evolved',
@@ -2895,7 +2895,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Ark.mid'],
         shadow: ['../Medias/Shadow/Ark.png'],
-        pixels: ['../Medias/Pixels/Ark.jpg']
+        pixels: ['../Medias/Pixels/Ark.png']
     },
     {
         title: 'It Takes Two',
@@ -2916,7 +2916,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/It Takes Two.mid'],
         shadow: ['../Medias/Shadow/It Takes Two.png'],
-        pixels: ['../Medias/Pixels/It Takes Two.jpg']
+        pixels: ['../Medias/Pixels/It Takes Two.png']
     },
     {
         title: 'The Walking Dead',
@@ -2937,7 +2937,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/The Walking Dead.mid'],
         shadow: ['../Medias/Shadow/The Walking Dead.png'],
-        pixels: ['../Medias/Pixels/The Walking Dead.jpg']
+        pixels: ['../Medias/Pixels/The Walking Dead.png']
     },
     {
         title: 'Clair Obscur : Expedition 33',
@@ -2958,7 +2958,7 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Clair Obscur Expedition 33.mid'],
         shadow: ['../Medias/Shadow/Clair Obscur Expedition 33.png'],
-        pixels: ['../Medias/Pixels/Clair Obscur Expedition 33.jpg']
+        pixels: ['../Medias/Pixels/Clair Obscur Expedition 33.png']
     }
 ];
 
