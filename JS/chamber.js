@@ -5,13 +5,23 @@ const modal = document.getElementById('confirmation-modal');
 const confirmBtn = document.getElementById('confirm-btn');
 const cancelBtn = document.getElementById('cancel-btn');
 
-// Variable pour stocker quel mode l'utilisateur essaie d'ouvrir
+// Variable pour stocker quel mode l'utilisateur essaie d'ouvrir (pour les modes avec clé)
 let pendingMode = null; 
+
+// === CONFIGURATION DES LIENS DIRECTS (SANS CLÉ) ===
+const directLinks = {
+    'trophy': '../HTML/trophy.html',
+    'calculator': '../HTML/calculator.html',
+    'pantone': '../HTML/pantone.html',
+    'films': '../HTML/films.html',
+    'gto': 'https://gto.ada.briceledanois.fr/',
+    'xxx': '../HTML/xxx.html'
+};
 
 // === FONCTIONS ===
 
-// 1. Gestion du clic sur une zone
-function handleZoneClick(modeName) {
+// 1. Gestion du clic pour les modes VERROUILLÉS (Ancien fonctionnement)
+function handleLockedZoneClick(modeName) {
     // Récupérer le profil actuel
     const profiles = JSON.parse(localStorage.getItem('profiles'));
     const currentPseudo = localStorage.getItem('currentProfile');
@@ -31,12 +41,12 @@ function handleZoneClick(modeName) {
         pendingMode = modeName;
         modal.classList.remove('hidden');
     } else {
-        // Pas de clé : RIEN NE SE PASSE (selon votre demande)
+        // Pas de clé : RIEN NE SE PASSE
         console.log("Pas de clé, action ignorée.");
     }
 }
 
-// 2. Action quand l'utilisateur confirme (OUI)
+// 2. Action quand l'utilisateur confirme (OUI) pour une zone à clé
 confirmBtn.addEventListener('click', () => {
     if (!pendingMode) return;
 
@@ -73,14 +83,30 @@ confirmBtn.addEventListener('click', () => {
 // 3. Action quand l'utilisateur annule (NON)
 cancelBtn.addEventListener('click', () => {
     modal.classList.add('hidden');
-    pendingMode = null; // On oublie le clic
+    pendingMode = null;
 });
 
 // === INITIALISATION DES ÉCOUTEURS SUR LES ZONES ===
 zones.forEach(zone => {
     zone.addEventListener('click', () => {
         const modeName = zone.getAttribute('data-mode');
-        handleZoneClick(modeName);
+
+        // CAS 1 : C'est un lien direct (pas de clé)
+        if (directLinks[modeName]) {
+            const url = directLinks[modeName];
+            
+            // Si le lien commence par "http" (lien externe comme GTO), on ouvre un nouvel onglet
+            if (url.startsWith('http')) {
+                window.open(url, '_blank');
+            } else {
+                // Sinon (lien interne), on reste dans le même onglet
+                window.location.href = url;
+            }
+            return; // On arrête ici
+        }
+
+        // CAS 2 : C'est un autre mode (Besoin de clé, modal, etc.)
+        handleLockedZoneClick(modeName);
     });
 });
 

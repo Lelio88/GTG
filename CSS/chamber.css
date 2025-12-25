@@ -58,22 +58,22 @@ body, html {
 
 /* Zone 5 : Trophée */
 #zone-trophy {
-    top: 63%; left: 63%;
+    top: 63%; left: 61.5%;
     width: 7.5%; height: 7.6%;
     background-color: rgba(255, 0, 255, 0.5); /* Magenta */
 }
 
 /* Zone 6 : Calculatrice */
 #zone-calculator {
-    top: 75%; left: 46%;
-    width: 7.5%; height: 7.6%;
+    top: 77%; left: 47%;
+    width: 4.5%; height: 7%;
     background-color: rgba(0, 255, 255, 0.5); /* Cyan */
 }
 
 /* Zone 7 : Pantone */
 #zone-pantone {
-    top: 44%; left: 18%;
-    width: 5%; height: 7.6%;
+    top: 33.5%; left: 18.8%;
+    width: 4%; height: 22%;
     background-color: rgba(128, 0, 128, 0.5); /* Violet */
 }
 
