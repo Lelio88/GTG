@@ -57,23 +57,27 @@ export function initializeProfile(currentProfile) {
 }
 
 /**
- * Update the profile with game result
+ * Update the profile with game result specific to the mode
  * @param {Object} currentProfile - The current profile object
  * @param {string} gameTitle - The title of the game
  * @param {boolean} isGoodAnswer - Whether the answer was correct
- * @param {string} gameMode - The game mode ('full', 'sound', 'image', 'text')
+ * @param {string} gameMode - The game mode ('full', 'sound', 'image', 'text', etc.)
  */
 export function updateProfile(currentProfile, gameTitle, isGoodAnswer, gameMode) {
+    // S'assurer que la structure existe (sécurité supplémentaire)
+    if (!currentProfile.scoresByMode || !currentProfile.scoresByMode[gameMode]) {
+        currentProfile = initializeProfile(currentProfile);
+    }
     if (isGoodAnswer && !currentProfile.guessedGamesByMode[gameMode].includes(gameTitle)) {
         currentProfile.guessedGamesByMode[gameMode].push(gameTitle);
     }
-
     if (isGoodAnswer) {
-        currentProfile.goodAnswers++;
+        // Modifie uniquement le score du mode actuel
+        currentProfile.scoresByMode[gameMode].goodAnswers++;
     } else {
-        currentProfile.badAnswers++;
+        // Modifie uniquement le score du mode actuel
+        currentProfile.scoresByMode[gameMode].badAnswers++;
     }
-
     saveProfile(currentProfile);
 }
 
