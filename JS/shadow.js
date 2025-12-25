@@ -137,7 +137,7 @@ function checkAnswer() {
         showIncorrectAnswerFeedback();
     }
 
-    updateScoreboard(currentProfile);
+    updateScoreboard(currentProfile, 'shadow');
 }
 
 function nextQuestion() {
@@ -153,7 +153,7 @@ function abandonGame() {
 
     revealTitle(cachedTitle, { mode: 'modal', autoAdvance: true, delay: 2000 })
         .then(() => {
-            abandonGameUtil(currentProfile);
+            abandonGameUtil(currentProfile, 'shadow');
         });
 }
 
@@ -168,5 +168,5 @@ setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
 window.onload = () => {
     if (window.location.pathname.includes('shadow')) launchGameShadow();
     document.getElementById('user-input').focus();
-    updateScoreboard(currentProfile);
+    updateScoreboard(currentProfile, 'shadow');
 };

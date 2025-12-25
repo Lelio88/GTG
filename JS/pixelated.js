@@ -152,7 +152,7 @@ function checkAnswer() {
         showIncorrectAnswerFeedback();
     }
 
-    updateScoreboard(currentProfile);
+    updateScoreboard(currentProfile, 'pixelated');
 }
 
 function nextQuestion() {
@@ -171,7 +171,7 @@ function abandonGame() {
 
     revealTitle(cachedTitle, { mode: 'modal', autoAdvance: true, delay: 2000 })
         .then(() => {
-            abandonGameUtil(currentProfile);
+            abandonGameUtil(currentProfile, 'pixelated');
         });
 }
 
@@ -191,5 +191,5 @@ window.onload = () => {
     const input = document.getElementById('user-input');
     if(input) input.focus();
     
-    updateScoreboard(currentProfile);
+    updateScoreboard(currentProfile, 'pixelated');
 };

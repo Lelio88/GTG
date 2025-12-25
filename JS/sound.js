@@ -109,7 +109,7 @@ function showHint() {
 function abandonGame() {
     revealTitle(cachedTitle, { mode: 'modal', autoAdvance: true, delay: 2000 })
         .then(() => {
-            abandonGameUtil(currentProfile);
+            abandonGameUtil(currentProfile, 'sound');
         });
 }
 
@@ -129,7 +129,7 @@ function checkAnswer() {
         showIncorrectAnswerFeedback();
     }
 
-    updateScoreboard(currentProfile);
+    updateScoreboard(currentProfile, 'sound');
 }
 
 function nextQuestion() {
@@ -147,6 +147,6 @@ setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
 // On load
 window.onload = () => {
     launchGameMusic();
-    updateScoreboard(currentProfile);
+    updateScoreboard(currentProfile, 'sound');
     document.getElementById('user-input').focus();
 };

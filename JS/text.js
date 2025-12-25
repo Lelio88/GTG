@@ -81,7 +81,7 @@ function showHint() {
 function abandonGame() {
     revealTitle(cachedTitle, { mode: 'modal', autoAdvance: true, delay: 2000 })
         .then(() => {
-            abandonGameUtil(currentProfile);
+            abandonGameUtil(currentProfile, 'text');
         });
 }
 
@@ -99,7 +99,7 @@ function checkAnswer() {
         showIncorrectAnswerFeedback();
     }
 
-    updateScoreboard(currentProfile);
+    updateScoreboard(currentProfile, 'text');
 }
 
 function nextQuestion() {
@@ -118,6 +118,6 @@ setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
 window.onload = () => {
     launchGameText();
     timerInterval = startTimerUtil();
-    updateScoreboard(currentProfile);
+    updateScoreboard(currentProfile, 'text');
     document.getElementById('user-input').focus();
 };

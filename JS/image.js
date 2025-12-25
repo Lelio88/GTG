@@ -144,7 +144,7 @@ function checkAnswer() {
         showIncorrectAnswerFeedback();
     }
 
-    updateScoreboard(currentProfile);
+    updateScoreboard(currentProfile, 'image');
 }
 
 function nextQuestion() {
@@ -186,7 +186,7 @@ function showHint() {
 function abandonGame() {
     revealTitle(cachedTitle, { mode: 'modal', autoAdvance: true, delay: 2000 })
         .then(() => {
-            abandonGameUtil(currentProfile);
+            abandonGameUtil(currentProfile, 'image');
         });
 }
 
@@ -202,5 +202,5 @@ setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
 window.onload = () => {
     if (window.location.pathname.includes('image')) launchGameImage();
     document.getElementById('user-input').focus();
-    updateScoreboard(currentProfile);
+    updateScoreboard(currentProfile, 'image');
 };

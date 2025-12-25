@@ -169,7 +169,7 @@ function checkAnswer() {
         showIncorrectAnswerFeedback();
     }
 
-    updateScoreboard(currentProfile);
+    updateScoreboard(currentProfile, 'full');
 }
 
 function nextQuestion() {
@@ -179,7 +179,7 @@ function nextQuestion() {
 function abandonGame() {
     revealTitle(cachedTitle, { mode: 'modal', autoAdvance: true, delay: 2000 })
         .then(() => {
-            abandonGameUtil(currentProfile);
+            abandonGameUtil(currentProfile, 'full');
         });
 }
 
@@ -195,5 +195,5 @@ setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
 window.onload = () => {
     launchGameFull();
     document.getElementById('user-input').focus();
-    updateScoreboard(currentProfile);
+    updateScoreboard(currentProfile, 'full');
 };
