@@ -3336,7 +3336,7 @@ export const abbreviations = {
     'sekiro: shadows die twice': ['sekiro'],
     't. rex game': ['t rex game'],
     'star wars battlefront': ['battlefront'],
-    'magic: the gathering arena': ['magic'],
+    'magic: the gathering arena': ['magic', 'mtg arena', 'mtga', 'mtg'],
     'little big planet': ['lbp'],
     'ark: survival evolved': ['ark'],
     'the sims': ['sims'],
