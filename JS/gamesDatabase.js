@@ -3146,25 +3146,25 @@ export const games = [
         emoji: '🦸 🎧 🖥️ 🏢 🗣️ ⚡ 🚑 📋 🎭 ⚖️'
     },
     {
-        title: 'Professor Layton',
+        title: 'Professeur Layton',
         image: [
-            '../Medias/Image/Professor Layton 1.jpg',
-            '../Medias/Image/Professor Layton 2.jpg',
-            '../Medias/Image/Professor Layton 3.jpg',
+            '../Medias/Image/Professeur Layton 1.jpg',
+            '../Medias/Image/Professeur Layton 2.jpg',
+            '../Medias/Image/Professeur Layton 3.jpg',
         ],
         sound: [
-            '../Medias/Sound/Professor Layton 1.mp3',
-            '../Medias/Sound/Professor Layton 2.mp3',
-            '../Medias/Sound/Professor Layton 3.mp3',
+            '../Medias/Sound/Professeur Layton 1.mp3',
+            '../Medias/Sound/Professeur Layton 2.mp3',
+            '../Medias/Sound/Professeur Layton 3.mp3',
         ],
         text: [
             "Ce jeu d'aventure et de réflexion, développé par Level-5, suit les enquêtes d'un professeur d'archéologie et de son apprenti.",
             "Premier opus sorti en 2007, il propose une série de puzzles et d'énigmes à résoudre tout en progressant dans une histoire captivante.",
             "Le lore s'articule autour des mystères généralement dans des lieux pittoresques tels que des villages."
         ],
-        midi: ['../Medias/Midi/Professor Layton.mid'],
-        shadow: ['../Medias/Shadow/Professor Layton.png'],
-        pixels: ['../Medias/Pixels/Professor Layton.png'],
+        midi: ['../Medias/Midi/Professeur Layton.mid'],
+        shadow: ['../Medias/Shadow/Professeur Layton.png'],
+        pixels: ['../Medias/Pixels/Professeur Layton.png'],
         emoji: '🎩 🕵️‍♂️ 🧩 📜 🏰 🔍 🗝️ 🖼️ 🚂 👓'
     },
     {
@@ -3350,5 +3350,5 @@ export const abbreviations = {
     'slender': ['slenderman', 'slender man'],
     'battlefield': ['bf'],
     'death stranding': ['ds'],
-    'professor layton': ['layton'],
+    'professeur layton': ['layton'],
 };
