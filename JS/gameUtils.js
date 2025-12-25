@@ -156,12 +156,17 @@ export function checkAnswerValue(userInput, gameTitle) {
 }
 
 /**
- * Update the scoreboard display
+ * Update the scoreboard display based on current mode
  * @param {Object} currentProfile - The current profile object
+ * @param {string} gameMode - The current game mode (Required to show correct score)
  */
-export function updateScoreboard(currentProfile) {
-    document.getElementById('good-answers').innerText = currentProfile.goodAnswers;
-    document.getElementById('bad-answers').innerText = currentProfile.badAnswers;
+export function updateScoreboard(currentProfile, gameMode) {
+    // Fallback si le mode n'est pas encore initialisé
+    const stats = currentProfile.scoresByMode && currentProfile.scoresByMode[gameMode] 
+        ? currentProfile.scoresByMode[gameMode] 
+        : { goodAnswers: 0, badAnswers: 0 };
+    document.getElementById('good-answers').innerText = stats.goodAnswers;
+    document.getElementById('bad-answers').innerText = stats.badAnswers;
 }
 
 /**
