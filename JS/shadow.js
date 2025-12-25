@@ -66,7 +66,7 @@ function launchGameShadow() {
     
     // Style du cadre
     imageWrapper.style.width = '100%';      
-    imageWrapper.style.height = '50vh';
+    imageWrapper.style.height = '40vh';
     imageWrapper.style.border = '2px solid black'; // Ou 'white' selon votre fond
     imageWrapper.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
     imageWrapper.style.boxSizing = 'border-box';
