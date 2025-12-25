@@ -18,7 +18,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Bioshock.mid'],
         shadow: ['../Medias/Shadow/Bioshock.png'],
-        pixels: ['../Medias/Pixels/Bioshock.png']
+        pixels: ['../Medias/Pixels/Bioshock.png'],
+        emoji: '🌊 💉 ⚡ 🔧 🤖 👧 🏙️ 🎩 🎪 🩸'
     },
     {
         title: 'Plants vs Zombies',
@@ -39,7 +40,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Plants vs Zombies.mid'],
         shadow: ['../Medias/Shadow/Plants vs Zombies.png'],
-        pixels: ['../Medias/Pixels/Plants vs Zombies.png']
+        pixels: ['../Medias/Pixels/Plants vs Zombies.png'],
+        emoji: '🌻 🧟 🧠 🏡 🌞 🥜 🍒 💥 🌱 🧟‍♂️'
     },
     {
         title: 'Call of Duty',
@@ -60,7 +62,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Call of Duty.mid'],
         shadow: ['../Medias/Shadow/Call of Duty.png'],
-        pixels: ['../Medias/Pixels/Call of Duty.png']
+        pixels: ['../Medias/Pixels/Call of Duty.png'],
+        emoji: '🔫 🪖 💣 🎖️ 🚁 💥 🗺️ 🎯 💂 📻'
     },
     {
         title: 'The Last of Us',
@@ -81,7 +84,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/The Last of Us.mid'],
         shadow: ['../Medias/Shadow/The Last of Us.png'],
-        pixels: ['../Medias/Pixels/The Last of Us.png']
+        pixels: ['../Medias/Pixels/The Last of Us.png'],
+        emoji: '🍄 🎸 🧟 🧱 🎒 🔦 🌿 🩸 🦌 🛤️'
     },
     {
         title: 'Satisfactory',
@@ -102,7 +106,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Satisfactory.mid'],
         shadow: ['../Medias/Shadow/Satisfactory.png'],
-        pixels: ['../Medias/Pixels/Satisfactory.png']
+        pixels: ['../Medias/Pixels/Satisfactory.png'],
+        emoji: '🏭 🏗️ 🚀 ⚙️ 🐛 ⚡ 🛤️ 📦 🔧 ☕'
     },
     {
         title: 'Outlast',
@@ -123,7 +128,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Outlast.mid'],
         shadow: ['../Medias/Shadow/Outlast.png'],
-        pixels: ['../Medias/Pixels/Outlast.png']
+        pixels: ['../Medias/Pixels/Outlast.png'],
+        emoji: '📹 🔋 🏥 🩸 🏃 🌑 🔪 😱 🚪 🦶'
     },
     {
         title: 'Hades',
@@ -144,7 +150,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Hades.mid'],
         shadow: ['../Medias/Shadow/Hades.png'],
-        pixels: ['../Medias/Pixels/Hades.png']
+        pixels: ['../Medias/Pixels/Hades.png'],
+        emoji: '🔥 💀 🏛️ ⚡ 🩸 🗡️ 🐶 🍷 💎 🌋 '
     },
     {
         title: 'BioShock Infinite',
@@ -165,7 +172,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Bioshock Infinite.mid'],
         shadow: ['../Medias/Shadow/Bioshock Infinite.png'],
-        pixels: ['../Medias/Pixels/Bioshock Infinite.png']
+        pixels: ['../Medias/Pixels/Bioshock Infinite.png'],
+        emoji: '☁️ 🦅 🎢 🔫 🗽 🗝️ ⏳ 👗 🎩 🌪️'
     },
     {
         title: 'Hollow Knight',
@@ -186,7 +194,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Hollow Knight.mid'],
         shadow: ['../Medias/Shadow/Hollow Knight.png'],
-        pixels: ['../Medias/Pixels/Hollow Knight.png']
+        pixels: ['../Medias/Pixels/Hollow Knight.png'],
+        emoji: '🦗 🗡️ 👻 🗺️ 🕯️ 💀 🎭 🐛 🌑 🧚'
     },
     {
         title: 'Horizon Zero Dawn',
@@ -207,7 +216,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Horizon Zero Dawn.mid'],
         shadow: ['../Medias/Shadow/Horizon Zero Dawn.png'],
-        pixels: ['../Medias/Pixels/Horizon Zero Dawn.png']
+        pixels: ['../Medias/Pixels/Horizon Zero Dawn.png'],
+        emoji: '🏹 🦕 🤖 🌿 🏔️ 👁️ 🔋 🚺 ⛺ 🐆'
     },
     {
         title: 'Spyro',
@@ -228,7 +238,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Spyro.mid'],
         shadow: ['../Medias/Shadow/Spyro.png'],
-        pixels: ['../Medias/Pixels/Spyro.png']
+        pixels: ['../Medias/Pixels/Spyro.png'],
+        emoji: '🐉 💜 💎 🐑 🔥 🥚 🧚‍♀️ 🛹 🏰 🕶️'
     },
     {
         title: 'God of War',
@@ -249,7 +260,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/God of War.mid'],
         shadow: ['../Medias/Shadow/God of War.png'],
-        pixels: ['../Medias/Pixels/God of War.png']
+        pixels: ['../Medias/Pixels/God of War.png'],
+        emoji: '🪓 ❄️ 😡 👦 ⛓️ 👹 🏺 🚣 🐍 ⚡'
     },
     {
         title: 'Portal',
@@ -270,7 +282,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Portal.mid'],
         shadow: ['../Medias/Shadow/Portal.png'],
-        pixels: ['../Medias/Pixels/Portal.png']
+        pixels: ['../Medias/Pixels/Portal.png'],
+        emoji: '🔵 🟠 🔫 🍰 📦 🤖 🥔 🧪 👁️ 🚪'
     },
     {
         title: 'Counter Strike',
@@ -291,7 +304,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Counter Strike.mid'],
         shadow: ['../Medias/Shadow/Counter Strike.png'],
-        pixels: ['../Medias/Pixels/Counter Strike.png']
+        pixels: ['../Medias/Pixels/Counter Strike.png'],
+        emoji: '🔫 💣 👮 🥷 🔪 💥 ⏱️ ⚡ 🦅 🎯'
     },
     {
         title: 'Minecraft',
@@ -312,7 +326,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Minecraft.mid'],
         shadow: ['../Medias/Shadow/Minecraft.png'],
-        pixels: ['../Medias/Pixels/Minecraft.png']
+        pixels: ['../Medias/Pixels/Minecraft.png'],
+        emoji: '⛏️ 🟩 🧱 🧟 💎 🐷 ⚔️ 🌲 🏠 🧨'
     },
     {
         title: 'Assassin\'s Creed',
@@ -333,7 +348,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Assassin\'s Creed.mid'],
         shadow: ['../Medias/Shadow/Assassin\'s Creed.png'],
-        pixels: ['../Medias/Pixels/Assassin\'s Creed.png']
+        pixels: ['../Medias/Pixels/Assassin\'s Creed.png'],
+        emoji: '🗡️ 🦅 🕌 🧥 📜 🤸 🩸 ⏳ ⛵ 🧬'
     },
     {
         title: 'The binding of Isaac',
@@ -354,7 +370,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/The binding of Isaac.mid'],
         shadow: ['../Medias/Shadow/The binding of Isaac.png'],
-        pixels: ['../Medias/Pixels/The binding of Isaac.png']
+        pixels: ['../Medias/Pixels/The binding of Isaac.png'],
+        emoji: '😭 💩 🩸 🕸️ 💣 💊 👶 👿 🕯️ 🎲'
     },
     {
         title: 'Chants of Sennaar',
@@ -375,7 +392,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Chants of Sennaar.mid'],
         shadow: ['../Medias/Shadow/Chants of Sennaar.png'],
-        pixels: ['../Medias/Pixels/Chants of Sennaar.png']
+        pixels: ['../Medias/Pixels/Chants of Sennaar.png'],
+        emoji: '🏰 🗣️ 📖 🔡 🎭 🤝 🧠 🌅 🤫 👁️'
     },
     {
         title: 'Crash Bandicoot',
@@ -396,7 +414,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Crash Bandicoot.mid'],
         shadow: ['../Medias/Shadow/Crash Bandicoot.png'],
-        pixels: ['../Medias/Pixels/Crash Bandicoot.png']
+        pixels: ['../Medias/Pixels/Crash Bandicoot.png'],
+        emoji: '🦊 📦 🍎 🎭 🌀 💣 💎 🏝️ 🐗 🗿'
     },
     {
         title: 'Days Gone',
@@ -417,7 +436,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Days Gone.mid'],
         shadow: ['../Medias/Shadow/Days Gone.png'],
-        pixels: ['../Medias/Pixels/Days Gone.png']
+        pixels: ['../Medias/Pixels/Days Gone.png'],
+        emoji: '🏍️ 🧟 ⛽ 🔫 🌲 ❄️ 🧢 🛣️ 🧨 💍️'
     },
     {
         title: 'Raft',
@@ -438,7 +458,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Raft.mid'],
         shadow: ['../Medias/Shadow/Raft.png'],
-        pixels: ['../Medias/Pixels/Raft.png']
+        pixels: ['../Medias/Pixels/Raft.png'],
+        emoji: '🛶 🌊 🐟 🔨 🎣 🪓 🦈 ☀️ 🏝️ 🔋'
     },
     {
         title: 'Dishonored',
@@ -459,7 +480,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Dishonored.mid'],
         shadow: ['../Medias/Shadow/Dishonored.png'],
-        pixels: ['../Medias/Pixels/Dishonored.png']
+        pixels: ['../Medias/Pixels/Dishonored.png'],
+        emoji: '🐀 🎭 🗡️ 🐋 ⚙️ 👁️ 🚤 🩸 🤴 🥛'
     },
     {
         title: 'Little Big Planet',
@@ -480,7 +502,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Little Big Planet.mid'],
         shadow: ['../Medias/Shadow/Little Big Planet.png'],
-        pixels: ['../Medias/Pixels/Little Big Planet.png']
+        pixels: ['../Medias/Pixels/Little Big Planet.png'],
+        emoji: '🧶 🌍 📦 ✂️ 🎨 🧸 🚀 🧩 🙂 🌙'
     },
     {
         title: 'Dredge',
@@ -501,7 +524,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Dredge.mid'],
         shadow: ['../Medias/Shadow/Dredge.png'],
-        pixels: ['../Medias/Pixels/Dredge.png']
+        pixels: ['../Medias/Pixels/Dredge.png'],
+        emoji: '🎣 🚤 🐙 🌫️ 🐟 📖 🔦 🕸️ 🦀 🏚️'
     },
     {
         title: 'Subnautica',
@@ -522,7 +546,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Subnautica.mid'],
         shadow: ['../Medias/Shadow/Subnautica.png'],
-        pixels: ['../Medias/Pixels/Subnautica.png']
+        pixels: ['../Medias/Pixels/Subnautica.png'],
+        emoji: '🌊 🐠 🚀 🔋 🦑 🤿 🔪 🏭 🦴 🌌',
     },
     {
         title: 'Dying Light',
@@ -543,7 +568,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Dying Light.mid'],
         shadow: ['../Medias/Shadow/Dying Light.png'],
-        pixels: ['../Medias/Pixels/Dying Light.png']
+        pixels: ['../Medias/Pixels/Dying Light.png'],
+        emoji: '🧟 🏃 🌆 🔦 🌃 🏏 💊 🚁 📻 🏗️'
     },
     {
         title: 'Far Cry',
@@ -564,7 +590,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Far Cry.mid'],
         shadow: ['../Medias/Shadow/Far Cry.png'],
-        pixels: ['../Medias/Pixels/Far Cry.png']
+        pixels: ['../Medias/Pixels/Far Cry.png'],
+        emoji: '🌴 🔫 🐯 🔥 💊 🏹 🚙 🦅 💉 ⛪'
     },
     {
         title: 'Frostpunk',
@@ -585,7 +612,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Frostpunk.mid'],
         shadow: ['../Medias/Shadow/Frostpunk.png'],
-        pixels: ['../Medias/Pixels/Frostpunk.png']
+        pixels: ['../Medias/Pixels/Frostpunk.png'],
+        emoji: '❄️ 🏭 🌡️ 👷 ⚖️ 🌬️ 🍲 🧥 📉 ⛪'
     },
     {
         title: 'FPS Chess',
@@ -606,7 +634,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/FPS Chess.mid'],
         shadow: ['../Medias/Shadow/FPS Chess.png'],
-        pixels: ['../Medias/Pixels/FPS Chess.png']
+        pixels: ['../Medias/Pixels/FPS Chess.png'],
+        emoji: '♟️ 🔫 🏰 🤴 🎯 🕰️ 🏇 💣 🚁 ♖'
     },
     {
         title: 'Ghost of a Tale',
@@ -627,7 +656,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Ghost of a Tale.mid'],
         shadow: ['../Medias/Shadow/Ghost of a Tale.png'],
-        pixels: ['../Medias/Pixels/Ghost of a Tale.png']
+        pixels: ['../Medias/Pixels/Ghost of a Tale.png'],
+        emoji: '🐭 🏰 🕯️ 🧀 🎻 🦀 🗝️ 🎒 🌚 🍄'
     },
     {
         title: 'Ghostrunner',
@@ -648,7 +678,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Ghostrunner.mid'],
         shadow: ['../Medias/Shadow/Ghostrunner.png'],
-        pixels: ['../Medias/Pixels/Ghostrunner.png']
+        pixels: ['../Medias/Pixels/Ghostrunner.png'],
+        emoji: '🏃 ⚔️ 🦾 🤖 🏙️ ⚡ 🩸 🧗 ⌚ 💾'
     },
     {
         title: 'Valorant',
@@ -669,7 +700,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Valorant.mid'],
         shadow: ['../Medias/Shadow/Valorant.png'],
-        pixels: ['../Medias/Pixels/Valorant.png']
+        pixels: ['../Medias/Pixels/Valorant.png'],
+        emoji: '🔫 💣 💨 🔮 🛡️ 🕴️ 🎯 🧪 🌪️ 🖱️'
     },
     {
         title: 'Apex Legends',
@@ -690,7 +722,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Apex Legends.mid'],
         shadow: ['../Medias/Shadow/Apex Legends.png'],
-        pixels: ['../Medias/Pixels/Apex Legends.png']
+        pixels: ['../Medias/Pixels/Apex Legends.png'],
+        emoji: '🤖 🚠 🛡️ 💉 🏃 🔫 🌋 📦 🚑 🤴'
     },
     {
         title: 'Beyond two souls',
@@ -711,7 +744,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Beyond two souls.mid'],
         shadow: ['../Medias/Shadow/Beyond two souls.png'],
-        pixels: ['../Medias/Pixels/Beyond two souls.png']
+        pixels: ['../Medias/Pixels/Beyond two souls.png'],
+        emoji: '👻 👧 🧬 ❄️ 🚔 🕯️ 🎹 🏇 🏥 🔥'
     },
     {
         title: 'Palworld',
@@ -732,7 +766,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Palworld.mid'],
         shadow: ['../Medias/Shadow/Palworld.png'],
-        pixels: ['../Medias/Pixels/Palworld.png']
+        pixels: ['../Medias/Pixels/Palworld.png'],
+        emoji: '🔫 🐑 ⛏️ 🥚 🏭 🧚 🗺️ ⛓️ 🎒 ⛺'
     },
     {
         title: 'Hunt Showdown',
@@ -753,7 +788,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Hunt Showdown.mid'],
         shadow: ['../Medias/Shadow/Hunt Showdown.png'],
-        pixels: ['../Medias/Pixels/Hunt Showdown.png']
+        pixels: ['../Medias/Pixels/Hunt Showdown.png'],
+        emoji: '🤠 🕷️ 🐊 🌑 🕯️ 🔫 🩸 👒 🏚️ 🧟'
     },
     {
         title: 'Inscryption',
@@ -774,7 +810,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Inscryption.mid'],
         shadow: ['../Medias/Shadow/Inscryption.png'],
-        pixels: ['../Medias/Pixels/Inscryption.png']
+        pixels: ['../Medias/Pixels/Inscryption.png'],
+        emoji: '🃏 🛖 📷 🐿️ 🐺 🕯️ ⚖️ 👁️ 📼 🌲'
     },
     {
         title: 'Life is Strange',
@@ -795,7 +832,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Life is Strange.mid'],
         shadow: ['../Medias/Shadow/Life is Strange.png'],
-        pixels: ['../Medias/Pixels/Life is Strange.png']
+        pixels: ['../Medias/Pixels/Life is Strange.png'],
+        emoji: '🦋 📷 🌪️ 🏫 🎸 💊 ⏱️ 🦌 🌊 📓'
     },
     {
         title: 'Magic: The Gathering Arena',
@@ -816,7 +854,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Magic.mid'],
         shadow: ['../Medias/Shadow/Magic.png'],
-        pixels: ['../Medias/Pixels/Magic.png']
+        pixels: ['../Medias/Pixels/Magic.png'],
+        emoji: '🃏 🧙‍♂️ 🐉 🔥 💀 🌳 💧 ☀️ ⚔️ 🎲'
     },
     {
         title: 'Spider-Man',
@@ -837,7 +876,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Spider-Man.mid'],
         shadow: ['../Medias/Shadow/Spider-Man.png'],
-        pixels: ['../Medias/Pixels/Spider-Man.png']
+        pixels: ['../Medias/Pixels/Spider-Man.png'],
+        emoji: '🕷️ 🕸️ 🏙️ 📸 🧗 🤸 🧪 🐙 🚔 🎭'
     },
     {
         title: 'Metro',
@@ -858,7 +898,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Metro.mid'],
         shadow: ['../Medias/Shadow/Metro.png'],
-        pixels: ['../Medias/Pixels/Metro.png']
+        pixels: ['../Medias/Pixels/Metro.png'],
+        emoji: '🚇 ☢️ 🎭 🔦 ❄️ 💀 🔫 🐀 🕯️ 🎸'
     },
     {
         title: 'Outer Wilds',
@@ -879,7 +920,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Outer Wilds.mid'],
         shadow: ['../Medias/Shadow/Outer Wilds.png'],
-        pixels: ['../Medias/Pixels/Outer Wilds.png']
+        pixels: ['../Medias/Pixels/Outer Wilds.png'],
+        emoji: '🚀 ⏳ ☀️ 🪐 🏕️ 🪵 🔭 🎻 👽 💥'
     },
     {
         title: 'Ori and the Blind Forest',
@@ -900,7 +942,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Ori and the Blind Forest.mid'],
         shadow: ['../Medias/Shadow/Ori and the Blind Forest.png'],
-        pixels: ['../Medias/Pixels/Ori and the Blind Forest.png']
+        pixels: ['../Medias/Pixels/Ori and the Blind Forest.png'],
+        emoji: '👻 🌳 💡 🦉 💧 🍃 🧚 🌋 ⛰️ ✨'
     },
     {
         title: 'The Planet Crafter',
@@ -921,7 +964,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/The Planet Crafter.mid'],
         shadow: ['../Medias/Shadow/The Planet Crafter.png'],
-        pixels: ['../Medias/Pixels/The Planet Crafter.png']
+        pixels: ['../Medias/Pixels/The Planet Crafter.png'],
+        emoji: '🚀 🪐 🔨 🧊 🦋 🌳 💧 ☢️ 🌡️ 🔋'
     },
     {
         title: 'PUBG: Battlegrounds',
@@ -942,7 +986,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/PUBG.mid'],
         shadow: ['../Medias/Shadow/PUBG.png'],
-        pixels: ['../Medias/Pixels/PUBG.png']
+        pixels: ['../Medias/Pixels/PUBG.png'],
+        emoji: '🪂 🍳 🔫 🐔 🚘 💊 🌫️ 🎒 🗺️ 💣'
     },
     {
         title: 'Paladins',
@@ -963,7 +1008,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Paladins.mid'],
         shadow: ['../Medias/Shadow/Paladins.png'],
-        pixels: ['../Medias/Pixels/Paladins.png']
+        pixels: ['../Medias/Pixels/Paladins.png'],
+        emoji: '🔫 🛡️ 🐴 🔮 🃏 🗡️ 🏰 💣 💎 🐲'
     },
     {
         title: 'The Room',
@@ -984,7 +1030,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/The Room.mid'],
         shadow: ['../Medias/Shadow/The Room.png'],
-        pixels: ['../Medias/Pixels/The Room.png']
+        pixels: ['../Medias/Pixels/The Room.png'],
+        emoji: '📦 🔍 🗝️ 🧩 👁️ ⚙️ 🕰️ 🕯️ 📕 🎩'
     },
     {
         title: 'Rocket League',
@@ -1005,7 +1052,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Rocket League.mid'],
         shadow: ['../Medias/Shadow/Rocket League.png'],
-        pixels: ['../Medias/Pixels/Rocket League.png']
+        pixels: ['../Medias/Pixels/Rocket League.png'],
+        emoji: '🚗 ⚽ 🚀 🏟️ 🏎️ 💥 🥅 🏆 💨 🟠'
     },
     {
         title: 'Rusty Lake',
@@ -1026,7 +1074,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Rusty Lake.mid'],
         shadow: ['../Medias/Shadow/Rusty Lake.png'],
-        pixels: ['../Medias/Pixels/Rusty Lake.png']
+        pixels: ['../Medias/Pixels/Rusty Lake.png'],
+        emoji: '⬛ 🦌 🚣 🎣 🔪 🕰️ 📞 🦜 👴 🏨'
     },
     {
         title: 'Slime Rancher',
@@ -1047,7 +1096,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Slime Rancher.mid'],
         shadow: ['../Medias/Shadow/Slime Rancher.png'],
-        pixels: ['../Medias/Pixels/Slime Rancher.png']
+        pixels: ['../Medias/Pixels/Slime Rancher.png'],
+        emoji: '🟢 🤠 🐔 🥕 💩 💎 🌪️ 🌈 🏝️ 🐱'
     },
     {
         title: 'Starfield',
@@ -1068,7 +1118,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Starfield.mid'],
         shadow: ['../Medias/Shadow/Starfield.png'],
-        pixels: ['../Medias/Pixels/Starfield.png']
+        pixels: ['../Medias/Pixels/Starfield.png'],
+        emoji: '🚀 🌌 🪐 🔫 🔭 ⛏️ 👨‍🚀 🤖 🌑 🎒'
     },
     {
         title: 'The Talos Principle',
@@ -1089,7 +1140,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/The Talos Principle.mid'],
         shadow: ['../Medias/Shadow/The Talos Principle.png'],
-        pixels: ['../Medias/Pixels/The Talos Principle.png']
+        pixels: ['../Medias/Pixels/The Talos Principle.png'],
+        emoji: '🤖 🧩 🏛️ ⚡ 🐈 🌴 🧱 🖥️ 🗝️ 🌅'
     },
     {
         title: 'The Witness',
@@ -1110,7 +1162,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/The Witness.mid'],
         shadow: ['../Medias/Shadow/The Witness.png'],
-        pixels: ['../Medias/Pixels/The Witness.png']
+        pixels: ['../Medias/Pixels/The Witness.png'],
+        emoji: '🏝️ 🧩 ➖ 🖍️ 🌸 🗿 🛥️ 🎨 💡 🚶'
     },
     {
         title: 'Trackmania',
@@ -1131,7 +1184,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Trackmania.mid'],
         shadow: ['../Medias/Shadow/Trackmania.png'],
-        pixels: ['../Medias/Pixels/Trackmania.png']
+        pixels: ['../Medias/Pixels/Trackmania.png'],
+        emoji: '🏎️ 🏁 ⏱️ 🏟️ 🛣️ 🥇 🎢 🚦 💨 🏆'
     },
     {
         title: 'We Happy Few',
@@ -1152,7 +1206,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/We Happy Few.mid'],
         shadow: ['../Medias/Shadow/We Happy Few.png'],
-        pixels: ['../Medias/Pixels/We Happy Few.png']
+        pixels: ['../Medias/Pixels/We Happy Few.png'],
+        emoji: '💊 🎭 👮 🇬🇧 🍬 🔨 😵 🎈 🌂 🏃'
     },
     {
         title: 'Worms',
@@ -1173,7 +1228,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Worms.mid'],
         shadow: ['../Medias/Shadow/Worms.png'],
-        pixels: ['../Medias/Pixels/Worms.png']
+        pixels: ['../Medias/Pixels/Worms.png'],
+        emoji: '🪱 💣 🐑 🍌 🏏 🧨 🌊 ⛪ 💥 🪦'
     },
     {
         title: 'Watch Dogs',
@@ -1194,7 +1250,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Watch Dogs.mid'],
         shadow: ['../Medias/Shadow/Watch Dogs.png'],
-        pixels: ['../Medias/Pixels/Watch Dogs.png']
+        pixels: ['../Medias/Pixels/Watch Dogs.png'],
+        emoji: '📱 💻 📹 🧢 🚗 🔫 🚦 🕵️ 🏙️ 📡'
     },
     {
         title: 'Journey to the Savage Planet',
@@ -1215,7 +1272,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Journey to the Savage Planet.mid'],
         shadow: ['../Medias/Shadow/Journey to the Savage Planet.png'],
-        pixels: ['../Medias/Pixels/Journey to the Savage Planet.png']
+        pixels: ['../Medias/Pixels/Journey to the Savage Planet.png'],
+        emoji: '👽 🔫 🌸 🦠 🧤 🌋 🐦 🧊 🍖 🛸'
     },
     {
         title: 'This War of Mine',
@@ -1236,7 +1294,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/This War of Mine.mid'],
         shadow: ['../Medias/Shadow/This War of Mine.png'],
-        pixels: ['../Medias/Pixels/This War of Mine.png']
+        pixels: ['../Medias/Pixels/This War of Mine.png'],
+        emoji: '🏚️ 🌑 📻 💊 🥫 🔪 🚬 🥶 🛌 🕯️'
     },
     {
         title: 'Dragon Age',
@@ -1257,7 +1316,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Dragon Age.mid'],
         shadow: ['../Medias/Shadow/Dragon Age.png'],
-        pixels: ['../Medias/Pixels/Dragon Age.png']
+        pixels: ['../Medias/Pixels/Dragon Age.png'],
+        emoji: '🐉 ⚔️ 🧙‍♂️ 🩸 🏰 💍 🛡️ 📜 🐺 🔮'
     },
     {
         title: 'Soma',
@@ -1278,7 +1338,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Soma.mid'],
         shadow: ['../Medias/Shadow/Soma.png'],
-        pixels: ['../Medias/Pixels/Soma.png']
+        pixels: ['../Medias/Pixels/Soma.png'],
+        emoji: '🤖 🌊 🧠 💻 🔦 🐠 🏥 🦀 🔌 👁️'
     },
     {
         title: 'A Plague Tale',
@@ -1299,7 +1360,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/A Plague Tale.mid'],
         shadow: ['../Medias/Shadow/A Plague Tale.png'],
-        pixels: ['../Medias/Pixels/A Plague Tale.png']
+        pixels: ['../Medias/Pixels/A Plague Tale.png'],
+        emoji: '🐀 🕯️ 🔥 👧 👦 🏰 🥓 🔦 🗡️ 🌑'
     },
     {
         title: 'Beholder',
@@ -1320,7 +1382,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Beholder.mid'],
         shadow: ['../Medias/Shadow/Beholder.png'],
-        pixels: ['../Medias/Pixels/Beholder.png']
+        pixels: ['../Medias/Pixels/Beholder.png'],
+        emoji: '👁️ 🔑 🏢 🕵️ 👮 📹 🍏 📝 🔒 🚪'
     },
     {
         title: 'Clash of Clans',
@@ -1341,7 +1404,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Clash of Clans.mid'],
         shadow: ['../Medias/Shadow/Clash of Clans.png'],
-        pixels: ['../Medias/Pixels/Clash of Clans.png']
+        pixels: ['../Medias/Pixels/Clash of Clans.png'],
+        emoji: '🏰 🔨 ⚔️ 🧙‍♂️ 🟡 🟣 💣 🏹 🛡️ 👑'
     },
     {
         title: 'Plague Inc',
@@ -1362,7 +1426,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Plague Inc.mid'],
         shadow: ['../Medias/Shadow/Plague Inc.png'],
-        pixels: ['../Medias/Pixels/Plague Inc.png']
+        pixels: ['../Medias/Pixels/Plague Inc.png'],
+        emoji: '🦠 🌍 🧬 📉 💀 💉 🚢 ✈️ 🧪 😷'
     },
     {
         title: 'Nintendogs',
@@ -1383,7 +1448,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Nintendogs.mid'],
         shadow: ['../Medias/Shadow/Nintendogs.png'],
-        pixels: ['../Medias/Pixels/Nintendogs.png']
+        pixels: ['../Medias/Pixels/Nintendogs.png'],
+        emoji: '🐕 🦴 🎾 🛁 🧼 🎀 🎤 🐩 🏠 🍖'
     },
     {
         title: 'Dragon Quest',
@@ -1404,7 +1470,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Dragon Quest.mid'],
         shadow: ['../Medias/Shadow/Dragon Quest.png'],
-        pixels: ['../Medias/Pixels/Dragon Quest.png']
+        pixels: ['../Medias/Pixels/Dragon Quest.png'],
+        emoji: '💧 ⚔️ 🛡️ 🐉 🏰 👑 🏺 ⛺ 🎲 🧚'
     },
     {
         title: 'Zelda',
@@ -1425,7 +1492,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Zelda.mid'],
         shadow: ['../Medias/Shadow/Zelda.png'],
-        pixels: ['../Medias/Pixels/Zelda.png']
+        pixels: ['../Medias/Pixels/Zelda.png'],
+        emoji: '🗡️ 🛡️ 🔺 💎 🐔 🏹 🐴 🧚 📜 🎻'
     },
     {
         title: 'Mario',
@@ -1446,7 +1514,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Mario.mid'],
         shadow: ['../Medias/Shadow/Mario.png'],
-        pixels: ['../Medias/Pixels/Mario.png']
+        pixels: ['../Medias/Pixels/Mario.png'],
+        emoji: '🍄 🌟 🐢 🧱 👸 🔧 🦖 🪙 🏁 💨'
     },
     {
         title: 'The Witcher',
@@ -1467,7 +1536,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/The Witcher.mid'],
         shadow: ['../Medias/Shadow/The Witcher.png'],
-        pixels: ['../Medias/Pixels/The Witcher.png']
+        pixels: ['../Medias/Pixels/The Witcher.png'],
+        emoji: '🐺 ⚔️ 🗡️ 🦄 🛁 🔮 🧪 🕯️ 👹 🃏'
     },
     {
         title: 'Cyberpunk 2077',
@@ -1488,7 +1558,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Cyberpunk 2077.mid'],
         shadow: ['../Medias/Shadow/Cyberpunk 2077.png'],
-        pixels: ['../Medias/Pixels/Cyberpunk 2077.png']
+        pixels: ['../Medias/Pixels/Cyberpunk 2077.png'],
+        emoji: '🦾 🔫 🌆 🕶️ 💻 💊 💿 🚗 🎸 🤖'
     },
     {
         title: 'League of Legends',
@@ -1509,7 +1580,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/League of Legends.mid'],
         shadow: ['../Medias/Shadow/League of Legends.png'],
-        pixels: ['../Medias/Pixels/League of Legends.png']
+        pixels: ['../Medias/Pixels/League of Legends.png'],
+        emoji: '⚔️ 🧙‍♂️ 🗼 💎 🐉 🏆 🛡️ 🗺️ 🧪 🐀'
     },
     {
         title: 'Sea of Thieves',
@@ -1530,7 +1602,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Sea of Thieves.mid'],
         shadow: ['../Medias/Shadow/Sea of Thieves.png'],
-        pixels: ['../Medias/Pixels/Sea of Thieves.png']
+        pixels: ['../Medias/Pixels/Sea of Thieves.png'],
+        emoji: '🏴‍☠️ ⛵ ⚓ 🦜 💀 🗺️ 🧭 🍌 🪙 🌊'
     },
     {
         title: 'Detroit: Become Human',
@@ -1551,7 +1624,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Detroit Become Human.mid'],
         shadow: ['../Medias/Shadow/Detroit Become Human.png'],
-        pixels: ['../Medias/Pixels/Detroit Become Human.png']
+        pixels: ['../Medias/Pixels/Detroit Become Human.png'],
+        emoji: '🤖 🔵 🔫 ⚖️ 🚓 👧 🎨 🪙 🤝 🧬'
     },
     {
         title: 'Osu',
@@ -1572,7 +1646,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Osu.mid'],
         shadow: ['../Medias/Shadow/Osu.png'],
-        pixels: ['../Medias/Pixels/Osu.png']
+        pixels: ['../Medias/Pixels/Osu.png'],
+        emoji: '🔴 🖱️ 🖊️ 🎧 🎵 🎯 👆 ⚡ 🎹 🎼'
     },
     {
         title: 'The Elder Scrolls',
@@ -1593,7 +1668,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/The Elder Scrolls.mid'],
         shadow: ['../Medias/Shadow/The Elder Scrolls.png'],
-        pixels: ['../Medias/Pixels/The Elder Scrolls.png']
+        pixels: ['../Medias/Pixels/The Elder Scrolls.png'],
+        emoji: '📜 🐉 ⚔️ 🛡️ 🧁 🪄 🪖 🐎 🏔️ ⛓️'
     },
     {
         title: 'Just Dance',
@@ -1614,7 +1690,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Just Dance.mid'],
         shadow: ['../Medias/Shadow/Just Dance.png'],
-        pixels: ['../Medias/Pixels/Just Dance.png']
+        pixels: ['../Medias/Pixels/Just Dance.png'],
+        emoji: '💃 🕺 🎵 🪩 ⭐ 😅 🎉 🧤 📺 👟'
     },
     {
         title: 'Tekken',
@@ -1635,7 +1712,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Tekken.mid'],
         shadow: ['../Medias/Shadow/Tekken.png'],
-        pixels: ['../Medias/Pixels/Tekken.png']
+        pixels: ['../Medias/Pixels/Tekken.png'],
+        emoji: '👊 👹 🐻 🐆 🪵 🤖 🥋 ⚡ 🏍️ 🏆'
     },
     {
         title: 'Street Fighter',
@@ -1656,7 +1734,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Street Fighter.mid'],
         shadow: ['../Medias/Shadow/Street Fighter.png'],
-        pixels: ['../Medias/Pixels/Street Fighter.png']
+        pixels: ['../Medias/Pixels/Street Fighter.png'],
+        emoji: '👊 🥋 🌊 ✈️ 🚗 ⚡ 🧘 🥡 🕹️ 🌏'
     },
     {
         title: 'Fall Guys',
@@ -1677,7 +1756,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Fall Guys.mid'],
         shadow: ['../Medias/Shadow/Fall Guys.png'],
-        pixels: ['../Medias/Pixels/Fall Guys.png']
+        pixels: ['../Medias/Pixels/Fall Guys.png'],
+        emoji: '👑 🏃 🧱 🏁 🥚 🐧 🚪 🟣 🤪 🤸'
     },
     {
         title: 'Mortal Kombat',
@@ -1698,7 +1778,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Mortal Kombat.mid'],
         shadow: ['../Medias/Shadow/Mortal Kombat.png'],
-        pixels: ['../Medias/Pixels/Mortal Kombat.png']
+        pixels: ['../Medias/Pixels/Mortal Kombat.png'],
+        emoji: '👊 🩸 🐉 ⛓️ ❄️ 💀 🦴 🥋 ⚔️ 🔥'
     },
     {
         title: 'Overwatch',
@@ -1719,7 +1800,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Overwatch.mid'],
         shadow: ['../Medias/Shadow/Overwatch.png'],
-        pixels: ['../Medias/Pixels/Overwatch.png']
+        pixels: ['../Medias/Pixels/Overwatch.png'],
+        emoji: '🛡️ 🔫 🦍 🤠 🤖 💉 🚓 🦾 ❄️ 🐉'
     },
     {
         title: 'Fortnite',
@@ -1740,7 +1822,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Fortnite.mid'],
         shadow: ['../Medias/Shadow/Fortnite.png'],
-        pixels: ['../Medias/Pixels/Fortnite.png']
+        pixels: ['../Medias/Pixels/Fortnite.png'],
+        emoji: '⛏️ 🚌 🧱 🪵 🔫 🌪️ 🍌 🕺 ☂️ 👑'
     },
     {
         title: 'Grand Theft Auto',
@@ -1761,7 +1844,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Grand Theft Auto.mid'],
         shadow: ['../Medias/Shadow/Grand Theft Auto.png'],
-        pixels: ['../Medias/Pixels/Grand Theft Auto.png']
+        pixels: ['../Medias/Pixels/Grand Theft Auto.png'],
+        emoji: '🚗 🔫 🚔 💰 ⭐️ 🚁 🏍️ 🌴 🕶️ 🩸'
     },
     {
         title: 'Titanfall',
@@ -1782,7 +1866,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Titanfall.mid'],
         shadow: ['../Medias/Shadow/Titanfall.png'],
-        pixels: ['../Medias/Pixels/Titanfall.png']
+        pixels: ['../Medias/Pixels/Titanfall.png'],
+        emoji: '🤖 🏃 🔫 🚀 🔋 🦾 🌌 🚁 👁️ 💥'
     },
     {
         title: 'Age of Empires',
@@ -1803,7 +1888,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Age of Empires.mid'],
         shadow: ['../Medias/Shadow/Age of Empires.png'],
-        pixels: ['../Medias/Pixels/Age of Empires.png']
+        pixels: ['../Medias/Pixels/Age of Empires.png'],
+        emoji: '🏰 ⚔️ 🪵 🥩 🥇 👑 🐘 🛳️ 🏹 ⛪'
     },
     {
         title: 'War thunder',
@@ -1824,7 +1910,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/War thunder.mid'],
         shadow: ['../Medias/Shadow/War thunder.png'],
-        pixels: ['../Medias/Pixels/War thunder.png']
+        pixels: ['../Medias/Pixels/War thunder.png'],
+        emoji: '✈️ 🪖 🚢 💥 🔫 🗺️ 🦅 💣 🎖️ 🛠️'
     },
     {
         title: 'World of Warcraft',
@@ -1845,7 +1932,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/World of Warcraft.mid'],
         shadow: ['../Medias/Shadow/World of Warcraft.png'],
-        pixels: ['../Medias/Pixels/World of Warcraft.png']
+        pixels: ['../Medias/Pixels/World of Warcraft.png'],
+        emoji: '⚔️ 🛡️ 🦁 👹 🧟 🐉 🪄 🍺 ⛺ 🗺️'
     },
     {
         title: 'Final Fantasy',
@@ -1866,7 +1954,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Final Fantasy.mid'],
         shadow: ['../Medias/Shadow/Final Fantasy.png'],
-        pixels: ['../Medias/Pixels/Final Fantasy.png']
+        pixels: ['../Medias/Pixels/Final Fantasy.png'],
+        emoji: '⚔️ 🔮 🐤 🗡️ ☁️ 🌵 🚂 🧚 🏰 🛳️'
     },
     {
         title: 'Rainbow Six Siege',
@@ -1887,7 +1976,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Rainbow Six Siege.mid'],
         shadow: ['../Medias/Shadow/Rainbow Six Siege.png'],
-        pixels: ['../Medias/Pixels/Rainbow Six Siege.png']
+        pixels: ['../Medias/Pixels/Rainbow Six Siege.png'],
+        emoji: '🔫 🔨 🧱 📷 💣 🛡️ 🧗 🚁 🩸 🧨'
     },
     {
         title: 'Star Wars Battlefront',
@@ -1908,7 +1998,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Star Wars Battlefront.mid'],
         shadow: ['../Medias/Shadow/Star Wars Battlefront.png'],
-        pixels: ['../Medias/Pixels/Star Wars Battlefront.png']
+        pixels: ['../Medias/Pixels/Star Wars Battlefront.png'],
+        emoji: '🔫 🤖 ⚔️ 🚀 🌌 💥 🛸 🛡️ 🥋 🏜️'
     },
     {
         title: 'Stardew Valley',
@@ -1929,7 +2020,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Stardew Valley.mid'],
         shadow: ['../Medias/Shadow/Stardew Valley.png'],
-        pixels: ['../Medias/Pixels/Stardew Valley.png']
+        pixels: ['../Medias/Pixels/Stardew Valley.png'],
+        emoji: '🚜 🐔 🐮 🌽 🎣 ⛏️ 🎁 💗 🎃 🌧️'
     },
     {
         title: 'Mario Party',
@@ -1950,7 +2042,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Mario Party.mid'],
         shadow: ['../Medias/Shadow/Mario Party.png'],
-        pixels: ['../Medias/Pixels/Mario Party.png']
+        pixels: ['../Medias/Pixels/Mario Party.png'],
+        emoji: '🎲 ⭐ 🪙 🗺️ 🍄 💣 🎮 🏆 🥊 🤝'
     },
     {
         title: 'Habbo Hotel',
@@ -1971,7 +2064,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Habbo Hotel.mid'],
         shadow: ['../Medias/Shadow/Habbo Hotel.png'],
-        pixels: ['../Medias/Pixels/Habbo Hotel.png']
+        pixels: ['../Medias/Pixels/Habbo Hotel.png'],
+        emoji: '🏨 💬 🦆 🪑 👠 🕺 🏊 🚫 💳 🕴️'
     },
     {
         title: 'Roblox',
@@ -1992,7 +2086,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Roblox.mid'],
         shadow: ['../Medias/Shadow/Roblox.png'],
-        pixels: ['../Medias/Pixels/Roblox.png']
+        pixels: ['../Medias/Pixels/Roblox.png'],
+        emoji: '🧱 🔨 🤖 👕 🧢 🤠 🎮 🗡️ 🙂 🌎'
     },
     {
         title: 'Overcooked',
@@ -2013,7 +2108,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Overcooked.mid'],
         shadow: ['../Medias/Shadow/Overcooked.png'],
-        pixels: ['../Medias/Pixels/Overcooked.png']
+        pixels: ['../Medias/Pixels/Overcooked.png'],
+        emoji: '👨‍🍳 🍳 🔥 🍔 🍅 🔪 ⏱️ 🚚 🍽️ 🤬'
     },
     {
         title: 'Cult of the Lamb',
@@ -2034,7 +2130,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Cult of the Lamb.mid'],
         shadow: ['../Medias/Shadow/Cult of the Lamb.png'],
-        pixels: ['../Medias/Pixels/Cult of the Lamb.png']
+        pixels: ['../Medias/Pixels/Cult of the Lamb.png'],
+        emoji: '🐑 👑 🗡️ 🕯️ 🔥 🙏 💩 👁️ 🩸 ⛩️'
     },
     {
         title: 'Snake',
@@ -2055,7 +2152,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Snake.mid'],
         shadow: ['../Medias/Shadow/Snake.png'],
-        pixels: ['../Medias/Pixels/Snake.png']
+        pixels: ['../Medias/Pixels/Snake.png'],
+        emoji: '🐍 🍎 💀 🏆 🟩'
     },
     {
         title: 'T. Rex Game',
@@ -2076,7 +2174,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/T. Rex Game.mid'],
         shadow: ['../Medias/Shadow/T. Rex Game.png'],
-        pixels: ['../Medias/Pixels/T. Rex Game.png']
+        pixels: ['../Medias/Pixels/T. Rex Game.png'],
+        emoji: '🦖 🌵 🏃 🐦 📵'
     },
     {
         title: 'Pokemon',
@@ -2097,7 +2196,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Pokemon.mid'],
         shadow: ['../Medias/Shadow/Pokemon.png'],
-        pixels: ['../Medias/Pixels/Pokemon.png']
+        pixels: ['../Medias/Pixels/Pokemon.png'],
+        emoji: '🔴 ⚪ ⚡ 🐭 🧢 🎒 🌿 🔥 💧 🐉'
     },
     {
         title: 'Road 96',
@@ -2118,7 +2218,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Road 96.mid'],
         shadow: ['../Medias/Shadow/Road 96.png'],
-        pixels: ['../Medias/Pixels/Road 96.png']
+        pixels: ['../Medias/Pixels/Road 96.png'],
+        emoji: '🛣️ 🚌 📼 🧱 👮 🏔️ 🗳️ 🎒 🏃 👍'
     },
     {
         title: 'Firewatch',
@@ -2139,7 +2240,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Firewatch.mid'],
         shadow: ['../Medias/Shadow/Firewatch.png'],
-        pixels: ['../Medias/Pixels/Firewatch.png']
+        pixels: ['../Medias/Pixels/Firewatch.png'],
+        emoji: '🌲 📻 🔥 🔭 🎒 🐢 📷 🧗 🗺️ 🦌'
     },
     {
         title: 'Five Night at Freddy\'s',
@@ -2160,7 +2262,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Five night at freddy\'s.mid'],
         shadow: ['../Medias/Shadow/Five night at freddy\'s.png'],
-        pixels: ['../Medias/Pixels/Five night at freddy\'s.png']
+        pixels: ['../Medias/Pixels/Five night at freddy\'s.png'],
+        emoji: '🐻 🐰 🐤 🦊 🍕 📹 🔦 🔋 🎩 😱'
     },
     {
         title: 'Borderlands',
@@ -2181,7 +2284,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Borderlands.mid'],
         shadow: ['../Medias/Shadow/Borderlands.png'],
-        pixels: ['../Medias/Pixels/Borderlands.png']
+        pixels: ['../Medias/Pixels/Borderlands.png'],
+        emoji: '🔫 💣 🤖 💰 🗝️ 🏜️ 💥 🤪 🚌 🎭'
     },
     {
         title: 'What Remains of Edith Finch',
@@ -2202,7 +2306,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/What Remains of Edith Finch.mid'],
         shadow: ['../Medias/Shadow/What Remains of Edith Finch.png'],
-        pixels: ['../Medias/Pixels/What Remains of Edith Finch.png']
+        pixels: ['../Medias/Pixels/What Remains of Edith Finch.png'],
+        emoji: '🏠 📖 🐦 🐟 🚂 🦌 🛁 🪁 🥫 👑'
     },
     {
         title: 'Astro Bot',
@@ -2223,7 +2328,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Astro Bot.mid'],
         shadow: ['../Medias/Shadow/Astro Bot.png'],
-        pixels: ['../Medias/Pixels/Astro Bot.png']
+        pixels: ['../Medias/Pixels/Astro Bot.png'],
+        emoji: '🤖 🎮 🚀 🪙 👊 ☁️ 🔌 🐵 🧊 🌪️'
     },
     {
         title: 'Baldur\'s Gate',
@@ -2244,7 +2350,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Baldur\'s Gate.mid'],
         shadow: ['../Medias/Shadow/Baldur\'s Gate.png'],
-        pixels: ['../Medias/Pixels/Baldur\'s Gate.png']
+        pixels: ['../Medias/Pixels/Baldur\'s Gate.png'],
+        emoji: '🎲 🦑 🧠 ⚔️ ⛺ 🐻 🧛 🩸 🔥 📜'
     },
     {
         title: 'Undertale',
@@ -2265,7 +2372,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Undertale.mid'],
         shadow: ['../Medias/Shadow/Undertale.png'],
-        pixels: ['../Medias/Pixels/Undertale.png']
+        pixels: ['../Medias/Pixels/Undertale.png'],
+        emoji: '❤️ 💀 🐐 🌻 🍝 🦴 🐟 🤖 👻 🔪'
     },
     {
         title: 'Resident Evil',
@@ -2286,7 +2394,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Resident Evil.mid'],
         shadow: ['../Medias/Shadow/Resident Evil.png'],
-        pixels: ['../Medias/Pixels/Resident Evil.png']
+        pixels: ['../Medias/Pixels/Resident Evil.png'],
+        emoji: '🧟 ☂️ 🌿 🔫 🏰 ⌨️ 👮 🗝️ 🩸 🧬'
     },
     {
         title: 'Left 4 Dead',
@@ -2307,7 +2416,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Left 4 Dead.mid'],
         shadow: ['../Medias/Shadow/Left 4 Dead.png'],
-        pixels: ['../Medias/Pixels/Left 4 Dead.png']
+        pixels: ['../Medias/Pixels/Left 4 Dead.png'],
+        emoji: '🧟 🔫 💊 🩹 ✋ 🧟‍♀️ 🤮 🚪 🩸 🕯️'
     },
     {
         title: 'Until Dawn',
@@ -2328,7 +2438,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Until Dawn.mid'],
         shadow: ['../Medias/Shadow/Until Dawn.png'],
-        pixels: ['../Medias/Pixels/Until Dawn.png']
+        pixels: ['../Medias/Pixels/Until Dawn.png'],
+        emoji: '🦋 ❄️ 😱 🔪 🚠 🎭 🕯️ 👺 📔 🏔️'
     },
     {
         title: 'Slender',
@@ -2349,7 +2460,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Slender.mid'],
         shadow: ['../Medias/Shadow/Slender.png'],
-        pixels: ['../Medias/Pixels/Slender.png']
+        pixels: ['../Medias/Pixels/Slender.png'],
+        emoji: '🌲 📄 🔦 🕴️ 📺 🌑 🏃 🌳'
     },
     {
         title: 'Goat Simulator',
@@ -2370,7 +2482,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Goat Simulator.mid'],
         shadow: ['../Medias/Shadow/Goat Simulator.png'],
-        pixels: ['../Medias/Pixels/Goat Simulator.png']
+        pixels: ['../Medias/Pixels/Goat Simulator.png'],
+        emoji: '🐐 👅 💥 🚀 🏘️ 🤸 😈 🛹 🤪 🤯'
     },
     {
         title: 'Gang Beasts',
@@ -2391,7 +2504,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Gang Beasts.mid'],
         shadow: ['../Medias/Shadow/Gang Beasts.png'],
-        pixels: ['../Medias/Pixels/Gang Beasts.png']
+        pixels: ['../Medias/Pixels/Gang Beasts.png'],
+        emoji: '🤼 🍮 🥊 🏗️ 🚄 🏢 🦶 👐 😹 🍖'
     },
     {
         title: 'R.E.P.O.',
@@ -2412,7 +2526,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/R.E.P.O..mid'],
         shadow: ['../Medias/Shadow/R.E.P.O..png'],
-        pixels: ['../Medias/Pixels/R.E.P.O..png']
+        pixels: ['../Medias/Pixels/R.E.P.O..png'],
+        emoji: '🔦 📦 👹 🏃 🩸 🏭 🤖 📻 💀 🛒'
     },
     {
         title: 'Lethal company',
@@ -2433,7 +2548,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Lethal company.mid'],
         shadow: ['../Medias/Shadow/Lethal company.png'],
-        pixels: ['../Medias/Pixels/Lethal company.png']
+        pixels: ['../Medias/Pixels/Lethal company.png'],
+        emoji: '🧱 🚀 🔦 📻 👹 🐝 🕺 🗣️ 💀 📈'
     },
     {
         title: 'Hogwarts Legacy',
@@ -2454,7 +2570,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Hogwarts Legacy.mid'],
         shadow: ['../Medias/Shadow/Hogwarts Legacy.png'],
-        pixels: ['../Medias/Pixels/Hogwarts Legacy.png']
+        pixels: ['../Medias/Pixels/Hogwarts Legacy.png'],
+        emoji: '🪄 🏰 🧹 🧙‍♂️ ✨ 📜 🦁 🐍 🦅 🦡'
     },
     {
         title: 'H1Z1',
@@ -2475,7 +2592,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/H1Z1.mid'],
         shadow: ['../Medias/Shadow/H1Z1.png'],
-        pixels: ['../Medias/Pixels/H1Z1.png']
+        pixels: ['../Medias/Pixels/H1Z1.png'],
+        emoji: '🧟 🔫 🚔 🪂 ☠️ 🎒 🌲 🚗 💊 👑'
     },
     {
         title: 'Red Dead Redemption',
@@ -2496,7 +2614,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Red Dead Redemption.mid'],
         shadow: ['../Medias/Shadow/Red Dead Redemption.png'],
-        pixels: ['../Medias/Pixels/Red Dead Redemption.png']
+        pixels: ['../Medias/Pixels/Red Dead Redemption.png'],
+        emoji: '🤠 🐎 🔫 🌵 🏕️ 💰 🚂 🥃 🦅 🌅'
     },
     {
         title: 'Dark Souls',
@@ -2517,7 +2636,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Dark Souls.mid'],
         shadow: ['../Medias/Shadow/Dark Souls.png'],
-        pixels: ['../Medias/Pixels/Dark Souls.png']
+        pixels: ['../Medias/Pixels/Dark Souls.png'],
+        emoji: '🔥 ⚔️ 🛡️ 💀 ☀️ 🧪 🐉 👻 💍 🏰'
     },
     {
         title: 'Sekiro: Shadows Die Twice',
@@ -2538,7 +2658,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Sekiro Shadows Die Twice.mid'],
         shadow: ['../Medias/Shadow/Sekiro Shadows Die Twice.png'],
-        pixels: ['../Medias/Pixels/Sekiro Shadows Die Twice.png']
+        pixels: ['../Medias/Pixels/Sekiro Shadows Die Twice.png'],
+        emoji: '🥷 ⚔️ 🦾 🏯 🩸 👺 🍂 🎐 🎋 🐉'
     },
     {
         title: 'Elden Ring',
@@ -2559,7 +2680,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Elden Ring.mid'],
         shadow: ['../Medias/Shadow/Elden Ring.png'],
-        pixels: ['../Medias/Pixels/Elden Ring.png']
+        pixels: ['../Medias/Pixels/Elden Ring.png'],
+        emoji: '💍 🌳 🐎 ⚔️ 🏰 👻 🏺 📜 ✨ 👹'
     },
     {
         title: 'Bloodborne',
@@ -2580,7 +2702,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Bloodborne.mid'],
         shadow: ['../Medias/Shadow/Bloodborne.png'],
-        pixels: ['../Medias/Pixels/Bloodborne.png']
+        pixels: ['../Medias/Pixels/Bloodborne.png'],
+        emoji: '🌕 🩸 🎩 🐺 🕯️ 🔫 ⛪ 🕸️ 💉 🦴'
     },
     {
         title: 'Ghost of Tsushima',
@@ -2601,7 +2724,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Ghost of Tsushima.mid'],
         shadow: ['../Medias/Shadow/Ghost of Tsushima.png'],
-        pixels: ['../Medias/Pixels/Ghost of Tsushima.png']
+        pixels: ['../Medias/Pixels/Ghost of Tsushima.png'],
+        emoji: '🍃 🦊 🗡️ 🐎 👹 🏯 🌸 🏹 🍂 👺'
     },
     {
         title: 'Doom',
@@ -2622,7 +2746,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Doom.mid'],
         shadow: ['../Medias/Shadow/Doom.png'],
-        pixels: ['../Medias/Pixels/Doom.png']
+        pixels: ['../Medias/Pixels/Doom.png'],
+        emoji: '😈 🔫 🩸 🎸 ⛓️ 🪐 💥 💀 👹 👺'
     },
     {
         title: 'Wii Sports',
@@ -2643,7 +2768,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Wii Sports.mid'],
         shadow: ['../Medias/Shadow/Wii Sports.png'],
-        pixels: ['../Medias/Pixels/Wii Sports.png']
+        pixels: ['../Medias/Pixels/Wii Sports.png'],
+        emoji: '🎾 🎳 🥊 ⛳ ⚾ 🎮 📺 🧍 💦 🏆'
     },
     {
         title: 'Kirby',
@@ -2664,7 +2790,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Kirby.mid'],
         shadow: ['../Medias/Shadow/Kirby.png'],
-        pixels: ['../Medias/Pixels/Kirby.png']
+        pixels: ['../Medias/Pixels/Kirby.png'],
+        emoji: '🩷 🌬️ ⭐ 🍭 🧁 👻 ⚔️ 🔨 🌈 ☁️'
     },
     {
         title: 'Mass Effect',
@@ -2685,7 +2812,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Mass Effect.mid'],
         shadow: ['../Medias/Shadow/Mass Effect.png'],
-        pixels: ['../Medias/Pixels/Mass Effect.png']
+        pixels: ['../Medias/Pixels/Mass Effect.png'],
+        emoji: '🚀 👽 🌌 🔫 🔵 🔴 🪐 💏 🧬 🛡️'
     },
     {
         title: 'Animal Crossing',
@@ -2706,7 +2834,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Animal Crossing.mid'],
         shadow: ['../Medias/Shadow/Animal Crossing.png'],
-        pixels: ['../Medias/Pixels/Animal Crossing.png']
+        pixels: ['../Medias/Pixels/Animal Crossing.png'],
+        emoji: '🍃 💰 🎣 🦋 🏠 🏝️ 🐻 🔨 🎁 ✈️'
     },
     {
         title: 'Halo',
@@ -2727,7 +2856,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Halo.mid'],
         shadow: ['../Medias/Shadow/Halo.png'],
-        pixels: ['../Medias/Pixels/Halo.png']
+        pixels: ['../Medias/Pixels/Halo.png'],
+        emoji: '🟢 🪖 💍 👽 🔫 🚙 🌌 🛡️ ⚔️ 👾'
     },
     {
         title: 'Silent Hill',
@@ -2748,7 +2878,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Silent Hill.mid'],
         shadow: ['../Medias/Shadow/Silent Hill.png'],
-        pixels: ['../Medias/Pixels/Silent Hill.png']
+        pixels: ['../Medias/Pixels/Silent Hill.png'],
+        emoji: '🌫️ 📻 🔺 👹 💊 🔦 🏥 👧 🎡 ⛓️'
     },
     {
         title: 'Uncharted',
@@ -2769,7 +2900,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Uncharted.mid'],
         shadow: ['../Medias/Shadow/Uncharted.png'],
-        pixels: ['../Medias/Pixels/Uncharted.png']
+        pixels: ['../Medias/Pixels/Uncharted.png'],
+        emoji: '🗺️ 🪙 🧗 🔫 🛥️ 🧭 💍 🏺 ✈️ 🧔'
     },
     {
         title: 'The Forest',
@@ -2790,7 +2922,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/The Forest.mid'],
         shadow: ['../Medias/Shadow/The Forest.png'],
-        pixels: ['../Medias/Pixels/The Forest.png']
+        pixels: ['../Medias/Pixels/The Forest.png'],
+        emoji: '🌲 ✈️ 🦴 🛖 🍖 🏹 🛶 👹 👶 🔦'
     },
     {
         title: 'Diablo',
@@ -2811,7 +2944,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Diablo.mid'],
         shadow: ['../Medias/Shadow/Diablo.png'],
-        pixels: ['../Medias/Pixels/Diablo.png']
+        pixels: ['../Medias/Pixels/Diablo.png'],
+        emoji: '👿 ⚔️ 🏰 🩸 🔥 💍 📜 🐐 💀 💎'
     },
     {
         title: 'Age of War',
@@ -2832,7 +2966,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Age of War.mid'],
         shadow: ['../Medias/Shadow/Age of War.png'],
-        pixels: ['../Medias/Pixels/Age of War.png']
+        pixels: ['../Medias/Pixels/Age of War.png'],
+        emoji: '🦖 🤺 🏰 🏹 🔫 🛸 💣 📉 ⚔️ 🪙'
     },
     {
         title: 'Terraria',
@@ -2853,7 +2988,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Terraria.mid'],
         shadow: ['../Medias/Shadow/Terraria.png'],
-        pixels: ['../Medias/Pixels/Terraria.png']
+        pixels: ['../Medias/Pixels/Terraria.png'],
+        emoji: '⛏️ 👁️ 🗡️ 🌲 🧟 🐇 🌟 🏡 🌋 🧚'
     },
     {
         title: 'The Sims',
@@ -2874,7 +3010,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/The Sims.mid'],
         shadow: ['../Medias/Shadow/The Sims.png'],
-        pixels: ['../Medias/Pixels/The Sims.png']
+        pixels: ['../Medias/Pixels/The Sims.png'],
+        emoji: '💎 🏠 🛋️ 🚿 🍼 🎻 🍕 🛌 🗣️ 💼'
     },
     {
         title: 'Ark: Survival Evolved',
@@ -2895,7 +3032,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/Ark.mid'],
         shadow: ['../Medias/Shadow/Ark.png'],
-        pixels: ['../Medias/Pixels/Ark.png']
+        pixels: ['../Medias/Pixels/Ark.png'],
+        emoji: '🦖 🥚 🥥 💩 🛖 🏹 🪵 🌋 🦅 🚣'
     },
     {
         title: 'It Takes Two',
@@ -2916,7 +3054,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/It Takes Two.mid'],
         shadow: ['../Medias/Shadow/It Takes Two.png'],
-        pixels: ['../Medias/Pixels/It Takes Two.png']
+        pixels: ['../Medias/Pixels/It Takes Two.png'],
+        emoji: '👫 📖 🐝 🐿️ 🔨 💅 🐘 🕰️ ❄️ 🌌'
     },
     {
         title: 'The Walking Dead',
@@ -2937,7 +3076,8 @@ export const games = [
         ],
         midi: ['../Medias/Midi/The Walking Dead.mid'],
         shadow: ['../Medias/Shadow/The Walking Dead.png'],
-        pixels: ['../Medias/Pixels/The Walking Dead.png']
+        pixels: ['../Medias/Pixels/The Walking Dead.png'],
+        emoji: '🧟 🧢 🪓 👧 📻 🏚️ 🥫 🩸 🤜 😭'
     },
     {
         title: 'Clair Obscur : Expedition 33',
@@ -2952,13 +3092,212 @@ export const games = [
             '../Medias/Sound/Clair Obscur Expedition 33 3.mp3',
         ],
         text: [
-            "XXX",
-            "XXX",
-            "XXX"
+            "Premier jeu du studio français Sandfall Interactive, ce RPG au tour par tour impressionne par sa direction artistique sublime inspirée de la Belle Époque. Il propose un système de combat innovant mêlant stratégie classique et réflexes en temps réel.",
+            "Sorti le 24 avril 2025, le jeu suit Gustave et ses compagnons dans une course contre la montre désespérée. Les graphismes sous Unreal Engine 5 sont à couper le souffle, et le gameplay réactif permet d'esquiver et de parer manuellement les attaques ennemies, rendant chaque combat intense.",
+            "Chaque année, la Peintresse s'éveille et peint un nombre maudit sur son Monolithe : l'âge de ceux qui s'effaceront en fumée lors du 'Gommage'. L'Expédition 33 est la dernière mission de l'humanité pour détruire la Peintresse avant qu'elle ne peigne le chiffre 33 et n'anéantisse tous les survivants."
         ],
         midi: ['../Medias/Midi/Clair Obscur Expedition 33.mid'],
         shadow: ['../Medias/Shadow/Clair Obscur Expedition 33.png'],
-        pixels: ['../Medias/Pixels/Clair Obscur Expedition 33.png']
+        pixels: ['../Medias/Pixels/Clair Obscur Expedition 33.png'],
+        emoji: '🎨 🖌️ 3️⃣3️⃣ 🗼 ⚔️ 🇫🇷 ⏳ 👻 🎭 🚂'
+    },
+    {
+        title: 'Death Stranding',
+        image: [
+            '../Medias/Image/Death Stranding 1.jpg',
+            '../Medias/Image/Death Stranding 2.jpg',
+            '../Medias/Image/Death Stranding 3.jpg',
+        ],
+        sound: [
+            '../Medias/Sound/Death Stranding 1.mp3',
+            '../Medias/Sound/Death Stranding 2.mp3',
+            '../Medias/Sound/Death Stranding 3.mp3',
+        ],
+        text: [
+            "Ce jeu d'action-aventure, développé par Kojima Productions, propose une expérience unique centrée sur la connexion entre les joueurs dans un monde post-apocalyptique.",
+            "Sorti en 2019, il suit l'histoire de Sam Porter Bridges, un livreur chargé de reconnecter des colonies isolées tout en affrontant des phénomènes surnaturels.",
+            "Le lore explore des thèmes de la vie, de la mort et de la connexion humaine à travers une narration complexe et des environnements immersifs."
+        ],
+        midi: ['../Medias/Midi/Death Stranding.mid'],
+        shadow: ['../Medias/Shadow/Death Stranding.png'],
+        pixels: ['../Medias/Pixels/Death Stranding.png'],
+        emoji: '🚚 🌍 🧑‍🦲 👶 🌧️ 🕸️ 🔗 🧟‍♂️ 🏞️ 📡'
+    },
+    {
+        title: 'Dispatch',
+        image: [
+            '../Medias/Image/Dispatch 1.jpg',
+            '../Medias/Image/Dispatch 2.jpg',
+            '../Medias/Image/Dispatch 3.jpg',
+        ],
+        sound: [
+            '../Medias/Sound/Dispatch 1.mp3',
+            '../Medias/Sound/Dispatch 2.mp3',
+            '../Medias/Sound/Dispatch 3.mp3',
+        ],
+        text: [
+            "Développé par AdHoc Studio, ce jeu narratif unique mélange comédie de bureau et gestion de super-héros. Il met l'accent sur les dialogues et les conséquences de vos choix dans un environnement sous haute pression.",
+            "Sorti fin 2025, le jeu vous place non pas sur le terrain, mais derrière un bureau. Vous devez gérer les interventions d'une équipe de 'héros' dysfonctionnels (souvent des ex-vilains) via une carte tactique, tout en gérant les drames personnels de vos employés.",
+            "Vous incarnez Robert Robertson (alias Mecha Man), un héros déchu dont le costume a été détruit. Reconverti pour le SDN, vous tentez de réhabiliter la 'Z-Team' tout en traquant le vilain Shroud pour venger la perte de votre gloire passée."
+        ],
+        midi: ['../Medias/Midi/Dispatch.mid'],
+        shadow: ['../Medias/Shadow/Dispatch.png'],
+        pixels: ['../Medias/Pixels/Dispatch.png'],
+        emoji: '🦸 🎧 🖥️ 🏢 🗣️ ⚡ 🚑 📋 🎭 ⚖️'
+    },
+    {
+        title: 'Professor Layton',
+        image: [
+            '../Medias/Image/Professor Layton 1.jpg',
+            '../Medias/Image/Professor Layton 2.jpg',
+            '../Medias/Image/Professor Layton 3.jpg',
+        ],
+        sound: [
+            '../Medias/Sound/Professor Layton 1.mp3',
+            '../Medias/Sound/Professor Layton 2.mp3',
+            '../Medias/Sound/Professor Layton 3.mp3',
+        ],
+        text: [
+            "Ce jeu d'aventure et de réflexion, développé par Level-5, suit les enquêtes d'un professeur d'archéologie et de son apprenti.",
+            "Premier opus sorti en 2007, il propose une série de puzzles et d'énigmes à résoudre tout en progressant dans une histoire captivante.",
+            "Le lore s'articule autour des mystères généralement dans des lieux pittoresques tels que des villages."
+        ],
+        midi: ['../Medias/Midi/Professor Layton.mid'],
+        shadow: ['../Medias/Shadow/Professor Layton.png'],
+        pixels: ['../Medias/Pixels/Professor Layton.png'],
+        emoji: '🎩 🕵️‍♂️ 🧩 📜 🏰 🔍 🗝️ 🖼️ 🚂 👓'
+    },
+    {
+        title: 'Golden Sun',
+        image: [
+            '../Medias/Image/Golden Sun 1.jpg',
+            '../Medias/Image/Golden Sun 2.jpg',
+            '../Medias/Image/Golden Sun 3.jpg',
+        ],
+        sound: [
+            '../Medias/Sound/Golden Sun 1.mp3',
+            '../Medias/Sound/Golden Sun 2.mp3',
+            '../Medias/Sound/Golden Sun 3.mp3',
+        ],
+        text: [
+            "Ce jeu de rôle développé par Camelot Software Planning se déroule dans un monde fantastique où les joueurs contrôlent un groupe de jeunes héros dotés de pouvoirs magiques appelés Psynergy.",
+            "Sorti en 2001, il a été salué pour son système de combat innovant, ses énigmes environnementales et son histoire captivante.",
+            "Le lore explore des thèmes de l'équilibre entre les forces élémentaires, la destinée et la lutte contre les forces du mal à travers des quêtes épiques et des personnages mémorables."
+        ],
+        midi: ['../Medias/Midi/Golden Sun.mid'],
+        shadow: ['../Medias/Shadow/Golden Sun.png'],
+        pixels: ['../Medias/Pixels/Golden Sun.png'],
+        emoji: '☀️ 🧞 🏰 ⚔️ 🌋 💧 🌪️ 🌱 🖐️ 💎'
+    },
+    {
+        title: 'Sonic',
+        image: [
+            '../Medias/Image/Sonic 1.jpg',
+            '../Medias/Image/Sonic 2.jpg',
+            '../Medias/Image/Sonic 3.jpg',
+        ],
+        sound: [
+            '../Medias/Sound/Sonic 1.mp3',
+            '../Medias/Sound/Sonic 2.mp3',
+            '../Medias/Sound/Sonic 3.mp3',
+        ],
+        text: [
+            "Ce jeu de plateforme développé par Sega met en avant un personnage très rapide.",
+            "Sorti en 1991, il propose des niveaux colorés et dynamiques où le personnage doit collecter des anneaux et vaincre le Dr. Robotnik.",
+            "Le lore s'étend sur plusieurs jeux, explorant les aventures d'un hérisson bleu et de ses amis dans leur lutte contre les forces du mal."
+        ],
+        midi: ['../Medias/Midi/Sonic.mid'],
+        shadow: ['../Medias/Shadow/Sonic.png'],
+        pixels: ['../Medias/Pixels/Sonic.png'],
+        emoji: '🦔 💍 💨 👟 🔵 🤖 🥚 💎 🌴 🦊',
+    },
+    {
+        title: 'Celeste',
+        image: [
+            '../Medias/Image/Celeste 1.jpg',
+            '../Medias/Image/Celeste 2.jpg',
+            '../Medias/Image/Celeste 3.jpg',
+        ],
+        sound: [
+            '../Medias/Sound/Celeste 1.mp3',
+            '../Medias/Sound/Celeste 2.mp3',
+            '../Medias/Sound/Celeste 3.mp3',
+        ],
+        text: [
+            "Ce jeu de plateforme indépendant, développé par Extremely OK Games, suit l'histoire d'une femme essayant d'affronter ses démons intérieurs.",
+            "Sorti en 2018, il a été acclamé pour son gameplay exigeant, son design artistique et sa bande-son immersive.",
+            "Le lore aborde des thèmes de lutte intérieure, de résilience et de croissance personnelle à travers un voyage symbolique sur une montagne."
+        ],
+        midi: ['../Medias/Midi/Celeste.mid'],
+        shadow: ['../Medias/Shadow/Celeste.png'],
+        pixels: ['../Medias/Pixels/Celeste.png'],
+        emoji: '🍓 🏔️ 💨 🧗‍♀️ 💎 🥧 💇‍♀️ 🐦 🕯️ 🏳️‍⚧️'
+    },
+    {
+        title: 'Battlefield',
+        image: [
+            '../Medias/Image/Battlefield 1.jpg',
+            '../Medias/Image/Battlefield 2.jpg',
+            '../Medias/Image/Battlefield 3.jpg',
+        ],
+        sound: [
+            '../Medias/Sound/Battlefield 1.mp3',
+            '../Medias/Sound/Battlefield 2.mp3',
+            '../Medias/Sound/Battlefield 3.mp3',
+        ],
+        text: [
+            "Ce jeu de tir à la première personne, développé par DICE, se distingue par ses vastes champs de bataille et son gameplay axé sur le travail d'équipe.",
+            "Depuis son premier opus en 2002, la série a exploré divers conflits historiques et modernes, offrant des expériences immersives avec des véhicules et des environnements destructibles.",
+            "Le lore s'articule autour des récits de guerre, mettant en lumière les expériences des soldats à travers différentes époques et théâtres d'opération."
+        ],
+        midi: ['../Medias/Midi/Battlefield.mid'],
+        shadow: ['../Medias/Shadow/Battlefield.png'],
+        pixels: ['../Medias/Pixels/Battlefield.png'],
+        emoji: '🔫 💣 🚁 🪖 🏞️ 🛡️ ⚔️ 🚙 🪓 🪖'
+    },
+    {
+        title: 'Peak',
+        image: [
+            '../Medias/Image/Peak 1.jpg',
+            '../Medias/Image/Peak 2.jpg',
+            '../Medias/Image/Peak 3.jpg',
+        ],
+        sound: [
+            '../Medias/Sound/Peak 1.mp3',
+            '../Medias/Sound/Peak 2.mp3',
+            '../Medias/Sound/Peak 3.mp3',
+        ],
+        text: [
+            "Édité par Aggro Crab, ce jeu est une aventure coopérative qui met l'accent sur l'entraide et la physique. Il demande coordination et sang-froid pour surmonter des obstacles vertigineux.",
+            "Sorti en juin 2025, ce titre demande aux joueurs de grimper ensemble une montagne générée de manière procédurale. La gestion de l'endurance, l'utilisation stratégique de cordes et la communication sont vitales pour ne pas dévisser et tout recommencer.",
+            "Vous incarnez une équipe de scouts échoués sur une île mystérieuse dont le seul espoir de secours est d'atteindre le sommet. Mais l'île change chaque jour, et vous devrez maîtriser des outils étranges comme l'Anti-Corde tout en évitant les dangers de la faune locale."
+        ],
+        midi: ['../Medias/Midi/Peak.mid'],
+        shadow: ['../Medias/Shadow/Peak.png'],
+        pixels: ['../Medias/Pixels/Peak.png'],
+        emoji: '🧗 🏔️ ⚓ ⛺ 🧤 🤝 🌲 🆙 🧱 🌬️'
+    },
+    {
+        title: 'Warframe',
+        image: [
+            '../Medias/Image/Warframe 1.jpg',
+            '../Medias/Image/Warframe 2.jpg',
+            '../Medias/Image/Warframe 3.jpg',
+        ],
+        sound: [
+            '../Medias/Sound/Warframe 1.mp3',
+            '../Medias/Sound/Warframe 2.mp3',
+            '../Medias/Sound/Warframe 3.mp3',
+        ],
+        text: [
+            "Développé par Digital Extremes, ce jeu est un TPS coopératif en ligne gratuit (Free-to-play) connu pour son gameplay ultra-dynamique et ses mouvements de ninja. Le joueur y incarne un guerrier biomécanique dans un vaste univers de science-fiction.",
+            "Sorti en 2013, le jeu a énormément évolué pour devenir une référence du 'Looter Shooter'. Il propose un arsenal immense à crafter, des mondes ouverts et des missions spatiales via le Railjack, le tout basé sur un système de parkour fluide et rapide.",
+            "Vous êtes un Tenno, un ancien guerrier réveillé d'un long sommeil cryogénique pour combattre les Grineers, les Corpus et les Infestés. Guidé par le Lotus, vous pilotez des armures aux pouvoirs dévastateurs, pour maintenir l'équilibre du Système Origine."
+        ],
+        midi: ['../Medias/Midi/Warframe.mid'],
+        shadow: ['../Medias/Shadow/Warframe.png'],
+        pixels: ['../Medias/Pixels/Warframe.png'],
+        emoji: '🥷 🤖 🌌 🔫 ⚔️ 🪷 💎 🏃 🧬 👾'
     }
 ];
 
@@ -3009,4 +3348,7 @@ export const abbreviations = {
     'valorant': ['valo'],
     'hollow knight': ['hk'],
     'slender': ['slenderman', 'slender man'],
+    'battlefield': ['bf'],
+    'death stranding': ['ds'],
+    'professor layton': ['layton'],
 };
