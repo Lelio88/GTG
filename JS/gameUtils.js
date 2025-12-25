@@ -26,22 +26,32 @@ export function getCurrentProfile() {
 }
 
 /**
- * Initialize guessedGamesByMode if it doesn't exist
+ * Initialize guessedGamesByMode and scoresByMode if they don't exist
  * @param {Object} currentProfile - The current profile object
  * @returns {Object} The updated profile object
  */
 export function initializeProfile(currentProfile) {
+    const modes = ['image', 'sound', 'text', 'full', 'midi', 'shadow', 'pixelated', 'emoji'];
+
+    // Initialisation des jeux devinés
     if (!currentProfile.guessedGamesByMode) {
-        currentProfile.guessedGamesByMode = {
-            image: [],
-            sound: [],
-            text: [],
-            full: [],
-            midi: [],
-            shadow: [],
-            pixelated: [],
-            emoji: []
-        };
+        currentProfile.guessedGamesByMode = {};
+        modes.forEach(mode => currentProfile.guessedGamesByMode[mode] = []);
+    }
+
+    // NOUVEAU : Initialisation des scores par mode
+    if (!currentProfile.scoresByMode) {
+        currentProfile.scoresByMode = {};
+        modes.forEach(mode => {
+            currentProfile.scoresByMode[mode] = { goodAnswers: 0, badAnswers: 0 };
+        });
+    } else {
+        // Sécurité : s'assurer que tous les modes existent même pour les anciens profils
+        modes.forEach(mode => {
+            if (!currentProfile.scoresByMode[mode]) {
+                currentProfile.scoresByMode[mode] = { goodAnswers: 0, badAnswers: 0 };
+            }
+        });
     }
     return currentProfile;
 }
