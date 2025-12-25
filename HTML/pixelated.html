@@ -1,22 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixels</title>
+    <title>Mode Pixelated</title>
     <link rel="stylesheet" href="../CSS/style.css">
+    
+    <style>
+        img {
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+        }
+    </style>
+    
     <script type="module" defer src="../JS/pixelated.js"></script>
 </head>
+
 <header id="header-bar">
     <a href="../index.html">
         <img src="../Assets/Logo.png" alt="Logo" id="header-logo">
     </a>
     <nav>
         <ul>
-            <li><a></a></li>
-            <li><a></a></li>
-            <li><a></a></li>
+            <li><a href="./hub.html">Retour au Hub</a></li>
         </ul>
     </nav>
 </header>
@@ -25,15 +32,19 @@
     <div id="app">
         <div id="game">
             <h2 id="game-title"></h2>
+            
             <h2 id="message"></h2>
+            
             <div id="content"></div>
-            <input type="text" id="user-input" placeholder="Votre réponse..." autocomplete="off" required>
+            
+            <input type="text" id="user-input" placeholder="Qui est-ce ?" autocomplete="off" required>
 
-            <div id="button-container">
-                <button id="hint-button" onclick="showHint()">Indice</button>
+            <div id="button-container" style="box-shadow: none;">
+                <button id="hint-button">Abandonner</button>
                 <button onclick="checkAnswer()">Valider</button>
                 <button id="next-button" onclick="nextQuestion()" style="display: none;">Prochaine question</button>
             </div>
+            
             <div id="scoreboard">
                 <p>Bonnes réponses : <span id="good-answers">0</span></p>
                 <p>Mauvaises réponses : <span id="bad-answers">0</span></p>
