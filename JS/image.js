@@ -67,6 +67,8 @@ function launchGameImage() {
     img.src = gameImages[hintNav.currentIndex];
     img.id = 'game-image';
     img.style.width = '100%';
+    img.style.height = '100%';
+    img.style.objectFit = 'contain';
     img.style.position = 'relative';
     img.style.transition = 'opacity 0.5s ease';
     contentDiv.appendChild(img);
