@@ -91,7 +91,7 @@ function launchGamePixelated() {
         const ctx = canvas.getContext('2d');
 
         // Facteur de réduction (0.06 = très pixellisé)
-        const pixelFactor = 0.04; 
+        const pixelFactor = 0.05; 
 
         const w = Math.floor(tempImg.width * pixelFactor);
         const h = Math.floor(tempImg.height * pixelFactor);
