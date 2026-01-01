@@ -3339,7 +3339,7 @@ export const abbreviations = {
     'magic: the gathering arena': ['magic', 'mtg arena', 'mtga', 'mtg'],
     'little big planet': ['lbp'],
     'ark: survival evolved': ['ark'],
-    'the sims': ['sims'],
+    'the sims': ['sims', 'les sims'],
     'cyberpunk 2077': ['cyberpunk'],
     'assassin\'s creed': ['ac'],
     'clair obscur : expedition 33': ['clair obscur'],
