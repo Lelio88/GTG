@@ -2,17 +2,17 @@
    EMOJI MODE
    ============================ */
 import { games } from './gamesDatabase.js';
-import { handleGameCompletion } from './gameCompletion. js';
+import { handleGameCompletion } from './gameCompletion.js';
 import {
     getCurrentProfile,
     initializeProfile,
     updateProfile as updateProfileUtil,
     getAvailableGames,
     startTimer as startTimerUtil,
-    stopTimer,
     abandonGame as abandonGameUtil,
     checkAnswerValue,
     updateScoreboard,
+    nextQuestion as nextQuestionUtil,
     setupEnterKeyHandler,
     showCorrectAnswerFeedback,
     showIncorrectAnswerFeedback,
@@ -159,3 +159,4 @@ window.onload = () => {
     updateScoreboard(currentProfile);
     document.getElementById('user-input').focus();
 };
+
