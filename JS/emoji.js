@@ -2,7 +2,7 @@
    EMOJI MODE
    ============================ */
 import { games } from './gamesDatabase.js';
-import { handleGameCompletion } from './gameCompletion.js';
+import { handleGameCompletion } from './gameCompletion. js';
 import {
     getCurrentProfile,
     initializeProfile,
@@ -28,7 +28,7 @@ let correctAnswerGiven = false;
 // === Get current profile ===
 let currentProfile = getCurrentProfile();
 if (!currentProfile) {
-    window.location.href = '../index.html';
+    window.location. href = '../index.html';
 }
 currentProfile = initializeProfile(currentProfile);
 
@@ -49,55 +49,18 @@ function launchGameEmoji() {
     const contentDiv = document.getElementById('content');
     contentDiv.innerHTML = '';
 
-    // Create emoji container
-    const emojiContainer = document.createElement('div');
-    emojiContainer.id = 'emoji-container';
-    emojiContainer.style. cssText = `
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 200px;
-        font-size: 80px;
-        gap: 20px;
+    // Create emoji display (simple, centered like text mode)
+    const emojiText = document.createElement('p');
+    emojiText.id = 'emoji-display';
+    emojiText. innerText = cachedGame.emoji;
+    emojiText.style.cssText = `
+        font-size: 60px;
+        text-align: center;
         padding: 40px;
-        background:  linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 20px;
-        box-shadow:  0 10px 30px rgba(0,0,0,0.3);
-        flex-wrap: wrap;
-        margin: 20px 0;
+        line-height: 1.5;
     `;
 
-    // Display emojis
-    const emojis = cachedGame.emoji. split(' ');
-    emojis.forEach(emoji => {
-        const emojiSpan = document.createElement('span');
-        emojiSpan. innerText = emoji;
-        emojiSpan.style.cssText = `
-            animation: bounce 0.6s ease-in-out infinite alternate;
-            display: inline-block;
-        `;
-        emojiContainer.appendChild(emojiSpan);
-    });
-
-    contentDiv.appendChild(emojiContainer);
-
-    // Add CSS animation
-    if (! document.getElementById('emoji-animation-style')) {
-        const style = document.createElement('style');
-        style.id = 'emoji-animation-style';
-        style.innerHTML = `
-            @keyframes bounce {
-                from { transform: translateY(0px); }
-                to { transform:  translateY(-10px); }
-            }
-            #emoji-container span: nth-child(1) { animation-delay: 0s; }
-            #emoji-container span:nth-child(2) { animation-delay: 0.1s; }
-            #emoji-container span:nth-child(3) { animation-delay: 0.2s; }
-            #emoji-container span:nth-child(4) { animation-delay: 0.3s; }
-            #emoji-container span:nth-child(5) { animation-delay: 0.4s; }
-        `;
-        document.head.appendChild(style);
-    }
+    contentDiv.appendChild(emojiText);
 
     timerInterval = startTimerUtil();
 }
@@ -108,8 +71,15 @@ function showHint() {
 }
 
 function abandonGame() {
+    stopTimer(timerInterval);
+    
     revealTitle(cachedTitle, { mode: 'modal', autoAdvance: true, delay: 2000 })
         .then(() => {
+            // Update profile for abandoned game
+            updateProfileUtil(currentProfile, cachedTitle, false, 'emoji');
+            updateScoreboard(currentProfile);
+            
+            // Call the utility function to handle abandonment
             abandonGameUtil(currentProfile);
         });
 }
@@ -122,22 +92,51 @@ function checkAnswer() {
     }
 
     if (checkAnswerValue(input, cachedTitle)) {
+        stopTimer(timerInterval);
         updateProfileUtil(currentProfile, cachedTitle, true, 'emoji');
+        updateScoreboard(currentProfile);
         showCorrectAnswerFeedback(cachedTitle, timerInterval);
         correctAnswerGiven = true;
     } else {
         updateProfileUtil(currentProfile, cachedTitle, false, 'emoji');
+        updateScoreboard(currentProfile);
         showIncorrectAnswerFeedback();
     }
-
-    updateScoreboard(currentProfile);
 }
 
 function nextQuestion() {
     correctAnswerGiven = false;
+    
+    // Remove old content
     const contentDiv = document.getElementById('content');
     contentDiv.innerHTML = '';
-    window.location.reload();
+    
+    // Reload available games
+    const newAvailableGames = getAvailableGames(games, currentProfile, 'emoji');
+    
+    if (newAvailableGames. length === 0) {
+        handleGameCompletion(currentProfile, 'emoji');
+        return;
+    }
+    
+    // Launch new game
+    launchGameEmoji();
+    
+    // Reset input and button states
+    const userInput = document.getElementById('user-input');
+    userInput.value = '';
+    userInput.disabled = false;
+    userInput.focus();
+    
+    const nextButton = document.getElementById('next-button');
+    nextButton.style.display = 'none';
+    
+    const hintButton = document.getElementById('hint-button');
+    hintButton.style.display = 'inline-block';
+    hintButton.innerText = 'Abandonner';
+    
+    const message = document.getElementById('message');
+    message.innerText = '';
 }
 
 // Expose functions to global context
@@ -151,7 +150,7 @@ setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
 // On load
 window.onload = () => {
     // Change hint button to abandon button immediately
-    const hintButton = document.getElementById('hint-button');
+    const hintButton = document. getElementById('hint-button');
     if (hintButton) {
         hintButton.innerText = "Abandonner";
     }
