@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Émojis</title>
+    <title>Mode Emoji - GTG</title>
     <link rel="stylesheet" href="../CSS/style.css">
     <script type="module" defer src="../JS/emoji.js"></script>
 </head>
@@ -30,7 +29,7 @@
             <input type="text" id="user-input" placeholder="Votre réponse..." autocomplete="off" required>
 
             <div id="button-container">
-                <button id="hint-button" onclick="showHint()">Indice</button>
+                <button id="hint-button" onclick="showHint()">Abandonner</button>
                 <button onclick="checkAnswer()">Valider</button>
                 <button id="next-button" onclick="nextQuestion()" style="display: none;">Prochaine question</button>
             </div>
@@ -43,5 +42,4 @@
         </div>
     </div>
 </body>
-
 </html>
