@@ -24,7 +24,6 @@ let timerInterval;
 let cachedTitle = '';
 let cachedGame = null;
 let correctAnswerGiven = false;
-let gameImages = [];
 
 // === Get current profile ===
 let currentProfile = getCurrentProfile();
@@ -32,39 +31,35 @@ if (!currentProfile) {
     window.location.href = '../index.html';
 }
 currentProfile = initializeProfile(currentProfile);
-}
 
 // === Filter already found games in "emoji" mode ===
 const availableGames = getAvailableGames(games, currentProfile, 'emoji');
 
 function launchGameEmoji() {
-    if (availableGames. length === 0) {
+    if (availableGames.length === 0) {
         handleGameCompletion(currentProfile, 'emoji');
         return;
     }
 
-    cachedGame = availableGames[Math.floor(Math.random() * availableGames.length)];
+    cachedGame = availableGames[Math. floor(Math.random() * availableGames.length)];
     cachedTitle = cachedGame.title;
 
     initializeGameTitle(cachedTitle);
 
     const contentDiv = document.getElementById('content');
-    contentDiv.innerHTML = '';
+    contentDiv.innerHTML = ''; // reset
 
-    // Create emoji display (simple, centered like text mode)
-    const emojiText = document.createElement('p');
-    emojiText.id = 'emoji-display';
-    emojiText. innerText = cachedGame.emoji;
-    emojiText.style.cssText = `
+    // Display emojis (simple text, centered like text mode)
+    const p = document.createElement('p');
+    p.id = 'emoji-display';
+    p.textContent = cachedGame.emoji;
+    p.style.cssText = `
         font-size: 60px;
         text-align: center;
-        padding: 40px;
+        padding:  40px;
         line-height: 1.5;
     `;
-
-    contentDiv.appendChild(emojiText);
-
-    timerInterval = startTimerUtil();
+    contentDiv.appendChild(p);
 }
 
 function checkAnswer() {
@@ -75,19 +70,15 @@ function checkAnswer() {
     }
     
     if (checkAnswerValue(input, cachedTitle)) {
-        // Révélation de l'image (couleur)
-        const imgElement = document.getElementById('game-image');
-        if(imgElement) imgElement.style.filter = 'none';
-
-        updateProfileUtil(currentProfile, cachedTitle, true, 'shadow');
+        updateProfileUtil(currentProfile, cachedTitle, true, 'emoji');
         showCorrectAnswerFeedback(cachedTitle, timerInterval);
         correctAnswerGiven = true;
     } else {
-        updateProfileUtil(currentProfile, cachedTitle, false, 'shadow');
+        updateProfileUtil(currentProfile, cachedTitle, false, 'emoji');
         showIncorrectAnswerFeedback();
     }
 
-    updateScoreboard(currentProfile, 'shadow');
+    updateScoreboard(currentProfile, 'emoji');
 }
 
 function nextQuestion() {
@@ -95,30 +86,29 @@ function nextQuestion() {
 }
 
 function abandonGame() {
-    // Révélation de l'image (couleur)
-    const imgElement = document.getElementById('game-image');
-    if(imgElement) {
-        imgElement.style.filter = 'none';
-    }
-
     revealTitle(cachedTitle, { mode: 'modal', autoAdvance: true, delay: 2000 })
         .then(() => {
-            abandonGameUtil(currentProfile, 'shadow');
+            abandonGameUtil(currentProfile, 'emoji');
         });
 }
 
 // Expose functions
 window.checkAnswer = checkAnswer;
-// window.showHint = showHint; // Supprimé car inutile
 window.nextQuestion = nextQuestion;
 
 // Setup Enter key handler
 setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
 
 window.onload = () => {
-    if (window.location.pathname.includes('shadow')) launchGameShadow();
+    launchGameEmoji();
+    timerInterval = startTimerUtil();
+    updateScoreboard(currentProfile, 'emoji');
     document.getElementById('user-input').focus();
-    updateScoreboard(currentProfile, 'shadow');
+    
+    // Configure abandon button
+    const hintButton = document.getElementById('hint-button');
+    if (hintButton) {
+        hintButton.innerText = "Abandonner";
+        hintButton.onclick = abandonGame;
+    }
 };
-
-
