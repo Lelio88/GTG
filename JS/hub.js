@@ -1,4 +1,6 @@
 import { showCharacter } from './dialogue.js';
+import { exportSave } from './saveManager.js';
+
 function refreshProfileData() {
     // On recharge les profils depuis le localStorage
     const profiles = JSON.parse(localStorage.getItem('profiles'));
@@ -212,6 +214,12 @@ if (roomButton) {
     roomButton.addEventListener('click', () => {
         window.location.href = '../HTML/chamber.html';
     });
+}
+
+// Bouton export de sauvegarde
+const exportSaveBtn = document.getElementById('export-save-btn');
+if (exportSaveBtn) {
+    exportSaveBtn.addEventListener('click', exportSave);
 }
 
 // Initialisation
