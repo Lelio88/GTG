@@ -24,13 +24,15 @@ let timerInterval;
 let cachedTitle = '';
 let cachedGame = null;
 let correctAnswerGiven = false;
+let gameImages = [];
 
 // === Get current profile ===
 let currentProfile = getCurrentProfile();
 if (!currentProfile) {
-    window.location. href = '../index.html';
+    window.location.href = '../index.html';
 }
 currentProfile = initializeProfile(currentProfile);
+}
 
 // === Filter already found games in "emoji" mode ===
 const availableGames = getAvailableGames(games, currentProfile, 'emoji');
@@ -65,98 +67,58 @@ function launchGameEmoji() {
     timerInterval = startTimerUtil();
 }
 
-function showHint() {
-    // No hints in emoji mode, button becomes abandon directly
-    abandonGame();
-}
-
-function abandonGame() {
-    stopTimer(timerInterval);
-    
-    revealTitle(cachedTitle, { mode: 'modal', autoAdvance: true, delay: 2000 })
-        .then(() => {
-            // Update profile for abandoned game
-            updateProfileUtil(currentProfile, cachedTitle, false, 'emoji');
-            updateScoreboard(currentProfile);
-            
-            // Call the utility function to handle abandonment
-            abandonGameUtil(currentProfile);
-        });
-}
-
 function checkAnswer() {
-    const input = document. getElementById('user-input').value;
-
+    const input = document.getElementById('user-input').value;
+    
     if (correctAnswerGiven) {
         return;
     }
-
+    
     if (checkAnswerValue(input, cachedTitle)) {
-        stopTimer(timerInterval);
-        updateProfileUtil(currentProfile, cachedTitle, true, 'emoji');
-        updateScoreboard(currentProfile);
+        // Révélation de l'image (couleur)
+        const imgElement = document.getElementById('game-image');
+        if(imgElement) imgElement.style.filter = 'none';
+
+        updateProfileUtil(currentProfile, cachedTitle, true, 'shadow');
         showCorrectAnswerFeedback(cachedTitle, timerInterval);
         correctAnswerGiven = true;
     } else {
-        updateProfileUtil(currentProfile, cachedTitle, false, 'emoji');
-        updateScoreboard(currentProfile);
+        updateProfileUtil(currentProfile, cachedTitle, false, 'shadow');
         showIncorrectAnswerFeedback();
     }
+
+    updateScoreboard(currentProfile, 'shadow');
 }
 
 function nextQuestion() {
-    correctAnswerGiven = false;
-    
-    // Remove old content
-    const contentDiv = document.getElementById('content');
-    contentDiv.innerHTML = '';
-    
-    // Reload available games
-    const newAvailableGames = getAvailableGames(games, currentProfile, 'emoji');
-    
-    if (newAvailableGames. length === 0) {
-        handleGameCompletion(currentProfile, 'emoji');
-        return;
-    }
-    
-    // Launch new game
-    launchGameEmoji();
-    
-    // Reset input and button states
-    const userInput = document.getElementById('user-input');
-    userInput.value = '';
-    userInput.disabled = false;
-    userInput.focus();
-    
-    const nextButton = document.getElementById('next-button');
-    nextButton.style.display = 'none';
-    
-    const hintButton = document.getElementById('hint-button');
-    hintButton.style.display = 'inline-block';
-    hintButton.innerText = 'Abandonner';
-    
-    const message = document.getElementById('message');
-    message.innerText = '';
+    nextQuestionUtil();
 }
 
-// Expose functions to global context
+function abandonGame() {
+    // Révélation de l'image (couleur)
+    const imgElement = document.getElementById('game-image');
+    if(imgElement) {
+        imgElement.style.filter = 'none';
+    }
+
+    revealTitle(cachedTitle, { mode: 'modal', autoAdvance: true, delay: 2000 })
+        .then(() => {
+            abandonGameUtil(currentProfile, 'shadow');
+        });
+}
+
+// Expose functions
 window.checkAnswer = checkAnswer;
-window. showHint = showHint;
+// window.showHint = showHint; // Supprimé car inutile
 window.nextQuestion = nextQuestion;
 
 // Setup Enter key handler
 setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
 
-// On load
 window.onload = () => {
-    // Change hint button to abandon button immediately
-    const hintButton = document. getElementById('hint-button');
-    if (hintButton) {
-        hintButton.innerText = "Abandonner";
-    }
-    
-    launchGameEmoji();
-    updateScoreboard(currentProfile);
+    if (window.location.pathname.includes('shadow')) launchGameShadow();
     document.getElementById('user-input').focus();
+    updateScoreboard(currentProfile, 'shadow');
 };
+
 
