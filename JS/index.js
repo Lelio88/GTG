@@ -1,7 +1,10 @@
+import { importSave } from './saveManager.js';
+
 // === Sélection des éléments ===
 const profilesContainer = document.getElementById('profiles-container');
 const loadProfileButton = document.getElementById('load-profile');
 const deleteProfileButton = document.getElementById('delete-profile');
+const importSaveBtn = document.getElementById('import-save-btn');
 
 let profiles = JSON.parse(localStorage.getItem('profiles')) || [];
 let currentProfile = localStorage.getItem('currentProfile') || null;
@@ -114,6 +117,13 @@ function addNewProfile() {
     });
     localStorage.setItem('profiles', JSON.stringify(profiles));
     renderProfiles();
+    if (importSaveBtn) {
+        if (profiles.length >= 4) {
+            importSaveBtn.style.display = 'none';
+        } else {
+            importSaveBtn.style.display = 'inline-block';
+        }
+    }
 }
 
 // Suppression d'un profil
@@ -134,6 +144,13 @@ function deleteProfile() {
         localStorage.removeItem('currentProfile');
         currentProfile = null;
         renderProfiles();
+        if (importSaveBtn) {
+            if (profiles.length >= 4) {
+                importSaveBtn.style.display = 'none';
+            } else {
+                importSaveBtn.style.display = 'inline-block';
+            }
+        }
     }
 }
 
@@ -180,3 +197,18 @@ loadProfileButton.onclick = () => {
 
 // Initialisation
 renderProfiles();
+
+// Gestion du bouton d'import (visible seulement si places disponibles)
+if (importSaveBtn) {
+    function updateImportButtonVisibility() {
+        if (profiles.length >= 4) {
+            importSaveBtn.style.display = 'none';
+        } else {
+            importSaveBtn.style.display = 'inline-block';
+        }
+    }
+    
+    updateImportButtonVisibility();
+    
+    importSaveBtn.addEventListener('click', importSave);
+}
