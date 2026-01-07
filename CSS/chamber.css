@@ -3,19 +3,33 @@ body, html {
     padding: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow: hidden; /* Aucun scroll sur PC par défaut */
+    background-color: #1a1a1a;
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
 }
 
 #scene-container {
     position: relative;
-    width: 100vw;
-    height: 100vh;
+    /* L'image fait 2816x1536. On définit ce ratio pour que le conteneur ait toujours la bonne forme */
+    aspect-ratio: 2816 / 1536;
+    
+    /* Le conteneur doit tenir dans l'écran sans dépasser */
+    max-width: 100vw;
+    max-height: 100vh;
+    
+    /* Il prendra la plus grande taille possible respectant le ratio et les limites */
+    width: 100%; 
+    height: 100%; /* Sera contraint par le aspect-ratio */
+    
+    margin: 0 auto;
 }
 
 #room-background {
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    display: block;
 }
 
 /* Style commun à toutes les zones */
@@ -30,63 +44,63 @@ body, html {
 
 /* Zone 1 : Pixelated */
 #zone-pixelated {
-    top: 44.3%; left: 31%;
-    width: 7.5%; height: 7.6%;
+    top: 45.2%; left: 31%;
+    width: 7.5%; height: 6.5%;
     background-color: rgba(255, 0, 0, 0.5); /* Rouge */
 }
 
 /* Zone 2 : Emoji */
 #zone-emoji {
     top: 52%; left: 31%;
-    width: 7.5%; height: 7.6%;
+    width: 7.5%; height: 7%;
     background-color: rgba(0, 0, 255, 0.5); /* Bleu */
 }
 
 /* Zone 3 : Shadow */
 #zone-shadow {
-    top: 60%; left: 31%;
-    width: 7.5%; height: 7.6%;
+    top: 59%; left: 31%;
+    width: 7.5%; height: 6.6%;
     background-color: rgba(0, 255, 0, 0.5); /* Vert */
 }
 
 /* Zone 4 : Midi */
 #zone-midi {
-    top: 68%; left: 31%;
-    width: 7.5%; height: 7.6%;
+    top: 66%; left: 31%;
+    width: 7.5%; height: 6.3%;
     background-color: rgba(255, 255, 0, 0.5); /* Jaune */
 }
 
 /* Zone 5 : Trophée */
 #zone-trophy {
-    top: 63%; left: 61.5%;
+    top: 60%; left: 61.5%;
     width: 7.5%; height: 7.6%;
     background-color: rgba(255, 0, 255, 0.5); /* Magenta */
 }
 
 /* Zone 6 : Calculatrice */
 #zone-calculator {
-    top: 77%; left: 47%;
+    top: 73%; left: 47%;
     width: 4.5%; height: 7%;
     background-color: rgba(0, 255, 255, 0.5); /* Cyan */
 }
 
 /* Zone 7 : Pantone */
 #zone-pantone {
-    top: 33.5%; left: 18.8%;
-    width: 4%; height: 22%;
+    top: 35%; left: 18.8%;
+    width: 4%; height: 20%;
     background-color: rgba(128, 0, 128, 0.5); /* Violet */
 }
 
 /* Zone 8 : Films */
 #zone-films {
-    top: 4.5%; left: 77%;
+    top: 8%; left: 77%;
     width: 17%; height: 25%;
     background-color: rgba(255, 165, 0, 0.5); /* Orange */
 }
 
 /* Zone 9 : GTO */
 #zone-gto {
-    top: 17%; left: 61%;
+    top: 20%; left: 61%;
     width: 12%; height: 15%;
     background-color: rgba(0, 128, 0, 0.5); /* Vert foncé */
 }
@@ -150,4 +164,30 @@ body, html {
     background-color: #f44336; /* Rouge */
     color: white;
     border: none;
+}
+
+/* --- RESPONSIVE MOBILE (PORTRAIT) --- */
+@media screen and (orientation: portrait) {
+    body, html {
+        display: block; /* Annule le flexbox de centrage */
+        overflow-x: auto; /* Réactive le scroll horizontal */
+        overflow-y: hidden;
+    }
+
+    #scene-container {
+        /* Annule les contraintes PC */
+        max-width: none;
+        max-height: none;
+        aspect-ratio: auto; /* Important : on ne veut pas contraindre le ratio ici de la même façon */
+        
+        width: max-content; /* Colle à la largeur de l'image */
+        height: 100vh; /* Toute la hauteur */
+        margin: 0;
+    }
+
+    #room-background {
+        width: auto;
+        height: 100%;
+        display: block;
+    }
 }
