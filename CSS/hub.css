@@ -220,20 +220,24 @@ button:active {
         padding:  1rem;
         height: auto;
         min-height: 100vh;
-        padding-bottom: 80px;
+        padding-bottom: 120px; /* Espace pour le footer + marge */
     }
     
     /* Title */
     h1 {
         font-size:  1.6em;
         margin-bottom: 1rem;
+        text-align: center;
     }
     
     /* Current profile */
     #current-profile {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         padding: 0.4rem 0.8rem;
         margin-bottom: 1.5rem;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
     }
     
     /* Modes container - vertical stack */
@@ -241,10 +245,12 @@ button:active {
         flex-direction: column;
         gap: 15px;
         margin-bottom:  1.5rem;
+        width: 100%;
     }
     
     .game-mode {
         width: 100%;
+        box-sizing: border-box; /* Pour inclure le padding dans la largeur */
         margin: 0;
         font-size: 1.1em;
         padding: 15px;
@@ -253,43 +259,33 @@ button:active {
     
     /* Buttons */
     button {
-        min-height: 44px;
+        min-height: 48px; /* Standard tactile */
         font-size: 1em;
         padding: 12px 20px;
         margin: 5px 0;
         width: 100%;
+        box-sizing: border-box;
     }
     
     /* Footer */
     #game-footer {
-        font-size: 0.9em;
-        flex-direction:  column;
+        font-size: 0.85em;
+        flex-direction: row; /* On garde en ligne si possible, sinon wrap */
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 10px;
         text-align:  center;
         padding: 10px;
+        background-color: rgba(44, 44, 44, 0.95);
     }
     
     #game-footer span {
-        margin: 0;
+        margin: 0 5px;
     }
 
+    /* Personnage : On le réduit et on le place en bas à droite ou on le masque si trop petit */
     .character-container {
-        left: 10px;
-        bottom: 0px;
-        flex-direction:  column;
-        align-items:  flex-start;
-        gap:  10px;
-    }
-    
-    .character-container img {
-        width: 100px ! important;
-    }
-    
-    .character-text {
-        font-size:  0.9em;
-        max-width: 200px;
-        padding: 10px 15px;
-        margin-bottom: 0 !important;
+        display: none; /* Masqué sur mobile pour éviter de gêner la navigation */
     }
 }
 

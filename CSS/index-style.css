@@ -1,17 +1,29 @@
 /* ===============================
     Global Styles 
 =============================== */
-body {
+* {
+    box-sizing: border-box;
+    /* Empêche le highlight bleu au clic sur mobile */
+    -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
     margin: 0;
     padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Coupe tout ce qui dépasse */
+    overscroll-behavior: none; /* Bloque l'effet élastique (rebond) */
+    position: fixed; /* Fixe la page pour empêcher le scroll iOS */
+}
+
+body {
     font-family: 'Poppins', sans-serif;
     background-color: #1a1a1a;
     color: white;
     display:  flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    overflow: hidden;
 }
 
 h1 {
@@ -167,51 +179,94 @@ button:active {
 
 /* Mobile (< 768px) */
 @media (max-width: 767px) {
-    /* Allow body scroll */
-    body {
-        overflow-y: auto;
-        height: auto;
-        min-height: 100vh;
-    }
-    
-    /* Title */
-    h1 {
-        font-size: 1.6em;
-        margin-bottom:  15px;
-    }
-    
-    /* Main container */
+    /* Main container takes full space but respects padding */
     #main-container {
-        width: 95%;
-        max-width: 800px;
-        gap: 25px;
-        padding: 20px 10px;
-    }
-    
-    /* Grid - 2 columns */
-    #profiles-container {
-        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        padding: 15px;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Centre verticalement */
+        align-items: stretch; /* Étire les enfants en largeur */
         gap: 15px;
     }
     
-    .profile {
-        width: 100%;
-        font-size: 1em;
-        padding: 15px;
+    /* Title adjustment */
+    h1 {
+        font-size: 1.4em;
+        margin: 0; /* Supprime les marges par défaut qui causent le scroll */
+        text-align: center;
+        flex-shrink: 0;
+    }
+
+    /* Logo wrapper adjustment */
+    .logo-wrapper {
+        flex-shrink: 0;
+        margin-bottom: 10px;
     }
     
     /* Logo responsive */
     .game-logo {
-        width: 90%;
-        max-width:  350px;
+        width: 90%; /* Prend plus de largeur */
+        max-width: 300px; /* Agrandissement du logo */
+        margin: 0 auto;
+        display: block;
     }
     
-    /* Buttons */
-    button {
-        min-height: 44px;
-        padding: 12px 20px;
+    /* Profile Section - The only scrollable part */
+    .profile-selection {
+        flex: 1; /* Prend l'espace disponible restant */
+        min-height: 0; /* Important pour que le flex scroll fonctionne */
+        display: flex;
+        flex-direction: column;
+        overflow: hidden; /* Empêche la section elle-même de déborder */
+    }
+
+    .profile-selection h1 {
         font-size: 1em;
+        margin-bottom: 10px;
+    }
+
+    #profiles-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
         width: 100%;
+        
+        /* SCROLL INTERNE VERTICAL UNIQUEMENT */
+        overflow-y: auto;
+        overflow-x: hidden; /* Bloque le mouvement horizontal */
+        overscroll-behavior: contain;
+        
+        /* Padding pour le contenu scrollable */
+        padding: 5px; 
+        flex: 1;
+    }
+    
+    .profile {
+        width: 100%;
+        padding: 15px;
+        min-height: 60px;
+        flex-shrink: 0;
+        /* Désactiver le zoom au clic sur mobile pour éviter le débordement */
+        transform: none !important; 
+        transition: border-color 0.3s; /* On garde juste la couleur */
+    }
+    
+    .profile:hover, .profile.keyboard-focus {
+        transform: none !important; /* Surcharge le hover global */
+    }
+    
+    /* Buttons area */
+    #load-profile, #delete-profile, #import-save-btn {
+        flex-shrink: 0;
+        min-height: 44px;
+        padding: 10px;
+        font-size: 0.9em;
+        width: 100%;
+        margin: 5px 0 0 0;
     }
 }
 

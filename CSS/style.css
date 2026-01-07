@@ -104,14 +104,20 @@ h3 {
 =============================== */
 #content {
     position: relative;
-    width: 900px;
-    height: 300px;
+    width: 100%; /* Fluide */
+    max-width: 900px; /* Max PC */
+    height: auto;
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #content img {
-    width: auto;
-    height: 100%;
-    object-fit: cover;
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain; /* Évite de couper l'image */
     object-position: center;
     border-radius: 15px;
     box-shadow:  0 0 15px #ff7f50, 0 0 30px #ff7f50;
@@ -120,29 +126,49 @@ h3 {
 /* ===============================
     Full Mode Layout (Image + Text + Audio à droite)
 =============================== */
-.hint-container {
-    display: flex ! important;
-    flex-direction: row !important;
-    align-items: flex-start !important;
-    gap: 20px !important;
-    width: 100%;
-    max-width: 100%;
+/* PC Uniquement */
+@media (min-width: 768px) {
+    .hint-container {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .hint-container img {
+        flex-shrink: 0;
+        width: 50%; /* Flexible */
+        max-width: 500px;
+    }
+
+    .hint-right-content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        flex: 1;
+        min-width: 0;
+    }
 }
 
-.hint-container img {
-    flex-shrink: 0;
-    width: 500px !important;
-    height:  auto !important;
-    max-height: 400px;
-    object-fit: contain;
-}
+/* Mobile adjustments for Full Mode */
+@media (max-width: 767px) {
+    .hint-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+    
+    .hint-container img {
+        width: 100%;
+        height: auto;
+        max-height: 300px;
+    }
 
-.hint-right-content {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    flex:  1;
-    min-width: 0;
+    .hint-right-content {
+        width: 100%;
+    }
 }
 
 .hint-right-content p {
@@ -303,52 +329,46 @@ button:hover {
     /* Header bar */
     #header-bar {
         width: 95%;
-        padding: 0 10px;
-        height: 60px;
+        padding: 5px 10px;
+        height: auto; /* Hauteur auto pour contenir le menu si besoin */
+        min-height: 50px;
+        flex-direction: column; /* Empiler logo et nav */
+        gap: 10px;
     }
     
     #header-logo {
         height: 30px;
     }
     
-    /* Hide desktop navigation */
+    /* Show navigation simplified */
     #header-bar nav {
-        display: none;
-    }
-    
-    /* Show burger menu */
-    .burger-menu {
         display: block;
-        font-size: 1.5em;
-        cursor: pointer;
-        color: white;
-        padding: 10px;
+        width: 100%;
     }
     
-    /* Mobile navigation overlay */
-    #header-bar nav.active {
+    #header-bar nav ul {
         display: flex;
-        position: fixed;
-        top: 70px;
-        left: 0;
-        right: 0;
-        background: rgba(44, 44, 44, 0.98);
-        flex-direction: column;
-        padding: 20px;
-        z-index: 999;
-        border-radius: 10px;
-        margin:  0 10px;
-    }
-    
-    #header-bar nav.active ul {
-        flex-direction: column;
+        justify-content: center;
         gap: 15px;
         padding: 0;
         margin: 0;
+        flex-wrap: wrap;
     }
     
-    #header-bar nav.active ul li {
-        text-align: center;
+    #header-bar nav ul li a {
+        font-size: 0.9em; /* Plus petit */
+    }
+    
+    /* Hide burger menu artifacts if present */
+    .burger-menu {
+        display: none !important;
+    }
+    
+    /* Mobile navigation overlay - Disabled as we use inline nav */
+    #header-bar nav.active {
+        position: static;
+        background: transparent;
+        padding: 0;
     }
     
     /* Game area */
