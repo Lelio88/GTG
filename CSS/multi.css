@@ -117,8 +117,8 @@ body:has(.multi-lobby-app)::after {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--sp-5);
-    padding: var(--sp-7) var(--sp-4);
+    gap: var(--sp-4);
+    padding: var(--sp-5) var(--sp-4);
     width: 100%;
     max-width: 640px;
     margin: 0 auto;
@@ -132,7 +132,7 @@ body:has(.multi-lobby-app)::after {
 .multi-lobby-app h1 {
     font-family: var(--font-display);
     font-weight: 900;
-    font-size: var(--fs-display);
+    font-size: clamp(1.5rem, 4vw, 2.4rem);
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--neon-primary);
@@ -140,8 +140,9 @@ body:has(.multi-lobby-app)::after {
         0 0 8px var(--neon-primary),
         0 0 20px var(--neon-secondary),
         0 0 36px rgba(255, 107, 159, 0.4);
-    margin: 0 0 var(--sp-3);
+    margin: 0;
     text-align: center;
+    white-space: nowrap;
     animation: title-pulse 3s ease-in-out infinite;
 }
 
