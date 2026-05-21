@@ -39,6 +39,27 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+
+/**
+ * App Check (reCAPTCHA v3) — anti-bot, anti-spam.
+ * Coller la SITE KEY reCAPTCHA v3 ci-dessous pour activer.
+ * Tant que la chaîne est vide, App Check est désactivé (l'app marche
+ * normalement, juste sans la protection anti-bot).
+ *
+ * Setup : voir docs/multiplayer-architecture.md §14.
+ */
+const RECAPTCHA_SITE_KEY = '';  // <-- COLLER LA SITE KEY ICI
+
+if (RECAPTCHA_SITE_KEY) {
+    // Import dynamique : ne charge le SDK App Check QUE si une clé est définie
+    const appCheckModule = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app-check.js');
+    appCheckModule.initializeAppCheck(app, {
+        provider: new appCheckModule.ReCaptchaV3Provider(RECAPTCHA_SITE_KEY),
+        isTokenAutoRefreshEnabled: true,
+    });
+    console.log('[Firebase] App Check activé (reCAPTCHA v3)');
+}
+
 export const db = getDatabase(app);
 export const auth = getAuth(app);
 

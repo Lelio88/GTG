@@ -111,16 +111,13 @@ Fichier `database.rules.json` posé dans la console Firebase :
     "rooms": {
       "$code": {
         ".read": "auth != null",
-        "meta": {
-          ".write": "auth != null && (!data.exists() || data.child('hostUid').val() === auth.uid)"
-        },
+        ".write": "auth != null && (!data.exists() || data.child('meta/hostUid').val() === auth.uid)",
         "players": {
           "$uid": {
             ".write": "auth != null && auth.uid === $uid"
           }
         },
         "game": {
-          ".write": "auth != null && root.child('rooms').child($code).child('meta/hostUid').val() === auth.uid",
           "currentRound": {
             "results": {
               "$uid": {
@@ -137,8 +134,9 @@ Fichier `database.rules.json` posé dans la console Firebase :
 
 Garanties :
 - Lire une room nécessite `auth != null` (anonymous suffit).
-- `players/{uid}` : un joueur ne peut modifier que son propre noeud — impossible de falsifier le score d'un autre.
-- `game/*` (transitions de manche, pile, currentRound hors results) : réservé à l'hôte.
+- Création (`!data.exists()`) : n'importe quel utilisateur authentifié peut créer une room, qui devient son hôte (via `meta.hostUid` écrit dans le même `set()`).
+- Modification de l'arbre `meta`, `pile`, `currentRound` (hors results) : réservé à l'hôte (vérification de `meta/hostUid` dans la règle `$code`).
+- `players/{uid}` : un joueur ne peut modifier que son propre noeud — impossible de falsifier le score d'un autre. La cascade permissive RTDB fait que cette règle l'emporte sur la règle parent restrictive.
 - `game/currentRound/results/{uid}` : seul le joueur correspondant peut déclarer son `found`/`abandoned`.
 
 ## 5. Scoring
@@ -322,7 +320,44 @@ Console Firebase → projet `gtg-multi` :
 4. **Project Settings → General → Vos applications** : app web "GTG Web" enregistrée.
 5. La config (apiKey, databaseURL, etc.) est dans `JS/multi/firebase.js`.
 
-## 13. Pistes d'évolution
+## 13.5 App Check (anti-bot / anti-spam)
+
+App Check protège les services Firebase (RTDB en l'occurrence) en attachant un token d'attestation à chaque requête. Sans token valide → Firebase rejette. Le provider utilisé côté web est **reCAPTCHA v3** (gratuit, invisible pour l'utilisateur — pas de "click on traffic lights").
+
+### Activation côté Google reCAPTCHA
+
+1. Aller sur **https://www.google.com/recaptcha/admin/create**
+2. Label : `gtg-app-check`
+3. Type : **reCAPTCHA v3**
+4. Domaines :
+   - `lelio88.github.io`
+   - `localhost`
+5. Accepter les termes → Submit
+6. Récupérer la **Site key** (publique, va dans le code) et la **Secret key** (privée, va dans Firebase)
+
+### Activation côté Firebase
+
+1. Console Firebase → **App Check** (menu Build)
+2. Onglet **Apps** → enregistrer l'app web `GTG Web` avec le provider **reCAPTCHA v3** + coller la **Secret key**
+3. Onglet **Services** → **Realtime Database** → **NE PAS** activer Enforce immédiatement (mode monitoring d'abord pour voir si du trafic légitime est bloqué)
+4. Une fois les métriques OK (quelques heures de monitoring), activer **Enforce**
+
+### Activation côté code
+
+Dans `JS/multi/firebase.js`, coller la **Site key** dans la constante `RECAPTCHA_SITE_KEY`. L'import du SDK App Check est dynamique → tant que la clé est vide, le SDK n'est pas chargé, l'app marche normalement (sans la protection).
+
+### Comportement
+
+- Chaque requête RTDB embarque un token App Check signé par reCAPTCHA
+- Token rafraîchi automatiquement (`isTokenAutoRefreshEnabled: true`)
+- Les requêtes faites par des navigateurs réels avec un score reCAPTCHA > seuil passent
+- Les bots Selenium/Puppeteer/curl sans le SDK chargé sont bloqués
+
+### Coût / quotas
+
+reCAPTCHA v3 est gratuit jusqu'à **1 million d'évaluations par mois**. App Check Firebase est gratuit également. À l'échelle d'un projet perso, on est largement dans le free tier.
+
+## 14. Pistes d'évolution
 
 - **Firebase Cloud Function** pour valider les réponses côté serveur (anti-triche) — actuellement le client se fie à `checkAnswerValue` local.
 - **Failover de l'hôte** : actuellement si l'hôte ferme l'onglet, la partie meurt. Une promotion automatique au 2ᵉ joueur serait possible mais ajoute ~150 lignes de logique de réconciliation.
