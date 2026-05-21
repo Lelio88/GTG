@@ -1,23 +1,19 @@
 """
-Python/check_assets.py — Audit des assets manquants
+Python/check_assets.py - Audit des assets manquants
 
-Lit JS/gamesDatabase.js, pour chaque jeu vérifie l'existence des fichiers
-attendus dans Medias/<Type>/ selon les conventions du projet :
+Parse JS/gamesDatabase.js, extrait pour chaque jeu :
+  - son `title` (utilisé pour l'affichage et la validation des réponses)
+  - tous les paths declares dans image[], sound[], midi[], shadow[], pixels[]
 
-    Image:  Medias/Image/<Title> 1.jpg, <Title> 2.jpg, <Title> 3.jpg
-    Sound:  Medias/Sound/<Title> 1.mp3, <Title> 2.mp3, <Title> 3.mp3
-    Midi:   Medias/Midi/<Title>.mid
-    Shadow: Medias/Shadow/<Title>.png
-    Pixels: Medias/Pixels/<Title>.png
-
-Affiche :
-    - Récap global (combien de jeux complets)
-    - Détail par jeu (quoi manque)
-    - Récap par mode (pourcentage de complétion)
+Puis verifie l'existence physique de chaque path declare. Important : on lit
+les paths reellement declares au lieu de les deviner depuis le title, car
+certains titres contiennent des caracteres interdits Windows (':' dans
+"Sekiro: Shadows Die Twice") qui sont retires du nom de fichier sur disque
+mais conserves dans le `title`.
 
 Usage :
     cd Python && python check_assets.py
-    cd Python && python check_assets.py --json > missing.json  (export JSON)
+    cd Python && python check_assets.py --json > missing.json
 """
 
 import re
@@ -28,86 +24,132 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 GAMES_DB_PATH = REPO_ROOT / 'JS' / 'gamesDatabase.js'
 
-EXPECTED_PER_GAME = {
-    'Image':  lambda t: [f"{t} {i}.jpg" for i in (1, 2, 3)],
-    'Sound':  lambda t: [f"{t} {i}.mp3" for i in (1, 2, 3)],
-    'Midi':   lambda t: [f"{t}.mid"],
-    'Shadow': lambda t: [f"{t}.png"],
-    'Pixels': lambda t: [f"{t}.png"],
+# Nombre de paths attendus par type dans la declaration d'un jeu
+EXPECTED_COUNT_PER_TYPE = {
+    'Image': 3,
+    'Sound': 3,
+    'Midi': 1,
+    'Shadow': 1,
+    'Pixels': 1,
 }
 
-
-def extract_titles(text):
-    """Extrait la liste des titres depuis gamesDatabase.js (regex sur title: '...')."""
-    pattern = re.compile(r"title\s*:\s*['\"]([^'\"]+)['\"]")
-    return pattern.findall(text)
+TITLE_PATTERN = re.compile(r"title\s*:\s*['\"]([^'\"]+)['\"]")
+PATH_PATTERN = re.compile(r"['\"](\.\./Medias/[^'\"]+)['\"]")
 
 
-def check_game(title):
-    """Pour un titre, retourne un dict {type: [fichiers_manquants]}."""
-    missing = {}
-    for type_name, build_files in EXPECTED_PER_GAME.items():
-        type_dir = REPO_ROOT / 'Medias' / type_name
-        expected = build_files(title)
-        absent = [f for f in expected if not (type_dir / f).exists()]
-        if absent:
-            missing[type_name] = absent
-    return missing
+def parse_games(text):
+    """Decoupe le JS en blocs par titre et collecte les paths de chaque bloc."""
+    title_matches = list(TITLE_PATTERN.finditer(text))
+    games = []
+    for i, m in enumerate(title_matches):
+        start = m.end()
+        end = title_matches[i + 1].start() if i + 1 < len(title_matches) else len(text)
+        chunk = text[start:end]
+        paths = PATH_PATTERN.findall(chunk)
+        games.append({'title': m.group(1), 'paths': paths})
+    return games
 
 
-def print_report(titles, results):
-    """Affiche le rapport texte (ASCII safe pour Windows console)."""
-    incomplete = [(t, m) for t, m in results.items() if m]
-    complete = len(titles) - len(incomplete)
+def resolve_path(rel_path):
+    """rel_path commence par '../Medias/'. Resout depuis REPO_ROOT."""
+    return REPO_ROOT / rel_path.replace('../', '', 1)
+
+
+def categorize_path(rel_path):
+    """Retourne le type (Image, Sound, ...) depuis '../Medias/<Type>/...'"""
+    m = re.match(r"^\.\./Medias/(\w+)/", rel_path)
+    return m.group(1) if m else None
+
+
+def check_game(game):
+    """Retourne dict {type: {declared: int, present: int, missing_files: [filenames]}}."""
+    by_type = {}
+    for p in game['paths']:
+        t = categorize_path(p)
+        if not t:
+            continue
+        bucket = by_type.setdefault(t, {'paths': []})
+        bucket['paths'].append(p)
+
+    result = {}
+    for type_name, expected_count in EXPECTED_COUNT_PER_TYPE.items():
+        bucket = by_type.get(type_name, {'paths': []})
+        declared = len(bucket['paths'])
+        missing_files = []
+        # Test l'existence de chaque path declare
+        for p in bucket['paths']:
+            if not resolve_path(p).exists():
+                missing_files.append(p.split('/')[-1])
+        # Manquants non declares (declaration incomplete)
+        undeclared_count = max(0, expected_count - declared)
+        for i in range(undeclared_count):
+            missing_files.append(f"(non declare dans gamesDatabase.js)")
+        present = declared - len(missing_files) + undeclared_count
+        # Recompute present properly
+        present = declared - sum(1 for p in bucket['paths'] if not resolve_path(p).exists())
+        result[type_name] = {
+            'declared': declared,
+            'expected': expected_count,
+            'present': present,
+            'missing_files': missing_files,
+        }
+    return result
+
+
+def print_report(games, results):
+    incomplete = [(g, r) for g, r in zip(games, results) if any(t['missing_files'] for t in r.values())]
+    complete_count = len(games) - len(incomplete)
 
     print()
     print("=" * 70)
-    print(f"  CATALOGUE GTG - {len(titles)} jeux dans gamesDatabase.js")
+    print(f"  CATALOGUE GTG - {len(games)} jeux dans gamesDatabase.js")
     print("=" * 70)
-    print(f"  Jeux complets       : {complete} / {len(titles)}  ({100*complete//len(titles)}%)")
-    print(f"  Jeux avec manquants : {len(incomplete)} / {len(titles)}")
+    print(f"  Jeux complets       : {complete_count} / {len(games)}  ({100 * complete_count // max(1, len(games))}%)")
+    print(f"  Jeux avec manquants : {len(incomplete)} / {len(games)}")
     print()
 
     if incomplete:
         print("=" * 70)
         print("  DETAIL DES MANQUANTS PAR JEU")
         print("=" * 70)
-        for title, missing in sorted(incomplete, key=lambda x: x[0]):
-            print(f"\n  > {title}")
-            for type_name in EXPECTED_PER_GAME.keys():
-                if type_name in missing:
-                    files = missing[type_name]
-                    total = len(EXPECTED_PER_GAME[type_name](title))
-                    print(f"     [KO] {type_name:6} ({len(files)}/{total} manquants)  {', '.join(files)}")
+        for game, res in sorted(incomplete, key=lambda x: x[0]['title'].lower()):
+            print(f"\n  > {game['title']}")
+            for type_name in EXPECTED_COUNT_PER_TYPE.keys():
+                t = res[type_name]
+                if t['missing_files']:
+                    print(f"     [KO] {type_name:6} ({t['present']}/{t['expected']})  {', '.join(t['missing_files'])}")
                 else:
                     print(f"     [OK] {type_name:6}")
 
     print()
     print("=" * 70)
-    print("  RECAP PAR MODE")
+    print("  RECAP PAR MODE (sur l'ensemble du catalogue)")
     print("=" * 70)
-    for type_name in EXPECTED_PER_GAME.keys():
-        total_expected = sum(len(EXPECTED_PER_GAME[type_name](t)) for t in titles)
-        total_missing = sum(len(m.get(type_name, [])) for m in results.values())
-        present = total_expected - total_missing
-        pct = (100 * present // total_expected) if total_expected else 0
+    for type_name, expected_count in EXPECTED_COUNT_PER_TYPE.items():
+        total_expected = expected_count * len(games)
+        total_present = sum(r[type_name]['present'] for r in results)
+        pct = (100 * total_present // total_expected) if total_expected else 0
         bar_length = 30
-        filled = bar_length * present // total_expected if total_expected else 0
+        filled = (bar_length * total_present // total_expected) if total_expected else 0
         bar = '#' * filled + '-' * (bar_length - filled)
-        print(f"  {type_name:6} : [{bar}]  {present}/{total_expected}  ({pct}%)")
+        missing = total_expected - total_present
+        print(f"  {type_name:6} : [{bar}]  {total_present}/{total_expected}  ({pct}%, {missing} manquants)")
     print()
 
 
-def print_json(titles, results):
-    """Sortie JSON pour scripts downstream."""
-    incomplete = {t: m for t, m in results.items() if m}
-    output = {
-        'total_games': len(titles),
-        'complete_games': len(titles) - len(incomplete),
-        'incomplete_count': len(incomplete),
-        'incomplete': incomplete,
+def print_json(games, results):
+    payload = {
+        'total_games': len(games),
+        'games': [
+            {
+                'title': g['title'],
+                'modes': r,
+            }
+            for g, r in zip(games, results)
+            if any(t['missing_files'] for t in r.values())
+        ],
     }
-    print(json.dumps(output, indent=2, ensure_ascii=False))
+    print(json.dumps(payload, indent=2, ensure_ascii=False))
 
 
 def main():
@@ -116,17 +158,17 @@ def main():
         sys.exit(1)
 
     text = GAMES_DB_PATH.read_text(encoding='utf-8')
-    titles = extract_titles(text)
-    if not titles:
-        print("ERREUR : aucun jeu trouvé dans gamesDatabase.js", file=sys.stderr)
+    games = parse_games(text)
+    if not games:
+        print("ERREUR : aucun jeu detecte dans gamesDatabase.js", file=sys.stderr)
         sys.exit(1)
 
-    results = {title: check_game(title) for title in titles}
+    results = [check_game(g) for g in games]
 
     if '--json' in sys.argv:
-        print_json(titles, results)
+        print_json(games, results)
     else:
-        print_report(titles, results)
+        print_report(games, results)
 
 
 if __name__ == '__main__':
