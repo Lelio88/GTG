@@ -545,7 +545,7 @@ body:has(.multi-lobby-app)::after {
     border-radius: var(--radius-sm);
     color: var(--text-primary);
     box-sizing: border-box;
-    margin: 0 0 var(--sp-3) 0;  /* spacing explicite avant les boutons */
+    margin: var(--sp-5) 0 var(--sp-3) 0;  /* 24px avant l'input, 12px après */
     flex-shrink: 0;
     transition: border-color var(--transition-fast), box-shadow var(--transition-base);
 }
@@ -559,7 +559,7 @@ body:has(.multi-lobby-app)::after {
 #game-view #button-container {
     display: flex;
     gap: var(--sp-3);
-    margin: var(--sp-3) 0 0 0;  /* spacing explicite après l'input */
+    margin: var(--sp-3) 0 var(--sp-2) 0;
     padding: 0;
     flex-shrink: 0;
     justify-content: center;
