@@ -33,20 +33,64 @@ EXPECTED_COUNT_PER_TYPE = {
     'Pixels': 1,
 }
 
-TITLE_PATTERN = re.compile(r"title\s*:\s*['\"]([^'\"]+)['\"]")
-PATH_PATTERN = re.compile(r"['\"](\.\./Medias/[^'\"]+)['\"]")
+"""
+Regex pour parser un literal de string JS en gerant les escapes (\\', \\", \\\\, \\n...).
+
+  '((?:\\\\.|[^'\\\\])*)'    --> single-quoted : capture une suite de
+                                  ( backslash + n'importe quoi ) OU ( pas-apostrophe-pas-backslash )
+  "((?:\\\\.|[^"\\\\])*)"    --> double-quoted, idem
+
+group(1) = contenu single-quoted, group(2) = contenu double-quoted.
+"""
+STRING_TOKEN = r"""(?:'((?:\\.|[^'\\])*)'|"((?:\\.|[^"\\])*)")"""
+
+TITLE_PATTERN = re.compile(r"title\s*:\s*" + STRING_TOKEN)
+STRING_PATTERN = re.compile(STRING_TOKEN)
+
+
+def js_unescape(raw):
+    """Decode les sequences d'echappement basiques d'un string literal JS."""
+    if raw is None:
+        return None
+    out = []
+    i = 0
+    while i < len(raw):
+        if raw[i] == '\\' and i + 1 < len(raw):
+            c = raw[i + 1]
+            mapping = {"'": "'", '"': '"', '\\': '\\', 'n': '\n', 't': '\t', 'r': '\r', '/': '/'}
+            out.append(mapping.get(c, c))
+            i += 2
+        else:
+            out.append(raw[i])
+            i += 1
+    return ''.join(out)
+
+
+def get_captured_string(match):
+    """Retourne le contenu du string literal, soit group(1) soit group(2), unescaped."""
+    raw = match.group(1) if match.group(1) is not None else match.group(2)
+    return js_unescape(raw)
 
 
 def parse_games(text):
-    """Decoupe le JS en blocs par titre et collecte les paths de chaque bloc."""
+    """Decoupe le JS en blocs par titre et collecte les paths de chaque bloc.
+
+    Important : on gere les apostrophes echappees (`\\'`) dans les titres et paths
+    pour les jeux type "Assassin's Creed" ou "Five Night at Freddy's".
+    """
     title_matches = list(TITLE_PATTERN.finditer(text))
     games = []
     for i, m in enumerate(title_matches):
+        title = get_captured_string(m)
         start = m.end()
         end = title_matches[i + 1].start() if i + 1 < len(title_matches) else len(text)
         chunk = text[start:end]
-        paths = PATH_PATTERN.findall(chunk)
-        games.append({'title': m.group(1), 'paths': paths})
+        paths = []
+        for sm in STRING_PATTERN.finditer(chunk):
+            s = get_captured_string(sm)
+            if s and s.startswith('../Medias/'):
+                paths.append(s)
+        games.append({'title': title, 'paths': paths})
     return games
 
 
