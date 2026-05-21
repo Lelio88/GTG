@@ -354,6 +354,7 @@ body:has(.multi-lobby-app)::after {
     justify-content: center;
     overflow: hidden;
     width: 100%;
+    padding-bottom: var(--sp-4); /* spacing avant l'input quel que soit le mode */
 }
 
 /* Centrer horizontalement les enfants UNIQUES (image seule, audio seul, emoji)
@@ -535,7 +536,7 @@ body:has(.multi-lobby-app)::after {
 /* Champ de saisie + boutons ----- */
 
 #game-view #user-input {
-    display: block;
+    display: block !important;
     width: 100%;
     padding: var(--sp-3) var(--sp-4);
     font-family: var(--font-ui);
@@ -545,7 +546,7 @@ body:has(.multi-lobby-app)::after {
     border-radius: var(--radius-sm);
     color: var(--text-primary);
     box-sizing: border-box;
-    margin: var(--sp-5) 0 var(--sp-3) 0;  /* 24px avant l'input, 12px après */
+    margin: var(--sp-5) 0 var(--sp-3) 0 !important;  /* 24px avant l'input, 12px après — !important pour vaincre les overrides */
     flex-shrink: 0;
     transition: border-color var(--transition-fast), box-shadow var(--transition-base);
 }
@@ -748,6 +749,76 @@ body:has(.multi-lobby-app)::after {
     color: var(--text-primary);
     font-family: var(--font-mono);
     font-size: var(--fs-xs);
+}
+
+/* Nouvelle ligne de partage : code + lien + copier sur la même ligne */
+.multi-share-row {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+    margin: var(--sp-4) 0;
+    flex-wrap: wrap;
+}
+
+.multi-share-item {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+}
+
+.multi-share-item-link {
+    flex: 1;
+    min-width: 240px;
+}
+
+.multi-share-item label {
+    font-family: var(--font-display);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+}
+
+.multi-share-item code {
+    font-family: var(--font-mono);
+    font-size: var(--fs-md);
+    color: var(--neon-cyan);
+    text-shadow: 0 0 8px var(--neon-cyan);
+    padding: var(--sp-1) var(--sp-3);
+    background: var(--bg-deep);
+    border: 1px solid rgba(0, 246, 255, 0.3);
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.15em;
+}
+
+.multi-share-item input {
+    flex: 1;
+    padding: var(--sp-2) var(--sp-3);
+    background: var(--bg-deep);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    min-width: 0;
+}
+
+.multi-share-btn {
+    padding: var(--sp-2) var(--sp-3);
+    background: transparent;
+    border: 1px solid var(--neon-primary);
+    border-radius: var(--radius-sm);
+    color: var(--neon-primary);
+    cursor: pointer;
+    font-size: var(--fs-base);
+    transition: all var(--transition-base);
+    margin: 0 !important;       /* override les boutons générique lobby */
+    flex-shrink: 0;
+}
+
+.multi-share-btn:hover {
+    background: rgba(255, 184, 107, 0.15);
+    box-shadow: 0 0 10px rgba(255, 184, 107, 0.5);
 }
 
 #lobby-view button,

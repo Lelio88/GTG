@@ -43,11 +43,20 @@
         <!-- Vue lobby (avant démarrage) -->
         <section id="lobby-view" class="multi-view">
             <h1>Salle d'attente</h1>
-            <p class="multi-share">
-                Partage le lien :
-                <input type="text" id="share-link" readonly />
-                <button id="copy-link-btn">Copier</button>
-            </p>
+
+            <div class="multi-share-row">
+                <div class="multi-share-item">
+                    <label>Code</label>
+                    <code id="lobby-room-code"></code>
+                    <button id="copy-code-btn" class="multi-share-btn" title="Copier le code">📋</button>
+                </div>
+                <div class="multi-share-item multi-share-item-link">
+                    <label>Lien</label>
+                    <input type="text" id="share-link" readonly />
+                    <button id="copy-link-btn" class="multi-share-btn" title="Copier le lien">📋</button>
+                </div>
+            </div>
+
             <p id="lobby-info">En attente de joueurs…</p>
             <button id="start-game-btn" style="display:none;">Démarrer la partie</button>
         </section>

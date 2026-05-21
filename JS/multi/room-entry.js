@@ -58,8 +58,10 @@ window.addEventListener('DOMContentLoaded', async () => {
     $('bug-report-link').href = buildBugReportUrl(code);
 
     // Lobby view
+    $('lobby-room-code').innerText = code;
     $('share-link').value = buildShareableUrl(code);
     $('copy-link-btn').onclick = copyShareLink;
+    $('copy-code-btn').onclick = copyRoomCode;
     $('leave-room-btn').onclick = onLeaveRoom;
     $('back-to-lobby-btn').onclick = () => { window.location.href = 'multi-lobby.html'; };
     $('start-game-btn').onclick = onStartGame;
@@ -328,8 +330,21 @@ function copyShareLink() {
     const url = $('share-link').value;
     if (navigator.clipboard) {
         navigator.clipboard.writeText(url).then(() => {
-            $('copy-link-btn').innerText = 'Copié ✓';
-            setTimeout(() => { $('copy-link-btn').innerText = 'Copier'; }, 1500);
+            const btn = $('copy-link-btn');
+            const original = btn.innerText;
+            btn.innerText = '✓';
+            setTimeout(() => { btn.innerText = original; }, 1500);
+        });
+    }
+}
+
+function copyRoomCode() {
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(code).then(() => {
+            const btn = $('copy-code-btn');
+            const original = btn.innerText;
+            btn.innerText = '✓';
+            setTimeout(() => { btn.innerText = original; }, 1500);
         });
     }
 }
