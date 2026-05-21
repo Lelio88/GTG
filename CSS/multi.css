@@ -148,18 +148,18 @@
 }
 
 /* Mode Full : layout image | texte+audio responsive
-   Grid avec minmax() pour garantir un minimum lisible des deux côtés */
+   Grid asymétrique 2fr/1fr — image grosse, texte garde min 280px lisibles */
 #game-view #content .hint-container {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(320px, 1fr);
-    gap: 28px;
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+    gap: 24px;
     width: 100%;
     align-items: center;
 }
 
 #game-view #content .hint-container img {
     width: 100%;
-    max-height: 55vh;
+    max-height: 65vh;
     object-fit: contain;
     border-radius: 6px;
     box-shadow: 0 0 20px rgba(255, 184, 107, 0.15);

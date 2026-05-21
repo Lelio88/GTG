@@ -118,8 +118,7 @@ def print_report(games, results):
                 t = res[type_name]
                 if t['missing_files']:
                     print(f"     [KO] {type_name:6} ({t['present']}/{t['expected']})  {', '.join(t['missing_files'])}")
-                else:
-                    print(f"     [OK] {type_name:6}")
+                # On n'affiche plus les lignes [OK] - inutile bruit pour la lecture
 
     print()
     print("=" * 70)
