@@ -11,7 +11,7 @@
  */
 
 import {
-    db, ref, onValue, off, update, whenAuthenticated, get
+    db, ref, onValue, off, update, whenAuthenticated, get, runTransaction, onDisconnect
 } from './firebase.js';
 import { joinRoom, leaveRoom, startGame, MIN_PLAYERS, programDisconnectCleanup } from './lobby.js';
 import { startHostEngine, extendTargetGames } from './host-engine.js';
@@ -177,12 +177,24 @@ function listenRoom() {
             return;
         }
         const meta = data.meta;
+        const wasHost = isHost;
         isHost = (meta.hostUid === myUid);
 
         if (meta.status === 'cancelled') {
             alert('La partie a été annulée (l\'hôte a quitté).');
             window.location.href = 'multi-lobby.html';
             return;
+        }
+
+        // FAILOVER : si hostUid est null/absent et qu'il y a encore des joueurs,
+        // on tente de devenir le nouvel hôte
+        if ((!meta.hostUid || meta.hostUid === null) && data.players && data.players[myUid]) {
+            attemptHostPromotion(data).catch((err) => console.error('host promotion failed', err));
+        }
+
+        // Si je viens de devenir host (promotion réussie), démarrer host-engine
+        if (isHost && !wasHost && meta.status === 'playing' && !hostEngine) {
+            hostEngine = startHostEngine({ code, uid: myUid });
         }
 
         if (meta.status !== lastStatus) {
@@ -195,6 +207,40 @@ function listenRoom() {
             updateResultsUi(data);
         }
     });
+}
+
+/**
+ * Tente de devenir le nouvel hôte de la room via une transaction Firebase.
+ * Seul le premier client à exécuter la transaction réussit ; les autres voient
+ * que hostUid est déjà set et abort proprement.
+ */
+let promotionInFlight = false;
+async function attemptHostPromotion(roomData) {
+    if (promotionInFlight) return;
+    promotionInFlight = true;
+    try {
+        const hostUidRef = ref(db, `rooms/${code}/meta/hostUid`);
+        const result = await runTransaction(hostUidRef, (current) => {
+            if (current === null || current === undefined) {
+                return myUid;  // claim
+            }
+            return;  // abort, qqn d'autre a claim
+        });
+
+        if (result.committed && result.snapshot.val() === myUid) {
+            // J'ai gagné la promotion
+            console.log('[Failover] Je suis le nouvel hôte');
+
+            // Mettre à jour meta.hostName aussi (cosmétique mais propre)
+            await update(ref(db, `rooms/${code}/meta`), { hostName: myName });
+
+            // Ré-armer mon onDisconnect en tant que hôte
+            const hostUidRef2 = ref(db, `rooms/${code}/meta/hostUid`);
+            await onDisconnect(hostUidRef2).set(null);
+        }
+    } finally {
+        promotionInFlight = false;
+    }
 }
 
 function handleStatusChange(meta, data) {

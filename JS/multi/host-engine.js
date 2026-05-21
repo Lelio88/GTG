@@ -218,8 +218,9 @@ export function startHostEngine({ code, uid }) {
         checkRoundEnd().catch(err => console.error('host-engine', err));
     }, 250);
 
-    // Bootstrap : premier round
-    startNextRound();
+    // Bootstrap : démarrer un nouveau round UNIQUEMENT si aucun round en cours
+    // (cas d'un failover : un nouvel hôte reprend une partie qui avait déjà un round actif)
+    bootstrapIfNeeded();
 
     return {
         stop() {
@@ -228,6 +229,26 @@ export function startHostEngine({ code, uid }) {
             if (unsubRoom) off(roomRef);
         },
     };
+
+    /**
+     * Si la room est en "playing" sans currentRound actif → démarre un round.
+     * Sinon (round déjà actif), on laisse le watcher reprendre la transition.
+     * Indispensable pour le failover : un nouvel hôte ne doit pas écraser un
+     * round qui était déjà en cours quand l'ancien hôte s'est déconnecté.
+     */
+    async function bootstrapIfNeeded() {
+        if (stopped) return;
+        const snap = await get(ref(db, `rooms/${code}`));
+        if (!snap.exists()) return;
+        const room = snap.val();
+        const meta = room.meta || {};
+        if (meta.status !== 'playing') return;
+        const current = room.game?.currentRound;
+        if (!current || current.endedAt) {
+            startNextRound();
+        }
+        // Si un round est en cours, le watcher checkRoundEnd s'en occupera
+    }
 }
 
 /**

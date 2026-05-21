@@ -128,7 +128,10 @@ export async function leaveRoom({ code, uid }) {
 /**
  * Programme le cleanup automatique quand l'onglet se ferme (via Firebase onDisconnect()).
  * - Joueur non-hôte : son noeud players/{uid} est supprimé
- * - Hôte : meta.status passe à "cancelled" → tous les clients voient la partie tuée
+ * - Hôte : son noeud players/{uid} est supprimé ET meta.hostUid passe à null.
+ *   → Les autres clients pourront alors promouvoir un nouveau hôte via transaction
+ *   (failover). Si tous les joueurs partent, la room reste "playing" mais sans hôte
+ *   actif → elle sera nettoyée par le TTL ou un cleanup manuel.
  *
  * À appeler UNIQUEMENT depuis room-entry.js (la "vraie" page de session), pas
  * depuis le lobby — sinon la navigation lobby → room déclenche le onDisconnect
@@ -139,8 +142,10 @@ export async function programDisconnectCleanup(code, uid, isHost) {
     await onDisconnect(playerRef).remove();
 
     if (isHost) {
-        const statusRef = ref(db, `rooms/${code}/meta/status`);
-        await onDisconnect(statusRef).set('cancelled');
+        // FAILOVER : on libère juste le rôle d'hôte au lieu de tuer la partie.
+        // Un autre joueur se réclamera via transaction.
+        const hostUidRef = ref(db, `rooms/${code}/meta/hostUid`);
+        await onDisconnect(hostUidRef).set(null);
     }
 }
 
