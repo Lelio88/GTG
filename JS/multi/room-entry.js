@@ -55,13 +55,12 @@ let resultsConfettiFired = false; // un seul tir de confettis par entrée dans r
 window.addEventListener('DOMContentLoaded', async () => {
     // Header global
     $('header-room-code').innerText = code;
-    $('bug-report-link').href = buildBugReportUrl(code);
-
-    // Lobby view
-    $('lobby-room-code').innerText = code;
     $('share-link').value = buildShareableUrl(code);
     $('copy-link-btn').onclick = copyShareLink;
     $('copy-code-btn').onclick = copyRoomCode;
+    $('bug-report-btn').onclick = openBugReportModal;
+    $('bug-report-cancel').onclick = closeBugReportModal;
+    $('bug-report-form').onsubmit = onBugReportSubmit;
     $('leave-room-btn').onclick = onLeaveRoom;
     $('back-to-lobby-btn').onclick = () => { window.location.href = 'multi-lobby.html'; };
     $('start-game-btn').onclick = onStartGame;
@@ -120,34 +119,48 @@ window.addEventListener('DOMContentLoaded', async () => {
 });
 
 /**
- * Construit l'URL GitHub Issues pré-remplie pour signaler un bug.
- * Le label "mode-multi" doit exister dans le repo (sinon GitHub l'ignore).
+ * Construit l'URL GitHub Issues pré-remplie à partir de ce que l'utilisateur
+ * a tapé dans la modale. Le label "mode-multi" doit exister dans le repo.
  */
-function buildBugReportUrl(code) {
+function buildBugReportUrlWithContent(code, userTitle, userDesc) {
     const params = new URLSearchParams({
         labels: 'mode-multi',
-        title: '[Multi] ',
+        title: `[Multi] ${userTitle}`,
         body: [
-            '## Description du bug',
+            '## Description',
             '',
-            '<!-- Décris ici ce qui se passe -->',
+            userDesc,
             '',
-            '## Reproduction',
-            '',
-            '<!-- Étapes pour reproduire -->',
-            '',
-            '## Contexte',
+            '## Contexte technique (rempli automatiquement)',
             '',
             `- Room : \`${code}\``,
             `- Date : ${new Date().toISOString()}`,
             `- Navigateur : ${navigator.userAgent}`,
-            '',
-            '## Comportement attendu',
-            '',
-            '<!-- Ce que tu pensais qu\'il allait se passer -->',
+            `- URL : ${window.location.href}`,
         ].join('\n'),
     });
     return `${BUG_REPORT_BASE}?${params.toString()}`;
+}
+
+function openBugReportModal() {
+    $('bug-report-modal').style.display = 'flex';
+    setTimeout(() => $('bug-report-title-input').focus(), 50);
+}
+
+function closeBugReportModal() {
+    $('bug-report-modal').style.display = 'none';
+    $('bug-report-form').reset();
+}
+
+function onBugReportSubmit(e) {
+    e.preventDefault();
+    const title = $('bug-report-title-input').value.trim();
+    const desc = $('bug-report-desc').value.trim();
+    if (!title || !desc) return;
+
+    const url = buildBugReportUrlWithContent(code, title, desc);
+    window.open(url, '_blank', 'noopener');
+    closeBugReportModal();
 }
 
 // ──────────────────────────────────────────────────────────────────────────

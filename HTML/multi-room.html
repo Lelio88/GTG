@@ -17,9 +17,12 @@
             <div class="multi-room-header-left">
                 <span class="multi-room-header-title">Room</span>
                 <span class="multi-room-header-code" id="header-room-code"></span>
+                <button id="copy-code-btn" class="multi-share-btn" title="Copier le code">📋</button>
+                <input type="text" id="share-link" class="multi-room-header-link" readonly />
+                <button id="copy-link-btn" class="multi-share-btn" title="Copier le lien">📋</button>
             </div>
             <div class="multi-room-header-actions">
-                <a id="bug-report-link" class="btn-bug-report" target="_blank" rel="noopener" href="#">🐛 Signaler un bug</a>
+                <button id="bug-report-btn" class="btn-bug-report">🐛 Signaler un bug</button>
                 <button id="leave-room-btn" class="btn-leave">← Quitter</button>
             </div>
         </header>
@@ -43,20 +46,6 @@
         <!-- Vue lobby (avant démarrage) -->
         <section id="lobby-view" class="multi-view">
             <h1>Salle d'attente</h1>
-
-            <div class="multi-share-row">
-                <div class="multi-share-item">
-                    <label>Code</label>
-                    <code id="lobby-room-code"></code>
-                    <button id="copy-code-btn" class="multi-share-btn" title="Copier le code">📋</button>
-                </div>
-                <div class="multi-share-item multi-share-item-link">
-                    <label>Lien</label>
-                    <input type="text" id="share-link" readonly />
-                    <button id="copy-link-btn" class="multi-share-btn" title="Copier le lien">📋</button>
-                </div>
-            </div>
-
             <p id="lobby-info">En attente de joueurs…</p>
             <button id="start-game-btn" style="display:none;">Démarrer la partie</button>
         </section>
@@ -90,6 +79,34 @@
             <button id="extend-rounds-btn" style="display:none;">Prolonger (+5 manches)</button>
             <button id="back-to-lobby-btn">Retour à l'accueil</button>
         </section>
+
+        <!-- Modale Signaler un bug -->
+        <div id="bug-report-modal" class="multi-modal" style="display:none;">
+            <div class="multi-modal-content">
+                <h2 class="multi-modal-title">🐛 Signaler un bug</h2>
+                <form id="bug-report-form" autocomplete="off">
+                    <label for="bug-report-title-input" class="multi-modal-label">Titre court</label>
+                    <input type="text" id="bug-report-title-input" class="multi-modal-input"
+                           maxlength="80" required
+                           placeholder="Ex: Le timer ne s'arrête pas après le 1er hit" />
+
+                    <label for="bug-report-desc" class="multi-modal-label">Description</label>
+                    <textarea id="bug-report-desc" class="multi-modal-input multi-modal-textarea"
+                              rows="6" maxlength="2000" required
+                              placeholder="Que s'est-il passé ? Comment reproduire ? Quel comportement attendais-tu ?"></textarea>
+
+                    <p class="multi-modal-note">
+                        Les infos techniques (code de room, navigateur, date) seront ajoutées
+                        automatiquement. Tu seras redirigé vers GitHub pour valider l'envoi.
+                    </p>
+
+                    <div class="multi-modal-actions">
+                        <button type="button" id="bug-report-cancel" class="multi-modal-btn-secondary">Annuler</button>
+                        <button type="submit" class="multi-modal-btn-primary">Soumettre →</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
     </div>
 </body>
