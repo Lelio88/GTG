@@ -1,0 +1,320 @@
+/* ===========================================================
+   CSS/multi.css — Styles pour le mode multijoueur
+   Étend les styles existants (index-style.css, style.css).
+   =========================================================== */
+
+/* --- Lobby (HTML/multi-lobby.html) --- */
+
+.multi-lobby-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 40px 20px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    overflow-y: auto;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.multi-lobby-app h1 {
+    color: #ffb86b;
+    text-shadow: 0 0 12px #ff6b9f;
+    margin: 0 0 10px;
+}
+
+.multi-section {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 184, 107, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.multi-section h2 {
+    margin: 0 0 10px;
+    color: #ff6b9f;
+    font-size: 1.2rem;
+}
+
+.multi-section label {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.multi-section input,
+.multi-section select {
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+}
+
+.multi-section button {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #ffb86b, #ff6b9f);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.multi-section button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 107, 159, 0.4);
+}
+
+.multi-section button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.multi-error {
+    min-height: 1.5em;
+    color: #ff6b9f;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.multi-back {
+    color: #ffb86b;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+.multi-back:hover {
+    text-decoration: underline;
+}
+
+/* --- Room (HTML/multi-room.html) --- */
+
+.multi-room-app {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 20px;
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.multi-view {
+    grid-column: 2;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 184, 107, 0.2);
+    border-radius: 10px;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+/* --- Sidebar Scoreboard --- */
+
+.multi-scoreboard {
+    grid-column: 1;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 184, 107, 0.3);
+    border-radius: 10px;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.multi-scoreboard-header h3 {
+    margin: 0 0 5px;
+    color: #ffb86b;
+    font-size: 1rem;
+}
+
+.multi-progress {
+    margin: 0 0 15px;
+    font-size: 0.85rem;
+    color: #aaa;
+}
+
+.multi-scoreboard-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.multi-scoreboard-row {
+    display: grid;
+    grid-template-columns: 24px 1fr auto;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.multi-scoreboard-row.multi-scoreboard-me {
+    background: rgba(255, 184, 107, 0.15);
+    border-left: 3px solid #ffb86b;
+}
+
+.multi-scoreboard-status {
+    font-size: 1rem;
+}
+
+.multi-scoreboard-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.multi-scoreboard-score {
+    color: #ffb86b;
+    font-weight: bold;
+}
+
+/* --- Lobby view inside room --- */
+
+#lobby-view h1 {
+    color: #ffb86b;
+}
+
+.multi-share {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.multi-share input {
+    flex: 1;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    color: white;
+    font-family: monospace;
+    font-size: 0.85rem;
+}
+
+#lobby-view button,
+#results-view button {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #ffb86b, #ff6b9f);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+#lobby-view button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* --- Game view inside room --- */
+
+.multi-game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+#multi-progress {
+    font-weight: bold;
+    color: #ffb86b;
+}
+
+#multi-timer {
+    font-family: monospace;
+    font-size: 1.2rem;
+    color: #ff6b9f;
+}
+
+#add-rounds-btn {
+    padding: 5px 12px;
+    background: rgba(255, 184, 107, 0.2);
+    border: 1px solid #ffb86b;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+#game-view #user-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    color: white;
+    margin: 15px 0;
+    box-sizing: border-box;
+}
+
+#game-view #button-container button {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #ffb86b, #ff6b9f);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* --- Results view --- */
+
+#results-view h1 {
+    color: #ffb86b;
+    text-align: center;
+}
+
+#final-ranking {
+    padding-left: 20px;
+    margin: 20px 0;
+}
+
+#final-ranking li {
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 5px;
+    margin-bottom: 8px;
+}
+
+#final-ranking li:first-child {
+    background: rgba(255, 184, 107, 0.2);
+    border: 1px solid #ffb86b;
+}
+
+/* --- Responsive --- */
+
+@media (max-width: 768px) {
+    .multi-room-app {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        height: 100vh;
+    }
+    .multi-scoreboard {
+        grid-column: 1;
+        max-height: 200px;
+    }
+    .multi-view {
+        grid-column: 1;
+    }
+}

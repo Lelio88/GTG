@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Multijoueur — GTG</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/multi.css">
+    <script type="module" defer src="../JS/multi/room-entry.js"></script>
+</head>
+
+<body>
+    <div id="app" class="multi-room-app">
+
+        <!-- Sidebar live des joueurs -->
+        <aside id="multi-scoreboard" class="multi-scoreboard"></aside>
+
+        <!-- Vue lobby (avant démarrage) -->
+        <section id="lobby-view" class="multi-view">
+            <h1>Room <span id="room-code-display"></span></h1>
+            <p class="multi-share">
+                Partage le lien :
+                <input type="text" id="share-link" readonly />
+                <button id="copy-link-btn">Copier</button>
+            </p>
+            <p id="lobby-info">En attente de joueurs…</p>
+            <button id="start-game-btn" style="display:none;">Démarrer la partie</button>
+            <button id="leave-room-btn">Quitter la room</button>
+        </section>
+
+        <!-- Vue partie (pendant le jeu) -->
+        <section id="game-view" class="multi-view" style="display:none;">
+            <header class="multi-game-header">
+                <span id="multi-progress"></span>
+                <span id="multi-timer">⏱ 30s</span>
+                <button id="add-rounds-btn" style="display:none;">+5 manches</button>
+            </header>
+
+            <h2 id="message"></h2>
+            <div id="content"></div>
+
+            <input type="text" id="user-input" placeholder="Votre réponse..." autocomplete="off" />
+
+            <div id="button-container">
+                <button id="hint-button">Indice</button>
+                <button id="multi-check-btn">Valider</button>
+            </div>
+        </section>
+
+        <!-- Vue résultats (fin de partie) -->
+        <section id="results-view" class="multi-view" style="display:none;">
+            <h1>🏆 Classement final</h1>
+            <ol id="final-ranking"></ol>
+            <button id="extend-rounds-btn" style="display:none;">Prolonger (+5 manches)</button>
+            <button id="back-to-lobby-btn">Retour à l'accueil</button>
+        </section>
+
+    </div>
+</body>
+
+</html>

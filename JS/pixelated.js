@@ -3,6 +3,7 @@ PIXELATED MODE (HARDCORE)
 ============================ */
 import { games } from './gamesDatabase.js';
 import { handleGameCompletion } from './gameCompletion.js';
+import { renderHintPixelated } from './hint-renderers.js';
 import {
     getCurrentProfile,
     initializeProfile,
@@ -49,70 +50,11 @@ function launchGamePixelated() {
     initializeGameTitle(cachedTitle);
 
     const contentDiv = document.getElementById('content');
-    contentDiv.innerHTML = '';
 
-    // 2. Select Image Source (Pixels folder or fallback)
-    if (cachedGame.pixels && cachedGame.pixels.length > 0) {
-        gameImages = cachedGame.pixels;
-    } else {
-        gameImages = cachedGame.image;
-    }
+    // Conservé pour la révélation HD (utilisé par checkAnswer / abandonGame)
+    gameImages = (cachedGame.pixels && cachedGame.pixels.length > 0) ? cachedGame.pixels : cachedGame.image;
 
-    // ============================================================
-    // CADRE FIXE
-    // ============================================================
-    const imageWrapper = document.createElement('div');
-    imageWrapper.style.width = '100%';
-    imageWrapper.style.height = '40vh'; // Grande taille verticale
-    imageWrapper.style.display = 'flex';
-    imageWrapper.style.justifyContent = 'center';
-    imageWrapper.style.alignItems = 'center';
-    imageWrapper.style.overflow = 'hidden';
-    // Optionnel : fond noir pour faire ressortir l'image
-    // imageWrapper.style.backgroundColor = '#000'; 
-
-    // ============================================================
-    // IMAGE & PIXELLISATION
-    // ============================================================
-    const img = document.createElement('img');
-    img.id = 'game-pixels';
-    img.style.width = '100%';
-    img.style.height = '100%';
-    img.style.objectFit = 'contain';
-    img.style.imageRendering = 'pixelated';
-    img.style.boxShadow = 'none';
-    
-    // Logique Canvas pour créer les gros pixels
-    const tempImg = new Image();
-    tempImg.src = gameImages[0];
-    
-    tempImg.onload = () => {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-
-        // Facteur de réduction (0.06 = très pixellisé)
-        const pixelFactor = 0.05; 
-
-        const w = Math.floor(tempImg.width * pixelFactor);
-        const h = Math.floor(tempImg.height * pixelFactor);
-        
-        canvas.width = w;
-        canvas.height = h;
-
-        // Dessin miniature
-        ctx.drawImage(tempImg, 0, 0, w, h);
-
-        // Injection dans l'image principale
-        img.src = canvas.toDataURL();
-        
-        // Animation d'apparition
-        img.style.opacity = '0';
-        img.style.transition = 'opacity 0.5s ease';
-        setTimeout(() => { img.style.opacity = '1'; }, 50);
-    };
-
-    imageWrapper.appendChild(img);
-    contentDiv.appendChild(imageWrapper);
+    renderHintPixelated(cachedGame, 0, contentDiv);
 
     timerInterval = startTimerUtil();
 

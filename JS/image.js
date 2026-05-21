@@ -3,6 +3,7 @@ IMAGE ONLY MODE
 ============================ */
 import { games } from './gamesDatabase.js';
 import { handleGameCompletion } from './gameCompletion.js';
+import { renderHintImage } from './hint-renderers.js';
 import {
     getCurrentProfile,
     initializeProfile,
@@ -56,22 +57,12 @@ function launchGameImage() {
     initializeGameTitle(cachedTitle);
 
     const contentDiv = document.getElementById('content');
-    contentDiv.innerHTML = '';
-
     gameImages = cachedGame.image;
-    
+
     // Initialize hint navigation system
     hintNav = createHintNavigationSystem(gameImages.length);
 
-    const img = document.createElement('img');
-    img.src = gameImages[hintNav.currentIndex];
-    img.id = 'game-image';
-    img.style.width = '100%';
-    img.style.height = '100%';
-    img.style.objectFit = 'contain';
-    img.style.position = 'relative';
-    img.style.transition = 'opacity 0.5s ease';
-    contentDiv.appendChild(img);
+    renderHintImage(cachedGame, hintNav.currentIndex, contentDiv);
 
     timerInterval = startTimerUtil();
 
@@ -116,15 +107,7 @@ function navigateImage(direction) {
     const newIndex = hintNav.currentIndex + direction;
 
     if (hintNav.navigateTo(newIndex)) {
-        const imgElement = document.getElementById('game-image');
-        
-        // Slider effect
-        imgElement.style.opacity = '0';
-        setTimeout(() => {
-            imgElement.src = gameImages[hintNav.currentIndex];
-            imgElement.style.opacity = '1';
-        }, 300);
-
+        renderHintImage(cachedGame, hintNav.currentIndex, document.getElementById('content'));
         updateArrowsVisibility(hintNav.currentIndex, hintNav.maxUnlockedIndex);
     }
 }
@@ -155,14 +138,7 @@ function nextQuestion() {
 
 function showHint() {
     if (hintNav.unlockNext()) {
-        const imgElement = document.getElementById('game-image');
-
-        // Slider effect
-        imgElement.style.opacity = '0';
-        setTimeout(() => {
-            imgElement.src = gameImages[hintNav.currentIndex];
-            imgElement.style.opacity = '1';
-        }, 300);
+        renderHintImage(cachedGame, hintNav.currentIndex, document.getElementById('content'));
 
         // If we've reached the last image, change button to "Abandon"
         if (hintNav.isLastUnlocked()) {

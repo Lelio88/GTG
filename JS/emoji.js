@@ -3,6 +3,7 @@
    ============================ */
 import { games } from './gamesDatabase.js';
 import { handleGameCompletion } from './gameCompletion.js';
+import { renderHintEmoji } from './hint-renderers.js';
 import {
     getCurrentProfile,
     initializeProfile,
@@ -41,25 +42,13 @@ function launchGameEmoji() {
         return;
     }
 
-    cachedGame = availableGames[Math. floor(Math.random() * availableGames.length)];
+    cachedGame = availableGames[Math.floor(Math.random() * availableGames.length)];
     cachedTitle = cachedGame.title;
 
     initializeGameTitle(cachedTitle);
 
     const contentDiv = document.getElementById('content');
-    contentDiv.innerHTML = ''; // reset
-
-    // Display emojis (simple text, centered like text mode)
-    const p = document.createElement('p');
-    p.id = 'emoji-display';
-    p.textContent = cachedGame.emoji;
-    p.style.cssText = `
-        font-size: 60px;
-        text-align: center;
-        padding:  40px;
-        line-height: 1.5;
-    `;
-    contentDiv.appendChild(p);
+    renderHintEmoji(cachedGame, 0, contentDiv);
 }
 
 function checkAnswer() {

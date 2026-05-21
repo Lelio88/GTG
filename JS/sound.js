@@ -3,6 +3,7 @@ SOUND ONLY MODE
 ============================ */
 import { games } from './gamesDatabase.js';
 import { handleGameCompletion } from './gameCompletion.js';
+import { renderHintSound } from './hint-renderers.js';
 import {
     getCurrentProfile,
     initializeProfile,
@@ -53,21 +54,11 @@ function launchGameMusic() {
     initializeGameTitle(cachedTitle);
 
     const contentDiv = document.getElementById('content');
-    contentDiv.innerHTML = '';
 
     // Initialize hint navigation system with 0-based indexing
     hintNav = createHintNavigationSystem(cachedGame.sound.length);
 
-    const audio = document.createElement('audio');
-    audio.src = cachedGame.sound[0]; // First sound (index 0)
-    audio.id = 'game-audio';
-    audio.autoplay = false;
-    audio.loop = false;
-    audio.controls = true;
-    audio.style.width = '100%';
-    audio.style.position = 'relative';
-    audio.style.transition = 'opacity 0.5s ease';
-    contentDiv.appendChild(audio);
+    renderHintSound(cachedGame, hintNav.currentIndex, contentDiv);
 
     timerInterval = startTimerUtil();
 }
@@ -75,11 +66,9 @@ function launchGameMusic() {
 function navigateAudio(direction) {
     const newIndex = hintNav.currentIndex + direction;
 
-    // Navigate only between 0 and max unlocked hints
     if (hintNav.navigateTo(newIndex)) {
-        const audio = document.querySelector('audio');
-        audio.src = cachedGame.sound[hintNav.currentIndex];
-        audio.play();
+        renderHintSound(cachedGame, hintNav.currentIndex, document.getElementById('content'));
+        document.getElementById('game-audio').play();
         updateArrowsVisibility(hintNav.currentIndex, hintNav.maxUnlockedIndex);
     }
 }
@@ -88,11 +77,9 @@ function showHint() {
     const hintButton = document.getElementById('hint-button');
 
     if (hintNav.unlockNext()) {
-        const audio = document.querySelector('audio');
-        audio.src = cachedGame.sound[hintNav.currentIndex];
-        audio.play();
+        renderHintSound(cachedGame, hintNav.currentIndex, document.getElementById('content'));
+        document.getElementById('game-audio').play();
 
-        // Create navigation arrows when unlocking the 2nd hint (maxUnlockedIndex becomes 1)
         if (hintNav.maxUnlockedIndex === 1 && !arrowsCreated) {
             createNavigationArrows(navigateAudio);
             arrowsCreated = true;

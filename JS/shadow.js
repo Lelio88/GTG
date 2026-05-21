@@ -3,6 +3,7 @@ SHADOW MODE (HARDCORE)
 ============================ */
 import { games } from './gamesDatabase.js';
 import { handleGameCompletion } from './gameCompletion.js';
+import { renderHintShadow } from './hint-renderers.js';
 import {
     getCurrentProfile,
     initializeProfile,
@@ -49,58 +50,11 @@ function launchGameShadow() {
     initializeGameTitle(cachedTitle);
 
     const contentDiv = document.getElementById('content');
-    contentDiv.innerHTML = '';
 
-    // 3. Définir la source de l'image
-    // On prend le tableau shadow s'il existe, sinon fallback sur image
-    if (cachedGame.shadow && cachedGame.shadow.length > 0) {
-        gameImages = cachedGame.shadow;
-    } else {
-        gameImages = cachedGame.image;
-    }
+    // Conservé pour compatibilité avec l'ancienne logique de révélation (non utilisé)
+    gameImages = (cachedGame.shadow && cachedGame.shadow.length > 0) ? cachedGame.shadow : cachedGame.image;
 
-    // ============================================================
-    // LE CADRE FIXE
-    // ============================================================
-    const imageWrapper = document.createElement('div');
-    
-    // Style du cadre
-    imageWrapper.style.width = '100%';      
-    imageWrapper.style.height = '40vh';
-    imageWrapper.style.border = '2px solid black'; // Ou 'white' selon votre fond
-    imageWrapper.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
-    imageWrapper.style.boxSizing = 'border-box';
-    
-    // Centrage
-    imageWrapper.style.display = 'flex';
-    imageWrapper.style.justifyContent = 'center';
-    imageWrapper.style.alignItems = 'center';
-    imageWrapper.style.marginBottom = '20px';
-
-    // ============================================================
-    // L'IMAGE
-    // ============================================================
-    const img = document.createElement('img');
-    
-    // NOTE : On prend directement l'index [0] car c'est une image unique
-    img.src = gameImages[0]; 
-    img.id = 'game-image';
-    
-    // Style de l'image
-    img.style.maxWidth = '100%';
-    img.style.maxHeight = '100%';
-    img.style.objectFit = 'contain';
-    img.style.border = 'none'; 
-    img.style.outline = 'none';
-    img.style.boxShadow = 'none';
-    
-    // Effet d'ombre
-    img.style.filter = 'brightness(0)'; 
-    img.style.transition = 'opacity 0.5s ease, filter 0.5s ease';
-
-    // Assemblage
-    imageWrapper.appendChild(img);
-    contentDiv.appendChild(imageWrapper);
+    renderHintShadow(cachedGame, 0, contentDiv);
 
     // 4. Timer
     timerInterval = startTimerUtil();

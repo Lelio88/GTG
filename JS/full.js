@@ -3,6 +3,7 @@ FULL MODE - Image + Sound + Text
 ============================ */
 import { games } from './gamesDatabase.js';
 import { handleGameCompletion } from './gameCompletion.js';
+import { renderHintFull } from './hint-renderers.js';
 import {
     getCurrentProfile,
     initializeProfile,
@@ -72,51 +73,10 @@ function launchGameFull() {
 }
 
 function displayHint(index) {
-    const contentDiv = document.getElementById('content');
-    contentDiv.innerHTML = '';
+    renderHintFull(cachedGame, index, document.getElementById('content'));
 
-    // Main container (row)
-    const hintContainer = document.createElement('div');
-    hintContainer.className = 'hint-container';
-
-    // Image (left)
-    if (cachedGame.image[index]) {
-        const img = document.createElement('img');
-        img.src = cachedGame. image[index];
-        img. alt = 'Indice image';
-        hintContainer.appendChild(img);
-    }
-
-    // Right content container (text + audio)
-    const rightContent = document.createElement('div');
-    rightContent.className = 'hint-right-content';
-
-    // Text
-    if (cachedGame.text[index]) {
-        const text = document.createElement('p');
-        text.innerText = cachedGame.text[index];
-        rightContent.appendChild(text);
-    }
-
-    // Audio
-    if (cachedGame.sound[index]) {
-        const audio = document.createElement('audio');
-        audio.controls = true;
-
-        const source = document.createElement('source');
-        source.src = cachedGame.sound[index];
-        source.type = 'audio/mpeg';
-        audio.appendChild(source);
-
-        rightContent.appendChild(audio);
-    }
-
-    hintContainer.appendChild(rightContent);
-    contentDiv.appendChild(hintContainer);
-
-    // Update arrows visibility if they exist
     if (arrowsCreated) {
-        updateArrowsVisibility(hintNav. currentIndex, hintNav.maxUnlockedIndex);
+        updateArrowsVisibility(hintNav.currentIndex, hintNav.maxUnlockedIndex);
     }
 }
 

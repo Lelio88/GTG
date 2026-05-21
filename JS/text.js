@@ -3,6 +3,7 @@ TEXT ONLY MODE
 ============================ */
 import { games } from './gamesDatabase.js';
 import { handleGameCompletion } from './gameCompletion.js';
+import { renderHintText } from './hint-renderers.js';
 import {
     getCurrentProfile,
     initializeProfile,
@@ -50,24 +51,16 @@ function launchGameText() {
     initializeGameTitle(cachedTitle);
 
     const contentDiv = document.getElementById('content');
-    contentDiv.innerHTML = ''; // reset
-    
+
     // Initialize hint navigation system
     hintNav = createHintNavigationSystem(cachedGame.text.length);
 
-    // Display first paragraph
-    const p = document.createElement('p');
-    p.textContent = cachedGame.text[hintNav.currentIndex];
-    contentDiv.appendChild(p);
+    renderHintText(cachedGame, hintNav.currentIndex, contentDiv);
 }
 
 function showHint() {
-    const contentDiv = document.getElementById('content');
-
     if (hintNav.unlockNext()) {
-        const p = document.createElement('p');
-        p.textContent = cachedGame.text[hintNav.currentIndex];
-        contentDiv.appendChild(p);
+        renderHintText(cachedGame, hintNav.currentIndex, document.getElementById('content'));
 
         // Last hint? Change the button
         if (hintNav.isLastUnlocked()) {
