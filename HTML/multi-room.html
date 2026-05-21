@@ -12,12 +12,37 @@
 <body>
     <div id="app" class="multi-room-app">
 
-        <!-- Sidebar live des joueurs -->
-        <aside id="multi-scoreboard" class="multi-scoreboard"></aside>
+        <!-- Header global (toujours visible) -->
+        <header class="multi-room-header">
+            <div class="multi-room-header-left">
+                <span class="multi-room-header-title">Room</span>
+                <span class="multi-room-header-code" id="header-room-code"></span>
+            </div>
+            <div class="multi-room-header-actions">
+                <a id="bug-report-link" class="btn-bug-report" target="_blank" rel="noopener" href="#">🐛 Signaler un bug</a>
+                <button id="leave-room-btn" class="btn-leave">← Quitter</button>
+            </div>
+        </header>
+
+        <!-- Sidebar (joueurs en haut + chat en bas) -->
+        <aside class="multi-sidebar">
+            <div id="multi-scoreboard" class="multi-scoreboard"></div>
+            <div class="multi-chat">
+                <h3 class="multi-chat-header">💬 Chat</h3>
+                <div id="multi-chat-messages" class="multi-chat-messages">
+                    <p class="multi-chat-empty">Personne n'a écrit pour l'instant…</p>
+                </div>
+                <form id="multi-chat-form" class="multi-chat-form" autocomplete="off">
+                    <input type="text" id="multi-chat-input" class="multi-chat-input"
+                           maxlength="200" placeholder="Écris un message…" />
+                    <button type="submit" id="multi-chat-send" class="multi-chat-send">→</button>
+                </form>
+            </div>
+        </aside>
 
         <!-- Vue lobby (avant démarrage) -->
         <section id="lobby-view" class="multi-view">
-            <h1>Room <span id="room-code-display"></span></h1>
+            <h1>Salle d'attente</h1>
             <p class="multi-share">
                 Partage le lien :
                 <input type="text" id="share-link" readonly />
@@ -25,7 +50,6 @@
             </p>
             <p id="lobby-info">En attente de joueurs…</p>
             <button id="start-game-btn" style="display:none;">Démarrer la partie</button>
-            <button id="leave-room-btn">Quitter la room</button>
         </section>
 
         <!-- Vue partie (pendant le jeu) -->

@@ -30,87 +30,49 @@ h1, h2, h3, h4 {
     padding: 0;
 }
 
-/* Fond global : grille cyberpunk animée */
+/* Fond global : grille cyberpunk animée + soleil synthwave en radial-gradient
+   Tout en background-image du body (pas de pseudo-elements) pour
+   garantir la visibilité quel que soit le stacking context */
 body:has(.multi-lobby-app),
 body:has(.multi-room-app) {
     background-color: var(--bg-deep);
     background-image:
+        /* Soleil : disque dégradé chaud, positionné en bas centre,
+           devient transparent au bord */
+        radial-gradient(circle 500px at 50% 95%,
+            #ffe5b4 0%,
+            #ffb86b 12%,
+            #ff6b9f 28%,
+            #c77dff 45%,
+            rgba(199, 125, 255, 0) 60%),
+        /* Grille cyberpunk subtile */
         linear-gradient(rgba(255, 107, 159, 0.05) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 184, 107, 0.05) 1px, transparent 1px);
-    background-size: 50px 50px;
+    background-size: auto, 50px 50px, 50px 50px;
+    background-position: center bottom, 0 0, 0 0;
+    background-repeat: no-repeat, repeat, repeat;
+    background-attachment: fixed;
     animation: grid-drift 30s linear infinite;
 }
 
-/* Soleil synthwave en arrière-plan
-   Cercle dégradé jaune→orange→rose→violet, coupé par des bandes
-   horizontales qui s'élargissent vers le bas (effet rétro 80s).
-   Position fixée en bas pour rester visible quand on scrolle. */
-body:has(.multi-lobby-app)::before,
-body:has(.multi-room-app)::before {
+/* Halo flou large autour du soleil */
+body:has(.multi-room-app)::before,
+body:has(.multi-lobby-app)::before {
     content: '';
     position: fixed;
-    bottom: -25%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(900px, 80vw);
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: radial-gradient(circle at center top,
-        #ffe5b4 0%,
-        #ffb86b 22%,
-        #ff6b9f 55%,
-        #c77dff 85%,
-        rgba(199, 125, 255, 0) 100%);
-    z-index: -1;
-    pointer-events: none;
-    opacity: 0.7;
-    filter: blur(1px);
-    /* Bandes horizontales — la moitié haute du soleil est pleine,
-       la moitié basse a des bandes qui s'espacent progressivement */
-    -webkit-mask-image: linear-gradient(180deg,
-        black 0%, black 50%,
-        transparent 50%, transparent 52%,
-        black 52%, black 57%,
-        transparent 57%, transparent 60%,
-        black 60%, black 66%,
-        transparent 66%, transparent 70%,
-        black 70%, black 77%,
-        transparent 77%, transparent 82%,
-        black 82%, black 91%,
-        transparent 91%, transparent 96%,
-        black 96%);
-    mask-image: linear-gradient(180deg,
-        black 0%, black 50%,
-        transparent 50%, transparent 52%,
-        black 52%, black 57%,
-        transparent 57%, transparent 60%,
-        black 60%, black 66%,
-        transparent 66%, transparent 70%,
-        black 70%, black 77%,
-        transparent 77%, transparent 82%,
-        black 82%, black 91%,
-        transparent 91%, transparent 96%,
-        black 96%);
-}
-
-/* Petit halo plus large autour du soleil pour souligner */
-body:has(.multi-room-app)::after,
-body:has(.multi-lobby-app)::after {
-    content: '';
-    position: fixed;
-    bottom: -40%;
+    bottom: -30%;
     left: 50%;
     transform: translateX(-50%);
     width: min(1400px, 120vw);
     aspect-ratio: 1;
     border-radius: 50%;
     background: radial-gradient(circle at center,
-        rgba(255, 107, 159, 0.12) 0%,
-        rgba(199, 125, 255, 0.08) 40%,
+        rgba(255, 107, 159, 0.18) 0%,
+        rgba(199, 125, 255, 0.1) 40%,
         transparent 70%);
-    z-index: -2;
+    z-index: 0;
     pointer-events: none;
-    filter: blur(20px);
+    filter: blur(40px);
 }
 
 .multi-lobby-app {
@@ -264,17 +226,21 @@ body:has(.multi-lobby-app)::after {
 .multi-room-app {
     display: grid;
     grid-template-columns: 220px 1fr;
+    grid-template-rows: auto 1fr;  /* row 1 = header auto, row 2 = sidebar+view qui remplit */
     gap: var(--sp-3);
     width: 100%;
     height: 100vh;
     box-sizing: border-box;
-    padding: var(--sp-4);
+    padding: var(--sp-3);
     overflow: hidden;
     position: relative;
     z-index: 1;
-    /* Centre verticalement les 2 cellules → soleil visible au-dessus ET en dessous */
-    align-items: center;
-    align-content: center;
+}
+
+/* Sidebar et multi-view sont sur la 2e row du grid */
+.multi-sidebar,
+.multi-view {
+    grid-row: 2;
 }
 
 .multi-view {
@@ -361,7 +327,7 @@ body:has(.multi-lobby-app)::after {
 #game-view #content #game-image,
 #game-view #content #game-pixels {
     max-width: 100%;
-    max-height: 65vh;
+    max-height: 48vh;
     width: auto;
     height: auto;
     object-fit: contain;
@@ -383,7 +349,7 @@ body:has(.multi-lobby-app)::after {
 #game-view #content .hint-container img {
     width: 100%;
     height: 100%;
-    max-height: 65vh;
+    max-height: 48vh;
     object-fit: contain;
     border-radius: var(--radius-sm);
     box-shadow: 0 0 24px rgba(255, 184, 107, 0.2);
@@ -591,13 +557,24 @@ body:has(.multi-lobby-app)::after {
    SCOREBOARD (sidebar)
    ---------------------------------------------------------- */
 
-.multi-scoreboard {
+/* Sidebar = container flex column : scoreboard en haut + chat en bas */
+.multi-sidebar {
     grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+    max-height: 86vh;
+    min-height: 0;
+}
+
+.multi-scoreboard {
     background: var(--bg-surface);
     border: 1px solid var(--border-default);
     border-radius: var(--radius-lg);
     padding: var(--sp-4);
     overflow-y: auto;
+    flex: 0 0 auto;            /* prend la place de son contenu, pas plus */
+    max-height: 40vh;          /* limite pour laisser la place au chat */
     box-shadow:
         inset 0 0 30px rgba(255, 184, 107, 0.04),
         0 4px 24px rgba(0, 0, 0, 0.5);
@@ -826,6 +803,229 @@ body:has(.multi-lobby-app)::after {
     font-family: var(--font-mono);
     color: var(--neon-primary);
     margin-right: var(--sp-3);
+}
+
+/* ----------------------------------------------------------
+   CHAT (sidebar bas)
+   ---------------------------------------------------------- */
+
+.multi-chat {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-3);
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+    box-shadow:
+        inset 0 0 30px rgba(255, 107, 159, 0.04),
+        0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+.multi-chat-header {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--fs-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--neon-secondary);
+    text-shadow: 0 0 8px rgba(255, 107, 159, 0.5);
+    margin: 0 0 var(--sp-1);
+    padding-bottom: var(--sp-2);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.multi-chat-messages {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-1);
+    font-family: var(--font-ui);
+    font-size: var(--fs-xs);
+    padding-right: var(--sp-1);
+    min-height: 0;
+}
+
+.multi-chat-message {
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.multi-chat-message .multi-chat-author {
+    color: var(--neon-primary);
+    font-weight: 600;
+    margin-right: var(--sp-1);
+}
+
+.multi-chat-message.is-me .multi-chat-author {
+    color: var(--neon-cyan);
+}
+
+.multi-chat-message .multi-chat-text {
+    color: var(--text-primary);
+}
+
+.multi-chat-empty {
+    color: var(--text-dim);
+    font-style: italic;
+    font-size: var(--fs-xs);
+    text-align: center;
+    padding: var(--sp-3) 0;
+}
+
+.multi-chat-form {
+    display: flex;
+    gap: var(--sp-1);
+    flex-shrink: 0;
+}
+
+.multi-chat-input {
+    flex: 1;
+    padding: var(--sp-2);
+    background: var(--bg-deep);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    font-size: var(--fs-xs);
+    min-width: 0;
+}
+
+.multi-chat-input:focus {
+    outline: none;
+    border-color: var(--neon-secondary);
+    box-shadow: 0 0 8px rgba(255, 107, 159, 0.3);
+}
+
+.multi-chat-send {
+    padding: var(--sp-2) var(--sp-3);
+    background: transparent;
+    border: 1px solid var(--neon-secondary);
+    border-radius: var(--radius-sm);
+    color: var(--neon-secondary);
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all var(--transition-base);
+    flex-shrink: 0;
+}
+
+.multi-chat-send:hover:not(:disabled) {
+    background: rgba(255, 107, 159, 0.15);
+    box-shadow: 0 0 8px rgba(255, 107, 159, 0.4);
+}
+
+.multi-chat-send:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* ----------------------------------------------------------
+   ROOM HEADER (toujours visible : code room + quitter + bug)
+   ---------------------------------------------------------- */
+
+.multi-room-header {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-3);
+    padding: var(--sp-2) var(--sp-3);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.multi-room-header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    flex: 1;
+    min-width: 0;
+}
+
+.multi-room-header-title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: var(--fs-md);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--neon-primary);
+    text-shadow: 0 0 8px rgba(255, 184, 107, 0.5);
+    white-space: nowrap;
+}
+
+.multi-room-header-code {
+    font-family: var(--font-mono);
+    color: var(--neon-cyan);
+    text-shadow: 0 0 8px var(--neon-cyan);
+    font-size: var(--fs-sm);
+    letter-spacing: 0.1em;
+    padding: var(--sp-1) var(--sp-2);
+    background: var(--bg-deep);
+    border: 1px solid rgba(0, 246, 255, 0.3);
+    border-radius: var(--radius-sm);
+}
+
+.multi-room-header-actions {
+    display: flex;
+    gap: var(--sp-2);
+    flex-shrink: 0;
+}
+
+.multi-room-header-actions button,
+.multi-room-header-actions a {
+    padding: var(--sp-2) var(--sp-3);
+    background: transparent;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: all var(--transition-base);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-1);
+}
+
+.multi-room-header-actions button:hover,
+.multi-room-header-actions a:hover {
+    border-color: var(--neon-primary);
+    color: var(--neon-primary);
+    box-shadow: 0 0 8px rgba(255, 184, 107, 0.3);
+}
+
+.multi-room-header-actions .btn-bug-report {
+    border-color: var(--neon-violet);
+    color: var(--neon-violet);
+}
+
+.multi-room-header-actions .btn-bug-report:hover {
+    border-color: var(--neon-violet);
+    color: var(--neon-violet);
+    box-shadow: 0 0 8px rgba(199, 125, 255, 0.4);
+}
+
+.multi-room-header-actions .btn-leave {
+    border-color: rgba(255, 0, 60, 0.5);
+    color: #ff6b9f;
+}
+
+.multi-room-header-actions .btn-leave:hover {
+    border-color: var(--neon-danger);
+    color: var(--neon-danger);
+    box-shadow: 0 0 8px rgba(255, 0, 60, 0.4);
 }
 
 /* ----------------------------------------------------------

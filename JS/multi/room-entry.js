@@ -17,9 +17,12 @@ import { joinRoom, leaveRoom, startGame, MIN_PLAYERS, programDisconnectCleanup }
 import { startHostEngine, extendTargetGames } from './host-engine.js';
 import { startRoundClient } from './round-client.js';
 import { startScoreboard } from './scoreboard.js';
+import { startChat } from './chat.js';
 import { readRoomCodeFromUrl, buildShareableUrl } from './url-room.js';
 import { games } from '../gamesDatabase.js';
 import confetti from 'https://esm.sh/canvas-confetti@1.9.3';
+
+const BUG_REPORT_BASE = 'https://github.com/Lelio88/GTG/issues/new';
 
 const $ = (id) => document.getElementById(id);
 
@@ -39,6 +42,7 @@ let isHost = false;
 let hostEngine = null;
 let roundClient = null;
 let scoreboard = null;
+let chat = null;
 let unsubRoom = null;
 let currentView = null; // 'lobby' | 'game' | 'results'
 let lastStatus = null;
@@ -49,7 +53,11 @@ let resultsConfettiFired = false; // un seul tir de confettis par entrée dans r
 // ──────────────────────────────────────────────────────────────────────────
 
 window.addEventListener('DOMContentLoaded', async () => {
-    $('room-code-display').innerText = code;
+    // Header global
+    $('header-room-code').innerText = code;
+    $('bug-report-link').href = buildBugReportUrl(code);
+
+    // Lobby view
     $('share-link').value = buildShareableUrl(code);
     $('copy-link-btn').onclick = copyShareLink;
     $('leave-room-btn').onclick = onLeaveRoom;
@@ -94,9 +102,51 @@ window.addEventListener('DOMContentLoaded', async () => {
     // Démarrer le scoreboard live
     scoreboard = startScoreboard({ code, container: $('multi-scoreboard'), myUid });
 
+    // Démarrer le chat
+    chat = startChat({
+        code,
+        uid: myUid,
+        name: myName,
+        messagesEl: $('multi-chat-messages'),
+        formEl: $('multi-chat-form'),
+        inputEl: $('multi-chat-input'),
+        sendBtn: $('multi-chat-send'),
+    });
+
     // Écoute principale de la room → switch de vue
     listenRoom();
 });
+
+/**
+ * Construit l'URL GitHub Issues pré-remplie pour signaler un bug.
+ * Le label "mode-multi" doit exister dans le repo (sinon GitHub l'ignore).
+ */
+function buildBugReportUrl(code) {
+    const params = new URLSearchParams({
+        labels: 'mode-multi',
+        title: '[Multi] ',
+        body: [
+            '## Description du bug',
+            '',
+            '<!-- Décris ici ce qui se passe -->',
+            '',
+            '## Reproduction',
+            '',
+            '<!-- Étapes pour reproduire -->',
+            '',
+            '## Contexte',
+            '',
+            `- Room : \`${code}\``,
+            `- Date : ${new Date().toISOString()}`,
+            `- Navigateur : ${navigator.userAgent}`,
+            '',
+            '## Comportement attendu',
+            '',
+            '<!-- Ce que tu pensais qu\'il allait se passer -->',
+        ].join('\n'),
+    });
+    return `${BUG_REPORT_BASE}?${params.toString()}`;
+}
 
 // ──────────────────────────────────────────────────────────────────────────
 // Routing entre vues selon meta.status
@@ -289,6 +339,7 @@ async function onLeaveRoom() {
     if (hostEngine) hostEngine.stop();
     if (roundClient) roundClient.stop();
     if (scoreboard) scoreboard.stop();
+    if (chat) chat.stop();
     if (unsubRoom) unsubRoom();
     await leaveRoom({ code, uid: myUid });
     window.location.href = 'multi-lobby.html';
