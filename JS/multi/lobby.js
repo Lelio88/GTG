@@ -60,7 +60,8 @@ export async function createRoom({ hostName, mode, targetGames }) {
         },
     });
 
-    await programDisconnectCleanup(code, user.uid, /* isHost */ true);
+    // NB: onDisconnect cleanup est armé depuis room-entry.js, pas ici.
+    // Sinon la navigation lobby → room déclenche le cleanup avant d'arriver.
 
     return { code, uid: user.uid };
 }
@@ -103,7 +104,7 @@ export async function joinRoom({ code, name }) {
         totalScore: alreadyIn ? (players[user.uid].totalScore || 0) : 0,
     });
 
-    await programDisconnectCleanup(code, user.uid, /* isHost */ user.uid === meta.hostUid);
+    // NB: onDisconnect cleanup est armé depuis room-entry.js, pas ici.
 
     return { code, uid: user.uid };
 }
@@ -128,8 +129,12 @@ export async function leaveRoom({ code, uid }) {
  * Programme le cleanup automatique quand l'onglet se ferme (via Firebase onDisconnect()).
  * - Joueur non-hôte : son noeud players/{uid} est supprimé
  * - Hôte : meta.status passe à "cancelled" → tous les clients voient la partie tuée
+ *
+ * À appeler UNIQUEMENT depuis room-entry.js (la "vraie" page de session), pas
+ * depuis le lobby — sinon la navigation lobby → room déclenche le onDisconnect
+ * avant qu'on arrive sur la room.
  */
-async function programDisconnectCleanup(code, uid, isHost) {
+export async function programDisconnectCleanup(code, uid, isHost) {
     const playerRef = ref(db, `rooms/${code}/players/${uid}`);
     await onDisconnect(playerRef).remove();
 

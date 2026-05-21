@@ -13,7 +13,7 @@
 import {
     db, ref, onValue, off, update, whenAuthenticated, get
 } from './firebase.js';
-import { joinRoom, leaveRoom, startGame, MIN_PLAYERS } from './lobby.js';
+import { joinRoom, leaveRoom, startGame, MIN_PLAYERS, programDisconnectCleanup } from './lobby.js';
 import { startHostEngine, extendTargetGames } from './host-engine.js';
 import { startRoundClient } from './round-client.js';
 import { startScoreboard } from './scoreboard.js';
@@ -79,6 +79,15 @@ window.addEventListener('DOMContentLoaded', async () => {
     } else {
         myName = playerSnap.val().name;
     }
+
+    // Détecter si on est l'hôte pour armer le bon onDisconnect
+    const metaSnap = await get(ref(db, `rooms/${code}/meta`));
+    const meta = metaSnap.val() || {};
+    const iAmHost = (meta.hostUid === myUid);
+
+    // Armer le cleanup automatique de cette session room
+    // (à faire APRÈS le join, sinon la navigation lobby→room le déclenche en transit)
+    await programDisconnectCleanup(code, myUid, iAmHost);
 
     // Démarrer le scoreboard live
     scoreboard = startScoreboard({ code, container: $('multi-scoreboard'), myUid });
