@@ -264,17 +264,17 @@ body:has(.multi-lobby-app)::after {
 .multi-room-app {
     display: grid;
     grid-template-columns: 220px 1fr;
-    grid-template-rows: 1fr;  /* IMPORTANT : sinon les cellules s'auto-sizent
-                                  selon leur contenu et la sidebar finit écrasée */
     gap: var(--sp-3);
     width: 100%;
     height: 100vh;
     box-sizing: border-box;
-    padding: var(--sp-4) var(--sp-4) calc(var(--sp-8) + var(--sp-5)) var(--sp-4);
-    /* Padding bottom plus généreux : laisse voir le soleil dépasser sous la box */
+    padding: var(--sp-4);
     overflow: hidden;
     position: relative;
     z-index: 1;
+    /* Centre verticalement les 2 cellules → soleil visible au-dessus ET en dessous */
+    align-items: center;
+    align-content: center;
 }
 
 .multi-view {
@@ -288,6 +288,8 @@ body:has(.multi-lobby-app)::after {
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+    /* Hauteur bornée pour laisser dépasser le soleil */
+    max-height: 86vh;
     min-height: 0;
     box-shadow:
         inset 0 0 40px rgba(255, 184, 107, 0.06),
@@ -300,6 +302,7 @@ body:has(.multi-lobby-app)::after {
     background: rgba(20, 9, 30, 0.55);
     backdrop-filter: blur(12px) saturate(1.2);
     -webkit-backdrop-filter: blur(12px) saturate(1.2);
+    max-height: 86vh;
 }
 
 /* Scanlines CRT en overlay sur les vues — très subtil */
@@ -331,15 +334,14 @@ body:has(.multi-lobby-app)::after {
 #game-view {
     display: flex;
     flex-direction: column;
+    justify-content: center;      /* centre verticalement : header en haut, input/boutons en bas, contenu centré au milieu */
     gap: var(--sp-4);
 }
 
 #game-view #content {
-    flex: 1 1 auto;
-    min-height: 45vh;
+    flex: 0 1 auto;               /* prend la place qu'il faut, sans forcer un min */
     display: flex;
-    flex-direction: column;       /* IMPORTANT : column pour que les enfants
-                                      remplissent la largeur via align-items: stretch */
+    flex-direction: column;
     align-items: stretch;
     justify-content: center;
     overflow: hidden;
