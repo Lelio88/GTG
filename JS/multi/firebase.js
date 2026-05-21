@@ -48,7 +48,7 @@ const app = initializeApp(firebaseConfig);
  *
  * Setup : voir docs/multiplayer-architecture.md §14.
  */
-const RECAPTCHA_SITE_KEY = '';  // <-- COLLER LA SITE KEY ICI
+const RECAPTCHA_SITE_KEY = '6LcJGPYsAAAAAEo5vcS1Sm69k9srJUVR7o4icGFl';
 
 if (RECAPTCHA_SITE_KEY) {
     // Import dynamique : ne charge le SDK App Check QUE si une clé est définie
