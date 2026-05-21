@@ -1,130 +1,230 @@
-/* ===========================================================
-   CSS/multi.css — Styles pour le mode multijoueur
-   Étend les styles existants (index-style.css, style.css).
-   =========================================================== */
+/* ============================================================
+   CSS/multi.css - Styles dédiés au mode multijoueur
+   DA Néon Cyberpunk poussée, consomme CSS/tokens.css.
+   ============================================================ */
 
-/* --- Lobby (HTML/multi-lobby.html) --- */
+@import url('./tokens.css');
+
+/* ----------------------------------------------------------
+   LOBBY (HTML/multi-lobby.html)
+   ---------------------------------------------------------- */
+
+body:has(.multi-lobby-app),
+body:has(.multi-room-app) {
+    background-color: var(--bg-deep);
+    background-image:
+        linear-gradient(rgba(255, 107, 159, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 184, 107, 0.045) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: grid-drift 30s linear infinite;
+    font-family: var(--font-ui);
+    color: var(--text-primary);
+}
 
 .multi-lobby-app {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-    padding: 40px 20px;
+    gap: var(--sp-5);
+    padding: var(--sp-7) var(--sp-4);
     width: 100%;
-    max-width: 600px;
+    max-width: 640px;
     margin: 0 auto;
     overflow-y: auto;
     height: 100vh;
     box-sizing: border-box;
+    position: relative;
+    z-index: 1;
 }
 
 .multi-lobby-app h1 {
-    color: #ffb86b;
-    text-shadow: 0 0 12px #ff6b9f;
-    margin: 0 0 10px;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: var(--fs-display);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--neon-primary);
+    text-shadow:
+        0 0 8px var(--neon-primary),
+        0 0 20px var(--neon-secondary),
+        0 0 36px rgba(255, 107, 159, 0.4);
+    margin: 0 0 var(--sp-3);
+    text-align: center;
+    animation: title-pulse 3s ease-in-out infinite;
+}
+
+@keyframes title-pulse {
+    0%, 100% { text-shadow: 0 0 8px var(--neon-primary), 0 0 20px var(--neon-secondary), 0 0 36px rgba(255, 107, 159, 0.4); }
+    50% { text-shadow: 0 0 12px var(--neon-primary), 0 0 28px var(--neon-secondary), 0 0 50px rgba(255, 107, 159, 0.6); }
 }
 
 .multi-section {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 184, 107, 0.3);
-    border-radius: 10px;
-    padding: 20px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-5);
     width: 100%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: var(--sp-3);
+    box-shadow:
+        inset 0 0 30px rgba(255, 184, 107, 0.04),
+        0 4px 24px rgba(0, 0, 0, 0.5);
 }
 
 .multi-section h2 {
-    margin: 0 0 10px;
-    color: #ff6b9f;
-    font-size: 1.2rem;
+    margin: 0 0 var(--sp-2);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--fs-md);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--neon-secondary);
+    text-shadow: 0 0 8px rgba(255, 107, 159, 0.5);
 }
 
 .multi-section label {
-    font-size: 0.9rem;
-    color: #ccc;
+    font-family: var(--font-ui);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
 }
 
 .multi-section input,
 .multi-section select {
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
-    color: white;
-    font-size: 1rem;
+    padding: var(--sp-3);
+    background: var(--bg-deep);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    font-size: var(--fs-base);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-base);
+}
+
+.multi-section input:focus,
+.multi-section select:focus {
+    outline: none;
+    border-color: var(--neon-primary);
+    box-shadow: 0 0 12px rgba(255, 184, 107, 0.4);
 }
 
 .multi-section button {
-    padding: 12px 24px;
-    background: linear-gradient(135deg, #ffb86b, #ff6b9f);
+    background: linear-gradient(135deg, var(--neon-primary), var(--neon-secondary));
     border: none;
-    border-radius: 5px;
-    color: white;
-    font-weight: bold;
+    color: var(--bg-deep);
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: var(--sp-3) var(--sp-5);
+    border-radius: var(--radius-sm);
     cursor: pointer;
-    margin-top: 10px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    font-size: var(--fs-sm);
+    margin-top: var(--sp-3);
+    transition: transform var(--transition-fast), box-shadow var(--transition-base), filter var(--transition-fast);
 }
 
 .multi-section button:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(255, 107, 159, 0.4);
+    box-shadow: var(--glow-lg) var(--neon-primary);
+    filter: brightness(1.15);
 }
 
 .multi-section button:disabled {
-    opacity: 0.5;
+    opacity: 0.4;
     cursor: not-allowed;
+    filter: grayscale(0.4);
 }
 
 .multi-error {
     min-height: 1.5em;
-    color: #ff6b9f;
-    font-size: 0.9rem;
+    color: var(--neon-danger);
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
     margin: 0;
+    text-shadow: 0 0 6px rgba(255, 0, 60, 0.5);
 }
 
 .multi-back {
-    color: #ffb86b;
+    color: var(--neon-primary);
     text-decoration: none;
-    margin-top: 20px;
+    font-family: var(--font-display);
+    font-size: var(--fs-sm);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-top: var(--sp-4);
+    transition: text-shadow var(--transition-fast);
 }
 
 .multi-back:hover {
-    text-decoration: underline;
+    text-shadow: 0 0 10px var(--neon-primary);
 }
 
-/* --- Room (HTML/multi-room.html) --- */
+/* ----------------------------------------------------------
+   ROOM (HTML/multi-room.html)
+   ---------------------------------------------------------- */
 
 .multi-room-app {
     display: grid;
-    grid-template-columns: 240px 1fr;
-    gap: 16px;
+    grid-template-columns: 260px 1fr;
+    gap: var(--sp-4);
     width: 100%;
     height: 100vh;
     box-sizing: border-box;
-    padding: 16px;
+    padding: var(--sp-4);
     overflow: hidden;
+    position: relative;
+    z-index: 1;
 }
 
 .multi-view {
     grid-column: 2;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 184, 107, 0.2);
-    border-radius: 10px;
-    padding: 20px 24px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-5);
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    min-height: 0; /* important pour que flex enfants puissent shrinker */
+    min-height: 0;
+    box-shadow:
+        inset 0 0 40px rgba(255, 184, 107, 0.04),
+        0 4px 24px rgba(0, 0, 0, 0.5);
+    position: relative;
 }
 
-/* La vue de jeu a un layout flex column avec content qui prend toute la hauteur disponible */
+/* Scanlines CRT en overlay sur les vues — très subtil */
+.multi-view::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.15) 3px,
+        rgba(0, 0, 0, 0.15) 4px
+    );
+    z-index: 1;
+    border-radius: inherit;
+    mix-blend-mode: multiply;
+}
+
+/* Le contenu actif doit passer au-dessus des scanlines */
+.multi-view > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* ----- Game view ----- */
+
 #game-view {
-    gap: 16px;
+    gap: var(--sp-4);
 }
 
 #game-view #content {
@@ -136,23 +236,23 @@
     overflow: hidden;
 }
 
-/* Images dans content : prennent toute la place dispo sans déformation */
 #game-view #content img,
 #game-view #content #game-image,
 #game-view #content #game-pixels {
     max-width: 100%;
-    max-height: 60vh;
+    max-height: 65vh;
     width: auto;
     height: auto;
     object-fit: contain;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 0 24px rgba(255, 184, 107, 0.2);
 }
 
-/* Mode Full : layout image | texte+audio responsive
-   Grid asymétrique 2fr/1fr — image grosse, texte garde min 280px lisibles */
+/* Mode Full : grid asymétrique image 2fr / texte+audio 1fr */
 #game-view #content .hint-container {
     display: grid;
     grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
-    gap: 24px;
+    gap: var(--sp-5);
     width: 100%;
     align-items: center;
 }
@@ -161,171 +261,72 @@
     width: 100%;
     max-height: 65vh;
     object-fit: contain;
-    border-radius: 6px;
-    box-shadow: 0 0 20px rgba(255, 184, 107, 0.15);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 0 24px rgba(255, 184, 107, 0.2);
 }
 
 #game-view #content .hint-right-content {
     display: flex;
     flex-direction: column;
-    gap: 18px;
-    min-width: 0; /* permet au texte de wrap correctement */
+    gap: var(--sp-4);
+    min-width: 0;
 }
 
 #game-view #content .hint-right-content p {
     margin: 0;
     line-height: 1.55;
-    font-size: 1rem;
-    color: #e0e0e0;
-    background: rgba(0, 0, 0, 0.3);
-    border-left: 3px solid #ffb86b;
-    padding: 14px 18px;
-    border-radius: 4px;
+    font-size: var(--fs-base);
+    color: var(--text-primary);
+    background: rgba(0, 0, 0, 0.4);
+    border-left: 3px solid var(--neon-primary);
+    padding: var(--sp-3) var(--sp-4);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-ui);
 }
 
 #game-view #content .hint-right-content audio {
     width: 100%;
     height: 48px;
+    filter: hue-rotate(0) sepia(0.2);
 }
 
-/* Écran étroit : on empile image au-dessus de texte/audio */
+#game-view #content #emoji-display {
+    font-size: clamp(2.5rem, 7vw, 6rem) !important;
+    text-shadow: 0 0 20px rgba(255, 184, 107, 0.3);
+}
+
 @media (max-width: 900px) {
     #game-view #content .hint-container {
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: var(--sp-3);
     }
     #game-view #content .hint-container img {
         max-height: 35vh;
     }
 }
 
-/* Emoji mode : grosse police centrée */
-#game-view #content #emoji-display {
-    font-size: clamp(2rem, 6vw, 5rem) !important;
-}
-
-/* --- Sidebar Scoreboard --- */
-
-.multi-scoreboard {
-    grid-column: 1;
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 184, 107, 0.3);
-    border-radius: 10px;
-    padding: 15px;
-    overflow-y: auto;
-}
-
-.multi-scoreboard-header h3 {
-    margin: 0 0 5px;
-    color: #ffb86b;
-    font-size: 1rem;
-}
-
-.multi-progress {
-    margin: 0 0 15px;
-    font-size: 0.85rem;
-    color: #aaa;
-}
-
-.multi-scoreboard-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.multi-scoreboard-row {
-    display: grid;
-    grid-template-columns: 24px 1fr auto;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 10px;
-    background: rgba(255, 255, 255, 0.04);
-    border-radius: 5px;
-    font-size: 0.9rem;
-}
-
-.multi-scoreboard-row.multi-scoreboard-me {
-    background: rgba(255, 184, 107, 0.15);
-    border-left: 3px solid #ffb86b;
-}
-
-.multi-scoreboard-status {
-    font-size: 1rem;
-}
-
-.multi-scoreboard-name {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.multi-scoreboard-score {
-    color: #ffb86b;
-    font-weight: bold;
-}
-
-/* --- Lobby view inside room --- */
-
-#lobby-view h1 {
-    color: #ffb86b;
-}
-
-.multi-share {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 20px 0;
-}
-
-.multi-share input {
-    flex: 1;
-    padding: 8px;
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
-    color: white;
-    font-family: monospace;
-    font-size: 0.85rem;
-}
-
-#lobby-view button,
-#results-view button {
-    padding: 10px 20px;
-    background: linear-gradient(135deg, #ffb86b, #ff6b9f);
-    border: none;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-    margin-right: 10px;
-    margin-top: 10px;
-}
-
-#lobby-view button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-/* --- Game view inside room --- */
+/* ----- Header de game-view ----- */
 
 .multi-game-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 15px;
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 184, 107, 0.25);
-    border-radius: 6px;
-    gap: 16px;
+    padding: var(--sp-3) var(--sp-4);
+    background: var(--bg-deep);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    gap: var(--sp-4);
     flex-shrink: 0;
 }
 
 #multi-progress {
-    font-weight: bold;
-    color: #ffb86b;
-    text-shadow: 0 0 8px rgba(255, 184, 107, 0.6);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--fs-md);
+    color: var(--neon-primary);
+    text-shadow: 0 0 10px rgba(255, 184, 107, 0.6);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     white-space: nowrap;
 }
 
@@ -334,41 +335,41 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
+    gap: var(--sp-2);
     max-width: 400px;
 }
 
 #multi-timer {
-    font-family: 'Courier New', monospace;
-    font-size: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: var(--fs-lg);
     font-weight: bold;
-    color: #ff6b9f;
-    text-shadow: 0 0 12px rgba(255, 107, 159, 0.7);
-    letter-spacing: 2px;
+    color: var(--neon-secondary);
+    text-shadow: 0 0 14px var(--neon-secondary);
+    letter-spacing: 0.2em;
 }
 
 #multi-timer-bar {
     width: 100%;
     height: 8px;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-sm);
     overflow: hidden;
-    border: 1px solid rgba(255, 184, 107, 0.2);
+    border: 1px solid var(--border-subtle);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.6);
 }
 
 #multi-timer-bar-fill {
     height: 100%;
     width: 100%;
-    background: linear-gradient(90deg, #ffb86b 0%, #ff6b9f 100%);
-    box-shadow: 0 0 10px rgba(255, 107, 159, 0.6);
+    background: linear-gradient(90deg, var(--neon-primary) 0%, var(--neon-secondary) 100%);
+    box-shadow: 0 0 12px rgba(255, 107, 159, 0.7);
     transition: width 200ms linear, background 400ms ease;
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
 }
 
-/* Timer en mode "urgence" sous les 5 dernières secondes */
 #multi-timer-bar-fill.timer-urgent {
-    background: linear-gradient(90deg, #ff4444 0%, #ff8800 100%);
-    box-shadow: 0 0 14px rgba(255, 68, 68, 0.8);
+    background: linear-gradient(90deg, var(--neon-danger) 0%, #ff8800 100%);
+    box-shadow: 0 0 16px rgba(255, 0, 60, 0.8);
     animation: timer-pulse 0.6s ease-in-out infinite;
 }
 
@@ -378,70 +379,326 @@
 }
 
 #add-rounds-btn {
-    padding: 6px 14px;
-    background: rgba(255, 184, 107, 0.15);
-    border: 1px solid #ffb86b;
-    border-radius: 4px;
-    color: #ffb86b;
+    padding: var(--sp-2) var(--sp-4);
+    background: transparent;
+    border: 1px solid var(--neon-primary);
+    border-radius: var(--radius-sm);
+    color: var(--neon-primary);
     cursor: pointer;
-    font-size: 0.85rem;
-    font-weight: bold;
+    font-family: var(--font-display);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     white-space: nowrap;
-    transition: background 200ms, box-shadow 200ms;
+    transition: all var(--transition-base);
 }
 
 #add-rounds-btn:hover {
-    background: rgba(255, 184, 107, 0.3);
-    box-shadow: 0 0 10px rgba(255, 184, 107, 0.5);
+    background: rgba(255, 184, 107, 0.15);
+    box-shadow: 0 0 12px rgba(255, 184, 107, 0.5);
 }
+
+/* Champ de saisie + boutons ----- */
 
 #game-view #user-input {
     width: 100%;
-    padding: 12px;
-    font-size: 1rem;
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
-    color: white;
-    margin: 15px 0;
+    padding: var(--sp-3);
+    font-family: var(--font-ui);
+    font-size: var(--fs-md);
+    background: var(--bg-deep);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
     box-sizing: border-box;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-base);
+}
+
+#game-view #user-input:focus {
+    outline: none;
+    border-color: var(--neon-primary);
+    box-shadow: 0 0 14px rgba(255, 184, 107, 0.4);
+}
+
+#game-view #button-container {
+    display: flex;
+    gap: var(--sp-3);
 }
 
 #game-view #button-container button {
-    padding: 10px 20px;
-    background: linear-gradient(135deg, #ffb86b, #ff6b9f);
+    padding: var(--sp-3) var(--sp-5);
+    background: linear-gradient(135deg, var(--neon-primary), var(--neon-secondary));
     border: none;
-    border-radius: 5px;
-    color: white;
+    border-radius: var(--radius-sm);
+    color: var(--bg-deep);
     cursor: pointer;
-    margin-right: 10px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: var(--fs-sm);
+    transition: transform var(--transition-fast), box-shadow var(--transition-base), filter var(--transition-fast);
 }
 
-/* --- Results view --- */
+#game-view #button-container button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--glow-lg) var(--neon-primary);
+    filter: brightness(1.15);
+}
+
+#game-view #message {
+    font-family: var(--font-display);
+    font-size: var(--fs-md);
+    text-align: center;
+    margin: 0;
+    min-height: 1.5em;
+    letter-spacing: 0.04em;
+}
+
+/* ----------------------------------------------------------
+   SCOREBOARD (sidebar)
+   ---------------------------------------------------------- */
+
+.multi-scoreboard {
+    grid-column: 1;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-4);
+    overflow-y: auto;
+    box-shadow:
+        inset 0 0 30px rgba(255, 184, 107, 0.04),
+        0 4px 24px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.multi-scoreboard::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.12) 3px,
+        rgba(0, 0, 0, 0.12) 4px
+    );
+    z-index: 1;
+    border-radius: inherit;
+    mix-blend-mode: multiply;
+}
+
+.multi-scoreboard > * {
+    position: relative;
+    z-index: 2;
+}
+
+.multi-scoreboard-header h3 {
+    margin: 0 0 var(--sp-1);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--fs-base);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--neon-primary);
+    text-shadow: 0 0 8px rgba(255, 184, 107, 0.5);
+}
+
+.multi-progress {
+    margin: 0 0 var(--sp-4);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    color: var(--text-secondary);
+    letter-spacing: 0.05em;
+}
+
+.multi-scoreboard-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+}
+
+.multi-scoreboard-row {
+    display: grid;
+    grid-template-columns: 24px 1fr auto;
+    align-items: center;
+    gap: var(--sp-2);
+    padding: var(--sp-2) var(--sp-3);
+    background: var(--bg-deep);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-ui);
+    font-size: var(--fs-sm);
+    border: 1px solid transparent;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-base);
+}
+
+.multi-scoreboard-row.multi-scoreboard-me {
+    background: rgba(255, 184, 107, 0.1);
+    border-color: var(--neon-primary);
+    box-shadow: 0 0 12px rgba(255, 184, 107, 0.25);
+}
+
+.multi-scoreboard-status {
+    font-size: var(--fs-md);
+}
+
+.multi-scoreboard-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--text-primary);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.multi-scoreboard-score {
+    font-family: var(--font-mono);
+    color: var(--neon-primary);
+    font-weight: bold;
+    text-shadow: 0 0 6px rgba(255, 184, 107, 0.5);
+}
+
+/* ----------------------------------------------------------
+   LOBBY VIEW (dans la room)
+   ---------------------------------------------------------- */
+
+#lobby-view h1 {
+    font-family: var(--font-display);
+    font-weight: 900;
+    color: var(--neon-primary);
+    text-shadow: 0 0 12px var(--neon-secondary);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 var(--sp-4);
+}
+
+#lobby-view #room-code-display {
+    font-family: var(--font-mono);
+    color: var(--neon-cyan);
+    text-shadow: 0 0 12px var(--neon-cyan);
+}
+
+.multi-share {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    margin: var(--sp-4) 0;
+}
+
+.multi-share input {
+    flex: 1;
+    padding: var(--sp-2) var(--sp-3);
+    background: var(--bg-deep);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+}
+
+#lobby-view button,
+#results-view button {
+    padding: var(--sp-3) var(--sp-5);
+    background: linear-gradient(135deg, var(--neon-primary), var(--neon-secondary));
+    border: none;
+    border-radius: var(--radius-sm);
+    color: var(--bg-deep);
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: var(--fs-sm);
+    margin-right: var(--sp-3);
+    margin-top: var(--sp-3);
+    transition: transform var(--transition-fast), box-shadow var(--transition-base), filter var(--transition-fast);
+}
+
+#lobby-view button:hover:not(:disabled),
+#results-view button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--glow-lg) var(--neon-primary);
+    filter: brightness(1.15);
+}
+
+#lobby-view button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    filter: grayscale(0.4);
+}
+
+#lobby-info {
+    font-family: var(--font-ui);
+    font-size: var(--fs-md);
+    color: var(--text-secondary);
+}
+
+/* ----------------------------------------------------------
+   RESULTS VIEW
+   ---------------------------------------------------------- */
 
 #results-view h1 {
-    color: #ffb86b;
+    font-family: var(--font-display);
+    font-weight: 900;
+    color: var(--neon-primary);
+    text-shadow: 0 0 16px var(--neon-secondary);
     text-align: center;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 var(--sp-5);
+    animation: title-pulse 3s ease-in-out infinite;
 }
 
 #final-ranking {
-    padding-left: 20px;
-    margin: 20px 0;
+    padding-left: 0;
+    list-style: none;
+    margin: var(--sp-5) 0;
+    counter-reset: rank;
 }
 
 #final-ranking li {
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.04);
-    border-radius: 5px;
-    margin-bottom: 8px;
+    padding: var(--sp-4) var(--sp-5);
+    background: var(--bg-deep);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+    margin-bottom: var(--sp-3);
+    font-family: var(--font-ui);
+    font-size: var(--fs-md);
+    color: var(--text-primary);
+    transition: transform var(--transition-base);
 }
 
 #final-ranking li:first-child {
-    background: rgba(255, 184, 107, 0.2);
-    border: 1px solid #ffb86b;
+    background: linear-gradient(135deg, rgba(255, 184, 107, 0.2), rgba(255, 107, 159, 0.15));
+    border-color: var(--neon-primary);
+    box-shadow: 0 0 24px rgba(255, 184, 107, 0.3);
+    font-size: var(--fs-lg);
+    font-weight: 700;
 }
 
-/* --- Responsive --- */
+#final-ranking li:nth-child(2) {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 12px rgba(0, 246, 255, 0.2);
+}
+
+#final-ranking li:nth-child(3) {
+    border-color: var(--neon-violet);
+    box-shadow: 0 0 12px rgba(199, 125, 255, 0.2);
+}
+
+#final-ranking li strong {
+    font-family: var(--font-mono);
+    color: var(--neon-primary);
+    margin-right: var(--sp-3);
+}
+
+/* ----------------------------------------------------------
+   RESPONSIVE
+   ---------------------------------------------------------- */
 
 @media (max-width: 768px) {
     .multi-room-app {
@@ -455,5 +712,9 @@
     }
     .multi-view {
         grid-column: 1;
+    }
+    .multi-game-header {
+        flex-wrap: wrap;
+        gap: var(--sp-2);
     }
 }
