@@ -19,6 +19,7 @@ import { startRoundClient } from './round-client.js';
 import { startScoreboard } from './scoreboard.js';
 import { readRoomCodeFromUrl, buildShareableUrl } from './url-room.js';
 import { games } from '../gamesDatabase.js';
+import confetti from 'https://esm.sh/canvas-confetti@1.9.3';
 
 const $ = (id) => document.getElementById(id);
 
@@ -41,6 +42,7 @@ let scoreboard = null;
 let unsubRoom = null;
 let currentView = null; // 'lobby' | 'game' | 'results'
 let lastStatus = null;
+let resultsConfettiFired = false; // un seul tir de confettis par entrée dans results
 
 // ──────────────────────────────────────────────────────────────────────────
 // Init au DOMContentLoaded
@@ -157,8 +159,13 @@ function handleStatusChange(meta, data) {
         // Stop game-side handlers
         if (roundClient) { roundClient.stop(); roundClient = null; }
         if (hostEngine) { hostEngine.stop(); hostEngine = null; }
+        // Reset confetti pour ce passage dans results
+        resultsConfettiFired = false;
         showView('results');
         updateResultsUi(data);
+    } else if (meta.status === 'playing') {
+        // Si on revient en playing (prolongation), reset confetti pour le prochain results
+        resultsConfettiFired = false;
     }
 }
 
@@ -219,6 +226,41 @@ function updateResultsUi(data) {
         .map((p, i) => `<li><strong>#${i + 1}</strong> ${escapeHtml(p.name)} — ${p.totalScore || 0} pts</li>`)
         .join('');
     $('extend-rounds-btn').style.display = isHost ? 'inline-block' : 'none';
+
+    // Confettis ! (une seule fois par entrée dans la vue results)
+    if (!resultsConfettiFired) {
+        resultsConfettiFired = true;
+        fireConfettiCascade();
+    }
+}
+
+/**
+ * Cascade de confettis : 3 bursts décalés depuis différents points pour un effet "vague".
+ * Palette en accord avec la DA néon (orange/rose/violet).
+ */
+function fireConfettiCascade() {
+    const colors = ['#ffb86b', '#ff6b9f', '#9400d3', '#ff4500', '#ffff00'];
+    confetti({
+        particleCount: 150,
+        spread: 90,
+        origin: { x: 0.5, y: 0.6 },
+        colors,
+        scalar: 1.2,
+    });
+    setTimeout(() => confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { x: 0.15, y: 0.7 },
+        colors,
+        startVelocity: 50,
+    }), 300);
+    setTimeout(() => confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { x: 0.85, y: 0.7 },
+        colors,
+        startVelocity: 50,
+    }), 600);
 }
 
 async function onExtendFromResults() {

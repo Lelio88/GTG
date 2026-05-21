@@ -42,9 +42,11 @@ export function startRoundClient(opts) {
     let totalHints = 1;
     let hasAnswered = false;
     let endsAt = null;
+    let roundTotalMs = 30_000; // mis à jour quand un nouveau round commence
     let countdownInterval = null;
 
     const roomRef = ref(db, `rooms/${code}`);
+    const timerBarFillEl = document.getElementById('multi-timer-bar-fill');
 
     function clearCountdown() {
         if (countdownInterval) {
@@ -59,7 +61,19 @@ export function startRoundClient(opts) {
             if (!endsAt) return;
             const remainingMs = Math.max(0, endsAt - Date.now());
             const secs = Math.ceil(remainingMs / 1000);
-            timerEl.innerText = `⏱ ${String(secs).padStart(2, '0')}s`;
+            timerEl.innerText = `${String(secs).padStart(2, '0')}s`;
+
+            // Update barre de progression
+            if (timerBarFillEl) {
+                const ratio = Math.max(0, Math.min(1, remainingMs / roundTotalMs));
+                timerBarFillEl.style.width = `${ratio * 100}%`;
+                // Bascule en mode urgence sous les 5 dernières secondes
+                if (remainingMs <= 5000 && !timerBarFillEl.classList.contains('timer-urgent')) {
+                    timerBarFillEl.classList.add('timer-urgent');
+                } else if (remainingMs > 5000 && timerBarFillEl.classList.contains('timer-urgent')) {
+                    timerBarFillEl.classList.remove('timer-urgent');
+                }
+            }
         }, 200);
     }
 
@@ -77,6 +91,13 @@ export function startRoundClient(opts) {
         totalHints = getHintCount(currentMode, currentGame);
         hasAnswered = false;
         endsAt = round.endsAt;
+        // Calcule la durée totale réelle du round (endsAt - now) pour caler la barre
+        roundTotalMs = Math.max(1000, endsAt - Date.now());
+        // Reset état visuel de la barre
+        if (timerBarFillEl) {
+            timerBarFillEl.classList.remove('timer-urgent');
+            timerBarFillEl.style.width = '100%';
+        }
 
         messageEl.innerText = '';
         messageEl.style.color = '';
