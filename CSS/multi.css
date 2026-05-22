@@ -254,11 +254,20 @@ body:has(.multi-lobby-app)::after {
     letter-spacing: 0.05em;
     text-transform: uppercase;
     margin-top: var(--sp-4);
-    transition: text-shadow var(--transition-fast);
+    padding: var(--sp-2) var(--sp-4);
+    background: rgba(8, 4, 15, 0.7);
+    border: 1px solid var(--neon-primary);
+    border-radius: var(--radius-sm);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 0 12px rgba(255, 184, 107, 0.3);
+    transition: all var(--transition-base);
 }
 
 .multi-back:hover {
-    text-shadow: 0 0 10px var(--neon-primary);
+    background: rgba(255, 184, 107, 0.15);
+    box-shadow: 0 0 18px rgba(255, 184, 107, 0.6);
+    transform: translateY(-2px);
 }
 
 /* ----------------------------------------------------------
@@ -1167,6 +1176,53 @@ body:has(.multi-lobby-app)::after {
     border-color: var(--neon-danger);
     color: var(--neon-danger);
     box-shadow: 0 0 8px rgba(255, 0, 60, 0.4);
+}
+
+/* ----------------------------------------------------------
+   FLÈCHES NAVIGATION INDICES (mode game)
+   ---------------------------------------------------------- */
+
+.multi-hint-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    background: rgba(8, 4, 15, 0.7);
+    border: 1px solid var(--neon-primary);
+    border-radius: 50%;
+    color: var(--neon-primary);
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 0 12px rgba(255, 184, 107, 0.4);
+    transition: all var(--transition-base);
+    z-index: 5;
+    padding: 0;
+}
+
+.multi-hint-arrow:hover {
+    background: rgba(255, 184, 107, 0.2);
+    box-shadow: 0 0 20px rgba(255, 184, 107, 0.7);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.multi-hint-arrow-left {
+    left: var(--sp-3);
+}
+
+.multi-hint-arrow-right {
+    right: var(--sp-3);
+}
+
+/* Le parent de #content doit être en position relative pour que les flèches
+   en absolute soient positionnées par rapport à lui */
+#game-view {
+    position: relative;
 }
 
 /* ----------------------------------------------------------

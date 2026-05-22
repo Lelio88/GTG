@@ -23,6 +23,15 @@ import { games } from '../gamesDatabase.js';
 import confetti from 'https://esm.sh/canvas-confetti@1.9.3';
 
 const BUG_REPORT_BASE = 'https://github.com/Lelio88/GTG/issues/new';
+const LAST_ALIAS_KEY = 'gtg_multi_last_alias';
+
+function readLastAlias() {
+    try { return (localStorage.getItem(LAST_ALIAS_KEY) || '').slice(0, 20); }
+    catch { return ''; }
+}
+function saveLastAlias(alias) {
+    try { localStorage.setItem(LAST_ALIAS_KEY, alias.slice(0, 20)); } catch {}
+}
 
 const $ = (id) => document.getElementById(id);
 
@@ -73,13 +82,14 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     const playerSnap = await get(ref(db, `rooms/${code}/players/${myUid}`));
     if (!playerSnap.exists()) {
-        // Pas encore dans la room → demander le pseudo
-        const alias = prompt('Ton pseudo (20 caractères max) :');
+        // Pas encore dans la room → demander le pseudo via modale
+        const alias = await askAliasViaModal();
         if (!alias) {
             window.location.href = 'multi-lobby.html';
             return;
         }
         myName = alias.slice(0, 20);
+        saveLastAlias(myName);
         try {
             await joinRoom({ code, name: myName });
         } catch (err) {
@@ -89,6 +99,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         }
     } else {
         myName = playerSnap.val().name;
+        saveLastAlias(myName);
     }
 
     // Détecter si on est l'hôte pour armer le bon onDisconnect
@@ -384,6 +395,46 @@ async function onExtendFromResults() {
 // ──────────────────────────────────────────────────────────────────────────
 // Utilitaires
 // ──────────────────────────────────────────────────────────────────────────
+
+/**
+ * Affiche la modale de saisie du pseudo. Pré-remplit avec le dernier
+ * alias utilisé (stocké en localStorage, clé `gtg_multi_last_alias`).
+ * Renvoie une promesse résolue avec le pseudo, ou null si annulé.
+ */
+function askAliasViaModal() {
+    return new Promise((resolve) => {
+        const modal = $('alias-modal');
+        const input = $('alias-modal-input');
+        const form = $('alias-form');
+        const cancel = $('alias-cancel');
+
+        // Pré-remplir avec le dernier alias stocké
+        input.value = readLastAlias();
+
+        modal.style.display = 'flex';
+        setTimeout(() => { input.focus(); input.select(); }, 50);
+
+        const cleanup = () => {
+            modal.style.display = 'none';
+            form.removeEventListener('submit', onSubmit);
+            cancel.removeEventListener('click', onCancel);
+        };
+        const onSubmit = (e) => {
+            e.preventDefault();
+            const value = input.value.trim();
+            if (!value) return;
+            cleanup();
+            resolve(value);
+        };
+        const onCancel = () => {
+            cleanup();
+            resolve(null);
+        };
+
+        form.addEventListener('submit', onSubmit);
+        cancel.addEventListener('click', onCancel);
+    });
+}
 
 function copyShareLink() {
     const url = $('share-link').value;

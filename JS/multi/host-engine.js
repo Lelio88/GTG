@@ -203,9 +203,9 @@ export function startHostEngine({ code, uid }) {
             }
         }
 
-        // Petite pause UX (2s) pour laisser voir la modale de fin de manche,
-        // puis on tire le prochain (ou termine la partie).
-        setTimeout(() => { startNextRound(); }, 2200);
+        // Pause UX (3.5s) pour laisser voir la révélation du nom du jeu
+        // sur tous les clients avant de tirer le prochain (ou terminer la partie).
+        setTimeout(() => { startNextRound(); }, 3500);
     }
 
     // Listener temps réel : déclenche checkRoundEnd à chaque event RTDB sur la room

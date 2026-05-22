@@ -80,6 +80,25 @@
             <button id="back-to-lobby-btn">Retour à l'accueil</button>
         </section>
 
+        <!-- Modale Saisie pseudo (quand on rejoint via lien) -->
+        <div id="alias-modal" class="multi-modal" style="display:none;">
+            <div class="multi-modal-content">
+                <h2 class="multi-modal-title">🎮 Ton pseudo</h2>
+                <p class="multi-modal-note" style="margin-top:0;">
+                    Tu rejoins une room — quel pseudo veux-tu utiliser ?
+                </p>
+                <form id="alias-form" autocomplete="off">
+                    <label for="alias-modal-input" class="multi-modal-label">Pseudo (20 caractères max)</label>
+                    <input type="text" id="alias-modal-input" class="multi-modal-input"
+                           maxlength="20" required autofocus />
+                    <div class="multi-modal-actions">
+                        <button type="button" id="alias-cancel" class="multi-modal-btn-secondary">Annuler</button>
+                        <button type="submit" class="multi-modal-btn-primary">Rejoindre →</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <!-- Modale Signaler un bug -->
         <div id="bug-report-modal" class="multi-modal" style="display:none;">
             <div class="multi-modal-content">

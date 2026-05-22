@@ -11,6 +11,15 @@ import { createRoom, joinRoom } from './lobby.js';
 import { buildShareableUrl, readRoomCodeFromUrl } from './url-room.js';
 import { games } from '../gamesDatabase.js';
 
+const LAST_ALIAS_KEY = 'gtg_multi_last_alias';
+function readLastAlias() {
+    try { return (localStorage.getItem(LAST_ALIAS_KEY) || '').slice(0, 20); }
+    catch { return ''; }
+}
+function saveLastAlias(alias) {
+    try { localStorage.setItem(LAST_ALIAS_KEY, alias.slice(0, 20)); } catch {}
+}
+
 const aliasInput = document.getElementById('alias-input');
 const modeSelect = document.getElementById('mode-select');
 const gamesSelect = document.getElementById('games-select');
@@ -41,6 +50,11 @@ window.addEventListener('DOMContentLoaded', () => {
     if (code) {
         codeInput.value = code;
     }
+    // Pré-remplir le pseudo avec le dernier utilisé
+    const lastAlias = readLastAlias();
+    if (lastAlias) {
+        aliasInput.value = lastAlias;
+    }
     // Auth en arrière-plan dès le chargement (gain de temps)
     whenAuthenticated().catch(err => console.error('auth init', err));
 });
@@ -54,6 +68,7 @@ createBtn.addEventListener('click', async () => {
     const targetGames = parseInt(gamesSelect.value, 10);
 
     createBtn.disabled = true;
+    saveLastAlias(alias);
     try {
         const { code } = await createRoom({ hostName: alias, mode, targetGames });
         window.location.href = buildShareableUrl(code);
@@ -75,6 +90,7 @@ joinBtn.addEventListener('click', async () => {
     }
 
     joinBtn.disabled = true;
+    saveLastAlias(alias);
     try {
         await joinRoom({ code, name: alias });
         window.location.href = buildShareableUrl(code);

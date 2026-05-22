@@ -44,6 +44,9 @@ export function startRoundClient(opts) {
     let endsAt = null;
     let roundTotalMs = 30_000; // mis à jour quand un nouveau round commence
     let countdownInterval = null;
+    let gracePhase = false;       // bascule à true quand graceEndsAt est posé
+    let revealShown = false;      // évite de re-render la révélation plusieurs fois
+    let arrowsCreated = false;    // flèches de nav entre indices créées ?
 
     const roomRef = ref(db, `rooms/${code}`);
     const timerBarFillEl = document.getElementById('multi-timer-bar-fill');
@@ -91,6 +94,8 @@ export function startRoundClient(opts) {
         totalHints = getHintCount(currentMode, currentGame);
         hasAnswered = false;
         endsAt = round.endsAt;
+        gracePhase = false;
+        revealShown = false;
         // Calcule la durée totale réelle du round (endsAt - now) pour caler la barre
         roundTotalMs = Math.max(1000, endsAt - Date.now());
         // Reset état visuel de la barre
@@ -98,6 +103,9 @@ export function startRoundClient(opts) {
             timerBarFillEl.classList.remove('timer-urgent');
             timerBarFillEl.style.width = '100%';
         }
+
+        // Retire les flèches de nav du round précédent si elles existaient
+        removeArrows();
 
         messageEl.innerText = '';
         messageEl.style.color = '';
@@ -112,6 +120,36 @@ export function startRoundClient(opts) {
         await renderers[currentMode](currentGame, 0, contentContainer);
 
         startCountdown();
+    }
+
+    /** Bascule la barre timer sur la phase grace (10s restants) */
+    function enterGracePhase(graceEndsAtMs) {
+        gracePhase = true;
+        endsAt = graceEndsAtMs;
+        roundTotalMs = Math.max(500, graceEndsAtMs - Date.now());
+        if (timerBarFillEl) {
+            timerBarFillEl.classList.remove('timer-urgent');
+            timerBarFillEl.style.width = '100%';
+        }
+    }
+
+    /** Affiche le nom du jeu en fin de manche (pour tous les joueurs) */
+    function showReveal(round) {
+        if (revealShown) return;
+        revealShown = true;
+        clearCountdown();
+        inputEl.disabled = true;
+        removeArrows();
+        if (hasAnswered) {
+            // Joueur ayant trouvé OU abandonné — feedback léger
+            const isFound = inputEl.value && currentGame; // approximation
+            messageEl.innerHTML = `📜 La réponse était : <strong>${escapeHtml(round.gameTitle)}</strong>`;
+            messageEl.style.color = '#ffb86b';
+        } else {
+            // Joueur n'ayant pas trouvé — révélation explicite
+            messageEl.innerHTML = `📜 La réponse était : <strong>${escapeHtml(round.gameTitle)}</strong>`;
+            messageEl.style.color = '#ffb86b';
+        }
     }
 
     function updateHintButton() {
@@ -134,6 +172,65 @@ export function startRoundClient(opts) {
         currentHintIndex = maxUnlockedHint;
         await renderers[currentMode](currentGame, currentHintIndex, contentContainer);
         updateHintButton();
+        // Crée les flèches de nav dès qu'on a au moins 2 indices débloqués
+        if (maxUnlockedHint >= 1 && !arrowsCreated && totalHints > 1) {
+            createNavArrows();
+        }
+        updateArrowsVisibility();
+    }
+
+    /** Crée des flèches DOM (←/→) pour naviguer entre indices débloqués */
+    function createNavArrows() {
+        if (arrowsCreated) return;
+        const parent = contentContainer.parentElement || contentContainer;
+        const left = document.createElement('button');
+        left.id = 'multi-prev-hint';
+        left.className = 'multi-hint-arrow multi-hint-arrow-left';
+        left.innerHTML = '&#9664;';
+        left.title = 'Indice précédent (←)';
+        left.onclick = () => navigateHint(-1);
+
+        const right = document.createElement('button');
+        right.id = 'multi-next-hint';
+        right.className = 'multi-hint-arrow multi-hint-arrow-right';
+        right.innerHTML = '&#9654;';
+        right.title = 'Indice suivant (→)';
+        right.onclick = () => navigateHint(1);
+
+        parent.appendChild(left);
+        parent.appendChild(right);
+        arrowsCreated = true;
+    }
+
+    function removeArrows() {
+        const left = document.getElementById('multi-prev-hint');
+        const right = document.getElementById('multi-next-hint');
+        if (left) left.remove();
+        if (right) right.remove();
+        arrowsCreated = false;
+    }
+
+    function updateArrowsVisibility() {
+        const left = document.getElementById('multi-prev-hint');
+        const right = document.getElementById('multi-next-hint');
+        if (!left || !right) return;
+        left.style.display = currentHintIndex > 0 ? 'flex' : 'none';
+        right.style.display = currentHintIndex < maxUnlockedHint ? 'flex' : 'none';
+    }
+
+    async function navigateHint(direction) {
+        if (revealShown) return;
+        const newIndex = currentHintIndex + direction;
+        if (newIndex < 0 || newIndex > maxUnlockedHint) return;
+        currentHintIndex = newIndex;
+        await renderers[currentMode](currentGame, currentHintIndex, contentContainer);
+        updateArrowsVisibility();
+    }
+
+    function escapeHtml(s) {
+        return String(s)
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
     }
 
     async function submitAnswer() {
@@ -169,15 +266,6 @@ export function startRoundClient(opts) {
         });
     }
 
-    /** Quand revealedAt est posé : affiche la modale révélation à TOUS */
-    function onReveal(round) {
-        clearCountdown();
-        inputEl.disabled = true;
-        // Modale révélation simple : intégrée dans #message
-        messageEl.innerHTML = `📜 Personne n'a trouvé. La réponse était : <strong>${round.gameTitle}</strong>`;
-        messageEl.style.color = '#ffb86b';
-    }
-
     /** Listener principal */
     const unsubHandler = onValue(roomRef, (snap) => {
         const data = snap.val();
@@ -189,21 +277,38 @@ export function startRoundClient(opts) {
         // Nouveau round ?
         if (round.roundId !== currentRoundId && !round.endedAt) {
             onNewRound(round, data.meta);
+            return;
         }
 
-        // Révélation collective (personne n'a trouvé) ?
-        if (round.revealedAt && round.endedAt && round.roundId === currentRoundId) {
-            onReveal(round);
+        // Pas le round courant ? ignore
+        if (round.roundId !== currentRoundId) return;
+
+        // Bascule grace ? (premier hit détecté → 10s restants)
+        if (round.graceEndsAt && !gracePhase && !round.endedAt) {
+            enterGracePhase(round.graceEndsAt);
+        }
+
+        // Fin de manche (réussite OU échec collectif) → afficher le nom du jeu
+        if (round.endedAt && !revealShown) {
+            showReveal(round);
         }
     });
 
-    // Wire Enter key pour soumission
+    // Wire Enter key pour soumission + flèches pour naviguer entre indices
     inputEl.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
             submitAnswer();
         }
     });
+
+    // Flèches du clavier pour naviguer entre indices (sauf si focus dans input)
+    const arrowKeyHandler = (e) => {
+        if (e.target === inputEl) return;
+        if (e.key === 'ArrowLeft') { e.preventDefault(); navigateHint(-1); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); navigateHint(1); }
+    };
+    document.addEventListener('keydown', arrowKeyHandler);
 
     // Wire bouton Valider (s'il existe)
     const checkBtn = document.getElementById('multi-check-btn');
@@ -212,6 +317,8 @@ export function startRoundClient(opts) {
     return {
         stop() {
             clearCountdown();
+            removeArrows();
+            document.removeEventListener('keydown', arrowKeyHandler);
             off(roomRef);
         },
     };
