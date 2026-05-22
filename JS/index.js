@@ -66,21 +66,6 @@ function applyNeonGlow(element, baseColor) {
     element.style.setProperty('--glow-color', glowColor);
     element.style.boxShadow = `0 0 10px ${glowColor}, 0 0 20px ${glowColor}`;
 }
-function refreshProfileData() {
-    const currentProfilePseudo = localStorage.getItem('currentProfile');
-    const profiles = JSON.parse(localStorage.getItem('profiles'));
-    const currentProfile = profiles.find(p => p.pseudo === currentProfilePseudo);
-
-    if (currentProfile) {
-        // On initialise les valeurs si elles n'existent pas encore
-        localStorage.setItem('keysCount', currentProfile.keys || 0);
-        localStorage.setItem('completedModesCount', (currentProfile.completedModes ? currentProfile.completedModes.length : 0));
-    } else {
-        // Si le profil n'existe pas, on remet à zéro
-        localStorage.setItem('keysCount', 0);
-        localStorage.setItem('completedModesCount', 0);
-    }
-}
 // Sélection d'un profil
 function selectProfile(pseudo) {
     currentProfile = pseudo;
