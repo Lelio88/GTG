@@ -46,6 +46,20 @@
         <!-- Vue lobby (avant démarrage) -->
         <section id="lobby-view" class="multi-view">
             <h1>Salle d'attente</h1>
+
+            <div class="multi-mode-carousel" id="mode-carousel">
+                <button class="multi-mode-arrow" id="mode-prev" aria-label="Mode précédent">&#9664;</button>
+                <div class="multi-mode-stage">
+                    <div class="multi-mode-bubble multi-mode-prev" id="mode-bubble-prev"></div>
+                    <div class="multi-mode-bubble multi-mode-current" id="mode-bubble-current"></div>
+                    <div class="multi-mode-bubble multi-mode-next" id="mode-bubble-next"></div>
+                </div>
+                <button class="multi-mode-arrow" id="mode-next" aria-label="Mode suivant">&#9654;</button>
+            </div>
+            <p class="multi-mode-host-hint" id="mode-host-hint" style="display:none;">
+                ← Clique sur un côté ou utilise les flèches pour changer de mode
+            </p>
+
             <p id="lobby-info">En attente de joueurs…</p>
             <button id="start-game-btn" style="display:none;">Démarrer la partie</button>
         </section>

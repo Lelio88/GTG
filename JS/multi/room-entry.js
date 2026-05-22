@@ -25,6 +25,23 @@ import confetti from 'https://esm.sh/canvas-confetti@1.9.3';
 const BUG_REPORT_BASE = 'https://github.com/Lelio88/GTG/issues/new';
 const LAST_ALIAS_KEY = 'gtg_multi_last_alias';
 
+// Liste ordonnée des modes pour le carrousel du lobby
+const MODES = [
+    { id: 'full',      label: 'Full' },
+    { id: 'image',     label: 'Image' },
+    { id: 'sound',     label: 'Sound' },
+    { id: 'text',      label: 'Text' },
+    { id: 'pixelated', label: 'Pixel' },
+    { id: 'shadow',    label: 'Shadow' },
+    { id: 'midi',      label: 'Midi' },
+    { id: 'emoji',     label: 'Emoji' },
+];
+
+function modeIndex(modeId) {
+    const i = MODES.findIndex(m => m.id === modeId);
+    return i >= 0 ? i : 0;
+}
+
 function readLastAlias() {
     try { return (localStorage.getItem(LAST_ALIAS_KEY) || '').slice(0, 20); }
     catch { return ''; }
@@ -306,7 +323,9 @@ function showView(viewName) {
 function updateLobbyUi(data) {
     if (currentView !== 'lobby') return;
     const playerCount = Object.keys(data.players || {}).length;
-    $('lobby-info').innerText = `${playerCount} joueur(s) — mode "${data.meta.mode}" — ${data.meta.targetGames} manches`;
+    $('lobby-info').innerText = `${playerCount} joueur(s) — ${data.meta.targetGames} manches`;
+    setupModeCarousel(data.meta.mode, isHost);
+    $('mode-host-hint').style.display = isHost ? 'block' : 'none';
     if (isHost) {
         $('start-game-btn').style.display = 'inline-block';
         $('start-game-btn').disabled = playerCount < MIN_PLAYERS;
@@ -315,6 +334,67 @@ function updateLobbyUi(data) {
             : `Démarrer la partie (${playerCount} joueurs)`;
     } else {
         $('start-game-btn').style.display = 'none';
+    }
+}
+
+// Index du mode actuellement affiché — utilisé pour animer uniquement
+// au vrai changement (pas à chaque update Firebase non lié au mode).
+let lastDisplayedModeIdx = null;
+
+/**
+ * Met à jour le carrousel des modes (lobby).
+ * Affiche le mode courant au centre + les modes adjacents sur les côtés.
+ * En mode hôte : les flèches et bulles latérales sont cliquables → change le mode.
+ * En mode non-hôte : tout est affiché en read-only (bulles latérales fanées).
+ */
+function setupModeCarousel(currentMode, hostFlag) {
+    const carousel = $('mode-carousel');
+    const prevBubble = $('mode-bubble-prev');
+    const currentBubble = $('mode-bubble-current');
+    const nextBubble = $('mode-bubble-next');
+    const prevBtn = $('mode-prev');
+    const nextBtn = $('mode-next');
+
+    carousel.classList.toggle('is-host', !!hostFlag);
+
+    const idx = modeIndex(currentMode);
+    const prevIdx = (idx - 1 + MODES.length) % MODES.length;
+    const nextIdx = (idx + 1) % MODES.length;
+
+    prevBubble.innerText = MODES[prevIdx].label;
+    currentBubble.innerText = MODES[idx].label;
+    nextBubble.innerText = MODES[nextIdx].label;
+
+    // Trigger animation seulement si le mode a réellement changé
+    if (lastDisplayedModeIdx !== null && lastDisplayedModeIdx !== idx) {
+        currentBubble.classList.remove('is-changing');
+        // force reflow pour relancer l'animation
+        void currentBubble.offsetWidth;
+        currentBubble.classList.add('is-changing');
+    }
+    lastDisplayedModeIdx = idx;
+
+    if (hostFlag) {
+        prevBtn.onclick = () => changeMode(MODES[prevIdx].id);
+        nextBtn.onclick = () => changeMode(MODES[nextIdx].id);
+        prevBubble.onclick = () => changeMode(MODES[prevIdx].id);
+        nextBubble.onclick = () => changeMode(MODES[nextIdx].id);
+    } else {
+        prevBtn.onclick = null;
+        nextBtn.onclick = null;
+        prevBubble.onclick = null;
+        nextBubble.onclick = null;
+    }
+}
+
+async function changeMode(newMode) {
+    if (!isHost) return;
+    try {
+        await update(ref(db, `rooms/${code}/meta`), { mode: newMode });
+        // Le listener RTDB déclenchera setupModeCarousel avec la nouvelle valeur
+        // ce qui jouera l'animation automatiquement (via lastDisplayedModeIdx)
+    } catch (err) {
+        console.error('change mode failed', err);
     }
 }
 
