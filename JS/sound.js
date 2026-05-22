@@ -131,6 +131,17 @@ window.nextQuestion = nextQuestion;
 // Setup Enter key handler
 setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
 
+// Flèches du clavier : naviguer entre indices audio (sauf si on tape dans l'input)
+document.addEventListener('keydown', (e) => {
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+    const userInput = document.getElementById('user-input');
+    if (document.activeElement === userInput && userInput.value.length > 0) return;
+    if (!hintNav || hintNav.maxUnlockedIndex < 1) return;  // pas encore débloqué d'autres
+    e.preventDefault();
+    if (e.key === 'ArrowLeft') navigateAudio(-1);
+    if (e.key === 'ArrowRight') navigateAudio(1);
+});
+
 // On load
 window.onload = () => {
     launchGameMusic();

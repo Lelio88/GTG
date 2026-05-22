@@ -83,23 +83,18 @@ function setupKeyboardNavigation() {
     // Prevent adding duplicate event listeners
     if (keyboardNavigationSetup) return;
     keyboardNavigationSetup = true;
-    
-    // Keyboard listener for arrow keys
-    document.addEventListener('keydown', (e) => {
-        if (!isInputFocused) {
-            if (e.key === 'ArrowLeft') navigateImage(-1);
-            if (e.key === 'ArrowRight') navigateImage(1);
-        }
-    });
 
-    // Input focus management
     const userInput = document.getElementById('user-input');
-    userInput.addEventListener('focus', () => {
-        isInputFocused = true;
-    });
 
-    userInput.addEventListener('blur', () => {
-        isInputFocused = false;
+    // Keyboard listener for arrow keys.
+    // Marche même si l'input a le focus, TANT QUE l'input est vide
+    // (sinon on laisse le browser déplacer le curseur dans le texte saisi).
+    document.addEventListener('keydown', (e) => {
+        if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+        if (document.activeElement === userInput && userInput.value.length > 0) return;
+        e.preventDefault();
+        if (e.key === 'ArrowLeft') navigateImage(-1);
+        if (e.key === 'ArrowRight') navigateImage(1);
     });
 }
 

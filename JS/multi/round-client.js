@@ -323,11 +323,15 @@ export function startRoundClient(opts) {
         }
     });
 
-    // Flèches du clavier pour naviguer entre indices (sauf si focus dans input)
+    // Flèches du clavier pour naviguer entre indices
+    // Marche même si l'input a le focus, TANT QUE l'input est vide (sinon
+    // on laisse le browser déplacer le curseur dans le texte saisi)
     const arrowKeyHandler = (e) => {
-        if (e.target === inputEl) return;
-        if (e.key === 'ArrowLeft') { e.preventDefault(); navigateHint(-1); }
-        if (e.key === 'ArrowRight') { e.preventDefault(); navigateHint(1); }
+        if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+        if (document.activeElement === inputEl && inputEl.value.length > 0) return;
+        e.preventDefault();
+        if (e.key === 'ArrowLeft') navigateHint(-1);
+        if (e.key === 'ArrowRight') navigateHint(1);
     };
     document.addEventListener('keydown', arrowKeyHandler);
 
