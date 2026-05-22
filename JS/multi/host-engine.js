@@ -36,6 +36,7 @@ import {
     push as fbPush
 } from './firebase.js';
 import { computeRanksFromResults } from './scoring.js';
+import { games } from '../gamesDatabase.js';
 
 const GRACE_MS = 10_000;        // 10s après 1er hit
 const ROUND_DURATION_MS = 30_000; // 30s par manche
@@ -253,18 +254,31 @@ export function startHostEngine({ code, uid }) {
 
 /**
  * Bouton « +N manches » — augmente targetGames côté hôte.
- * Si la partie était déjà terminée (status === "finished"), repasse à "playing"
- * et relance le moteur (à l'appel doit suivre un nouveau startHostEngine).
+ * Si la partie était déjà terminée (status === "finished"), repasse à "playing".
+ * Si la pile est vide (cas typique en fin de partie où tout a été tiré), on
+ * re-shuffle l'ensemble du catalogue pour avoir de quoi continuer, en excluant
+ * les titres déjà tirés dans cette session (via currentRound.gameTitle).
  */
 export async function extendTargetGames({ code, increment }) {
-    const metaSnap = await get(ref(db, `rooms/${code}/meta`));
-    if (!metaSnap.exists()) return;
-    const meta = metaSnap.val();
+    const snap = await get(ref(db, `rooms/${code}`));
+    if (!snap.exists()) return;
+    const room = snap.val();
+    const meta = room.meta || {};
+    const game = room.game || {};
+    const isFinished = meta.status === 'finished';
+    const pileEmpty = !game.pile || game.pile.length === 0;
+
     const updates = {
-        targetGames: (meta.targetGames || 0) + increment,
+        'meta/targetGames': (meta.targetGames || 0) + increment,
     };
-    if (meta.status === 'finished') {
-        updates.status = 'playing';
+    if (isFinished) {
+        updates['meta/status'] = 'playing';
     }
-    await update(ref(db, `rooms/${code}/meta`), updates);
+    // Re-remplit la pile si vide (catalogue complet shuffled)
+    if (pileEmpty) {
+        const titles = games.map(g => g.title);
+        updates['game/pile'] = [...titles].sort(() => Math.random() - 0.5);
+    }
+
+    await update(ref(db, `rooms/${code}`), updates);
 }

@@ -133,23 +133,44 @@ export function startRoundClient(opts) {
         }
     }
 
-    /** Affiche le nom du jeu en fin de manche (pour tous les joueurs) */
+    /** Affiche le nom du jeu en fin de manche (pour tous les joueurs)
+     *  ET démarre un compte à rebours visuel des 3.5s avant le prochain round
+     *  (sinon le timer reste figé sur sa dernière valeur). */
     function showReveal(round) {
         if (revealShown) return;
         revealShown = true;
         clearCountdown();
         inputEl.disabled = true;
         removeArrows();
-        if (hasAnswered) {
-            // Joueur ayant trouvé OU abandonné — feedback léger
-            const isFound = inputEl.value && currentGame; // approximation
-            messageEl.innerHTML = `📜 La réponse était : <strong>${escapeHtml(round.gameTitle)}</strong>`;
-            messageEl.style.color = '#ffb86b';
-        } else {
-            // Joueur n'ayant pas trouvé — révélation explicite
-            messageEl.innerHTML = `📜 La réponse était : <strong>${escapeHtml(round.gameTitle)}</strong>`;
-            messageEl.style.color = '#ffb86b';
+        messageEl.innerHTML = `📜 La réponse était : <strong>${escapeHtml(round.gameTitle)}</strong>`;
+        messageEl.style.color = '#ffb86b';
+
+        // Compte à rebours visuel des 3.5s d'affichage de la réponse
+        // (doit matcher le setTimeout(3500) dans host-engine.js::finalizeRound)
+        startRevealCountdown(3500);
+    }
+
+    /** Mini-countdown pour la phase de révélation : barre + secondes restantes */
+    function startRevealCountdown(durationMs) {
+        clearCountdown();
+        const startedAt = Date.now();
+        const endsAtLocal = startedAt + durationMs;
+        if (timerBarFillEl) {
+            timerBarFillEl.classList.remove('timer-urgent');
+            timerBarFillEl.style.width = '100%';
         }
+        countdownInterval = setInterval(() => {
+            const remainingMs = Math.max(0, endsAtLocal - Date.now());
+            const secs = Math.max(0, Math.ceil(remainingMs / 1000));
+            timerEl.innerText = `${String(secs).padStart(2, '0')}s`;
+            if (timerBarFillEl) {
+                const ratio = Math.max(0, Math.min(1, remainingMs / durationMs));
+                timerBarFillEl.style.width = `${ratio * 100}%`;
+            }
+            if (remainingMs <= 0) {
+                clearCountdown();
+            }
+        }, 100);
     }
 
     function updateHintButton() {

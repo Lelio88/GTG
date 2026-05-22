@@ -3303,6 +3303,7 @@ export const games = [
 
 // Mapping des contractions
 export const abbreviations = {
+    'animal crossing': ['ac'],
     'counter strike': ['cs'],
     'league of legends': ['lol'],
     'call of duty': ['cod'],
