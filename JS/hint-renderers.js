@@ -160,11 +160,23 @@ export function renderHintShadow(game, _hintIndex, container) {
     container.appendChild(imageWrapper);
 }
 
-// === Mode PIXELATED : image pixelisée via canvas (one-shot, hintIndex ignoré) ===
+// === Mode PIXELATED : image pixelisée (one-shot, hintIndex ignoré) ===
+//
+// Cas idéal : game.pixels[0] est une pochette DÉJÀ standardisée à ~30 px
+// de large (générée par Python/standardize_pixels.py). On l'affiche tel
+// quel avec `image-rendering: pixelated` → tous les jeux ont exactement
+// le même degré de pixellisation, peu importe la taille source.
+//
+// Fallback : si pas de pochette pré-rendue, on downsample en canvas à
+// 30 px max sur la largeur (même cible que standardize_pixels.py) pour
+// garder un rendu uniforme avec les images standardisées.
+const PIXELATED_TARGET_WIDTH = 30;
+
 export function renderHintPixelated(game, _hintIndex, container) {
     container.innerHTML = '';
 
-    const source = (game.pixels && game.pixels.length > 0) ? game.pixels : game.image;
+    const prePixelated = game.pixels && game.pixels.length > 0 ? game.pixels[0] : null;
+    const fallback = game.image && game.image.length > 0 ? game.image[0] : null;
 
     const imageWrapper = document.createElement('div');
     imageWrapper.style.width = '100%';
@@ -176,33 +188,39 @@ export function renderHintPixelated(game, _hintIndex, container) {
 
     const img = document.createElement('img');
     img.id = 'game-pixels';
-    img.style.width = '100%';
-    img.style.height = '100%';
+    img.style.maxWidth = '100%';
+    img.style.maxHeight = '100%';
     img.style.objectFit = 'contain';
     img.style.imageRendering = 'pixelated';
     img.style.boxShadow = 'none';
+    img.style.opacity = '0';
+    img.style.transition = 'opacity 0.5s ease';
 
-    // Stocke la source originale pour révélation HD côté appelant
-    img.dataset.originalSrc = source[0];
+    // Stocke la source HD originale (pour révélation côté appelant)
+    img.dataset.originalSrc = fallback || prePixelated || '';
 
-    const tempImg = new Image();
-    tempImg.src = source[0];
-
-    tempImg.onload = () => {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        const pixelFactor = 0.05;
-        const w = Math.floor(tempImg.width * pixelFactor);
-        const h = Math.floor(tempImg.height * pixelFactor);
-        canvas.width = w;
-        canvas.height = h;
-        ctx.drawImage(tempImg, 0, 0, w, h);
-        img.src = canvas.toDataURL();
-
-        img.style.opacity = '0';
-        img.style.transition = 'opacity 0.5s ease';
-        setTimeout(() => { img.style.opacity = '1'; }, 50);
-    };
+    if (prePixelated) {
+        // Image déjà standardisée : on l'utilise telle quelle
+        img.src = prePixelated;
+        img.onload = () => {
+            setTimeout(() => { img.style.opacity = '1'; }, 50);
+        };
+    } else if (fallback) {
+        // Fallback : downsample en canvas à PIXELATED_TARGET_WIDTH px de large
+        const tempImg = new Image();
+        tempImg.src = fallback;
+        tempImg.onload = () => {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const w = PIXELATED_TARGET_WIDTH;
+            const h = Math.max(1, Math.floor(tempImg.height * PIXELATED_TARGET_WIDTH / tempImg.width));
+            canvas.width = w;
+            canvas.height = h;
+            ctx.drawImage(tempImg, 0, 0, w, h);
+            img.src = canvas.toDataURL();
+            setTimeout(() => { img.style.opacity = '1'; }, 50);
+        };
+    }
 
     imageWrapper.appendChild(img);
     container.appendChild(imageWrapper);

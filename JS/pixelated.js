@@ -79,11 +79,12 @@ function checkAnswer() {
     }
     
     if (checkAnswerValue(input, cachedTitle)) {
-        // RÉVÉLATION HD
+        // RÉVÉLATION HD : on charge l'image originale (depuis Medias/Image/),
+        // pas la pochette pré-pixellisée qui reste petite intrinsèquement.
         const imgElement = document.getElementById('game-pixels');
-        if(imgElement) {
-            imgElement.src = gameImages[0]; // Image originale
-            imgElement.style.imageRendering = 'auto'; // Lissage normal
+        if (imgElement && cachedGame.image && cachedGame.image.length > 0) {
+            imgElement.src = cachedGame.image[0];
+            imgElement.style.imageRendering = 'auto';
         }
 
         updateProfileUtil(currentProfile, cachedTitle, true, 'pixelated');
@@ -104,10 +105,11 @@ function nextQuestion() {
 // Pas de fonction showHint complexe ici, car pas de navigation d'images
 
 function abandonGame() {
-    // RÉVÉLATION HD sur abandon
+    // RÉVÉLATION HD sur abandon : image originale (Medias/Image/) plutôt que
+    // la pochette pré-pixellisée qui reste petite.
     const imgElement = document.getElementById('game-pixels');
-    if(imgElement) {
-        imgElement.src = gameImages[0];
+    if (imgElement && cachedGame.image && cachedGame.image.length > 0) {
+        imgElement.src = cachedGame.image[0];
         imgElement.style.imageRendering = 'auto';
     }
 
