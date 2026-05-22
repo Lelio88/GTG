@@ -1,21 +1,65 @@
+/* ============================================================
+   CSS/style.css - Pages des 8 modes solo (game pages)
+   DA Néon Cyberpunk, consomme CSS/tokens.css.
+   ============================================================ */
+
+@import url('./tokens.css');
+
 /* ===============================
-    Global Styles 
+    Global Styles
 =============================== */
 body {
     margin: 0;
-    padding:  0;
-    font-family: 'Poppins', sans-serif;
-    background-color: #1a1a1a;
-    color: white;
+    padding: 0;
+    font-family: var(--font-ui);
+    color: var(--text-primary);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    overflow:  hidden;
+    overflow: hidden;
+    background-color: var(--bg-deep);
+    background-image:
+        linear-gradient(rgba(255, 107, 159, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 184, 107, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: 0 0;
+    background-repeat: repeat;
+    animation: grid-drift 30s linear infinite;
 }
 
-h2,
-h3 {
+/* Soleil synthwave subtil en arrière-plan (plus discret que sur l'accueil) */
+body::after {
+    content: '';
+    position: fixed;
+    bottom: -38%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(700px, 65vw);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at center 35%,
+        #fff4d6 0%, #ffd87a 12%, #ffb86b 28%,
+        #ff6b9f 55%, #c77dff 80%, rgba(199, 125, 255, 0.2) 100%);
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.45;
+    filter: blur(2px) saturate(1.15);
+    -webkit-mask-image: linear-gradient(180deg,
+        black 0%, black 48%, transparent 48%, transparent 50%,
+        black 50%, black 55%, transparent 55%, transparent 58%,
+        black 58%, black 63%, transparent 63%, transparent 67%,
+        black 67%, black 73%, transparent 73%, transparent 78%,
+        black 78%, black 86%, transparent 86%, transparent 92%, black 92%);
+    mask-image: linear-gradient(180deg,
+        black 0%, black 48%, transparent 48%, transparent 50%,
+        black 50%, black 55%, transparent 55%, transparent 58%,
+        black 58%, black 63%, transparent 63%, transparent 67%,
+        black 67%, black 73%, transparent 73%, transparent 78%,
+        black 78%, black 86%, transparent 86%, transparent 92%, black 92%);
+}
+
+h2, h3 {
     margin: 0;
     padding: 0;
     text-align: center;
@@ -25,27 +69,30 @@ h3 {
     Header Bar (Flottante & Néon)
 =============================== */
 #header-bar {
-    position:  fixed;
+    position: fixed;
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
     height: 50px;
-    background: rgba(44, 44, 44, 0.8);
+    background: rgba(8, 4, 15, 0.75);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px #ff7f50;
+    padding: 0 var(--sp-4);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-default);
+    box-shadow: 0 0 16px rgba(255, 184, 107, 0.3);
     z-index: 1000;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 #header-logo {
     height: 40px;
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: transform var(--transition-base);
+    filter: drop-shadow(0 0 6px rgba(255, 184, 107, 0.5));
 }
 
 #header-logo:hover {
@@ -54,27 +101,35 @@ h3 {
 
 #header-bar nav ul {
     display: flex;
-    gap: 20px;
+    gap: var(--sp-4);
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 #header-bar nav ul li a {
-    color: white;
+    color: var(--text-primary);
     text-decoration: none;
-    font-size: 1.2em;
-    transition: color 0.3s, box-shadow 0.3s;
+    font-family: var(--font-display);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all var(--transition-fast);
     padding-bottom: 2px;
 }
 
 #header-bar nav ul li a:hover {
-    color: #ff7f50;
-    box-shadow:  0 2px #ff7f50;
+    color: var(--neon-primary);
+    text-shadow: 0 0 8px var(--neon-primary);
 }
 
 /* ===============================
-    App Container 
+    App Container
 =============================== */
 #app {
+    position: relative;
+    z-index: 1;
     text-align: center;
     width: 80%;
     padding-top: 80px;
@@ -82,30 +137,33 @@ h3 {
 }
 
 /* ===============================
-    Game Area 
+    Game Area
 =============================== */
 #game {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: var(--sp-4);
 }
 
 #game-title,
 #message {
-    font-size: 1.8em;
-    color: #ff7f50;
-    text-shadow: 0 0 8px #ff7f50;
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    color: var(--neon-primary);
+    text-shadow: 0 0 10px var(--neon-primary), 0 0 20px rgba(255, 184, 107, 0.4);
 }
 
 /* ===============================
-    Content Area (Image) 
+    Content Area (Image)
 =============================== */
 #content {
     position: relative;
-    width: 100%; /* Fluide */
-    max-width: 900px; /* Max PC */
+    width: 100%;
+    max-width: 900px;
     height: auto;
     min-height: 300px;
     display: flex;
@@ -117,49 +175,49 @@ h3 {
     max-width: 100%;
     height: auto;
     max-height: 400px;
-    object-fit: contain; /* Évite de couper l'image */
+    object-fit: contain;
     object-position: center;
-    border-radius: 15px;
-    box-shadow:  0 0 15px #ff7f50, 0 0 30px #ff7f50;
+    border-radius: var(--radius-md);
+    box-shadow:
+        0 0 16px rgba(255, 184, 107, 0.4),
+        0 0 32px rgba(255, 107, 159, 0.2);
 }
 
 /* ===============================
     Full Mode Layout (Image + Text + Audio à droite)
 =============================== */
-/* PC Uniquement */
 @media (min-width: 768px) {
     .hint-container {
         display: flex;
         flex-direction: row;
         align-items: flex-start;
-        gap: 20px;
+        gap: var(--sp-4);
         width: 100%;
     }
 
     .hint-container img {
         flex-shrink: 0;
-        width: 50%; /* Flexible */
+        width: 50%;
         max-width: 500px;
     }
 
     .hint-right-content {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: var(--sp-4);
         flex: 1;
         min-width: 0;
     }
 }
 
-/* Mobile adjustments for Full Mode */
 @media (max-width: 767px) {
     .hint-container {
         display: flex;
         flex-direction: column;
-        gap: 15px;
+        gap: var(--sp-3);
         width: 100%;
     }
-    
+
     .hint-container img {
         width: 100%;
         height: auto;
@@ -174,8 +232,13 @@ h3 {
 .hint-right-content p {
     margin: 0;
     text-align: left;
-    line-height: 1.6;
+    line-height: 1.55;
     font-size: 1rem;
+    color: var(--text-primary);
+    background: rgba(0, 0, 0, 0.4);
+    border-left: 3px solid var(--neon-primary);
+    padding: var(--sp-3) var(--sp-4);
+    border-radius: var(--radius-sm);
 }
 
 .hint-right-content audio {
@@ -184,19 +247,20 @@ h3 {
 }
 
 /* ===============================
-    Navigation Arrows 
+    Navigation Arrows
 =============================== */
 .nav-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    color: white;
+    color: var(--neon-primary);
     font-size: 2.5em;
     cursor: pointer;
     z-index: 5;
     user-select: none;
     opacity: 0.7;
-    transition: opacity 0.2s;
+    text-shadow: 0 0 10px var(--neon-primary);
+    transition: opacity var(--transition-fast), transform var(--transition-base);
 }
 
 .nav-arrow.left {
@@ -209,70 +273,89 @@ h3 {
 
 .nav-arrow:hover {
     opacity: 1;
+    transform: translateY(-50%) scale(1.15);
 }
 
 /* ===============================
-    Input and Buttons 
+    Input and Buttons
 =============================== */
 #user-input {
     width: 400px;
-    padding: 10px;
-    font-size:  1.2em;
-    border: 2px solid #ff7f50;
-    border-radius: 5px;
-    background-color: #2c2c2c;
-    color: white;
+    max-width: 100%;
+    padding: var(--sp-3);
+    font-family: var(--font-ui);
+    font-size: var(--fs-md);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-sm);
+    background: var(--bg-surface);
+    color: var(--text-primary);
     outline: none;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-base);
 }
 
 #user-input:focus {
-    box-shadow: 0 0 10px #ff7f50;
+    border-color: var(--neon-primary);
+    box-shadow: 0 0 14px rgba(255, 184, 107, 0.4);
 }
 
 button {
-    padding: 10px 20px;
-    font-size: 1em;
-    background-color: #ff7f50;
-    color: white;
+    padding: var(--sp-2) var(--sp-5);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--fs-sm);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--neon-primary), var(--neon-secondary));
+    color: var(--bg-deep);
     border: none;
-    border-radius: 5px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: transform var(--transition-fast), box-shadow var(--transition-base), filter var(--transition-fast);
 }
 
 button:hover {
-    background-color: #ff9966;
+    transform: translateY(-2px);
+    box-shadow: var(--glow-lg) var(--neon-primary);
+    filter: brightness(1.15);
+}
+
+button:active {
+    transform: translateY(0);
 }
 
 #button-container {
     display: flex;
-    gap: 10px;
+    gap: var(--sp-3);
     justify-content: center;
 }
 
 /* ===============================
-    Scoreboard 
+    Scoreboard
 =============================== */
 #scoreboard {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(44, 44, 44, 0.9);
-    padding: 10px 20px;
+    background: rgba(8, 4, 15, 0.85);
+    padding: var(--sp-2) var(--sp-4);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 2px solid #ff7f50;
-    box-shadow: 0 -2px 10px rgba(255, 127, 80, 0.3);
-    font-size: 1em;
+    border-top: 1px solid var(--neon-primary);
+    box-shadow: 0 -2px 12px rgba(255, 184, 107, 0.3);
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    letter-spacing: 0.05em;
     z-index: 100;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 #scoreboard p {
     margin: 0;
-    color: #fff;
-    flex:  1;
+    color: var(--text-primary);
+    flex: 1;
 }
 
 #scoreboard p:first-child {
@@ -288,171 +371,158 @@ button:hover {
 }
 
 #good-answers {
-    color: #4CAF50;
+    color: var(--neon-success);
     font-weight: bold;
+    text-shadow: 0 0 8px rgba(57, 255, 20, 0.5);
 }
 
 #bad-answers {
-    color: #f44336;
-    font-weight:  bold;
+    color: var(--neon-danger);
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(255, 0, 60, 0.5);
 }
 
 #timer {
-    color: #2196F3;
-    font-weight:  bold;
+    color: var(--neon-cyan);
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(0, 246, 255, 0.5);
 }
 
 #keys-count {
-    color: #FFD700;
+    color: var(--neon-primary);
     font-weight: bold;
+    text-shadow: 0 0 8px rgba(255, 184, 107, 0.5);
 }
 
 /* ===============================
-    RESPONSIVE DESIGN - MOBILE
+    RESPONSIVE DESIGN
 =============================== */
-
-/* Mobile (< 768px) */
 @media (max-width: 767px) {
-    /* Body - Allow scroll */
     body {
         overflow-y: auto;
         height: auto;
         min-height: 100vh;
     }
-    
-    /* App container */
+
     #app {
         width: 95%;
-        padding:  80px 10px 20px;
+        padding: 80px var(--sp-2) var(--sp-4);
     }
-    
-    /* Header bar */
+
     #header-bar {
         width: 95%;
-        padding: 5px 10px;
-        height: auto; /* Hauteur auto pour contenir le menu si besoin */
+        padding: var(--sp-1) var(--sp-3);
+        height: auto;
         min-height: 50px;
-        flex-direction: column; /* Empiler logo et nav */
-        gap: 10px;
+        flex-direction: column;
+        gap: var(--sp-2);
     }
-    
+
     #header-logo {
         height: 30px;
     }
-    
-    /* Show navigation simplified */
+
     #header-bar nav {
         display: block;
         width: 100%;
     }
-    
+
     #header-bar nav ul {
         display: flex;
         justify-content: center;
-        gap: 15px;
-        padding: 0;
-        margin: 0;
+        gap: var(--sp-3);
         flex-wrap: wrap;
     }
-    
+
     #header-bar nav ul li a {
-        font-size: 0.9em; /* Plus petit */
+        font-size: 0.85em;
     }
-    
-    /* Hide burger menu artifacts if present */
+
     .burger-menu {
         display: none !important;
     }
-    
-    /* Mobile navigation overlay - Disabled as we use inline nav */
+
     #header-bar nav.active {
         position: static;
         background: transparent;
         padding: 0;
     }
-    
-    /* Game area */
+
     #game {
-        gap: 15px;
+        gap: var(--sp-3);
     }
-    
-    /* Titles */
+
     #game-title,
     #message {
         font-size: 1.4em;
     }
-    
-    /* Content area - flexible width */
+
     #content {
         width: 100%;
         max-width: 100%;
         height: auto;
         min-height: 200px;
     }
-    
+
     #content img {
         width: 100%;
         height: auto;
         max-height: 400px;
         object-fit: contain;
     }
-    
-    /* Navigation arrows - inside content */
+
     .nav-arrow {
         font-size: 2em;
         opacity: 0.9;
     }
-    
+
     .nav-arrow.left {
         left: 5px;
     }
-    
+
     .nav-arrow.right {
         right: 5px;
     }
-    
-    /* Input and buttons */
+
     #user-input {
         font-size: 16px;
         width: 100%;
         min-height: 44px;
-        padding: 10px;
+        padding: var(--sp-3);
     }
-    
+
     button {
         font-size: 1em;
         min-height: 44px;
         min-width: 44px;
-        padding: 12px 20px;
+        padding: var(--sp-3) var(--sp-4);
     }
-    
+
     #button-container {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: var(--sp-2);
         width: 100%;
     }
-    
+
     #button-container button {
         width: 100%;
     }
-    
-    /* Scoreboard */
+
     #scoreboard {
-        font-size:  0.9em;
+        font-size: 0.9em;
     }
-    
+
     #scoreboard p {
-        margin: 5px 0;
+        margin: var(--sp-1) 0;
     }
 }
 
-/* Tablet (768px - 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
     #app {
         width: 90%;
     }
-    
+
     #content {
         width: 100%;
         max-width: 700px;
@@ -460,7 +530,6 @@ button:hover {
     }
 }
 
-/* Desktop (768px+) - Hide burger menu */
 @media (min-width: 768px) {
     .burger-menu {
         display: none;

@@ -1,126 +1,200 @@
-/* hub.css */
+/* ============================================================
+   CSS/hub.css - Hub de sélection des modes solo
+   DA Néon Cyberpunk, consomme CSS/tokens.css.
+   ============================================================ */
+
+@import url('./tokens.css');
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
 
 body {
-    background-color: #121212;
-    color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-primary);
+    font-family: var(--font-ui);
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2rem;
-    height: 100%;
-    margin: 0;
+    padding: var(--sp-5);
+    background-color: var(--bg-deep);
+    background-image:
+        linear-gradient(rgba(255, 107, 159, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 184, 107, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: 0 0;
+    background-repeat: repeat;
+    animation: grid-drift 30s linear infinite;
+}
+
+/* Soleil synthwave en arrière-plan */
+body::after {
+    content: '';
+    position: fixed;
+    bottom: -32%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(800px, 75vw);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at center 35%,
+        #fff4d6 0%, #ffd87a 12%, #ffb86b 28%,
+        #ff6b9f 55%, #c77dff 80%, rgba(199, 125, 255, 0.2) 100%);
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.6;
+    filter: blur(1px) saturate(1.15);
+    -webkit-mask-image: linear-gradient(180deg,
+        black 0%, black 48%, transparent 48%, transparent 50%,
+        black 50%, black 55%, transparent 55%, transparent 58%,
+        black 58%, black 63%, transparent 63%, transparent 67%,
+        black 67%, black 73%, transparent 73%, transparent 78%,
+        black 78%, black 86%, transparent 86%, transparent 92%, black 92%);
+    mask-image: linear-gradient(180deg,
+        black 0%, black 48%, transparent 48%, transparent 50%,
+        black 50%, black 55%, transparent 55%, transparent 58%,
+        black 58%, black 63%, transparent 63%, transparent 67%,
+        black 67%, black 73%, transparent 73%, transparent 78%,
+        black 78%, black 86%, transparent 86%, transparent 92%, black 92%);
 }
 
 h1 {
-    margin-bottom: 1rem;
+    margin-bottom: var(--sp-4);
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--neon-primary);
+    text-shadow:
+        0 0 8px var(--neon-primary),
+        0 0 20px var(--neon-secondary),
+        0 0 36px rgba(255, 107, 159, 0.4);
 }
 
 #current-profile {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    padding: 0.5rem 1rem;
-    border:  2px solid #FFA500;
-    border-radius: 8px;
-    box-shadow: 0 0 10px #FFA500;
+    font-family: var(--font-display);
+    font-size: var(--fs-md);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin-bottom: var(--sp-5);
+    padding: var(--sp-2) var(--sp-4);
+    background: rgba(8, 4, 15, 0.6);
+    border: 1px solid var(--neon-primary);
+    color: var(--neon-primary);
+    border-radius: var(--radius-md);
+    box-shadow: 0 0 14px rgba(255, 184, 107, 0.4);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     user-select: none;
 }
 
 #modes-container {
     display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    gap: var(--sp-3);
+    margin-bottom: var(--sp-5);
     outline: none;
+    z-index: 1;
 }
 
 .game-mode {
-    background-color: #2c2c2c;
+    background: var(--bg-surface);
     border: 2px solid transparent;
-    border-radius: 10px;
-    padding: 20px;
-    text-align:  center;
+    border-radius: var(--radius-md);
+    padding: var(--sp-4) var(--sp-5);
+    text-align: center;
     cursor: pointer;
-    font-size: 1.2em;
-    transition: transform 0.3s, border-color 0.3s;
-    margin: 10px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--fs-md);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+    box-shadow: inset 0 0 16px rgba(255, 184, 107, 0.04);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 }
 
-/* Effet de néon au survol */
 .game-mode:hover {
     transform: scale(1.05);
-    border-color: #ff7f50;
-    box-shadow: 0 0 6px #ff7f50, 0 0 12px #ff7f50;
+    border-color: var(--neon-primary);
+    box-shadow: 0 0 6px var(--neon-primary), 0 0 18px var(--neon-primary);
 }
 
+/* Couleurs spécifiques par mode (data-color) — palette cyberpunk renforcée */
 .game-mode[data-color="yellow"] {
-    border-color: #FFA500;
-    color: #FFA500;
-    box-shadow: 0 0 5px #FFA500;
+    border-color: #ffd87a;
+    color: #ffd87a;
+    box-shadow: 0 0 8px rgba(255, 216, 122, 0.5);
 }
 
 .game-mode[data-color="orange"] {
-    border-color:  #FFFF00;
-    color: #FFFF00;
-    box-shadow: 0 0 5px #FFFF00;
+    border-color: var(--neon-primary);
+    color: var(--neon-primary);
+    box-shadow: 0 0 8px rgba(255, 184, 107, 0.5);
 }
 
 .game-mode[data-color="pink"] {
-    border-color:  #1E90FF;
-    color: #1E90FF;
-    box-shadow: 0 0 5px #1E90FF;
+    border-color: var(--neon-secondary);
+    color: var(--neon-secondary);
+    box-shadow: 0 0 8px rgba(255, 107, 159, 0.5);
 }
 
 .game-mode[data-color="blue"] {
-    border-color:  #FF69B4;
-    color: #FF69B4;
-    box-shadow: 0 0 5px #FF69B4;
+    border-color: var(--neon-cyan);
+    color: var(--neon-cyan);
+    box-shadow: 0 0 8px rgba(0, 246, 255, 0.5);
 }
 
-/* Effet de sélection avec néon */
 .game-mode.selected {
     animation: neon-glow-mode 2s infinite alternate;
 }
 
 .game-mode.keyboard-focus {
     transform: scale(1.05);
-    border-color: #ff7f50;
+    border-color: var(--neon-primary);
+}
+
+.game-mode.keyboard-focus:hover {
+    transform: scale(1.05);
 }
 
 .game-mode.hardcore-unlocked {
-    border-style: double; /* Double bordure pour les modes hardcore */
-    font-weight: 900;     /* Texte plus gras */
-    letter-spacing: 2px;  /* Lettres plus espacées */
-}
-
-/* ===============================
-    Keyboard Focus (UI)
-=============================== */
-.game-mode.keyboard-focus:hover {
-    transform: none;
+    border-style: double;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-shadow: 0 0 8px currentColor;
 }
 
 /* ===============================
     Buttons
 =============================== */
 button {
-    padding: 10px 20px;
-    font-size: 1.1em;
-    background-color: #ff7f50;
-    color: white;
+    padding: var(--sp-2) var(--sp-5);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--fs-sm);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--neon-primary), var(--neon-secondary));
+    color: var(--bg-deep);
     border: none;
-    border-radius: 5px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-    margin: 10px 5px;
+    transition: transform var(--transition-fast), box-shadow var(--transition-base), filter var(--transition-fast);
+    margin: var(--sp-2) var(--sp-1);
 }
 
 button:hover {
-    background-color: #ff9966;
-    transform: scale(1.05);
+    transform: translateY(-2px);
+    box-shadow: var(--glow-lg) var(--neon-primary);
+    filter: brightness(1.15);
 }
 
 button:active {
-    transform:  scale(0.98);
+    transform: translateY(0);
 }
 
 /* ===============================
@@ -131,46 +205,46 @@ button:active {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(44, 44, 44, 0.9);
-    padding: 15px 20px;
+    background: rgba(8, 4, 15, 0.85);
+    padding: var(--sp-3) var(--sp-4);
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-top: 2px solid #ff7f50;
-    box-shadow: 0 -2px 10px rgba(255, 127, 80, 0.3);
-    font-size: 1em;
+    border-top: 1px solid var(--neon-primary);
+    box-shadow: 0 -2px 12px rgba(255, 184, 107, 0.3);
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    letter-spacing: 0.05em;
     z-index: 100;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 #game-footer span {
-    margin: 0 15px;
+    margin: 0 var(--sp-3);
 }
 
 #completed-modes {
-    color: #FFA500;
+    color: var(--neon-primary);
     font-weight: bold;
+    text-shadow: 0 0 8px rgba(255, 184, 107, 0.5);
 }
 
 #keys-counter {
-    color: #FFD700;
+    color: var(--neon-secondary);
     font-weight: bold;
+    text-shadow: 0 0 8px rgba(255, 107, 159, 0.5);
 }
 
 #current-time {
-    color: #87CEEB;
+    color: var(--neon-cyan);
     font-weight: bold;
+    text-shadow: 0 0 8px rgba(0, 246, 255, 0.5);
 }
 
-/* Animation plus douce pour le néon */
 @keyframes neon-glow-mode {
-    0%,
-    100% {
-        box-shadow: 0 0 5px var(--glow-color-mode), 0 0 10px var(--glow-color-mode), 0 0 15px var(--glow-color-mode);
-    }
-
-    50% {
-        box-shadow: 0 0 10px var(--glow-color-mode), 0 0 20px var(--glow-color-mode), 0 0 30px var(--glow-color-mode);
-    }
+    0%, 100% { box-shadow: 0 0 5px var(--glow-color-mode), 0 0 10px var(--glow-color-mode), 0 0 15px var(--glow-color-mode); }
+    50% { box-shadow: 0 0 10px var(--glow-color-mode), 0 0 20px var(--glow-color-mode), 0 0 30px var(--glow-color-mode); }
 }
 
 /* ===============================
@@ -178,21 +252,22 @@ button:active {
 =============================== */
 .character-container {
     position: fixed;
-    bottom: 00px;
-    left: 0px;
+    bottom: 0;
+    left: 0;
     display: flex;
     flex-direction: row;
-    align-items:  flex-end;
-    gap: 5px;
+    align-items: flex-end;
+    gap: var(--sp-1);
     z-index: 150;
     pointer-events: none;
 }
 
 .character-container img {
-    width: 300px;
+    width: 280px;
     height: auto;
     flex-shrink: 0;
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-base);
+    filter: drop-shadow(0 0 12px rgba(255, 184, 107, 0.3));
 }
 
 .character-container img:hover {
@@ -200,102 +275,93 @@ button:active {
 }
 
 .character-text {
-    background:  rgba(44, 44, 44, 0.95);
-    padding: 15px 20px;
-    border-radius: 10px;
-    color: white;
-    font-size: 1.1em;
+    background: rgba(8, 4, 15, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--border-default);
+    padding: var(--sp-3) var(--sp-4);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    font-size: var(--fs-base);
     max-width: 400px;
-    margin-bottom: 150px;
+    margin-bottom: 130px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 /* ===============================
-    RESPONSIVE DESIGN - MOBILE
+    RESPONSIVE DESIGN
 =============================== */
-
-/* Mobile (< 768px) */
 @media (max-width: 767px) {
-    /* Body */
     body {
-        padding:  1rem;
+        padding: var(--sp-3);
         height: auto;
         min-height: 100vh;
-        padding-bottom: 120px; /* Espace pour le footer + marge */
-    }
-    
-    /* Title */
-    h1 {
-        font-size:  1.6em;
-        margin-bottom: 1rem;
-        text-align: center;
-    }
-    
-    /* Current profile */
-    #current-profile {
-        font-size: 1.1rem;
-        padding: 0.4rem 0.8rem;
-        margin-bottom: 1.5rem;
-        width: 100%;
-        box-sizing: border-box;
-        text-align: center;
-    }
-    
-    /* Modes container - vertical stack */
-    #modes-container {
-        flex-direction: column;
-        gap: 15px;
-        margin-bottom:  1.5rem;
-        width: 100%;
-    }
-    
-    .game-mode {
-        width: 100%;
-        box-sizing: border-box; /* Pour inclure le padding dans la largeur */
-        margin: 0;
-        font-size: 1.1em;
-        padding: 15px;
-        min-height: 60px;
-    }
-    
-    /* Buttons */
-    button {
-        min-height: 48px; /* Standard tactile */
-        font-size: 1em;
-        padding: 12px 20px;
-        margin: 5px 0;
-        width: 100%;
-        box-sizing: border-box;
-    }
-    
-    /* Footer */
-    #game-footer {
-        font-size: 0.85em;
-        flex-direction: row; /* On garde en ligne si possible, sinon wrap */
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-        text-align:  center;
-        padding: 10px;
-        background-color: rgba(44, 44, 44, 0.95);
-    }
-    
-    #game-footer span {
-        margin: 0 5px;
+        padding-bottom: 120px;
     }
 
-    /* Personnage : On le réduit et on le place en bas à droite ou on le masque si trop petit */
+    h1 {
+        font-size: 1.4em;
+        margin-bottom: var(--sp-3);
+        text-align: center;
+    }
+
+    #current-profile {
+        font-size: 1rem;
+        padding: var(--sp-1) var(--sp-3);
+        margin-bottom: var(--sp-4);
+        width: 100%;
+        text-align: center;
+    }
+
+    #modes-container {
+        flex-direction: column;
+        gap: var(--sp-3);
+        margin-bottom: var(--sp-4);
+        width: 100%;
+    }
+
+    .game-mode {
+        width: 100%;
+        margin: 0;
+        font-size: 1.1em;
+        padding: var(--sp-3);
+        min-height: 60px;
+    }
+
+    button {
+        min-height: 48px;
+        font-size: 1em;
+        padding: var(--sp-3) var(--sp-4);
+        margin: var(--sp-1) 0;
+        width: 100%;
+    }
+
+    #game-footer {
+        font-size: 0.85em;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--sp-2);
+        text-align: center;
+        padding: var(--sp-2);
+    }
+
+    #game-footer span {
+        margin: 0 var(--sp-1);
+    }
+
     .character-container {
-        display: none; /* Masqué sur mobile pour éviter de gêner la navigation */
+        display: none;
     }
 }
 
-/* Tablet (768px - 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
     #modes-container {
         flex-wrap: wrap;
         justify-content: center;
     }
-    
+
     .game-mode {
         flex: 1 1 45%;
         min-width: 200px;
