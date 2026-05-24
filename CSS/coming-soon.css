@@ -1,0 +1,150 @@
+/* ============================================================
+   CSS/coming-soon.css — Placeholder neon pour mini-jeux a venir
+   Utilise par : trophy.html, calculator.html, pantone.html,
+                  films.html, xxx.html
+   Partage les tokens neon globaux via tokens.css.
+   ============================================================ */
+
+@import url('./tokens.css');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Grille cyberpunk en fond */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 184, 107, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 184, 107, 0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    background-position: center;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Soleil synthwave subtil */
+body::after {
+    content: '';
+    position: fixed;
+    left: 50%;
+    top: 65%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: 80vw;
+    max-width: 800px;
+    max-height: 800px;
+    background: radial-gradient(circle at center, #ffd87a 0%, #ffb86b 30%, #ff6b9f 60%, rgba(199, 125, 255, 0.2) 100%);
+    opacity: 0.18;
+    border-radius: 50%;
+    filter: blur(40px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.placeholder-card {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: clamp(2rem, 5vw, 4rem);
+    max-width: 540px;
+    background: rgba(20, 9, 30, 0.7);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg, 18px);
+    box-shadow:
+        0 0 30px rgba(255, 184, 107, 0.15),
+        0 0 60px rgba(255, 107, 159, 0.08);
+    backdrop-filter: blur(10px);
+    animation: fade-in 0.6s ease-out;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.placeholder-icon {
+    font-size: clamp(4rem, 12vw, 7rem);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 0 16px rgba(255, 184, 107, 0.5));
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { filter: drop-shadow(0 0 16px rgba(255, 184, 107, 0.5)); }
+    50%      { filter: drop-shadow(0 0 28px rgba(255, 107, 159, 0.7)); }
+}
+
+.placeholder-eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    color: var(--neon-cyan);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    text-shadow: 0 0 8px rgba(0, 246, 255, 0.6);
+}
+
+.placeholder-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--neon-primary), var(--neon-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1.5rem;
+}
+
+.placeholder-text {
+    font-size: var(--fs-md);
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.placeholder-back {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--fs-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--bg-deep);
+    background: linear-gradient(135deg, var(--neon-primary), var(--neon-secondary));
+    border: none;
+    border-radius: var(--radius-pill, 999px);
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 184, 107, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.placeholder-back:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(255, 184, 107, 0.7);
+}
+
+.placeholder-back:active {
+    transform: translateY(0);
+}
