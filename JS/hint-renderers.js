@@ -228,13 +228,20 @@ export function renderHintPixelated(game, _hintIndex, container) {
 
 // === Mode MIDI : player Tone.js (one-shot, hintIndex ignoré) ===
 // Dynamic import pour ne pas charger Tone.js dans les autres modes.
+// Versions pinnees pour eviter qu'une nouvelle major du CDN casse le mode :
+//   tone 15.x (latest stable au moment du pin)
+//   @tonejs/midi 2.x
+// Bumper ici quand on souhaite upgrader, jamais laisser une version non
+// pinnee (sinon esm.sh sert la latest et tout peut casser silencieusement).
+const TONE_CDN = 'https://esm.sh/tone@15.1.22';
+const TONE_MIDI_CDN = 'https://esm.sh/@tonejs/midi@2.0.28';
 
 let ToneRef = null;
 let midiSynths = [];
 
 async function loadTone() {
     if (ToneRef === null) {
-        ToneRef = await import('https://esm.sh/tone');
+        ToneRef = await import(TONE_CDN);
     }
     return ToneRef;
 }
@@ -243,7 +250,7 @@ export async function renderHintMidi(game, _hintIndex, container) {
     container.innerHTML = '';
 
     const Tone = await loadTone();
-    const { Midi } = await import('https://esm.sh/@tonejs/midi');
+    const { Midi } = await import(TONE_MIDI_CDN);
 
     const controlsContainer = document.createElement('div');
     controlsContainer.style.cssText = 'display: flex; gap: 15px; justify-content: center; align-items: center; margin: 30px 0;';
