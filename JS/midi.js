@@ -53,6 +53,15 @@ async function launchGameMidi() {
     await renderHintMidi(cachedGame, 0, contentDiv);
 
     timerInterval = startTimerUtil();
+
+    // Le mode MIDI n'a qu'un seul fichier audio : pas d'indices, le bouton
+    // 'Indice' est directement 'Abandonner' (showHint deleguait deja a abandon,
+    // mais l'affichage restait 'Indice' jusqu'a present).
+    const hintButton = document.getElementById('hint-button');
+    if (hintButton) {
+        hintButton.innerText = "Abandonner";
+        hintButton.onclick = abandonGame;
+    }
 }
 
 function showHint() {
