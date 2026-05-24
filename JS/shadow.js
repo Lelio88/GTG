@@ -31,6 +31,7 @@ let gameImages = [];
 let currentProfile = getCurrentProfile();
 if (!currentProfile) {
     window.location.href = '../index.html';
+    throw new Error('No profile selected');
 }
 currentProfile = initializeProfile(currentProfile);
 
@@ -120,7 +121,7 @@ window.nextQuestion = nextQuestion;
 setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
 
 window.onload = () => {
-    if (window.location.pathname.includes('shadow')) launchGameShadow();
+    launchGameShadow();
     document.getElementById('user-input').focus();
     updateScoreboard(currentProfile, 'shadow');
 };

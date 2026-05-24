@@ -39,6 +39,7 @@ let keyboardNavigationSetup = false;
 let currentProfile = getCurrentProfile();
 if (!currentProfile) {
     window.location.href = '../index.html';
+    throw new Error('No profile selected');
 }
 currentProfile = initializeProfile(currentProfile);
 
@@ -173,7 +174,7 @@ setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
 
 // On load
 window.onload = () => {
-    if (window.location.pathname.includes('image')) launchGameImage();
+    launchGameImage();
     document.getElementById('user-input').focus();
     updateScoreboard(currentProfile, 'image');
 };

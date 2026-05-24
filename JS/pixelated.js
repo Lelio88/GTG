@@ -31,6 +31,7 @@ let gameImages = [];
 let currentProfile = getCurrentProfile();
 if (!currentProfile) {
     window.location.href = '../index.html';
+    throw new Error('No profile selected');
 }
 currentProfile = initializeProfile(currentProfile);
 
@@ -129,11 +130,11 @@ setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
 
 // On load
 window.onload = () => {
-    if (window.location.pathname.includes('pixelated')) launchGamePixelated();
-    
+    launchGamePixelated();
+
     // Focus sur l'input
     const input = document.getElementById('user-input');
     if(input) input.focus();
-    
+
     updateScoreboard(currentProfile, 'pixelated');
 };

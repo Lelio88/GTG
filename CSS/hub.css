@@ -243,8 +243,8 @@ button:active {
 }
 
 @keyframes neon-glow-mode {
-    0%, 100% { box-shadow: 0 0 5px var(--glow-color-mode), 0 0 10px var(--glow-color-mode), 0 0 15px var(--glow-color-mode); }
-    50% { box-shadow: 0 0 10px var(--glow-color-mode), 0 0 20px var(--glow-color-mode), 0 0 30px var(--glow-color-mode); }
+    0%, 100% { box-shadow: 0 0 5px var(--glow-color), 0 0 10px var(--glow-color), 0 0 15px var(--glow-color); }
+    50% { box-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color), 0 0 30px var(--glow-color); }
 }
 
 /* ===============================

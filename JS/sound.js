@@ -36,6 +36,7 @@ let hintNav = null;
 let currentProfile = getCurrentProfile();
 if (!currentProfile) {
     window.location.href = '../index.html';
+    throw new Error('No profile selected');
 }
 currentProfile = initializeProfile(currentProfile);
 

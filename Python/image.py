@@ -1,4 +1,5 @@
 import re, os, requests, warnings, urllib3, io
+from pathlib import Path
 import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
@@ -8,8 +9,9 @@ from duckduckgo_search import DDGS
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 warnings.filterwarnings("ignore")
 
-input_file = 'gamesDatabase.js'
-output_folder = 'illustrations_jeux'  # Dossier pour les screens
+REPO_ROOT = Path(__file__).resolve().parent.parent
+input_file = str(REPO_ROOT / 'JS' / 'gamesDatabase.js')
+output_folder = str(Path(__file__).resolve().parent / 'illustrations_jeux')  # Dossier pour les screens
 headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"}
 
 if not os.path.exists(output_folder):

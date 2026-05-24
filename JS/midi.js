@@ -30,6 +30,7 @@ let correctAnswerGiven = false;
 let currentProfile = getCurrentProfile();
 if (!currentProfile) {
     window.location.href = '../index.html';
+    throw new Error('No profile selected');
 }
 currentProfile = initializeProfile(currentProfile);
 
@@ -100,7 +101,7 @@ function nextQuestion() {
 
 // Expose functions to global context
 window.checkAnswer = checkAnswer;
-window. showHint = showHint;
+window.showHint = showHint;
 window.nextQuestion = nextQuestion;
 
 // Setup Enter key handler

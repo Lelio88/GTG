@@ -1,4 +1,5 @@
 import re, os, warnings, io, time
+from pathlib import Path
 import tkinter as tk
 from tkinter import ttk, messagebox
 import yt_dlp
@@ -6,11 +7,13 @@ import pygame
 from duckduckgo_search import DDGS
 
 # --- CONFIGURATION ---
-input_file = 'gamesDatabase.js'
-output_folder = 'sons_jeux'
+REPO_ROOT = Path(__file__).resolve().parent.parent
+SCRIPT_DIR = Path(__file__).resolve().parent
+input_file = str(REPO_ROOT / 'JS' / 'gamesDatabase.js')
+output_folder = str(SCRIPT_DIR / 'sons_jeux')
 
-# Tente de trouver ffmpeg automatiquement s'il est dans le même dossier
-local_ffmpeg = os.path.join(os.getcwd(), "ffmpeg.exe")
+# Tente de trouver ffmpeg automatiquement s'il est dans le même dossier que le script
+local_ffmpeg = str(SCRIPT_DIR / "ffmpeg.exe")
 if os.path.exists(local_ffmpeg):
     ffmpeg_location = local_ffmpeg
 else:

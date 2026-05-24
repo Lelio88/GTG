@@ -1,0 +1,28 @@
+# GTG - Outils Python d'administration des assets
+#
+# Installation :
+#   cd Python
+#   python -m venv .venv
+#   .venv\Scripts\activate     (Windows)
+#   source .venv/bin/activate  (macOS/Linux)
+#   pip install -r requirements.txt
+#
+# tkinter est inclus dans la stdlib Python (pas listé ici).
+# ffmpeg / ffmpeg-normalize doivent être installés au niveau système
+# (https://ffmpeg.org/ + `pip install ffmpeg-normalize`).
+
+# Traitement d'image
+Pillow>=10.0
+
+# Téléchargement HTTP + recherche d'images
+requests>=2.31
+urllib3>=2.0
+duckduckgo-search>=5.0
+
+# Audio
+yt-dlp>=2024.1.0
+pygame>=2.5
+ffmpeg-normalize>=1.27
+
+# Détourage IA (silhouettes du mode Shadow)
+rembg>=2.0
