@@ -1,6 +1,7 @@
 import { showCharacter } from './dialogue.js';
 import { exportSave } from './saveManager.js';
 import { getProfiles } from './gameUtils.js';
+import { showAlert } from './ui/dialog.js';
 
 function refreshProfileData() {
     // On recharge les profils depuis le localStorage
@@ -176,7 +177,7 @@ document.addEventListener('keydown', (e) => {
     }
     if (e.key === "Enter") {
         if (!selectedMode) {
-            alert("Veuillez sélectionner un mode de jeu !");
+            showAlert("Veuillez sélectionner un mode de jeu !", { title: 'Aucun mode selectionne' });
             return;
         }
         window.location.href = `../HTML/${selectedMode}.html`;
@@ -185,7 +186,7 @@ document.addEventListener('keydown', (e) => {
 // === Lancer le jeu avec le bouton ===
 startBtn.onclick = () => {
     if (!selectedMode) {
-        alert("Veuillez sélectionner un mode de jeu !");
+        showAlert("Veuillez sélectionner un mode de jeu !", { title: 'Aucun mode selectionne' });
         return;
     }
     window.location.href = `../HTML/${selectedMode}.html`;

@@ -3,6 +3,7 @@
  */
 
 import { abbreviations } from './gamesDatabase.js';
+import { showAlert } from './ui/dialog.js';
 
 /**
  * Get all profiles from localStorage.
@@ -34,10 +35,12 @@ export function saveProfiles(profiles) {
     } catch (err) {
         // Quota depasse : alerter sans tuer l'UI
         if (err && (err.name === 'QuotaExceededError' || err.code === 22 || err.code === 1014)) {
-            alert('Espace de sauvegarde plein. Exporte ta progression puis supprime un profil pour liberer de la place.');
+            showAlert('Exporte ta progression puis supprime un profil pour liberer de la place.', {
+                title: 'Espace de sauvegarde plein',
+            });
         } else {
             console.error('Echec de sauvegarde des profils :', err);
-            alert('Erreur inattendue lors de la sauvegarde. Verifie la console pour les details.');
+            showAlert('Verifie la console pour les details.', { title: 'Erreur de sauvegarde' });
         }
         return false;
     }

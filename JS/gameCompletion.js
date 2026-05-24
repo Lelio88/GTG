@@ -1,4 +1,5 @@
 import { getProfiles, saveProfiles } from './gameUtils.js';
+import { showAlert } from './ui/dialog.js';
 
 export function handleGameCompletion(currentProfile, gameMode) {
     // === 1. Sauvegarde du mode terminé ===
@@ -27,11 +28,13 @@ export function handleGameCompletion(currentProfile, gameMode) {
         saveProfiles(profiles);
     }
 
-    // Affichage d'un message de félicitations
-    alert(`Félicitations ${currentProfile.pseudo}, tu as trouvé tous les jeux du mode ${gameMode} !`);
-
-    // Redirection vers le hub
-    window.location.href = 'hub.html';
+    // Affichage d'un message de félicitations puis redirection vers le hub
+    showAlert(`Tu as trouvé tous les jeux du mode ${gameMode} !`, {
+        title: `Bravo ${currentProfile.pseudo}`,
+        okText: 'Retour au hub',
+    }).then(() => {
+        window.location.href = 'hub.html';
+    });
 }
 
 

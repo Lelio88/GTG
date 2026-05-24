@@ -20,6 +20,7 @@ import { startScoreboard } from './scoreboard.js';
 import { startChat } from './chat.js';
 import { readRoomCodeFromUrl, buildShareableUrl } from './url-room.js';
 import { games } from '../gamesDatabase.js';
+import { showAlert, showConfirm } from '../ui/dialog.js';
 import confetti from 'https://esm.sh/canvas-confetti@1.9.3';
 
 const BUG_REPORT_BASE = 'https://github.com/Lelio88/GTG/issues/new';
@@ -110,7 +111,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         try {
             await joinRoom({ code, name: myName });
         } catch (err) {
-            alert(`Impossible de rejoindre : ${err.message}`);
+            await showAlert(err.message, { title: 'Impossible de rejoindre la room' });
             window.location.href = 'multi-lobby.html';
             return;
         }
@@ -197,7 +198,7 @@ function onBugReportSubmit(e) {
 
 function listenRoom() {
     const roomRef = ref(db, `rooms/${code}`);
-    unsubRoom = onValue(roomRef, (snap) => {
+    unsubRoom = onValue(roomRef, async (snap) => {
         const data = snap.val();
         if (!data || !data.meta) {
             // Room supprimée → retour lobby
@@ -209,7 +210,7 @@ function listenRoom() {
         isHost = (meta.hostUid === myUid);
 
         if (meta.status === 'cancelled') {
-            alert('La partie a été annulée (l\'hôte a quitté).');
+            await showAlert('La partie a ete annulee (l\'hote a quitte).', { title: 'Partie annulee' });
             window.location.href = 'multi-lobby.html';
             return;
         }
@@ -540,7 +541,8 @@ function copyRoomCode() {
 }
 
 async function onLeaveRoom() {
-    if (!confirm('Quitter la room ?')) return;
+    const confirmed = await showConfirm('Quitter la room ?', { title: 'Confirmer', okText: 'Quitter', cancelText: 'Rester' });
+    if (!confirmed) return;
     if (hostEngine) hostEngine.stop();
     if (roundClient) roundClient.stop();
     if (scoreboard) scoreboard.stop();

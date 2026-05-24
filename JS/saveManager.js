@@ -3,6 +3,7 @@
  */
 
 import { getProfiles, saveProfiles } from './gameUtils.js';
+import { showAlert, showConfirm } from './ui/dialog.js';
 
 /**
  * Exporte la sauvegarde du profil actuel
@@ -13,18 +14,18 @@ export function exportSave() {
         const currentProfilePseudo = localStorage.getItem('currentProfile');
 
         if (!currentProfilePseudo) {
-            alert('Aucun profil sélectionné. Veuillez sélectionner un profil avant d\'exporter.');
+            showAlert('Selectionne un profil avant d\'exporter.', { title: 'Aucun profil selectionne' });
             return;
         }
 
         // Récupérer tous les profils
         const profiles = getProfiles();
-        
+
         // Trouver le profil correspondant
         const currentProfile = profiles.find(p => p.pseudo === currentProfilePseudo);
-        
+
         if (!currentProfile) {
-            alert('Profil introuvable. Impossible d\'exporter la sauvegarde.');
+            showAlert('Profil introuvable. Impossible d\'exporter la sauvegarde.', { title: 'Erreur d\'export' });
             return;
         }
         
@@ -58,11 +59,11 @@ export function exportSave() {
         URL.revokeObjectURL(url);
         
         // Message de confirmation
-        alert('Sauvegarde exportée avec succès !');
-        
+        showAlert('Sauvegarde exportée avec succès !', { title: 'Export reussi' });
+
     } catch (error) {
         console.error('Erreur lors de l\'export:', error);
-        alert('Une erreur est survenue lors de l\'export de la sauvegarde.');
+        showAlert('Une erreur est survenue lors de l\'export de la sauvegarde.', { title: 'Erreur d\'export' });
     }
 }
 
@@ -86,17 +87,17 @@ export function importSave() {
             // Lire le fichier
             const reader = new FileReader();
             
-            reader.onload = (e) => {
+            reader.onload = async (e) => {
                 try {
                     // Parser le JSON
                     const saveData = JSON.parse(e.target.result);
-                    
+
                     // Vérifier la structure
                     if (!saveData.version || !saveData.profile) {
-                        alert('Format de sauvegarde invalide. Le fichier ne contient pas les données nécessaires.');
+                        showAlert('Le fichier ne contient pas les donnees necessaires.', { title: 'Format invalide' });
                         return;
                     }
-                    
+
                     // Récupérer les profils existants
                     const profiles = getProfiles();
 
@@ -105,8 +106,9 @@ export function importSave() {
 
                     if (existingIndex !== -1) {
                         // Demander confirmation pour écraser
-                        const confirmOverwrite = window.confirm(
-                            `Un profil avec le pseudo "${saveData.profile.pseudo}" existe déjà. Voulez-vous l'écraser ?`
+                        const confirmOverwrite = await showConfirm(
+                            `Un profil "${saveData.profile.pseudo}" existe deja.\nL'ecraser avec la sauvegarde importee ?`,
+                            { title: 'Profil existant', okText: 'Ecraser', cancelText: 'Annuler' }
                         );
 
                         if (confirmOverwrite) {
@@ -118,7 +120,7 @@ export function importSave() {
                     } else {
                         // Vérifier la limite de 4 profils
                         if (profiles.length >= 4) {
-                            alert('Limite de 4 profils atteinte. Supprimez un profil avant d\'importer.');
+                            showAlert('Supprime un profil avant d\'importer.', { title: 'Limite de 4 profils atteinte' });
                             return;
                         }
 
@@ -132,18 +134,18 @@ export function importSave() {
                         return;
                     }
 
-                    // Recharger la page
-                    alert('Sauvegarde importée avec succès !');
+                    // Recharger la page une fois la modale fermee
+                    await showAlert('Sauvegarde importée avec succès !', { title: 'Import reussi' });
                     window.location.reload();
-                    
+
                 } catch (parseError) {
                     console.error('Erreur de parsing:', parseError);
-                    alert('Le fichier JSON est invalide ou corrompu. Impossible d\'importer la sauvegarde.');
+                    showAlert('Le fichier JSON est invalide ou corrompu.', { title: 'Import impossible' });
                 }
             };
-            
+
             reader.onerror = () => {
-                alert('Erreur lors de la lecture du fichier.');
+                showAlert('Erreur lors de la lecture du fichier.', { title: 'Lecture impossible' });
             };
             
             reader.readAsText(file);
@@ -154,6 +156,6 @@ export function importSave() {
         
     } catch (error) {
         console.error('Erreur lors de l\'import:', error);
-        alert('Une erreur est survenue lors de l\'import de la sauvegarde.');
+        showAlert('Une erreur est survenue lors de l\'import de la sauvegarde.', { title: 'Erreur d\'import' });
     }
 }

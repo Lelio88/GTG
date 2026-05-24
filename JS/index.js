@@ -1,5 +1,6 @@
 import { importSave } from './saveManager.js';
 import { getProfiles, saveProfiles } from './gameUtils.js';
+import { showAlert, showConfirm, showPrompt } from './ui/dialog.js';
 
 // === Sélection des éléments ===
 const profilesContainer = document.getElementById('profiles-container');
@@ -91,12 +92,18 @@ function selectProfile(pseudo) {
 }
 
 // Ajout d'un nouveau profil
-function addNewProfile() {
-    let pseudo = prompt("Entrez votre pseudo (20 caractères max) :");
+async function addNewProfile() {
+    const input = await showPrompt("Entrez votre pseudo (20 caractères max) :", {
+        title: 'Nouveau profil',
+        okText: 'Creer',
+        maxLength: 20,
+        placeholder: 'Pseudo',
+    });
+    if (!input) return;
+    const pseudo = input.slice(0, 20).trim();
     if (!pseudo) return;
-    pseudo = pseudo.slice(0, 20);
     if (profiles.some(p => p.pseudo === pseudo)) {
-        alert("Ce pseudo existe déjà !");
+        showAlert("Ce pseudo existe déjà !", { title: 'Pseudo deja pris' });
         return;
     }
     profiles.push({
@@ -121,16 +128,19 @@ function addNewProfile() {
 }
 
 // Suppression d'un profil
-function deleteProfile() {
-    // Demander confirmation
-    if (!confirm("Êtes-vous sûr de vouloir supprimer ce profil ?")) {
-        return;
-    }
-    // Vérification si un profil est sélectionné
+async function deleteProfile() {
+    // Vérification si un profil est sélectionné AVANT de demander confirmation
     if (!currentProfile) {
-        alert("Aucun profil sélectionné.");
+        showAlert("Aucun profil sélectionné.", { title: 'Suppression impossible' });
         return;
     }
+    const confirmed = await showConfirm(`Supprimer definitivement le profil "${currentProfile}" ?\n\nCette action est irreversible.`, {
+        title: 'Confirmer la suppression',
+        okText: 'Supprimer',
+        cancelText: 'Annuler',
+    });
+    if (!confirmed) return;
+
     const index = profiles.findIndex(p => p.pseudo === currentProfile);
     if (index >= 0) {
         const removed = profiles.splice(index, 1)[0];
@@ -180,7 +190,7 @@ document.addEventListener('keydown', (e) => {
     }
     else if (e.key === "Enter") {
         if (!currentProfile) {
-            alert("Veuillez sélectionner un profil !");
+            showAlert("Veuillez sélectionner un profil !", { title: 'Aucun profil selectionne' });
             return;
         }
         window.location.href = 'HTML/hub.html';  // Ou la page de ton choix
@@ -191,7 +201,7 @@ document.addEventListener('keydown', (e) => {
 deleteProfileButton.onclick = deleteProfile;
 loadProfileButton.onclick = () => {
     if (!currentProfile) {
-        alert("Veuillez sélectionner un profil !");
+        showAlert("Veuillez sélectionner un profil !", { title: 'Aucun profil selectionne' });
         return;
     }
     window.location.href = 'HTML/hub.html';  // Ou la page de ton choix

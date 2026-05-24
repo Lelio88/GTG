@@ -1,4 +1,5 @@
 import { getProfiles, saveProfiles } from './gameUtils.js';
+import { showAlert } from './ui/dialog.js';
 
 // === SÉLECTION DES ÉLÉMENTS ===
 const zones = document.querySelectorAll('.clickable-area');
@@ -33,7 +34,7 @@ function handleLockedZoneClick(modeName) {
 
     // Vérifier si le mode est DÉJÀ débloqué
     if (profile.unlockedModes && profile.unlockedModes.includes(modeName)) {
-        alert("Vous avez déjà ouvert ce tiroir !");
+        showAlert("Vous avez déjà ouvert ce tiroir !", { title: 'Tiroir deja ouvert' });
         return;
     }
 
@@ -81,9 +82,13 @@ confirmBtn.addEventListener('click', () => {
         }
 
         // Feedback et fermeture
-        alert(`Le tiroir s'ouvre... Vous avez débloqué le mode : ${pendingMode.toUpperCase()} !`);
+        const unlockedMode = pendingMode;
         modal.classList.add('hidden');
         pendingMode = null;
+        showAlert(`Le tiroir s'ouvre...\nMode debloque : ${unlockedMode.toUpperCase()}`, {
+            title: 'Nouveau mode debloque',
+            okText: 'Super',
+        });
     }
 });
 
