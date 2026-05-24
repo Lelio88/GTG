@@ -230,3 +230,28 @@
 .glitch-hover:hover {
     animation: glitch 0.3s linear;
 }
+
+/* ===============================
+   Accessibilite — focus visible et reduced motion
+   - :focus-visible affiche un halo cyan pour la navigation clavier sans
+     polluer les clics souris.
+   - prefers-reduced-motion neutralise les animations infinies (neon-glow,
+     pulse, glitch...) pour les utilisateurs sensibles au mouvement.
+=============================== */
+:focus-visible {
+    outline: 2px solid var(--neon-cyan);
+    outline-offset: 3px;
+    border-radius: 4px;
+    box-shadow: 0 0 12px rgba(0, 246, 255, 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+}

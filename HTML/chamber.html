@@ -4,23 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chambre - Recherche d'indices</title>
+    <link rel="icon" type="image/svg+xml" href="../Assets/logo.svg">
+    <link rel="alternate icon" href="../Assets/Logo.png">
     <link rel="stylesheet" href="../CSS/chamber.css">
 </head>
 <body>
 
     <div id="scene-container">
-        <img src="../Assets/Chambre.png" alt="Chambre" id="room-background">
+        <img src="../Assets/Chambre.png" alt="Chambre du joueur avec des tiroirs et objets cliquables menant a des modes secrets" id="room-background">
         
-        <div class="clickable-area" id="zone-pixelated" data-mode="pixelated"></div>
-        <div class="clickable-area" id="zone-emoji" data-mode="emoji"></div>
-        <div class="clickable-area" id="zone-shadow" data-mode="shadow"></div>
-        <div class="clickable-area" id="zone-midi" data-mode="midi"></div>
-        <div class="clickable-area" id="zone-trophy" data-mode="trophy"></div>
-        <div class="clickable-area" id="zone-calculator" data-mode="calculator"></div>
-        <div class="clickable-area" id="zone-pantone" data-mode="pantone"></div>
-        <div class="clickable-area" id="zone-films" data-mode="films"></div>
-        <div class="clickable-area" id="zone-gto" data-mode="gto"></div>
-        <div class="clickable-area" id="zone-xxx" data-mode="xxx"></div>
+        <div class="clickable-area" id="zone-pixelated" data-mode="pixelated" role="button" tabindex="0" aria-label="Ouvrir le mode Pixelated (necessite une cle)"></div>
+        <div class="clickable-area" id="zone-emoji" data-mode="emoji" role="button" tabindex="0" aria-label="Ouvrir le mode Emoji (necessite une cle)"></div>
+        <div class="clickable-area" id="zone-shadow" data-mode="shadow" role="button" tabindex="0" aria-label="Ouvrir le mode Shadow (necessite une cle)"></div>
+        <div class="clickable-area" id="zone-midi" data-mode="midi" role="button" tabindex="0" aria-label="Ouvrir le mode MIDI (necessite une cle)"></div>
+        <div class="clickable-area" id="zone-trophy" data-mode="trophy" role="button" tabindex="0" aria-label="Trophees - a venir"></div>
+        <div class="clickable-area" id="zone-calculator" data-mode="calculator" role="button" tabindex="0" aria-label="Calcul mental - a venir"></div>
+        <div class="clickable-area" id="zone-pantone" data-mode="pantone" role="button" tabindex="0" aria-label="Nuancier - a venir"></div>
+        <div class="clickable-area" id="zone-films" data-mode="films" role="button" tabindex="0" aria-label="Cinema - a venir"></div>
+        <div class="clickable-area" id="zone-gto" data-mode="gto" role="button" tabindex="0" aria-label="Site partenaire GTO (ouvre un nouvel onglet)"></div>
+        <div class="clickable-area" id="zone-xxx" data-mode="xxx" role="button" tabindex="0" aria-label="Zone mysterieuse - a venir"></div>
 
         <button id="back-hub">Retour au Hub</button>
 

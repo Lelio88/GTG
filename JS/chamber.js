@@ -94,26 +94,35 @@ cancelBtn.addEventListener('click', () => {
 });
 
 // === INITIALISATION DES ÉCOUTEURS SUR LES ZONES ===
-zones.forEach(zone => {
-    zone.addEventListener('click', () => {
-        const modeName = zone.getAttribute('data-mode');
+function activateZone(zone) {
+    const modeName = zone.getAttribute('data-mode');
 
-        // CAS 1 : C'est un lien direct (pas de clé)
-        if (directLinks[modeName]) {
-            const url = directLinks[modeName];
-            
-            // Si le lien commence par "http" (lien externe comme GTO), on ouvre un nouvel onglet
-            if (url.startsWith('http')) {
-                window.open(url, '_blank');
-            } else {
-                // Sinon (lien interne), on reste dans le même onglet
-                window.location.href = url;
-            }
-            return; // On arrête ici
+    // CAS 1 : C'est un lien direct (pas de clé)
+    if (directLinks[modeName]) {
+        const url = directLinks[modeName];
+
+        // Si le lien commence par "http" (lien externe comme GTO), on ouvre un nouvel onglet
+        if (url.startsWith('http')) {
+            window.open(url, '_blank');
+        } else {
+            // Sinon (lien interne), on reste dans le même onglet
+            window.location.href = url;
         }
+        return; // On arrête ici
+    }
 
-        // CAS 2 : C'est un autre mode (Besoin de clé, modal, etc.)
-        handleLockedZoneClick(modeName);
+    // CAS 2 : C'est un autre mode (Besoin de clé, modal, etc.)
+    handleLockedZoneClick(modeName);
+}
+
+zones.forEach(zone => {
+    zone.addEventListener('click', () => activateZone(zone));
+    // Accessibilite clavier : Enter et Space declenchent l'activation
+    zone.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            activateZone(zone);
+        }
     });
 });
 
