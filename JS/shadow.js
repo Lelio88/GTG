@@ -10,10 +10,11 @@ import {
     updateProfile as updateProfileUtil,
     getAvailableGames,
     startTimer as startTimerUtil,
+    stopTimer,
     abandonGame as abandonGameUtil,
     checkAnswerValue,
     updateScoreboard,
-    nextQuestion as nextQuestionUtil,
+    resetGameUI,
     setupEnterKeyHandler,
     showCorrectAnswerFeedback,
     showIncorrectAnswerFeedback,
@@ -36,7 +37,7 @@ if (!currentProfile) {
 currentProfile = initializeProfile(currentProfile);
 
 // === Filter already found games (Mode SHADOW) ===
-const availableGames = getAvailableGames(games, currentProfile, 'shadow');
+let availableGames = getAvailableGames(games, currentProfile, 'shadow');
 
 function launchGameShadow() {
     // 1. Vérifier s'il reste des jeux
@@ -96,7 +97,22 @@ function checkAnswer() {
 }
 
 function nextQuestion() {
-    nextQuestionUtil();
+    // Reset etat JS
+    cachedGame = null;
+    cachedTitle = '';
+    correctAnswerGiven = false;
+    gameImages = [];
+    stopTimer(timerInterval);
+
+    // Reset UI
+    resetGameUI();
+
+    // Recharge la liste des jeux disponibles
+    availableGames = getAvailableGames(games, currentProfile, 'shadow');
+
+    // Relance le mode (re-configure aussi le bouton Indice -> Abandonner)
+    launchGameShadow();
+    document.getElementById('user-input').focus();
 }
 
 function abandonGame() {
@@ -108,7 +124,7 @@ function abandonGame() {
 
     revealTitle(cachedTitle, { mode: 'modal', autoAdvance: true, delay: 2000 })
         .then(() => {
-            abandonGameUtil(currentProfile, 'shadow');
+            abandonGameUtil(currentProfile, 'shadow', nextQuestion);
         });
 }
 

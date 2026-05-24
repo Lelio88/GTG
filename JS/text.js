@@ -14,7 +14,7 @@ import {
     abandonGame as abandonGameUtil,
     checkAnswerValue,
     updateScoreboard,
-    nextQuestion as nextQuestionUtil,
+    resetGameUI,
     setupEnterKeyHandler,
     showCorrectAnswerFeedback,
     showIncorrectAnswerFeedback,
@@ -38,7 +38,7 @@ if (!currentProfile) {
 currentProfile = initializeProfile(currentProfile);
 
 // === Filter already found games ===
-const availableGames = getAvailableGames(games, currentProfile, 'text');
+let availableGames = getAvailableGames(games, currentProfile, 'text');
 
 function launchGameText() {
     if (availableGames.length === 0) {
@@ -75,7 +75,7 @@ function showHint() {
 function abandonGame() {
     revealTitle(cachedTitle, { mode: 'modal', autoAdvance: true, delay: 2000 })
         .then(() => {
-            abandonGameUtil(currentProfile, 'text');
+            abandonGameUtil(currentProfile, 'text', nextQuestion);
         });
 }
 
@@ -97,7 +97,23 @@ function checkAnswer() {
 }
 
 function nextQuestion() {
-    nextQuestionUtil();
+    // Reset etat JS
+    cachedGame = null;
+    cachedTitle = '';
+    correctAnswerGiven = false;
+    hintNav = null;
+    stopTimer(timerInterval);
+
+    // Reset UI
+    resetGameUI();
+
+    // Recharge la liste des jeux disponibles
+    availableGames = getAvailableGames(games, currentProfile, 'text');
+
+    // Relance le mode + restart timer (text demarre le timer au DOMContentLoaded a part)
+    launchGameText();
+    timerInterval = startTimerUtil();
+    document.getElementById('user-input').focus();
 }
 
 // Expose functions to global context

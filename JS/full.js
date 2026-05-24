@@ -16,7 +16,7 @@ import {
     updateScoreboard,
     createNavigationArrows,
     updateArrowsVisibility,
-    nextQuestion as nextQuestionUtil,
+    resetGameUI,
     setupEnterKeyHandler,
     showCorrectAnswerFeedback,
     showIncorrectAnswerFeedback,
@@ -41,7 +41,7 @@ if (!currentProfile) {
 currentProfile = initializeProfile(currentProfile);
 
 // === Filter already found games ===
-const availableGames = getAvailableGames(games, currentProfile, 'full');
+let availableGames = getAvailableGames(games, currentProfile, 'full');
 
 function launchGameFull() {
     if (availableGames.length === 0) {
@@ -134,13 +134,29 @@ function checkAnswer() {
 }
 
 function nextQuestion() {
-    nextQuestionUtil();
+    // Reset etat JS
+    cachedGame = null;
+    cachedTitle = '';
+    correctAnswerGiven = false;
+    hintNav = null;
+    arrowsCreated = false;
+    stopTimer(timerInterval);
+
+    // Reset UI
+    resetGameUI();
+
+    // Recharge la liste des jeux disponibles (le profil a peut-etre ete maj)
+    availableGames = getAvailableGames(games, currentProfile, 'full');
+
+    // Relance le mode
+    launchGameFull();
+    document.getElementById('user-input').focus();
 }
 
 function abandonGame() {
     revealTitle(cachedTitle, { mode: 'modal', autoAdvance: true, delay: 2000 })
         .then(() => {
-            abandonGameUtil(currentProfile, 'full');
+            abandonGameUtil(currentProfile, 'full', nextQuestion);
         });
 }
 

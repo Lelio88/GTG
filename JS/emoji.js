@@ -10,10 +10,11 @@ import {
     updateProfile as updateProfileUtil,
     getAvailableGames,
     startTimer as startTimerUtil,
+    stopTimer,
     abandonGame as abandonGameUtil,
     checkAnswerValue,
     updateScoreboard,
-    nextQuestion as nextQuestionUtil,
+    resetGameUI,
     setupEnterKeyHandler,
     showCorrectAnswerFeedback,
     showIncorrectAnswerFeedback,
@@ -35,7 +36,7 @@ if (!currentProfile) {
 currentProfile = initializeProfile(currentProfile);
 
 // === Filter already found games in "emoji" mode ===
-const availableGames = getAvailableGames(games, currentProfile, 'emoji');
+let availableGames = getAvailableGames(games, currentProfile, 'emoji');
 
 function launchGameEmoji() {
     if (availableGames.length === 0) {
@@ -72,13 +73,35 @@ function checkAnswer() {
 }
 
 function nextQuestion() {
-    nextQuestionUtil();
+    // Reset etat JS
+    cachedGame = null;
+    cachedTitle = '';
+    correctAnswerGiven = false;
+    stopTimer(timerInterval);
+
+    // Reset UI (le mode emoji utilise le bouton Indice comme Abandonner direct)
+    resetGameUI();
+
+    // Recharge la liste des jeux disponibles
+    availableGames = getAvailableGames(games, currentProfile, 'emoji');
+
+    // Relance le mode
+    launchGameEmoji();
+    timerInterval = startTimerUtil();
+    document.getElementById('user-input').focus();
+
+    // Reconfigure le bouton Indice en Abandonner (specificite emoji)
+    const hintButton = document.getElementById('hint-button');
+    if (hintButton) {
+        hintButton.innerText = "Abandonner";
+        hintButton.onclick = abandonGame;
+    }
 }
 
 function abandonGame() {
     revealTitle(cachedTitle, { mode: 'modal', autoAdvance: true, delay: 2000 })
         .then(() => {
-            abandonGameUtil(currentProfile, 'emoji');
+            abandonGameUtil(currentProfile, 'emoji', nextQuestion);
         });
 }
 

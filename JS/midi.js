@@ -14,6 +14,7 @@ import {
     abandonGame as abandonGameUtil,
     checkAnswerValue,
     updateScoreboard,
+    resetGameUI,
     setupEnterKeyHandler,
     showCorrectAnswerFeedback,
     showIncorrectAnswerFeedback,
@@ -35,7 +36,7 @@ if (!currentProfile) {
 currentProfile = initializeProfile(currentProfile);
 
 // === Filter already found games in "midi" mode ===
-const availableGames = getAvailableGames(games, currentProfile, 'midi');
+let availableGames = getAvailableGames(games, currentProfile, 'midi');
 
 async function launchGameMidi() {
     if (availableGames.length === 0) {
@@ -63,7 +64,7 @@ function abandonGame() {
     revealTitle(cachedTitle, { mode: 'modal', autoAdvance: true, delay: 2000 })
         .then(() => {
             cleanupMidi();
-            abandonGameUtil(currentProfile, 'midi');
+            abandonGameUtil(currentProfile, 'midi', nextQuestion);
         });
 }
 
@@ -88,15 +89,24 @@ function checkAnswer() {
 }
 
 function nextQuestion() {
+    // Stop audio MIDI en cours avant tout reset
     cleanupMidi();
+
+    // Reset etat JS
+    cachedGame = null;
+    cachedTitle = '';
     correctAnswerGiven = false;
+    stopTimer(timerInterval);
 
-    // Remove old content
-    const contentDiv = document.getElementById('content');
-    contentDiv.innerHTML = '';
+    // Reset UI
+    resetGameUI();
 
-    // Reload page to start new question
-    window.location.reload();
+    // Recharge la liste des jeux disponibles
+    availableGames = getAvailableGames(games, currentProfile, 'midi');
+
+    // Relance le mode (async)
+    launchGameMidi();
+    document.getElementById('user-input').focus();
 }
 
 // Expose functions to global context

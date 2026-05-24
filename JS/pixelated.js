@@ -10,10 +10,11 @@ import {
     updateProfile as updateProfileUtil,
     getAvailableGames,
     startTimer as startTimerUtil,
+    stopTimer,
     abandonGame as abandonGameUtil,
     checkAnswerValue,
     updateScoreboard,
-    nextQuestion as nextQuestionUtil,
+    resetGameUI,
     setupEnterKeyHandler,
     showCorrectAnswerFeedback,
     showIncorrectAnswerFeedback,
@@ -36,7 +37,7 @@ if (!currentProfile) {
 currentProfile = initializeProfile(currentProfile);
 
 // === Filter already found games ===
-const availableGames = getAvailableGames(games, currentProfile, 'pixelated');
+let availableGames = getAvailableGames(games, currentProfile, 'pixelated');
 
 function launchGamePixelated() {
     // 1. Check logic
@@ -100,7 +101,22 @@ function checkAnswer() {
 }
 
 function nextQuestion() {
-    nextQuestionUtil();
+    // Reset etat JS
+    cachedGame = null;
+    cachedTitle = '';
+    correctAnswerGiven = false;
+    gameImages = [];
+    stopTimer(timerInterval);
+
+    // Reset UI
+    resetGameUI();
+
+    // Recharge la liste des jeux disponibles
+    availableGames = getAvailableGames(games, currentProfile, 'pixelated');
+
+    // Relance le mode (re-configure aussi le bouton Indice -> Abandonner)
+    launchGamePixelated();
+    document.getElementById('user-input').focus();
 }
 
 // Pas de fonction showHint complexe ici, car pas de navigation d'images
@@ -116,7 +132,7 @@ function abandonGame() {
 
     revealTitle(cachedTitle, { mode: 'modal', autoAdvance: true, delay: 2000 })
         .then(() => {
-            abandonGameUtil(currentProfile, 'pixelated');
+            abandonGameUtil(currentProfile, 'pixelated', nextQuestion);
         });
 }
 

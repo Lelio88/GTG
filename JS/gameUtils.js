@@ -161,20 +161,27 @@ export function stopTimer(timerInterval) {
 }
 
 /**
- * Handle game abandonment
+ * Handle game abandonment.
+ * Applique la penalite (+10 bad answers), persiste, met a jour le scoreboard,
+ * puis enchaine la question suivante via nextFn si fourni (in-place reset).
+ * Fallback: window.location.reload() si nextFn absent (compat).
  * @param {Object} currentProfile - The current profile object
- * @param {string} gameMode - The current game mode (Required to apply penalty)
+ * @param {string} gameMode - The current game mode (required to apply penalty)
+ * @param {Function} [nextFn] - Callback pour enchainer sans reload
  */
-export function abandonGame(currentProfile, gameMode) {
+export function abandonGame(currentProfile, gameMode, nextFn) {
     if (!gameMode || !currentProfile.scoresByMode[gameMode]) {
         console.error("Game mode missing for abandonment penalty");
         return;
     }
     currentProfile.scoresByMode[gameMode].badAnswers += 10;
     saveProfile(currentProfile);
-    // Mise à jour visuelle avant le reload (optionnel car le reload arrive vite)
     document.getElementById('bad-answers').innerText = currentProfile.scoresByMode[gameMode].badAnswers;
-    window.location.reload();
+    if (typeof nextFn === 'function') {
+        nextFn();
+    } else {
+        window.location.reload();
+    }
 }
 
 /**
@@ -303,10 +310,58 @@ export function updateArrowsVisibility(currentIndex, maxIndex, minIndex = 0) {
 }
 
 /**
- * Move to the next question by reloading the page
+ * Move to the next question by reloading the page.
+ * @deprecated Prefer the per-mode in-place reset (avoid full page reload).
+ * Garde pour compatibilite si appele depuis un endroit non migre.
  */
 export function nextQuestion() {
     window.location.reload();
+}
+
+/**
+ * Reset l'UI commune entre deux questions, sans recharger la page.
+ * - Vide l'input et le message
+ * - Recache le titre du jeu (opacity 0)
+ * - Restaure le bouton 'Indice' (texte + handler par defaut showHint)
+ * - Cache le bouton 'Prochaine question'
+ * - Vide #content
+ * - Supprime les fleches de navigation
+ * - Remet le timer a 00:00
+ * Doit etre appelee par chaque mode dans son nextQuestion local avant
+ * de relancer launchGameX(). Ne touche pas aux variables d'etat JS du
+ * mode (cachedGame, hintNav, ...) -- c'est au mode de les reinitialiser.
+ */
+export function resetGameUI() {
+    const input = document.getElementById('user-input');
+    if (input) input.value = '';
+
+    const message = document.getElementById('message');
+    if (message) {
+        message.innerText = '';
+        message.style.color = '';
+    }
+
+    const gameTitle = document.getElementById('game-title');
+    if (gameTitle) gameTitle.style.opacity = '0';
+
+    const hintButton = document.getElementById('hint-button');
+    if (hintButton) {
+        hintButton.innerText = 'Indice';
+        hintButton.onclick = () => {
+            if (typeof window.showHint === 'function') window.showHint();
+        };
+    }
+
+    const nextButton = document.getElementById('next-button');
+    if (nextButton) nextButton.style.display = 'none';
+
+    const content = document.getElementById('content');
+    if (content) content.innerHTML = '';
+
+    removeNavigationArrows();
+
+    const timer = document.getElementById('timer');
+    if (timer) timer.innerText = '00:00';
 }
 
 /**

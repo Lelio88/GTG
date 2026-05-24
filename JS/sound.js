@@ -16,7 +16,7 @@ import {
     updateScoreboard,
     createNavigationArrows,
     updateArrowsVisibility,
-    nextQuestion as nextQuestionUtil,
+    resetGameUI,
     setupEnterKeyHandler,
     showCorrectAnswerFeedback,
     showIncorrectAnswerFeedback,
@@ -41,7 +41,7 @@ if (!currentProfile) {
 currentProfile = initializeProfile(currentProfile);
 
 // === Filter already found games in "sound" mode ===
-const availableGames = getAvailableGames(games, currentProfile, 'sound');
+let availableGames = getAvailableGames(games, currentProfile, 'sound');
 
 function launchGameMusic() {
     if (availableGames.length === 0) {
@@ -97,7 +97,7 @@ function showHint() {
 function abandonGame() {
     revealTitle(cachedTitle, { mode: 'modal', autoAdvance: true, delay: 2000 })
         .then(() => {
-            abandonGameUtil(currentProfile, 'sound');
+            abandonGameUtil(currentProfile, 'sound', nextQuestion);
         });
 }
 
@@ -121,7 +121,23 @@ function checkAnswer() {
 }
 
 function nextQuestion() {
-    nextQuestionUtil();
+    // Reset etat JS
+    cachedGame = null;
+    cachedTitle = '';
+    correctAnswerGiven = false;
+    hintNav = null;
+    arrowsCreated = false;
+    stopTimer(timerInterval);
+
+    // Reset UI
+    resetGameUI();
+
+    // Recharge la liste des jeux disponibles
+    availableGames = getAvailableGames(games, currentProfile, 'sound');
+
+    // Relance le mode
+    launchGameMusic();
+    document.getElementById('user-input').focus();
 }
 
 // Expose functions to global context
