@@ -1,4 +1,5 @@
 import { importSave } from './saveManager.js';
+import { getProfiles, saveProfiles } from './gameUtils.js';
 
 // === Sélection des éléments ===
 const profilesContainer = document.getElementById('profiles-container');
@@ -6,7 +7,7 @@ const loadProfileButton = document.getElementById('load-profile');
 const deleteProfileButton = document.getElementById('delete-profile');
 const importSaveBtn = document.getElementById('import-save-btn');
 
-let profiles = JSON.parse(localStorage.getItem('profiles')) || [];
+let profiles = getProfiles();
 let currentProfile = localStorage.getItem('currentProfile') || null;
 
 // Couleurs néon pour les profils
@@ -69,7 +70,11 @@ function applyNeonGlow(element, baseColor) {
 // Sélection d'un profil
 function selectProfile(pseudo) {
     currentProfile = pseudo;
-    localStorage.setItem('currentProfile', pseudo);
+    try {
+        localStorage.setItem('currentProfile', pseudo);
+    } catch (err) {
+        console.error('Impossible d\'enregistrer le profil courant :', err);
+    }
 
     allProfiles.forEach(p => {
         p.classList.remove('selected');
@@ -100,7 +105,11 @@ function addNewProfile() {
         goodAnswers: 0,
         badAnswers: 0,
     });
-    localStorage.setItem('profiles', JSON.stringify(profiles));
+    if (!saveProfiles(profiles)) {
+        // Echec persistance : on enleve le profil ajoute pour rester coherent avec le storage
+        profiles.pop();
+        return;
+    }
     renderProfiles();
     if (importSaveBtn) {
         if (profiles.length >= 4) {
@@ -124,9 +133,17 @@ function deleteProfile() {
     }
     const index = profiles.findIndex(p => p.pseudo === currentProfile);
     if (index >= 0) {
-        profiles.splice(index, 1);
-        localStorage.setItem('profiles', JSON.stringify(profiles));
-        localStorage.removeItem('currentProfile');
+        const removed = profiles.splice(index, 1)[0];
+        if (!saveProfiles(profiles)) {
+            // Echec persistance : on remet le profil pour rester coherent avec le storage
+            profiles.splice(index, 0, removed);
+            return;
+        }
+        try {
+            localStorage.removeItem('currentProfile');
+        } catch (err) {
+            console.error('Impossible de retirer le profil courant :', err);
+        }
         currentProfile = null;
         renderProfiles();
         if (importSaveBtn) {

@@ -2,6 +2,8 @@
  * Module de gestion des sauvegardes (export/import)
  */
 
+import { getProfiles, saveProfiles } from './gameUtils.js';
+
 /**
  * Exporte la sauvegarde du profil actuel
  */
@@ -9,14 +11,14 @@ export function exportSave() {
     try {
         // Récupérer le profil actuel
         const currentProfilePseudo = localStorage.getItem('currentProfile');
-        
+
         if (!currentProfilePseudo) {
             alert('Aucun profil sélectionné. Veuillez sélectionner un profil avant d\'exporter.');
             return;
         }
-        
+
         // Récupérer tous les profils
-        const profiles = JSON.parse(localStorage.getItem('profiles')) || [];
+        const profiles = getProfiles();
         
         // Trouver le profil correspondant
         const currentProfile = profiles.find(p => p.pseudo === currentProfilePseudo);
@@ -96,17 +98,17 @@ export function importSave() {
                     }
                     
                     // Récupérer les profils existants
-                    let profiles = JSON.parse(localStorage.getItem('profiles')) || [];
-                    
+                    const profiles = getProfiles();
+
                     // Vérifier si le pseudo existe déjà
                     const existingIndex = profiles.findIndex(p => p.pseudo === saveData.profile.pseudo);
-                    
+
                     if (existingIndex !== -1) {
                         // Demander confirmation pour écraser
                         const confirmOverwrite = window.confirm(
                             `Un profil avec le pseudo "${saveData.profile.pseudo}" existe déjà. Voulez-vous l'écraser ?`
                         );
-                        
+
                         if (confirmOverwrite) {
                             // Remplacer le profil existant
                             profiles[existingIndex] = saveData.profile;
@@ -119,14 +121,17 @@ export function importSave() {
                             alert('Limite de 4 profils atteinte. Supprimez un profil avant d\'importer.');
                             return;
                         }
-                        
+
                         // Ajouter le nouveau profil
                         profiles.push(saveData.profile);
                     }
-                    
+
                     // Sauvegarder dans localStorage
-                    localStorage.setItem('profiles', JSON.stringify(profiles));
-                    
+                    if (!saveProfiles(profiles)) {
+                        // Echec persistance : on n'affiche pas le message de succes
+                        return;
+                    }
+
                     // Recharger la page
                     alert('Sauvegarde importée avec succès !');
                     window.location.reload();

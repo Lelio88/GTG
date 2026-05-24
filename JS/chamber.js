@@ -1,3 +1,5 @@
+import { getProfiles, saveProfiles } from './gameUtils.js';
+
 // === SÉLECTION DES ÉLÉMENTS ===
 const zones = document.querySelectorAll('.clickable-area');
 const backBtn = document.getElementById('back-hub');
@@ -23,7 +25,7 @@ const directLinks = {
 // 1. Gestion du clic pour les modes VERROUILLÉS (Ancien fonctionnement)
 function handleLockedZoneClick(modeName) {
     // Récupérer le profil actuel
-    const profiles = JSON.parse(localStorage.getItem('profiles'));
+    const profiles = getProfiles();
     const currentPseudo = localStorage.getItem('currentProfile');
     const profile = profiles.find(p => p.pseudo === currentPseudo);
 
@@ -51,7 +53,7 @@ confirmBtn.addEventListener('click', () => {
     if (!pendingMode) return;
 
     // Récupérer et mettre à jour le profil
-    const profiles = JSON.parse(localStorage.getItem('profiles'));
+    const profiles = getProfiles();
     const currentPseudo = localStorage.getItem('currentProfile');
     const profileIndex = profiles.findIndex(p => p.pseudo === currentPseudo);
 
@@ -60,7 +62,7 @@ confirmBtn.addEventListener('click', () => {
 
         // A. Utiliser la clé (Remise à 0)
         if (profile.keys > 0) {
-            profile.keys -= 1; 
+            profile.keys -= 1;
         }
 
         // B. Débloquer le mode
@@ -71,7 +73,12 @@ confirmBtn.addEventListener('click', () => {
 
         // C. Sauvegarder dans localStorage
         profiles[profileIndex] = profile;
-        localStorage.setItem('profiles', JSON.stringify(profiles));
+        if (!saveProfiles(profiles)) {
+            // Echec persistance : on abandonne sans afficher de victoire
+            modal.classList.add('hidden');
+            pendingMode = null;
+            return;
+        }
 
         // Feedback et fermeture
         alert(`Le tiroir s'ouvre... Vous avez débloqué le mode : ${pendingMode.toUpperCase()} !`);

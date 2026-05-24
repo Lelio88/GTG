@@ -1,9 +1,5 @@
 // === dialogue.js ===
-// Fonction pour récupérer le tableau de profils depuis le localStorage
-function getProfiles() {
-    const profilesData = localStorage.getItem('profiles');
-    return profilesData ? JSON.parse(profilesData) : [];
-}
+import { getProfiles, saveProfiles } from './gameUtils.js';
 
 // Fonction pour initialiser ou incrémenter le compteur de visites
 function initializeVisitCounter() {
@@ -27,7 +23,7 @@ function initializeVisitCounter() {
     }
 
     // Sauvegarde dans le localStorage
-    localStorage.setItem('profiles', JSON.stringify(profiles));
+    saveProfiles(profiles);
     return currentProfile.visitCount;
 }
 

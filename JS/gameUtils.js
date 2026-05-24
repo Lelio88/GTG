@@ -5,11 +5,42 @@
 import { abbreviations } from './gamesDatabase.js';
 
 /**
- * Get all profiles from localStorage
- * @returns {Array} Array of profile objects
+ * Get all profiles from localStorage.
+ * Resiste a un localStorage indisponible (mode prive Safari, quota 0) ou a un JSON corrompu.
+ * @returns {Array} Array of profile objects (vide si absent / illisible)
  */
 export function getProfiles() {
-    return JSON.parse(localStorage.getItem('profiles')) || [];
+    try {
+        const raw = localStorage.getItem('profiles');
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+    } catch (err) {
+        console.error('Profils corrompus dans localStorage :', err);
+        return [];
+    }
+}
+
+/**
+ * Persiste un tableau de profils dans localStorage avec gestion d'erreurs.
+ * En cas de QuotaExceededError, avertit l'utilisateur et l'oriente vers l'export.
+ * @param {Array} profiles - Tableau de profils a sauvegarder
+ * @returns {boolean} true si la sauvegarde a reussi, false sinon
+ */
+export function saveProfiles(profiles) {
+    try {
+        localStorage.setItem('profiles', JSON.stringify(profiles));
+        return true;
+    } catch (err) {
+        // Quota depasse : alerter sans tuer l'UI
+        if (err && (err.name === 'QuotaExceededError' || err.code === 22 || err.code === 1014)) {
+            alert('Espace de sauvegarde plein. Exporte ta progression puis supprime un profil pour liberer de la place.');
+        } else {
+            console.error('Echec de sauvegarde des profils :', err);
+            alert('Erreur inattendue lors de la sauvegarde. Verifie la console pour les details.');
+        }
+        return false;
+    }
 }
 
 /**
@@ -82,14 +113,20 @@ export function updateProfile(currentProfile, gameTitle, isGoodAnswer, gameMode)
 }
 
 /**
- * Save profile to localStorage
+ * Save a single profile to localStorage.
+ * Si le profil n'est pas trouve dans la liste, ne tente pas de l'inserer (silencieux par design).
  * @param {Object} currentProfile - The profile to save
+ * @returns {boolean} true si la sauvegarde a reussi, false sinon
  */
 export function saveProfile(currentProfile) {
     const profiles = getProfiles();
     const profileIndex = profiles.findIndex(p => p.pseudo === currentProfile.pseudo);
+    if (profileIndex === -1) {
+        console.warn(`saveProfile: profil "${currentProfile.pseudo}" introuvable, sauvegarde ignoree.`);
+        return false;
+    }
     profiles[profileIndex] = currentProfile;
-    localStorage.setItem('profiles', JSON.stringify(profiles));
+    return saveProfiles(profiles);
 }
 
 /**

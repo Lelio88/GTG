@@ -1,9 +1,10 @@
 import { showCharacter } from './dialogue.js';
 import { exportSave } from './saveManager.js';
+import { getProfiles } from './gameUtils.js';
 
 function refreshProfileData() {
     // On recharge les profils depuis le localStorage
-    const profiles = JSON.parse(localStorage.getItem('profiles'));
+    const profiles = getProfiles();
     const currentProfilePseudo = localStorage.getItem('currentProfile');
 
     // On retrouve le profil actuel
@@ -47,8 +48,8 @@ let selectedMode = null;
 let focusedSection = 'modes'; // Section active (par défaut 'profiles')
 
 if (currentProfile) {
-    const profileData = JSON.parse(localStorage.getItem('profiles')).find(p => p.pseudo === currentProfile);
-    
+    const profileData = getProfiles().find(p => p.pseudo === currentProfile);
+
     if (profileData) {
         const unlocked = profileData.unlockedModes || [];
         const completed = profileData.completedModes || [];
@@ -205,7 +206,7 @@ function updateTime() {
 //Affichage du bouton "Chambre" si l'utilisateur a au moins une clé ou terminé au moins un mode
 const roomButton = document.getElementById('room-button');
 if (roomButton) {
-    const currentProfile = JSON.parse(localStorage.getItem('profiles')).find(p => p.pseudo === localStorage.getItem('currentProfile'));
+    const currentProfile = getProfiles().find(p => p.pseudo === localStorage.getItem('currentProfile'));
     if (currentProfile && (currentProfile.keys > 0 || (currentProfile.completedModes && currentProfile.completedModes.length > 0))) {
         roomButton.style.display = 'block';
     } else {
