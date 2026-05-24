@@ -108,11 +108,11 @@ window.nextQuestion = nextQuestion;
 setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
 
 // On load
-window.onload = () => {
+window.addEventListener('DOMContentLoaded', () => {
     launchGameMidi();
     updateScoreboard(currentProfile, 'midi');
     document.getElementById('user-input').focus();
-};
+});
 
 // Cleanup on page unload
 window.addEventListener('beforeunload', cleanupMidi);

@@ -109,9 +109,9 @@ window.nextQuestion = nextQuestion;
 setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
 
 // On load
-window.onload = () => {
+window.addEventListener('DOMContentLoaded', () => {
     launchGameText();
     timerInterval = startTimerUtil();
     updateScoreboard(currentProfile, 'text');
     document.getElementById('user-input').focus();
-};
+});

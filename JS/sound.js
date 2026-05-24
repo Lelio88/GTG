@@ -144,8 +144,8 @@ document.addEventListener('keydown', (e) => {
 });
 
 // On load
-window.onload = () => {
+window.addEventListener('DOMContentLoaded', () => {
     launchGameMusic();
     updateScoreboard(currentProfile, 'sound');
     document.getElementById('user-input').focus();
-};
+});

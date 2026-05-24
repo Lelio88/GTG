@@ -164,8 +164,8 @@ document.addEventListener('keydown', (e) => {
 });
 
 // On load
-window.onload = () => {
+window.addEventListener('DOMContentLoaded', () => {
     launchGameFull();
     document.getElementById('user-input').focus();
     updateScoreboard(currentProfile, 'full');
-};
+});

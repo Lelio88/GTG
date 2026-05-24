@@ -120,8 +120,8 @@ window.nextQuestion = nextQuestion;
 // Setup Enter key handler
 setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
 
-window.onload = () => {
+window.addEventListener('DOMContentLoaded', () => {
     launchGameShadow();
     document.getElementById('user-input').focus();
     updateScoreboard(currentProfile, 'shadow');
-};
+});

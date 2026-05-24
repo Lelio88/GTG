@@ -57,5 +57,5 @@ function updateKeysDisplay() {
     }
 }
 
-// On appelle la mise à jour à chaque chargement
-window.onload = updateKeysDisplay;
+// On appelle la mise a jour a chaque chargement (additif, ne pas ecraser les autres handlers)
+window.addEventListener('DOMContentLoaded', updateKeysDisplay);

@@ -57,14 +57,16 @@ const keyDialogues = {
 
 // Fonction pour récupérer le bon dialogue et l'image correspondante
 function getDialogue() {
-    const profile = getProfiles();
+    const profiles = getProfiles();
+    const currentPseudo = localStorage.getItem('currentProfile');
+    const profile = profiles.find(p => p.pseudo === currentPseudo);
     if (!profile) return null;
 
     const visitCount = initializeVisitCounter();
 
     // Gestion des dialogues spécifiques selon les clés obtenues
-    if (profile.Keys && keyDialogues && keyDialogues[profile.Keys]) {
-        return keyDialogues[profile.Keys];
+    if (profile.keys && keyDialogues[profile.keys]) {
+        return keyDialogues[profile.keys];
     }
 
     // Retour du dialogue selon le compteur de visite

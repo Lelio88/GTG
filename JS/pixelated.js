@@ -129,7 +129,7 @@ window.nextQuestion = nextQuestion;
 setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
 
 // On load
-window.onload = () => {
+window.addEventListener('DOMContentLoaded', () => {
     launchGamePixelated();
 
     // Focus sur l'input
@@ -137,4 +137,4 @@ window.onload = () => {
     if(input) input.focus();
 
     updateScoreboard(currentProfile, 'pixelated');
-};
+});

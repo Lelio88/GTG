@@ -173,8 +173,8 @@ window.nextQuestion = nextQuestion;
 setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
 
 // On load
-window.onload = () => {
+window.addEventListener('DOMContentLoaded', () => {
     launchGameImage();
     document.getElementById('user-input').focus();
     updateScoreboard(currentProfile, 'image');
-};
+});

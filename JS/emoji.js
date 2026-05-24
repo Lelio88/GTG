@@ -89,16 +89,16 @@ window.nextQuestion = nextQuestion;
 // Setup Enter key handler
 setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
 
-window.onload = () => {
+window.addEventListener('DOMContentLoaded', () => {
     launchGameEmoji();
     timerInterval = startTimerUtil();
     updateScoreboard(currentProfile, 'emoji');
     document.getElementById('user-input').focus();
-    
+
     // Configure abandon button
     const hintButton = document.getElementById('hint-button');
     if (hintButton) {
         hintButton.innerText = "Abandonner";
         hintButton.onclick = abandonGame;
     }
-};
+});
