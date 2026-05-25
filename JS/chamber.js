@@ -1,15 +1,9 @@
 import { getProfiles, saveProfiles } from './gameUtils.js';
-import { showAlert } from './ui/dialog.js';
+import { showAlert, showConfirm } from './ui/dialog.js';
 
 // === SÉLECTION DES ÉLÉMENTS ===
 const zones = document.querySelectorAll('.clickable-area');
 const backBtn = document.getElementById('back-hub');
-const modal = document.getElementById('confirmation-modal');
-const confirmBtn = document.getElementById('confirm-btn');
-const cancelBtn = document.getElementById('cancel-btn');
-
-// Variable pour stocker quel mode l'utilisateur essaie d'ouvrir (pour les modes avec clé)
-let pendingMode = null; 
 
 // === CONFIGURATION DES LIENS DIRECTS (SANS CLÉ) ===
 const directLinks = {
@@ -23,8 +17,8 @@ const directLinks = {
 
 // === FONCTIONS ===
 
-// 1. Gestion du clic pour les modes VERROUILLÉS (Ancien fonctionnement)
-function handleLockedZoneClick(modeName) {
+// 1. Gestion du clic pour les modes VERROUILLÉS (cle requise)
+async function handleLockedZoneClick(modeName) {
     // Récupérer le profil actuel
     const profiles = getProfiles();
     const currentPseudo = localStorage.getItem('currentProfile');
@@ -38,65 +32,47 @@ function handleLockedZoneClick(modeName) {
         return;
     }
 
-    // Vérifier si l'utilisateur a une clé
-    if (profile.keys > 0) {
-        // A une clé : On stocke le mode et on ouvre le modal
-        pendingMode = modeName;
-        modal.classList.remove('hidden');
-    } else {
-        // Pas de clé : RIEN NE SE PASSE
-        console.log("Pas de clé, action ignorée.");
+    // Pas de cle : rien ne se passe (l'utilisateur a clique par curiosite)
+    if (!profile.keys || profile.keys <= 0) {
+        console.log("Pas de cle, action ignoree.");
+        return;
     }
+
+    // Demande de confirmation via la modale neon partagee
+    const confirmed = await showConfirm(
+        `Utiliser une cle pour debloquer le mode ${modeName.toUpperCase()} ?`,
+        { title: 'Ouvrir ce tiroir ?', okText: 'Oui, utiliser la cle', cancelText: 'Non' }
+    );
+    if (!confirmed) return;
+
+    // Re-recuperer le profil (le storage a pu changer pendant la modale)
+    const freshProfiles = getProfiles();
+    const profileIndex = freshProfiles.findIndex(p => p.pseudo === currentPseudo);
+    if (profileIndex === -1) return;
+
+    const freshProfile = freshProfiles[profileIndex];
+
+    // Re-verifier la cle et le mode (defense en profondeur)
+    if (!freshProfile.keys || freshProfile.keys <= 0) return;
+    if (freshProfile.unlockedModes && freshProfile.unlockedModes.includes(modeName)) return;
+
+    // A. Consommer une cle
+    freshProfile.keys -= 1;
+
+    // B. Debloquer le mode
+    if (!freshProfile.unlockedModes) freshProfile.unlockedModes = [];
+    freshProfile.unlockedModes.push(modeName);
+
+    // C. Persister
+    freshProfiles[profileIndex] = freshProfile;
+    if (!saveProfiles(freshProfiles)) return;
+
+    // D. Feedback
+    showAlert(`Le tiroir s'ouvre...\nMode debloque : ${modeName.toUpperCase()}`, {
+        title: 'Nouveau mode debloque',
+        okText: 'Super',
+    });
 }
-
-// 2. Action quand l'utilisateur confirme (OUI) pour une zone à clé
-confirmBtn.addEventListener('click', () => {
-    if (!pendingMode) return;
-
-    // Récupérer et mettre à jour le profil
-    const profiles = getProfiles();
-    const currentPseudo = localStorage.getItem('currentProfile');
-    const profileIndex = profiles.findIndex(p => p.pseudo === currentPseudo);
-
-    if (profileIndex !== -1) {
-        const profile = profiles[profileIndex];
-
-        // A. Utiliser la clé (Remise à 0)
-        if (profile.keys > 0) {
-            profile.keys -= 1;
-        }
-
-        // B. Débloquer le mode
-        if (!profile.unlockedModes) {
-            profile.unlockedModes = [];
-        }
-        profile.unlockedModes.push(pendingMode);
-
-        // C. Sauvegarder dans localStorage
-        profiles[profileIndex] = profile;
-        if (!saveProfiles(profiles)) {
-            // Echec persistance : on abandonne sans afficher de victoire
-            modal.classList.add('hidden');
-            pendingMode = null;
-            return;
-        }
-
-        // Feedback et fermeture
-        const unlockedMode = pendingMode;
-        modal.classList.add('hidden');
-        pendingMode = null;
-        showAlert(`Le tiroir s'ouvre...\nMode debloque : ${unlockedMode.toUpperCase()}`, {
-            title: 'Nouveau mode debloque',
-            okText: 'Super',
-        });
-    }
-});
-
-// 3. Action quand l'utilisateur annule (NON)
-cancelBtn.addEventListener('click', () => {
-    modal.classList.add('hidden');
-    pendingMode = null;
-});
 
 // === INITIALISATION DES ÉCOUTEURS SUR LES ZONES ===
 function activateZone(zone) {
