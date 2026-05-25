@@ -1,0 +1,26 @@
+# Python -- bytecode et dossiers de travail temporaires des scripts admin
+__pycache__/
+*.pyc
+*.pyo
+Python/.venv/
+Python/venv/
+Python/illustrations_jeux/
+Python/pochettes_jeux/
+Python/personnages_originaux/
+Python/sons_jeux/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editeurs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs / dumps
+*.log
+*.dump
