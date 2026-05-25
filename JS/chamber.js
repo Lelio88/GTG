@@ -1,4 +1,4 @@
-import { getProfiles, saveProfiles } from './gameUtils.js';
+import { profileStore } from './state/profileStore.js';
 import { showAlert, showConfirm } from './ui/dialog.js';
 
 // === SÉLECTION DES ÉLÉMENTS ===
@@ -19,11 +19,7 @@ const directLinks = {
 
 // 1. Gestion du clic pour les modes VERROUILLÉS (cle requise)
 async function handleLockedZoneClick(modeName) {
-    // Récupérer le profil actuel
-    const profiles = getProfiles();
-    const currentPseudo = localStorage.getItem('currentProfile');
-    const profile = profiles.find(p => p.pseudo === currentPseudo);
-
+    const profile = profileStore.getCurrent();
     if (!profile) return;
 
     // Vérifier si le mode est DÉJÀ débloqué
@@ -45,29 +41,21 @@ async function handleLockedZoneClick(modeName) {
     );
     if (!confirmed) return;
 
-    // Re-recuperer le profil (le storage a pu changer pendant la modale)
-    const freshProfiles = getProfiles();
-    const profileIndex = freshProfiles.findIndex(p => p.pseudo === currentPseudo);
-    if (profileIndex === -1) return;
+    // Defense en profondeur : on relit + verifie via updateCurrent (le storage
+    // a pu changer pendant que la modale etait ouverte -- autre onglet, etc.)
+    const updated = profileStore.updateCurrent((freshProfile) => {
+        if (!freshProfile.keys || freshProfile.keys <= 0) return freshProfile;
+        if (freshProfile.unlockedModes && freshProfile.unlockedModes.includes(modeName)) return freshProfile;
+        freshProfile.keys -= 1;
+        if (!freshProfile.unlockedModes) freshProfile.unlockedModes = [];
+        freshProfile.unlockedModes.push(modeName);
+        return freshProfile;
+    });
 
-    const freshProfile = freshProfiles[profileIndex];
+    // Si la mise a jour n'a pas eu lieu (etat plus a jour, plus de cle, ou
+    // saveProfiles a echoue) on n'affiche pas le succes.
+    if (!updated || (updated.unlockedModes && !updated.unlockedModes.includes(modeName))) return;
 
-    // Re-verifier la cle et le mode (defense en profondeur)
-    if (!freshProfile.keys || freshProfile.keys <= 0) return;
-    if (freshProfile.unlockedModes && freshProfile.unlockedModes.includes(modeName)) return;
-
-    // A. Consommer une cle
-    freshProfile.keys -= 1;
-
-    // B. Debloquer le mode
-    if (!freshProfile.unlockedModes) freshProfile.unlockedModes = [];
-    freshProfile.unlockedModes.push(modeName);
-
-    // C. Persister
-    freshProfiles[profileIndex] = freshProfile;
-    if (!saveProfiles(freshProfiles)) return;
-
-    // D. Feedback
     showAlert(`Le tiroir s'ouvre...\nMode debloque : ${modeName.toUpperCase()}`, {
         title: 'Nouveau mode debloque',
         okText: 'Super',

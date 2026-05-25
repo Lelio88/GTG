@@ -1,5 +1,6 @@
 import { importSave } from './saveManager.js';
 import { getProfiles, saveProfiles } from './gameUtils.js';
+import { profileStore } from './state/profileStore.js';
 import { showAlert, showConfirm, showPrompt } from './ui/dialog.js';
 
 // === Sélection des éléments ===
@@ -9,7 +10,7 @@ const deleteProfileButton = document.getElementById('delete-profile');
 const importSaveBtn = document.getElementById('import-save-btn');
 
 let profiles = getProfiles();
-let currentProfile = localStorage.getItem('currentProfile') || null;
+let currentProfile = profileStore.getCurrentPseudo();
 
 // Couleurs néon pour les profils
 const neonColors = ["#FFA500", "#FF4500", "#FF1493", "#9400D3"];
@@ -71,11 +72,7 @@ function applyNeonGlow(element, baseColor) {
 // Sélection d'un profil
 function selectProfile(pseudo) {
     currentProfile = pseudo;
-    try {
-        localStorage.setItem('currentProfile', pseudo);
-    } catch (err) {
-        console.error('Impossible d\'enregistrer le profil courant :', err);
-    }
+    profileStore.setCurrent(pseudo);
 
     allProfiles.forEach(p => {
         p.classList.remove('selected');
@@ -149,11 +146,7 @@ async function deleteProfile() {
             profiles.splice(index, 0, removed);
             return;
         }
-        try {
-            localStorage.removeItem('currentProfile');
-        } catch (err) {
-            console.error('Impossible de retirer le profil courant :', err);
-        }
+        profileStore.clearCurrent();
         currentProfile = null;
         renderProfiles();
         if (importSaveBtn) {
