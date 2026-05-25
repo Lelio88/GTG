@@ -114,11 +114,13 @@ setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
 window.addEventListener('DOMContentLoaded', () => {
     document.getElementById('check-button').addEventListener('click', checkAnswer);
     document.getElementById('next-button').addEventListener('click', nextQuestion);
-    // Le mode emoji n'a pas d'indice : le bouton 'Indice' est en fait 'Abandonner' direct
+    // Le mode emoji n'a pas d'indice : le bouton 'Indice' est en fait
+    // 'Abandonner' direct. On utilise .onclick (rebind par nextQuestion
+    // entre questions) ; addEventListener aurait cree un double trigger.
     const hintButton = document.getElementById('hint-button');
     if (hintButton) {
         hintButton.innerText = "Abandonner";
-        hintButton.addEventListener('click', abandonGame);
+        hintButton.onclick = abandonGame;
     }
     launchGameEmoji();
     timerInterval = startTimerUtil();

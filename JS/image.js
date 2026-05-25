@@ -190,7 +190,9 @@ setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
 
 // On load
 window.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('hint-button').addEventListener('click', showHint);
+    // hint-button utilise .onclick (rebind par launchGameImage et showHint).
+    // Ici on n'a meme pas besoin de l'assigner : launchGameImage le fait juste
+    // apres. addEventListener aurait cree un double trigger (bug reporte).
     document.getElementById('check-button').addEventListener('click', checkAnswer);
     document.getElementById('next-button').addEventListener('click', nextQuestion);
     launchGameImage();

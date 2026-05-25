@@ -181,7 +181,10 @@ document.addEventListener('keydown', (e) => {
 
 // On load
 window.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('hint-button').addEventListener('click', showHint);
+    // hint-button utilise .onclick (rebind dynamique par showHint -> abandonGame
+    // au dernier indice, et par resetGameUI entre questions). addEventListener
+    // creerait un double trigger ; .onclick remplace au lieu d'additionner.
+    document.getElementById('hint-button').onclick = showHint;
     document.getElementById('check-button').addEventListener('click', checkAnswer);
     document.getElementById('next-button').addEventListener('click', nextQuestion);
     launchGameFull();

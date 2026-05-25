@@ -125,7 +125,9 @@ setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
 
 // On load
 window.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('hint-button').addEventListener('click', showHint);
+    // hint-button utilise .onclick (rebind par showHint -> abandonGame, et par
+    // resetGameUI entre questions). addEventListener aurait cree un double trigger.
+    document.getElementById('hint-button').onclick = showHint;
     document.getElementById('check-button').addEventListener('click', checkAnswer);
     document.getElementById('next-button').addEventListener('click', nextQuestion);
     launchGameText();
