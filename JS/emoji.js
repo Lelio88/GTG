@@ -105,23 +105,23 @@ function abandonGame() {
         });
 }
 
-// Expose functions
-window.checkAnswer = checkAnswer;
+// Expose nextQuestion en global -- consommee par gameUtils.js
 window.nextQuestion = nextQuestion;
 
 // Setup Enter key handler
 setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
 
 window.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('check-button').addEventListener('click', checkAnswer);
+    document.getElementById('next-button').addEventListener('click', nextQuestion);
+    // Le mode emoji n'a pas d'indice : le bouton 'Indice' est en fait 'Abandonner' direct
+    const hintButton = document.getElementById('hint-button');
+    if (hintButton) {
+        hintButton.innerText = "Abandonner";
+        hintButton.addEventListener('click', abandonGame);
+    }
     launchGameEmoji();
     timerInterval = startTimerUtil();
     updateScoreboard(currentProfile, 'emoji');
     document.getElementById('user-input').focus();
-
-    // Configure abandon button
-    const hintButton = document.getElementById('hint-button');
-    if (hintButton) {
-        hintButton.innerText = "Abandonner";
-        hintButton.onclick = abandonGame;
-    }
 });

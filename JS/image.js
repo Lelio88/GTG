@@ -181,8 +181,7 @@ function abandonGame() {
         });
 }
 
-// Expose functions to global context
-window.checkAnswer = checkAnswer;
+// Expose showHint et nextQuestion en global -- consommees par gameUtils.js
 window.showHint = showHint;
 window.nextQuestion = nextQuestion;
 
@@ -191,6 +190,9 @@ setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
 
 // On load
 window.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('hint-button').addEventListener('click', showHint);
+    document.getElementById('check-button').addEventListener('click', checkAnswer);
+    document.getElementById('next-button').addEventListener('click', nextQuestion);
     launchGameImage();
     document.getElementById('user-input').focus();
     updateScoreboard(currentProfile, 'image');

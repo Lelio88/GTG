@@ -207,6 +207,14 @@ loadProfileButton.onclick = () => {
     window.location.href = 'HTML/hub.html';  // Ou la page de ton choix
 };
 
+// Bouton Multijoueur (remplace l'ancien onclick inline)
+const multiplayerBtn = document.getElementById('multiplayer-btn');
+if (multiplayerBtn) {
+    multiplayerBtn.addEventListener('click', () => {
+        window.location.href = 'HTML/multi-lobby.html';
+    });
+}
+
 // Initialisation
 renderProfiles();
 

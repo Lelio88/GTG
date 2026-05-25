@@ -136,16 +136,18 @@ function abandonGame() {
         });
 }
 
-// Expose functions to global context
-window.checkAnswer = checkAnswer;
+// Expose nextQuestion en global -- consommee par gameUtils.js
+// (showHint pas utilise en pixelated : le bouton declenche abandon direct)
 window.nextQuestion = nextQuestion;
-// window.showHint = showHint; // Pas nécessaire ici, géré directement par abandonGame
 
 // Setup Enter key handler
 setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
 
 // On load
 window.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('check-button').addEventListener('click', checkAnswer);
+    document.getElementById('next-button').addEventListener('click', nextQuestion);
+    // hint-button est reconfigure en 'Abandonner' par launchGamePixelated (pas d'indice)
     launchGamePixelated();
 
     // Focus sur l'input

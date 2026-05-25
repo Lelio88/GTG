@@ -118,8 +118,9 @@ function nextQuestion() {
     document.getElementById('user-input').focus();
 }
 
-// Expose functions to global context
-window.checkAnswer = checkAnswer;
+// Expose showHint et nextQuestion en global -- consommees par gameUtils.js
+// (launchGameMidi reaffecte hint-button.onclick via window.showHint apres
+// resetGameUI, qui rebind le bouton via window.showHint).
 window.showHint = showHint;
 window.nextQuestion = nextQuestion;
 
@@ -128,6 +129,9 @@ setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
 
 // On load
 window.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('check-button').addEventListener('click', checkAnswer);
+    document.getElementById('next-button').addEventListener('click', nextQuestion);
+    // hint-button est reconfigure en 'Abandonner' par launchGameMidi (1 seul MIDI, pas d'indices)
     launchGameMidi();
     updateScoreboard(currentProfile, 'midi');
     document.getElementById('user-input').focus();

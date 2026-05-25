@@ -128,15 +128,17 @@ function abandonGame() {
         });
 }
 
-// Expose functions
-window.checkAnswer = checkAnswer;
-// window.showHint = showHint; // Supprimé car inutile
+// Expose nextQuestion en global -- consommee par gameUtils.js
+// (showHint pas utilise en shadow : le bouton declenche abandon direct)
 window.nextQuestion = nextQuestion;
 
 // Setup Enter key handler
 setupEnterKeyHandler(checkAnswer, nextQuestion, () => correctAnswerGiven);
 
 window.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('check-button').addEventListener('click', checkAnswer);
+    document.getElementById('next-button').addEventListener('click', nextQuestion);
+    // hint-button est reconfigure en 'Abandonner' par launchGameShadow (pas d'indice)
     launchGameShadow();
     document.getElementById('user-input').focus();
     updateScoreboard(currentProfile, 'shadow');
