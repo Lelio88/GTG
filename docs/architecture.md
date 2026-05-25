@@ -25,12 +25,17 @@ Le projet est volontairement **sans framework** : pas de React, pas de Vue, pas 
 │                        │ import ES6                          │
 │  ┌─────────────────────▼──────────────────────────────────┐  │
 │  │  Couche partagée                                       │  │
-│  │   JS/gameUtils.js     (timer, score, indices, valid.)  │  │
-│  │   JS/gamesDatabase.js (catalogue + abbreviations)      │  │
+│  │   JS/gameUtils.js      (timer, score, indices, valid., │  │
+│  │                         resetGameUI, revealTitle)      │  │
+│  │   JS/gamesDatabase.js  (catalogue, re-export abbrev.)  │  │
+│  │   JS/abbreviations.js  (table contractions, lazy load) │  │
 │  │   JS/gameCompletion.js (fin de mode → clé + redirect)  │  │
 │  │   JS/dialogue.js       (personnage guide contextuel)   │  │
 │  │   JS/saveManager.js    (export/import JSON profil)     │  │
-│  │   JS/profiles.js       (legacy CRUD, non-importé)      │  │
+│  │   JS/hint-renderers.js (renderers indices, solo+multi) │  │
+│  │   JS/state/profileStore.js (façade localStorage)       │  │
+│  │   JS/state/gameProgress.js (jeu en cours anti-F5)      │  │
+│  │   JS/ui/dialog.js      (showAlert/Confirm/Prompt néon) │  │
 │  └─────────────────────┬──────────────────────────────────┘  │
 │                        │ read/write                          │
 │  ┌─────────────────────▼──────────────────────────────────┐  │
@@ -38,6 +43,10 @@ Le projet est volontairement **sans framework** : pas de React, pas de Vue, pas 
 │  │   window.localStorage                                  │  │
 │  │    ├─ 'profiles'         (array<Profile>, JSON)        │  │
 │  │    └─ 'currentProfile'   (string : pseudo du profil)   │  │
+│  │                                                        │  │
+│  │   Cross-onglet : storage event consommé par            │  │
+│  │   profileStore.subscribe() (gain de clé dans un        │  │
+│  │   onglet ↔ refresh des compteurs dans les autres).     │  │
 │  └────────────────────────────────────────────────────────┘  │
 └──────────────────────────────────────────────────────────────┘
 
@@ -56,6 +65,10 @@ Le projet est volontairement **sans framework** : pas de React, pas de Vue, pas 
    │  Python/  *.py  scripts Tkinter + duckduckgo_search     │
    │           pour scraper Image / Sound / Shadow / Pixels  │
    │           depuis gamesDatabase.js                       │
+   │           + compress_images.py (Pillow, batch q90)      │
+   │           + normalize_sounds.py (ffmpeg, EBU R128)      │
+   │           + check_assets.py (audit du catalogue)        │
+   │  cf. Python/requirements.txt + Python/README.md         │
    └─────────────────────────────────────────────────────────┘
 
    Mode Multijoueur (optionnel, nécessite réseau — §15)
@@ -114,11 +127,18 @@ Stocké dans `localStorage['profiles']` sous la forme d'un tableau (max 4 entré
   completedModes: ['full'],           // modes 100 % terminés
   unlockedModes: ['pixelated'],       // modes hardcore débloqués via chambre
   keys: 1,                            // clés disponibles pour ouvrir la chambre
-  visitCount: 12                      // visites du hub (utilisé par dialogue.js)
+  visitCount: 12,                     // visites du hub (utilisé par dialogue.js)
+  inProgressGames: {                  // jeu en cours par mode (anti-triche F5)
+    full:  'A Plague Tale',           // null/absent si aucune partie en cours
+    image: null,
+    sound: 'Hollow Knight'
+  }
 }
 ```
 
-**Migration legacy** : `initializeProfile(profile)` dans `gameUtils.js` ajoute idempotemment les champs `scoresByMode` et `guessedGamesByMode` aux anciens profils ne possédant que `goodAnswers` / `badAnswers`. Tout nouveau champ doit suivre le même pattern d'initialisation paresseuse.
+**Migration legacy** : `initializeProfile(profile)` dans `gameUtils.js` ajoute idempotemment les champs `scoresByMode` et `guessedGamesByMode` aux anciens profils ne possédant que `goodAnswers` / `badAnswers`. Tout nouveau champ doit suivre le même pattern d'initialisation paresseuse. `inProgressGames` est créé à la première écriture par `JS/state/gameProgress.js`.
+
+**Accès** : passer par `JS/state/profileStore.js`. **Aucun `JSON.parse(localStorage.getItem('profiles'))` direct** dans le code consommateur — utiliser `profileStore.getCurrent()` / `getAll()` / `updateCurrent(fn)` / `subscribe(cb)`.
 
 ## 5. Modèle de données — `Game`
 
@@ -137,7 +157,7 @@ Une entrée du tableau `games` exporté par `JS/gamesDatabase.js` :
 }
 ```
 
-L'objet `abbreviations` exporté par le même module mappe un titre canonique en minuscules vers une liste d'alias acceptés (ex : `'call of duty': ['cod']`). `checkAnswerValue` consulte d'abord l'égalité stricte puis cette table.
+L'objet `abbreviations` vit dans `JS/abbreviations.js` (re-exporté depuis `gamesDatabase.js` pour rétrocompat) : il mappe un titre canonique en minuscules vers une liste d'alias acceptés (ex : `'call of duty': ['cod']`). `checkAnswerValue` consulte d'abord l'égalité stricte puis cette table. L'isolation dans son propre fichier (~2 KB) permet à `gameUtils.js` (importé partout via les profils) de ne pas charger les 190 KB de `gamesDatabase.js` sur les pages qui n'ont pas besoin du catalogue (`index.html`, `hub.html`, `chamber.html`).
 
 ## 6. Conventions de nommage des assets
 
@@ -175,22 +195,61 @@ Tout module de mode solo (`full.js`, `image.js`, etc.) **doit** consommer ces fo
 
 | Fonction | Rôle |
 |---|---|
+| `getProfiles()` | Lecture défensive du tableau de profils (try/catch, fallback `[]`) |
+| `saveProfiles(arr)` | Persiste tout le tableau, gère `QuotaExceededError` avec modale |
 | `getCurrentProfile()` | Résout l'objet `Profile` depuis `localStorage['currentProfile']` |
 | `initializeProfile(p)` | Migration paresseuse des champs `scoresByMode` / `guessedGamesByMode` |
 | `getAvailableGames(games, profile, mode)` | Filtre les jeux déjà devinés |
 | `updateProfile(p, title, isGood, mode)` | Met à jour score + jeux trouvés + persiste |
-| `saveProfile(p)` | Écrit dans `localStorage['profiles']` |
+| `saveProfile(p)` | Écrit le profil courant via `saveProfiles` |
 | `startTimer()` / `stopTimer(id)` | Chronomètre `#timer` mm:ss |
-| `abandonGame(p, mode)` | Pénalité +10 bad answers + reload |
-| `checkAnswerValue(input, title)` | Compare avec normalisation + table d'abréviations |
+| `abandonGame(p, mode, nextFn?)` | Pénalité +10 bad answers ; `nextFn` permet l'enchaînement in-place au lieu d'un reload |
+| `checkAnswerValue(input, title)` | Compare avec normalisation + table d'abréviations (depuis `abbreviations.js`) |
 | `updateScoreboard(p, mode)` | Synchronise `#good-answers` et `#bad-answers` |
 | `createHintNavigationSystem(n)` | Machine à états pour le déblocage progressif des indices |
 | `createNavigationArrows(cb)` / `updateArrowsVisibility(...)` | Flèches DOM pour parcourir les indices débloqués |
 | `setupEnterKeyHandler(check, next, isDone)` | Gestion de la touche Entrée sur `#user-input` |
-| `showCorrectAnswerFeedback` / `showIncorrectAnswerFeedback` | Feedback UI standardisé |
-| `revealTitle(title, opts)` | Modal/inline de révélation lors d'un abandon |
+| `showCorrectAnswerFeedback(title, timerId)` | Feedback inline + modale néon `revealTitle(intro='Bravo !', accent='success', onConfirm=window.nextQuestion)` |
+| `showIncorrectAnswerFeedback()` | Feedback inline « Mauvaise réponse ! » |
+| `resetGameUI()` | Reset du DOM commun entre questions (input, message, hint-button, next-button, content, flèches, timer) — utilisé par `nextQuestion` de chaque mode pour éviter le `window.location.reload()` |
+| `revealTitle(title, opts)` | Modale néon de révélation. Options : `mode` (`'modal'`/`'inline'`), `autoAdvance`, `delay`, `intro`, `accent` (`'default'`/`'success'`), `onConfirm` (déclenché sur clic OK ou Enter, pas sur auto-close) |
 
-Convention IDs DOM attendus par cette couche : `#user-input`, `#message`, `#game-title`, `#next-button`, `#good-answers`, `#bad-answers`, `#timer`, `#content`, `#game`, `#hint-button`. Tout `HTML/<mode>.html` doit publier ces hooks.
+Convention IDs DOM attendus par cette couche : `#user-input`, `#message`, `#game-title`, `#next-button`, `#check-button`, `#good-answers`, `#bad-answers`, `#timer`, `#content`, `#game`, `#hint-button`. Tout `HTML/<mode>.html` doit publier ces hooks **sans onclick inline** (handlers attachés via `addEventListener` ou `.onclick` JS).
+
+### 7.3 `JS/state/profileStore.js` — Façade localStorage + observers
+
+Centralise les accès au profil. Tous les consommateurs (sauf primitives bas niveau dans `gameUtils.js`) **doivent** passer par ce module.
+
+| Méthode | Rôle |
+|---|---|
+| `getAll()` | Tous les profils |
+| `getCurrent()` / `getCurrentPseudo()` | Profil courant / juste son pseudo |
+| `setCurrent(pseudo)` / `clearCurrent()` | Sélection / désélection (notify) |
+| `updateCurrent(fn)` | `fn(profile) → profile`, persist + notify atomique |
+| `subscribe(cb)` | Observers same-tab + cross-onglet (via `window 'storage'`) |
+
+### 7.4 `JS/state/gameProgress.js` — Anti-triche F5
+
+Persiste le titre du jeu en cours par mode dans `profile.inProgressGames[mode]`. Un F5 sur une page de mode → `launchGameX` réutilise le titre s'il est encore dans `availableGames`, sinon random.
+
+| Fonction | Rôle |
+|---|---|
+| `getInProgressGame(mode, availableGames)` | Le jeu en cours, ou null |
+| `setInProgressGame(mode, title)` | Sauvegarde (appelé par `launchGameX`) |
+| `clearInProgressGame(mode)` | Efface (appelé par `nextQuestion`) |
+
+### 7.5 `JS/ui/dialog.js` — Modales néon
+
+Aucun `alert/prompt/confirm` natif dans le code. Le CSS est injecté au premier import (pas besoin de `<link>` dans les HTML).
+
+| API | Retour |
+|---|---|
+| `showAlert(msg, opts?)` | `Promise<void>` |
+| `showConfirm(msg, opts?)` | `Promise<boolean>` |
+| `showPrompt(msg, opts?)` | `Promise<string|null>` |
+| `ensureStyles()` | Force l'injection CSS (utilisé par `revealTitle` pour réutiliser les keyframes) |
+
+Options communes : `title`, `okText`, `cancelText`. Options de `showPrompt` : `defaultValue`, `placeholder`, `maxLength`. Queue interne empêche deux modales simultanées. Échap = annule, Enter = confirme.
 
 ## 8. Flux typique d'une partie
 
