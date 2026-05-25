@@ -2,7 +2,7 @@
  * Common utility functions shared across all game modes (full, sound, image, text)
  */
 
-import { abbreviations } from './gamesDatabase.js';
+import { abbreviations } from './abbreviations.js';
 import { showAlert, ensureStyles as ensureDialogStyles } from './ui/dialog.js';
 
 /**
