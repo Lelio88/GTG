@@ -4,6 +4,7 @@ TEXT ONLY MODE
 import { games } from './gamesDatabase.js';
 import { handleGameCompletion } from './gameCompletion.js';
 import { renderHintText } from './hint-renderers.js';
+import { getInProgressGame, setInProgressGame, clearInProgressGame } from './state/gameProgress.js';
 import {
     getCurrentProfile,
     initializeProfile,
@@ -46,8 +47,11 @@ function launchGameText() {
         return;
     }
 
-    cachedGame = availableGames[Math.floor(Math.random() * availableGames.length)];
+    // Anti-triche F5 : reprend le jeu en cours si possible.
+    cachedGame = getInProgressGame('text', availableGames)
+        || availableGames[Math.floor(Math.random() * availableGames.length)];
     cachedTitle = cachedGame.title;
+    setInProgressGame('text', cachedTitle);
 
     initializeGameTitle(cachedTitle);
 
@@ -97,6 +101,8 @@ function checkAnswer() {
 }
 
 function nextQuestion() {
+    clearInProgressGame('text');
+
     // Reset etat JS
     cachedGame = null;
     cachedTitle = '';

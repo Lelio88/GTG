@@ -4,6 +4,7 @@ FULL MODE - Image + Sound + Text
 import { games } from './gamesDatabase.js';
 import { handleGameCompletion } from './gameCompletion.js';
 import { renderHintFull } from './hint-renderers.js';
+import { getInProgressGame, setInProgressGame, clearInProgressGame } from './state/gameProgress.js';
 import {
     getCurrentProfile,
     initializeProfile,
@@ -49,8 +50,12 @@ function launchGameFull() {
         return;
     }
 
-    cachedGame = availableGames[Math.floor(Math.random() * availableGames.length)];
+    // Anti-triche F5 : si une partie etait en cours, on reprend le meme
+    // jeu au lieu de reroll au hasard. Sinon random + on persiste.
+    cachedGame = getInProgressGame('full', availableGames)
+        || availableGames[Math.floor(Math.random() * availableGames.length)];
     cachedTitle = cachedGame.title;
+    setInProgressGame('full', cachedTitle);
 
     initializeGameTitle(cachedTitle);
 
@@ -134,6 +139,10 @@ function checkAnswer() {
 }
 
 function nextQuestion() {
+    // Le jeu en cours est explicitement abandonne ou termine ici ;
+    // on l'efface pour qu'un random reprenne au prochain launchGameFull.
+    clearInProgressGame('full');
+
     // Reset etat JS
     cachedGame = null;
     cachedTitle = '';

@@ -4,6 +4,7 @@ SHADOW MODE (HARDCORE)
 import { games } from './gamesDatabase.js';
 import { handleGameCompletion } from './gameCompletion.js';
 import { renderHintShadow } from './hint-renderers.js';
+import { getInProgressGame, setInProgressGame, clearInProgressGame } from './state/gameProgress.js';
 import {
     getCurrentProfile,
     initializeProfile,
@@ -46,9 +47,11 @@ function launchGameShadow() {
         return;
     }
 
-    // 2. Sélectionner un jeu
-    cachedGame = availableGames[Math.floor(Math.random() * availableGames.length)];
+    // 2. Sélectionner un jeu (anti-triche F5 : reprend le jeu en cours si possible)
+    cachedGame = getInProgressGame('shadow', availableGames)
+        || availableGames[Math.floor(Math.random() * availableGames.length)];
     cachedTitle = cachedGame.title;
+    setInProgressGame('shadow', cachedTitle);
     initializeGameTitle(cachedTitle);
 
     const contentDiv = document.getElementById('content');
@@ -97,6 +100,8 @@ function checkAnswer() {
 }
 
 function nextQuestion() {
+    clearInProgressGame('shadow');
+
     // Reset etat JS
     cachedGame = null;
     cachedTitle = '';

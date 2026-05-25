@@ -4,6 +4,7 @@ SOUND ONLY MODE
 import { games } from './gamesDatabase.js';
 import { handleGameCompletion } from './gameCompletion.js';
 import { renderHintSound } from './hint-renderers.js';
+import { getInProgressGame, setInProgressGame, clearInProgressGame } from './state/gameProgress.js';
 import {
     getCurrentProfile,
     initializeProfile,
@@ -49,8 +50,11 @@ function launchGameMusic() {
         return;
     }
 
-    cachedGame = availableGames[Math.floor(Math.random() * availableGames.length)];
+    // Anti-triche F5 : reprend le jeu en cours si possible.
+    cachedGame = getInProgressGame('sound', availableGames)
+        || availableGames[Math.floor(Math.random() * availableGames.length)];
     cachedTitle = cachedGame.title;
+    setInProgressGame('sound', cachedTitle);
 
     initializeGameTitle(cachedTitle);
 
@@ -121,6 +125,8 @@ function checkAnswer() {
 }
 
 function nextQuestion() {
+    clearInProgressGame('sound');
+
     // Reset etat JS
     cachedGame = null;
     cachedTitle = '';

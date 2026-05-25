@@ -4,6 +4,7 @@
 import { games } from './gamesDatabase.js';
 import { handleGameCompletion } from './gameCompletion.js';
 import { renderHintMidi, cleanupMidi } from './hint-renderers.js';
+import { getInProgressGame, setInProgressGame, clearInProgressGame } from './state/gameProgress.js';
 import {
     getCurrentProfile,
     initializeProfile,
@@ -44,8 +45,11 @@ async function launchGameMidi() {
         return;
     }
 
-    cachedGame = availableGames[Math.floor(Math.random() * availableGames.length)];
+    // Anti-triche F5 : reprend le jeu en cours si possible.
+    cachedGame = getInProgressGame('midi', availableGames)
+        || availableGames[Math.floor(Math.random() * availableGames.length)];
     cachedTitle = cachedGame.title;
+    setInProgressGame('midi', cachedTitle);
 
     initializeGameTitle(cachedTitle);
 
@@ -98,6 +102,8 @@ function checkAnswer() {
 }
 
 function nextQuestion() {
+    clearInProgressGame('midi');
+
     // Stop audio MIDI en cours avant tout reset
     cleanupMidi();
 
