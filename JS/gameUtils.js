@@ -402,12 +402,21 @@ export function showCorrectAnswerFeedback(gameTitle, timerInterval) {
     document.getElementById('game-title').style.opacity = '1';
     // Modale celebrative (auto-close 2.5s) -- contourne le header fixe
     // qui pouvait masquer le titre inline si l'utilisateur avait scrolle.
+    // OK / Enter ferment la modale ET enchainent sur la question suivante ;
+    // Echap ferme juste la modale (le user reste sur la page de victoire) ;
+    // l'auto-close apres 2.5s ferme sans enchainer non plus (laisse le user
+    // voir l'image revelee avant de cliquer 'Prochaine question').
     revealTitle(gameTitle, {
         mode: 'modal',
         autoAdvance: true,
         delay: 2500,
         intro: 'Bravo !',
         accent: 'success',
+        onConfirm: () => {
+            if (typeof window.nextQuestion === 'function') {
+                window.nextQuestion();
+            }
+        },
     });
 }
 
@@ -441,6 +450,9 @@ export function initializeGameTitle(title) {
  * @param {number} options.delay - Delay in ms before auto-advance (default: 2000)
  * @param {string} options.intro - Texte d'intro affiche au-dessus du titre (defaut: "La réponse était :")
  * @param {('default'|'success')} options.accent - 'success' = vert pour victoire, 'default' = orange/rose pour abandon
+ * @param {Function} [options.onConfirm] - Callback declenche quand l'utilisateur ferme MANUELLEMENT
+ *   (clic OK ou touche Enter). Pas appele lors de l'auto-close, pour ne pas enchainer
+ *   trop vite sans que l'utilisateur ait vu la revelation.
  * @returns {Promise} Resolves when the reveal finishes (user clicks OK or after delay)
  */
 export function revealTitle(title, options = {}) {
@@ -450,6 +462,7 @@ export function revealTitle(title, options = {}) {
         delay = 2000,
         intro = 'La réponse était :',
         accent = 'default',
+        onConfirm = null,
     } = options;
     const accentColor = accent === 'success' ? 'var(--neon-success, #39ff14)' : 'var(--neon-primary, #ffb86b)';
     const accentShadow = accent === 'success'
@@ -531,14 +544,37 @@ export function revealTitle(title, options = {}) {
             okButton.style.cursor = 'pointer';
             okButton.style.boxShadow = '0 0 18px rgba(255, 184, 107, 0.4)';
 
-            const cleanup = () => {
+            // Pour eviter qu'un Enter declenche a la fois la modale ET le
+            // keypress sur #user-input (qui appellerait nextQuestion une 2e
+            // fois), on capture en phase capture + stopPropagation.
+            const onKey = (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    cleanup(true);
+                } else if (e.key === 'Escape') {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    cleanup(false); // Escape = juste fermer, pas d'onConfirm
+                }
+            };
+
+            let closed = false;
+            const cleanup = (manual) => {
+                if (closed) return;
+                closed = true;
+                document.removeEventListener('keydown', onKey, true);
                 if (overlay.parentNode) {
                     overlay.parentNode.removeChild(overlay);
+                }
+                if (manual && typeof onConfirm === 'function') {
+                    onConfirm();
                 }
                 resolve();
             };
 
-            okButton.onclick = cleanup;
+            okButton.onclick = () => cleanup(true);
+            document.addEventListener('keydown', onKey, true);
 
             // Assemble modal
             modalBox.appendChild(infoLine);
@@ -547,9 +583,14 @@ export function revealTitle(title, options = {}) {
             overlay.appendChild(modalBox);
             document.body.appendChild(overlay);
 
-            // Auto-advance after delay if enabled
+            // Focus sur le bouton OK pour que Enter le declenche immediatement
+            // (au lieu de declencher le keypress de #user-input)
+            okButton.focus();
+
+            // Auto-advance after delay if enabled (sans onConfirm : l'auto-close
+            // laisse l'utilisateur sur la page de victoire avec next-button visible)
             if (autoAdvance) {
-                setTimeout(cleanup, delay);
+                setTimeout(() => cleanup(false), delay);
             }
         } else {
             // Inline mode
