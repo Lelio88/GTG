@@ -33,7 +33,7 @@ jobs:
       # Catch les erreurs structurelles (cf. issue #26 ou <header> etait
       # place hors de <body> -- le validator l'aurait attrape).
       - name: HTML5 W3C validation
-        uses: Cyb3r-Jak3/html5validator-action@v7
+        uses: Cyb3r-Jak3/html5validator-action@v7.2.0
         with:
           root: .
           # Ignorer les dossiers de backup/admin si jamais
