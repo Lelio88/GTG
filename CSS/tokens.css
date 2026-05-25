@@ -134,6 +134,43 @@
         inset 0 0 12px rgba(255, 184, 107, 0.1);
 }
 
+/* Style de bouton par defaut applique a TOUS les <button> du projet (hub,
+   index, modes solo, chambre, multi). Les pages qui voulaient un look
+   different doivent overrider apres l'import de tokens.css.
+   Pre-#31 ce style etait redefini dans hub.css ET index-style.css ET
+   indirectement dans style.css (modes solo) ; centralisation ici. */
+button {
+    padding: var(--sp-2) var(--sp-5);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--fs-sm);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--neon-primary), var(--neon-secondary));
+    color: var(--bg-deep);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: transform var(--transition-fast), box-shadow var(--transition-base), filter var(--transition-fast);
+    margin: var(--sp-2) var(--sp-1);
+}
+
+button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--glow-lg) var(--neon-primary);
+    filter: brightness(1.15);
+}
+
+button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    filter: grayscale(0.4);
+}
+
 /* Bouton néon — surcharge de tout button qu'on lui applique */
 .neon-button {
     background: linear-gradient(135deg, var(--neon-primary), var(--neon-secondary));
@@ -216,6 +253,25 @@
 @keyframes neon-pulse {
     0%, 100% { box-shadow: var(--glow-md) var(--neon-primary); }
     50% { box-shadow: var(--glow-xl) var(--neon-primary); }
+}
+
+/* Halo neon respirant -- utilise par .game-mode.selected (hub) et
+   .profile.selected (index). La couleur est pilotee par la variable
+   --glow-color positionnee dynamiquement en JS (hub.js, index.js)
+   en fonction de la couleur du mode/profil selectionne. */
+@keyframes neon-glow {
+    0%, 100% {
+        box-shadow:
+            0 0 5px var(--glow-color),
+            0 0 10px var(--glow-color),
+            0 0 15px var(--glow-color);
+    }
+    50% {
+        box-shadow:
+            0 0 10px var(--glow-color),
+            0 0 20px var(--glow-color),
+            0 0 30px var(--glow-color);
+    }
 }
 
 /* Glitch léger (à appliquer sur les titres au hover ou occasionnellement) */

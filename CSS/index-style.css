@@ -156,31 +156,10 @@ h1 {
 /* ===============================
     Buttons
 =============================== */
+/* Le style 'button' baseline est fourni par tokens.css. On override
+   seulement le margin-top pour decoller du grid des profils. */
 button {
-    padding: var(--sp-2) var(--sp-5);
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: var(--fs-sm);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    background: linear-gradient(135deg, var(--neon-primary), var(--neon-secondary));
-    color: var(--bg-deep);
-    border: none;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    transition: transform var(--transition-fast), box-shadow var(--transition-base), filter var(--transition-fast);
-    margin: var(--sp-1) var(--sp-1);
     margin-top: var(--sp-3);
-}
-
-button:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--glow-lg) var(--neon-primary);
-    filter: brightness(1.15);
-}
-
-button:active {
-    transform: translateY(0);
 }
 
 /* Bouton Multijoueur — styling spécial pour le mettre en évidence */
@@ -193,13 +172,7 @@ button:active {
     box-shadow: var(--glow-lg) var(--neon-cyan);
 }
 
-/* ===============================
-    Animations
-=============================== */
-@keyframes neon-glow {
-    0%, 100% { box-shadow: 0 0 5px var(--glow-color), 0 0 10px var(--glow-color), 0 0 15px var(--glow-color); }
-    50% { box-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color), 0 0 30px var(--glow-color); }
-}
+/* @keyframes neon-glow est dans tokens.css (partagee avec hub.css) */
 
 /* ===============================
     RESPONSIVE DESIGN

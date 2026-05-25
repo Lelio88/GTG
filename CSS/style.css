@@ -302,29 +302,11 @@ h2, h3 {
     box-shadow: 0 0 14px rgba(255, 184, 107, 0.4);
 }
 
+/* Le style 'button' baseline est fourni par tokens.css. On override le
+   margin a 0 car #button-container utilise flex+gap (pas besoin de margin
+   individuel sur chaque bouton). */
 button {
-    padding: var(--sp-2) var(--sp-5);
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: var(--fs-sm);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    background: linear-gradient(135deg, var(--neon-primary), var(--neon-secondary));
-    color: var(--bg-deep);
-    border: none;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    transition: transform var(--transition-fast), box-shadow var(--transition-base), filter var(--transition-fast);
-}
-
-button:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--glow-lg) var(--neon-primary);
-    filter: brightness(1.15);
-}
-
-button:active {
-    transform: translateY(0);
+    margin: 0;
 }
 
 #button-container {

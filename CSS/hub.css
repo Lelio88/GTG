@@ -149,7 +149,7 @@ h1 {
 }
 
 .game-mode.selected {
-    animation: neon-glow-mode 2s infinite alternate;
+    animation: neon-glow 2s infinite alternate;
 }
 
 .game-mode.keyboard-focus {
@@ -168,34 +168,7 @@ h1 {
     text-shadow: 0 0 8px currentColor;
 }
 
-/* ===============================
-    Buttons
-=============================== */
-button {
-    padding: var(--sp-2) var(--sp-5);
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: var(--fs-sm);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    background: linear-gradient(135deg, var(--neon-primary), var(--neon-secondary));
-    color: var(--bg-deep);
-    border: none;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    transition: transform var(--transition-fast), box-shadow var(--transition-base), filter var(--transition-fast);
-    margin: var(--sp-2) var(--sp-1);
-}
-
-button:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--glow-lg) var(--neon-primary);
-    filter: brightness(1.15);
-}
-
-button:active {
-    transform: translateY(0);
-}
+/* Le style 'button' baseline est fourni par tokens.css */
 
 /* ===============================
     Footer (Game Stats Bar)
@@ -242,10 +215,7 @@ button:active {
     text-shadow: 0 0 8px rgba(0, 246, 255, 0.5);
 }
 
-@keyframes neon-glow-mode {
-    0%, 100% { box-shadow: 0 0 5px var(--glow-color), 0 0 10px var(--glow-color), 0 0 15px var(--glow-color); }
-    50% { box-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color), 0 0 30px var(--glow-color); }
-}
+/* @keyframes neon-glow est dans tokens.css (partagee avec index-style.css) */
 
 /* ===============================
     Character/Avatar (Narrateur visuel)
