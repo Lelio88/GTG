@@ -3,7 +3,7 @@
  */
 
 import { abbreviations } from './gamesDatabase.js';
-import { showAlert } from './ui/dialog.js';
+import { showAlert, ensureStyles as ensureDialogStyles } from './ui/dialog.js';
 
 /**
  * Get all profiles from localStorage.
@@ -387,7 +387,10 @@ export function setupEnterKeyHandler(checkAnswerFn, nextQuestionFn, isCorrectAns
 }
 
 /**
- * Show correct answer feedback
+ * Show correct answer feedback.
+ * En plus du message inline + next-button + titre revele, declenche une
+ * modale celebrative qui rend le titre visible immediatement (sans scroll)
+ * meme si l'utilisateur a fait defiler la page pour saisir sa reponse.
  * @param {string} gameTitle - The game title to reveal
  * @param {number} timerInterval - The timer interval to stop
  */
@@ -397,6 +400,15 @@ export function showCorrectAnswerFeedback(gameTitle, timerInterval) {
     document.getElementById('next-button').style.display = 'block';
     stopTimer(timerInterval);
     document.getElementById('game-title').style.opacity = '1';
+    // Modale celebrative (auto-close 2.5s) -- contourne le header fixe
+    // qui pouvait masquer le titre inline si l'utilisateur avait scrolle.
+    revealTitle(gameTitle, {
+        mode: 'modal',
+        autoAdvance: true,
+        delay: 2500,
+        intro: 'Bravo !',
+        accent: 'success',
+    });
 }
 
 /**
@@ -418,64 +430,106 @@ export function initializeGameTitle(title) {
 }
 
 /**
- * Reveal the game title in a modal or inline before performing an action
+ * Reveal the game title in a modal or inline before performing an action.
+ * Le style neon est aligne avec tokens.css ; l'accent (couleur titre)
+ * et le message d'intro sont parametrables pour distinguer victoire
+ * (accent 'success') et abandon (accent 'default').
  * @param {string} title - The game title to reveal
  * @param {Object} options - Configuration options
  * @param {string} options.mode - Display mode: 'modal' or 'inline' (default: 'modal')
  * @param {boolean} options.autoAdvance - Auto-advance after delay (default: true)
  * @param {number} options.delay - Delay in ms before auto-advance (default: 2000)
+ * @param {string} options.intro - Texte d'intro affiche au-dessus du titre (defaut: "La réponse était :")
+ * @param {('default'|'success')} options.accent - 'success' = vert pour victoire, 'default' = orange/rose pour abandon
  * @returns {Promise} Resolves when the reveal finishes (user clicks OK or after delay)
  */
 export function revealTitle(title, options = {}) {
-    const { mode = 'modal', autoAdvance = true, delay = 2000 } = options;
+    const {
+        mode = 'modal',
+        autoAdvance = true,
+        delay = 2000,
+        intro = 'La réponse était :',
+        accent = 'default',
+    } = options;
+    const accentColor = accent === 'success' ? 'var(--neon-success, #39ff14)' : 'var(--neon-primary, #ffb86b)';
+    const accentShadow = accent === 'success'
+        ? '0 0 12px rgba(57, 255, 20, 0.6), 0 0 24px rgba(57, 255, 20, 0.3)'
+        : '0 0 12px rgba(255, 184, 107, 0.6), 0 0 24px rgba(255, 107, 159, 0.3)';
+
+    // S'assure que les keyframes gtg-dialog-fade-in / gtg-dialog-pop-in
+    // sont presentes dans le DOM (elles vivent dans dialog.js).
+    ensureDialogStyles();
 
     return new Promise((resolve) => {
         if (mode === 'modal') {
-            // Create overlay
+            // Create overlay (style aligne avec dialog.js neon)
             const overlay = document.createElement('div');
             overlay.style.position = 'fixed';
-            overlay.style.top = '0';
-            overlay.style.left = '0';
-            overlay.style.width = '100%';
-            overlay.style.height = '100%';
-            overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+            overlay.style.inset = '0';
+            overlay.style.background = 'rgba(8, 4, 15, 0.78)';
+            overlay.style.backdropFilter = 'blur(6px)';
+            overlay.style.webkitBackdropFilter = 'blur(6px)';
             overlay.style.display = 'flex';
             overlay.style.justifyContent = 'center';
             overlay.style.alignItems = 'center';
             overlay.style.zIndex = '9999';
+            overlay.style.animation = 'gtg-dialog-fade-in 0.18s ease-out';
 
             // Create modal box
             const modalBox = document.createElement('div');
-            modalBox.style.backgroundColor = '#222';
-            modalBox.style.padding = '30px 50px';
-            modalBox.style.borderRadius = '10px';
+            modalBox.style.position = 'relative';
+            modalBox.style.minWidth = '320px';
+            modalBox.style.maxWidth = 'min(540px, 90vw)';
+            modalBox.style.padding = 'clamp(1.5rem, 4vw, 2.25rem)';
+            modalBox.style.background = 'rgba(20, 9, 30, 0.95)';
+            modalBox.style.border = '1px solid rgba(255, 184, 107, 0.35)';
+            modalBox.style.borderRadius = '14px';
+            modalBox.style.boxShadow = '0 0 25px rgba(255, 184, 107, 0.18), 0 0 60px rgba(255, 107, 159, 0.1)';
+            modalBox.style.color = '#e8e1f5';
             modalBox.style.textAlign = 'center';
-            modalBox.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.5)';
+            modalBox.style.fontFamily = "'Rajdhani', 'Poppins', sans-serif";
+            modalBox.style.animation = 'gtg-dialog-pop-in 0.22s cubic-bezier(0.34, 1.5, 0.64, 1)';
+
+            // Info line
+            const infoLine = document.createElement('p');
+            infoLine.innerText = intro;
+            infoLine.style.fontFamily = "'Orbitron', 'Poppins', sans-serif";
+            infoLine.style.fontWeight = '700';
+            infoLine.style.fontSize = '0.9rem';
+            infoLine.style.letterSpacing = '0.16em';
+            infoLine.style.textTransform = 'uppercase';
+            infoLine.style.color = '#00f6ff';
+            infoLine.style.textShadow = '0 0 8px rgba(0, 246, 255, 0.5)';
+            infoLine.style.margin = '0 0 0.75rem 0';
 
             // Title element
             const titleElement = document.createElement('h2');
             titleElement.innerText = title;
-            titleElement.style.color = '#fff';
-            titleElement.style.margin = '0 0 10px 0';
-            titleElement.style.fontSize = '1.8rem';
-
-            // Info line
-            const infoLine = document.createElement('p');
-            infoLine.innerText = 'La réponse était :';
-            infoLine.style.color = '#aaa';
-            infoLine.style.margin = '0 0 20px 0';
-            infoLine.style.fontSize = '1rem';
+            titleElement.style.fontFamily = "'Orbitron', 'Poppins', sans-serif";
+            titleElement.style.fontWeight = '900';
+            titleElement.style.fontSize = 'clamp(1.4rem, 4vw, 2.1rem)';
+            titleElement.style.letterSpacing = '0.06em';
+            titleElement.style.textTransform = 'uppercase';
+            titleElement.style.color = accentColor;
+            titleElement.style.textShadow = accentShadow;
+            titleElement.style.margin = '0 0 1.5rem 0';
+            titleElement.style.wordBreak = 'break-word';
 
             // OK button
             const okButton = document.createElement('button');
             okButton.innerText = 'OK';
-            okButton.style.padding = '10px 30px';
-            okButton.style.fontSize = '1rem';
-            okButton.style.cursor = 'pointer';
-            okButton.style.backgroundColor = '#ff6600';
-            okButton.style.color = '#fff';
+            okButton.style.padding = '0.6rem 1.6rem';
+            okButton.style.fontFamily = "'Orbitron', 'Poppins', sans-serif";
+            okButton.style.fontWeight = '700';
+            okButton.style.fontSize = '0.85rem';
+            okButton.style.letterSpacing = '0.08em';
+            okButton.style.textTransform = 'uppercase';
+            okButton.style.color = '#08040f';
+            okButton.style.background = 'linear-gradient(135deg, #ffb86b, #ff6b9f)';
             okButton.style.border = 'none';
-            okButton.style.borderRadius = '5px';
+            okButton.style.borderRadius = '999px';
+            okButton.style.cursor = 'pointer';
+            okButton.style.boxShadow = '0 0 18px rgba(255, 184, 107, 0.4)';
 
             const cleanup = () => {
                 if (overlay.parentNode) {

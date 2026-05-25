@@ -155,6 +155,9 @@ h2, h3 {
     letter-spacing: 0.06em;
     color: var(--neon-primary);
     text-shadow: 0 0 10px var(--neon-primary), 0 0 20px rgba(255, 184, 107, 0.4);
+    /* Si quelque chose scroll vers le titre, laisser passer le header fixe
+       qui occupe les ~60px du haut (#header-bar fixed, top 10px + 50px). */
+    scroll-margin-top: 80px;
 }
 
 /* ===============================

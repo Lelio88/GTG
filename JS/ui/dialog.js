@@ -29,7 +29,7 @@
 
 // === Injection du CSS une seule fois ===
 const STYLE_ID = 'gtg-dialog-styles';
-function ensureStyles() {
+export function ensureStyles() {
     if (document.getElementById(STYLE_ID)) return;
     const style = document.createElement('style');
     style.id = STYLE_ID;
