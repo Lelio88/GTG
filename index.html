@@ -21,29 +21,29 @@
             integrity="sha384-fXdIufVbE9aU7STmdk/DWK0imNOozId9fTwzM/gi0NfPjphEIC3gq0M760UnsKVy"
             crossorigin="anonymous"
             referrerpolicy="no-referrer"></script>
+    <style>
+        .logo-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .game-logo {
+            width: 500px;
+            animation: floating 6s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-50px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+    </style>
 </head>
-<style>
-    .logo-wrapper {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
-    .game-logo {
-        width: 500px;
-        animation: floating 6s ease-in-out infinite;
-    }
-    @keyframes floating {
-        0% {
-            transform: translateY(0px);
-        }
-        50% {
-            transform: translateY(-50px);
-        }
-        100% {
-            transform: translateY(0px);
-        }
-    }
-</style>
 
 <body>
     <main id="app">
