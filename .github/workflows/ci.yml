@@ -1,0 +1,160 @@
+# GTG -- Continuous Integration
+#
+# Compatible avec la doctrine du projet (vanilla JS, pas de npm,
+# file://-compatible). Aucun package.json, aucun node_modules, aucun
+# build step. Les checks utilisent :
+#   - node -c          (syntaxe ES module)
+#   - python -m py_compile (syntaxe Python)
+#   - grep             (anti-regression sur les anti-patterns connus)
+#   - HTML W3C validator standalone (action Docker, pas de npm)
+#
+# Strategie : bloquer le push/merge si UN check echoue.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Validate (syntax + anti-regression)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # ============================================================
+      # Validation HTML5 W3C
+      # ============================================================
+      # Catch les erreurs structurelles (cf. issue #26 ou <header> etait
+      # place hors de <body> -- le validator l'aurait attrape).
+      - name: HTML5 W3C validation
+        uses: Cyb3r-Jak3/html5validator-action@v7
+        with:
+          root: .
+          # Ignorer les dossiers de backup/admin si jamais
+          extra: --ignore-re ".*Python.*"
+
+      # ============================================================
+      # Syntax check JavaScript (vanilla ES modules)
+      # ============================================================
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: JS syntax check
+        run: |
+          set -e
+          failed=0
+          count=0
+          while IFS= read -r f; do
+            count=$((count+1))
+            if ! node -c "$f" 2>/dev/null; then
+              echo "::error file=$f::Syntax error in $f"
+              failed=1
+            fi
+          done < <(find JS -type f -name "*.js")
+          echo "Checked $count JS files"
+          if [ $failed -eq 1 ]; then
+            exit 1
+          fi
+
+      # ============================================================
+      # Syntax check Python
+      # ============================================================
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Python syntax check
+        run: |
+          set -e
+          failed=0
+          count=0
+          while IFS= read -r f; do
+            count=$((count+1))
+            if ! python -m py_compile "$f" 2>/dev/null; then
+              echo "::error file=$f::Syntax error in $f"
+              failed=1
+            fi
+          done < <(find Python -type f -name "*.py")
+          echo "Checked $count Python files"
+          if [ $failed -eq 1 ]; then
+            exit 1
+          fi
+
+      # ============================================================
+      # Anti-regression : pas d'onclick inline dans le HTML (cf. #29)
+      # ============================================================
+      - name: No inline onclick (HTML)
+        run: |
+          set +e
+          matches=$(grep -rn 'onclick=' HTML/ index.html 2>/dev/null)
+          if [ -n "$matches" ]; then
+            echo "::error::onclick= inline trouve dans le HTML. Doctrine : utiliser addEventListener ou .onclick en JS (cf. issue #29)"
+            echo "$matches"
+            exit 1
+          fi
+          echo "OK : aucun onclick inline"
+
+      # ============================================================
+      # Anti-regression : pas d'alert/prompt/confirm natifs (cf. #34)
+      # ============================================================
+      # JS/ui/dialog.js est exclu : c'est lui qui wrap ces dialogues.
+      - name: No native dialogs
+        run: |
+          set +e
+          matches=$(grep -rEn '\b(alert|confirm|prompt)\s*\(' JS/ --include="*.js" --exclude-dir=ui 2>/dev/null)
+          if [ -n "$matches" ]; then
+            echo "::error::alert/confirm/prompt natifs trouves. Doctrine : utiliser JS/ui/dialog.js (showAlert/showConfirm/showPrompt) (cf. issue #34)"
+            echo "$matches"
+            exit 1
+          fi
+          echo "OK : aucun dialogue natif"
+
+      # ============================================================
+      # Anti-regression : pas de JSON.parse(localStorage('profiles')) direct
+      # ============================================================
+      # Doctrine : passer par JS/state/profileStore.js (cf. #21).
+      - name: No direct profiles localStorage access
+        run: |
+          set +e
+          matches=$(grep -rEn "JSON\.parse\(localStorage\.getItem\('profiles'\)" JS/ 2>/dev/null)
+          if [ -n "$matches" ]; then
+            echo "::error::JSON.parse(localStorage.getItem('profiles')) direct trouve. Doctrine : utiliser profileStore.getAll() ou getProfiles() de gameUtils.js (cf. issue #21)"
+            echo "$matches"
+            exit 1
+          fi
+          echo "OK : aucun acces localStorage direct au catalogue de profils"
+
+      # ============================================================
+      # Anti-regression : pas de window.location.reload() (cf. #35)
+      # ============================================================
+      # Exceptions explicites :
+      #   - saveManager.js : reload apres import save (recharge UI complete)
+      #   - gameUtils.js : nextQuestion() deprecated + abandonGame() fallback
+      - name: No unauthorized reload
+        run: |
+          set +e
+          matches=$(grep -rEn "window\.location\.reload\s*\(" JS/ --include="*.js" \
+                    | grep -v "JS/saveManager.js" \
+                    | grep -v "JS/gameUtils.js" 2>/dev/null)
+          if [ -n "$matches" ]; then
+            echo "::error::window.location.reload() trouve en dehors des exceptions whitelist. Doctrine : reset in-place via resetGameUI + relancement (cf. issue #35)"
+            echo "$matches"
+            exit 1
+          fi
+          echo "OK : aucun reload non autorise"
+
+      # ============================================================
+      # Recap
+      # ============================================================
+      - name: Recap
+        if: success()
+        run: echo "All checks passed."
