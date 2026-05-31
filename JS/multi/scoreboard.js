@@ -23,14 +23,26 @@ const STATUS_ICONS = {
  * @param {string} opts.myUid — pour highlight de la ligne courante
  * @returns {{stop: () => void}}
  */
-export function startScoreboard({ code, container, myUid }) {
+export function startScoreboard({ code, container, myUid, onKick }) {
     const roomRef = ref(db, `rooms/${code}`);
+
+    // Délégation : un seul listener sur le container (survit aux remplacements
+    // d'innerHTML). Gère les clics sur les boutons kick (#51).
+    function onContainerClick(e) {
+        const btn = e.target.closest('.multi-kick-btn');
+        if (!btn) return;
+        const kickUid = btn.getAttribute('data-kick-uid');
+        if (kickUid && typeof onKick === 'function') onKick(kickUid);
+    }
+    container.addEventListener('click', onContainerClick);
+
     const unsub = onValue(roomRef, (snap) => {
         const data = snap.val() || {};
         const players = data.players || {};
         const results = data.game?.currentRound?.results || {};
         const meta = data.meta || {};
         const game = data.game || {};
+        const viewerIsHost = meta.hostUid === myUid;
 
         // Tri : meilleur score en premier, puis pseudo alpha
         const sorted = Object.entries(players)
@@ -59,11 +71,16 @@ export function startScoreboard({ code, container, myUid }) {
                 ? `<span class="multi-scoreboard-dot" style="background:${escapeHtml(color)}"></span>`
                 : '';
             const nameStyle = color ? ` style="color:${escapeHtml(color)}"` : '';
+            // Bouton kick (#51) : visible seulement pour l'hôte, sur les autres joueurs.
+            const kickBtn = (viewerIsHost && p.uid !== myUid)
+                ? `<button class="multi-kick-btn" data-kick-uid="${escapeHtml(p.uid)}" title="Exclure ${escapeHtml(p.name)}" aria-label="Exclure ${escapeHtml(p.name)}">✕</button>`
+                : '';
             return `
                 <li class="multi-scoreboard-row${isMe}">
                     <span class="multi-scoreboard-status">${icon}</span>
                     ${dot}<span class="multi-scoreboard-name"${nameStyle}>${escapeHtml(p.name)}${isHost}</span>
                     <span class="multi-scoreboard-score">${p.totalScore || 0}</span>
+                    ${kickBtn}
                 </li>
             `;
         }).join('');
@@ -72,7 +89,10 @@ export function startScoreboard({ code, container, myUid }) {
     });
 
     return {
-        stop() { off(roomRef); },
+        stop() {
+            off(roomRef);
+            container.removeEventListener('click', onContainerClick);
+        },
     };
 }
 

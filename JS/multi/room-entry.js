@@ -11,7 +11,7 @@
  */
 
 import {
-    db, ref, onValue, off, update, whenAuthenticated, get, runTransaction, onDisconnect
+    db, ref, onValue, off, update, whenAuthenticated, get, runTransaction, onDisconnect, remove
 } from './firebase.js';
 import { joinRoom, leaveRoom, startGame, resetToLobby, MIN_PLAYERS, programDisconnectCleanup } from './lobby.js';
 import { startHostEngine, extendTargetGames } from './host-engine.js';
@@ -103,6 +103,7 @@ let unsubRoom = null;
 let currentView = null; // 'lobby' | 'game' | 'results'
 let lastStatus = null;
 let resultsConfettiFired = false; // un seul tir de confettis par entrée dans results
+let kickedHandled = false; // évite de traiter le kick deux fois (#51)
 
 // ──────────────────────────────────────────────────────────────────────────
 // Init au DOMContentLoaded
@@ -159,7 +160,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     await programDisconnectCleanup(code, myUid, iAmHost);
 
     // Démarrer le scoreboard live
-    scoreboard = startScoreboard({ code, container: $('multi-scoreboard'), myUid });
+    scoreboard = startScoreboard({ code, container: $('multi-scoreboard'), myUid, onKick: kickPlayer });
 
     // Démarrer le chat
     chat = startChat({
@@ -243,6 +244,21 @@ function listenRoom() {
 
         if (meta.status === 'cancelled') {
             await showAlert('La partie a ete annulee (l\'hote a quitte).', { title: 'Partie annulee' });
+            window.location.href = 'multi-lobby.html';
+            return;
+        }
+
+        // Kické par l'hôte (#51) : je ne suis plus dans players alors que la room
+        // existe encore. Le départ volontaire détache déjà le listener via
+        // onLeaveRoom (unsubRoom()), donc pas de faux positif ici.
+        if (data.players && !data.players[myUid] && !kickedHandled) {
+            kickedHandled = true;
+            if (hostEngine) { hostEngine.stop(); hostEngine = null; }
+            if (roundClient) { roundClient.stop(); roundClient = null; }
+            if (scoreboard) scoreboard.stop();
+            if (chat) chat.stop();
+            if (unsubRoom) unsubRoom();
+            await showAlert('Tu as été exclu de la room par l\'hôte.', { title: 'Exclu de la room' });
             window.location.href = 'multi-lobby.html';
             return;
         }
@@ -651,6 +667,28 @@ async function onReturnToLobby() {
     const snap = await get(ref(db, `rooms/${code}/players`));
     const uids = snap.exists() ? Object.keys(snap.val()) : [];
     await resetToLobby({ code, playerUids: uids });
+}
+
+/**
+ * Kick d'un joueur par l'hôte (#51). Retire players/{targetUid} — le client
+ * ciblé détecte sa disparition dans le listener et est redirigé. Pas de ban :
+ * le joueur peut revenir via le lien (choix produit assumé).
+ * Permission RTDB : le host écrit déjà tous les players/* (totalScore) -> OK.
+ */
+async function kickPlayer(targetUid) {
+    if (!isHost || !targetUid || targetUid === myUid) return;
+    const snap = await get(ref(db, `rooms/${code}/players/${targetUid}`));
+    const name = snap.val()?.name || 'ce joueur';
+    const confirmed = await showConfirm(`Exclure ${name} de la room ?`, {
+        title: 'Exclure un joueur', okText: 'Exclure', cancelText: 'Annuler',
+    });
+    if (!confirmed) return;
+    try {
+        await remove(ref(db, `rooms/${code}/players/${targetUid}`));
+    } catch (err) {
+        console.error('kick failed', err);
+        showAlert('Impossible d\'exclure ce joueur.', { title: 'Erreur' });
+    }
 }
 
 // ──────────────────────────────────────────────────────────────────────────
