@@ -349,6 +349,45 @@ body:has(.multi-lobby-app)::after {
     opacity: 0.5;
 }
 
+/* Palette de couleurs joueur (#54) */
+.multi-color-swatches {
+    display: flex;
+    gap: var(--sp-2);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.multi-color-swatch {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    margin: 0;                  /* override button baseline tokens.css */
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.multi-color-swatch:hover {
+    transform: scale(1.15);
+}
+
+.multi-color-swatch.is-selected {
+    border-color: var(--text-primary);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+/* Pastille de couleur dans le scoreboard (#54) */
+.multi-scoreboard-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 6px;
+    flex-shrink: 0;
+    vertical-align: middle;
+}
+
 /* ----------------------------------------------------------
    ROOM (HTML/multi-room.html)
    ---------------------------------------------------------- */

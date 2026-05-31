@@ -54,7 +54,12 @@ function escapeHtml(s) {
         .replace(/'/g, '&#039;');
 }
 
-export function startChat({ code, uid, name, messagesEl, formEl, inputEl, sendBtn }) {
+/** Valide qu'une valeur est bien un code couleur hex (anti-injection CSS). */
+function isHexColor(s) {
+    return typeof s === 'string' && /^#[0-9a-fA-F]{3,8}$/.test(s);
+}
+
+export function startChat({ code, uid, name, getColor, messagesEl, formEl, inputEl, sendBtn }) {
     let lastSentAt = 0;
     let unsubChat = null;
     const chatRef = ref(db, `rooms/${code}/chat`);
@@ -74,9 +79,12 @@ export function startChat({ code, uid, name, messagesEl, formEl, inputEl, sendBt
 
         const html = messages.map((m) => {
             const isMe = m.uid === uid;
+            // Couleur de l'auteur stockée dans le message à l'envoi (#54),
+            // validée en hex pour éviter toute injection CSS.
+            const authorStyle = isHexColor(m.color) ? ` style="color:${m.color}"` : '';
             return `
                 <div class="multi-chat-message${isMe ? ' is-me' : ''}">
-                    <span class="multi-chat-author">${escapeHtml(m.name || '?')}:</span>
+                    <span class="multi-chat-author"${authorStyle}>${escapeHtml(m.name || '?')}:</span>
                     <span class="multi-chat-text">${escapeHtml(m.text || '')}</span>
                 </div>
             `;
@@ -104,11 +112,13 @@ export function startChat({ code, uid, name, messagesEl, formEl, inputEl, sendBt
         inputEl.focus();
 
         try {
+            const liveColor = typeof getColor === 'function' ? getColor() : null;
             const newRef = push(chatRef);
             await set(newRef, {
                 uid,
                 name,
                 text,
+                color: isHexColor(liveColor) ? liveColor : null,
                 ts: serverTimestamp(),
             });
         } catch (err) {

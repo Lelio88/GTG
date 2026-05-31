@@ -51,10 +51,18 @@ export function startScoreboard({ code, container, myUid }) {
             const icon = STATUS_ICONS[status] || '🔍';
             const isHost = p.uid === meta.hostUid ? ' 👑' : '';
             const isMe = p.uid === myUid ? ' multi-scoreboard-me' : '';
+            // Couleur du joueur (#54). Pastille + nom teinté si une couleur valide
+            // est choisie. On valide le format hex (un client modifié pourrait
+            // écrire n'importe quoi dans players/{uid}/color -> injection CSS).
+            const color = isHexColor(p.color) ? p.color : null;
+            const dot = color
+                ? `<span class="multi-scoreboard-dot" style="background:${escapeHtml(color)}"></span>`
+                : '';
+            const nameStyle = color ? ` style="color:${escapeHtml(color)}"` : '';
             return `
                 <li class="multi-scoreboard-row${isMe}">
                     <span class="multi-scoreboard-status">${icon}</span>
-                    <span class="multi-scoreboard-name">${escapeHtml(p.name)}${isHost}</span>
+                    ${dot}<span class="multi-scoreboard-name"${nameStyle}>${escapeHtml(p.name)}${isHost}</span>
                     <span class="multi-scoreboard-score">${p.totalScore || 0}</span>
                 </li>
             `;
@@ -75,4 +83,9 @@ function escapeHtml(s) {
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#039;');
+}
+
+/** Valide qu'une valeur est bien un code couleur hex (#rgb / #rrggbb / #rrggbbaa). */
+function isHexColor(s) {
+    return typeof s === 'string' && /^#[0-9a-fA-F]{3,8}$/.test(s);
 }

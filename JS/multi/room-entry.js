@@ -53,6 +53,10 @@ const ROUND_DURATIONS = [
 ];
 const DEFAULT_ROUND_DURATION_MS = 30000;
 
+// Palette de couleurs joueur (éphémère, par room). Valeurs alignées sur
+// la DA néon de tokens.css. Chaque joueur choisit la sienne dans le lobby. (#54)
+const PLAYER_COLORS = ['#ffb86b', '#ff6b9f', '#00f6ff', '#c77dff', '#ffd87a', '#39ff14'];
+
 function readLastAlias() {
     try { return (localStorage.getItem(LAST_ALIAS_KEY) || '').slice(0, 20); }
     catch { return ''; }
@@ -75,6 +79,7 @@ if (!code) {
 
 let myUid = null;
 let myName = null;
+let myColor = null; // couleur du joueur (éphémère, par room) — cf. #54
 let isHost = false;
 let hostEngine = null;
 let roundClient = null;
@@ -147,6 +152,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         code,
         uid: myUid,
         name: myName,
+        getColor: () => myColor, // couleur live, stockée dans chaque message (#54)
         messagesEl: $('multi-chat-messages'),
         formEl: $('multi-chat-form'),
         inputEl: $('multi-chat-input'),
@@ -218,6 +224,8 @@ function listenRoom() {
         const meta = data.meta;
         const wasHost = isHost;
         isHost = (meta.hostUid === myUid);
+        // Couleur courante du joueur (pour le chat + le picker) — cf. #54
+        myColor = data.players?.[myUid]?.color || null;
 
         if (meta.status === 'cancelled') {
             await showAlert('La partie a ete annulee (l\'hote a quitte).', { title: 'Partie annulee' });
@@ -337,6 +345,7 @@ function updateLobbyUi(data) {
     $('lobby-info').innerText = `${playerCount} joueur(s) — ${data.meta.targetGames} manches`;
     setupModeCarousel(data.meta.mode, isHost);
     setupDurationChips(data.meta.roundDurationMs || DEFAULT_ROUND_DURATION_MS, isHost);
+    setupColorSwatches(data.players?.[myUid]?.color || null);
     $('mode-host-hint').style.display = isHost ? 'block' : 'none';
     if (isHost) {
         $('start-game-btn').style.display = 'inline-block';
@@ -440,6 +449,35 @@ async function changeRoundDuration(ms) {
         // Le listener RTDB rappellera setupDurationChips avec la nouvelle valeur.
     } catch (err) {
         console.error('change round duration failed', err);
+    }
+}
+
+/**
+ * Affiche la palette de couleurs dans le lobby. Chaque joueur (pas seulement
+ * l'hôte) choisit la sienne. Écrit dans players/{myUid}/color. (#54)
+ */
+function setupColorSwatches(currentColor) {
+    const wrap = $('color-swatches');
+    if (!wrap) return;
+    wrap.innerHTML = '';
+    for (const hex of PLAYER_COLORS) {
+        const swatch = document.createElement('button');
+        swatch.type = 'button';
+        swatch.className = 'multi-color-swatch' + (hex === currentColor ? ' is-selected' : '');
+        swatch.style.background = hex;
+        swatch.title = 'Choisir cette couleur';
+        swatch.setAttribute('aria-label', `Couleur ${hex}`);
+        swatch.onclick = () => changeMyColor(hex);
+        wrap.appendChild(swatch);
+    }
+}
+
+async function changeMyColor(hex) {
+    try {
+        await update(ref(db, `rooms/${code}/players/${myUid}`), { color: hex });
+        // Le listener RTDB rappellera setupColorSwatches + rafraîchira le scoreboard.
+    } catch (err) {
+        console.error('change color failed', err);
     }
 }
 
