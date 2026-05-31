@@ -265,8 +265,15 @@ body:has(.multi-lobby-app)::after {
 }
 
 .multi-back:hover {
-    background: rgba(255, 184, 107, 0.15);
-    box-shadow: 0 0 18px rgba(255, 184, 107, 0.6);
+    /* Fond garde sombre au hover : avant, rgba(255,184,107,0.15) laissait
+       transparaitre le soleil synthwave brillant derriere -> texte orange
+       sur fond orange clair = invisible. On garde un fond opaque sombre et
+       on intensifie bordure + glow + on bascule le texte vers le rose néon
+       pour le feedback. (#49) */
+    background: rgba(8, 4, 15, 0.85);
+    border-color: var(--neon-secondary);
+    color: var(--neon-secondary);
+    box-shadow: 0 0 18px rgba(255, 107, 159, 0.6);
     transform: translateY(-2px);
 }
 
@@ -434,7 +441,13 @@ body:has(.multi-lobby-app)::after {
 }
 
 #game-view #content #emoji-display {
-    font-size: clamp(2.5rem, 7vw, 6rem) !important;
+    /* white-space: nowrap force les ~10 emojis sur UNE ligne. Le clamp max
+       6rem etait trop grand (10 emojis x 6rem > largeur contenu -> wrap sur
+       2 lignes). Reduit a 3.5rem max + min 1.3rem pour tenir sur une ligne
+       jusqu'aux petits ecrans. Padding reduit aussi pour gagner de la place. (#50) */
+    font-size: clamp(1.3rem, 5vw, 3.5rem) !important;
+    white-space: nowrap;
+    padding: var(--sp-3) var(--sp-2) !important;
     text-shadow: 0 0 20px rgba(255, 184, 107, 0.3);
 }
 
@@ -1350,7 +1363,9 @@ body:has(.multi-lobby-app)::after {
 .multi-hint-arrow:hover {
     background: rgba(255, 184, 107, 0.2);
     box-shadow: 0 0 20px rgba(255, 184, 107, 0.7);
-    transform: translateY(-50%) scale(1.1);
+    /* Pas de scale au hover : modifier le transform deplacait la hitbox
+       sous le curseur -> hover on/off en boucle (flicker). Le feedback
+       passe par le fond + le glow uniquement, transform constant. (#47) */
 }
 
 .multi-hint-arrow-left {

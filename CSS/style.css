@@ -277,7 +277,9 @@ h2, h3 {
 
 .nav-arrow:hover {
     opacity: 1;
-    transform: translateY(-50%) scale(1.15);
+    /* Pas de scale au hover (cf. #47) : evite le flicker du a la hitbox
+       qui se deplace sous le curseur. Feedback via opacite + glow. */
+    text-shadow: 0 0 18px var(--neon-primary), 0 0 30px var(--neon-primary);
 }
 
 /* ===============================
