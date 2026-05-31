@@ -89,6 +89,8 @@ export function startHostEngine({ code, uid }) {
 
         const roundId = `r-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
         const startedAt = Date.now(); // local approximation; serveur a son TS aussi
+        // Durée choisie par l'hôte dans le lobby (#52), défaut 30s.
+        const roundDurationMs = meta.roundDurationMs || ROUND_DURATION_MS;
 
         await update(ref(db, `rooms/${code}/game`), {
             pile: newPile,
@@ -96,7 +98,7 @@ export function startHostEngine({ code, uid }) {
                 roundId,
                 gameTitle,
                 startedAt: serverTimestamp(),
-                endsAt: startedAt + ROUND_DURATION_MS, // ms epoch ; côté client on compare à Date.now()
+                endsAt: startedAt + roundDurationMs, // ms epoch ; côté client on compare à Date.now()
                 firstFinisherUid: null,
                 firstFinisherAt: null,
                 graceEndsAt: null,

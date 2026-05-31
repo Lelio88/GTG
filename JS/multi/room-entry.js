@@ -43,6 +43,16 @@ function modeIndex(modeId) {
     return i >= 0 ? i : 0;
 }
 
+// Durées de manche proposées (host choisit dans le lobby). Doit rester
+// cohérent avec le défaut de host-engine.js (DEFAULT_ROUND_DURATION_MS). (#52)
+const ROUND_DURATIONS = [
+    { ms: 15000, label: '15s' },
+    { ms: 30000, label: '30s' },
+    { ms: 45000, label: '45s' },
+    { ms: 60000, label: '60s' },
+];
+const DEFAULT_ROUND_DURATION_MS = 30000;
+
 function readLastAlias() {
     try { return (localStorage.getItem(LAST_ALIAS_KEY) || '').slice(0, 20); }
     catch { return ''; }
@@ -326,6 +336,7 @@ function updateLobbyUi(data) {
     const playerCount = Object.keys(data.players || {}).length;
     $('lobby-info').innerText = `${playerCount} joueur(s) — ${data.meta.targetGames} manches`;
     setupModeCarousel(data.meta.mode, isHost);
+    setupDurationChips(data.meta.roundDurationMs || DEFAULT_ROUND_DURATION_MS, isHost);
     $('mode-host-hint').style.display = isHost ? 'block' : 'none';
     if (isHost) {
         $('start-game-btn').style.display = 'inline-block';
@@ -396,6 +407,39 @@ async function changeMode(newMode) {
         // ce qui jouera l'animation automatiquement (via lastDisplayedModeIdx)
     } catch (err) {
         console.error('change mode failed', err);
+    }
+}
+
+/**
+ * Affiche les chips de durée de manche dans le lobby. (#52)
+ * Host : chips cliquables → écrit meta/roundDurationMs.
+ * Non-host : chips read-only, seule la durée sélectionnée est mise en avant.
+ */
+function setupDurationChips(currentMs, hostFlag) {
+    const wrap = $('duration-chips');
+    if (!wrap) return;
+    wrap.innerHTML = '';
+    for (const d of ROUND_DURATIONS) {
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = 'multi-chip' + (d.ms === currentMs ? ' is-selected' : '');
+        chip.innerText = d.label;
+        if (hostFlag) {
+            chip.onclick = () => changeRoundDuration(d.ms);
+        } else {
+            chip.disabled = true; // read-only pour les non-hôtes
+        }
+        wrap.appendChild(chip);
+    }
+}
+
+async function changeRoundDuration(ms) {
+    if (!isHost) return;
+    try {
+        await update(ref(db, `rooms/${code}/meta`), { roundDurationMs: ms });
+        // Le listener RTDB rappellera setupDurationChips avec la nouvelle valeur.
+    } catch (err) {
+        console.error('change round duration failed', err);
     }
 }
 

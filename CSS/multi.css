@@ -278,6 +278,78 @@ body:has(.multi-lobby-app)::after {
 }
 
 /* ----------------------------------------------------------
+   Réglages de partie dans le lobby (host) — chips (#52, #53)
+   ---------------------------------------------------------- */
+
+.multi-settings {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+    margin: var(--sp-4) 0;
+    align-items: center;
+}
+
+.multi-setting-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-2);
+}
+
+.multi-setting-label {
+    font-family: var(--font-display);
+    font-size: var(--fs-sm);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.multi-chip-group {
+    display: flex;
+    gap: var(--sp-2);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.multi-chip {
+    padding: var(--sp-1) var(--sp-3);
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    color: var(--text-secondary);
+    background: rgba(8, 4, 15, 0.6);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-pill, 999px);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    margin: 0;            /* override du button baseline de tokens.css */
+    text-transform: none; /* override */
+    letter-spacing: 0;
+}
+
+.multi-chip:hover:not(:disabled):not(.is-selected) {
+    border-color: var(--neon-primary);
+    color: var(--neon-primary);
+}
+
+.multi-chip.is-selected {
+    color: var(--bg-deep);
+    background: linear-gradient(135deg, var(--neon-primary), var(--neon-secondary));
+    border-color: transparent;
+    box-shadow: 0 0 14px rgba(255, 184, 107, 0.5);
+}
+
+/* Non-hôte : chips read-only (désactivées) mais la sélection reste lisible */
+.multi-chip:disabled {
+    cursor: default;
+    opacity: 1;            /* override du button:disabled de tokens.css */
+    filter: none;
+}
+
+.multi-chip:disabled:not(.is-selected) {
+    opacity: 0.5;
+}
+
+/* ----------------------------------------------------------
    ROOM (HTML/multi-room.html)
    ---------------------------------------------------------- */
 
