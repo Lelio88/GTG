@@ -179,4 +179,27 @@ export async function startGame({ code, gameTitles }) {
     });
 }
 
+/**
+ * Ramène une room terminée à la salle d'attente (lobby) pour rejouer avec les
+ * mêmes joueurs, sans recréer de room. Réservé à l'hôte (seul à pouvoir écrire
+ * `meta` et les `totalScore` — cf. host-engine).
+ *   - meta/status → 'lobby'
+ *   - game → null (efface currentRound, pile, playedCount, results)
+ *   - players/{uid}/totalScore → 0 (rematch propre)
+ *
+ * @param {Object} opts
+ * @param {string} opts.code — code de la room
+ * @param {string[]} opts.playerUids — uids des joueurs présents (pour reset scores)
+ */
+export async function resetToLobby({ code, playerUids }) {
+    const updates = {
+        'meta/status': 'lobby',
+        game: null,
+    };
+    for (const uid of playerUids) {
+        updates[`players/${uid}/totalScore`] = 0;
+    }
+    await update(ref(db, `rooms/${code}`), updates);
+}
+
 export { MAX_PLAYERS, MIN_PLAYERS };

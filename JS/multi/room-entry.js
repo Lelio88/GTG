@@ -13,7 +13,7 @@
 import {
     db, ref, onValue, off, update, whenAuthenticated, get, runTransaction, onDisconnect
 } from './firebase.js';
-import { joinRoom, leaveRoom, startGame, MIN_PLAYERS, programDisconnectCleanup } from './lobby.js';
+import { joinRoom, leaveRoom, startGame, resetToLobby, MIN_PLAYERS, programDisconnectCleanup } from './lobby.js';
 import { startHostEngine, extendTargetGames } from './host-engine.js';
 import { startRoundClient } from './round-client.js';
 import { startScoreboard } from './scoreboard.js';
@@ -89,7 +89,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     $('bug-report-cancel').onclick = closeBugReportModal;
     $('bug-report-form').onsubmit = onBugReportSubmit;
     $('leave-room-btn').onclick = onLeaveRoom;
-    $('back-to-lobby-btn').onclick = () => { window.location.href = 'multi-lobby.html'; };
+    $('back-to-lobby-btn').onclick = onReturnToLobby;
     $('start-game-btn').onclick = onStartGame;
     $('add-rounds-btn').onclick = () => extendTargetGames({ code, increment: 5 });
     $('extend-rounds-btn').onclick = onExtendFromResults;
@@ -429,6 +429,9 @@ function updateResultsUi(data) {
         .map((p, i) => `<li><strong>#${i + 1}</strong> ${escapeHtml(p.name)} — ${p.totalScore || 0} pts</li>`)
         .join('');
     $('extend-rounds-btn').style.display = isHost ? 'inline-block' : 'none';
+    // "Retour à la salle d'attente" réservé à l'hôte (resetToLobby écrit meta).
+    // Les non-hôtes utilisent "Quitter la room" du header pour revenir à l'accueil. (#46)
+    $('back-to-lobby-btn').style.display = isHost ? 'inline-block' : 'none';
 
     // Confettis ! (une seule fois par entrée dans la vue results)
     if (!resultsConfettiFired) {
@@ -471,6 +474,19 @@ async function onExtendFromResults() {
     await extendTargetGames({ code, increment: 5 });
     // Au retour à "playing", le listener relance hostEngine et roundClient
     // (le `lastStatus` change pour déclencher handleStatusChange)
+}
+
+/**
+ * Fin de partie → retour à la salle d'attente (lobby de la room), pas à la
+ * page de création. Réservé à l'hôte (resetToLobby écrit meta + scores).
+ * Les autres joueurs suivent automatiquement via handleStatusChange quand
+ * meta.status repasse à 'lobby'. (#46)
+ */
+async function onReturnToLobby() {
+    if (!isHost) return;
+    const snap = await get(ref(db, `rooms/${code}/players`));
+    const uids = snap.exists() ? Object.keys(snap.val()) : [];
+    await resetToLobby({ code, playerUids: uids });
 }
 
 // ──────────────────────────────────────────────────────────────────────────

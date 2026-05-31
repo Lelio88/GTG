@@ -113,7 +113,9 @@ export function startRoundClient(opts) {
         inputEl.disabled = false;
         inputEl.focus();
 
-        // Bouton Indice : "Indice" si on a plus d'indices, "Abandonner" sinon
+        // Bouton Indice : reactive (il a pu etre desactive au round precedent
+        // apres reponse/abandon, cf. #48) puis remis a "Indice"/"Abandonner".
+        hintButton.disabled = false;
         updateHintButton();
 
         // Render initial
@@ -122,15 +124,18 @@ export function startRoundClient(opts) {
         startCountdown();
     }
 
-    /** Bascule la barre timer sur la phase grace (10s restants) */
+    /** Bascule en phase grace quand le 1er joueur trouve (deadline capée à +10s).
+     *  IMPORTANT (#45) : on ne réinitialise NI roundTotalMs NI la largeur de la
+     *  barre. Avant, on remettait la barre à 100% + on recalait roundTotalMs sur
+     *  la fenêtre de grâce → la barre se "resettait" visuellement à plein quand
+     *  quelqu'un trouvait. Désormais on ne change que `endsAt` : la barre continue
+     *  de refléter `remaining / roundTotalMs` (total d'origine). Elle saute une
+     *  seule fois vers le bas (le temps restant a été réduit à 10s) puis poursuit
+     *  son décompte normal — plus de reset à plein. Le prochain tick du countdown
+     *  (déjà actif) repeint la largeur et gère la classe timer-urgent. */
     function enterGracePhase(graceEndsAtMs) {
         gracePhase = true;
         endsAt = graceEndsAtMs;
-        roundTotalMs = Math.max(500, graceEndsAtMs - Date.now());
-        if (timerBarFillEl) {
-            timerBarFillEl.classList.remove('timer-urgent');
-            timerBarFillEl.style.width = '100%';
-        }
     }
 
     /** Affiche le nom du jeu en fin de manche (pour tous les joueurs)
@@ -260,6 +265,10 @@ export function startRoundClient(opts) {
         if (checkAnswerValue(input, currentGame.title)) {
             hasAnswered = true;
             inputEl.disabled = true;
+            // Bouton indice inerte une fois la reponse donnee : on le desactive
+            // visuellement (sinon il reste cliquable mais useHint() return early
+            // a cause de hasAnswered -> impression de bouton casse). (#48)
+            hintButton.disabled = true;
             messageEl.innerText = '✅ Bonne réponse !';
             messageEl.style.color = 'limegreen';
             await set(ref(db, `rooms/${code}/game/currentRound/results/${uid}`), {
@@ -278,6 +287,7 @@ export function startRoundClient(opts) {
         if (hasAnswered) return;
         hasAnswered = true;
         inputEl.disabled = true;
+        hintButton.disabled = true; // plus d'indice apres abandon (#48)
         messageEl.innerText = '🏳️ Tu as abandonné';
         messageEl.style.color = '#aaa';
         await set(ref(db, `rooms/${code}/game/currentRound/results/${uid}`), {
