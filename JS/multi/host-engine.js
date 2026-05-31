@@ -38,8 +38,20 @@ import {
 import { computeRanksFromResults } from './scoring.js';
 import { games } from '../gamesDatabase.js';
 
-const GRACE_MS = 10_000;        // 10s après 1er hit
-const ROUND_DURATION_MS = 30_000; // 30s par manche
+const GRACE_MS = 10_000;        // défaut historique du mode 'grace' (#53)
+const ROUND_DURATION_MS = 30_000; // 30s par manche (défaut, surchargé par meta.roundDurationMs)
+
+// Config par défaut "quand quelqu'un trouve" si meta.timeBonus absent (#53).
+// Doit rester cohérent avec DEFAULT_TIME_BONUS côté room-entry.js.
+const DEFAULT_TIME_BONUS = { mode: 'bonus', seconds: 5, frequency: 'each' };
+
+/** Convertit des secondes (number) en ms, borné pour éviter les valeurs aberrantes
+ *  d'un client modifié (1s..120s). */
+function secondsToMs(s) {
+    const n = Number(s);
+    if (!Number.isFinite(n)) return GRACE_MS;
+    return Math.max(1, Math.min(120, Math.round(n))) * 1000;
+}
 
 /**
  * Démarre le moteur hôte pour une room. Renvoie un objet avec `stop()` pour le couper.
@@ -54,6 +66,10 @@ export function startHostEngine({ code, uid }) {
     let lastRoundId = null;
     let watcherInterval = null;
     let unsubRoom = null;
+    // uids déjà crédités du bonus de temps pour la manche en cours (#53).
+    // Réinitialisé à chaque nouvelle manche. Évite de re-créditer un même
+    // trouveur à chaque tick du watcher.
+    let creditedFinishers = new Set();
 
     /** Tire le prochain jeu et écrit un nouveau currentRound. */
     async function startNextRound() {
@@ -107,6 +123,7 @@ export function startHostEngine({ code, uid }) {
             },
         });
         lastRoundId = roundId;
+        creditedFinishers = new Set(); // reset du bonus de temps pour la nouvelle manche (#53)
     }
 
     /**
@@ -129,19 +146,44 @@ export function startHostEngine({ code, uid }) {
         const playerCount = Object.keys(players).length;
         const now = Date.now();
 
-        // Détection du 1er finisher → écrit graceEndsAt
-        if (!current.firstFinisherUid) {
-            const finishers = Object.entries(results)
-                .filter(([_, r]) => r.status === 'found' && r.foundAt)
-                .sort((a, b) => a[1].foundAt - b[1].foundAt);
-            if (finishers.length > 0) {
-                const [firstUid, firstResult] = finishers[0];
+        // Config "quand quelqu'un trouve" choisie par l'hôte dans le lobby (#53).
+        // mode 'off'   : rien (la manche se termine au timeout ou quand tout le monde a répondu)
+        // mode 'bonus' : ajoute `seconds` à endsAt à chaque (ou au 1er) trouveur
+        // mode 'grace' : termine la manche `seconds` après le 1er trouveur (ancien comportement, configurable)
+        const bonus = meta.timeBonus || DEFAULT_TIME_BONUS;
+        const finishers = Object.entries(results)
+            .filter(([_, r]) => r.status === 'found' && r.foundAt)
+            .sort((a, b) => a[1].foundAt - b[1].foundAt);
+
+        // Mode 'grace' : fin auto N secondes après le 1er trouveur
+        if (bonus.mode === 'grace' && !current.firstFinisherUid && finishers.length > 0) {
+            const [firstUid, firstResult] = finishers[0];
+            await update(ref(db, `rooms/${code}/game/currentRound`), {
+                firstFinisherUid: firstUid,
+                firstFinisherAt: firstResult.foundAt,
+                graceEndsAt: now + secondsToMs(bonus.seconds),
+            });
+            return; // attend les autres
+        }
+
+        // Mode 'bonus' : prolonge endsAt pour chaque trouveur pas encore crédité
+        // (frequency 'once' = seulement le 1er ; 'each' = tous). Le Set est
+        // synchrone avant l'await -> pas de double-crédit même si le watcher
+        // ré-entre pendant l'écriture.
+        if (bonus.mode === 'bonus' && finishers.length > 0) {
+            const candidates = bonus.frequency === 'once' ? finishers.slice(0, 1) : finishers;
+            let addedMs = 0;
+            for (const [fUid] of candidates) {
+                if (!creditedFinishers.has(fUid)) {
+                    creditedFinishers.add(fUid);
+                    addedMs += secondsToMs(bonus.seconds);
+                }
+            }
+            if (addedMs > 0 && current.endsAt) {
                 await update(ref(db, `rooms/${code}/game/currentRound`), {
-                    firstFinisherUid: firstUid,
-                    firstFinisherAt: firstResult.foundAt,
-                    graceEndsAt: now + GRACE_MS,
+                    endsAt: current.endsAt + addedMs,
                 });
-                return; // attend les autres
+                // pas de return : on continue d'évaluer allDone / timeout
             }
         }
 
@@ -149,10 +191,10 @@ export function startHostEngine({ code, uid }) {
         const statuses = Object.keys(players).map(u => results[u]?.status || 'searching');
         const allDone = statuses.length > 0 && statuses.every(s => s === 'found' || s === 'abandoned');
 
-        // Trigger c) : timeout 30s
+        // Trigger c) : timeout (durée de manche, éventuellement prolongée par le bonus)
         const timeoutReached = current.endsAt && now >= current.endsAt;
 
-        // Trigger d) : grace 10s écoulée après 1er hit
+        // Trigger d) : grace écoulée après 1er hit (mode 'grace' uniquement)
         const graceReached = current.graceEndsAt && now >= current.graceEndsAt;
 
         if (allDone || timeoutReached || graceReached) {

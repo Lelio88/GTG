@@ -314,7 +314,14 @@ export function startRoundClient(opts) {
         // Pas le round courant ? ignore
         if (round.roundId !== currentRoundId) return;
 
-        // Bascule grace ? (premier hit détecté → 10s restants)
+        // endsAt peut changer en cours de manche (bonus de temps #53 : l'hôte
+        // prolonge la deadline quand un joueur trouve). On resync l'horloge
+        // locale ; la barre reflètera le temps ajouté au prochain tick.
+        if (round.endsAt && round.endsAt !== endsAt && !round.endedAt && !gracePhase) {
+            endsAt = round.endsAt;
+        }
+
+        // Bascule grace ? (mode 'grace' : fin auto N s après le 1er trouveur)
         if (round.graceEndsAt && !gracePhase && !round.endedAt) {
             enterGracePhase(round.graceEndsAt);
         }

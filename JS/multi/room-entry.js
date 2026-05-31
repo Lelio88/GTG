@@ -57,6 +57,20 @@ const DEFAULT_ROUND_DURATION_MS = 30000;
 // la DA néon de tokens.css. Chaque joueur choisit la sienne dans le lobby. (#54)
 const PLAYER_COLORS = ['#ffb86b', '#ff6b9f', '#00f6ff', '#c77dff', '#ffd87a', '#39ff14'];
 
+// Réglage "quand quelqu'un trouve" (#53). Doit rester cohérent avec
+// DEFAULT_TIME_BONUS de host-engine.js.
+const BONUS_MODES = [
+    { id: 'off',   label: 'Rien' },
+    { id: 'bonus', label: 'Bonus +temps' },
+    { id: 'grace', label: 'Fin auto' },
+];
+const BONUS_SECONDS = [3, 5, 10, 15];
+const BONUS_FREQS = [
+    { id: 'each', label: 'À chaque' },
+    { id: 'once', label: '1× / manche' },
+];
+const DEFAULT_TIME_BONUS = { mode: 'bonus', seconds: 5, frequency: 'each' };
+
 function readLastAlias() {
     try { return (localStorage.getItem(LAST_ALIAS_KEY) || '').slice(0, 20); }
     catch { return ''; }
@@ -345,6 +359,7 @@ function updateLobbyUi(data) {
     $('lobby-info').innerText = `${playerCount} joueur(s) — ${data.meta.targetGames} manches`;
     setupModeCarousel(data.meta.mode, isHost);
     setupDurationChips(data.meta.roundDurationMs || DEFAULT_ROUND_DURATION_MS, isHost);
+    setupBonusChips(data.meta.timeBonus || DEFAULT_TIME_BONUS, isHost);
     setupColorSwatches(data.players?.[myUid]?.color || null);
     $('mode-host-hint').style.display = isHost ? 'block' : 'none';
     if (isHost) {
@@ -449,6 +464,73 @@ async function changeRoundDuration(ms) {
         // Le listener RTDB rappellera setupDurationChips avec la nouvelle valeur.
     } catch (err) {
         console.error('change round duration failed', err);
+    }
+}
+
+/**
+ * Réglage "quand quelqu'un trouve" (#53) : mode (Rien / Bonus / Fin auto),
+ * secondes, et fréquence (Bonus uniquement). Host cliquable, non-host read-only.
+ * Les chips secondes/fréquence sont masquées selon le mode.
+ */
+function setupBonusChips(cfg, hostFlag) {
+    const modeWrap = $('bonus-mode-chips');
+    const secWrap = $('bonus-seconds-chips');
+    const freqWrap = $('bonus-freq-chips');
+    if (!modeWrap || !secWrap || !freqWrap) return;
+
+    const current = {
+        mode: cfg.mode || 'off',
+        seconds: cfg.seconds || 5,
+        frequency: cfg.frequency || 'each',
+    };
+
+    // Helper de rendu d'un groupe de chips
+    const renderChips = (wrap, items, isActive, onPick) => {
+        wrap.innerHTML = '';
+        for (const it of items) {
+            const chip = document.createElement('button');
+            chip.type = 'button';
+            chip.className = 'multi-chip' + (isActive(it) ? ' is-selected' : '');
+            chip.innerText = it.label;
+            if (hostFlag) chip.onclick = () => onPick(it);
+            else chip.disabled = true;
+            wrap.appendChild(chip);
+        }
+    };
+
+    renderChips(modeWrap, BONUS_MODES, (m) => m.id === current.mode,
+        (m) => changeBonus({ ...current, mode: m.id }));
+
+    // Secondes : visibles seulement si mode != 'off'
+    if (current.mode === 'off') {
+        secWrap.style.display = 'none';
+        freqWrap.style.display = 'none';
+        return;
+    }
+    secWrap.style.display = 'flex';
+    renderChips(secWrap, BONUS_SECONDS.map(s => ({ id: s, label: `${s}s` })),
+        (it) => it.id === current.seconds,
+        (it) => changeBonus({ ...current, seconds: it.id }));
+
+    // Fréquence : visible seulement en mode 'bonus'
+    if (current.mode === 'bonus') {
+        freqWrap.style.display = 'flex';
+        renderChips(freqWrap, BONUS_FREQS, (f) => f.id === current.frequency,
+            (f) => changeBonus({ ...current, frequency: f.id }));
+    } else {
+        freqWrap.style.display = 'none';
+    }
+}
+
+async function changeBonus(cfg) {
+    if (!isHost) return;
+    try {
+        await update(ref(db, `rooms/${code}/meta`), {
+            timeBonus: { mode: cfg.mode, seconds: cfg.seconds, frequency: cfg.frequency },
+        });
+        // Le listener RTDB rappellera setupBonusChips avec la nouvelle valeur.
+    } catch (err) {
+        console.error('change time bonus failed', err);
     }
 }
 
