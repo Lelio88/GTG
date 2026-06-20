@@ -357,6 +357,18 @@ Dans `JS/multi/firebase.js`, coller la **Site key** dans la constante `RECAPTCHA
 
 reCAPTCHA v3 est gratuit jusqu'à **1 million d'évaluations par mois**. App Check Firebase est gratuit également. À l'échelle d'un projet perso, on est largement dans le free tier.
 
+### Troubleshooting — 403 `API_KEY_SERVICE_BLOCKED` à `exchangeRecaptchaV3Token`
+
+**Symptôme** : la console navigateur affiche `@firebase/app-check: Requests throttled due to 403 error`, et le corps de la réponse contient `"reason": "API_KEY_SERVICE_BLOCKED"` / `"status": "PERMISSION_DENIED"`.
+
+**Ce n'est PAS un problème reCAPTCHA** (la clé, le secret, les domaines et l'App ID peuvent être parfaits) : la **clé API Firebase « navigateur »** (`firebaseConfig.apiKey`) a une **restriction d'API** qui n'inclut pas `firebaseappcheck.googleapis.com`. L'échange du token App Check est donc bloqué au niveau de la clé GCP. C'était la cause racine de l'impasse de 2 jours documentée en issue #44.
+
+**Fix (console GCP, projet `gtg-multi`)** :
+1. Activer l'API : [console.cloud.google.com/apis/library/firebaseappcheck.googleapis.com](https://console.cloud.google.com/apis/library/firebaseappcheck.googleapis.com?project=gtg-multi).
+2. APIs & Services → Credentials → clé « Browser key (auto created by Firebase) » → **Restrictions relatives aux API** → ajouter « Firebase App Check API » à la liste (sans retirer les autres APIs), ou passer à « Ne pas restreindre la clé ». La clé est publique de toute façon — la sécurité vient d'App Check + des règles RTDB, pas de cette restriction.
+
+**Re-test** : attendre ~5 min (propagation GCP), puis tester en **navigation privée neuve** — le 403 est mémorisé en throttle **24 h** par navigateur (IndexedDB), donc un onglet déjà throttlé ne renverra plus de requête. `exchangeRecaptchaV3Token` doit alors renvoyer **200**.
+
 ## 14. Pistes d'évolution
 
 - **Firebase Cloud Function** pour valider les réponses côté serveur (anti-triche) — actuellement le client se fie à `checkAnswerValue` local.
