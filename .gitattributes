@@ -1,0 +1,4 @@
+# Fins de ligne normalisées en LF (dans le repo ET au checkout) pour éviter le
+# bruit CRLF des éditeurs Windows sur des fichiers d'origine LF.
+# text=auto laisse git auto-détecter les binaires (images, audio) et ne pas y toucher.
+* text=auto eol=lf
