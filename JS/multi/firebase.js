@@ -48,11 +48,11 @@ const app = initializeApp(firebaseConfig);
  *
  * Setup : voir docs/multiplayer-architecture.md §14.
  */
-// PAUSE — App Check temporairement désactivé.
-// Setup en cours mais 403 persistant à exchangeRecaptchaV3Token côté Firebase
-// malgré conf reCAPTCHA + Firebase correctes en apparence.
-// Voir issue GitHub avec label `mode-multi` pour le détail et la reprise.
-const RECAPTCHA_SITE_KEY = '';
+// App Check ACTIF — clé reCAPTCHA v3 classique. La site key ci-dessous est
+// PUBLIQUE (non secrète, comme l'apiKey Firebase). La Secret key associée est
+// collée côté Firebase Console (App Check, provider reCAPTCHA v3) et n'apparaît
+// JAMAIS dans le repo. Setup complet : docs/multiplayer-architecture.md §13.5.
+const RECAPTCHA_SITE_KEY = '6LfxsyktAAAAAMnMtW-7lEdiwVsXU4e0Jb5QM7D2';
 
 if (RECAPTCHA_SITE_KEY) {
     // Import dynamique : ne charge le SDK App Check QUE si une clé est définie
@@ -87,6 +87,7 @@ export function whenAuthenticated() {
         });
         signInAnonymously(auth).catch((err) => {
             unsub();
+            authPromise = null; // libere la promesse rejetee -> autorise un nouvel essai au prochain appel (ex. 1er token App Check en retard au passage en Enforce)
             reject(err);
         });
     });
