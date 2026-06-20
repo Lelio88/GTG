@@ -44,8 +44,11 @@ function validateAlias() {
     return alias.slice(0, 20);
 }
 
-// Si l'URL contient déjà un code, pré-remplir le champ
-window.addEventListener('DOMContentLoaded', () => {
+// Pré-remplissage au chargement. firebase.js fait un `await import` top-level
+// (App Check) -> ce module est asynchrone et peut s'évaluer après que
+// DOMContentLoaded ait déjà été émis. On exécute donc immédiatement si le DOM
+// est déjà prêt, sinon on attend l'événement (sinon le pré-remplissage est raté).
+function prefillOnReady() {
     const code = readRoomCodeFromUrl();
     if (code) {
         codeInput.value = code;
@@ -57,7 +60,13 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     // Auth en arrière-plan dès le chargement (gain de temps)
     whenAuthenticated().catch(err => console.error('auth init', err));
-});
+}
+
+if (document.readyState === 'loading') {
+    window.addEventListener('DOMContentLoaded', prefillOnReady);
+} else {
+    prefillOnReady();
+}
 
 createBtn.addEventListener('click', async () => {
     clearError();

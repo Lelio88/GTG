@@ -106,10 +106,15 @@ let resultsConfettiFired = false; // un seul tir de confettis par entrée dans r
 let kickedHandled = false; // évite de traiter le kick deux fois (#51)
 
 // ──────────────────────────────────────────────────────────────────────────
-// Init au DOMContentLoaded
+// Boot — robuste au DOM déjà chargé.
+// firebase.js fait un `await import` top-level (App Check) -> ce module est
+// ASYNCHRONE et peut finir de s'évaluer APRÈS que DOMContentLoaded ait déjà
+// été émis. Un simple addEventListener('DOMContentLoaded') raterait alors
+// l'événement (handler jamais appelé -> page vide, aucune erreur console).
+// D'où le garde readyState : si le DOM est déjà prêt, on exécute tout de suite.
 // ──────────────────────────────────────────────────────────────────────────
 
-window.addEventListener('DOMContentLoaded', async () => {
+async function boot() {
     // Header global
     $('header-room-code').innerText = code;
     $('share-link').value = buildShareableUrl(code);
@@ -176,7 +181,13 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     // Écoute principale de la room → switch de vue
     listenRoom();
-});
+}
+
+if (document.readyState === 'loading') {
+    window.addEventListener('DOMContentLoaded', boot);
+} else {
+    boot();
+}
 
 /**
  * Construit l'URL GitHub Issues pré-remplie à partir de ce que l'utilisateur
