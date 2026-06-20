@@ -61,7 +61,6 @@ if (RECAPTCHA_SITE_KEY) {
         provider: new appCheckModule.ReCaptchaV3Provider(RECAPTCHA_SITE_KEY),
         isTokenAutoRefreshEnabled: true,
     });
-    console.log('[Firebase] App Check activé (reCAPTCHA v3)');
 }
 
 export const db = getDatabase(app);
