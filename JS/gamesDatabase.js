@@ -19,8 +19,7 @@ export const games = [
         midi: ['../Medias/Midi/Bioshock.mid'],
         shadow: ['../Medias/Shadow/Bioshock.png'],
         pixels: ['../Medias/Pixels/Bioshock.png'],
-        emoji: '🌊 💉 ⚡ 🔧 🤖 👧 🏙️ 🎩 🎪 🩸',
-        geo: ['../Medias/Geo/Bioshock 1.jpg'] // panorama 360° (PLACEHOLDER de démo — à remplacer par un vrai screenshot 360 de Rapture)
+        emoji: '🌊 💉 ⚡ 🔧 🤖 👧 🏙️ 🎩 🎪 🩸'
     },
     {
         title: 'Plants vs Zombies',
@@ -328,7 +327,8 @@ export const games = [
         midi: ['../Medias/Midi/Minecraft.mid'],
         shadow: ['../Medias/Shadow/Minecraft.png'],
         pixels: ['../Medias/Pixels/Minecraft.png'],
-        emoji: '⛏️ 🟩 🧱 🧟 💎 🐷 ⚔️ 🌲 🏠 🧨'
+        emoji: '⛏️ 🟩 🧱 🧟 💎 🐷 ⚔️ 🌲 🏠 🧨',
+        geo: ['../Medias/Geo/Minecraft 1.jpg', '../Medias/Geo/Minecraft 2.jpg', '../Medias/Geo/Minecraft 3.jpg']
     },
     {
         title: 'Assassin\'s Creed',
