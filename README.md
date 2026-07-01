@@ -1,6 +1,6 @@
 # Guess The Game 🎮
 
-Jeu de devinette de jeux vidéo en **vanilla JavaScript** — 8 modes, gestion de profils locaux, et mode **multijoueur en ligne** pour 2 à 8 joueurs.
+Jeu de devinette de jeux vidéo en **vanilla JavaScript** — 8 modes classiques + un mode **Geo 360°**, gestion de profils locaux, et mode **multijoueur en ligne** pour 2 à 8 joueurs.
 
 🎮 **Jouer maintenant** : **[https://lelio88.github.io/GTG/](https://lelio88.github.io/GTG/)**
 
@@ -16,6 +16,9 @@ Jeu de devinette de jeux vidéo en **vanilla JavaScript** — 8 modes, gestion d
 | **Image Only** — captures d'écran | **Shadow** — silhouette sur fond noir |
 | **Sound Only** — bandes-son | **MIDI** — bande-son réduite à un MIDI |
 | **Text Only** — descriptions textuelles | **Emoji** — suite d'emojis évocateurs |
+
+### 🌍 Mode Geo (spécial)
+Accessible depuis la **chambre** : tu es lâché dans un **panorama 360° explorable** (souris/tactile) d'une scène de jeu, à identifier à partir du décor — façon *GeoGuessr*. Voir plus bas pour **[ajouter des jeux au mode Geo](#-compléter-le-mode-geo-panoramas-360)**.
 
 ### 👤 Mode Solo
 - Jusqu'à **4 profils** sauvegardés (export/import JSON)
@@ -72,6 +75,47 @@ Les assets multimédias (`Medias/Image/`, `Medias/Sound/`, etc.) ne sont **pas i
 
 ---
 
+## 🌍 Compléter le mode Geo (panoramas 360°)
+
+Un jeu devient jouable en mode **Geo** dès qu'il possède ≥ 1 **panorama equirectangulaire** (image au ratio **2:1**) dans `Medias/Geo/<Titre> N.jpg`. Le `<Titre>` doit correspondre **exactement** au champ `title` de `JS/gamesDatabase.js`.
+
+Trois scripts Python outillent ça (prérequis : `pip install -r Python/requirements.txt` — `yt-dlp`, `ffmpeg`, `Pillow`). Deux voies au choix :
+
+### Voie 1 — depuis une vidéo YouTube 360°
+De nombreux jeux ont des vidéos 360° sur YouTube (stockées en equirectangulaire).
+
+```bash
+# 1. Trouver une vidéo (les résultats marqués "[OK ]" = ratio 2:1, exploitables)
+python Python/geo_fetch.py --search "God of War 360 VR"
+
+# 2. Extraire un ou plusieurs panoramas aux moments voulus
+python Python/geo_fetch.py --url "https://youtu.be/XXXX" --title "God of War" --times 00:20 01:10
+
+# 3. Déclarer les panoramas dans gamesDatabase.js
+python Python/geo_declare.py
+```
+> 💡 Privilégie les jeux **FPS** (Subnautica, Portal, Metro…) : le panorama est du décor pur, sans personnage — les jeux en 3ᵉ personne montrent le héros, ce qui donne un gros indice.
+
+### Voie 2 — depuis tes propres captures (NVIDIA Ansel)
+Pour les jeux sans vidéo 360°, capture-les toi-même :
+
+1. **En jeu** : place-toi à un bel endroit → `Alt+F2` → mode **360°** → **Snap** (Ansel produit une image equirectangulaire).
+2. Range tes captures **par jeu** dans `Medias/Geo/_inbox/<Titre exact>/` (un sous-dossier par jeu).
+3. Lance :
+   ```bash
+   python Python/geo_ingest.py
+   ```
+   Le script **valide** (rejette tout ce qui n'est pas du 360°), redimensionne, **nomme** `<Titre> N.jpg`, range dans `Medias/Geo/` et **déclare** automatiquement dans `gamesDatabase.js`.
+
+### Vérifier
+```bash
+python -m http.server 8000
+```
+Puis `http://localhost:8000/` → un profil → **chambre** → zone **Geo** → le jeu apparaît, avec un angle de spawn aléatoire dans le panorama.
+> ⚠️ Teste via `http://localhost:8000/` (pas en double-clic `file://` : le rendu WebGL des textures locales y est bloqué).
+
+---
+
 ## 🗺️ Roadmap
 
 - [x] 4 modes de jeu de base
@@ -79,6 +123,7 @@ Les assets multimédias (`Medias/Image/`, `Medias/Sound/`, etc.) ne sont **pas i
 - [x] Système de profils + export/import
 - [x] **Mode multijoueur en ligne**
 - [x] Système de succès / achievements
+- [x] **Mode Geo** (panorama 360° explorable) + outils d'ajout d'assets
 - [ ] Leaderboards permanents
 - [ ] Contenu de la chambre secrète
 - [ ] Thèmes visuels alternatifs
