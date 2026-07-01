@@ -1524,6 +1524,7 @@ export const games = [
     },
     {
         title: 'The Witcher',
+        geo: ['../Medias/Geo/The Witcher 1.jpg'],
         image: [
             '../Medias/Image/The Witcher 1.jpg',
             '../Medias/Image/The Witcher 2.jpg',
