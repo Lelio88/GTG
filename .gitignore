@@ -24,3 +24,6 @@ desktop.ini
 # Logs / dumps
 *.log
 *.dump
+
+# Mode Geo : dossier de travail pour ingerer les captures 360 (Ansel)
+Medias/Geo/_inbox/
