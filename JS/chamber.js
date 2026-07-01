@@ -1,5 +1,6 @@
 import { profileStore } from './state/profileStore.js';
 import { showAlert, showConfirm } from './ui/dialog.js';
+import { applyHellMode } from './hellMode.js';
 
 // === SÉLECTION DES ÉLÉMENTS ===
 const zones = document.querySelectorAll('.clickable-area');
@@ -99,3 +100,6 @@ zones.forEach(zone => {
 backBtn.addEventListener('click', () => {
     window.location.href = '../HTML/hub.html';
 });
+
+// Theme Enfer si le profil courant a franchi 666 mauvaises reponses.
+applyHellMode(profileStore.getCurrent());

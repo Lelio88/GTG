@@ -311,3 +311,46 @@ button:disabled {
         scroll-behavior: auto !important;
     }
 }
+
+/* ============================================================
+   Mode Enfer — bascule quand un profil atteint 666 mauvaises réponses.
+   La classe `gtg-hell` est posée sur <html> par JS/hellMode.js. En
+   surchargeant les tokens, toute l'UI néon (hub, modes, chambre, trophées…)
+   vire au rouge sang sans toucher un seul CSS de page.
+   ============================================================ */
+html.gtg-hell {
+    --bg-deep: #0a0002;
+    --bg-surface: #1a0406;
+    --bg-elevated: #260609;
+    --bg-overlay: rgba(10, 0, 2, 0.92);
+
+    --neon-primary: #ff2a00;
+    --neon-secondary: #ff003c;
+    --neon-cyan: #ff6a00;
+    --neon-violet: #8b0000;
+    --neon-danger: #ff0000;
+    --neon-success: #ff3b00;
+
+    --text-primary: #ffd8cc;
+    --text-secondary: #cf9284;
+    --text-dim: #7a4a44;
+
+    --border-subtle: rgba(255, 42, 0, 0.18);
+    --border-default: rgba(255, 42, 0, 0.40);
+    --border-strong: rgba(255, 42, 0, 0.70);
+}
+
+/* Vignette rouge sang aux bords. Portée par html::before (aucune page
+   n'utilise ce pseudo) pour ne pas entrer en conflit avec les body::before/
+   ::after existants. On évite volontairement `filter` sur un ancêtre du body :
+   cela casserait le containing block des éléments `position: fixed` (footer,
+   modales, toasts). mix-blend-mode n'a pas cet effet de bord. */
+html.gtg-hell::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9998; /* au-dessus du contenu, sous modales (9999) et toasts (10000) */
+    background: radial-gradient(ellipse at center, transparent 50%, rgba(90, 0, 0, 0.45) 100%);
+    mix-blend-mode: multiply;
+}
