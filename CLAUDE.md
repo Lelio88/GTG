@@ -16,8 +16,8 @@ Résolvez les problèmes sans introduire de régression ni de dette technique ar
 Topologie rapide :
 - `index.html` + `JS/index.js` — sélection de profil + entrée Multijoueur
 - `HTML/hub.html` + `JS/hub.js` — hub des modes solo, déblocage hardcore
-- `HTML/<mode>.html` + `JS/<mode>.js` — un duo par mode (8 modes solo)
-- `HTML/chamber.html` + `JS/chamber.js` — chambre + zones cliquables (page Trophées câblée ; placeholders pour 4 mini-jeux)
+- `HTML/<mode>.html` + `JS/<mode>.js` — un duo par mode (9 modes solo, dont `geo` — panorama 360°)
+- `HTML/chamber.html` + `JS/chamber.js` — chambre + zones cliquables (pages Trophées + Geo câblées ; placeholders pour 3 mini-jeux)
 - `HTML/trophy.html` + `JS/trophy.js` — page Trophées (succès), consomme `JS/achievements.js`
 - `HTML/multi-lobby.html` + `JS/multi/lobby-entry.js` — création / jointure de room
 - `HTML/multi-room.html` + `JS/multi/room-entry.js` — room (lobby + partie + résultats)
@@ -40,7 +40,7 @@ Topologie rapide :
 *Aucun fichier de manifest (pas de `package.json`). Versions runtime déterminées par le navigateur cible. N'introduisez aucune dépendance front/back sans approbation.*
 
 - **Front** : HTML5, CSS3 (variables custom, animations néon, `prefers-reduced-motion` respecté), JavaScript ES6+ modules natifs
-- **CDN runtime pinné** : `anime.js 3.2.1` (logo `index.html`, avec SRI), `tone@15.1.22` + `@tonejs/midi@2.0.28` (mode MIDI), `canvas-confetti@1.9.3` (multi)
+- **CDN runtime pinné** : `anime.js 3.2.1` (logo `index.html`, avec SRI), `tone@15.1.22` + `@tonejs/midi@2.0.28` (mode MIDI), `canvas-confetti@1.9.3` (multi), `@photo-sphere-viewer/core@5` (mode Geo — panorama 360° via esm.sh)
 - **Multi** : Firebase Realtime Database + Anonymous Auth via CDN ESM (App Check en pause — cf. #44)
 - **Persistance** : `window.localStorage` (clés racine : `profiles`, `currentProfile` ; alias éphémère multi : `gtg_multi_last_alias`)
 - **Outils admin (hors web)** : Python 3 + `Pillow`, `requests`, `duckduckgo_search`, `yt_dlp`, `rembg`, `ffmpeg-normalize`, Tkinter — cf. `Python/requirements.txt`
@@ -113,5 +113,5 @@ python Python/compress_images.py    # compression batch quality 90 (idempotent)
 
 ## VIII. Contexte de Session
 
-- **Dernier focus** : succès notifiés **en jeu** (event `gtg:profile-updated` + `watchAchievements`, toast Steam + son au moment du déblocage) ; thème Enfer en **fenêtre 666–777** ; **rejouer/réinitialiser un mode** depuis les Trophées (`modeReset.js`) avec anti-farm de clés (`keyedModes`)
-- **Focus immédiat** : —
+- **Dernier focus** : nouveau mode **Geo** — panorama 360° explorable (Photo Sphere Viewer via esm.sh), accès par la zone `geo` de la chambre (ex-`xxx`), renderer async `renderHintGeo` + `cleanupGeo` (anti-fuite WebGL), assets `Medias/Geo/<Title> N.jpg` equirectangulaires (1 panorama de **démo** en place, à remplacer)
+- **Focus immédiat** : fournir de vrais panoramas 360° ; repositionner la zone `#zone-geo` de la chambre ; puis epic 2 — empaquetage mobile **Capacitor**

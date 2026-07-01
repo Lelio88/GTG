@@ -13,7 +13,7 @@ const directLinks = {
     'pantone': '../HTML/pantone.html',
     'films': '../HTML/films.html',
     'gto': 'https://gto.ada.briceledanois.fr/',
-    'xxx': '../HTML/xxx.html'
+    'geo': '../HTML/geo.html'
 };
 
 // === FONCTIONS ===

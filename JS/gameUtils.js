@@ -66,7 +66,7 @@ export function getCurrentProfile() {
  * @returns {Object} The updated profile object
  */
 export function initializeProfile(currentProfile) {
-    const modes = ['image', 'sound', 'text', 'full', 'midi', 'shadow', 'pixelated', 'emoji'];
+    const modes = ['image', 'sound', 'text', 'full', 'midi', 'shadow', 'pixelated', 'emoji', 'geo'];
 
     // Initialisation des jeux devinés
     if (!currentProfile.guessedGamesByMode) {

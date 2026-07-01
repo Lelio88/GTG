@@ -107,11 +107,11 @@ body, html {
     background-color: rgba(0, 128, 0, 0.5); /* Vert foncé */
 }
 
-/* Zone 10 : XXX */
-#zone-xxx {
+/* Zone 10 : GEO (mode panorama 360 — position a repositionner precisement) */
+#zone-geo {
     top: 50%; left: 50%;
     width: 7.5%; height: 7.6%;
-    background-color: rgba(128, 128, 128, 0.5); /* Gris */
+    background-color: rgba(0, 246, 255, 0.4); /* Cyan */
 }
 
 #back-hub {

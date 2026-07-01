@@ -54,6 +54,7 @@ const MODES = [
     { key: 'midi',      label: 'MIDI',      icon: '🎹' },
     { key: 'shadow',    label: 'Shadow',    icon: '🌑' },
     { key: 'emoji',     label: 'Emoji',     icon: '😀' },
+    { key: 'geo',       label: 'Geo',       icon: '🌍' },
 ];
 
 // === Helpers derives (tous defensifs vis-a-vis d'un profil incomplet) ===

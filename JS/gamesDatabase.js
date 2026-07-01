@@ -19,7 +19,8 @@ export const games = [
         midi: ['../Medias/Midi/Bioshock.mid'],
         shadow: ['../Medias/Shadow/Bioshock.png'],
         pixels: ['../Medias/Pixels/Bioshock.png'],
-        emoji: '🌊 💉 ⚡ 🔧 🤖 👧 🏙️ 🎩 🎪 🩸'
+        emoji: '🌊 💉 ⚡ 🔧 🤖 👧 🏙️ 🎩 🎪 🩸',
+        geo: ['../Medias/Geo/Bioshock 1.jpg'] // panorama 360° (PLACEHOLDER de démo — à remplacer par un vrai screenshot 360 de Rapture)
     },
     {
         title: 'Plants vs Zombies',

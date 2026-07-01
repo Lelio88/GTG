@@ -367,6 +367,80 @@ export function cleanupMidi() {
     midiSynths = [];
 }
 
+// === Mode GEO : panorama 360° explorable (Photo Sphere Viewer, one-shot) ===
+//
+// Charge Photo Sphere Viewer v5 en ESM a la demande (comme Tone.js pour le
+// mode MIDI). Le panorama (image equirectangulaire) est pioche au hasard et
+// l'angle de vue initial (yaw/pitch) est aleatoire -> "spawn" facon GeoGuessr.
+// Le viewer WebGL est conserve dans geoViewer et DOIT etre detruit via
+// cleanupGeo() entre deux manches (sinon fuite memoire GPU).
+let geoViewer = null;
+
+// Injecte une seule fois le CSS de Photo Sphere Viewer (le renderer reste
+// autonome : pas besoin d'ajouter un <link> dans chaque HTML consommateur).
+function ensurePsvCss() {
+    const id = 'psv-core-css';
+    if (document.getElementById(id)) return;
+    const link = document.createElement('link');
+    link.id = id;
+    link.rel = 'stylesheet';
+    link.href = 'https://esm.sh/@photo-sphere-viewer/core@5/index.css';
+    document.head.appendChild(link);
+}
+
+export async function renderHintGeo(game, _hintIndex, container) {
+    cleanupGeo();
+    container.innerHTML = '';
+
+    const sources = (game.geo && game.geo.length > 0) ? game.geo : null;
+    if (!sources) {
+        container.innerText = 'Panorama 360° indisponible pour ce jeu.';
+        return null;
+    }
+    const panorama = sources[Math.floor(Math.random() * sources.length)];
+
+    const box = document.createElement('div');
+    box.id = 'geo-viewer';
+    box.style.width = '100%';
+    box.style.height = '60vh';
+    box.style.borderRadius = '12px';
+    box.style.overflow = 'hidden';
+    box.style.border = '2px solid rgba(0, 246, 255, 0.5)';
+    box.style.boxShadow = '0 0 20px rgba(0, 246, 255, 0.3)';
+    box.style.background = '#000';
+    container.appendChild(box);
+
+    // Spawn aleatoire : angle de vue initial (yaw 0-359°, pitch leger -20..+20°).
+    const yaw = `${Math.floor(Math.random() * 360)}deg`;
+    const pitch = `${Math.floor(Math.random() * 41) - 20}deg`;
+
+    ensurePsvCss();
+    // Import ESM a la demande (necessite le reseau, comme Tone.js pour MIDI).
+    const { Viewer } = await import('https://esm.sh/@photo-sphere-viewer/core@5');
+    geoViewer = new Viewer({
+        container: box,
+        panorama,
+        defaultYaw: yaw,
+        defaultPitch: pitch,
+        defaultZoomLvl: 40,
+        navbar: false,
+        loadingTxt: 'Chargement du panorama…',
+        mousewheel: true,
+    });
+    return geoViewer;
+}
+
+/**
+ * Detruit le viewer 360 courant et libere les ressources WebGL/Three.js.
+ * A appeler entre deux manches et a la fermeture de page (mode geo).
+ */
+export function cleanupGeo() {
+    if (geoViewer) {
+        try { geoViewer.destroy(); } catch (err) { /* deja detruit */ }
+        geoViewer = null;
+    }
+}
+
 // === Dispatch + métadonnées (pour usage multi avec mode dynamique) ===
 
 export const renderers = {
@@ -378,6 +452,7 @@ export const renderers = {
     shadow: renderHintShadow,
     pixelated: renderHintPixelated,
     emoji: renderHintEmoji,
+    geo: renderHintGeo,
 };
 
 /**
@@ -400,6 +475,7 @@ export function getHintCount(mode, game) {
         case 'shadow':
         case 'pixelated':
         case 'emoji':
+        case 'geo':
             return 1;
         default:
             return 1;

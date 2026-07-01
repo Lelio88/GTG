@@ -97,6 +97,7 @@ Chaque mode est une triade `HTML/<mode>.html` + `JS/<mode>.js` + un set d'assets
 | `shadow` | Silhouette noire | `shadow` | Complétion de `image` |
 | `midi` | Bande-son réduite à un MIDI | `midi` | Complétion de `sound` |
 | `emoji` | Suite d'emojis | `emoji` (string) | Complétion de `text` |
+| `geo` | Panorama 360° explorable (souris/tactile) | `geo[]` (panoramas equirectangulaires) | Chambre (zone directe, sans clé) |
 
 La correspondance base ↔ hardcore est codifiée dans `JS/hub.js` (`hardcoreConfig`) et le mapping couleur dans `modeNeonMapping`. Le déblocage matériel (`unlockedModes`) se fait via la chambre (`HTML/chamber.html` + `JS/chamber.js`) qui consomme les clés du profil.
 
@@ -164,7 +165,8 @@ Une entrée du tableau `games` exporté par `JS/gamesDatabase.js` :
   midi:   ['../Medias/Midi/Bioshock.mid'],                              // 1 fichier
   shadow: ['../Medias/Shadow/Bioshock.png'],                            // 1 fichier
   pixels: ['../Medias/Pixels/Bioshock.png'],                            // 1 fichier
-  emoji:  '🌊 💉 ⚡ 🔧 🤖 👧 🏙️ 🎩 🎪 🩸'                                // string, 10 emojis
+  emoji:  '🌊 💉 ⚡ 🔧 🤖 👧 🏙️ 🎩 🎪 🩸',                               // string, 10 emojis
+  geo:    ['../Medias/Geo/Bioshock 1.jpg']                             // panoramas 360° (optionnel, ≥1 ; on en pioche un)
 }
 ```
 
@@ -179,6 +181,7 @@ L'objet `abbreviations` vit dans `JS/abbreviations.js` (re-exporté depuis `game
 | Midi | `Medias/Midi/` | `<Title>.mid` | `Bioshock.mid` |
 | Shadow | `Medias/Shadow/` | `<Title>.png` | `Bioshock.png` |
 | Pixels | `Medias/Pixels/` | `<Title>.png` | `Bioshock.png` |
+| Geo (panorama 360°) | `Medias/Geo/` | `<Title> N.jpg` (equirectangulaire, ratio 2:1) | `Bioshock 1.jpg` |
 
 `<Title>` est le `title` du jeu **tel qu'il apparaît dans `gamesDatabase.js`** (espaces et apostrophes inclus). Le rendu HTML pointe vers `'../Medias/<Type>/<Title> N.ext'` depuis `JS/`, donc tout chemin doit être relatif au fichier HTML (qui vit dans `HTML/`). Les scripts Python utilisent `sanitize_filename()` pour neutraliser `\/*?:"<>|` mais conservent espaces et apostrophes.
 
@@ -188,17 +191,19 @@ Deux modules forment la couche partagée. Tout module de mode (solo et multi) **
 
 ### 7.1 `JS/hint-renderers.js` — Rendu des indices (partagé solo ⇄ multi)
 
-Module commun extrait pour éviter la duplication entre les 8 modes solo et le mode multi. Une fonction par mode, signature uniforme `(game, hintIndex, container) → void`. Pour les modes one-shot (midi, shadow, pixelated, emoji), `hintIndex` est ignoré.
+Module commun extrait pour éviter la duplication entre les 9 modes solo et le mode multi. Une fonction par mode, signature uniforme `(game, hintIndex, container) → void` (async pour `geo`). Pour les modes one-shot (midi, shadow, pixelated, emoji, geo), `hintIndex` est ignoré.
 
 | Export | Rôle |
 |---|---|
 | `renderHintFull` / `renderHintImage` / `renderHintSound` / `renderHintText` | Renderers à indices multiples (1-3 indices) |
 | `renderHintMidi` / `renderHintShadow` / `renderHintPixelated` / `renderHintEmoji` | Renderers one-shot (1 indice) |
+| `renderHintGeo` (async) | Viewer panorama 360° (Photo Sphere Viewer via CDN ESM), angle de spawn aléatoire — one-shot |
 | `cleanupMidi()` | Stoppe Tone.Transport et dispose les synths — à appeler avant changement de manche |
+| `cleanupGeo()` | Détruit le viewer 360 (libère le WebGL) — à appeler avant changement de manche / fermeture de page |
 | `renderers` | Dispatch table `{full: ..., image: ..., ...}` pour usage multi (mode dynamique) |
 | `getHintCount(mode, game)` | Nombre d'indices disponibles pour ce mode |
 
-Le module charge `Tone.js` en **dynamic import** (utilisé uniquement par `renderHintMidi`) → pas de pénalité pour les autres modes.
+Le module charge `Tone.js` (mode MIDI) et `Photo Sphere Viewer` (mode Geo) en **dynamic import** → aucune pénalité pour les autres modes. Les deux tirent leur lib d'un CDN ESM (`esm.sh`), comme le multi avec Firebase → réseau requis à l'usage.
 
 ### 7.2 `JS/gameUtils.js` — Logique métier solo (timer, score, validation)
 
