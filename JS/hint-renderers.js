@@ -127,7 +127,13 @@ export function renderHintEmoji(game, _hintIndex, container) {
     container.appendChild(p);
 }
 
-// === Mode SHADOW : image filtrée brightness(0) (one-shot, hintIndex ignoré) ===
+// === Mode SHADOW : silhouette noire (brightness 0) sur caisson lumineux ===
+//
+// La silhouette est forcee en noir pur via `filter: brightness(0)`. Pour
+// qu'elle soit VISIBLE, le cadre est un caisson LUMINEUX (fond clair
+// retroeclaire) : une silhouette noire sur le fond sombre du theme neon
+// serait invisible (noir sur noir). Le fond clair reste clair meme en mode
+// Enfer ; seule la bordure neon suit le theme.
 export function renderHintShadow(game, _hintIndex, container) {
     container.innerHTML = '';
 
@@ -136,12 +142,15 @@ export function renderHintShadow(game, _hintIndex, container) {
     const imageWrapper = document.createElement('div');
     imageWrapper.style.width = '100%';
     imageWrapper.style.height = '40vh';
-    imageWrapper.style.border = '2px solid black';
-    imageWrapper.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
+    imageWrapper.style.border = '2px solid var(--neon-cyan, #00f6ff)';
+    imageWrapper.style.borderRadius = '12px';
+    imageWrapper.style.background = 'radial-gradient(circle at 50% 42%, #ffffff 0%, #eaf0f6 55%, #ccd6e2 100%)';
+    imageWrapper.style.boxShadow = '0 0 18px rgba(0, 246, 255, 0.35), inset 0 0 40px rgba(0, 0, 0, 0.06)';
     imageWrapper.style.boxSizing = 'border-box';
     imageWrapper.style.display = 'flex';
     imageWrapper.style.justifyContent = 'center';
     imageWrapper.style.alignItems = 'center';
+    imageWrapper.style.padding = '14px';
     imageWrapper.style.marginBottom = '20px';
 
     const img = document.createElement('img');
@@ -153,6 +162,8 @@ export function renderHintShadow(game, _hintIndex, container) {
     img.style.border = 'none';
     img.style.outline = 'none';
     img.style.boxShadow = 'none';
+    // brightness(0) => tous les pixels visibles deviennent NOIR pur (l'ombre la
+    // plus noire possible), en preservant la transparence (contour net).
     img.style.filter = 'brightness(0)';
     img.style.transition = 'opacity 0.5s ease, filter 0.5s ease';
 
