@@ -139,25 +139,28 @@ export function renderHintShadow(game, _hintIndex, container) {
 
     const source = (game.shadow && game.shadow.length > 0) ? game.shadow : game.image;
 
+    // Caisson lumineux COMPACT : il epouse la silhouette (inline-flex) au lieu
+    // d'un grand panneau blanc plein cadre (qui jurait avec le theme sombre).
+    // Fond clair juste autour du sujet + cadre neon discret -> la silhouette
+    // noire ressort sans "mur blanc" tout autour.
     const imageWrapper = document.createElement('div');
-    imageWrapper.style.width = '100%';
-    imageWrapper.style.height = '40vh';
-    imageWrapper.style.border = '2px solid var(--neon-cyan, #00f6ff)';
-    imageWrapper.style.borderRadius = '12px';
-    imageWrapper.style.background = 'radial-gradient(circle at 50% 42%, #ffffff 0%, #eaf0f6 55%, #ccd6e2 100%)';
-    imageWrapper.style.boxShadow = '0 0 18px rgba(0, 246, 255, 0.35), inset 0 0 40px rgba(0, 0, 0, 0.06)';
-    imageWrapper.style.boxSizing = 'border-box';
-    imageWrapper.style.display = 'flex';
+    imageWrapper.style.display = 'inline-flex';
     imageWrapper.style.justifyContent = 'center';
     imageWrapper.style.alignItems = 'center';
-    imageWrapper.style.padding = '14px';
+    imageWrapper.style.maxWidth = '100%';
+    imageWrapper.style.padding = '12px';
+    imageWrapper.style.border = '1px solid rgba(0, 246, 255, 0.45)';
+    imageWrapper.style.borderRadius = '14px';
+    imageWrapper.style.background = 'radial-gradient(circle at 50% 40%, #edf2f8 0%, #d3dde9 68%, #bfcbd9 100%)';
+    imageWrapper.style.boxShadow = '0 0 22px rgba(0, 246, 255, 0.25), inset 0 0 30px rgba(0, 0, 0, 0.05)';
+    imageWrapper.style.boxSizing = 'border-box';
     imageWrapper.style.marginBottom = '20px';
 
     const img = document.createElement('img');
     img.src = source[0];
     img.id = 'game-image';
     img.style.maxWidth = '100%';
-    img.style.maxHeight = '100%';
+    img.style.maxHeight = '44vh';
     img.style.objectFit = 'contain';
     img.style.border = 'none';
     img.style.outline = 'none';
