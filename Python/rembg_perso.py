@@ -57,9 +57,11 @@ def cutout(src_path, dest_path, session):
 def main():
     parser = argparse.ArgumentParser(description='Detoure les avatars du narrateur via rembg (IA)')
     parser.add_argument('--dry-run', action='store_true', help='Liste sans rien faire')
-    parser.add_argument('--model', default='isnet-general-use',
-                        help='Modele rembg (isnet-general-use recommande pour les personnages, '
-                             'u2net, u2netp, silueta...). Defaut isnet-general-use.')
+    parser.add_argument('--model', default='isnet-anime',
+                        help='Modele rembg. isnet-anime (defaut) preserve le mieux les '
+                             'personnages style manga, vetements sombres inclus ; '
+                             'isnet-general-use mangeait des zones (t-shirt, bras). '
+                             'Autres: u2net, u2netp, silueta.')
     args = parser.parse_args()
 
     targets = []
