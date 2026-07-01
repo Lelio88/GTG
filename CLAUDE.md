@@ -4,118 +4,88 @@ Résolvez les problèmes sans introduire de régression ni de dette technique ar
 
 ## I. Finalité
 
-**Application/Package** : `GTG` — site web statique de devinette de jeux vidéo (vanilla JS, multi-mode, single-player, profils locaux).
-**Objectif métier** : proposer 8 modes de devinette (Full, Image, Sound, Text + 4 variantes hardcore) avec progression par clés, gestion de 4 profils max, et persistance 100 % `localStorage`.
+**Application** : `GTG` — site web statique de devinette de jeux vidéo (vanilla JS, single-player + multijoueur, profils locaux).
+**Objectif métier** : 8 modes de devinette (Full/Image/Sound/Text + 4 variantes hardcore) + un mode **Geo** (panorama 360°), progression par clés, 4 profils max, persistance 100 % `localStorage` en solo.
 
 ## II. Architecture
 
-**Modèle** : MPA (Multi-Page Application) vanilla JS sans framework ni bundler. Le **solo** vit en `localStorage` et reste 100 % `file://`-compatible. Le **multijoueur** (`JS/multi/`) utilise Firebase Realtime Database via CDN ESM et nécessite une connexion réseau.
+**Modèle** : MPA (Multi-Page Application) vanilla JS, sans framework ni bundler. Le **solo** vit en `localStorage` et reste 100 % `file://`-compatible. Le **multi** (`JS/multi/`) utilise Firebase Realtime Database via CDN ESM (réseau requis).
 
-**Détails complets** (modèle de données `Profile`/`Game`, conventions d'assets, règles de couplage, flux d'une partie, modèle RTDB multi, patterns imposés, anti-patterns) : voir [`docs/architecture.md`](./docs/architecture.md).
+**Détails complets** (modèle `Profile`/`Game`, conventions d'assets, règles de couplage, flux d'une partie, RTDB multi, patterns, anti-patterns) : voir [`docs/architecture.md`](./docs/architecture.md).
 
 Topologie rapide :
-- `index.html` + `JS/index.js` — sélection de profil + entrée Multijoueur
-- `HTML/hub.html` + `JS/hub.js` — hub des modes solo, déblocage hardcore
-- `HTML/<mode>.html` + `JS/<mode>.js` — un duo par mode (9 modes solo, dont `geo` — panorama 360°)
-- `HTML/chamber.html` + `JS/chamber.js` — chambre + zones cliquables (pages Trophées + Geo câblées ; placeholders pour 3 mini-jeux)
-- `HTML/trophy.html` + `JS/trophy.js` — page Trophées (succès), consomme `JS/achievements.js`
-- `HTML/multi-lobby.html` + `JS/multi/lobby-entry.js` — création / jointure de room
-- `HTML/multi-room.html` + `JS/multi/room-entry.js` — room (lobby + partie + résultats)
-- `JS/hint-renderers.js` — renderers des indices factorisés (partagés solo ⇄ multi)
-- `JS/gameUtils.js` — timer, score, validation, abandon, `resetGameUI`, `revealTitle` (couche partagée solo)
-- `JS/gamesDatabase.js` — catalogue des jeux (re-export `abbreviations` pour compat)
-- `JS/abbreviations.js` — table des contractions, isolée pour le lazy-load
-- `JS/state/profileStore.js` — facade localStorage + observers cross-onglet
-- `JS/state/gameProgress.js` — jeu en cours par mode (anti-triche F5)
-- `JS/state/modeReset.js` — réinitialisation d'un mode (retenter les succès de performance)
-- `JS/ui/dialog.js` — modales néon (`showAlert/showConfirm/showPrompt`)
-- `JS/multi/*.js` — stack multi : firebase, scoring, lobby, host-engine, round-client, scoreboard, url-room
-- `JS/gameCompletion.js`, `JS/dialogue.js`, `JS/saveManager.js`, `JS/achievements.js`, `JS/hellMode.js` — services transverses solo
-- `CSS/tokens.css` — design tokens néon partagés ; `CSS/multi.css` — styles dédiés au multi ; `CSS/coming-soon.css` — placeholders mini-jeux
-- `Assets/` — UI (logo, personnages) ; `Medias/<Type>/` — assets de jeu
-- `Python/*.py` — outils admin hors-ligne (scraping assets, compression images, normalisation audio)
+- **Entrée** : `index.html`/`JS/index.js` (profils, entrée multi) ; `HTML/hub.html`/`JS/hub.js` (hub solo, déblocage hardcore)
+- **Modes solo** : `HTML/<mode>.html` + `JS/<mode>.js` (9 modes, dont `geo`) ; rendu d'indices factorisé dans `JS/hint-renderers.js` (partagé solo ⇄ multi)
+- **Chambre** : `HTML/chamber.html`/`JS/chamber.js` (zones cliquables) → Trophées (`trophy.*` + `JS/achievements.js`) et mode `geo`
+- **Multi** : `HTML/multi-*.html` + `JS/multi/*.js` (firebase, scoring, lobby, host-engine, round-client, scoreboard)
+- **Couche partagée solo** : `gameUtils.js` (timer/score/validation/abandon/`revealTitle`), `state/{profileStore,gameProgress,modeReset}.js`, `ui/dialog.js` (modales), `achievements.js`, `hellMode.js`, `gameCompletion.js`, `saveManager.js`, `dialogue.js`
+- **Données & style** : `gamesDatabase.js` + `abbreviations.js` ; `Assets/` (UI) et `Medias/<Type>/` (jeu) ; `CSS/tokens.css` (design tokens néon), `CSS/multi.css`, `CSS/coming-soon.css`
+- **Outils admin** : `Python/*.py` (génération d'assets : captures, silhouettes, sons, panoramas 360)
 
 ## III. Pile Technologique
 
-*Aucun fichier de manifest (pas de `package.json`). Versions runtime déterminées par le navigateur cible. N'introduisez aucune dépendance front/back sans approbation.*
+*Aucun manifest (pas de `package.json`), pas de build step. N'introduisez aucune dépendance sans approbation.*
 
-- **Front** : HTML5, CSS3 (variables custom, animations néon, `prefers-reduced-motion` respecté), JavaScript ES6+ modules natifs
-- **CDN runtime pinné** : `anime.js 3.2.1` (logo `index.html`, avec SRI), `tone@15.1.22` + `@tonejs/midi@2.0.28` (mode MIDI), `canvas-confetti@1.9.3` (multi), `@photo-sphere-viewer/core@5` (mode Geo — panorama 360° via esm.sh)
-- **Multi** : Firebase Realtime Database + Anonymous Auth via CDN ESM (App Check en pause — cf. #44)
-- **Persistance** : `window.localStorage` (clés racine : `profiles`, `currentProfile` ; alias éphémère multi : `gtg_multi_last_alias`)
-- **Outils admin (hors web)** : Python 3 + `Pillow`, `requests`, `duckduckgo_search`, `yt_dlp`, `rembg`, `ffmpeg-normalize`, Tkinter — cf. `Python/requirements.txt`
+- **Front** : HTML5, CSS3 (variables custom, animations néon, `prefers-reduced-motion`), JavaScript ES6+ modules natifs
+- **CDN runtime pinné** : `anime.js 3.2.1` (SRI), `tone@15.1.22` + `@tonejs/midi@2.0.28` (MIDI), `canvas-confetti@1.9.3` (multi), `@photo-sphere-viewer/core@5` (Geo 360°) — via esm.sh
+- **Multi** : Firebase Realtime Database + Anonymous Auth via CDN ESM (App Check désactivé)
+- **Persistance** : `window.localStorage` (clés racine `profiles`, `currentProfile` ; alias éphémère multi `gtg_multi_last_alias`)
+- **Outils admin (hors web)** : Python 3 + `Pillow`, `yt_dlp`, `rembg`, `ffmpeg`/`ffmpeg-normalize`, Tkinter — cf. `Python/requirements.txt`
 
 ## IV. Garde-Fous non négociables
 
-1. **Vanilla JS, pas de bundler** : aucun npm/yarn, aucun `package.json`, aucun build step. Les dépendances externes (Firebase, Tone.js) sont importées via CDN ESM. Le **solo** doit rester 100 % `file://`-compatible (ouverture directe d'`index.html` par double-clic). Le **multijoueur** dépend de Firebase + connexion réseau — c'est l'unique exception documentée.
-2. **Persistance solo unique via `localStorage`** : exactement deux clés racine (`profiles` = tableau JSON, `currentProfile` = string pseudo). Ne jamais stocker l'objet profil entier dans `currentProfile`. Le multi n'écrit **jamais** dans le `localStorage` solo (alias éphémères, pas de pollution croisée).
-3. **Factorisation obligatoire via `gameUtils.js` + `hint-renderers.js` + `state/*` + `ui/dialog.js`** : tout module de mode consomme `gameUtils.js` (timer, score, validation, abandon, `resetGameUI`, `revealTitle`), les renderers d'indices de `hint-renderers.js`, `state/profileStore.js` pour les lectures/écritures de profil, `state/gameProgress.js` pour la persistance du jeu en cours, et `ui/dialog.js` pour les modales (`showAlert/Confirm/Prompt`). **Aucun `alert/prompt/confirm` natif, aucun `onclick` inline HTML, aucun `JSON.parse(localStorage.getItem('profiles'))` direct.**
-4. **Convention de nommage des assets** : `Medias/<Type>/<Title> <N>.<ext>` (`<Title>` identique au champ `title` de `gamesDatabase.js`, espaces inclus). Toute renomination doit propager dans le code ET les fichiers.
-5. **Chemins relatifs depuis HTML** : un `<script type="module">` chargé par `HTML/x.html` voit les imports relatifs à la page HTML — toujours `'../JS/...'` et `'../Medias/...'`.
-6. **Pas d'injection HTML utilisateur** : pseudos (solo ET multi) et texte saisi sont rendus via `innerText` ou échappés via `escapeHtml()`. Jamais `innerHTML` direct sur du contenu utilisateur.
-7. **Multi : seul l'hôte écrit dans `game/`** : les règles RTDB l'imposent. Les autres clients écrivent uniquement leur propre `players/{uid}` et `currentRound/results/{uid}`. Toute transition de manche passe par `host-engine.js`.
-8. **Auto-documentation des modules** : tout nouveau fichier `JS/*.js` publie en tête un commentaire d'en-tête (rôle, invariants, IDs DOM attendus, dépendances), à l'image de `gameUtils.js` et `hint-renderers.js`.
+1. **Vanilla JS, pas de bundler** : aucun npm/`package.json`/build. Deps via CDN ESM. Le **solo** reste 100 % `file://`-compatible (double-clic `index.html`) ; le **multi** (Firebase + réseau) est l'unique exception.
+2. **Persistance solo via `localStorage`** : exactement deux clés racine (`profiles` = tableau, `currentProfile` = pseudo string). Jamais l'objet profil entier dans `currentProfile`. Le multi n'écrit jamais dans le localStorage solo.
+3. **Factorisation obligatoire** : tout mode consomme `gameUtils.js`, les renderers de `hint-renderers.js`, `state/profileStore.js` (profil), `state/gameProgress.js` (jeu en cours), `ui/dialog.js` (modales). **Aucun `alert/prompt/confirm` natif, aucun `onclick` inline, aucun `JSON.parse(localStorage.getItem('profiles'))` direct.**
+4. **Convention d'assets** : `Medias/<Type>/<Title> <N>.<ext>` (`<Title>` = champ `title` de `gamesDatabase.js`, espaces inclus). Toute renomination propage code ET fichiers.
+5. **Chemins relatifs depuis HTML** : un `<script type="module">` d'`HTML/x.html` voit `'../JS/...'` et `'../Medias/...'`.
+6. **Pas d'injection HTML utilisateur** : pseudos et texte saisi via `innerText`/`escapeHtml()`, jamais `innerHTML` direct.
+7. **Multi : seul l'hôte écrit dans `game/`** (règles RTDB). Les autres écrivent leur `players/{uid}` et `currentRound/results/{uid}` ; toute transition de manche passe par `host-engine.js`.
+8. **Auto-documentation** : tout nouveau `JS/*.js` publie un en-tête (rôle, invariants, IDs DOM attendus, dépendances).
 
 ## V. Flux de Travail (Explore → Plan → Code → Verify)
 
-1. **Exploration** — lire le mode voisin le plus proche pour calquer le pattern (timer, scoring, indices, abandon)
-2. **Planification** — soumettre l'approche à l'utilisateur pour tout changement de schéma `Profile`, d'API de `gameUtils.js`, ou de structure d'asset
-3. **TDD** — non outillé ; à défaut, écrire un scénario de test manuel reproductible avant d'implémenter (cf. `docs/architecture.md` §14)
-4. **Implémentation** — code minimal pour faire passer le scénario ; respecter les garde-fous IV
-5. **Vérification** — ouvrir `index.html` dans le navigateur, tester le flow end-to-end, inspecter `localStorage` via DevTools
+1. **Exploration** — lire le mode voisin le plus proche pour calquer le pattern.
+2. **Planification** — soumettre l'approche pour tout changement de schéma `Profile`, d'API `gameUtils.js`, ou de structure d'asset.
+3. **Test** — non outillé côté navigateur ; écrire un scénario manuel reproductible avant d'implémenter (les modules à logique pure, ex. `achievements.js`, sont testables en Node).
+4. **Implémentation** — code minimal, garde-fous IV respectés, en-tête de module (IV.8).
+5. **Vérification** — `python -m http.server 8000`, tester le flow end-to-end, inspecter `localStorage` via DevTools.
 
 ## VI. Commandes de Développement
 
 ```bash
-# Lancer l'application — option 1 : ouverture directe
-start index.html          # Windows
-open index.html            # macOS
-xdg-open index.html        # Linux
+# Lancer l'app
+start index.html               # solo, ouverture directe (file://) — Windows (open / xdg-open ailleurs)
+python -m http.server 8000     # solo + multi + mode Geo → http://localhost:8000/
 
-# Lancer l'application — option 2 : serveur HTTP statique local
-python -m http.server 8000
-# → http://localhost:8000/
-
-# Outils admin (hors-ligne, prérequis : pip install -r Python/requirements.txt)
-python Python/image.py              # captures de gameplay (Tkinter UI)
-python Python/pixelated.py          # jaquettes pixelisées
-python Python/shadow.py             # silhouettes (rembg IA)
-python Python/sound.py              # bandes-son (yt-dlp + Tkinter)
-python Python/check_assets.py       # audit : quels assets manquent
-python Python/fill_midi.py          # complète slot-par-slot les MIDI manquants
-python Python/fill_sound.py         # idem pour les MP3
-python Python/normalize_sounds.py   # EBU R128 -16 LUFS sur tous les MP3
-python Python/rembg_shadow.py       # détoure une image vers silhouette
-python Python/rembg_perso.py        # détoure les avatars narrateur (perso N.jpg -> PNG transparent)
-python Python/standardize_pixels.py # downscale 30px d'un dossier de jaquettes
-python Python/compress_images.py    # compression batch quality 90 (idempotent)
-python Python/geo_fetch.py --search "Minecraft 360 VR"                       # cherche des vidéos 360 de jeux (mode Geo)
-python Python/geo_fetch.py --url "URL" --title "Jeu" --times 00:20 01:10     # extrait des panoramas 360 → Medias/Geo/
-python Python/geo_declare.py                                                 # déclare les champs geo dans gamesDatabase (scanne Medias/Geo/)
-python Python/geo_ingest.py                                                  # ingère des captures 360 (Ansel) rangées dans Medias/Geo/_inbox/<Titre>/
+# Outils admin Python (prérequis : pip install -r Python/requirements.txt)
+python Python/check_assets.py                       # audit des assets manquants
+python Python/{image,pixelated,shadow,sound}.py     # génération d'assets par mode (Tkinter / rembg / yt-dlp)
+python Python/normalize_sounds.py                   # normalisation audio EBU R128
+python Python/compress_images.py                    # compression batch idempotente
+# Mode Geo (panoramas 360°) :
+python Python/geo_fetch.py --search "<jeu> 360 VR"                          # trouver une vidéo 360
+python Python/geo_fetch.py --url "URL" --title "<Jeu>" --times 00:20 01:10  # extraire des panoramas
+python Python/geo_ingest.py                                                 # ingérer des captures Ansel (Medias/Geo/_inbox/<Titre>/)
+python Python/geo_declare.py                                                # déclarer les champs geo dans gamesDatabase
 ```
 
 ## VII. Maintenance documentaire
 
-**Règle d'or** : le diff du code et le diff de la doc correspondante doivent être dans **le même commit**.
+**Règle d'or** : le diff du code et celui de la doc correspondante doivent être dans **le même commit**.
 
-| Modification | Fichier à mettre à jour |
+| Modification | Fichier(s) à mettre à jour |
 |---|---|
-| Nouveau mode de jeu (HTML + JS + entrée `modes`) | `docs/architecture.md` §3 (catalogue) + §4 (init `scoresByMode`) + `JS/hub.js` (`modeNeonMapping`, `hardcoreConfig`) + nouveau renderer dans `JS/hint-renderers.js` + entrée `<option>` dans `HTML/multi-lobby.html` + clé dans `inProgressGames` |
-| Nouveau champ dans l'objet `Profile` | `docs/architecture.md` §4 + migration paresseuse dans `gameUtils.js::initializeProfile()` |
-| Nouveau jeu dans le catalogue | `JS/gamesDatabase.js` + assets `Medias/<Type>/<Title> N.ext` selon §6 |
-| Nouvelle abréviation acceptée | Table `abbreviations` de `JS/abbreviations.js` |
-| Modification de l'API de `gameUtils.js` ou `hint-renderers.js` | `docs/architecture.md` §7 (catalogue de fonctions) |
-| Modification du schéma RTDB multi | `docs/architecture.md` §15 (multi) + règles `database.rules.json` dans la console Firebase |
-| Nouvel anti-pattern découvert | `docs/architecture.md` §11 |
-| Modification de la convention d'asset | `docs/architecture.md` §6 + scripts `Python/*.py` |
-| Nouveau dialogue / modale | utiliser `JS/ui/dialog.js` (`showAlert`/`showConfirm`/`showPrompt`) — jamais d'`alert`/`confirm`/`prompt` natifs |
-| Lecture/écriture de profil | passer par `JS/state/profileStore.js` — jamais de `JSON.parse(localStorage.getItem('profiles'))` direct |
-| Nouveau succès / modification du catalogue | `JS/achievements.js` (`MODES`/`TIERS`/`ACHIEVEMENTS`, `check(profile)` dérivé) + `docs/architecture.md` §4. Le palier « Éclair » lit `slowestAnswerByMode` (alimenté par `gameUtils.updateProfile`) |
-| Modification du mode Enfer (fenêtre 666–777, palette) | `JS/hellMode.js` (`HELL_THRESHOLD`/`HELL_MAX`) + `CSS/tokens.css` (`html.gtg-hell`) — appliqué via `applyHellMode()` dans `gameUtils.updateScoreboard`, `hub.js`, `chamber.js`, `trophy.js` |
-| Réinitialiser un mode (retenter Sans-faute/Éclair) | `JS/state/modeReset.js::resetModeProgress` + bouton « Rejouer » dans `JS/trophy.js` ; `keyedModes` (dans `gameCompletion.js`) bloque le farm de clés |
+| Nouveau mode de jeu | `docs/architecture.md` §3-4 + `JS/hub.js` (`modeNeonMapping`) + renderer dans `hint-renderers.js` + entrée `modes` (`gameUtils`) + succès (`achievements.js` `MODES`) |
+| Nouveau champ `Profile` | `docs/architecture.md` §4 + migration paresseuse dans `gameUtils.js::initializeProfile()` |
+| Nouveau jeu / abréviation | `JS/gamesDatabase.js` (+ assets IV.4) / table `JS/abbreviations.js` |
+| API `gameUtils.js` / `hint-renderers.js` | `docs/architecture.md` §7 |
+| Schéma RTDB multi | `docs/architecture.md` §15 + règles `database.rules.json` (console Firebase) |
+| Convention d'asset / nouvel anti-pattern | `docs/architecture.md` §6 (+ `Python/*.py`) / §11 |
+| Mode Geo (assets, viewer) | `Python/geo_*.py`, `hint-renderers.js` (`renderHintGeo`/`cleanupGeo`), `README.md` (guide) |
+| Mode Enfer (fenêtre 666–777) | `JS/hellMode.js` (`HELL_THRESHOLD`/`HELL_MAX`) + `CSS/tokens.css` (`html.gtg-hell`) |
 
 ## VIII. Contexte de Session
 
-- **Dernier focus** : nouveau mode **Geo** — panorama 360° explorable (Photo Sphere Viewer via esm.sh), accès par la zone `geo` de la chambre (ex-`xxx`), renderer async `renderHintGeo` + `cleanupGeo` (anti-fuite WebGL), assets `Medias/Geo/<Title> N.jpg` equirectangulaires (1 panorama de **démo** en place, à remplacer)
-- **Focus immédiat** : fournir de vrais panoramas 360° ; repositionner la zone `#zone-geo` de la chambre ; puis epic 2 — empaquetage mobile **Capacitor**
+- **Dernier focus** : mode **Geo** livré (panorama 360° Photo Sphere Viewer, accès chambre zone `geo`, renderer async + `cleanupGeo` anti-fuite WebGL, 8 jeux) ; outils Python `geo_fetch` / `geo_ingest` (captures Ansel) / `geo_declare` ; guide dans le README.
+- **Focus immédiat** : enrichir le catalogue Geo (vidéos 360 / captures maison) ; repositionner `#zone-geo` ; puis epic 2 — app mobile **Capacitor**.
