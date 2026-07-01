@@ -129,6 +129,14 @@ export function updateProfile(currentProfile, gameTitle, isGoodAnswer, gameMode)
         // Modifie uniquement le score du mode actuel
         currentProfile.scoresByMode[gameMode].badAnswers++;
     }
+    // Preserve les seenAchievements ecrits par la notification in-game : sans ca,
+    // l'objet currentProfile en memoire du mode (qui ignore cette liste)
+    // ecraserait a chaque reponse les succes deja vus -> le meme succes (ex "666")
+    // re-notifierait a chaque bonne/mauvaise reponse.
+    const stored = getCurrentProfile();
+    if (stored && Array.isArray(stored.seenAchievements)) {
+        currentProfile.seenAchievements = stored.seenAchievements;
+    }
     saveProfile(currentProfile);
     // Signale aux ecouteurs (achievements.watchAchievements) qu'un succes a pu
     // tomber -> notification PENDANT la partie. Event decouple = pas de cycle.
