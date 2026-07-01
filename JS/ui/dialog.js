@@ -224,8 +224,10 @@ function openModal({ type, message, options = {} }) {
         const actions = document.createElement('div');
         actions.className = 'gtg-dialog-actions';
 
+        let closed = false;
         const close = (result) => {
-            backdrop.removeEventListener('keydown', onKey);
+            if (closed) return;
+            closed = true;
             document.removeEventListener('keydown', onDocKey, true);
             backdrop.remove();
             resolve(result);
@@ -261,22 +263,32 @@ function openModal({ type, message, options = {} }) {
             okBtn.focus();
         }
 
-        // Clavier
-        const onKey = (e) => {
-            if (e.key === 'Enter' && type === 'prompt' && document.activeElement === input) {
-                e.preventDefault();
-                close(input.value);
-            }
-        };
+        // Clavier : on capture au niveau document (phase CAPTURE) pour que la
+        // modale traite Enter/Escape AVANT les raccourcis clavier de la page
+        // derriere. Sans ca, l'Enter qui valide la modale se propage jusqu'a
+        // index.js (qui, sur Enter, tente de lancer un profil -> "Aucun profil
+        // selectionne"). stopPropagation neutralise cette fuite.
         const onDocKey = (e) => {
-            if (e.key === 'Escape') {
+            if (e.key === 'Enter') {
                 e.preventDefault();
+                e.stopPropagation();
+                if (type === 'prompt') close(input.value);
+                else if (type === 'confirm') close(true);
+                else close();
+            } else if (e.key === 'Escape') {
+                e.preventDefault();
+                e.stopPropagation();
                 if (type === 'prompt') close(null);
                 else if (type === 'confirm') close(false);
                 else close();
+            } else if (type !== 'prompt' &&
+                (e.key === ' ' || e.key === 'ArrowLeft' || e.key === 'ArrowRight' ||
+                 e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
+                // Neutralise la navigation clavier de la page derriere la modale
+                // (sauf en prompt, ou l'utilisateur doit pouvoir taper espace/fleches).
+                e.stopPropagation();
             }
         };
-        backdrop.addEventListener('keydown', onKey);
         document.addEventListener('keydown', onDocKey, true);
     }));
     modalQueue = next.catch(() => {}); // re-armer la queue meme en cas d'erreur
