@@ -2,6 +2,8 @@ import { showCharacter } from './dialogue.js';
 import { exportSave } from './saveManager.js';
 import { getProfiles } from './gameUtils.js';
 import { showAlert } from './ui/dialog.js';
+import { syncSeenAchievements, showAchievementToast } from './achievements.js';
+import { applyHellMode } from './hellMode.js';
 
 function refreshProfileData() {
     // On recharge les profils depuis le localStorage
@@ -229,6 +231,19 @@ refreshProfileData();
 updateTime();
 setInterval(updateTime, 60000); // Mise à jour toutes les minutes
 window.addEventListener('DOMContentLoaded', () => {
-    // On appelle le personnage avec le dialogue associé
+    // On appelle le personnage avec le dialogue associé.
+    // showCharacter() incremente visitCount -> l'appeler AVANT la detection
+    // des succes pour que "Habitué" (10 visites) tombe des la 10e visite.
     showCharacter();
+
+    // Detection des succes fraichement debloques (jeux devines, cles, modes
+    // hardcore, visites...) -> toast neon non-bloquant pour chacun.
+    // Baseline silencieuse au tout premier passage (pas de spam retroactif).
+    const { newly } = syncSeenAchievements();
+    newly.forEach((def, i) => {
+        setTimeout(() => showAchievementToast(def), i * 250);
+    });
+
+    // Theme Enfer si le profil a franchi 666 mauvaises reponses.
+    applyHellMode(getProfiles().find(p => p.pseudo === localStorage.getItem('currentProfile')));
 });

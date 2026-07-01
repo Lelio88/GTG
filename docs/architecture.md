@@ -124,7 +124,8 @@ Stocké dans `localStorage['profiles']` sous la forme d'un tableau (max 4 entré
     full: [], image: [], sound: [], text: [],
     midi: [], shadow: [], pixelated: [], emoji: []
   },
-  completedModes: ['full'],           // modes 100 % terminés
+  completedModes: ['full'],           // modes 100 % terminés (peut être vidé par un reset)
+  keyedModes: ['full'],               // modes ayant déjà octroyé une clé (jamais vidé → anti-farm)
   unlockedModes: ['pixelated'],       // modes hardcore débloqués via chambre
   keys: 1,                            // clés disponibles pour ouvrir la chambre
   visitCount: 12,                     // visites du hub (utilisé par dialogue.js)
@@ -132,11 +133,21 @@ Stocké dans `localStorage['profiles']` sous la forme d'un tableau (max 4 entré
     full:  'A Plague Tale',           // null/absent si aucune partie en cours
     image: null,
     sound: 'Hollow Knight'
-  }
+  },
+  slowestAnswerByMode: {              // pire temps (s) d'une BONNE réponse, par mode
+    full: 7.4                          // absent tant qu'aucune bonne réponse dans le mode
+  },
+  seenAchievements: ['complete-full', 'flawless-full']  // IDs de succès déjà notifiés (cf. JS/achievements.js)
 }
 ```
 
-**Migration legacy** : `initializeProfile(profile)` dans `gameUtils.js` ajoute idempotemment les champs `scoresByMode` et `guessedGamesByMode` aux anciens profils ne possédant que `goodAnswers` / `badAnswers`. Tout nouveau champ doit suivre le même pattern d'initialisation paresseuse. `inProgressGames` est créé à la première écriture par `JS/state/gameProgress.js`.
+**Migration legacy** : `initializeProfile(profile)` dans `gameUtils.js` ajoute idempotemment les champs `scoresByMode`, `guessedGamesByMode` et `slowestAnswerByMode` aux anciens profils. Tout nouveau champ doit suivre le même pattern d'initialisation paresseuse. `inProgressGames` est créé à la première écriture par `JS/state/gameProgress.js`. `seenAchievements` est créé à la première synchro par `JS/achievements.js` (baseline silencieuse : l'état débloqué courant est marqué « vu » sans notifier).
+
+**Succès (`JS/achievements.js`)** : catalogue = **8 modes × 3 paliers** — *Complété* (`completedModes.includes(mode)`), *Sans-faute* (+ `scoresByMode[mode].badAnswers === 0`), *Éclair* (+ `slowestAnswerByMode[mode] < 10 s`) — plus **1 succès « 666 mauvaises réponses »**. Tout est **dérivé** des champs existants, jamais dupliqué. `slowestAnswerByMode[mode]` est le max des temps de bonnes réponses, enregistré par `updateProfile` (horodatage posé par `startTimer`). Les succès sont notifiés **en jeu** au moment où ils tombent : `updateProfile` / `handleGameCompletion` émettent un `CustomEvent('gtg:profile-updated')` écouté par `achievements.watchAchievements()` (installé depuis `gameCompletion.js`, importé par les 8 modes → toast + son sans toucher les fichiers de mode). Le hub garde un `syncSeenAchievements()` de rattrapage au chargement.
+
+**Thème Enfer** : `JS/hellMode.js` pose la classe `gtg-hell` sur `<html>` quand le total de mauvaises réponses est **entre 666 (`HELL_THRESHOLD`) et 777 (`HELL_MAX`)** — au-delà de 777, « rédemption », le thème se retire ; surcharge des tokens néon dans `CSS/tokens.css` → `html.gtg-hell`. Le succès « 666 » reste, lui, acquis à jamais dès 666.
+
+**Rejouer un mode** : `JS/state/modeReset.js::resetModeProgress(mode)` remet un mode à zéro (jeux devinés, scores, temps) et le retire de `completedModes` pour retenter les paliers *Sans-faute* / *Éclair*. `keyedModes` (modes ayant déjà octroyé une clé, **jamais vidé**) empêche le re-gain de clé à la re-complétion — cf. `gameCompletion.handleGameCompletion`. Bouton « ↻ Rejouer » par mode sur la page Trophées.
 
 **Accès** : passer par `JS/state/profileStore.js`. **Aucun `JSON.parse(localStorage.getItem('profiles'))` direct** dans le code consommateur — utiliser `profileStore.getCurrent()` / `getAll()` / `updateCurrent(fn)` / `subscribe(cb)`.
 

@@ -1,13 +1,26 @@
 import { profileStore } from './state/profileStore.js';
 import { showAlert } from './ui/dialog.js';
+import { watchAchievements } from './achievements.js';
+
+// Installe l'ecoute des succes in-game des qu'une page de mode est chargee :
+// les 8 modes importent gameCompletion, donc le toast + son tombent PENDANT la
+// partie, au moment ou un succes est debloque (sans toucher les fichiers de mode).
+watchAchievements();
 
 export function handleGameCompletion(currentProfile, gameMode) {
-    // Mise a jour atomique via le store : ajoute le mode aux completedModes
-    // et incremente les cles si c'est la 1ere fois qu'on termine ce mode.
+    // Mise a jour atomique via le store : ajoute le mode aux completedModes et
+    // incremente les cles UNIQUEMENT la 1ere fois qu'on le termine, tracee via
+    // keyedModes (jamais vide, meme au reset d'un mode) -> re-terminer un mode
+    // reinitialise ne re-donne pas de cle (anti-farm).
     const updated = profileStore.updateCurrent((profile) => {
         if (!profile.completedModes) profile.completedModes = [];
+        // Migration : les modes deja completes ont deja octroye leur cle.
+        if (!Array.isArray(profile.keyedModes)) profile.keyedModes = [...profile.completedModes];
         if (!profile.completedModes.includes(gameMode)) {
             profile.completedModes.push(gameMode);
+        }
+        if (!profile.keyedModes.includes(gameMode)) {
+            profile.keyedModes.push(gameMode);
             profile.keys = (profile.keys || 0) + 1;
         }
         return profile;
@@ -16,6 +29,12 @@ export function handleGameCompletion(currentProfile, gameMode) {
     // Utilise le profil mis a jour (ou celui passe en param en fallback)
     // pour le message de felicitations.
     const pseudo = (updated && updated.pseudo) || currentProfile.pseudo;
+
+    // Notifie les succes de completion (Complete / Sans-faute / Eclair) au
+    // moment meme, avant la redirection vers le hub.
+    if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('gtg:profile-updated'));
+    }
 
     // Affichage d'un message de félicitations puis redirection vers le hub
     showAlert(`Tu as trouvé tous les jeux du mode ${gameMode} !`, {

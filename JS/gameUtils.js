@@ -4,6 +4,7 @@
 
 import { abbreviations } from './abbreviations.js';
 import { showAlert, ensureStyles as ensureDialogStyles } from './ui/dialog.js';
+import { applyHellMode } from './hellMode.js';
 
 /**
  * Get all profiles from localStorage.
@@ -87,6 +88,12 @@ export function initializeProfile(currentProfile) {
             }
         });
     }
+
+    // Suivi du pire temps de réponse par mode (succès "Éclair"). Créé
+    // paresseusement ; rempli au fil des bonnes réponses par updateProfile.
+    if (!currentProfile.slowestAnswerByMode) {
+        currentProfile.slowestAnswerByMode = {};
+    }
     return currentProfile;
 }
 
@@ -108,11 +115,26 @@ export function updateProfile(currentProfile, gameTitle, isGoodAnswer, gameMode)
     if (isGoodAnswer) {
         // Modifie uniquement le score du mode actuel
         currentProfile.scoresByMode[gameMode].goodAnswers++;
+        // Suivi du pire temps d'une BONNE reponse du mode (succes "Eclair").
+        // Une mauvaise reponse casse deja "sans faute" via badAnswers -> inutile
+        // de tracker son temps. On garde le max : si une seule question a depasse
+        // 10 s, le succes vitesse du mode est perdu.
+        const elapsed = getElapsedQuestionSeconds();
+        if (elapsed != null) {
+            if (!currentProfile.slowestAnswerByMode) currentProfile.slowestAnswerByMode = {};
+            const prev = currentProfile.slowestAnswerByMode[gameMode];
+            currentProfile.slowestAnswerByMode[gameMode] = (prev == null) ? elapsed : Math.max(prev, elapsed);
+        }
     } else {
         // Modifie uniquement le score du mode actuel
         currentProfile.scoresByMode[gameMode].badAnswers++;
     }
     saveProfile(currentProfile);
+    // Signale aux ecouteurs (achievements.watchAchievements) qu'un succes a pu
+    // tomber -> notification PENDANT la partie. Event decouple = pas de cycle.
+    if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('gtg:profile-updated'));
+    }
 }
 
 /**
@@ -147,7 +169,17 @@ export function getAvailableGames(games, currentProfile, gameMode) {
  * Start the timer and return the interval ID
  * @returns {number} The interval ID
  */
+// Horodatage du debut de la question courante (succes "Eclair" : <10s/question).
+// Pose par startTimer, lu par updateProfile. Un seul timer actif a la fois.
+let questionStartMs = null;
+
+function getElapsedQuestionSeconds() {
+    if (questionStartMs == null) return null;
+    return (Date.now() - questionStartMs) / 1000;
+}
+
 export function startTimer() {
+    questionStartMs = Date.now();
     let seconds = 0;
     return setInterval(() => {
         seconds++;
@@ -220,6 +252,8 @@ export function updateScoreboard(currentProfile, gameMode) {
         : { goodAnswers: 0, badAnswers: 0 };
     document.getElementById('good-answers').innerText = stats.goodAnswers;
     document.getElementById('bad-answers').innerText = stats.badAnswers;
+    // Bascule le theme Enfer si le profil a franchi 666 mauvaises reponses.
+    applyHellMode(currentProfile);
 }
 
 /**

@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trophées — À venir</title>
+    <title>Trophées</title>
     <link rel="icon" type="image/svg+xml" href="../Assets/logo.svg">
     <link rel="alternate icon" href="../Assets/Logo.png">
-    <link rel="stylesheet" href="../CSS/coming-soon.css">
+    <link rel="stylesheet" href="../CSS/trophy.css">
 </head>
 <body>
-    <main class="placeholder-card">
-        <div class="placeholder-icon" aria-hidden="true">🏆</div>
-        <p class="placeholder-eyebrow">À venir</p>
-        <h1 class="placeholder-title">Trophées</h1>
-        <p class="placeholder-text">
-            Le panthéon de tes plus belles performances se prépare.
-            Reviens bientôt pour découvrir tes hauts faits.
-        </p>
-        <a href="./chamber.html" class="placeholder-back">Retour à la chambre</a>
+    <main class="trophy-page">
+        <header class="trophy-header">
+            <a href="./chamber.html" class="trophy-back">← Chambre</a>
+            <h1 class="trophy-title">Trophées</h1>
+            <p class="trophy-progress" id="trophy-progress">—</p>
+        </header>
+
+        <section class="trophy-grid" id="trophy-grid" aria-label="Liste des succès"></section>
     </main>
+
+    <script type="module" src="../JS/trophy.js"></script>
 </body>
 </html>

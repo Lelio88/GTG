@@ -78,7 +78,7 @@ Les assets multimédias (`Medias/Image/`, `Medias/Sound/`, etc.) ne sont **pas i
 - [x] 4 modes hardcore débloquables
 - [x] Système de profils + export/import
 - [x] **Mode multijoueur en ligne**
-- [ ] Système de succès / achievements
+- [x] Système de succès / achievements
 - [ ] Leaderboards permanents
 - [ ] Contenu de la chambre secrète
 - [ ] Thèmes visuels alternatifs

@@ -17,7 +17,8 @@ Topologie rapide :
 - `index.html` + `JS/index.js` — sélection de profil + entrée Multijoueur
 - `HTML/hub.html` + `JS/hub.js` — hub des modes solo, déblocage hardcore
 - `HTML/<mode>.html` + `JS/<mode>.js` — un duo par mode (8 modes solo)
-- `HTML/chamber.html` + `JS/chamber.js` — chambre + mini-jeux (placeholders pour 5 d'entre eux)
+- `HTML/chamber.html` + `JS/chamber.js` — chambre + zones cliquables (page Trophées câblée ; placeholders pour 4 mini-jeux)
+- `HTML/trophy.html` + `JS/trophy.js` — page Trophées (succès), consomme `JS/achievements.js`
 - `HTML/multi-lobby.html` + `JS/multi/lobby-entry.js` — création / jointure de room
 - `HTML/multi-room.html` + `JS/multi/room-entry.js` — room (lobby + partie + résultats)
 - `JS/hint-renderers.js` — renderers des indices factorisés (partagés solo ⇄ multi)
@@ -26,9 +27,10 @@ Topologie rapide :
 - `JS/abbreviations.js` — table des contractions, isolée pour le lazy-load
 - `JS/state/profileStore.js` — facade localStorage + observers cross-onglet
 - `JS/state/gameProgress.js` — jeu en cours par mode (anti-triche F5)
+- `JS/state/modeReset.js` — réinitialisation d'un mode (retenter les succès de performance)
 - `JS/ui/dialog.js` — modales néon (`showAlert/showConfirm/showPrompt`)
 - `JS/multi/*.js` — stack multi : firebase, scoring, lobby, host-engine, round-client, scoreboard, url-room
-- `JS/gameCompletion.js`, `JS/dialogue.js`, `JS/saveManager.js` — services transverses solo
+- `JS/gameCompletion.js`, `JS/dialogue.js`, `JS/saveManager.js`, `JS/achievements.js`, `JS/hellMode.js` — services transverses solo
 - `CSS/tokens.css` — design tokens néon partagés ; `CSS/multi.css` — styles dédiés au multi ; `CSS/coming-soon.css` — placeholders mini-jeux
 - `Assets/` — UI (logo, personnages) ; `Medias/<Type>/` — assets de jeu
 - `Python/*.py` — outils admin hors-ligne (scraping assets, compression images, normalisation audio)
@@ -84,6 +86,7 @@ python Python/fill_midi.py          # complète slot-par-slot les MIDI manquants
 python Python/fill_sound.py         # idem pour les MP3
 python Python/normalize_sounds.py   # EBU R128 -16 LUFS sur tous les MP3
 python Python/rembg_shadow.py       # détoure une image vers silhouette
+python Python/rembg_perso.py        # détoure les avatars narrateur (perso N.jpg -> PNG transparent)
 python Python/standardize_pixels.py # downscale 30px d'un dossier de jaquettes
 python Python/compress_images.py    # compression batch quality 90 (idempotent)
 ```
@@ -104,8 +107,11 @@ python Python/compress_images.py    # compression batch quality 90 (idempotent)
 | Modification de la convention d'asset | `docs/architecture.md` §6 + scripts `Python/*.py` |
 | Nouveau dialogue / modale | utiliser `JS/ui/dialog.js` (`showAlert`/`showConfirm`/`showPrompt`) — jamais d'`alert`/`confirm`/`prompt` natifs |
 | Lecture/écriture de profil | passer par `JS/state/profileStore.js` — jamais de `JSON.parse(localStorage.getItem('profiles'))` direct |
+| Nouveau succès / modification du catalogue | `JS/achievements.js` (`MODES`/`TIERS`/`ACHIEVEMENTS`, `check(profile)` dérivé) + `docs/architecture.md` §4. Le palier « Éclair » lit `slowestAnswerByMode` (alimenté par `gameUtils.updateProfile`) |
+| Modification du mode Enfer (fenêtre 666–777, palette) | `JS/hellMode.js` (`HELL_THRESHOLD`/`HELL_MAX`) + `CSS/tokens.css` (`html.gtg-hell`) — appliqué via `applyHellMode()` dans `gameUtils.updateScoreboard`, `hub.js`, `chamber.js`, `trophy.js` |
+| Réinitialiser un mode (retenter Sans-faute/Éclair) | `JS/state/modeReset.js::resetModeProgress` + bouton « Rejouer » dans `JS/trophy.js` ; `keyedModes` (dans `gameCompletion.js`) bloque le farm de clés |
 
 ## VIII. Contexte de Session
 
-- **Dernier focus** : —
+- **Dernier focus** : succès notifiés **en jeu** (event `gtg:profile-updated` + `watchAchievements`, toast Steam + son au moment du déblocage) ; thème Enfer en **fenêtre 666–777** ; **rejouer/réinitialiser un mode** depuis les Trophées (`modeReset.js`) avec anti-farm de clés (`keyedModes`)
 - **Focus immédiat** : —

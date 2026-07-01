@@ -1,0 +1,290 @@
+/* ============================================================
+   CSS/trophy.css — Page Trophées (succès solo)
+   Grille de cartes néon, consomme CSS/tokens.css.
+   ============================================================ */
+
+@import url('./tokens.css');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Grille cyberpunk en fond (comme coming-soon.css) */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 184, 107, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 184, 107, 0.05) 1px, transparent 1px);
+    background-size: 55px 55px;
+    background-position: center;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.trophy-page {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: clamp(1.5rem, 4vw, 3rem) var(--sp-4) var(--sp-8);
+}
+
+/* ===============================
+    Header
+=============================== */
+.trophy-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: var(--sp-3);
+    margin-bottom: var(--sp-6);
+}
+
+.trophy-back {
+    justify-self: start;
+    display: inline-block;
+    padding: 0.5rem 1.1rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--fs-sm);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--neon-primary);
+    text-decoration: none;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-pill);
+    transition: border-color var(--transition-base), box-shadow var(--transition-base), color var(--transition-base);
+}
+
+.trophy-back:hover {
+    color: var(--neon-cyan);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 14px rgba(0, 246, 255, 0.4);
+}
+
+.trophy-title {
+    grid-column: 2;
+    text-align: center;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--neon-primary), var(--neon-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.trophy-progress {
+    justify-self: end;
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    letter-spacing: 0.05em;
+    color: var(--neon-success);
+    text-shadow: 0 0 8px rgba(57, 255, 20, 0.4);
+    white-space: nowrap;
+}
+
+/* ===============================
+    Grille de succès
+=============================== */
+.trophy-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-6);
+}
+
+/* --- Groupe (un par mode + Malédiction) --- */
+.trophy-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+}
+
+.trophy-group__header {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    padding-bottom: var(--sp-2);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.trophy-group__icon {
+    font-size: 1.6rem;
+    line-height: 1;
+}
+
+.trophy-group__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--fs-md);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--neon-primary);
+    text-shadow: 0 0 10px rgba(255, 184, 107, 0.35);
+}
+
+.trophy-group__count {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    color: var(--text-secondary);
+}
+
+/* Bouton "Rejouer" du groupe (override du <button> global de tokens.css). */
+.trophy-replay {
+    margin: 0;
+    padding: 0.4rem 0.9rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--fs-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--neon-cyan);
+    background: transparent;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+}
+
+.trophy-replay:hover:not(:disabled) {
+    color: var(--bg-deep);
+    background: var(--neon-cyan);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 14px rgba(0, 246, 255, 0.5);
+    transform: none;
+    filter: none;
+}
+
+.trophy-group__items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: var(--sp-4);
+}
+
+.trophy-empty {
+    text-align: center;
+    padding: var(--sp-7) var(--sp-4);
+    color: var(--text-secondary);
+    font-size: var(--fs-md);
+    line-height: 1.6;
+}
+
+.trophy-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--sp-2);
+    padding: var(--sp-5) var(--sp-4);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    box-shadow: inset 0 0 24px rgba(255, 184, 107, 0.03), 0 4px 20px rgba(0, 0, 0, 0.4);
+    transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.trophy-card__icon {
+    font-size: 3rem;
+    line-height: 1;
+    margin-bottom: var(--sp-1);
+}
+
+.trophy-card__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--fs-md);
+    letter-spacing: 0.04em;
+    color: var(--text-primary);
+}
+
+.trophy-card__desc {
+    font-size: var(--fs-sm);
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.trophy-card__status {
+    margin-top: auto;
+    padding-top: var(--sp-2);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+/* --- État débloqué --- */
+.trophy-card.unlocked {
+    border-color: var(--neon-success);
+    box-shadow: 0 0 18px rgba(57, 255, 20, 0.18), inset 0 0 24px rgba(57, 255, 20, 0.06);
+}
+
+.trophy-card.unlocked:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 28px rgba(57, 255, 20, 0.35), inset 0 0 24px rgba(57, 255, 20, 0.08);
+}
+
+.trophy-card.unlocked .trophy-card__icon {
+    filter: drop-shadow(0 0 12px rgba(57, 255, 20, 0.55));
+}
+
+.trophy-card.unlocked .trophy-card__status {
+    color: var(--neon-success);
+    text-shadow: 0 0 8px rgba(57, 255, 20, 0.5);
+}
+
+/* --- État verrouillé --- */
+.trophy-card.locked {
+    opacity: 0.72;
+}
+
+.trophy-card.locked .trophy-card__icon {
+    filter: grayscale(1) brightness(0.7);
+    opacity: 0.55;
+}
+
+.trophy-card.locked .trophy-card__title {
+    color: var(--text-secondary);
+}
+
+.trophy-card.locked .trophy-card__status {
+    color: var(--text-dim);
+}
+
+.trophy-card.locked:hover {
+    border-color: var(--border-default);
+    transform: translateY(-2px);
+}
+
+/* ===============================
+    Responsive
+=============================== */
+@media (max-width: 600px) {
+    .trophy-header {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+    }
+    .trophy-back { justify-self: center; }
+    .trophy-title { grid-column: 1; }
+    .trophy-progress { justify-self: center; }
+    .trophy-group__items {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: var(--sp-3);
+    }
+}
