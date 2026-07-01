@@ -91,6 +91,7 @@ python Python/standardize_pixels.py # downscale 30px d'un dossier de jaquettes
 python Python/compress_images.py    # compression batch quality 90 (idempotent)
 python Python/geo_fetch.py --search "Minecraft 360 VR"                       # cherche des vidéos 360 de jeux (mode Geo)
 python Python/geo_fetch.py --url "URL" --title "Jeu" --times 00:20 01:10     # extrait des panoramas 360 → Medias/Geo/
+python Python/geo_declare.py                                                 # déclare les champs geo dans gamesDatabase (scanne Medias/Geo/)
 ```
 
 ## VII. Maintenance documentaire
