@@ -29,6 +29,10 @@ let cachedGame = null;
 let correctAnswerGiven = false;
 let gameImages = [];
 
+// Delai avant la modale : laisse la transition filter (0.5s de renderHintShadow)
+// se jouer -> la silhouette retrouve ses couleurs AVANT que la modale s'affiche.
+const SHADOW_REVEAL_MS = 600;
+
 // === Get current profile ===
 let currentProfile = getCurrentProfile();
 if (!currentProfile) {
@@ -84,13 +88,15 @@ function checkAnswer() {
     }
     
     if (checkAnswerValue(input, cachedTitle)) {
-        // Révélation de l'image (couleur)
+        // Révélation de l'image (couleur) : transition filter 0.5s.
         const imgElement = document.getElementById('game-image');
-        if(imgElement) imgElement.style.filter = 'none';
+        if (imgElement) imgElement.style.filter = 'none';
 
         updateProfileUtil(currentProfile, cachedTitle, true, 'shadow');
-        showCorrectAnswerFeedback(cachedTitle, timerInterval);
         correctAnswerGiven = true;
+        stopTimer(timerInterval);
+        // Laisse la silhouette retrouver ses couleurs AVANT d'afficher la modale.
+        setTimeout(() => showCorrectAnswerFeedback(cachedTitle, timerInterval), SHADOW_REVEAL_MS);
     } else {
         updateProfileUtil(currentProfile, cachedTitle, false, 'shadow');
         showIncorrectAnswerFeedback();
@@ -121,16 +127,30 @@ function nextQuestion() {
 }
 
 function abandonGame() {
-    // Révélation de l'image (couleur)
-    const imgElement = document.getElementById('game-image');
-    if(imgElement) {
-        imgElement.style.filter = 'none';
-    }
+    if (correctAnswerGiven) return; // deja resolu (reponse trouvee ou abandon en cours)
+    correctAnswerGiven = true;
+    stopTimer(timerInterval);
 
-    revealTitle(cachedTitle, { mode: 'modal', autoAdvance: true, delay: 2000 })
-        .then(() => {
-            abandonGameUtil(currentProfile, 'shadow', nextQuestion);
+    // Révélation de l'image (couleur) : transition filter 0.5s.
+    const imgElement = document.getElementById('game-image');
+    if (imgElement) imgElement.style.filter = 'none';
+
+    // Applique la penalite d'abandon TOUT DE SUITE, sans avancer (nextFn no-op),
+    // et affiche "Prochaine question" pour continuer quand on veut.
+    abandonGameUtil(currentProfile, 'shadow', () => {});
+    const nextBtn = document.getElementById('next-button');
+    if (nextBtn) nextBtn.style.display = 'block';
+
+    // Laisse les couleurs revenir AVANT la modale. dismissible : clic a cote =
+    // fermer sans avancer (le bouton "Prochaine question" reste dispo).
+    setTimeout(() => {
+        revealTitle(cachedTitle, {
+            mode: 'modal',
+            autoAdvance: false,
+            dismissible: true,
+            onConfirm: () => { if (typeof window.nextQuestion === 'function') window.nextQuestion(); },
         });
+    }, SHADOW_REVEAL_MS);
 }
 
 // Expose nextQuestion en global -- consommee par gameUtils.js

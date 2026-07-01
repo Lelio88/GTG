@@ -454,6 +454,7 @@ export function showCorrectAnswerFeedback(gameTitle, timerInterval) {
         delay: 2500,
         intro: 'Bravo !',
         accent: 'success',
+        dismissible: true, // clic a cote = fermer sans passer a la question suivante
         onConfirm: () => {
             if (typeof window.nextQuestion === 'function') {
                 window.nextQuestion();
@@ -505,6 +506,7 @@ export function revealTitle(title, options = {}) {
         intro = 'La réponse était :',
         accent = 'default',
         onConfirm = null,
+        dismissible = false, // true = clic sur le fond ferme la modale SANS enchainer
     } = options;
     const accentColor = accent === 'success' ? 'var(--neon-success, #39ff14)' : 'var(--neon-primary, #ffb86b)';
     const accentShadow = accent === 'success'
@@ -593,29 +595,37 @@ export function revealTitle(title, options = {}) {
                 if (e.key === 'Enter') {
                     e.preventDefault();
                     e.stopPropagation();
-                    cleanup(true);
+                    cleanup('confirm');
                 } else if (e.key === 'Escape') {
                     e.preventDefault();
                     e.stopPropagation();
-                    cleanup(false); // Escape = juste fermer, pas d'onConfirm
+                    cleanup('dismiss'); // Echap = fermer sans enchainer
                 }
             };
 
             let closed = false;
-            const cleanup = (manual) => {
+            // outcome : 'confirm' (OK/Enter) | 'auto' (auto-close) | 'dismiss'
+            // (Echap ou clic a cote). onConfirm n'est appele que sur 'confirm'.
+            const cleanup = (outcome) => {
                 if (closed) return;
                 closed = true;
                 document.removeEventListener('keydown', onKey, true);
                 if (overlay.parentNode) {
                     overlay.parentNode.removeChild(overlay);
                 }
-                if (manual && typeof onConfirm === 'function') {
+                if (outcome === 'confirm' && typeof onConfirm === 'function') {
                     onConfirm();
                 }
-                resolve();
+                resolve(outcome);
             };
 
-            okButton.onclick = () => cleanup(true);
+            okButton.onclick = () => cleanup('confirm');
+            // Clic a cote (sur le fond, pas la boite) : ferme SANS enchainer.
+            if (dismissible) {
+                overlay.addEventListener('click', (e) => {
+                    if (e.target === overlay) cleanup('dismiss');
+                });
+            }
             document.addEventListener('keydown', onKey, true);
 
             // Assemble modal
@@ -632,7 +642,7 @@ export function revealTitle(title, options = {}) {
             // Auto-advance after delay if enabled (sans onConfirm : l'auto-close
             // laisse l'utilisateur sur la page de victoire avec next-button visible)
             if (autoAdvance) {
-                setTimeout(() => cleanup(false), delay);
+                setTimeout(() => cleanup('auto'), delay);
             }
         } else {
             // Inline mode
