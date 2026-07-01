@@ -97,8 +97,12 @@ def extract_one(url, seconds, dest, tmpdir):
     code, out = run([
         'yt-dlp', url,
         '--download-sections', f'*{start}-{end}',
+        # Format equirectangulaire (les videos 360 ne le sont qu'en haute def ;
+        # les formats <=1440 sont souvent du 16:9 non-360). Pas de re-encodage
+        # (--force-keyframes) : simple copie de flux = bien plus rapide, la
+        # precision au keyframe n'importe pas pour extraire une image.
         '-f', 'bv*[height<=2160]/b',
-        '--no-warnings', '--force-keyframes-at-cuts',
+        '--no-warnings',
         '-o', str(seg),
     ])
     seg_files = list(Path(tmpdir).glob('seg.*'))
