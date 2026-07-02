@@ -103,7 +103,7 @@
 |---|---|
 | Violence, sang ou images sanglantes | **Oui** |
 | Peur (images/sons effrayants) | **Oui** |
-| Sexualité / aguichage / rencontres | **Non** *(vérifier captures Witcher/GTA)* |
+| Sexualité / aguichage / rencontres | **Non** *(vérifié : Witcher/GTA/MK = persos habillés, aucune scène sexuelle ni nudité)* |
 | Jeux d'argent (réels ou simulés) | **Non** |
 | Langage grossier | **Non** *(chat = contenu utilisateur, exclu)* |
 | Substances réglementées (drogue/alcool/tabac) | **Non** |
