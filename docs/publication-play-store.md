@@ -153,6 +153,24 @@
 
 ---
 
+### 6.2 Sous-questionnaire — Violence envers les êtres non humains
+
+| Question | Réponse |
+|---|---|
+| Cadre de la violence | **Fantastique** (démons, zombies, monstres, créatures) |
+| Style pixellisé ou enfantin | **Non** |
+| Réactions face à la violence | **Irréaliste** |
+| Comment la violence est présentée | ☑️ Rares en plan éloigné · ☑️ Rares en plan rapproché |
+| Importance du sang | **Modéré/limité** (zombies/créatures ensanglantés, occasionnel) |
+| Créatures se comportant comme des humains | **Oui** (zombies Red Dead/RE, infectés Last of Us = humains réanimés) |
+| Violence impliquant des animaux réels | **Non** (créatures fantastiques uniquement) |
+| Sons féroces / persos sinistres / tons sombres | **Oui** |
+
+> Différences vs section humains : cadre **Fantastique** (pas réaliste), sang **Modéré/limité**
+> (zombies gore) au lieu d'Aucune. Créatures human-like = Oui (les zombies sont d'anciens humains).
+
+---
+
 <!-- PARTIES SUIVANTES AJOUTÉES ICI AU FUR ET À MESURE
      (fiche du store, contenu de l'application, data safety, classification,
      public cible, versions/tests, etc.) -->
