@@ -232,6 +232,24 @@
 > Types à déclarer : Messages (chat) · App activity (parties) · Device/other IDs (UID anonyme).
 > Tout le reste = non collecté.
 
+### 8.1 Types de données collectées (matrice)
+
+**À cocher (4 seulement)** :
+| Catégorie | Sous-type | Source GTG |
+|---|---|---|
+| Messages | Autres messages via une appli | chat multi |
+| Activité dans les applis | Interactions avec l'appli | scores, statuts, mode |
+| Activité dans les applis | Autre contenu généré par l'utilisateur | pseudo (alias) |
+| Appareil ou autres ID | Appareil ou autres ID | UID anonyme Firebase |
+
+**Tout le reste = NON coché** : Emplacement, Informations personnelles (Nom/e-mail/ID/adresse/tél/
+origines/convictions/orientation/autres), Infos financières, Santé, Photos/vidéos, Fichiers audio,
+Fichiers/documents, Agenda, Contacts, (Activité : recherche/applis installées/autres actions),
+Navigation Web, Infos et performance (pas de Crashlytics/Analytics).
+
+> Pseudo classé en « contenu généré par l'utilisateur » (alias éphémère, pas une vraie identité ;
+> alternative acceptable = Personal info → Nom). Rien en « partagé avec des tiers » (Firebase = infra).
+
 ---
 
 <!-- PARTIES SUIVANTES AJOUTÉES ICI AU FUR ET À MESURE
