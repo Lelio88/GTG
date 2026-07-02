@@ -57,6 +57,20 @@
 
 ---
 
+## 3. Informations de connexion (App access)
+
+| Question | Réponse GTG |
+|---|---|
+| Une partie de votre appli est-elle limitée ? | **Non** (aucune section limitée) |
+
+> **Pourquoi Non** : aucune connexion à un compte requise. Le multijoueur utilise Firebase
+> **Auth anonyme** (automatique, transparente) — l'utilisateur ne saisit **aucun identifiant**
+> (e-mail, nom d'utilisateur, Google/SSO), il tape juste un pseudo → ne compte PAS comme
+> « informations de connexion ». Aucun paiement, parrainage/QR, code 2FA, biométrie, ni action
+> cross-device. → **Pas d'identifiants de test** à fournir aux examinateurs.
+
+---
+
 <!-- PARTIES SUIVANTES AJOUTÉES ICI AU FUR ET À MESURE
      (fiche du store, contenu de l'application, data safety, classification,
      public cible, versions/tests, etc.) -->
