@@ -71,6 +71,17 @@
 
 ---
 
+## 4. Annonces
+
+| Question | Réponse GTG |
+|---|---|
+| Votre application contient-elle des annonces ? | **Non, mon application ne contient pas d'annonces** |
+
+> GTG n'intègre aucun SDK publicitaire ni régie. Cohérent avec la politique de confidentialité
+> (« aucune publicité »). Évite le libellé « Contient des annonces » sur la fiche Play.
+
+---
+
 <!-- PARTIES SUIVANTES AJOUTÉES ICI AU FUR ET À MESURE
      (fiche du store, contenu de l'application, data safety, classification,
      public cible, versions/tests, etc.) -->
