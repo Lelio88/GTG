@@ -176,6 +176,8 @@
 | Question | Réponse |
 |---|---|
 | Éléments inclus | ☑️ **Effrayants** + ☑️ **Horrifiants** |
+| Fréquence des éléments effrayants | **Rare** |
+| Fréquence des éléments horrifiants | **Rare** |
 
 > Effrayants : ambiances sombres, mode Shadow, démons Doom, tension. Horrifiants : Outlast
 > (survival horror), Resident Evil, démons grotesques, zombies ensanglantés → contenu horreur
