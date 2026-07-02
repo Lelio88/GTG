@@ -292,6 +292,16 @@ Réponses transverses (à répéter pour chaque type) :
 
 ---
 
+## 12. Fiche Play Store — Catégorie
+
+| Question | Réponse |
+|---|---|
+| Catégorie | **Culture générale** (Trivia) ; alt : *Réflexion* (Puzzle) |
+
+> GTG = quiz de culture vidéoludique (identifier un jeu à partir d'indices) → catégorie Trivia.
+
+---
+
 <!-- PARTIES SUIVANTES AJOUTÉES ICI AU FUR ET À MESURE
      (fiche du store, contenu de l'application, data safety, classification,
      public cible, versions/tests, etc.) -->
