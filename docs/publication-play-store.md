@@ -133,6 +133,26 @@
 
 ---
 
+### 6.1 Sous-questionnaire — Violence envers les êtres humains
+
+| Question | Réponse |
+|---|---|
+| Cadre de la violence | **Réaliste** (GTA crime, CoD & Battlefield guerre) |
+| Style pixellisé ou enfantin | **Non** (rendu HD réaliste) |
+| Réactions face à la violence | **Réaliste** |
+| Comment la violence est présentée | ☑️ Rares en plan éloigné · ☑️ Rares en plan rapproché |
+| Importance du sang | **Aucune** (pas de sang sur les humains) |
+| Contexte réel/historique de guerre | **Oui** (CoD moderne, Battlefield WWI) |
+| Innocents/sans défense gravement blessés ou tués | **Non** (pas de gameplay violent — jeu de devinette) |
+| Sons féroces / persos sinistres / tons sombres | **Oui** (Outlast, Doom, RE, esthétique sombre) |
+
+> Vérifié sur captures : CoD (militaire réaliste, tanks), GTA (fusillade en voiture, style BD),
+> Battlefield (WWI, fusil FPS), + fantasy (God of War, Doom, Mortal Kombat). Violence humaine =
+> armes/combat/guerre **sans sang affiché**. ⚠️ Le sang apparaît sur des **non-humains** (zombies
+> Red Dead ensanglantés) → à déclarer dans la section « Violence envers non-humains ».
+
+---
+
 <!-- PARTIES SUIVANTES AJOUTÉES ICI AU FUR ET À MESURE
      (fiche du store, contenu de l'application, data safety, classification,
      public cible, versions/tests, etc.) -->

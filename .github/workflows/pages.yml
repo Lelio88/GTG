@@ -12,6 +12,13 @@ name: Deploy Pages
 on:
   push:
     branches: [main]
+    # Ne redéploie pas le site (945 Mo) pour des changements non-web.
+    paths-ignore:
+      - 'docs/**'
+      - 'mobile/**'
+      - 'Python/**'
+      - '.github/**'
+      - '**.md'
   workflow_dispatch:
 
 permissions:
