@@ -1,0 +1,16 @@
+{
+  "name": "gtg-mobile",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Empaquetage Capacitor (Android) de Guess The Game — le web est copié depuis la racine du repo vers www/ (aucun bundler, code vanilla inchangé).",
+  "scripts": {
+    "build:www": "node build-www.mjs",
+    "sync": "node build-www.mjs && cap sync",
+    "open:android": "cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.4.1",
+    "@capacitor/cli": "^8.4.1",
+    "@capacitor/core": "^8.4.1"
+  }
+}

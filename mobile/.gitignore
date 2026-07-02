@@ -1,0 +1,12 @@
+# Dépendances npm (réinstallables via `npm install`)
+node_modules/
+
+# Dossier web assemblé par build-www.mjs (régénérable, peut peser 940 Mo avec GTG_EMBED_MEDIA=1)
+www/
+
+# Le projet natif android/ EST versionné (config native), mais ses artefacts de
+# build sont ignorés par android/.gitignore (généré par Capacitor).
+# Copie des assets web dans le projet natif (régénérée par `cap sync`) :
+android/app/src/main/assets/public/
+android/app/src/main/assets/capacitor.config.json
+android/app/src/main/assets/capacitor.plugins.json
