@@ -221,6 +221,8 @@
 | L'appli collecte/partage-t-elle des données utilisateur ? | **Oui** (uniquement en multijoueur) |
 | Toutes les données chiffrées en transit ? | **Oui** (TLS/HTTPS Firebase) |
 | Méthodes de création de compte | **Aucune** → « Mon appli ne permet pas aux utilisateurs de créer un compte » (auth anonyme ; pseudo = nom d'affichage) |
+| Connexion via comptes externes | **Non** (pas de Google Sign-In / SSO) |
+| Moyen de demander la suppression des données | **Non** ⚠️ — `onDisconnect()` retire la présence live, mais chat/room orphelins persistent (pas de TTL implémenté dans le repo, pas de bouton « supprimer »). Données anonymes/minimales → acceptable. *Amélioration possible : cleanup auto → option « supprimées sous 90 jours ».* |
 
 > Solo = aucune collecte (`localStorage` local). Multi (Firebase RTDB) transmet : **pseudo** (alias),
 > **messages de chat** (texte), **données de partie** (scores/statuts), + **UID anonyme** Firebase.
