@@ -18,6 +18,7 @@
 | Langue par défaut | Français (France) — `fr-FR` |
 | Signature | clé d'upload `.gtg-secrets/upload-keystore.jks`, Play App Signing (cf. `mobile/README.md`) |
 | AAB | `mobile/android/app/build/outputs/bundle/release/app-release.aab` |
+| E-mail de contact (store / légal) | `heianenterpriseyt@gmail.com` |
 
 ---
 
@@ -53,7 +54,7 @@
 
 > Page `privacy.html` à la racine du repo, servie par **GitHub Pages** (depuis `main`).
 > Contenu : GTG ne collecte aucune donnée perso — solo 100 % local, multi = Firebase
-> anonyme, aucune pub/pistage. Contact : `orion@univers-japonais.com` (modifiable dans la page).
+> anonyme, aucune pub/pistage. Contact : `heianenterpriseyt@gmail.com` (modifiable dans la page).
 
 ---
 
@@ -86,7 +87,7 @@
 
 | Question | Réponse GTG |
 |---|---|
-| Adresse e-mail | **orion@univers-japonais.com** |
+| Adresse e-mail | **heianenterpriseyt@gmail.com** |
 | Catégorie | **Jeu** |
 | Conditions d'utilisation IARC | ✅ **Accepter** |
 
