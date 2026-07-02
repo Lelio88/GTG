@@ -274,6 +274,16 @@ Réponses transverses (à répéter pour chaque type) :
 
 ---
 
+## 10. Fonctionnalités financières
+
+| Question | Réponse |
+|---|---|
+| Fonctionnalités financières fournies | **Aucune** → « Mon appli ne fournit aucune fonctionnalité financière » |
+
+> Jeu gratuit : aucun paiement, banque, prêt, transfert, fidélité, crypto, trading, assurance.
+
+---
+
 <!-- PARTIES SUIVANTES AJOUTÉES ICI AU FUR ET À MESURE
      (fiche du store, contenu de l'application, data safety, classification,
      public cible, versions/tests, etc.) -->
