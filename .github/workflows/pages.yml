@@ -1,0 +1,52 @@
+# GTG — Déploiement GitHub Pages via Actions (et non le build legacy).
+#
+# POURQUOI : le site fait ~945 Mo (dossier Medias/). Le build *legacy* de Pages
+# (Jekyll) dépasse le timeout de 10 min sur un site aussi lourd → déploiements en
+# échec. L'upload d'artefact + deploy-pages n'a pas ce mur → fiable.
+#
+# On ne publie que les fichiers WEB (on exclut .git, .github, docs/, mobile/,
+# Python/, *.md) pour garder l'artefact sous la limite de 1 Go de Pages.
+
+name: Deploy Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Assembler le site (fichiers web uniquement)
+        run: |
+          mkdir -p _site
+          cp -r index.html privacy.html .nojekyll HTML JS CSS Assets Medias _site/
+          echo "Contenu _site :" && du -sh _site && ls _site
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
