@@ -284,6 +284,14 @@ Réponses transverses (à répéter pour chaque type) :
 
 ---
 
+## 11. Applis de santé
+
+| Question | Réponse |
+|---|---|
+| Fonctionnalités de santé | **Aucune** → « Mon appli ne propose aucune fonctionnalité de santé » |
+
+---
+
 <!-- PARTIES SUIVANTES AJOUTÉES ICI AU FUR ET À MESURE
      (fiche du store, contenu de l'application, data safety, classification,
      public cible, versions/tests, etc.) -->
