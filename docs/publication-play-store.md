@@ -347,6 +347,22 @@ Rétrogamer aguerri ou joueur du dimanche, Guess The Game teste ta culture vidé
 
 ---
 
+## 13. Identifiant publicitaire (Advertising ID)
+
+| Question | Réponse |
+|---|---|
+| L'appli utilise-t-elle un identifiant publicitaire ? | **Non** |
+
+> Aucun SDK pub/analytics. Firebase RTDB + Auth anonyme n'utilisent **pas** l'advertising ID
+> (pas de Firebase Analytics). Cohérent avec « Annonces = Non ». Obligatoire pour tout ciblage
+> Android 13+.
+
+> ⚠️ **URL de confidentialité** (rappel exact, casse sensible) : `https://lelio88.github.io/GTG/privacy.html`
+> (GTG en MAJ, privacy.html en min, avec .html). Si le Console affiche « page introuvable » alors
+> qu'elle répond 200, **ré-enregistrer le champ** (re-validation).
+
+---
+
 <!-- PARTIES SUIVANTES AJOUTÉES ICI AU FUR ET À MESURE
      (fiche du store, contenu de l'application, data safety, classification,
      public cible, versions/tests, etc.) -->
