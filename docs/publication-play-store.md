@@ -219,6 +219,8 @@
 | Question | Réponse |
 |---|---|
 | L'appli collecte/partage-t-elle des données utilisateur ? | **Oui** (uniquement en multijoueur) |
+| Toutes les données chiffrées en transit ? | **Oui** (TLS/HTTPS Firebase) |
+| Méthodes de création de compte | **Aucune** → « Mon appli ne permet pas aux utilisateurs de créer un compte » (auth anonyme ; pseudo = nom d'affichage) |
 
 > Solo = aucune collecte (`localStorage` local). Multi (Firebase RTDB) transmet : **pseudo** (alias),
 > **messages de chat** (texte), **données de partie** (scores/statuts), + **UID anonyme** Firebase.
