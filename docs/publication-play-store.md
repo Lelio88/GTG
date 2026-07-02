@@ -171,6 +171,19 @@
 
 ---
 
+### 6.3 Sous-questionnaire — Peur
+
+| Question | Réponse |
+|---|---|
+| Éléments inclus | ☑️ **Effrayants** + ☑️ **Horrifiants** |
+
+> Effrayants : ambiances sombres, mode Shadow, démons Doom, tension. Horrifiants : Outlast
+> (survival horror), Resident Evil, démons grotesques, zombies ensanglantés → contenu horreur
+> assumé. Cocher « horrifiants » porte probablement l'axe peur à **PEGI 16** (sinon « effrayants »
+> seul ≈ 12). Choix retenu : les deux (honnête vu Outlast/RE).
+
+---
+
 <!-- PARTIES SUIVANTES AJOUTÉES ICI AU FUR ET À MESURE
      (fiche du store, contenu de l'application, data safety, classification,
      public cible, versions/tests, etc.) -->
