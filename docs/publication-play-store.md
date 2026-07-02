@@ -250,6 +250,19 @@ Navigation Web, Infos et performance (pas de Crashlytics/Analytics).
 > Pseudo classé en « contenu généré par l'utilisateur » (alias éphémère, pas une vraie identité ;
 > alternative acceptable = Personal info → Nom). Rien en « partagé avec des tiers » (Firebase = infra).
 
+### 8.2 Utilisation et traitement — pour CHAQUE type de donnée
+
+**Collectées / Partagées ?** → **Collectées uniquement** (les 4 types). Jamais « Partagées » :
+Firebase = infra/sous-traitant (exclu de « partage »), pas de SDK pub/analytics, chat = fonction
+utilisateur↔utilisateur (pas un tiers).
+
+Réponses transverses (à répéter pour chaque type) :
+- Collectées ✅ / Partagées ❌
+- Traitées de façon éphémère ? → **Non** (stocké dans la room Firebase, pas juste en mémoire)
+- Obligatoire ou optionnelle ? → **Optionnelle** (collecte uniquement si on joue en multi)
+- Finalité → **Fonctionnalité de l'application** (+ **Communication** pour le chat). Pas de pub,
+  analytics, personnalisation ni marketing.
+
 ---
 
 <!-- PARTIES SUIVANTES AJOUTÉES ICI AU FUR ET À MESURE
