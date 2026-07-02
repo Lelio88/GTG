@@ -186,6 +186,21 @@
 
 ---
 
+### 6.4 Sous-questionnaire — Interaction / chat (suivi du « Oui »)
+
+| Question | Réponse |
+|---|---|
+| Possibilité de **bloquer** des utilisateurs/contenu | **Non** (pas de blocage ; l'hôte peut kicker, ≠ blocage) |
+| Possibilité de **signaler** des utilisateurs/contenu | **Non** (le report existant = bugs → GitHub) |
+| **Modération** des conversations | **Oui** (filtre anti-grossièretés `censor()` dans `JS/multi/chat.js`, client-side) |
+| Interactions limitées aux **amis invités** uniquement | **Oui** (rooms sur lien privé, pas de matchmaking public) |
+
+> Le chat = texte uniquement (pas de voix ni d'images). Modération Oui + invité-uniquement Oui
+> compensent l'absence de blocage/signalement. Impact **Data safety** : messages de chat = texte
+> utilisateur stocké dans Firebase RTDB (`/rooms/{code}/chat`) → à déclarer.
+
+---
+
 <!-- PARTIES SUIVANTES AJOUTÉES ICI AU FUR ET À MESURE
      (fiche du store, contenu de l'application, data safety, classification,
      public cible, versions/tests, etc.) -->
