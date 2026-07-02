@@ -21,10 +21,11 @@ Topologie rapide :
 - **Couche partagée solo** : `gameUtils.js` (timer/score/validation/abandon/`revealTitle`), `state/{profileStore,gameProgress,modeReset}.js`, `ui/dialog.js` (modales), `achievements.js`, `hellMode.js`, `gameCompletion.js`, `saveManager.js`, `dialogue.js`
 - **Données & style** : `gamesDatabase.js` + `abbreviations.js` ; `Assets/` (UI) et `Medias/<Type>/` (jeu) ; `CSS/tokens.css` (design tokens néon), `CSS/multi.css`, `CSS/coming-soon.css`
 - **Outils admin** : `Python/*.py` (génération d'assets : captures, silhouettes, sons, panoramas 360)
+- **App mobile** : `mobile/` — empaquetage **Android via Capacitor** (AAB), isolé du web ; voir `mobile/README.md`
 
 ## III. Pile Technologique
 
-*Aucun manifest (pas de `package.json`), pas de build step. N'introduisez aucune dépendance sans approbation.*
+*Web : aucun manifest (pas de `package.json`), pas de build step. **Exception** : `mobile/` a son propre `package.json` (Capacitor), isolé du web. N'introduisez aucune dépendance web sans approbation.*
 
 - **Front** : HTML5, CSS3 (variables custom, animations néon, `prefers-reduced-motion`), JavaScript ES6+ modules natifs
 - **CDN runtime pinné** : `anime.js 3.2.1` (SRI), `tone@15.1.22` + `@tonejs/midi@2.0.28` (MIDI), `canvas-confetti@1.9.3` (multi), `@photo-sphere-viewer/core@5` (Geo 360°) — via esm.sh
@@ -34,7 +35,7 @@ Topologie rapide :
 
 ## IV. Garde-Fous non négociables
 
-1. **Vanilla JS, pas de bundler** : aucun npm/`package.json`/build. Deps via CDN ESM. Le **solo** reste 100 % `file://`-compatible (double-clic `index.html`) ; le **multi** (Firebase + réseau) est l'unique exception.
+1. **Vanilla JS, pas de bundler** (côté web) : aucun npm/`package.json`/build à la racine. Deps via CDN ESM. Le **solo** reste 100 % `file://`-compatible (double-clic `index.html`). Exceptions : le **multi** (Firebase + réseau) et l'**app mobile** (`mobile/`, Capacitor + npm, isolée — le web racine reste inchangé).
 2. **Persistance solo via `localStorage`** : exactement deux clés racine (`profiles` = tableau, `currentProfile` = pseudo string). Jamais l'objet profil entier dans `currentProfile`. Le multi n'écrit jamais dans le localStorage solo.
 3. **Factorisation obligatoire** : tout mode consomme `gameUtils.js`, les renderers de `hint-renderers.js`, `state/profileStore.js` (profil), `state/gameProgress.js` (jeu en cours), `ui/dialog.js` (modales). **Aucun `alert/prompt/confirm` natif, aucun `onclick` inline, aucun `JSON.parse(localStorage.getItem('profiles'))` direct.**
 4. **Convention d'assets** : `Medias/<Type>/<Title> <N>.<ext>` (`<Title>` = champ `title` de `gamesDatabase.js`, espaces inclus). Toute renomination propage code ET fichiers.
@@ -68,6 +69,11 @@ python Python/geo_fetch.py --search "<jeu> 360 VR"                          # tr
 python Python/geo_fetch.py --url "URL" --title "<Jeu>" --times 00:20 01:10  # extraire des panoramas
 python Python/geo_ingest.py                                                 # ingérer des captures Ansel (Medias/Geo/_inbox/<Titre>/)
 python Python/geo_declare.py                                                # déclarer les champs geo dans gamesDatabase
+python Python/geo_undeclare.py                                              # retirer les geo: orphelins (panoramas supprimés)
+
+# App mobile Android (Capacitor — détails dans mobile/README.md)
+cd mobile && npm run sync          # assembler www/ (médias réécrits vers le CDN) + cap sync
+cd mobile/android && JAVA_HOME="/c/Program Files/Android/Android Studio/jbr" ./gradlew bundleRelease   # AAB signé
 ```
 
 ## VII. Maintenance documentaire
@@ -82,10 +88,11 @@ python Python/geo_declare.py                                                # d�
 | API `gameUtils.js` / `hint-renderers.js` | `docs/architecture.md` §7 |
 | Schéma RTDB multi | `docs/architecture.md` §15 + règles `database.rules.json` (console Firebase) |
 | Convention d'asset / nouvel anti-pattern | `docs/architecture.md` §6 (+ `Python/*.py`) / §11 |
-| Mode Geo (assets, viewer) | `Python/geo_*.py`, `hint-renderers.js` (`renderHintGeo`/`cleanupGeo`), `README.md` (guide) |
+| Mode Geo (assets, viewer) | `Python/geo_*.py` (dont `geo_undeclare.py`), `hint-renderers.js` (`renderHintGeo`/`cleanupGeo`), `README.md` (guide) |
 | Mode Enfer (fenêtre 666–777) | `JS/hellMode.js` (`HELL_THRESHOLD`/`HELL_MAX`) + `CSS/tokens.css` (`html.gtg-hell`) |
+| App mobile (Capacitor) | `mobile/README.md` ; relancer `npm run sync` avant tout rebuild AAB |
 
 ## VIII. Contexte de Session
 
-- **Dernier focus** : mode **Geo** livré (panorama 360° Photo Sphere Viewer, accès chambre zone `geo`, renderer async + `cleanupGeo` anti-fuite WebGL, 8 jeux) ; outils Python `geo_fetch` / `geo_ingest` (captures Ansel) / `geo_declare` ; guide dans le README.
-- **Focus immédiat** : enrichir le catalogue Geo (vidéos 360 / captures maison) ; repositionner `#zone-geo` ; puis epic 2 — app mobile **Capacitor**.
+- **Dernier focus** : app mobile **Android (Capacitor)** livrée (`mobile/`, AAB signé, médias via CDN GitHub Pages, clé d'upload Play App Signing) ; mode Geo assaini (panoramas stéréo/cassés purgés → restent God of War, Minecraft, Subnautica) + `geo_undeclare.py` + fix migration `guessedGamesByMode`.
+- **Focus immédiat** : publier l'AAB en test sur le Play Store ; enrichir le catalogue Geo via captures **Ansel** (fiables, pas de stéréo) ; repositionner `#zone-geo`.
