@@ -201,6 +201,35 @@
 
 ---
 
+## 7. Public cible et contenu
+
+| Question | Réponse |
+|---|---|
+| Tranches d'âge cibles | **13-15 · 16-17 · 18+** (13+ ; < 13 verrouillé car ESRB Teen) |
+
+> ESRB = **Adolescent (Teen)** confirmé. Cibler 13-17 = public réel mais déclenche des contrôles
+> « public mixte » + éventuelle déclaration « normes de sécurité des enfants » (cf. `child-safety.html`
+> de DewDrop). Option simplifiée : **18+ uniquement** (évite ces contrôles mais sous-représente le public).
+> Décision utilisateur à confirmer.
+
+---
+
+## 8. Sécurité des données (Data safety)
+
+| Question | Réponse |
+|---|---|
+| L'appli collecte/partage-t-elle des données utilisateur ? | **Oui** (uniquement en multijoueur) |
+
+> Solo = aucune collecte (`localStorage` local). Multi (Firebase RTDB) transmet : **pseudo** (alias),
+> **messages de chat** (texte), **données de partie** (scores/statuts), + **UID anonyme** Firebase.
+> Aucune PII réelle (pas de nom réel/email/tél/localisation/finance/photos/contacts). Chiffré en
+> transit (HTTPS/TLS). Collecte **optionnelle** (multi only).
+>
+> Types à déclarer : Messages (chat) · App activity (parties) · Device/other IDs (UID anonyme).
+> Tout le reste = non collecté.
+
+---
+
 <!-- PARTIES SUIVANTES AJOUTÉES ICI AU FUR ET À MESURE
      (fiche du store, contenu de l'application, data safety, classification,
      public cible, versions/tests, etc.) -->
