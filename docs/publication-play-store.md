@@ -91,10 +91,45 @@
 | Catégorie | **Jeu** |
 | Conditions d'utilisation IARC | ✅ **Accepter** |
 
-> Après cet écran, l'IARC pose un **questionnaire détaillé** (violence, contenu sexuel, langage,
-> substances, jeux d'argent, interactivité/partage) qui génère la classe d'âge. GTG = devinette
-> sans violence/sexe/argent réel → classification très basse attendue (**PEGI 3 / ESRB E**).
-> Réponses détaillées à compléter ici quand elles seront fournies.
+> Après cet écran, l'IARC pose un **questionnaire détaillé** (voir partie 6). ⚠️ GTG montre des
+> captures/sons de jeux **matures** (violence/horreur) et a un **chat** en multi → classification
+> attendue **PEGI 12-16 / Teen** (PAS 3+).
+
+---
+
+## 6. Classification du contenu — questionnaire IARC détaillé (catégorie Jeu)
+
+| Question | Réponse |
+|---|---|
+| Violence, sang ou images sanglantes | **Oui** |
+| Peur (images/sons effrayants) | **Oui** |
+| Sexualité / aguichage / rencontres | **Non** *(vérifier captures Witcher/GTA)* |
+| Jeux d'argent (réels ou simulés) | **Non** |
+| Langage grossier | **Non** *(chat = contenu utilisateur, exclu)* |
+| Substances réglementées (drogue/alcool/tabac) | **Non** |
+| Humour grossier (éructations/flatulences/vomi) | **Non** |
+| Achats numériques / récompenses / NFT | **Non** |
+| Interaction utilisateurs (voix/texte/images) | **Oui** *(chat de room en multi)* |
+| Partage de la localisation précise | **Non** |
+| Symboles nazis (loi allemande) | **Non** *(vérifier captures CoD/Battlefield)* |
+| Identité nationale (Corée) | **Non** |
+| Apologie du terrorisme | **Non** |
+| Actes/techniques criminels réalistes | **Non** |
+
+> **Pourquoi violence/peur = Oui** : le catalogue (150 jeux) affiche des captures/sons de jeux
+> matures (Mortal Kombat, Doom, Resident Evil, Outlast, God of War, The Last of Us, GTA…) →
+> violence + horreur à l'écran (combat, armes, monstres — **pas de gore explicite** dans les
+> captures). **Interaction = Oui** : le multi a un chat de groupe
+> (`JS/multi/chat.js`, filtre d'insultes, pas de voix/images). → Classification attendue
+> **PEGI 12** (violence sans gore). Sous-déclarer = risque de retrait.
+>
+> **Sous-cases « Violence »** (écran après « Oui ») : ✅ contre l'homme · ✅ contre non-humains
+> (Doom, God of War, RE, Metro, Witcher) · ❌ images dérangeantes/sanglantes · ❌ sang hors acte
+> — vérifié sur ~10 captures (God of War, Mortal Kombat, Doom, Outlast, RE, Last of Us) : aucun
+> sang/gore explicite affiché.
+>
+> ⚠️ **Impact Data safety** : le chat = contenu généré par les utilisateurs (texte stocké dans
+> Firebase RTDB) → à déclarer dans la section Sécurité des données + éventuelle modération.
 
 ---
 
