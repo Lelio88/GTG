@@ -266,6 +266,14 @@ Réponses transverses (à répéter pour chaque type) :
 
 ---
 
+## 9. Applis gouvernementales
+
+| Question | Réponse |
+|---|---|
+| App développée par/pour un organisme public ? | **Non** (jeu personnel) |
+
+---
+
 <!-- PARTIES SUIVANTES AJOUTÉES ICI AU FUR ET À MESURE
      (fiche du store, contenu de l'application, data safety, classification,
      public cible, versions/tests, etc.) -->
