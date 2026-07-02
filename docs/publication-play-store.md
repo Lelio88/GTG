@@ -111,7 +111,7 @@
 | Achats numériques / récompenses / NFT | **Non** |
 | Interaction utilisateurs (voix/texte/images) | **Oui** *(chat de room en multi)* |
 | Partage de la localisation précise | **Non** |
-| Symboles nazis (loi allemande) | **Non** *(vérifier captures CoD/Battlefield)* |
+| Symboles nazis (loi allemande) | **Non** *(vérifié : CoD & Battlefield = guerre moderne, aucune croix gammée)* |
 | Identité nationale (Corée) | **Non** |
 | Apologie du terrorisme | **Non** |
 | Actes/techniques criminels réalistes | **Non** |
