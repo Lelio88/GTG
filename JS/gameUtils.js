@@ -71,8 +71,15 @@ export function initializeProfile(currentProfile) {
     // Initialisation des jeux devinés
     if (!currentProfile.guessedGamesByMode) {
         currentProfile.guessedGamesByMode = {};
-        modes.forEach(mode => currentProfile.guessedGamesByMode[mode] = []);
     }
+    // Sécurité : garantir chaque mode, y compris ceux ajoutés APRÈS la création
+    // du profil (ex. 'geo'). Sans ça, guessedGamesByMode[mode] est undefined pour
+    // les anciens profils et getAvailableGames plante sur .includes().
+    modes.forEach(mode => {
+        if (!currentProfile.guessedGamesByMode[mode]) {
+            currentProfile.guessedGamesByMode[mode] = [];
+        }
+    });
 
     // NOUVEAU : Initialisation des scores par mode
     if (!currentProfile.scoresByMode) {

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Guess The Game</string>
+    <string name="title_activity_main">Guess The Game</string>
+    <string name="package_name">com.lelio88.gtg</string>
+    <string name="custom_url_scheme">com.lelio88.gtg</string>
+</resources>

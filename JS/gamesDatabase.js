@@ -266,7 +266,6 @@ export const games = [
     },
     {
         title: 'Portal',
-        geo: ['../Medias/Geo/Portal 1.jpg'],
         image: [
             '../Medias/Image/Portal 1.jpg',
             '../Medias/Image/Portal 2.jpg',
@@ -885,7 +884,6 @@ export const games = [
     },
     {
         title: 'Metro',
-        geo: ['../Medias/Geo/Metro 1.jpg'],
         image: [
             '../Medias/Image/Metro 1.jpg',
             '../Medias/Image/Metro 2.jpg',
@@ -1524,7 +1522,6 @@ export const games = [
     },
     {
         title: 'The Witcher',
-        geo: ['../Medias/Geo/The Witcher 1.jpg'],
         image: [
             '../Medias/Image/The Witcher 1.jpg',
             '../Medias/Image/The Witcher 2.jpg',
@@ -1833,7 +1830,6 @@ export const games = [
     },
     {
         title: 'Grand Theft Auto',
-        geo: ['../Medias/Geo/Grand Theft Auto 1.jpg', '../Medias/Geo/Grand Theft Auto 2.jpg'],
         image: [
             '../Medias/Image/Grand Theft Auto 1.jpg',
             '../Medias/Image/Grand Theft Auto 2.jpg',
@@ -2604,7 +2600,6 @@ export const games = [
     },
     {
         title: 'Red Dead Redemption',
-        geo: ['../Medias/Geo/Red Dead Redemption 2.jpg'],
         image: [
             '../Medias/Image/Red Dead Redemption 1.jpg',
             '../Medias/Image/Red Dead Redemption 2.jpg',
