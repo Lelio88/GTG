@@ -305,11 +305,45 @@ Réponses transverses (à répéter pour chaque type) :
 | Coordonnées | E-mail : **heianenterpriseyt@gmail.com** · Site : **https://lelio88.github.io/GTG/** · Téléphone : *(vide, optionnel)* |
 | Nom | **Guess The Game** |
 | Brève description (80) | **Devine le jeu vidéo : image, son, silhouette… 8 modes + multijoueur !** |
-| Description complète | rédigée (8 modes + Geo 360° + multi + solo, ton néon) — voir le bloc dans le chat de session |
+| Description complète | voir **§12.a** ci-dessous (texte complet) |
 | Visuels | Icône 512×512 · Bannière 1024×500 · Captures tél (2-8) + tablette 7″/10″ ; Play Games PC/Chromebook/XR ignorés |
 
 > GTG = quiz de culture vidéoludique (identifier un jeu à partir d'indices) → catégorie Trivia.
 > Les tags influencent le SEO Play Store + le groupe d'apps comparées.
+
+### 12.a Description complète (texte prêt à coller)
+
+```
+🎮 Tu crois tout connaître des jeux vidéo ? Prouve-le !
+
+Guess The Game te met au défi de reconnaître des centaines de jeux à partir d'indices de plus en plus révélateurs : une capture, un extrait sonore, une silhouette, quelques emojis… Sauras-tu trouver le titre avant les autres ?
+
+🕹️ 8 MODES DE JEU
+• Full Package — image + son + texte
+• Image Only — devine à partir de captures d'écran
+• Sound Only — reconnais la bande-son
+• Text Only — à partir d'une simple description
+• Pixelated — l'image fortement pixelisée (hardcore)
+• Shadow — juste une silhouette (hardcore)
+• MIDI — la musique réduite à un MIDI (hardcore)
+• Emoji — une suite d'emojis évocateurs (hardcore)
+
+🌍 MODE GEO — 360°
+Tu es lâché dans un panorama à 360° explorable d'une scène de jeu. Tourne la vue et devine le titre, façon GeoGuessr !
+
+👥 MULTIJOUEUR EN LIGNE (2 à 8 joueurs)
+Crée une room, partage le lien, affrontez-vous en temps réel. Le plus rapide rafle le plus de points, et un chat intégré permet de chambrer tes amis !
+
+👤 EN SOLO
+• Jusqu'à 4 profils qui gardent ta progression
+• Système de clés : termine un mode pour débloquer les modes hardcore
+• Des centaines de jeux à reconnaître
+• Succès à débloquer
+
+Rétrogamer aguerri ou joueur du dimanche, Guess The Game teste ta culture vidéoludique dans une ambiance 100 % néon. Alors… combien de jeux reconnaîtras-tu ?
+
+🎮 À toi de jouer !
+```
 
 ---
 
