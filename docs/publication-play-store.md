@@ -303,6 +303,10 @@ Réponses transverses (à répéter pour chaque type) :
 | Catégorie | **Culture générale** (Trivia) ; alt : *Réflexion* (Puzzle) |
 | Tags (max 5) | **Culture générale · Quiz sur les logos · Réflexion · Grand public · Entraînement cérébral** (alt 5ᵉ : Mini-jeux / Mémoire) |
 | Coordonnées | E-mail : **heianenterpriseyt@gmail.com** · Site : **https://lelio88.github.io/GTG/** · Téléphone : *(vide, optionnel)* |
+| Nom | **Guess The Game** |
+| Brève description (80) | **Devine le jeu vidéo : image, son, silhouette… 8 modes + multijoueur !** |
+| Description complète | rédigée (8 modes + Geo 360° + multi + solo, ton néon) — voir le bloc dans le chat de session |
+| Visuels | Icône 512×512 · Bannière 1024×500 · Captures tél (2-8) + tablette 7″/10″ ; Play Games PC/Chromebook/XR ignorés |
 
 > GTG = quiz de culture vidéoludique (identifier un jeu à partir d'indices) → catégorie Trivia.
 > Les tags influencent le SEO Play Store + le groupe d'apps comparées.
