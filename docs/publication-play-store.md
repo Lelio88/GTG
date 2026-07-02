@@ -18,6 +18,7 @@
 | Langue par défaut | Français (France) — `fr-FR` |
 | Signature | clé d'upload `.gtg-secrets/upload-keystore.jks`, Play App Signing (cf. `mobile/README.md`) |
 | AAB | `mobile/android/app/build/outputs/bundle/release/app-release.aab` |
+| E-mail de contact (store / légal) | `heianenterpriseyt@gmail.com` |
 
 ---
 
