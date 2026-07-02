@@ -260,8 +260,9 @@ Réponses transverses (à répéter pour chaque type) :
 - Collectées ✅ / Partagées ❌
 - Traitées de façon éphémère ? → **Non** (stocké dans la room Firebase, pas juste en mémoire)
 - Obligatoire ou optionnelle ? → **Optionnelle** (collecte uniquement si on joue en multi)
-- Finalité → **Fonctionnalité de l'application** (+ **Communication** pour le chat). Pas de pub,
-  analytics, personnalisation ni marketing.
+- Finalité → **Fonctionnement de l'application** UNIQUEMENT (Google n'a PAS de finalité
+  « communication »). Pas d'analyse, pub/marketing, personnalisation, gestion de comptes,
+  prévention fraude ni comms développeur.
 
 ---
 
