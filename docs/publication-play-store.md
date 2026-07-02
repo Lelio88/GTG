@@ -302,6 +302,7 @@ Réponses transverses (à répéter pour chaque type) :
 |---|---|
 | Catégorie | **Culture générale** (Trivia) ; alt : *Réflexion* (Puzzle) |
 | Tags (max 5) | **Culture générale · Quiz sur les logos · Réflexion · Grand public · Entraînement cérébral** (alt 5ᵉ : Mini-jeux / Mémoire) |
+| Coordonnées | E-mail : **heianenterpriseyt@gmail.com** · Site : **https://lelio88.github.io/GTG/** · Téléphone : *(vide, optionnel)* |
 
 > GTG = quiz de culture vidéoludique (identifier un jeu à partir d'indices) → catégorie Trivia.
 > Les tags influencent le SEO Play Store + le groupe d'apps comparées.
