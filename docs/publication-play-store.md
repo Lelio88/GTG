@@ -82,6 +82,21 @@
 
 ---
 
+## 5. Classification du contenu (questionnaire IARC)
+
+| Question | Réponse GTG |
+|---|---|
+| Adresse e-mail | **orion@univers-japonais.com** |
+| Catégorie | **Jeu** |
+| Conditions d'utilisation IARC | ✅ **Accepter** |
+
+> Après cet écran, l'IARC pose un **questionnaire détaillé** (violence, contenu sexuel, langage,
+> substances, jeux d'argent, interactivité/partage) qui génère la classe d'âge. GTG = devinette
+> sans violence/sexe/argent réel → classification très basse attendue (**PEGI 3 / ESRB E**).
+> Réponses détaillées à compléter ici quand elles seront fournies.
+
+---
+
 <!-- PARTIES SUIVANTES AJOUTÉES ICI AU FUR ET À MESURE
      (fiche du store, contenu de l'application, data safety, classification,
      public cible, versions/tests, etc.) -->
