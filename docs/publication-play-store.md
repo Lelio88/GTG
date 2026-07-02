@@ -5,6 +5,10 @@
 > qu'une prochaine session puisse remplir le formulaire **directement**, sans
 > redemander.
 >
+> 📘 **Guide GÉNÉRIQUE réutilisable** (toute app) : `Documents\Projets\play-store-publication-guide.md`.
+> Ce fichier-ci = l'**exemple concret GTG** rempli (un prochain Claude reprend la logique du guide
+> générique et l'adapte à son app).
+>
 > Complété au fur et à mesure (l'utilisateur fournit les questions par parties).
 > Légende : ✅ = case à cocher obligatoire pour continuer.
 
