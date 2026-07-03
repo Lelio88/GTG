@@ -1683,3 +1683,50 @@ body:has(.multi-lobby-app)::after {
         gap: var(--sp-2);
     }
 }
+
+/* ===============================
+   VIEWPORT COURT — paysage telephone (hauteur <= 600px)
+   Le lobby (.multi-lobby-app) et les panneaux de la room (.multi-view /
+   .multi-scoreboard / .multi-chat) ont deja overflow-y:auto (scroll interne),
+   donc rien n'est piege ; mais en paysage tres bas ils sont cramponnes. On
+   desserre (media, scoreboard, chat), on ajoute la safe-area (edge-to-edge
+   impose par targetSdk 36) et un filet de securite au niveau du body. La
+   grille 2 colonnes de la room convient au paysage, on ne la restructure pas.
+   Restreint a orientation:landscape pour ne pas se declencher au clavier en
+   portrait. Place en dernier => prime.
+=============================== */
+@media (max-height: 600px) and (orientation: landscape) {
+    html, body { overflow-y: auto; }
+
+    .multi-lobby-app {
+        gap: var(--sp-2);
+        padding: var(--sp-2)
+                 max(var(--sp-4), env(safe-area-inset-right))
+                 var(--sp-4)
+                 max(var(--sp-4), env(safe-area-inset-left));
+    }
+
+    .multi-room-app {
+        gap: var(--sp-2);
+        padding: var(--sp-2)
+                 max(var(--sp-3), env(safe-area-inset-right))
+                 max(var(--sp-2), env(safe-area-inset-bottom))
+                 max(var(--sp-3), env(safe-area-inset-left));
+    }
+
+    /* Desserrer le sidebar pour qu'il tienne dans une rangee courte. */
+    .multi-scoreboard { max-height: 32vh; }
+    .multi-chat { min-height: 90px; }
+
+    /* Plafonner le media de jeu pour laisser la place a la saisie + boutons. */
+    #game-view #content img,
+    #game-view #content #game-image,
+    #game-view #content #game-pixels,
+    #game-view #content .hint-container img {
+        max-height: 40vh;
+    }
+
+    #game-view #user-input {
+        margin: var(--sp-3) 0 var(--sp-2) 0 !important;
+    }
+}
