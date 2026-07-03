@@ -5,6 +5,12 @@
 
 @import url('./tokens.css');
 
+/* box-sizing global : sans lui, .game-mode width:100% + padding + bordure
+   debordait le viewport en portrait (overflow-x parasite). */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 html, body {
     margin: 0;
     padding: 0;
@@ -12,6 +18,7 @@ html, body {
 }
 
 body {
+    overflow-x: hidden;
     color: var(--text-primary);
     font-family: var(--font-ui);
     display: flex;
@@ -168,7 +175,16 @@ h1 {
     text-shadow: 0 0 8px currentColor;
 }
 
-/* Le style 'button' baseline est fourni par tokens.css */
+/* Le style 'button' baseline est fourni par tokens.css. Les 4 boutons vivent
+   dans .hub-actions : empiles au centre en desktop/portrait, rangee compacte
+   qui wrap en paysage court. */
+.hub-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-2);
+    z-index: 1;
+}
 
 /* ===============================
     Footer (Game Stats Bar)
@@ -179,7 +195,7 @@ h1 {
     left: 0;
     right: 0;
     background: rgba(8, 4, 15, 0.85);
-    padding: var(--sp-3) var(--sp-4);
+    padding: var(--sp-3) var(--sp-4) max(var(--sp-3), env(safe-area-inset-bottom));
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -299,11 +315,16 @@ h1 {
         min-height: 60px;
     }
 
+    .hub-actions {
+        width: 100%;
+        gap: var(--sp-2);
+    }
+
     button {
         min-height: 48px;
         font-size: 1em;
         padding: var(--sp-3) var(--sp-4);
-        margin: var(--sp-1) 0;
+        margin: 0;
         width: 100%;
     }
 
@@ -335,5 +356,81 @@ h1 {
     .game-mode {
         flex: 1 1 45%;
         min-width: 200px;
+    }
+}
+
+/* ===============================
+   VIEWPORT COURT — paysage telephone (hauteur <= 600px)
+   En paysage : cartes de mode en grille (rangee au lieu de colonne haute),
+   boutons compactes en rangee, avatar masque (il chevauchait le contenu), et
+   body scrollable pour ne jamais pieger l'action. Place en dernier => prime.
+=============================== */
+@media (max-height: 600px) and (orientation: landscape) {
+    html, body { height: auto; }
+
+    body {
+        min-height: 100vh;   /* fallback WebView < Chromium 108 */
+        min-height: 100dvh;
+        justify-content: flex-start;
+        padding: var(--sp-3)
+                 max(var(--sp-3), env(safe-area-inset-right))
+                 60px
+                 max(var(--sp-3), env(safe-area-inset-left));
+    }
+
+    h1 {
+        font-size: clamp(1.1rem, 4.5vh, 1.6rem);
+        margin-bottom: var(--sp-2);
+        text-align: center;
+    }
+
+    #current-profile {
+        font-size: 1rem;
+        padding: var(--sp-1) var(--sp-3);
+        margin-bottom: var(--sp-3);
+    }
+
+    /* Grille : 4 modes de base sur une rangee ; jusqu'a 8 (hardcore) => 4x2. */
+    #modes-container {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: var(--sp-2);
+        width: min(100%, 960px);
+        margin-bottom: var(--sp-3);
+    }
+
+    .game-mode {
+        width: auto;
+        min-width: 0;   /* neutralise le min-width:200px de la bande tablette (evite le debord de la 4e carte) */
+        min-height: 44px;
+        padding: var(--sp-2) var(--sp-3);
+        font-size: var(--fs-sm);
+    }
+
+    .hub-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: var(--sp-2);
+    }
+
+    .hub-actions button {
+        width: auto;
+        min-height: 44px;
+        padding: var(--sp-1) var(--sp-4);
+        font-size: 0.82rem;
+        margin: 0;
+    }
+
+    /* L'avatar narrateur (280px, fixe en bas a gauche) recouvre le contenu en
+       paysage : on le masque comme en portrait. */
+    .character-container { display: none; }
+
+    #game-footer {
+        padding: var(--sp-1) var(--sp-3);
+        font-size: var(--fs-xs);
+        flex-wrap: wrap;
+        gap: var(--sp-1) var(--sp-2);
     }
 }

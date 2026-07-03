@@ -91,8 +91,11 @@ cd mobile/android && JAVA_HOME="/c/Program Files/Android/Android Studio/jbr" ./g
 | Mode Geo (assets, viewer) | `Python/geo_*.py` (dont `geo_undeclare.py`), `hint-renderers.js` (`renderHintGeo`/`cleanupGeo`), `README.md` (guide) |
 | Mode Enfer (fenêtre 666–777) | `JS/hellMode.js` (`HELL_THRESHOLD`/`HELL_MAX`) + `CSS/tokens.css` (`html.gtg-hell`) |
 | App mobile (Capacitor) | `mobile/README.md` ; relancer `npm run sync` avant tout rebuild AAB |
+| Responsive / orientation d'une page | bloc `@media (max-height: 600px)` dans le CSS de page concerné + `docs/architecture.md` §10-11 (doctrine « viewport court ») ; orientation dans `mobile/android/app/src/main/AndroidManifest.xml` (`screenOrientation`) |
+| Icône de l'app Android | régénérer via `mobile/` (mipmap-*/`ic_launcher*.png` toutes densités) + `res/values/ic_launcher_background.xml` + icône Play Store `mobile/gtg-play-store-icon-512.png` |
 
 ## VIII. Contexte de Session
 
-- **Dernier focus** : app mobile **Android (Capacitor)** livrée (`mobile/`, AAB signé, médias via CDN GitHub Pages, clé d'upload Play App Signing) ; mode Geo assaini (panoramas stéréo/cassés purgés → restent God of War, Minecraft, Subnautica) + `geo_undeclare.py` + fix migration `guessedGamesByMode`.
-- **Focus immédiat** : publier l'AAB en test sur le Play Store ; enrichir le catalogue Geo via captures **Ansel** (fiables, pas de stéréo) ; repositionner `#zone-geo`.
+- **Dernier focus** : correctif **responsive global + orientation** — l'app fonctionne désormais en **portrait ET paysage** (`screenOrientation` `sensorLandscape` → `fullUser`). Bug racine corrigé : breakpoints largeur-seule → ajout d'un régime « viewport court » (`@media (max-height:600px)`) dans `index-style.css`, `style.css` (9 pages), `hub.css`, `coming-soon.css` + `box-sizing:border-box` manquant (overflow-x) + wrappers `.action-buttons`/`.hub-actions`. **Icône de l'app** régénérée (soleil synthwave, mipmap toutes densités + fond `#0A0510`), l'ancienne étant l'icône Capacitor par défaut. `versionCode` 1 → 2. Doctrine documentée dans `docs/architecture.md` §10-11.
+- **Focus immédiat** : **AAB v2 signé DÉJÀ BUILDÉ** (`versionName 1.0.1`, `fullUser`) → `mobile/android/app/build/outputs/bundle/release/app-release.aab`. Signature via `mobile/android/key.properties` (gitignoré) + keystore `../.gtg-secrets/upload-keystore.jks` (alias `upload`). **Reste à l'uploader** en test Play Store + re-uploader `mobile/gtg-play-store-icon-512.png` dans la fiche. Ensuite : enrichir le catalogue Geo via captures **Ansel** ; repositionner `#zone-geo`.
+- **Antérieur** : app mobile Android (Capacitor) livrée ; mode Geo assaini (God of War, Minecraft, Subnautica) + `geo_undeclare.py` + fix migration `guessedGamesByMode`.

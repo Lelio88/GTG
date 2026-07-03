@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Hub - Choix du mode</title>
     <link rel="icon" type="image/svg+xml" href="../Assets/logo.svg" />
     <link rel="alternate icon" href="../Assets/Logo.png" />
@@ -19,10 +19,12 @@
         <div class="game-mode" data-mode="image" data-color="pink" tabindex="-1">Image Only</div>
         <div class="game-mode" data-mode="text" data-color="blue" tabindex="-1">Text Only</div>
     </div>
-    <button id="start-game">Lancer le jeu</button>
-    <button id="room-button">Aller dans la chambre</button>
-    <button id="export-save-btn">📤 Exporter la sauvegarde</button>
-    <button id="back-button">Retour à la sélection de profil</button>
+    <div class="hub-actions">
+        <button id="start-game">Lancer le jeu</button>
+        <button id="room-button">Aller dans la chambre</button>
+        <button id="export-save-btn">📤 Exporter la sauvegarde</button>
+        <button id="back-button">Retour à la sélection de profil</button>
+    </div>
 
     <footer id="game-footer">
         <span id="completed-modes">Modes terminés : 0</span>
