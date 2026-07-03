@@ -67,10 +67,13 @@ JAVA_HOME="/c/Program Files/Android/Android Studio/jbr" ./gradlew bundleRelease
 
 ## 🔑 Signature (upload key)
 
-L'AAB est signé par `gtg-upload-key.jks` (alias `gtg-upload`), lu via `keystore.properties`.
-Les deux fichiers sont **gitignorés**.
+L'AAB est signé par la **clé d'upload** (alias `upload`) stockée dans le dossier caché sibling du
+repo **`../.gtg-secrets/upload-keystore.jks`** (hors git). Les identifiants (chemin du `.jks`,
+mots de passe, alias) sont lus depuis **`android/key.properties`** (gitignoré) par
+`android/app/build.gradle`. La convention (`key.properties` + `.<projet>-secrets/upload-keystore.jks`)
+est partagée avec les autres apps du parent (DewDrop, LLMarmite).
 
-> ⚠️ **Sauvegarde `gtg-upload-key.jks` + `keystore.properties` hors du repo** (gestionnaire de
+> ⚠️ **Sauvegarde le dossier `.gtg-secrets/` + `android/key.properties` hors du repo** (gestionnaire de
 > mots de passe, cloud privé…). Avec **Play App Signing** (activé par défaut pour les nouvelles
 > apps), Google gère la clé de signature finale ; cette clé d'upload est **réinitialisable** via
 > le support si tu la perds — mais autant ne pas avoir à le faire.
@@ -88,6 +91,19 @@ Les deux fichiers sont **gitignorés**.
 > classification…) avant publication même en test interne.
 
 ---
+
+## 🔄 Orientation & 🎨 Icône
+
+- **Orientation** : l'app se lance en **portrait ET paysage** — `android:screenOrientation="fullUser"` dans
+  `android/app/src/main/AndroidManifest.xml` (respecte le verrou d'auto-rotation du téléphone). Le web est
+  responsive dans les deux sens via un régime « viewport court » (`@media (max-height: 600px)`) — voir
+  `docs/architecture.md` §10-11. (Ancienne valeur `sensorLandscape` = paysage forcé, abandonnée.)
+- **Icône du lanceur** : icône adaptative « soleil synthwave » dans `android/app/src/main/res/mipmap-*/`
+  (`ic_launcher.png`, `ic_launcher_round.png`, `ic_launcher_foreground.png`, toutes densités) + fond
+  `res/values/ic_launcher_background.xml` = `#0A0510`. **Régénération** : script Pillow (soleil radial +
+  grille + densités). L'icône **512×512 pour la fiche Play Store** est fournie : `mobile/gtg-play-store-icon-512.png`.
+- **Rappel** : toute modif du web (racine) ou de l'icône exige `npm run sync` puis un rebuild `bundleRelease`,
+  et un **bump de `versionCode`** dans `android/app/build.gradle` pour ré-uploader sur le Play Store.
 
 ## ⚠️ Limites connues (améliorations ultérieures)
 

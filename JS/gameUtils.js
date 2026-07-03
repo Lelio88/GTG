@@ -423,7 +423,9 @@ export function resetGameUI() {
  * @param {Function} isCorrectAnswerGivenFn - Function that returns whether a correct answer was given
  */
 export function setupEnterKeyHandler(checkAnswerFn, nextQuestionFn, isCorrectAnswerGivenFn) {
-    document.getElementById('user-input').addEventListener('keypress', function (e) {
+    // 'keydown' (et non 'keypress', deprecie et peu fiable sur les claviers
+    // logiciels Android/Gboard pour la touche Entree/Go).
+    document.getElementById('user-input').addEventListener('keydown', function (e) {
         if (e.key === 'Enter') {
             e.preventDefault();
             if (isCorrectAnswerGivenFn()) {
