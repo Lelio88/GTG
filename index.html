@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Guess The Game</title>
     <link rel="icon" type="image/svg+xml" href="Assets/logo.svg">
     <link rel="alternate icon" href="Assets/Logo.png">
@@ -28,7 +28,7 @@
             justify-content: center;
         }
         .game-logo {
-            width: 500px;
+            width: min(500px, 72vw);
             animation: floating 6s ease-in-out infinite;
         }
         @keyframes floating {
@@ -55,10 +55,12 @@
                 <!-- Les profils seront injectés ici -->
             </div>
         </section>
-        <button id="load-profile">Charger</button>
-        <button id="delete-profile">Supprimer le profil selectionné</button>
-        <button id="import-save-btn">📥 Importer une sauvegarde</button>
-        <button id="multiplayer-btn">🎮 Multijoueur</button>
+        <div class="action-buttons">
+            <button id="load-profile">Charger</button>
+            <button id="delete-profile">Supprimer le profil selectionné</button>
+            <button id="import-save-btn">📥 Importer une sauvegarde</button>
+            <button id="multiplayer-btn">🎮 Multijoueur</button>
+        </div>
     </main>
     <script type="module" src="JS/index.js"></script>
     <script>

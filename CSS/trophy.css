@@ -283,6 +283,12 @@ body::before {
     .trophy-back { justify-self: center; }
     .trophy-title { grid-column: 1; }
     .trophy-progress { justify-self: center; }
+    /* En-tete de groupe : autoriser le retour a la ligne pour que le bouton
+       "Rejouer" ne deborde pas sur les tres petits ecrans (<=320px). */
+    .trophy-group__header {
+        flex-wrap: wrap;
+        row-gap: var(--sp-2);
+    }
     .trophy-group__items {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         gap: var(--sp-3);

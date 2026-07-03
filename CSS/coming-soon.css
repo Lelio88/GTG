@@ -14,14 +14,21 @@
 }
 
 body {
-    min-height: 100vh;
+    min-height: 100vh;   /* fallback WebView < Chromium 108 */
+    min-height: 100dvh;
+    padding: var(--sp-4);
     background: var(--bg-deep);
     color: var(--text-primary);
     font-family: var(--font-ui);
     display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    /* 'safe center' : centre la carte, mais bascule en alignement debut si
+       elle depasse le viewport (paysage court) au lieu de rogner le haut. */
+    align-items: safe center;
+    justify-content: safe center;
+    /* overflow-y auto (au lieu de hidden) : la carte reste atteignable en
+       paysage court ; overflow-x hidden clippe le soleil synthwave de fond. */
+    overflow-x: hidden;
+    overflow-y: auto;
     position: relative;
 }
 
@@ -147,4 +154,17 @@ body::after {
 
 .placeholder-back:active {
     transform: translateY(0);
+}
+
+/* Viewport court (paysage telephone) : carte compacte pour tenir sans scroll. */
+@media (max-height: 600px) and (orientation: landscape) {
+    .placeholder-card {
+        padding: clamp(1rem, 3.5vh, 2rem) clamp(1.25rem, 5vw, 3rem);
+    }
+    .placeholder-icon {
+        font-size: clamp(2.5rem, 9vh, 4.5rem);
+        margin-bottom: 0.6rem;
+    }
+    .placeholder-title { margin-bottom: 0.75rem; }
+    .placeholder-text { margin-bottom: 1rem; }
 }

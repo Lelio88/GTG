@@ -156,10 +156,19 @@ h1 {
 /* ===============================
     Buttons
 =============================== */
-/* Le style 'button' baseline est fourni par tokens.css. On override
-   seulement le margin-top pour decoller du grid des profils. */
-button {
+/* Le style 'button' baseline est fourni par tokens.css. Les 4 boutons
+   d'action vivent dans .action-buttons : rangée centrée qui wrap sur desktop,
+   colonne pleine largeur en portrait, rangée compacte en paysage court. */
+.action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--sp-2);
     margin-top: var(--sp-3);
+}
+
+.action-buttons button {
+    margin: 0;
 }
 
 /* Bouton Multijoueur — styling spécial pour le mettre en évidence */
@@ -246,13 +255,20 @@ button {
         transform: none !important;
     }
 
+    .action-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: var(--sp-2);
+        margin-top: var(--sp-2);
+    }
+
     #load-profile, #delete-profile, #import-save-btn, #multiplayer-btn {
         flex-shrink: 0;
         min-height: 44px;
         padding: var(--sp-2);
         font-size: 0.9em;
         width: 100%;
-        margin: var(--sp-1) 0 0 0;
+        margin: 0;
     }
 }
 
@@ -262,8 +278,10 @@ button {
         max-width: 800px;
     }
 
+    /* 4 profils max : on garde 4 colonnes pour ne jamais wrapper sur 2 lignes
+       (le repeat(3) precedent cassait le 4e profil sur une 2e ligne). */
     #profiles-container {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: var(--sp-3);
     }
 }
@@ -272,5 +290,89 @@ button {
     #profiles-container {
         grid-template-columns: repeat(4, 1fr);
         gap: var(--sp-4);
+    }
+}
+
+/* ===============================
+   VIEWPORT COURT — paysage telephone (hauteur <= 600px)
+   Vrai declencheur du bug : en paysage le telephone est large mais tres bas.
+   On de-centre verticalement (sinon overflow:hidden rogne haut ET bas), on
+   reduit le logo (le float -50px gaspillait la hauteur) et on compacte pour
+   que profils + boutons restent toujours visibles. Place en DERNIER (apres le
+   bloc min-width:1024) => prime sur toutes les media-queries de largeur.
+   Restreint a l'orientation paysage : evite de se declencher en portrait
+   quand le clavier logiciel reduit la hauteur visible.
+=============================== */
+@media (max-height: 600px) and (orientation: landscape) {
+    html, body {
+        position: static;
+        height: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    body { align-items: stretch; }
+
+    #app {
+        width: min(1000px, 96vw);
+        max-width: none;
+        min-height: 100vh;   /* fallback WebView < Chromium 108 */
+        min-height: 100dvh;
+        padding: var(--sp-2)
+                 max(var(--sp-3), env(safe-area-inset-right))
+                 var(--sp-3)
+                 max(var(--sp-3), env(safe-area-inset-left));
+        display: flex;
+        flex-direction: column;
+        justify-content: safe center;
+        gap: var(--sp-2);
+    }
+
+    .logo-wrapper { margin: 0; flex-shrink: 0; }
+
+    .game-logo {
+        width: clamp(96px, 20vh, 190px) !important;
+        animation: none !important;
+    }
+
+    h1 { margin: 0; flex-shrink: 0; }
+
+    .profile-selection { flex-shrink: 0; }
+
+    .profile-selection h1 {
+        font-size: clamp(0.85rem, 2.6vh, 1.1rem);
+        margin: var(--sp-1) 0;
+    }
+
+    #profiles-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--sp-2);
+        overflow: visible;
+        margin-bottom: 0;
+        flex: 0 0 auto;
+    }
+
+    .profile {
+        min-height: 44px;
+        padding: var(--sp-2);
+        font-size: var(--fs-sm);
+        transform: none !important;
+    }
+
+    .action-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: var(--sp-2);
+        margin-top: var(--sp-1);
+        width: 100%;
+    }
+
+    .action-buttons button {
+        flex: 1 1 auto;
+        width: auto;
+        min-height: 44px;
+        padding: var(--sp-1) var(--sp-3);
+        font-size: 0.82rem;
     }
 }

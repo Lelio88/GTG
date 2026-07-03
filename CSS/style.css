@@ -5,12 +5,19 @@
 
 @import url('./tokens.css');
 
+/* box-sizing global : sans lui, width:100% + padding + bordure de #header-bar
+   et #user-input debordait le viewport (overflow-x horizontal parasite). */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 /* ===============================
     Global Styles
 =============================== */
 body {
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
     font-family: var(--font-ui);
     color: var(--text-primary);
     display: flex;
@@ -326,7 +333,7 @@ button {
     left: 0;
     right: 0;
     background: rgba(8, 4, 15, 0.85);
-    padding: var(--sp-2) var(--sp-4);
+    padding: var(--sp-2) var(--sp-4) max(var(--sp-2), env(safe-area-inset-bottom));
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -521,5 +528,111 @@ button {
 @media (min-width: 768px) {
     .burger-menu {
         display: none;
+    }
+}
+
+/* ===============================
+   VIEWPORT COURT — paysage telephone (hauteur <= 600px)
+   En paysage l'ecran est large mais tres bas : le media (#content) prenait
+   toute la hauteur et poussait #user-input + #button-container hors ecran
+   (mode injouable). On rend le body scrollable (plus rien d'inaccessible),
+   on plafonne la hauteur du media et on compacte la barre de score / le
+   header. #header-bar et #scoreboard restent des barres fixes ; #app defile
+   entre les deux. Place en dernier => prime sur les media-queries de largeur.
+=============================== */
+@media (max-height: 600px) and (orientation: landscape) {
+    body {
+        display: block;
+        height: auto;
+        min-height: 100vh;   /* fallback WebView < Chromium 108 */
+        min-height: 100dvh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    /* Header en flux (sticky) plutot que fixed : plus de chevauchement du
+       contenu sous une barre de hauteur variable, et il reste visible au
+       scroll. On annule le centrage translateX du mode fixed. */
+    #header-bar {
+        position: sticky;
+        top: 0;
+        left: auto;
+        transform: none;
+        width: 100%;
+        margin: 0 0 var(--sp-2);
+        border-radius: 0;
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: auto;
+        min-height: 40px;
+        padding: max(var(--sp-1), env(safe-area-inset-top))
+                 max(var(--sp-3), env(safe-area-inset-right))
+                 var(--sp-1)
+                 max(var(--sp-3), env(safe-area-inset-left));
+        gap: var(--sp-1) var(--sp-3);
+    }
+
+    #header-logo { height: 24px; }
+
+    #header-bar nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--sp-1) var(--sp-3);
+    }
+
+    #header-bar nav ul li a { font-size: var(--fs-xs); }
+
+    #app {
+        width: min(96%, 1200px);
+        margin: 0 auto;
+        padding: var(--sp-2)
+                 max(var(--sp-3), env(safe-area-inset-right))
+                 56px
+                 max(var(--sp-3), env(safe-area-inset-left));
+    }
+
+    #game { gap: var(--sp-2); }
+
+    #game-title,
+    #message { font-size: clamp(1rem, 4.5vh, 1.4rem); }
+
+    /* Media plafonne pour laisser la place a la saisie + aux boutons.
+       height:auto neutralise le #content{height:350px} de la bande tablette
+       (768-1023px) dans laquelle tombent les telephones en paysage. */
+    #content { min-height: 0; height: auto; }
+
+    #content img,
+    .hint-container img,
+    #geo-viewer {
+        max-height: 46vh !important;
+    }
+
+    #user-input {
+        min-height: 44px;
+        padding: var(--sp-2) var(--sp-3);
+        scroll-margin-block: 72px;   /* reste degage du header/scoreboard au focus clavier */
+    }
+
+    #button-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: var(--sp-2);
+        width: auto;
+    }
+
+    #button-container button {
+        width: auto;
+        min-height: 44px;
+        padding: var(--sp-2) var(--sp-4);
+    }
+
+    #scoreboard {
+        padding: var(--sp-1)
+                 max(var(--sp-3), env(safe-area-inset-right))
+                 max(var(--sp-1), env(safe-area-inset-bottom))
+                 max(var(--sp-3), env(safe-area-inset-left));
+        font-size: var(--fs-xs);
+        gap: var(--sp-2);
+        flex-wrap: wrap;
     }
 }
