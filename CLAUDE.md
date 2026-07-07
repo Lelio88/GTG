@@ -19,7 +19,7 @@ Topologie rapide :
 - **Chambre** : `HTML/chamber.html`/`JS/chamber.js` (zones cliquables) → Trophées (`trophy.*` + `JS/achievements.js`) et mode `geo`
 - **Multi** : `HTML/multi-*.html` + `JS/multi/*.js` (firebase, scoring, lobby, host-engine, round-client, scoreboard)
 - **Couche partagée solo** : `gameUtils.js` (timer/score/validation/abandon/`revealTitle`), `state/{profileStore,gameProgress,modeReset}.js`, `ui/dialog.js` (modales), `achievements.js`, `hellMode.js`, `gameCompletion.js`, `saveManager.js`, `dialogue.js`
-- **Données & style** : `gamesDatabase.js` + `abbreviations.js` ; `Assets/` (UI) et `Medias/<Type>/` (jeu) ; `CSS/tokens.css` (design tokens néon), `CSS/multi.css`, `CSS/coming-soon.css`
+- **Données & style** : `gamesDatabase.js` + `abbreviations.js` ; `Assets/` (UI) et `Medias/<Type>/` (jeu) ; `CSS/tokens.css` (tokens néon), `CSS/multi.css`, `CSS/coming-soon.css` (pages « à venir » `HTML/{calculator,films,pantone,xxx}.html`)
 - **Outils admin** : `Python/*.py` (génération d'assets : captures, silhouettes, sons, panoramas 360)
 - **App mobile** : `mobile/` — empaquetage **Android via Capacitor** (AAB), isolé du web ; voir `mobile/README.md`
 
@@ -28,7 +28,7 @@ Topologie rapide :
 *Web : aucun manifest (pas de `package.json`), pas de build step. **Exception** : `mobile/` a son propre `package.json` (Capacitor), isolé du web. N'introduisez aucune dépendance web sans approbation.*
 
 - **Front** : HTML5, CSS3 (variables custom, animations néon, `prefers-reduced-motion`), JavaScript ES6+ modules natifs
-- **CDN runtime pinné** : `anime.js 3.2.1` (SRI), `tone@15.1.22` + `@tonejs/midi@2.0.28` (MIDI), `canvas-confetti@1.9.3` (multi), `@photo-sphere-viewer/core@5` (Geo 360°) — via esm.sh
+- **CDN runtime pinné** : `anime.js 3.2.1` (cdnjs, SRI) ; via **esm.sh** : `tone@15.1.22` + `@tonejs/midi@2.0.28` (MIDI), `canvas-confetti@1.9.3` (multi), `@photo-sphere-viewer/core@5` (Geo 360°)
 - **Multi** : Firebase Realtime Database + Anonymous Auth via CDN ESM (App Check désactivé)
 - **Persistance** : `window.localStorage` (clés racine `profiles`, `currentProfile` ; alias éphémère multi `gtg_multi_last_alias`)
 - **Outils admin (hors web)** : Python 3 + `Pillow`, `yt_dlp`, `rembg`, `ffmpeg`/`ffmpeg-normalize`, Tkinter — cf. `Python/requirements.txt`
@@ -96,6 +96,5 @@ cd mobile/android && JAVA_HOME="/c/Program Files/Android/Android Studio/jbr" ./g
 
 ## VIII. Contexte de Session
 
-- **Dernier focus** : correctif **responsive global + orientation** — l'app fonctionne désormais en **portrait ET paysage** (`screenOrientation` `sensorLandscape` → `fullUser`). Bug racine corrigé : breakpoints largeur-seule → ajout d'un régime « viewport court » (`@media (max-height:600px)`) dans `index-style.css`, `style.css` (9 pages), `hub.css`, `coming-soon.css` + `box-sizing:border-box` manquant (overflow-x) + wrappers `.action-buttons`/`.hub-actions`. **Icône de l'app** régénérée (soleil synthwave, mipmap toutes densités + fond `#0A0510`), l'ancienne étant l'icône Capacitor par défaut. `versionCode` 1 → 2. Doctrine documentée dans `docs/architecture.md` §10-11.
-- **Focus immédiat** : **AAB v2 signé DÉJÀ BUILDÉ** (`versionName 1.0.1`, `fullUser`) → `mobile/android/app/build/outputs/bundle/release/app-release.aab`. Signature via `mobile/android/key.properties` (gitignoré) + keystore `../.gtg-secrets/upload-keystore.jks` (alias `upload`). **Reste à l'uploader** en test Play Store + re-uploader `mobile/gtg-play-store-icon-512.png` dans la fiche. Ensuite : enrichir le catalogue Geo via captures **Ansel** ; repositionner `#zone-geo`.
-- **Antérieur** : app mobile Android (Capacitor) livrée ; mode Geo assaini (God of War, Minecraft, Subnautica) + `geo_undeclare.py` + fix migration `guessedGamesByMode`.
+- **État courant** : app packagée **Android** (Capacitor, `versionName 1.0.1`) tournant en **portrait ET paysage** (`screenOrientation="fullUser"`) ; solo + multi + Geo opérationnels. Doctrine responsive « viewport court » : `docs/architecture.md` §10-11 ; build/signature AAB : `mobile/README.md`.
+- **Prochaines étapes** : uploader l'AAB signé en test Play Store + re-uploader l'icône `mobile/gtg-play-store-icon-512.png` dans la fiche ; enrichir le catalogue **Geo** via captures Ansel ; repositionner `#zone-geo` dans la chambre.
