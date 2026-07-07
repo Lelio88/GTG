@@ -71,7 +71,7 @@ python -m http.server 8000
 # Puis ouvre http://localhost:8000/
 ```
 
-Les assets multimédias (`Medias/Image/`, `Medias/Sound/`, etc.) ne sont **pas inclus** dans le repo en raison de leur taille. Sans eux, l'app charge mais les jeux n'auront pas d'indices visuels/sonores.
+Les assets multimédias (`Medias/Image/`, `Medias/Sound/`, etc.) **sont versionnés dans le dépôt** (~800 Mo) : c'est ce qui permet au site **GitHub Pages** de servir directement les indices visuels/sonores. Le clone les récupère donc intégralement — seul `Medias/Geo/_inbox/` (captures 360° en cours d'ingestion) est ignoré.
 
 ---
 

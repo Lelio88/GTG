@@ -309,7 +309,7 @@ Les pages communiquent entre elles **uniquement** via `localStorage` et redirect
 - ❌ **Logger un secret ou un objet profil entier en `console.log`** — préférer `console.error` ciblé sur la branche d'erreur uniquement.
 - ❌ **Mutations partielles du profil** sans appeler `saveProfile()` — les onglets ne se synchronisent pas, le rendu se désaligne du stockage.
 - ❌ **Redéfinir un timer / un score / une logique d'abandon localement** dans un fichier de mode — toujours passer par `gameUtils.js`.
-- ❌ **Pousser les assets multimédias dans le repo** — ils sont volontairement exclus (taille). Les scripts Python servent à les régénérer en local.
+- ❌ **Commiter le dossier de travail `Medias/Geo/_inbox/`** (captures Ansel brutes) — il est gitignoré ; seuls les panoramas validés et nommés par `geo_ingest.py` entrent dans `Medias/Geo/`. Les médias de jeu, eux, **sont** versionnés (~800 Mo) : le site GitHub Pages les sert directement (cf. §6), les scripts Python ne servent qu'à les (re)générer avant commit.
 - ❌ **Renommer un titre dans `gamesDatabase.js` sans renommer les assets correspondants** — la nomenclature `<Title> N.ext` est le contrat.
 - ❌ **Injecter de l'HTML utilisateur via `innerHTML`** — le pseudo est inséré via `innerText`, conserver ce pattern (pas de XSS local).
 - ❌ **Ajouter une dépendance npm / un bundler** — le projet est volontairement `file://`-compatible.
@@ -328,7 +328,7 @@ Les scripts dans `Python/` sont des outils d'administration **exécutés localem
 | `shadow.py` | (similaire) | Silhouette pour le mode shadow |
 | `sound.py` | (similaire pour audio) | Bandes-son |
 
-Tous consomment `gamesDatabase.js` en regex (`title\s*:\s*["\'](.*?)["']`). Pas de dépendance Python figée (pas de `requirements.txt`) ; à installer manuellement : `pillow`, `requests`, `duckduckgo_search`, `urllib3`. **Ne pas exécuter ces scripts depuis le repo de prod** : ils écrivent dans un sous-dossier `output_folder` qui n'est pas le dossier `Medias/` final — étape de copie manuelle ensuite.
+Tous consomment `gamesDatabase.js` en regex (`title\s*:\s*["\'](.*?)["']`). Dépendances figées dans `Python/requirements.txt` (`Pillow`, `requests`, `urllib3`, `duckduckgo-search`, `yt-dlp`, `pygame`, `ffmpeg-normalize`, `rembg` ; `tkinter` = stdlib, `ffmpeg` à installer au niveau système) → `pip install -r Python/requirements.txt`. **Ne pas exécuter ces scripts depuis le repo de prod** : ils écrivent dans un sous-dossier `output_folder` qui n'est pas le dossier `Medias/` final — étape de copie manuelle ensuite.
 
 ## 13. Dépendances externes
 
@@ -336,7 +336,7 @@ Tous consomment `gamesDatabase.js` en regex (`title\s*:\s*["\'](.*?)["']`). Pas 
 |---|---|---|---|
 | `anime.js 3.2.1` | Runtime JS | CDN `cdnjs.cloudflare.com` | Animation du logo sur `index.html` |
 | Polices système (`Poppins`) | CSS | navigateur | Police par défaut |
-| `duckduckgo_search`, `Pillow`, `requests`, `urllib3` | Python | pip | Scripts d'admin assets |
+| `Pillow`, `requests`, `urllib3`, `duckduckgo-search`, `yt-dlp`, `pygame`, `ffmpeg-normalize`, `rembg` | Python | `Python/requirements.txt` | Scripts d'admin assets (image/son/silhouette/pixels/geo) |
 | Tkinter | Python stdlib | — | UI de sélection d'image |
 
 Aucune dépendance front bundlée. Aucune dépendance back (pas de backend).
