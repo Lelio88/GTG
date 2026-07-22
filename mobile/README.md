@@ -101,7 +101,9 @@ est partagée avec les autres apps du parent (DewDrop, LLMarmite).
 - **Icône du lanceur** : icône adaptative « soleil synthwave » dans `android/app/src/main/res/mipmap-*/`
   (`ic_launcher.png`, `ic_launcher_round.png`, `ic_launcher_foreground.png`, toutes densités) + fond
   `res/values/ic_launcher_background.xml` = `#0A0510`. **Régénération** : script Pillow (soleil radial +
-  grille + densités). L'icône **512×512 pour la fiche Play Store** est fournie : `mobile/gtg-play-store-icon-512.png`.
+  grille + densités). L'icône **512×512 canonique pour la fiche Play Store** est
+  `../store-screenshots/icon-512.png`. L'ancienne variante générée reste disponible dans
+  `gtg-play-store-icon-512.png`, mais ne doit pas être utilisée pour la fiche.
 - **Rappel** : toute modif du web (racine) ou de l'icône exige `npm run sync` puis un rebuild `bundleRelease`,
   et un **bump de `versionCode`** dans `android/app/build.gradle` pour ré-uploader sur le Play Store.
 

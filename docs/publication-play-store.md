@@ -306,7 +306,7 @@ Réponses transverses (à répéter pour chaque type) :
 | Nom | **Guess The Game** |
 | Brève description (80) | **Devine le jeu vidéo : image, son, silhouette… 8 modes + multijoueur !** |
 | Description complète | voir **§12.a** ci-dessous (texte complet) |
-| Visuels | Icône 512×512 · Bannière 1024×500 · Captures tél (2-8) + tablette 7″/10″ ; Play Games PC/Chromebook/XR ignorés |
+| Visuels | `store-screenshots/icon-512.png` (icône canonique 512×512) · `store-screenshots/banner-1024x500.png` · captures `store-screenshots/01-landing.png` à `06-multi.png` ; Play Games PC/Chromebook/XR ignorés |
 
 > GTG = quiz de culture vidéoludique (identifier un jeu à partir d'indices) → catégorie Trivia.
 > Les tags influencent le SEO Play Store + le groupe d'apps comparées.
