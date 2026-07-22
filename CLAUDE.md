@@ -19,7 +19,7 @@ Topologie rapide :
 - **Chambre** : `HTML/chamber.html`/`JS/chamber.js` (zones cliquables) → Trophées (`trophy.*` + `JS/achievements.js`) et mode `geo`
 - **Multi** : `HTML/multi-*.html` + `JS/multi/*.js` (firebase, scoring, lobby, host-engine, round-client, scoreboard)
 - **Couche partagée solo** : `gameUtils.js` (timer/score/validation/abandon/`revealTitle`), `state/{profileStore,gameProgress,modeReset}.js`, `ui/dialog.js` (modales), `achievements.js`, `hellMode.js`, `gameCompletion.js`, `saveManager.js`, `dialogue.js`
-- **Données & style** : `gamesDatabase.js` + `abbreviations.js` ; `Assets/` (UI) et `Medias/<Type>/` (jeu) ; `CSS/tokens.css` (tokens néon), `CSS/multi.css`, `CSS/coming-soon.css` (pages « à venir » `HTML/{calculator,films,pantone,xxx}.html`)
+- **Données & style** : `gamesDatabase.js` + `abbreviations.js` ; `Assets/` (UI), `Medias/<Type>/` (jeu), `store-screenshots/` (fiche Play Store) ; `CSS/tokens.css` (tokens néon), `CSS/multi.css`, `CSS/coming-soon.css` (pages « à venir » `HTML/{calculator,films,pantone,xxx}.html`)
 - **Outils admin** : `Python/*.py` (génération d'assets : captures, silhouettes, sons, panoramas 360)
 - **App mobile** : `mobile/` — empaquetage **Android via Capacitor** (AAB), isolé du web ; voir `mobile/README.md`
 
@@ -92,9 +92,9 @@ cd mobile/android && JAVA_HOME="/c/Program Files/Android/Android Studio/jbr" ./g
 | Mode Enfer (fenêtre 666–777) | `JS/hellMode.js` (`HELL_THRESHOLD`/`HELL_MAX`) + `CSS/tokens.css` (`html.gtg-hell`) |
 | App mobile (Capacitor) | `mobile/README.md` ; relancer `npm run sync` avant tout rebuild AAB |
 | Responsive / orientation d'une page | bloc `@media (max-height: 600px)` dans le CSS de page concerné + `docs/architecture.md` §10-11 (doctrine « viewport court ») ; orientation dans `mobile/android/app/src/main/AndroidManifest.xml` (`screenOrientation`) |
-| Icône de l'app Android | régénérer via `mobile/` (mipmap-*/`ic_launcher*.png` toutes densités) + `res/values/ic_launcher_background.xml` + icône Play Store `mobile/gtg-play-store-icon-512.png` |
+| Icône de l'app Android | régénérer via `mobile/` (mipmap-*/`ic_launcher*.png` toutes densités) + `res/values/ic_launcher_background.xml` + icône Play Store canonique `store-screenshots/icon-512.png` |
 
 ## VIII. Contexte de Session
 
 - **État courant** : app packagée **Android** (Capacitor, `versionName 1.0.1`) tournant en **portrait ET paysage** (`screenOrientation="fullUser"`) ; solo + multi + Geo opérationnels. Doctrine responsive « viewport court » : `docs/architecture.md` §10-11 ; build/signature AAB : `mobile/README.md`.
-- **Prochaines étapes** : uploader l'AAB signé en test Play Store + re-uploader l'icône `mobile/gtg-play-store-icon-512.png` dans la fiche ; enrichir le catalogue **Geo** via captures Ansel ; repositionner `#zone-geo` dans la chambre.
+- **Prochaines étapes** : uploader l'AAB signé en test Play Store + l'icône `store-screenshots/icon-512.png` dans la fiche ; enrichir le catalogue **Geo** via captures Ansel ; repositionner `#zone-geo` dans la chambre.

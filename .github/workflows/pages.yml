@@ -17,6 +17,7 @@ on:
       - 'docs/**'
       - 'mobile/**'
       - 'Python/**'
+      - 'store-screenshots/**'
       - '.github/**'
       - '**.md'
   workflow_dispatch:
