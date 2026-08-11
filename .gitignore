@@ -27,3 +27,7 @@ desktop.ini
 
 # Mode Geo : dossier de travail pour ingerer les captures 360 (Ansel)
 Medias/Geo/_inbox/
+
+# Compte de service Google Play — vit dans ../.gtg-secrets/, jamais ici.
+play-sa.json
+*service-account*.json

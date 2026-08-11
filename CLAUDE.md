@@ -74,6 +74,11 @@ python Python/geo_undeclare.py                                              # re
 # App mobile Android (Capacitor — détails dans mobile/README.md)
 cd mobile && npm run sync          # assembler www/ (médias réécrits vers le CDN) + cap sync
 cd mobile/android && JAVA_HOME="/c/Program Files/Android/Android Studio/jbr" ./gradlew bundleRelease   # AAB signé
+
+# Publication Play Store (prérequis : 1ʳᵉ version envoyée à la main dans la console)
+python mobile/publish_play.py --show-config                    # config détectée, sans réseau
+python mobile/publish_play.py --track alpha --dry-run          # valide sans rien publier
+python mobile/publish_play.py --track alpha --notes-file <f>   # publie en test fermé
 ```
 
 ## VII. Maintenance documentaire
@@ -91,10 +96,12 @@ cd mobile/android && JAVA_HOME="/c/Program Files/Android/Android Studio/jbr" ./g
 | Mode Geo (assets, viewer) | `Python/geo_*.py` (dont `geo_undeclare.py`), `hint-renderers.js` (`renderHintGeo`/`cleanupGeo`), `README.md` (guide) |
 | Mode Enfer (fenêtre 666–777) | `JS/hellMode.js` (`HELL_THRESHOLD`/`HELL_MAX`) + `CSS/tokens.css` (`html.gtg-hell`) |
 | App mobile (Capacitor) | `mobile/README.md` ; relancer `npm run sync` avant tout rebuild AAB |
+| Procédure de publication Play | `mobile/publish_play.py` + `../play-store-publication-guide.md` §13. Service account JSON dans `../.gtg-secrets/play-sa.json` — **hors dépôt** |
 | Responsive / orientation d'une page | bloc `@media (max-height: 600px)` dans le CSS de page concerné + `docs/architecture.md` §10-11 (doctrine « viewport court ») ; orientation dans `mobile/android/app/src/main/AndroidManifest.xml` (`screenOrientation`) |
 | Icône de l'app Android | régénérer via `mobile/` (mipmap-*/`ic_launcher*.png` toutes densités) + `res/values/ic_launcher_background.xml` + icône Play Store canonique `store-screenshots/icon-512.png` |
 
 ## VIII. Contexte de Session
 
 - **État courant** : app packagée **Android** (Capacitor, `versionName 1.0.1`) tournant en **portrait ET paysage** (`screenOrientation="fullUser"`) ; solo + multi + Geo opérationnels. Doctrine responsive « viewport court » : `docs/architecture.md` §10-11 ; build/signature AAB : `mobile/README.md`.
-- **Prochaines étapes** : uploader l'AAB signé en test Play Store + l'icône `store-screenshots/icon-512.png` dans la fiche ; enrichir le catalogue **Geo** via captures Ansel ; repositionner `#zone-geo` dans la chambre.
+- **État Play Store** : **versionCode 2 diffusé en test fermé** (track `alpha`). Les envois suivants passent par `mobile/publish_play.py` (incrémenter `versionCode` dans `mobile/android/app/build.gradle` avant tout rebuild — un versionCode n'est jamais réutilisable).
+- **Prochaines étapes** : ajouter l'icône `store-screenshots/icon-512.png` à la fiche Play ; enrichir le catalogue **Geo** via captures Ansel ; repositionner `#zone-geo` dans la chambre.
