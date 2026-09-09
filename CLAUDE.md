@@ -102,6 +102,6 @@ python mobile/publish_play.py --track alpha --notes-file <f>   # publie en test 
 
 ## VIII. Contexte de Session
 
-- **État courant** : app packagée **Android** (Capacitor, `versionName 1.0.1`) tournant en **portrait ET paysage** (`screenOrientation="fullUser"`) ; solo + multi + Geo opérationnels. Doctrine responsive « viewport court » : `docs/architecture.md` §10-11 ; build/signature AAB : `mobile/README.md`.
+- **État courant** : app packagée **Android** (Capacitor, `versionName 1.0.1`) tournant en **portrait ET paysage** (`screenOrientation="fullUser"`) ; solo + multi + Geo opérationnels. Doctrine responsive « viewport court » : `docs/architecture.md` §10-11 ; build/signature AAB : `mobile/README.md`, et la convention de clé du conteneur dans [`../android-signing-guide.md`](../android-signing-guide.md).
 - **État Play Store** : **versionCode 2 diffusé en test fermé** (track `alpha`). Les envois suivants passent par `mobile/publish_play.py` (incrémenter `versionCode` dans `mobile/android/app/build.gradle` avant tout rebuild — un versionCode n'est jamais réutilisable).
 - **Prochaines étapes** : ajouter l'icône `store-screenshots/icon-512.png` à la fiche Play ; enrichir le catalogue **Geo** via captures Ansel ; repositionner `#zone-geo` dans la chambre.
