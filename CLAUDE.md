@@ -97,7 +97,7 @@ python mobile/publish_play.py --track alpha --notes-file <f>   # publie en test 
 | Mode Enfer (fenêtre 666–777) | `JS/hellMode.js` (`HELL_THRESHOLD`/`HELL_MAX`) + `CSS/tokens.css` (`html.gtg-hell`) |
 | App mobile (Capacitor) | `mobile/README.md` ; relancer `npm run sync` avant tout rebuild AAB |
 | Procédure de publication Play | `mobile/publish_play.py` + `../play-store-publication-guide.md` §13. Service account JSON dans `../.gtg-secrets/play-sa.json` — **hors dépôt** |
-| Responsive / orientation d'une page | bloc `@media (max-height: 600px)` dans le CSS de page concerné + `docs/architecture.md` §10-11 (doctrine « viewport court ») ; orientation dans `mobile/android/app/src/main/AndroidManifest.xml` (`screenOrientation`) |
+| Responsive / orientation / interaction tactile d'une page | bloc `@media (max-height: 600px)` dans le CSS de page concerné + `docs/architecture.md` §10-11 (« viewport court », « interaction tactile ») ; orientation dans `mobile/android/app/src/main/AndroidManifest.xml` (`screenOrientation`) ; tactile (appui, 2ᵉ appui, swipe) dans le JS de la page — référence `JS/hub.js` + indice `#touch-hint` |
 | Icône de l'app Android | régénérer via `mobile/` (mipmap-*/`ic_launcher*.png` toutes densités) + `res/values/ic_launcher_background.xml` + icône Play Store canonique `store-screenshots/icon-512.png` |
 
 ## VIII. Contexte de Session

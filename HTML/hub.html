@@ -14,11 +14,12 @@
 <body>
     <h1>Choisissez un mode de jeu :</h1>
     <div id="modes-container" tabindex="0" aria-label="Sélection des modes de jeu">
-        <div class="game-mode" data-mode="full" data-color="yellow" tabindex="-1">Full Package</div>
-        <div class="game-mode" data-mode="sound" data-color="orange" tabindex="-1">Sound Only</div>
-        <div class="game-mode" data-mode="image" data-color="pink" tabindex="-1">Image Only</div>
-        <div class="game-mode" data-mode="text" data-color="blue" tabindex="-1">Text Only</div>
+        <div class="game-mode" data-mode="full" data-color="yellow" tabindex="-1" role="button" aria-pressed="false">Full Package</div>
+        <div class="game-mode" data-mode="sound" data-color="orange" tabindex="-1" role="button" aria-pressed="false">Sound Only</div>
+        <div class="game-mode" data-mode="image" data-color="pink" tabindex="-1" role="button" aria-pressed="false">Image Only</div>
+        <div class="game-mode" data-mode="text" data-color="blue" tabindex="-1" role="button" aria-pressed="false">Text Only</div>
     </div>
+    <p id="touch-hint" class="touch-hint" role="status" aria-live="polite" hidden>Appuyez sur un mode pour le choisir · balayez pour naviguer</p>
     <div class="hub-actions">
         <button id="start-game">Lancer le jeu</button>
         <button id="room-button">Aller dans la chambre</button>

@@ -1,3 +1,27 @@
+/**
+ * JS/hub.js - Hub de selection des modes solo.
+ *
+ * Trois entrees d'interaction convergent vers selectMode() : clavier
+ * (fleches + Espace), pointeur (clic / tap) et geste tactile (swipe
+ * horizontal). Ce point d'entree unique garantit que le neon, le curseur
+ * clavier (currentFocusModes), l'etat ARIA et l'indice tactile ne divergent
+ * jamais les uns des autres.
+ *
+ * Invariants :
+ *  - selectedMode (nom du mode) et selectedEl (carte DOM) sont toujours
+ *    ecrits ensemble : les desynchroniser casse le « appuyer deux fois ».
+ *  - Le swipe est horizontal UNIQUEMENT : en portrait les cartes sont
+ *    empilees, l'axe vertical appartient au scroll natif de la page
+ *    (#modes-container porte touch-action: pan-y).
+ *  - Le 2e appui qui lance la partie est reserve aux pointeurs grossiers
+ *    (tactile) ; souris et clavier gardent Entree et « Lancer le jeu ».
+ *
+ * IDs DOM attendus : #modes-container, .game-mode[data-mode], #touch-hint,
+ * #start-game, #back-button, #room-button, #export-save-btn, #keys-counter,
+ * #keys-count, #completed-modes, #current-time.
+ * Dependances : dialogue, saveManager, gameUtils, ui/dialog, achievements,
+ * hellMode.
+ */
 import { showCharacter } from './dialogue.js';
 import { exportSave } from './saveManager.js';
 import { getProfiles } from './gameUtils.js';
@@ -45,10 +69,24 @@ const modeNeonMapping = {
 };
 
 let currentProfile = localStorage.getItem('currentProfile');
-let currentFocusModes = 0;     // Indice de l'élément sélectionné dans les modes
-let selectedIndex = -1;         // Index du mode sélectionné (-1 = aucun)
-let selectedMode = null;
+let currentFocusModes = 0;     // Indice du curseur clavier dans les modes
+let selectedMode = null;        // Nom du mode selectionne (null = aucun)
+let selectedEl = null;          // Carte DOM correspondante (jumelle de selectedMode)
 let focusedSection = 'modes'; // Section active (par défaut 'profiles')
+
+// Pointeur grossier = doigt. On interroge la MediaQueryList a chaque appel :
+// brancher une souris sur une tablette bascule le mode d'interaction a chaud.
+const coarsePointerQuery = window.matchMedia('(pointer: coarse)');
+const isCoarsePointer = () => coarsePointerQuery.matches;
+
+// Neon de selection : couleur complementaire de la bordure du mode.
+const GLOW_BY_COLOR = {
+    "#FFA500": "#FF4500", // Jaune  -> Orange
+    "#FF4500": "#FFFF00", // Orange -> Jaune
+    "#FF1493": "#0000FF", // Rose   -> Bleu
+    "#9400D3": "#FF1493"  // Violet -> Rose
+};
+const DEFAULT_GLOW = "#FF4500";
 
 if (currentProfile) {
     const profileData = getProfiles().find(p => p.pseudo === currentProfile);
@@ -91,6 +129,76 @@ if (currentProfile) {
     }
 }
 
+// === Referentiel des cartes de mode ===
+// Le hub reecrit les cartes en place au deblocage hardcore (data-mode et
+// libelle changent) : on relit le DOM avant chaque navigation.
+function refreshModes() {
+    allModes.length = 0;
+    allModes.push(...document.querySelectorAll('.game-mode'));
+    return allModes;
+}
+
+// === Indice tactile ===
+// Affiche « appuyez de nouveau pour lancer » : sans lui, le 2e appui n'est pas
+// devinable. Masque sur pointeur fin (souris/clavier ont Entree et le bouton).
+const touchHint = document.getElementById('touch-hint');
+
+function updateTouchHint() {
+    if (!touchHint) return;
+
+    const coarse = isCoarsePointer();
+    touchHint.hidden = !coarse;
+    if (!coarse) return;
+
+    touchHint.innerText = selectedEl
+        ? `Appuyez de nouveau sur « ${selectedEl.innerText} » pour lancer`
+        : 'Appuyez sur un mode pour le choisir · balayez pour naviguer';
+}
+
+coarsePointerQuery.addEventListener('change', updateTouchHint);
+
+// === Selection d'un mode (point d'entree unique) ===
+function selectMode(modeDiv) {
+    const modes = refreshModes();
+
+    // Retirer l'effet neon et la selection des autres modes
+    modes.forEach(div => {
+        div.classList.remove('selected');
+        div.style.boxShadow = `0 0 5px ${div.getAttribute('data-color')}`;  // Réinitialiser le box-shadow
+        div.style.animation = 'none'; // Stopper l'animation précédente
+        void div.offsetWidth; // Forcer le reflow pour redémarrer l'animation proprement
+        div.setAttribute('aria-pressed', 'false');
+    });
+
+    // Ajouter l'effet neon au mode selectionne
+    modeDiv.classList.add('selected');
+    modeDiv.setAttribute('aria-pressed', 'true');
+
+    const glowColor = GLOW_BY_COLOR[modeDiv.getAttribute('data-color')] || DEFAULT_GLOW;
+    modeDiv.style.setProperty('--glow-color', glowColor);
+    modeDiv.style.boxShadow = `0 0 10px ${glowColor}, 0 0 20px ${glowColor}`;
+    modeDiv.style.animation = "neon-glow 1.5s infinite alternate";
+
+    selectedMode = modeDiv.dataset.mode;
+    selectedEl = modeDiv;
+
+    // Un tap/clic deplace aussi le curseur clavier : sans cette synchro, une
+    // fleche apres un tap ramenait le focus au premier mode de la liste.
+    const index = modes.indexOf(modeDiv);
+    if (index !== -1) currentFocusModes = index;
+
+    updateTouchHint();
+}
+
+// === Lancement de la partie (bouton, touche Entree, 2e appui tactile) ===
+function launchSelectedMode() {
+    if (!selectedMode) {
+        showAlert("Veuillez sélectionner un mode de jeu !", { title: 'Aucun mode selectionne' });
+        return;
+    }
+    window.location.href = `../HTML/${selectedMode}.html`;
+}
+
 // === Initialisation des couleurs de chaque mode de jeu ===
 document.querySelectorAll('.game-mode').forEach((modeDiv) => {
     const mode = modeDiv.dataset.mode;
@@ -99,49 +207,27 @@ document.querySelectorAll('.game-mode').forEach((modeDiv) => {
     modeDiv.style.boxShadow = `0 0 5px ${color}`;
     modeDiv.setAttribute('data-color', color);
 
-    // === Gestion du clic pour appliquer l'effet néon ===
-    modeDiv.onclick = () => {
-        // Retirer l'effet néon et la sélection des autres modes
-        document.querySelectorAll('.game-mode').forEach(div => {
-            div.classList.remove('selected');
-            div.style.boxShadow = `0 0 5px ${div.getAttribute('data-color')}`;  // Réinitialiser le box-shadow
-            div.style.animation = 'none'; // Stopper l'animation précédente
-            void div.offsetWidth; // Forcer le reflow pour redémarrer l'animation proprement
-        });
-
-        // Ajouter l'effet néon au mode sélectionné
-        modeDiv.classList.add('selected');
-
-        // Appliquer la couleur de néon en fonction de la sélection
-        let glowColor;
-        switch (modeDiv.getAttribute('data-color')) {
-            case "#FFA500": // Jaune
-                glowColor = "#FF4500"; // Orange
-                break;
-            case "#FF4500": // Orange
-                glowColor = "#FFFF00"; // Jaune
-                break;
-            case "#FF1493": // Rose
-                glowColor = "#0000FF"; // Bleu
-                break;
-            case "#9400D3": // Bleu
-                glowColor = "#FF1493"; // Rose
-                break;
-            default:
-                glowColor = "#FF4500"; // Par défaut, orange
+    // === Gestion du clic / tap ===
+    modeDiv.addEventListener('click', (event) => {
+        // Un swipe se termine par un click synthetique sur la carte de depart :
+        // il annulerait la selection deplacee par le geste.
+        if (swipeConsumed) {
+            swipeConsumed = false;
+            return;
         }
 
-        // Appliquer la couleur de néon
-        modeDiv.style.setProperty('--glow-color', glowColor);  // Appliquer la couleur de néon
-        modeDiv.style.boxShadow = `0 0 10px ${glowColor}, 0 0 20px ${glowColor}`;  // Ajouter un effet de néon plus fort
+        // detail === 0 => click programmatique (touche Espace du clavier) : il
+        // ne doit jamais declencher le lancement.
+        const isPointerClick = event.detail !== 0;
+        const wasSelected = selectedEl === modeDiv;
 
+        selectMode(modeDiv);
 
-        // Relancer l'animation de néon
-        modeDiv.style.animation = "neon-glow 1.5s infinite alternate";  // Relancer l'animation
-
-        // Mise à jour de la sélection du mode
-        selectedMode = modeDiv.dataset.mode;
-    };
+        // Tactile : 2e appui sur un mode deja selectionne = lancer la partie.
+        if (wasSelected && isPointerClick && isCoarsePointer()) {
+            launchSelectedMode();
+        }
+    });
 
     // Désactiver l'effet du clavier si la souris survole un mode
     modeDiv.addEventListener('mouseover', () => {
@@ -151,48 +237,96 @@ document.querySelectorAll('.game-mode').forEach((modeDiv) => {
     });
 });
 
+// === Gestes tactiles : swipe horizontal = mode precedent / suivant ===
+// Horizontal uniquement : l'axe vertical appartient au scroll de la page
+// (les cartes sont empilees en portrait).
+const SWIPE_MIN_DISTANCE = 48;   // px minimum pour parler de swipe
+const SWIPE_AXIS_RATIO = 1.5;    // dominance horizontale exigee face au vertical
+const SWIPE_MAX_DURATION = 800;  // ms au-dela desquels c'est un drag, pas un swipe
+
+const modesContainer = document.getElementById('modes-container');
+let touchOrigin = null;      // { x, y, time } du doigt au touchstart
+let swipeConsumed = false;   // le dernier geste a ete interprete comme un swipe
+
+function moveSelection(delta) {
+    const modes = refreshModes();
+    if (modes.length === 0) return;
+
+    // Premier geste sans selection : on amorce sur le curseur courant plutot
+    // que de sauter un mode.
+    if (!selectedEl) {
+        selectMode(modes[Math.min(currentFocusModes, modes.length - 1)]);
+        return;
+    }
+
+    const next = Math.min(Math.max(currentFocusModes + delta, 0), modes.length - 1);
+    selectMode(modes[next]);
+}
+
+if (modesContainer) {
+    modesContainer.addEventListener('touchstart', (e) => {
+        swipeConsumed = false;
+        if (e.touches.length !== 1) {   // pinch / multi-touch : pas un swipe
+            touchOrigin = null;
+            return;
+        }
+        const touch = e.touches[0];
+        touchOrigin = { x: touch.clientX, y: touch.clientY, time: Date.now() };
+    }, { passive: true });
+
+    modesContainer.addEventListener('touchend', (e) => {
+        if (!touchOrigin) return;
+
+        const touch = e.changedTouches[0];
+        const dx = touch.clientX - touchOrigin.x;
+        const dy = touch.clientY - touchOrigin.y;
+        const elapsed = Date.now() - touchOrigin.time;
+        touchOrigin = null;
+
+        if (elapsed > SWIPE_MAX_DURATION) return;
+        if (Math.abs(dx) < SWIPE_MIN_DISTANCE) return;
+        if (Math.abs(dx) < Math.abs(dy) * SWIPE_AXIS_RATIO) return; // geste vertical -> scroll
+
+        swipeConsumed = true;
+        moveSelection(dx < 0 ? 1 : -1);   // vers la gauche = mode suivant
+    }, { passive: true });
+
+    modesContainer.addEventListener('touchcancel', () => {
+        touchOrigin = null;
+    }, { passive: true });
+}
+
 
 // === Navigation avec les flèches ===
 document.addEventListener('keydown', (e) => {
     // Mettre à jour les tableaux de modes
-    allModes.length = 0;
-    allModes.push(...document.querySelectorAll('.game-mode'));
+    const modes = refreshModes();
     // Si la section active est "modes"
     if (focusedSection === 'modes') {
         // Flèches gauche et droite pour naviguer entre les modes
         if (e.key === "ArrowLeft") {
             if (currentFocusModes > 0) currentFocusModes--; // Naviguer vers le mode précédent
         } else if (e.key === "ArrowRight") {
-            if (currentFocusModes < allModes.length - 1) currentFocusModes++; // Naviguer vers le mode suivant
+            if (currentFocusModes < modes.length - 1) currentFocusModes++; // Naviguer vers le mode suivant
         }
 
         // "Space" pour sélectionner un mode
         if (e.key === " ") {
-            allModes[currentFocusModes]?.click(); // Sélectionner le mode, avec un check pour undefined
+            modes[currentFocusModes]?.click(); // Sélectionner le mode, avec un check pour undefined
         }
 
         // Appliquer le focus sur l'élément sélectionné (modes)
-        allModes.forEach(el => el.classList.remove('keyboard-focus'));
-        if (allModes[currentFocusModes]) {
-            allModes[currentFocusModes].classList.add('keyboard-focus');
+        modes.forEach(el => el.classList.remove('keyboard-focus'));
+        if (modes[currentFocusModes]) {
+            modes[currentFocusModes].classList.add('keyboard-focus');
         }
     }
     if (e.key === "Enter") {
-        if (!selectedMode) {
-            showAlert("Veuillez sélectionner un mode de jeu !", { title: 'Aucun mode selectionne' });
-            return;
-        }
-        window.location.href = `../HTML/${selectedMode}.html`;
+        launchSelectedMode();
     }
 });
 // === Lancer le jeu avec le bouton ===
-startBtn.onclick = () => {
-    if (!selectedMode) {
-        showAlert("Veuillez sélectionner un mode de jeu !", { title: 'Aucun mode selectionne' });
-        return;
-    }
-    window.location.href = `../HTML/${selectedMode}.html`;
-};
+startBtn.onclick = launchSelectedMode;
 
 // === Bouton retour (clic) ===
 backBtn.addEventListener('click', () => {
@@ -228,6 +362,7 @@ if (exportSaveBtn) {
 
 // Initialisation
 refreshProfileData();
+updateTouchHint();
 updateTime();
 setInterval(updateTime, 60000); // Mise à jour toutes les minutes
 window.addEventListener('DOMContentLoaded', () => {
