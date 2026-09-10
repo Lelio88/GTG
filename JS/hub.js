@@ -142,6 +142,7 @@ function refreshModes() {
 // Affiche « appuyez de nouveau pour lancer » : sans lui, le 2e appui n'est pas
 // devinable. Masque sur pointeur fin (souris/clavier ont Entree et le bouton).
 const touchHint = document.getElementById('touch-hint');
+const HINT_IDLE = 'Appuyez sur un mode pour le choisir · balayez pour naviguer';
 
 function updateTouchHint() {
     if (!touchHint) return;
@@ -152,7 +153,7 @@ function updateTouchHint() {
 
     touchHint.innerText = selectedEl
         ? `Appuyez de nouveau sur « ${selectedEl.innerText} » pour lancer`
-        : 'Appuyez sur un mode pour le choisir · balayez pour naviguer';
+        : HINT_IDLE;
 }
 
 coarsePointerQuery.addEventListener('change', updateTouchHint);
@@ -209,12 +210,17 @@ document.querySelectorAll('.game-mode').forEach((modeDiv) => {
 
     // === Gestion du clic / tap ===
     modeDiv.addEventListener('click', (event) => {
-        // Un swipe se termine par un click synthetique sur la carte de depart :
-        // il annulerait la selection deplacee par le geste.
-        if (swipeConsumed) {
-            swipeConsumed = false;
-            return;
-        }
+        // Un swipe peut se terminer par un click de compatibilite sur la carte
+        // de depart, qui annulerait la selection deplacee par le geste.
+        // Mesure : Chromium n'en emet aucun au-dela de son seuil de glissement
+        // (~8 px, tres en dessous de SWIPE_MIN_DISTANCE) -- la garde ne sert
+        // donc que pour un moteur qui, lui, en emettrait un. Quand il existe,
+        // ce click arrive dans la foulee immediate du touchend : la fenetre
+        // reste courte pour ne jamais avaler un appui delibere (lever + reposer
+        // le doigt prend bien davantage). Elle se purge seule -- un drapeau
+        // booleen, lui, restait arme indefiniment faute de click et avalait
+        // l'interaction suivante (Espace au clavier sur un appareil hybride).
+        if (Date.now() - lastSwipeAt < SWIPE_CLICK_GUARD) return;
 
         // detail === 0 => click programmatique (touche Espace du clavier) : il
         // ne doit jamais declencher le lancement.
@@ -244,9 +250,11 @@ const SWIPE_MIN_DISTANCE = 48;   // px minimum pour parler de swipe
 const SWIPE_AXIS_RATIO = 1.5;    // dominance horizontale exigee face au vertical
 const SWIPE_MAX_DURATION = 800;  // ms au-dela desquels c'est un drag, pas un swipe
 
+const SWIPE_CLICK_GUARD = 100;   // ms pendant lesquelles un click suivant un swipe est ignore
+
 const modesContainer = document.getElementById('modes-container');
-let touchOrigin = null;      // { x, y, time } du doigt au touchstart
-let swipeConsumed = false;   // le dernier geste a ete interprete comme un swipe
+let touchOrigin = null;   // { x, y, time } du doigt au touchstart
+let lastSwipeAt = 0;      // horodatage du dernier swipe reconnu (0 = jamais)
 
 function moveSelection(delta) {
     const modes = refreshModes();
@@ -265,7 +273,6 @@ function moveSelection(delta) {
 
 if (modesContainer) {
     modesContainer.addEventListener('touchstart', (e) => {
-        swipeConsumed = false;
         if (e.touches.length !== 1) {   // pinch / multi-touch : pas un swipe
             touchOrigin = null;
             return;
@@ -287,7 +294,7 @@ if (modesContainer) {
         if (Math.abs(dx) < SWIPE_MIN_DISTANCE) return;
         if (Math.abs(dx) < Math.abs(dy) * SWIPE_AXIS_RATIO) return; // geste vertical -> scroll
 
-        swipeConsumed = true;
+        lastSwipeAt = Date.now();
         moveSelection(dx < 0 ? 1 : -1);   // vers la gauche = mode suivant
     }, { passive: true });
 
