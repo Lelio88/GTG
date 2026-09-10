@@ -113,7 +113,9 @@ if (currentProfile) {
                 if (modeDiv) {
                     // Mise à jour des données
                     modeDiv.dataset.mode = config.target;
-                    modeDiv.innerText = config.target; // Affiche le nouveau nom
+                    // Le libellé visible vient de `label` ; `target` reste l'identifiant
+                    // technique, porté par data-mode (routage vers HTML/<mode>.html).
+                    modeDiv.innerText = config.label;
                     
                     // Mise à jour visuelle immédiate
                     const newColor = modeNeonMapping[config.target];
