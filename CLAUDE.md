@@ -18,7 +18,7 @@ Topologie rapide :
 - **Modes solo** : `HTML/<mode>.html` + `JS/<mode>.js` (9 modes, dont `geo`) ; rendu d'indices factorisé dans `JS/hint-renderers.js` (partagé solo ⇄ multi)
 - **Chambre** : `HTML/chamber.html`/`JS/chamber.js` (zones cliquables) → Trophées (`trophy.*` + `JS/achievements.js`) et mode `geo`
 - **Multi** : `HTML/multi-*.html` + `JS/multi/*.js` (firebase, scoring, lobby, host-engine, round-client, scoreboard)
-- **Couche partagée solo** : `gameUtils.js` (timer/score/validation/abandon/`revealTitle`), `state/{profileStore,gameProgress,modeReset}.js`, `ui/dialog.js` (modales), `achievements.js`, `hellMode.js`, `gameCompletion.js`, `saveManager.js`, `dialogue.js`
+- **Couche partagée solo** : `gameUtils.js` (timer/score/validation/abandon/`revealTitle`), `state/{profileStore,gameProgress,modeReset}.js`, `ui/dialog.js` (modales), `ui/header.js` (barre de navigation des 9 pages de mode, calque les 4 emplacements du hub), `achievements.js`, `hellMode.js`, `gameCompletion.js`, `saveManager.js`, `dialogue.js`
 - **Données & style** : `gamesDatabase.js` + `abbreviations.js` ; `Assets/` (UI), `Medias/<Type>/` (jeu), `store-screenshots/` (fiche Play Store) ; `CSS/tokens.css` (tokens néon), `CSS/multi.css`, `CSS/coming-soon.css` (pages « à venir » `HTML/{calculator,films,pantone,xxx}.html`)
 - **Outils admin** : `Python/*.py` (génération d'assets : captures, silhouettes, sons, panoramas 360)
 - **App mobile** : `mobile/` — empaquetage **Android via Capacitor** (AAB), isolé du web ; voir `mobile/README.md`
@@ -87,7 +87,7 @@ python mobile/publish_play.py --track alpha --notes-file <f>   # publie en test 
 
 | Modification | Fichier(s) à mettre à jour |
 |---|---|
-| Nouveau mode de jeu | `docs/architecture.md` §3-4 + `JS/hub.js` (`modeNeonMapping`) + renderer dans `hint-renderers.js` + entrée `modes` (`gameUtils`) + succès (`achievements.js` `MODES`) |
+| Nouveau mode de jeu | `docs/architecture.md` §3-4 + `JS/hub.js` (`modeNeonMapping`) + `JS/ui/header.js` (`HUB_SLOTS`) + renderer dans `hint-renderers.js` + entrée `modes` (`gameUtils`) + succès (`achievements.js` `MODES`) |
 | Nouveau champ `Profile` | `docs/architecture.md` §4 + migration paresseuse dans `gameUtils.js::initializeProfile()` |
 | Nouveau jeu / abréviation | `JS/gamesDatabase.js` (+ assets IV.4) / table `JS/abbreviations.js` |
 | API `gameUtils.js` / `hint-renderers.js` | `docs/architecture.md` §7 |
