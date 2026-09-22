@@ -277,7 +277,7 @@ Le menu reproduit les **quatre emplacements du hub**, avec la règle de `hub.js`
 | Export | Rôle |
 |---|---|
 | `HUB_SLOTS` (interne) | Table base → hardcore et libellés, dans l'ordre du hub — **à éditer avec `hardcoreConfig` de `hub.js`** |
-| `resolveNavLinks(profile)` | Liens du menu pour un profil (`null` = quatre modes de base) — logique pure, testable en Node |
+| `resolveNavLinks(profile)` | Liens du menu pour un profil (`null` = quatre modes de base) — logique pure. L'import du module lance `renderHeader()` : sous Node, poser d'abord un `document` factice (`globalThis.document = { getElementById: () => null }`), sinon l'import lève `document is not defined` |
 | `renderHeader()` | Remplit `#header-bar` ; sans effet si absent ou déjà rempli |
 
 ## 8. Flux typique d'une partie
