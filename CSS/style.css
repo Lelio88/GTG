@@ -131,6 +131,12 @@ h2, h3 {
     text-shadow: 0 0 8px var(--neon-primary);
 }
 
+/* Page courante, posee par JS/ui/header.js */
+#header-bar nav ul li a[aria-current="page"] {
+    color: var(--neon-primary);
+    border-bottom: 1px solid var(--neon-primary);
+}
+
 /* ===============================
     App Container
 =============================== */

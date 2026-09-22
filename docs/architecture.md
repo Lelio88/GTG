@@ -36,6 +36,7 @@ Le projet est volontairement **sans framework** : pas de React, pas de Vue, pas 
 │  │   JS/state/profileStore.js (façade localStorage)       │  │
 │  │   JS/state/gameProgress.js (jeu en cours anti-F5)      │  │
 │  │   JS/ui/dialog.js      (showAlert/Confirm/Prompt néon) │  │
+│  │   JS/ui/header.js      (barre de nav des pages de mode) │  │
 │  └─────────────────────┬──────────────────────────────────┘  │
 │                        │ read/write                          │
 │  ┌─────────────────────▼──────────────────────────────────┐  │
@@ -267,6 +268,18 @@ Aucun `alert/prompt/confirm` natif dans le code. Le CSS est injecté au premier 
 
 Options communes : `title`, `okText`, `cancelText`. Options de `showPrompt` : `defaultValue`, `placeholder`, `maxLength`. Queue interne empêche deux modales simultanées. Échap = annule, Enter = confirme.
 
+### 7.6 `JS/ui/header.js` — Barre de navigation des pages de mode
+
+Les 9 pages de mode (`HTML/<mode>.html`, `geo` compris) ne contiennent qu'un `<header id="header-bar"></header>` **vide** et chargent `<script type="module" src="../JS/ui/header.js">` dans leur `<head>`. Le module construit le logo (retour à `index.html`) et le menu par API DOM, à l'exécution.
+
+Le menu reproduit les **quatre emplacements du hub**, avec la règle de `hub.js` : un emplacement affiche le mode hardcore à la place du mode de base quand le profil a **fini** la base et **débloqué** le hardcore (`completedModes` + `unlockedModes`) ; sinon le mode de base. Puis « Retour au Hub ». Le menu ne propose donc jamais un mode que le hub ne proposerait pas, et `geo` (accessible par la chambre) n'y figure pas. Le lien de la page courante porte `aria-current="page"` (style dans `style.css`).
+
+| Export | Rôle |
+|---|---|
+| `HUB_SLOTS` (interne) | Table base → hardcore et libellés, dans l'ordre du hub — **à éditer avec `hardcoreConfig` de `hub.js`** |
+| `resolveNavLinks(profile)` | Liens du menu pour un profil (`null` = quatre modes de base) — logique pure, testable en Node |
+| `renderHeader()` | Remplit `#header-bar` ; sans effet si absent ou déjà rempli |
+
 ## 8. Flux typique d'une partie
 
 Exemple : ouverture de `HTML/full.html` après sélection d'un profil.
@@ -300,7 +313,7 @@ Les pages communiquent entre elles **uniquement** via `localStorage` et redirect
 - **Mutation immuable du localStorage** : `JSON.parse(localStorage.getItem('profiles'))` → modification → `localStorage.setItem('profiles', JSON.stringify(...))`. Jamais d'écriture partielle ; la sérialisation est atomique au niveau du tableau entier.
 - **Pseudo = clé fonctionnelle** : le pseudo identifie un profil dans les `find()` et `findIndex()`. La duplication est rejetée à la création (`addNewProfile`). Tout renommage doit propager dans `localStorage['currentProfile']`.
 - **Validation insensible à la casse + abréviations** : `checkAnswerValue` `.trim().toLowerCase()` côté input et côté titre. Toute nouvelle abréviation passe par la table `abbreviations` dans `gamesDatabase.js`, jamais par du code in-line.
-- **Ajout d'un nouveau mode** : (1) nouvelle entrée dans le tableau `modes` de `initializeProfile()`, (2) nouveau `HTML/<mode>.html` reprenant les IDs DOM attendus, (3) nouveau `JS/<mode>.js` calqué sur un mode voisin, (4) entrée dans `modeNeonMapping` de `hub.js`, (5) si hardcore, entrée dans `hardcoreConfig` — `target` est l'identifiant technique (porte `data-mode`, donc le routage vers `HTML/<mode>.html`), `label` le libellé affiché sur la carte, les deux ne doivent pas être confondus — et asset `Medias/<Type>/<Title>.<ext>` pour chaque jeu.
+- **Ajout d'un nouveau mode** : (1) nouvelle entrée dans le tableau `modes` de `initializeProfile()`, (2) nouveau `HTML/<mode>.html` reprenant les IDs DOM attendus, dont le `<header id="header-bar"></header>` vide et le `<script type="module" src="../JS/ui/header.js">`, (3) nouveau `JS/<mode>.js` calqué sur un mode voisin, (4) entrée dans `modeNeonMapping` de `hub.js`, (5) si hardcore, entrée dans `hardcoreConfig` **et** dans `HUB_SLOTS` de `JS/ui/header.js` — `target` est l'identifiant technique (porte `data-mode`, donc le routage vers `HTML/<mode>.html`), `label` le libellé affiché sur la carte, les deux ne doivent pas être confondus — et asset `Medias/<Type>/<Title>.<ext>` pour chaque jeu.
 - **Interaction tactile (pointeur grossier)** : tout écran de sélection doit être pilotable au doigt, sans clavier ni bouton dédié. Contrat : **1 appui = sélectionner**, **2ᵉ appui sur l'élément déjà sélectionné = valider** (équivalent d'`Entrée`), **swipe horizontal = élément précédent / suivant**. Le swipe reste **horizontal uniquement** : l'axe vertical appartient au scroll natif de la page (le conteneur porte `touch-action: pan-y`), et le geste est filtré par distance, dominance d'axe et durée pour ne pas confondre un scroll avec un swipe. Le 2ᵉ appui n'est pas devinable : un indice textuel (`#touch-hint`, `role="status"`) l'annonce et n'apparaît que si `matchMedia('(pointer: coarse)')` correspond — souris et clavier gardent `Entrée` et le bouton d'action, et ne déclenchent jamais la validation au 2ᵉ clic. **Référence : `JS/hub.js`** — clavier (flèches + Espace), pointeur et geste convergent vers une fonction `selectMode()` unique qui synchronise néon, curseur clavier, `aria-pressed` et indice ; les dédoubler fait diverger le visuel de l'état.
 - **Auto-doc des modules** : tout nouveau fichier `JS/*.js` publie un commentaire d'en-tête (résumé + invariants + dépendances DOM attendues), à l'image de `gameUtils.js`.
 - **Responsive & orientation (portrait ET paysage)** : l'app se lance dans les deux sens (`android:screenOrientation="fullUser"` dans `AndroidManifest.xml`). Chaque CSS de page consomme `tokens.css` avec `box-sizing:border-box` global, puis gère **trois** régimes de layout : desktop (base), **portrait téléphone** (`@media (max-width:767px)`), et **viewport court / paysage téléphone** (`@media (max-height:600px) and (orientation:landscape)`, **placé en dernier** pour primer sur les media-queries de largeur). Le bloc « viewport court » dé-centre verticalement, rend le contenu scrollable (`min-height:100vh` **puis** `min-height:100dvh` — fallback WebView ancienne — + `overflow-y:auto`, ou `justify-content: safe center`), réduit les héros (logo/soleil synthwave), plafonne le média (`#content`/`img`/`#geo-viewer`), compacte les contrôles (cibles ≥44px) et masque les décorations envahissantes (avatar `.character-container`) — objectif : **aucun bouton/saisie ne doit jamais être piégé hors écran**. La borne `orientation:landscape` évite que le bloc se déclenche en portrait quand le clavier logiciel réduit la hauteur. **Edge-to-edge** (imposé par `targetSdk 36`) : toutes les pages ont `viewport-fit=cover` dans leur meta viewport, et les paddings/barres fixes utilisent `max(<défaut>, env(safe-area-inset-*))` pour éviter l'encoche/la barre système. Les 8 modes + geo partagent `style.css` : ce fichier porte déjà le bloc, un nouveau mode en hérite automatiquement.
@@ -312,6 +325,7 @@ Les pages communiquent entre elles **uniquement** via `localStorage` et redirect
 - ❌ **Redéfinir un timer / un score / une logique d'abandon localement** dans un fichier de mode — toujours passer par `gameUtils.js`.
 - ❌ **Commiter le dossier de travail `Medias/Geo/_inbox/`** (captures Ansel brutes) — il est gitignoré ; seuls les panoramas validés et nommés par `geo_ingest.py` entrent dans `Medias/Geo/`. Les médias de jeu, eux, **sont** versionnés (~800 Mo) : le site GitHub Pages les sert directement (cf. §6), les scripts Python ne servent qu'à les (re)générer avant commit.
 - ❌ **Renommer un titre dans `gamesDatabase.js` sans renommer les assets correspondants** — la nomenclature `<Title> N.ext` est le contrat.
+- ❌ **Recopier le `<header id="header-bar">` dans une page de mode** — il est construit par `JS/ui/header.js` ; un header en dur diverge des autres pages au premier ajout de mode (c'est ainsi que 8 pages ont fini avec 8 menus différents).
 - ❌ **Injecter de l'HTML utilisateur via `innerHTML`** — le pseudo est inséré via `innerText`, conserver ce pattern (pas de XSS local).
 - ❌ **Ajouter une dépendance npm / un bundler** — le projet est volontairement `file://`-compatible.
 - ❌ **Stocker un objet profil entier dans `currentProfile`** — la convention est : `currentProfile = pseudo` (string), résolu via `profiles.find()`.
