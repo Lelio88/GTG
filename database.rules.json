@@ -46,7 +46,7 @@
         "game": {
           "playedCount": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 10000" },
           "pile": {
-            "$i": { ".validate": "newData.isString() && newData.val().length <= 150" }
+            "$i": { ".validate": "$i.matches(/^[0-9]{1,3}$/) && newData.isString() && newData.val().length <= 150" }
           },
           "currentRound": {
             "roundId": { ".validate": "newData.isString() && newData.val().length <= 64" },

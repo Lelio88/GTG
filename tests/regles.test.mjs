@@ -115,6 +115,7 @@ async function reglagesHote() {
 
 async function manche() {
     const titres = ['BioShock', 'Celeste', 'Hades'];
+    await refuse('pile de plus de 1000 titres', 'alice', 'PATCH', room(), { 'game/pile': Array.from({ length: 1001 }, (_, i) => `J${i}`) });
     await refuse('pile piégée (non texte)', 'alice', 'PATCH', room(), { 'meta/status': 'playing', 'game/playedCount': 0, 'game/pile': [{ x: 1 }] });
     await accepte('alice démarre la partie', 'alice', 'PATCH', room(), { 'meta/status': 'playing', 'game/playedCount': 0, 'game/pile': titres });
     await refuse('bob démarre une manche', 'bob', 'PATCH', room('/game'), { pile: [] });

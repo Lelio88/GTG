@@ -111,13 +111,14 @@ Source de vérité : [`database.rules.json`](../database.rules.json), déployé 
 | `meta/*` | l'hôte | champs et valeurs bornés (`mode`, `status`, `targetGames`, `timeBonus`…), `createdAt` immuable, aucune clé inconnue |
 | `meta/hostUid` | un **joueur de la room**, quand il est vide (reprise d'hôte) | le joueur ne peut s'y inscrire que lui-même |
 | `players/{uid}` | le joueur lui-même (room existante ; `totalScore` = 0 à l'arrivée, inchangé ensuite) ; l'hôte pour le reste | `name` 1-20, `totalScore` nombre, `color` hexadécimal |
-| `game/*` | l'hôte | `pile` de textes, horodatages numériques, aucune clé inconnue |
+| `game/*` | l'hôte | `pile` de 1000 titres au plus, horodatages numériques, aucune clé inconnue |
 | `currentRound/results/{uid}` | le joueur lui-même, s'il est dans la room, tant que la manche n'est ni close ni révélée | `status` searching/found/abandoned ; `rank` et `pointsEarned` réservés à l'hôte |
 | `chat/{id}` | un joueur, en création seule, sous son propre `uid` **et son propre pseudo** | `text` 1-200, `color` hexadécimal |
 
 - **Lecture** : une room est lisible par tout compte authentifié qui en connaît le code, même sans la rejoindre ; la liste des rooms n'est lisible que pour la purge (ci-dessous).
 - **Purge des rooms > 24 h** (`JS/multi/purge.js`) : à l'ouverture du lobby, le client liste au plus 50 rooms créées avant minuit UTC de la veille puis les efface. Les règles ne comparent `query.endAt` que par **égalité** : elles n'acceptent que cette borne exacte (`now - now % 86400000 - 86400000`), jamais une borne récente.
 - **Cascade** : l'écriture accordée à l'hôte au niveau `rooms/{code}` couvre tout ; les autres n'ont d'écriture que sur leurs propres nœuds.
+- **Compromis assumés** : (1) la requête de purge renvoie le contenu complet des rooms de plus de 24 h, pas seulement leurs codes — quiconque la reproduit peut les lire avant leur effacement (déclaré dans `privacy.html`) ; (2) les règles ne savent ni limiter un débit ni compter les messages : le chat n'a qu'un frein client de 500 ms, la taille de chaque message restant bornée ; (3) l'hôte est l'autorité de sa room et peut fausser les scores dans les bornes des règles (pas d'arbitre serveur).
 
 ## 5. Scoring
 

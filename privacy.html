@@ -75,7 +75,8 @@
     <p>
       Les données d'une room (pseudos, couleurs, scores, messages) sont stockées dans Firebase
       Realtime Database, sur des serveurs situés en Belgique. Elles sont lisibles par toute personne
-      qui connaît le code de la room, qu'elle joue ou non.
+      qui connaît le code de la room, qu'elle joue ou non. Une fois la room vieille de plus de
+      24 heures, tout joueur qui ouvre le multijoueur peut aussi la lire, le temps de l'effacer.
     </p>
 
     <h2>4. Signaler un bug</h2>
@@ -119,7 +120,8 @@
     <ul>
       <li><strong>Room</strong> (pseudos, couleurs, scores, messages) : effacée automatiquement
         24 heures au moins après sa création, dès qu'un joueur ouvre ensuite le multijoueur. Ton
-        entrée de joueur disparaît dès que tu quittes la room.</li>
+        entrée de joueur disparaît dès que tu quittes la room ou fermes la page ; tes messages, et
+        ton pseudo si tu étais l'hôte, restent jusqu'à l'effacement de la room.</li>
       <li><strong>Identifiant anonyme</strong> : pas d'effacement automatique chez Firebase ; une
         fois la room effacée, il n'est plus rattaché à rien. Effacer les données du site ou de
         l'application en crée un nouveau à ta prochaine partie.</li>
