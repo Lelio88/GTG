@@ -87,4 +87,4 @@ python mobile/publish_play.py --track alpha --dry-run            # puis sans --d
 ## VIII. Contexte de Session
 
 - **Dernier focus** : mise en conformité — règles multi durcies et déployées, consentement reCAPTCHA, purge des rooms, auto-hébergement, pages légales ; app 1.0.2 publiée en test fermé, formulaire « Sécurité des données » envoyé.
-- **Focus immédiat** : fusionner la PR #62 ; renseigner l'URL de la politique sur la fiche Play ; ajouter l'icône `store-screenshots/icon-512.png` à la fiche.
+- **Focus immédiat** : fusionner la PR #62 ; ajouter l'icône `store-screenshots/icon-512.png` à la fiche Play.
