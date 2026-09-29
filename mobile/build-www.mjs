@@ -25,7 +25,8 @@ const ROOT = resolve(HERE, '..');
 const WWW = join(HERE, 'www');
 
 // Fichiers/dossiers web strictement nécessaires à l'app (pas de docs/Python/git).
-const WEB_ENTRIES = ['index.html', 'HTML', 'JS', 'CSS', 'Assets'];
+// Les pages légales sont liées depuis l'accueil, le hub et le lobby : l'app les embarque.
+const WEB_ENTRIES = ['index.html', 'privacy.html', 'mentions-legales.html', 'HTML', 'JS', 'CSS', 'Assets'];
 const EMBED_MEDIA = process.env.GTG_EMBED_MEDIA === '1';
 // Base CDN pour les médias non embarqués (GitHub Pages sert déjà Medias/).
 const MEDIA_BASE = process.env.GTG_MEDIA_BASE || 'https://lelio88.github.io/GTG/Medias/';
