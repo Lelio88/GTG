@@ -246,6 +246,39 @@ body:has(.multi-lobby-app)::after {
     text-shadow: 0 0 6px rgba(255, 0, 60, 0.5);
 }
 
+/* Pied du lobby : accord reCAPTCHA (retirable) et liens légaux. Fond sombre
+   opaque : le soleil synthwave derrière rendrait le petit texte illisible. */
+.multi-footnote {
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    color: var(--text-primary);
+    background: rgba(8, 4, 15, 0.85);
+    border-radius: var(--radius-md);
+    padding: var(--sp-1) var(--sp-3);
+    margin: var(--sp-2) 0 0;
+    text-align: center;
+}
+
+.multi-footnote a {
+    color: var(--neon-primary);
+}
+
+.multi-footnote-btn {
+    background: none;
+    border: 1px solid var(--neon-secondary);
+    border-radius: var(--radius-sm);
+    color: var(--neon-secondary);
+    font: inherit;
+    padding: 2px var(--sp-2);
+    margin-left: var(--sp-1);
+    cursor: pointer;
+}
+
+.multi-footnote-btn:hover,
+.multi-footnote-btn:focus-visible {
+    background: rgba(255, 107, 159, 0.15);
+}
+
 .multi-back {
     color: var(--neon-primary);
     text-decoration: none;

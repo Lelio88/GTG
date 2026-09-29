@@ -40,7 +40,7 @@
                 <form id="multi-chat-form" class="multi-chat-form" autocomplete="off">
                     <input type="text" id="multi-chat-input" class="multi-chat-input"
                            maxlength="200" placeholder="Écris un message…" />
-                    <button type="submit" id="multi-chat-send" class="multi-chat-send">→</button>
+                    <button type="submit" id="multi-chat-send" class="multi-chat-send" aria-label="Envoyer le message">→</button>
                 </form>
             </div>
         </aside>
@@ -150,7 +150,9 @@
 
                     <p class="multi-modal-note">
                         Les infos techniques (code de room, navigateur, date) seront ajoutées
-                        automatiquement. Tu seras redirigé vers GitHub pour valider l'envoi.
+                        automatiquement. Tu seras redirigé vers GitHub pour valider l'envoi,
+                        avec ton compte GitHub : le signalement y sera <strong>public</strong>,
+                        n'y mets rien de personnel.
                     </p>
 
                     <div class="multi-modal-actions">

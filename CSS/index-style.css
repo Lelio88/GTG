@@ -376,3 +376,20 @@ h1 {
         font-size: 0.82rem;
     }
 }
+
+/* Liens légaux sous les boutons. Fond sombre opaque : le soleil synthwave
+   derrière rendrait le petit texte illisible. */
+.legal-links {
+    display: inline-block;
+    margin-top: var(--sp-4);
+    padding: var(--sp-1) var(--sp-3);
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    color: var(--text-primary);
+    background: rgba(8, 4, 15, 0.85);
+    border-radius: var(--radius-md);
+}
+
+.legal-links a {
+    color: var(--neon-primary);
+}

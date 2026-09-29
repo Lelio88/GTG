@@ -23,76 +23,168 @@
     li { margin: .35rem 0; }
     footer { margin-top: 3rem; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--border); padding-top: 1rem; }
     code { background: var(--surface); padding: .1rem .35rem; border-radius: 4px; font-size: .9em; }
+    button { background: none; color: var(--accent); border: 1px solid var(--accent); border-radius: 6px; padding: .4rem .9rem; font: inherit; cursor: pointer; }
+    button:hover, button:focus-visible { background: rgba(34, 211, 238, .12); }
   </style>
 </head>
 <body>
   <main>
     <h1>Politique de confidentialité</h1>
-    <p class="updated"><strong>Guess The Game</strong> — Dernière mise à jour : 2 juillet 2026</p>
+    <p class="updated">Guess The Game — Dernière mise à jour : 29 septembre 2026</p>
 
     <div class="tldr">
-      <strong>En bref :</strong> Guess The Game ne collecte <strong>aucune donnée personnelle</strong>.
-      En solo, tout reste sur ton appareil. Le mode multijoueur utilise une authentification
-      <strong>anonyme</strong> (aucun nom, e-mail ou compte). <strong>Aucune publicité, aucun pistage,
-      aucune revente de données.</strong>
+      <strong>En bref :</strong> en solo, tout reste sur ton appareil. En multijoueur, ton pseudo,
+      tes scores et tes messages sont visibles de la room, puis effacés automatiquement après
+      24 heures ; la protection anti-robots reCAPTCHA de Google ne se charge qu'avec ton accord.
+      Aucune publicité, aucune mesure d'audience, aucune revente de données.
     </div>
 
-    <h2>1. Qui sommes-nous</h2>
-    <p>Guess The Game est un jeu de devinette de jeux vidéo, disponible sur le Web et sous forme
-    d'application. Cette politique explique quelles données l'application manipule et comment.</p>
+    <h2>1. Responsable du traitement</h2>
+    <p>
+      Guess The Game est un jeu de devinette de jeux vidéo, sur le Web et en application Android,
+      édité par un particulier à titre non professionnel. Contact :
+      <a href="mailto:heianenterpriseyt@gmail.com">heianenterpriseyt@gmail.com</a>
+    </p>
 
-    <h2>2. Données en mode solo</h2>
-    <p>Le mode solo fonctionne <strong>entièrement sur ton appareil</strong>. Tes profils, ta
-    progression et tes réglages sont enregistrés localement (stockage local du navigateur /
-    <code>localStorage</code>) et ne sont <strong>jamais transmis</strong> à un serveur. Tu en gardes
-    le contrôle : supprimer un profil ou vider les données de l'application les efface définitivement.</p>
+    <h2>2. En solo, rien ne quitte ton appareil</h2>
+    <p>
+      Tes profils, ta progression, tes trophées et tes réglages sont enregistrés dans le stockage
+      local de ton navigateur ou de l'application, et ne sont jamais envoyés à un serveur. Supprimer
+      un profil ou effacer les données du site ou de l'application les efface définitivement.
+      L'export de sauvegarde crée un fichier sur ton appareil, que toi seul transmets.
+    </p>
 
-    <h2>3. Données en mode multijoueur</h2>
-    <p>Pour jouer en ligne avec d'autres personnes, l'application utilise <strong>Firebase</strong>
-    (service de Google) :</p>
+    <h2>3. En multijoueur</h2>
     <ul>
-      <li><strong>Authentification anonyme</strong> : un identifiant anonyme temporaire est généré.
-      Aucun nom réel, e-mail, numéro de téléphone ni compte n'est demandé ou créé.</li>
-      <li><strong>Pseudo</strong> : le surnom que tu saisis pour une partie est visible par les autres
-      joueurs de la même salle.</li>
-      <li><strong>État de la partie</strong> : les scores et le déroulé de la manche sont stockés
-      temporairement pour synchroniser la salle, puis deviennent obsolètes une fois la partie terminée.</li>
+      <li><strong>Identifiant anonyme</strong> : Firebase Authentication (Google) crée un identifiant
+        aléatoire, sans nom ni e-mail, pour te reconnaître dans la room.
+        <em>Base légale : fournir le jeu que tu demandes.</em></li>
+      <li><strong>Pseudo et couleur</strong> : visibles des autres joueurs.
+        <em>Base légale : fournir le jeu.</em></li>
+      <li><strong>Déroulé de la partie</strong> : tes scores, si tu as trouvé ou abandonné, l'heure
+        de ta réponse et le nombre d'indices utilisés. <em>Base légale : fournir le jeu.</em></li>
+      <li><strong>Messages du chat</strong> (200 caractères au plus), signés de ton pseudo.
+        N'y écris rien de personnel. <em>Base légale : fournir le jeu.</em></li>
+      <li><strong>reCAPTCHA (Google)</strong> : protège le multijoueur contre les robots. reCAPTCHA
+        dépose des cookies et analyse ton navigateur et tes interactions sur les pages du multi.
+        <em>Base légale : ton consentement</em>, demandé avant d'entrer dans le multi ; sans lui, le
+        multijoueur n'est pas disponible (le solo reste libre).</li>
+      <li><strong>Adresse IP</strong> : Google la reçoit quand ton appareil se connecte à Firebase et
+        à reCAPTCHA. <em>Base légale : intérêt légitime (faire fonctionner et sécuriser le jeu).</em></li>
+    </ul>
+    <p>
+      Les données d'une room (pseudos, couleurs, scores, messages) sont stockées dans Firebase
+      Realtime Database, sur des serveurs situés en Belgique. Elles sont lisibles par toute personne
+      qui connaît le code de la room, qu'elle joue ou non. Une fois la room vieille de plus de
+      24 heures, tout joueur qui ouvre le multijoueur peut aussi la lire, le temps de l'effacer.
+    </p>
+
+    <h2>4. Signaler un bug</h2>
+    <p>
+      Le bouton « Signaler un bug » ouvre un formulaire de GitHub prérempli avec ta description, le
+      code de la room, la date et ton navigateur. L'envoi se fait avec ton compte GitHub et le
+      signalement y devient <strong>public</strong>, selon la politique de confidentialité de GitHub.
+    </p>
+
+    <h2>5. Hébergement</h2>
+    <p>
+      Le site et les médias du jeu (images, sons) sont hébergés par GitHub Pages : GitHub enregistre
+      l'adresse IP des visiteurs pour la sécurité de son service, y compris quand l'application
+      Android charge ces médias. <em>Base légale : intérêt légitime.</em> Les polices et les
+      bibliothèques du jeu sont hébergées avec le site : aucun autre service tiers n'est contacté.
+    </p>
+
+    <h2>6. Cookies et traceurs</h2>
+    <p>
+      Le jeu ne dépose aucun cookie et n'utilise aucun outil de mesure d'audience ni de publicité.
+      Le stockage local ne sert qu'au fonctionnement du jeu et ne demande pas de consentement.
+      Seul reCAPTCHA, sur les pages du multijoueur, dépose des traceurs de Google, et uniquement
+      après ton accord.
+    </p>
+
+    <h2>7. Destinataires et sous-traitants</h2>
+    <ul>
+      <li><strong>Les joueurs de la room</strong>, et toute personne qui en a le code.</li>
+      <li><strong>Google</strong> (Firebase et reCAPTCHA, États-Unis) : authentification anonyme,
+        base de données du multi, protection anti-robots.</li>
+      <li><strong>GitHub</strong> (GitHub, Inc., États-Unis) : hébergement du site et des médias ;
+        signalements de bugs.</li>
+    </ul>
+    <p>
+      Ce sont des sociétés américaines : des données peuvent être accessibles depuis les
+      États-Unis. Ces transferts reposent sur les garanties qu'elles proposent (Data Privacy
+      Framework UE–États-Unis ou clauses contractuelles types de la Commission européenne).
+    </p>
+
+    <h2>8. Durées de conservation</h2>
+    <ul>
+      <li><strong>Room</strong> (pseudos, couleurs, scores, messages) : effacée automatiquement
+        24 heures au moins après sa création, dès qu'un joueur ouvre ensuite le multijoueur. Ton
+        entrée de joueur disparaît dès que tu quittes la room ou fermes la page ; tes messages, et
+        ton pseudo si tu étais l'hôte, restent jusqu'à l'effacement de la room.</li>
+      <li><strong>Identifiant anonyme</strong> : pas d'effacement automatique chez Firebase ; une
+        fois la room effacée, il n'est plus rattaché à rien. Effacer les données du site ou de
+        l'application en crée un nouveau à ta prochaine partie.</li>
+      <li><strong>Ton accord pour reCAPTCHA</strong> : 6 mois, puis il t'est redemandé. Les données
+        collectées par reCAPTCHA sont conservées selon les règles de Google.</li>
+      <li><strong>Stockage local</strong> : jusqu'à ce que tu l'effaces.</li>
+      <li><strong>Journaux de Google et de GitHub</strong> : selon leurs propres durées.</li>
     </ul>
 
-    <h2>4. Ce que nous ne collectons PAS</h2>
-    <ul>
-      <li>Aucune donnée personnelle identifiante (nom réel, e-mail, téléphone, adresse).</li>
-      <li>Aucune donnée de localisation, aucun accès aux contacts, photos ou micro.</li>
-      <li>Aucun identifiant publicitaire, <strong>aucune publicité</strong>.</li>
-      <li>Aucun outil d'analyse ou de pistage tiers, <strong>aucune revente de données</strong>.</li>
-    </ul>
+    <h2>9. Gérer ton accord pour reCAPTCHA</h2>
+    <p id="etat-accord">Aucun accord enregistré sur cet appareil.</p>
+    <p><button type="button" id="retirer-accord" hidden>Retirer mon accord</button></p>
+    <p>
+      Le retrait vaut pour la suite : l'accord te sera redemandé à ta prochaine entrée dans le
+      multijoueur. Les cookies déjà déposés par Google s'effacent depuis les réglages de ton
+      navigateur. Le même bouton existe sur la page du multijoueur.
+    </p>
 
-    <h2>5. Services tiers</h2>
-    <ul>
-      <li><strong>Firebase / Google</strong> (mode multijoueur uniquement) —
-      voir la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">politique de confidentialité de Google</a>.</li>
-      <li><strong>GitHub Pages</strong> — hébergement du site et des médias du jeu.</li>
-    </ul>
+    <h2>10. Tes droits</h2>
+    <p>
+      Conformément au RGPD, tu peux demander l'accès à tes données, leur rectification, leur
+      effacement, la limitation du traitement, t'opposer à un traitement fondé sur l'intérêt
+      légitime, demander la portabilité de tes données, et retirer ton consentement à tout moment.
+      Écris à <a href="mailto:heianenterpriseyt@gmail.com">heianenterpriseyt@gmail.com</a> en
+      précisant le code de la room et ton pseudo : le jeu ne connaît ni ton nom ni ton e-mail.
+      Une réponse t'est apportée sous un mois.
+    </p>
+    <p>
+      Si tu estimes que tes droits ne sont pas respectés, tu peux adresser une réclamation à la
+      <a href="https://www.cnil.fr/fr/plaintes">CNIL</a>.
+    </p>
 
-    <h2>6. Cookies</h2>
-    <p>L'application n'utilise <strong>pas de cookies de suivi</strong>. Seul le stockage local
-    technique (progression du jeu) est utilisé, et il ne quitte pas ton appareil.</p>
+    <h2>11. Enfants</h2>
+    <p>
+      Le jeu convient à un public familial et ne demande ni nom, ni e-mail, ni âge. Choisis un pseudo
+      qui ne permet pas de t'identifier. Si tu as moins de 15 ans, demande à un parent avant
+      d'accepter reCAPTCHA.
+    </p>
 
-    <h2>7. Enfants</h2>
-    <p>Le jeu ne collecte sciemment aucune donnée personnelle, de qui que ce soit, y compris des
-    enfants. Il convient à un public familial.</p>
-
-    <h2>8. Modifications</h2>
-    <p>Cette politique peut être mise à jour. La date de dernière mise à jour en haut de page indique
-    la version en vigueur.</p>
-
-    <h2>9. Contact</h2>
-    <p>Pour toute question relative à la confidentialité :
-    <a href="mailto:heianenterpriseyt@gmail.com">heianenterpriseyt@gmail.com</a></p>
+    <h2>12. Modifications</h2>
+    <p>
+      Cette politique peut évoluer ; la date en haut de page indique la version en vigueur.
+    </p>
 
     <footer>
-      Guess The Game — <a href="https://lelio88.github.io/GTG/">Retour au jeu</a>
+      Guess The Game — <a href="index.html">Retour au jeu</a> · <a href="mentions-legales.html">Mentions légales</a>
     </footer>
   </main>
+  <script type="module">
+    // Même clé et même règle de validité que le lobby multi (JS/multi/consentement.js).
+    import { lireConsentement, retirerConsentement } from './JS/multi/consentement.js';
+    const etat = document.getElementById('etat-accord');
+    const bouton = document.getElementById('retirer-accord');
+    const accord = lireConsentement();
+    if (accord) {
+      etat.textContent = `Accord donné sur cet appareil le ${new Date(accord.date).toLocaleDateString('fr-FR')}.`;
+      bouton.hidden = false;
+      bouton.addEventListener('click', () => {
+        retirerConsentement();
+        etat.textContent = 'Accord retiré : il te sera redemandé à ta prochaine entrée dans le multijoueur.';
+        bouton.hidden = true;
+      });
+    }
+  </script>
 </body>
 </html>

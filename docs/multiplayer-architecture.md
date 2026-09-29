@@ -8,7 +8,7 @@ Le mode multijoueur permet à 2-8 joueurs de jouer en temps réel dans une **roo
 
 Caractéristiques clés :
 - **Pas de backend custom** : Firebase Realtime Database (RTDB) + Anonymous Auth.
-- **Pas de bundler** : SDK Firebase importé via CDN ESM (`gstatic.com/firebasejs/...`).
+- **Pas de bundler** : SDK Firebase importé en ESM depuis `gstatic.com/firebasejs/...` (seule ressource tierce du jeu, multi uniquement).
 - **Source de vérité** : un noeud `/rooms/{code}` dans RTDB. Tous les clients écoutent en temps réel via `onValue()`.
 - **Autorité** : l'hôte d'une room écrit les transitions de manche (`host-engine.js`) ; les autres clients lisent. Les règles RTDB l'imposent au niveau sécurité.
 
@@ -103,41 +103,22 @@ Caractéristiques clés :
 
 ## 4. Règles de sécurité Firebase
 
-Fichier `database.rules.json` posé dans la console Firebase :
+Source de vérité : [`database.rules.json`](../database.rules.json), déployé par `npx firebase-tools deploy --only database` (projet `gtg-multi`, cf. `.firebaserc`) et éprouvé par [`tests/regles.test.mjs`](../tests/regles.test.mjs) sur l'émulateur (chaque écriture de `JS/multi/*` et son détournement). **Ne jamais éditer les règles dans la console** : le prochain déploiement les écraserait.
 
-```json
-{
-  "rules": {
-    "rooms": {
-      "$code": {
-        ".read": "auth != null",
-        ".write": "auth != null && (!data.exists() || data.child('meta/hostUid').val() === auth.uid)",
-        "players": {
-          "$uid": {
-            ".write": "auth != null && auth.uid === $uid"
-          }
-        },
-        "game": {
-          "currentRound": {
-            "results": {
-              "$uid": {
-                ".write": "auth != null && auth.uid === $uid"
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-```
+| Chemin | Qui écrit | Contraintes |
+|---|---|---|
+| `rooms/{code}` | l'hôte (`meta/hostUid`) ; à la création, celui qui s'y inscrit comme hôte ; **n'importe qui pour effacer une room de plus de 24 h** (ou sans `meta`) | code de 6 caractères de `ROOM_CODE_ALPHABET` ; `meta` obligatoire |
+| `meta/*` | l'hôte | champs et valeurs bornés (`mode`, `status`, `targetGames`, `timeBonus`…), `createdAt` immuable, aucune clé inconnue |
+| `meta/hostUid` | un **joueur de la room**, quand il est vide (reprise d'hôte) | le joueur ne peut s'y inscrire que lui-même |
+| `players/{uid}` | le joueur lui-même (room existante ; `totalScore` = 0 à l'arrivée, inchangé ensuite) ; l'hôte pour le reste | `name` 1-20, `totalScore` nombre, `color` hexadécimal |
+| `game/*` | l'hôte | `pile` de 1000 titres au plus, horodatages numériques, aucune clé inconnue |
+| `currentRound/results/{uid}` | le joueur lui-même, s'il est dans la room, tant que la manche n'est ni close ni révélée | `status` searching/found/abandoned ; `rank` et `pointsEarned` réservés à l'hôte |
+| `chat/{id}` | un joueur, en création seule, sous son propre `uid` **et son propre pseudo** | `text` 1-200, `color` hexadécimal |
 
-Garanties :
-- Lire une room nécessite `auth != null` (anonymous suffit).
-- Création (`!data.exists()`) : n'importe quel utilisateur authentifié peut créer une room, qui devient son hôte (via `meta.hostUid` écrit dans le même `set()`).
-- Modification de l'arbre `meta`, `pile`, `currentRound` (hors results) : réservé à l'hôte (vérification de `meta/hostUid` dans la règle `$code`).
-- `players/{uid}` : un joueur ne peut modifier que son propre noeud — impossible de falsifier le score d'un autre. La cascade permissive RTDB fait que cette règle l'emporte sur la règle parent restrictive.
-- `game/currentRound/results/{uid}` : seul le joueur correspondant peut déclarer son `found`/`abandoned`.
+- **Lecture** : une room est lisible par tout compte authentifié qui en connaît le code, même sans la rejoindre ; la liste des rooms n'est lisible que pour la purge (ci-dessous).
+- **Purge des rooms > 24 h** (`JS/multi/purge.js`) : à l'ouverture du lobby, le client liste au plus 50 rooms créées avant minuit UTC de la veille puis les efface. Les règles ne comparent `query.endAt` que par **égalité** : elles n'acceptent que cette borne exacte (`now - now % 86400000 - 86400000`), jamais une borne récente.
+- **Cascade** : l'écriture accordée à l'hôte au niveau `rooms/{code}` couvre tout ; les autres n'ont d'écriture que sur leurs propres nœuds.
+- **Compromis assumés** : (1) la requête de purge renvoie le contenu complet des rooms de plus de 24 h, pas seulement leurs codes — quiconque la reproduit peut les lire avant leur effacement (déclaré dans `privacy.html`) ; (2) les règles ne savent ni limiter un débit ni compter les messages : le chat n'a qu'un frein client de 500 ms, la taille de chaque message restant bornée ; (3) l'hôte est l'autorité de sa room et peut fausser les scores dans les bornes des règles (pas d'arbitre serveur).
 
 ## 5. Scoring
 
@@ -277,8 +258,8 @@ Le module est **pur** (pas d'accès DOM/RTDB) → testable isolément.
                     │
                     │   OU à tout moment :
                     │       hôte ferme onglet
-                    │       → onDisconnect set status="cancelled"
-                    │       → tous les clients voient et redirigent
+                    │       → onDisconnect vide meta.hostUid
+                    │       → un joueur restant reprend l'hôte (transaction)
                     └──────────────────────────────────────────────┘
 ```
 
@@ -288,7 +269,8 @@ Le module est **pur** (pas d'accès DOM/RTDB) → testable isolément.
 - **`onDisconnect()` programmé à la jointure** : nettoyage auto à la fermeture d'onglet, pas besoin de heartbeat custom.
 - **Timestamps absolus pour les deadlines** : `endsAt` et `graceEndsAt` sont des `Date.now() + Δ` ; tous les clients comparent à leur `Date.now()` local. La dérive d'horloge est négligeable sur 30s.
 - **Re-render complet à chaque manche** : les renderers de `JS/hint-renderers.js` vident le container — pas de mutation incrémentielle (simplicité > finesse animation).
-- **Anti-XSS** : pseudo échappé via `escapeHtml()` avant injection (cf. `scoreboard.js`, `room-entry.js`).
+- **Anti-XSS** : pseudo échappé via `escapeHtml()`, nombres (`totalScore`, `targetGames`, `playedCount`) forcés par `Number()` avant injection (cf. `scoreboard.js`, `room-entry.js`) : un client modifié peut écrire n'importe quel type que les règles laisseraient passer.
+- **Fin de vie d'une room** : aucune n'est supprimée à la fin d'une partie ; toutes le sont par la purge des rooms de plus de 24 h (`purge.js`), déclarée dans `privacy.html`.
 - **`firebaseConfig` n'est PAS un secret** : c'est l'identifiant public du projet, lisible dans n'importe quel navigateur. La sécurité passe par les rules RTDB, pas par cacher l'`apiKey`.
 
 ## 10. Anti-patterns à éviter
@@ -299,6 +281,8 @@ Le module est **pur** (pas d'accès DOM/RTDB) → testable isolément.
 - ❌ **Ajouter un mode de jeu sans entrée `<option>` dans `HTML/multi-lobby.html`** — il sera invisible des hôtes.
 - ❌ **Polluer la stack solo avec des imports Firebase** — `JS/multi/*` est isolé pour garder le solo `file://`-compatible.
 - ❌ **Logger l'`apiKey` ou des données joueurs** dans console — l'`apiKey` est publique mais les pseudos peuvent être sensibles.
+- ❌ **Charger App Check / reCAPTCHA avant `obtenirConsentement()`** — traceurs Google soumis au consentement (cf. §13.5).
+- ❌ **Comparer `query.endAt` / `startAt` avec `<`, `>`** dans les règles — seule l'égalité fonctionne, la requête serait refusée.
 
 ## 11. Coût Firebase (gratuit en pratique)
 
@@ -346,6 +330,10 @@ App Check protège les services Firebase (RTDB en l'occurrence) en attachant un 
 
 Dans `JS/multi/firebase.js`, coller la **Site key** dans la constante `RECAPTCHA_SITE_KEY`. L'import du SDK App Check est dynamique → tant que la clé est vide, le SDK n'est pas chargé, l'app marche normalement (sans la protection).
 
+### Consentement
+
+reCAPTCHA dépose des traceurs de Google : la CNIL les soumet au consentement. `firebase.js` attend `obtenirConsentement()` (`JS/multi/consentement.js`) avant d'initialiser App Check ; un refus renvoie à l'accueil et bloque tous les modules multi (pas de multi sans accord). L'accord (date, version du texte, portée) est gardé dans `localStorage['gtg_multi_consentement']`, expire au bout de 6 mois, et se retire depuis le lobby ou `privacy.html`. Changer le texte d'accord impose d'incrémenter `VERSION`.
+
 ### Comportement
 
 - Chaque requête RTDB embarque un token App Check signé par reCAPTCHA
@@ -372,7 +360,5 @@ reCAPTCHA v3 est gratuit jusqu'à **1 million d'évaluations par mois**. App Che
 ## 14. Pistes d'évolution
 
 - **Firebase Cloud Function** pour valider les réponses côté serveur (anti-triche) — actuellement le client se fie à `checkAnswerValue` local.
-- **Failover de l'hôte** : actuellement si l'hôte ferme l'onglet, la partie meurt. Une promotion automatique au 2ᵉ joueur serait possible mais ajoute ~150 lignes de logique de réconciliation.
 - **Historique des parties** : enregistrer le classement final dans un noeud `/leaderboards/` + UI dédiée.
 - **Reconnexion** : un joueur qui fait F5 garde son uid (token Firebase persistant en IndexedDB) — peut techniquement rejoindre la room en cours. À tester et stabiliser.
-- **Limitation par IP / captcha** : si abus, ajouter App Check Firebase.

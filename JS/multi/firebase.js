@@ -7,7 +7,10 @@
  * Notes :
  *   - La config ci-dessous (apiKey, etc.) n'est PAS un secret. C'est l'identifiant
  *     public du projet Firebase, lisible côté client comme côté serveur. La sécurité
- *     est garantie par les `database.rules.json` posées dans la console Firebase.
+ *     est garantie par `database.rules.json` (versionné, testé par tests/regles.test.mjs,
+ *     déployé par le CLI).
+ *   - App Check (reCAPTCHA) n'est initialisé qu'après l'accord du joueur
+ *     (consentement.js) : sans accord, retour à l'accueil et aucun module multi ne s'exécute.
  *   - Imports CDN ESM (pas de bundler, conforme à la doctrine vanilla du projet).
  *   - `signInUserAnonymously()` doit être appelé AVANT tout accès à la DB — les règles
  *     RTDB exigent `auth != null`. Le helper `whenAuthenticated()` retourne une
@@ -22,11 +25,13 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
 import {
     getDatabase, ref, set, get, onValue, off, onDisconnect, push, update,
-    runTransaction, serverTimestamp, child, remove
+    runTransaction, serverTimestamp, child, remove,
+    query, orderByChild, endAt, limitToFirst
 } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
 import {
     getAuth, signInAnonymously, onAuthStateChanged
 } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+import { obtenirConsentement } from './consentement.js';
 
 const firebaseConfig = {
     apiKey: "AIzaSyC-Twtz41rnk2ngBn1kPnLHEtMQQVGcVOk",
@@ -54,6 +59,14 @@ const app = initializeApp(firebaseConfig);
 // JAMAIS dans le repo. Setup complet : docs/multiplayer-architecture.md §13.5.
 const RECAPTCHA_SITE_KEY = '6LfxsyktAAAAAMnMtW-7lEdiwVsXU4e0Jb5QM7D2';
 
+// reCAPTCHA dépose des traceurs Google : rien ne se charge sans accord du joueur
+// (cf. consentement.js). Sans accord, pas de multi : retour à l'accueil, et la
+// promesse jamais résolue bloque tous les modules qui importent celui-ci.
+if (RECAPTCHA_SITE_KEY && !(await obtenirConsentement())) {
+    window.location.href = new URL('../../index.html', import.meta.url).href;
+    await new Promise(() => {});
+}
+
 if (RECAPTCHA_SITE_KEY) {
     // Import dynamique : ne charge le SDK App Check QUE si une clé est définie
     const appCheckModule = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app-check.js');
@@ -67,7 +80,10 @@ export const db = getDatabase(app);
 export const auth = getAuth(app);
 
 // Réexports des helpers RTDB pour que les autres modules n'aient pas à importer du CDN.
-export { ref, set, get, onValue, off, onDisconnect, push, update, runTransaction, serverTimestamp, child, remove };
+export {
+    ref, set, get, onValue, off, onDisconnect, push, update, runTransaction, serverTimestamp, child, remove,
+    query, orderByChild, endAt, limitToFirst,
+};
 
 /**
  * Connecte l'utilisateur en anonyme et résout dès qu'un uid est dispo.

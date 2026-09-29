@@ -8,6 +8,8 @@
 
 import { whenAuthenticated } from './firebase.js';
 import { createRoom, joinRoom } from './lobby.js';
+import { purgerRoomsPerimees } from './purge.js';
+import { lireConsentement, retirerConsentement } from './consentement.js';
 import { buildShareableUrl, readRoomCodeFromUrl } from './url-room.js';
 import { games } from '../gamesDatabase.js';
 
@@ -58,8 +60,26 @@ function prefillOnReady() {
     if (lastAlias) {
         aliasInput.value = lastAlias;
     }
-    // Auth en arrière-plan dès le chargement (gain de temps)
-    whenAuthenticated().catch(err => console.error('auth init', err));
+    // Auth en arrière-plan dès le chargement (gain de temps), puis purge des rooms
+    // de plus de 24 h (cf. purge.js) — un échec n'a pas à gêner le joueur.
+    whenAuthenticated()
+        .then(() => purgerRoomsPerimees().catch(err => console.warn('purge des rooms', err)))
+        .catch(err => console.error('auth init', err));
+    afficherConsentement();
+}
+
+// Accord reCAPTCHA donné (firebase.js ne laisse pas arriver ici sans lui) : on le
+// rappelle avec sa date, et on permet de le retirer aussi simplement. (cf. consentement.js)
+function afficherConsentement() {
+    const accord = lireConsentement();
+    const bloc = document.getElementById('consent-info');
+    if (!accord || !bloc) return;
+    document.getElementById('consent-date').innerText = new Date(accord.date).toLocaleDateString('fr-FR');
+    bloc.hidden = false;
+    document.getElementById('consent-withdraw').addEventListener('click', () => {
+        retirerConsentement();
+        window.location.href = '../index.html';
+    });
 }
 
 if (document.readyState === 'loading') {

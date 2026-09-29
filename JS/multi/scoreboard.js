@@ -52,7 +52,7 @@ export function startScoreboard({ code, container, myUid, onKick }) {
         const headerHtml = `
             <div class="multi-scoreboard-header">
                 <h3>Joueurs (${sorted.length})</h3>
-                <p class="multi-progress">Manche ${(game.playedCount || 0) + (meta.status === 'playing' ? 1 : 0)} / ${meta.targetGames || '?'}</p>
+                <p class="multi-progress">Manche ${(Number(game.playedCount) || 0) + (meta.status === 'playing' ? 1 : 0)} / ${Number(meta.targetGames) || '?'}</p>
             </div>
         `;
 
@@ -79,7 +79,7 @@ export function startScoreboard({ code, container, myUid, onKick }) {
                 <li class="multi-scoreboard-row${isMe}">
                     <span class="multi-scoreboard-status">${icon}</span>
                     ${dot}<span class="multi-scoreboard-name"${nameStyle}>${escapeHtml(p.name)}${isHost}</span>
-                    <span class="multi-scoreboard-score">${p.totalScore || 0}</span>
+                    <span class="multi-scoreboard-score">${Number(p.totalScore) || 0}</span>
                     ${kickBtn}
                 </li>
             `;

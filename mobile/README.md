@@ -109,8 +109,9 @@ est partagée avec les autres apps du parent (DewDrop, LLMarmite).
 
 ## ⚠️ Limites connues (améliorations ultérieures)
 
-- **Réseau requis** : médias (CDN GitHub Pages) + libs (esm.sh/jsdelivr) + multi (Firebase). Pour
-  un vrai offline, il faudrait *vendorer* libs + médias (ou Play Asset Delivery).
+- **Réseau requis** : médias (CDN GitHub Pages) + multi (Firebase). Les libs et les polices sont
+  auto-hébergées (`JS/vendor/`, `Assets/fonts/`) et embarquées ; pour un vrai offline, il faudrait
+  aussi embarquer les médias (ou Play Asset Delivery).
 - **Firebase multi dans la WebView** : Capacitor sert depuis `https://localhost`. Vérifier que
   `localhost` est dans Firebase → Authentication → Settings → Authorized domains.
 - **iOS** : nécessite un Mac.

@@ -458,3 +458,8 @@ h1 {
         gap: var(--sp-1) var(--sp-2);
     }
 }
+
+/* Liens légaux dans le pied de page (fond déjà sombre et opaque). */
+#game-footer .legal-links a {
+    color: var(--text-primary);
+}
