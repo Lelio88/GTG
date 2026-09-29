@@ -21,7 +21,7 @@ import { startChat } from './chat.js';
 import { readRoomCodeFromUrl, buildShareableUrl } from './url-room.js';
 import { games } from '../gamesDatabase.js';
 import { showAlert, showConfirm } from '../ui/dialog.js';
-import confetti from 'https://esm.sh/canvas-confetti@1.9.3';
+import confetti from '../vendor/canvas-confetti-1.9.3.js';
 
 const BUG_REPORT_BASE = 'https://github.com/Lelio88/GTG/issues/new';
 const LAST_ALIAS_KEY = 'gtg_multi_last_alias';
@@ -617,7 +617,7 @@ function updateResultsUi(data) {
     const players = data.players || {};
     const sorted = Object.values(players).sort((a, b) => (b.totalScore || 0) - (a.totalScore || 0));
     $('final-ranking').innerHTML = sorted
-        .map((p, i) => `<li><strong>#${i + 1}</strong> ${escapeHtml(p.name)} — ${p.totalScore || 0} pts</li>`)
+        .map((p, i) => `<li><strong>#${i + 1}</strong> ${escapeHtml(p.name)} — ${Number(p.totalScore) || 0} pts</li>`)
         .join('');
     $('extend-rounds-btn').style.display = isHost ? 'inline-block' : 'none';
     // "Retour à la salle d'attente" réservé à l'hôte (resetToLobby écrit meta).

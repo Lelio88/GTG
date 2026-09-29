@@ -10,8 +10,8 @@
    une variable d'ici pour rester cohérent.
    ============================================================ */
 
-/* Polices cyberpunk (Google Fonts) */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
+/* Polices cyberpunk, auto-hébergées (cf. fonts.css) : aucune requête vers Google */
+@import url('fonts.css');
 
 :root {
     /* === Palette === */

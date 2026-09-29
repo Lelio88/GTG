@@ -6,7 +6,7 @@
 
 **Guess The Game** est une application web statique (vanilla JS + HTML/CSS) qui propose 8 modes de devinette de jeux vidéo. Le **mode solo** n'a aucun build step ni serveur : ouverture directe via `file://` ou n'importe quel serveur HTTP statique. Toute sa persistance (profils, scores, déblocages) vit dans le `localStorage` du navigateur.
 
-Le **mode multijoueur** (2-8 joueurs, rooms en temps réel) est greffé par-dessus le solo via une stack `JS/multi/` qui dépend de Firebase Realtime Database (CDN ESM, pas de bundler). Le solo et le multi partagent les renderers d'indices (`JS/hint-renderers.js`) et le catalogue (`JS/gamesDatabase.js`) — pas de duplication. Voir §15 + [`./multiplayer-architecture.md`](./multiplayer-architecture.md).
+Le **mode multijoueur** (2-8 joueurs, rooms en temps réel) est greffé par-dessus le solo via une stack `JS/multi/` qui dépend de Firebase Realtime Database (SDK ESM de gstatic, pas de bundler). Le solo et le multi partagent les renderers d'indices (`JS/hint-renderers.js`) et le catalogue (`JS/gamesDatabase.js`) — pas de duplication. Voir §15 + [`./multiplayer-architecture.md`](./multiplayer-architecture.md).
 
 Le projet est volontairement **sans framework** : pas de React, pas de Vue, pas de bundler. Les fichiers HTML sont des entry points indépendants ; chacun importe son module JS via `<script type="module">`.
 
@@ -198,13 +198,13 @@ Module commun extrait pour éviter la duplication entre les 9 modes solo et le m
 |---|---|
 | `renderHintFull` / `renderHintImage` / `renderHintSound` / `renderHintText` | Renderers à indices multiples (1-3 indices) |
 | `renderHintMidi` / `renderHintShadow` / `renderHintPixelated` / `renderHintEmoji` | Renderers one-shot (1 indice) |
-| `renderHintGeo` (async) | Viewer panorama 360° (Photo Sphere Viewer via CDN ESM), angle de spawn aléatoire — one-shot |
+| `renderHintGeo` (async) | Viewer panorama 360° (Photo Sphere Viewer auto-hébergé), angle de spawn aléatoire — one-shot |
 | `cleanupMidi()` | Stoppe Tone.Transport et dispose les synths — à appeler avant changement de manche |
 | `cleanupGeo()` | Détruit le viewer 360 (libère le WebGL) — à appeler avant changement de manche / fermeture de page |
 | `renderers` | Dispatch table `{full: ..., image: ..., ...}` pour usage multi (mode dynamique) |
 | `getHintCount(mode, game)` | Nombre d'indices disponibles pour ce mode |
 
-Le module charge `Tone.js` (mode MIDI) et `Photo Sphere Viewer` (mode Geo) en **dynamic import** → aucune pénalité pour les autres modes. Les deux tirent leur lib d'un CDN ESM (`esm.sh`), comme le multi avec Firebase → réseau requis à l'usage.
+Le module charge `Tone.js` (mode MIDI) et `Photo Sphere Viewer` (mode Geo) en **dynamic import** → aucune pénalité pour les autres modes. Les deux libs sont des bundles figés dans `JS/vendor/` (aucun CDN tiers) ; la feuille du viewer est résolue depuis le module (`import.meta.url`), pas depuis la page.
 
 ### 7.2 `JS/gameUtils.js` — Logique métier solo (timer, score, validation)
 
@@ -349,12 +349,14 @@ Tous consomment `gamesDatabase.js` en regex (`title\s*:\s*["\'](.*?)["']`). Dép
 
 | Dépendance | Type | Source | Rôle |
 |---|---|---|---|
-| `anime.js 3.2.1` | Runtime JS | CDN `cdnjs.cloudflare.com` | Animation du logo sur `index.html` |
-| Polices système (`Poppins`) | CSS | navigateur | Police par défaut |
+| `anime.js 3.2.1` | Runtime JS | `JS/vendor/` (SRI vérifiée) | Animation du logo sur `index.html` |
+| Tone.js, @tonejs/midi, Photo Sphere Viewer, canvas-confetti | Runtime JS (ESM) | `JS/vendor/` (bundles esm.sh figés) | Modes MIDI et Geo, confettis du multi |
+| Orbitron, Rajdhani, Share Tech Mono | Polices (OFL) | `Assets/fonts/` + `CSS/fonts.css` | Typographie néon |
+| SDK Firebase 10.12 | Runtime JS (ESM) | `www.gstatic.com` | Multi uniquement |
 | `Pillow`, `requests`, `urllib3`, `duckduckgo-search`, `yt-dlp`, `pygame`, `ffmpeg-normalize`, `rembg` | Python | `Python/requirements.txt` | Scripts d'admin assets (image/son/silhouette/pixels/geo) |
 | Tkinter | Python stdlib | — | UI de sélection d'image |
 
-Aucune dépendance front bundlée. Aucune dépendance back (pas de backend).
+Aucune dépendance front bundlée, aucun CDN tiers hors SDK Firebase (multi). Aucune dépendance back (pas de backend).
 
 ## 14. Stratégie de test
 
@@ -371,7 +373,7 @@ Pour une refonte, envisager un harnais Playwright local (`web/testing.md` du dos
 
 ## 15. Mode Multijoueur
 
-Le mode multi est greffé par-dessus le solo via une stack `JS/multi/` qui dépend de **Firebase Realtime Database** (CDN ESM). 2 à 8 joueurs partagent une **room** identifiée par un code à 6 caractères, avec scoring en temps réel et timer de 30s par manche. L'identité est un **alias éphémère** — aucune écriture dans le `localStorage` solo, pas de pollution croisée.
+Le mode multi est greffé par-dessus le solo via une stack `JS/multi/` qui dépend de **Firebase Realtime Database** (SDK ESM de gstatic). 2 à 8 joueurs partagent une **room** identifiée par un code à 6 caractères, avec scoring en temps réel et timer de 30s par manche. L'identité est un **alias éphémère** — aucune écriture dans le `localStorage` solo, pas de pollution croisée.
 
 Points clés :
 - **Source de vérité** : noeud `/rooms/{code}` dans RTDB, écouté par tous les clients via `onValue()`.

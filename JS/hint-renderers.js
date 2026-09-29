@@ -242,13 +242,12 @@ export function renderHintPixelated(game, _hintIndex, container) {
 
 // === Mode MIDI : player Tone.js (one-shot, hintIndex ignoré) ===
 // Dynamic import pour ne pas charger Tone.js dans les autres modes.
-// Versions pinnees pour eviter qu'une nouvelle major du CDN casse le mode :
-//   tone 15.x (latest stable au moment du pin)
-//   @tonejs/midi 2.x
-// Bumper ici quand on souhaite upgrader, jamais laisser une version non
-// pinnee (sinon esm.sh sert la latest et tout peut casser silencieusement).
-const TONE_CDN = 'https://esm.sh/tone@15.1.22';
-const TONE_MIDI_CDN = 'https://esm.sh/@tonejs/midi@2.0.28';
+// Bibliotheques auto-hebergees dans JS/vendor/ (bundles esm.sh figes, sans
+// dependance externe) : aucune requete vers un CDN tiers, et l'app Android les
+// a hors ligne. Upgrader = retelecharger le bundle et changer le nom de fichier
+// (la version y figure), cf. JS/vendor/README.md.
+const TONE_CDN = './vendor/tone-15.1.22.js';
+const TONE_MIDI_CDN = './vendor/tonejs-midi-2.0.28.js';
 
 let ToneRef = null;
 let midiSynths = [];
@@ -384,7 +383,8 @@ function ensurePsvCss() {
     const link = document.createElement('link');
     link.id = id;
     link.rel = 'stylesheet';
-    link.href = 'https://esm.sh/@photo-sphere-viewer/core@5/index.css';
+    // Resolu depuis ce module, pas depuis la page (HTML/geo.html, HTML/multi-room.html).
+    link.href = new URL('./vendor/photo-sphere-viewer-core-5.15.1.css', import.meta.url).href;
     document.head.appendChild(link);
 }
 
@@ -415,8 +415,8 @@ export async function renderHintGeo(game, _hintIndex, container) {
     const pitch = `${Math.floor(Math.random() * 41) - 20}deg`;
 
     ensurePsvCss();
-    // Import ESM a la demande (necessite le reseau, comme Tone.js pour MIDI).
-    const { Viewer } = await import('https://esm.sh/@photo-sphere-viewer/core@5');
+    // Import ESM a la demande (bundle auto-heberge, comme Tone.js pour MIDI).
+    const { Viewer } = await import('./vendor/photo-sphere-viewer-core-5.15.1.js');
     geoViewer = new Viewer({
         container: box,
         panorama,

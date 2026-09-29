@@ -9,7 +9,7 @@ Résolvez les problèmes sans introduire de régression ni de dette technique ar
 
 ## II. Architecture
 
-**Modèle** : MPA (Multi-Page Application) vanilla JS, sans framework ni bundler. Le **solo** vit en `localStorage` et reste 100 % `file://`-compatible. Le **multi** (`JS/multi/`) utilise Firebase Realtime Database via CDN ESM (réseau requis).
+**Modèle** : MPA (Multi-Page Application) vanilla JS, sans framework ni bundler. Le **solo** vit en `localStorage` et reste 100 % `file://`-compatible. Le **multi** (`JS/multi/`) utilise Firebase Realtime Database, SDK servi par gstatic (réseau requis).
 
 **Détails complets** (modèle `Profile`/`Game`, conventions d'assets, règles de couplage, flux d'une partie, RTDB multi, patterns, anti-patterns) : voir [`docs/architecture.md`](./docs/architecture.md).
 
@@ -17,9 +17,9 @@ Topologie rapide :
 - **Entrée** : `index.html`/`JS/index.js` (profils, entrée multi) ; `HTML/hub.html`/`JS/hub.js` (hub solo, déblocage hardcore)
 - **Modes solo** : `HTML/<mode>.html` + `JS/<mode>.js` (9 modes, dont `geo`) ; rendu d'indices factorisé dans `JS/hint-renderers.js` (partagé solo ⇄ multi)
 - **Chambre** : `HTML/chamber.html`/`JS/chamber.js` (zones cliquables) → Trophées (`trophy.*` + `JS/achievements.js`) et mode `geo`
-- **Multi** : `HTML/multi-*.html` + `JS/multi/*.js` (firebase, scoring, lobby, host-engine, round-client, scoreboard)
+- **Multi** : `HTML/multi-*.html` + `JS/multi/*.js` (firebase, consentement reCAPTCHA, purge des rooms > 24 h, scoring, lobby, host-engine, round-client, scoreboard) ; règles `database.rules.json`, éprouvées par `tests/regles.test.mjs`
 - **Couche partagée solo** : `gameUtils.js` (timer/score/validation/abandon/`revealTitle`), `state/{profileStore,gameProgress,modeReset}.js`, `ui/dialog.js` (modales), `ui/header.js` (barre de navigation des 9 pages de mode, calque les 4 emplacements du hub), `achievements.js`, `hellMode.js`, `gameCompletion.js`, `saveManager.js`, `dialogue.js`
-- **Données & style** : `gamesDatabase.js` + `abbreviations.js` ; `Assets/` (UI), `Medias/<Type>/` (jeu), `store-screenshots/` (fiche Play Store) ; `CSS/tokens.css` (tokens néon), `CSS/multi.css`, `CSS/coming-soon.css` (pages « à venir » `HTML/{calculator,films,pantone,xxx}.html`)
+- **Données & style** : `gamesDatabase.js` + `abbreviations.js` ; `Assets/` (UI, `fonts/` auto-hébergées), `Medias/<Type>/` (jeu), `store-screenshots/` (fiche Play Store) ; `CSS/tokens.css` (tokens néon, importe `fonts.css`), `CSS/multi.css`, `CSS/coming-soon.css` (pages « à venir » `HTML/{calculator,films,pantone,xxx}.html`) ; `JS/vendor/` (bibliothèques tierces figées) ; pages légales `privacy.html`, `mentions-legales.html`
 - **Outils admin** : `Python/*.py` (génération d'assets : captures, silhouettes, sons, panoramas 360)
 - **App mobile** : `mobile/` — empaquetage **Android via Capacitor** (AAB), isolé du web ; voir `mobile/README.md`
 
@@ -28,21 +28,22 @@ Topologie rapide :
 *Web : aucun manifest (pas de `package.json`), pas de build step. **Exception** : `mobile/` a son propre `package.json` (Capacitor), isolé du web. N'introduisez aucune dépendance web sans approbation.*
 
 - **Front** : HTML5, CSS3 (variables custom, animations néon, `prefers-reduced-motion`), JavaScript ES6+ modules natifs
-- **CDN runtime pinné** : `anime.js 3.2.1` (cdnjs, SRI) ; via **esm.sh** : `tone@15.1.22` + `@tonejs/midi@2.0.28` (MIDI), `canvas-confetti@1.9.3` (multi), `@photo-sphere-viewer/core@5` (Geo 360°)
-- **Multi** : Firebase Realtime Database + Anonymous Auth via CDN ESM (App Check désactivé)
-- **Persistance** : `window.localStorage` (clés racine `profiles`, `currentProfile` ; alias éphémère multi `gtg_multi_last_alias`)
+- **Bibliothèques auto-hébergées** (`JS/vendor/`, provenance et mise à jour dans son README) : `anime.js 3.2.1`, `tone 15.1.22` + `@tonejs/midi 2.0.28` (MIDI), `canvas-confetti 1.9.3` (multi), `@photo-sphere-viewer/core 5.15.1` (Geo 360°) ; polices Orbitron/Rajdhani/Share Tech Mono dans `Assets/fonts/`
+- **Multi** : Firebase Realtime Database + Anonymous Auth (SDK gstatic) ; App Check **actif** (reCAPTCHA v3), chargé seulement après consentement
+- **Persistance** : `window.localStorage` (clés racine `profiles`, `currentProfile` ; clés multi `gtg_multi_last_alias`, `gtg_multi_consentement`)
 - **Outils admin (hors web)** : Python 3 + `Pillow`, `yt_dlp`, `rembg`, `ffmpeg`/`ffmpeg-normalize`, Tkinter — cf. `Python/requirements.txt`
 
 ## IV. Garde-Fous non négociables
 
-1. **Vanilla JS, pas de bundler** (côté web) : aucun npm/`package.json`/build à la racine. Deps via CDN ESM. Le **solo** reste 100 % `file://`-compatible (double-clic `index.html`). Exceptions : le **multi** (Firebase + réseau) et l'**app mobile** (`mobile/`, Capacitor + npm, isolée — le web racine reste inchangé).
+1. **Vanilla JS, pas de bundler** (côté web) : aucun npm/`package.json`/build à la racine. Deps auto-hébergées dans `JS/vendor/`, jamais par CDN tiers. Le **solo** reste 100 % `file://`-compatible (double-clic `index.html`). Exceptions : le **multi** (Firebase + réseau) et l'**app mobile** (`mobile/`, Capacitor + npm, isolée — le web racine reste inchangé).
 2. **Persistance solo via `localStorage`** : exactement deux clés racine (`profiles` = tableau, `currentProfile` = pseudo string). Jamais l'objet profil entier dans `currentProfile`. Le multi n'écrit jamais dans le localStorage solo.
 3. **Factorisation obligatoire** : tout mode consomme `gameUtils.js`, les renderers de `hint-renderers.js`, `state/profileStore.js` (profil), `state/gameProgress.js` (jeu en cours), `ui/dialog.js` (modales). **Aucun `alert/prompt/confirm` natif, aucun `onclick` inline, aucun `JSON.parse(localStorage.getItem('profiles'))` direct.**
 4. **Convention d'assets** : `Medias/<Type>/<Title> <N>.<ext>` (`<Title>` = champ `title` de `gamesDatabase.js`, espaces inclus). Toute renomination propage code ET fichiers.
 5. **Chemins relatifs depuis HTML** : un `<script type="module">` d'`HTML/x.html` voit `'../JS/...'` et `'../Medias/...'`.
-6. **Pas d'injection HTML utilisateur** : pseudos et texte saisi via `innerText`/`escapeHtml()`, jamais `innerHTML` direct.
-7. **Multi : seul l'hôte écrit dans `game/`** (règles RTDB). Les autres écrivent leur `players/{uid}` et `currentRound/results/{uid}` ; toute transition de manche passe par `host-engine.js`.
+6. **Pas d'injection HTML utilisateur** : pseudos et texte saisi via `innerText`/`escapeHtml()`, nombres lus en base forcés par `Number()`, jamais `innerHTML` direct.
+7. **Multi : seul l'hôte écrit dans `game/`** (`database.rules.json`, versionné et testé, déployé par le CLI — jamais édité dans la console). Les autres écrivent leur `players/{uid}` et `currentRound/results/{uid}` ; toute transition de manche passe par `host-engine.js`.
 8. **Auto-documentation** : tout nouveau `JS/*.js` publie un en-tête (rôle, invariants, IDs DOM attendus, dépendances).
+9. **Vie privée** : reCAPTCHA ne se charge qu'après `obtenirConsentement()` (`JS/multi/consentement.js`) ; aucun autre traceur ni service tiers. Toute nouvelle donnée personnelle passe par `privacy.html` (et un nouveau texte de consentement, par `VERSION`).
 
 ## V. Flux de Travail (Explore → Plan → Code → Verify)
 
@@ -58,6 +59,8 @@ Topologie rapide :
 # Lancer l'app
 start index.html               # solo, ouverture directe (file://) — Windows (open / xdg-open ailleurs)
 python -m http.server 8000     # solo + multi + mode Geo → http://localhost:8000/
+# Règles multi : tester sur l'émulateur (Java), puis déployer
+npx firebase-tools emulators:exec --only database "node tests/regles.test.mjs" && npx firebase-tools deploy --only database
 
 # Outils admin Python (prérequis : pip install -r Python/requirements.txt)
 python Python/check_assets.py                       # audit des assets manquants
@@ -91,7 +94,8 @@ python mobile/publish_play.py --track alpha --notes-file <f>   # publie en test 
 | Nouveau champ `Profile` | `docs/architecture.md` §4 + migration paresseuse dans `gameUtils.js::initializeProfile()` |
 | Nouveau jeu / abréviation | `JS/gamesDatabase.js` (+ assets IV.4) / table `JS/abbreviations.js` |
 | API `gameUtils.js` / `hint-renderers.js` | `docs/architecture.md` §7 |
-| Schéma RTDB multi | `docs/architecture.md` §15 + règles `database.rules.json` (console Firebase) |
+| Schéma RTDB multi | `docs/multiplayer-architecture.md` §3-4 + `database.rules.json` + cas dans `tests/regles.test.mjs`, puis déploiement CLI |
+| Donnée personnelle, service tiers, bibliothèque | `privacy.html` (+ `VERSION` de `consentement.js` si le texte d'accord change) ; bibliothèque : `JS/vendor/README.md` |
 | Convention d'asset / nouvel anti-pattern | `docs/architecture.md` §6 (+ `Python/*.py`) / §11 |
 | Mode Geo (assets, viewer) | `Python/geo_*.py` (dont `geo_undeclare.py`), `hint-renderers.js` (`renderHintGeo`/`cleanupGeo`), `README.md` (guide) |
 | Mode Enfer (fenêtre 666–777) | `JS/hellMode.js` (`HELL_THRESHOLD`/`HELL_MAX`) + `CSS/tokens.css` (`html.gtg-hell`) |
@@ -104,4 +108,4 @@ python mobile/publish_play.py --track alpha --notes-file <f>   # publie en test 
 
 - **État courant** : app packagée **Android** (Capacitor, `versionName 1.0.1`) tournant en **portrait ET paysage** (`screenOrientation="fullUser"`) ; solo + multi + Geo opérationnels. Doctrine responsive « viewport court » : `docs/architecture.md` §10-11 ; build/signature AAB : `mobile/README.md`, et la convention de clé du conteneur dans [`../android-signing-guide.md`](../android-signing-guide.md).
 - **État Play Store** : **versionCode 2 diffusé en test fermé** (track `alpha`). Les envois suivants passent par `mobile/publish_play.py` (incrémenter `versionCode` dans `mobile/android/app/build.gradle` avant tout rebuild — un versionCode n'est jamais réutilisable).
-- **Prochaines étapes** : ajouter l'icône `store-screenshots/icon-512.png` à la fiche Play ; enrichir le catalogue **Geo** via captures Ansel ; repositionner `#zone-geo` dans la chambre.
+- **Prochaines étapes** : publier un nouvel AAB (`versionCode` 3) pour embarquer le consentement reCAPTCHA, les pages légales et les bibliothèques auto-hébergées, et aligner le formulaire « Sécurité des données » de Play (reCAPTCHA, chat, pseudo) ; ajouter l'icône `store-screenshots/icon-512.png` à la fiche Play ; enrichir le catalogue **Geo** via captures Ansel ; repositionner `#zone-geo` dans la chambre.

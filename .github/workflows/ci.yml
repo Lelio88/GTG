@@ -107,10 +107,11 @@ jobs:
       # Anti-regression : pas d'alert/prompt/confirm natifs (cf. #34)
       # ============================================================
       # JS/ui/dialog.js est exclu : c'est lui qui wrap ces dialogues.
+      # JS/vendor/ aussi : bibliotheques tierces figees, hors doctrine.
       - name: No native dialogs
         run: |
           set +e
-          matches=$(grep -rEn '\b(alert|confirm|prompt)\s*\(' JS/ --include="*.js" --exclude-dir=ui 2>/dev/null)
+          matches=$(grep -rEn '\b(alert|confirm|prompt)\s*\(' JS/ --include="*.js" --exclude-dir=ui --exclude-dir=vendor 2>/dev/null)
           if [ -n "$matches" ]; then
             echo "::error::alert/confirm/prompt natifs trouves. Doctrine : utiliser JS/ui/dialog.js (showAlert/showConfirm/showPrompt) (cf. issue #34)"
             echo "$matches"
@@ -142,7 +143,7 @@ jobs:
       - name: No unauthorized reload
         run: |
           set +e
-          matches=$(grep -rEn "window\.location\.reload\s*\(" JS/ --include="*.js" \
+          matches=$(grep -rEn "window\.location\.reload\s*\(" JS/ --include="*.js" --exclude-dir=vendor \
                     | grep -v "JS/saveManager.js" \
                     | grep -v "JS/gameUtils.js" 2>/dev/null)
           if [ -n "$matches" ]; then
