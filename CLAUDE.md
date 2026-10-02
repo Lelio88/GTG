@@ -42,6 +42,7 @@ Topologie rapide :
 5. **Tout champ lu en base est hostile** : texte via `innerText`/`escapeHtml()`, nombres forcés par `Number()`, jamais d'`innerHTML` brut.
 6. **Multi : l'hôte est l'autorité** (seul à écrire `meta/` et `game/`) ; `database.rules.json` est versionné, testé, déployé par le CLI — jamais édité dans la console.
 7. **Vie privée** : reCAPTCHA ne se charge qu'après `obtenirConsentement()` ; aucun autre traceur. Toute nouvelle donnée personnelle passe par `privacy.html` (et par `VERSION` de `consentement.js` si le texte d'accord change).
+8. **Robots d'entraînement IA refusés** (décision du 2026-10-02) : chaque page porte `<meta name="tdm-reservation" content="1">` (réserve de fouille, CPI art. L122-5-3). GitHub Pages ne pose pas d'en-tête, et un `robots.txt` n'est lu qu'à la racine de `lelio88.github.io` : choix assumé de ne pas créer ce dépôt, la balise porte seule le refus. Toute nouvelle page la reprend.
 
 ## V. Flux de Travail (Explore → Plan → Code → Verify)
 
