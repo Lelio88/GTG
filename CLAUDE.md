@@ -82,7 +82,7 @@ python mobile/publish_play.py --track alpha --dry-run            # puis sans --d
 | Donnée personnelle, service tiers, bibliothèque | `privacy.html` (+ `VERSION` de `consentement.js`) ; `JS/vendor/README.md` |
 | Mode Geo, mode Enfer | `Python/geo_*.py`, `renderHintGeo`/`cleanupGeo`, README ; `hellMode.js` + `html.gtg-hell` de `tokens.css` |
 | Responsive, orientation, tactile | `@media (max-height: 600px)` de la page + `docs/architecture.md` §10-11 ; `AndroidManifest.xml` ; référence `JS/hub.js` |
-| App Android, publication, icône | `mobile/README.md` ; `publish_play.py` + `../play-store-publication-guide.md` §13 (compte de service hors dépôt, `../.play-secrets/`) |
+| App Android, publication, icône | `mobile/README.md` ; `publish_play.py` + `../docs/play-store-publication-guide.md` §13 (compte de service hors dépôt, `../.play-secrets/`) |
 | Nouvel anti-pattern | `docs/architecture.md` §11 (ou `multiplayer-architecture.md` §10) |
 
 ## VIII. Contexte de Session
